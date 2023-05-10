@@ -81,6 +81,7 @@ border-radius:20px;  float:left; }
 #banner img.active, #banner2 img.active {opacity:1; transition:opacity 3s ease-in-out, transform 0.2s ease-in-out; border-radius:20px; }
 #banner:hover img, #banner2:hover img {transform:scale(1.05); border-radius:20px;}
   
+  
 /*유튜브 아이프레임*//*크기는 아이프레임에서 직접지정*/
 #youtube {width:300px; height: 450px; position:relative; float:right;margin-top:200px; margin-left:50px; margin-right:50px;  }
 #youtube iframe {border-radius: 20px; box-shadow:0 0 20px rgba(0, 0, 0, 0.8);}
@@ -89,8 +90,8 @@ border-radius:20px;  float:left; }
 #main3{width:1440px; margin:120px auto; text-align:center;  justify-content: center;  
 }
 .container {margin-top:20px;display:flex; flex-wrap:wrap; justify-content:center;  opacity: 0; }
-.item {position:relative; width:calc(27% - 10px); margin-bottom: 20px; margin-right:20px; height:300px; box-shadow:0 4px 8px 0 rgba(0,0,0,0.5);   }
-.item img {width:100%; height:70%; transition:opacity 1s ease-in-out, transform 0.5s ease-in-out;}
+.item {position:relative; width:calc(27% - 10px); margin-bottom: 20px; margin-right:20px; height:300px;   box-shadow: 4px 0px 4px 0px rgba(0, 0, 0, 0.5);}
+.item img {width:100%; height:70%; transition:opacity 1s ease-in-out, transform 0.5s ease-in-out; border-bottom-left-radius: 50px;}
 .item img:hover{transform:scale(1.03); }
 
 .item .text {position:absolute; bottom: 0; left:0; width:89.5%; padding:10px; color:black; text-align: center;}
@@ -236,7 +237,7 @@ setInterval(function(){ $('.slider-1 > .side-btns > div').eq(1).click();}, 3000)
         
    <div id= main2><!-- 메인2번째 구역 -->   
     <h1 class="main2-title">
-      <span data-text="main2">전주에서 즐기자!!</span>   <!--메인2 대문 -->
+      <span data-text="main2">타 : 바와 즐기자!!</span>   <!--메인2 대문 -->
       </h1>      
     <div id="banner">
                     <img src="resources/rentphoto/photo1.jpg"alt="Banner 1">
