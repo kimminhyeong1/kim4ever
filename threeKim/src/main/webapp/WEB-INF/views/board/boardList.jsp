@@ -59,6 +59,13 @@ li{list-style:none;}
   font-size:21px;
   border-radius:5px;
 }
+.tab__list__item.active {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #333;
+}
+
+
 </style>
 
 </head>
