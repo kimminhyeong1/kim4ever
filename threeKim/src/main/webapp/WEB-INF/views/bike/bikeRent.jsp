@@ -9,21 +9,18 @@
 
 *{margin:0;padding:0;}
 li{list-style:none;}
-
 @font-face {
     font-family: 'GangwonEdu_OTFBoldA';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
-
 @font-face {
     font-family: 'omyu_pretty';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
-
 @font-face {
     font-family: 'KCC-Ganpan';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2') format('woff2');
@@ -31,25 +28,24 @@ li{list-style:none;}
     font-style: normal;
 }
 
-
 #main{width:1440px; margin:35px auto 70px; text-align:center;}
 #main #content{width:1440px;height:1800px;}
 #main #bottom{width:1440px; height:300px;}
 #bike{display:flex; flex-wrap:wrap; justify-content:space-between; width:100%; align-items:center;}
 .bike-box {position:relative; display:inline-block; margin:20px; width:250px; text-align:center; top:80px; border:1px solid #ddd;}
 .bike-box img {width:100%; height: auto;}
+.bike-box img, .bike-description{border-bottom:1px solid #ddd;}
 .bike-box img:hover{opacity:0.8; cursor:pointer; transform:scale(1.1); transition:all 0.3s ease-in-out;}
 .bike-description {font-family:'omyu_pretty'; margin:10px 0;font-size:24px;}
-.bike-rules {font-family:'omyu_pretty'; margin:40px auto;width: 70%;padding: 20px;background-color: #f1f1f1;border-radius: 5px;}
-.bike-rules h2 {font-family:'KCC-Ganpan';text-align:center; font-size: 35px; color: #333; margin-bottom: 20px;}
-.bike-rules p {font-family:'omyu_pretty';text-align:left; margin-left: 40px; font-size:24px; padding: 15px 15px; letter-spacing:3px;}
-.rent-btn, .edit-btn {display:block; width: 100px; padding:0; margin:10px 80px 15px 80px;
-font-family:'omyu_pretty'; font-size:18px; font-weight:bold; text-align:center; line-height:32px; color: black; border-radius:10px; transition:all 0.2s ; border:0px solid #ff9933; background:#ff9933; }
-.rent-btn {box-shadow:0px 0px 0px 0px #cc9002}
-.rent-btn:hover{border:0px white; background-color:rgba(254, 195, 57, 0.4); color:grey;}
-.edit-btn {box-shadow:0px 0px 0px 0px #cc9002}
-.edit-btn:hover{border:0px white; background-color:rgba(254, 195, 57, 0.4);  color:grey;}
+.bike-rules {font-family:'omyu_pretty'; margin:40px auto;width:70%; padding: 20px;background-color:#f1f1f1; border-radius: 5px;}
+.bike-rules h2 {font-family:'KCC-Ganpan'; text-align:center; font-size:35px; color:#333; margin-bottom: 20px;}
+.bike-rules p {font-family:'omyu_pretty'; text-align:left; margin-left:40px; font-size:24px; padding:15px 15px; letter-spacing:3px;}
 
+/* 버튼 */
+.edit-btn {display:block; width:100px; height:30px; padding:0; margin:10px 80px 15px 80px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+.edit-btn:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+.rent-btn{display:block; width:100px; height:30px; padding:0; margin:10px 80px 15px 80px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+.rent-btn:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
 <!-- <script type="text/javascript">
 //버튼 요소 가져오기
@@ -75,11 +71,9 @@ editBtn.addEventListener('click', () => {
   window.location.href = '작성페이지 URL';
 });
 </script> -->
-
 </head>
 <body>
    <div id="main">
-   
    <%@include file="../header.jsp" %>
 
    <div id="content">
@@ -98,74 +92,75 @@ editBtn.addEventListener('click', () => {
          <div class="bike-box">
             <img src="../resources/bikeimg/일반자전거.jpg" alt="일반자전거">
             <p class="bike-description">일반자전거</p>
-            <button class="rent-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentDetail.jsp'">대여하기</button>
+            <button class="rent-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentDetail.do'">대여하기</button>
               <!-- <button class="edit-btn">등록</button> admin로그인 시 대여하기 말고 등록 버튼 보이게 하기-->
          </div>
          
          <div class="bike-box">
             <img src="../resources/bikeimg/전기자전거.jpg" alt="전기자전거">
             <p class="bike-description">전기자전거</p>
-            <button class="rent-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentDetail.jsp'">대여하기</button>
+            <button class="rent-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentDetail.do'">대여하기</button>
             </div>
          
          <div class="bike-box">
             <img src="../resources/bikeimg/커플자전거.jpg" alt="커플자전거">
             <p class="bike-description">커플자전거</p>
-            <button class="rent-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentDetail.jsp'">대여하기</button>
+            <button class="rent-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentDetail.do'">대여하기</button>
             </div>
          
          <div class="bike-box">
             <img src="../resources/bikeimg/2인자전거.jpg" alt="2인자전거">
             <p class="bike-description">2인자전거</p>
-            <button class="rent-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentDetail.jsp'">대여하기</button>
+            <button class="rent-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentDetail.do'">대여하기</button>
             </div>
          
          <div class="bike-box">
             <img src="../resources/bikeimg/하이브리드 자전거1.jpg" alt="하이브리드1">
             <p class="bike-description">하이브리드 자전거</p>
-            <button class="rent-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentDetail.jsp'">대여하기</button>
+            <button class="rent-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentDetail.do'">대여하기</button>
          </div>
          
          <div class="bike-box">
             <img src="../resources/bikeimg/하이브리드 자전거2.jpg" alt="하이브리드2">
             <p class="bike-description">하이브리드 자전거</p>
-            <button class="rent-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentDetail.jsp'">대여하기</button>
+            <button class="rent-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentDetail.do'">대여하기</button>
          </div>
          
          <div class="bike-box">
             <img src="../resources/bikeimg/미니벨로.jpg" alt="미니벨로자전거">
             <p class="bike-description">미니벨로</p>
-            <button class="rent-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentDetail.jsp'">대여하기</button>
+            <button class="rent-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentDetail.do'">대여하기</button>
          </div>
          
+            
          <div class="bike-box">
             <img src="../resources/bikeimg/어르신자전거.jpg" alt="어르신자전거">
             <p class="bike-description">어르신자전거</p>
-            <button class="rent-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentDetail.jsp'">대여하기</button>
+            <button class="rent-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentDetail.do'">대여하기</button>
          </div>
          
          <div class="bike-box">
-            <img src="../resources/btn/+button.png" alt="" onclick="location.href='bikeRentWrite.jsp'">
+            <img src="../resources/btn/+button.png" alt="" onclick="location.href='bikeRentWrite.do'">
             <p class="bike-description"></p>
-            <button class="edit-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentWrite.jsp'">등록</button>
+            <button class="edit-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentWrite.do'">등록</button>
          </div>
          
          <div class="bike-box">
-            <img src="../resources/btn/+button.png" alt="" onclick="location.href='bikeRentWrite.jsp'">
+            <img src="../resources/btn/+button.png" alt="" onclick="location.href='bikeRentWrite.do'">
             <p class="bike-description"></p>
-            <button class="edit-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentWrite.jsp'">등록</button>
+            <button class="edit-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentWrite.do'">등록</button>
          </div>
          
          <div class="bike-box">
-            <img src="../resources/btn/+button.png" alt="" onclick="location.href='bikeRentWrite.jsp'">
+            <img src="../resources/btn/+button.png" alt="" onclick="location.href='bikeRentWrite.do'">
             <p class="bike-description"></p>
-            <button class="edit-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentWrite.jsp'">등록</button>
+            <button class="edit-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentWrite.do'">등록</button>
          </div>
          
          <div class="bike-box">
-            <img src="../resources/btn/+button.png" alt="" onclick="location.href='bikeRentWrite.jsp'">
+            <img src="../resources/btn/+button.png" alt="" onclick="location.href='bikeRentWrite.do'">
             <p class="bike-description"></p>
-            <button class="edit-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentWrite.jsp'">등록</button>
+            <button class="edit-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentWrite.do'">등록</button>
          </div>
         
       </section>
@@ -175,7 +170,6 @@ editBtn.addEventListener('click', () => {
    <div id="bottom">
    <%@include file="../bottom.jsp" %>
    </div>
-
 </div>
 </body>
 <%@include file="../footer.jsp" %>
