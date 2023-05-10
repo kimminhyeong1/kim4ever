@@ -62,9 +62,7 @@ li{list-style:none;}
 		  <p>타:바와 함께라면 누구나 쉽게 자전거 여행을 즐길 수 있습니다. 우리와 함께 멋진 추억을 만들어보세요!</p>
 		</div>
 		
-	
-	
-	
+
 	
 		<div id="gatheringList">
 		<h2>자전거 모임</h2>
