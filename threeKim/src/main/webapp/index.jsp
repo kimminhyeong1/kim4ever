@@ -11,7 +11,7 @@
 *{margin:0;padding:0;}
 li{list-style:none;}
 
-#main{width:1440px; margin:35px auto 70px; text-align:center; border:1px solid #white;      font-family: 'IM_Hyemin-Bold';
+#main{width:1440px; margin:35px auto; text-align:center; border:1px solid #white;      font-family: 'IM_Hyemin-Bold';
 }
 #main #content{ width: 1440px;height: auto !important;/*우선권*/}
 #main #content img{width:1440x; height:800px;}
@@ -53,10 +53,10 @@ background-position:center; background-size:cover; background-repeat:no-repeat; 
 .slider-1 > .slides > div.active {opacity:1;}
 /*  좌우 버튼 */
 .slider-1 > .side-btns > div {position:absolute; top:0; left:0; width:25%;
-height:100%; cursor:pointer;}
+height:100%; cursor:pointer; color:white;}
 .slider-1 > .side-btns > div:last-child {left:auto; right:0;}
-.slider-1 >.side-btns > div > span {position:absolute;top:50%;left:20px;transform:translatey(-50%);
-background-color:rgba(255,255,255,0.8);opacity:1;padding:5px; border-radius:50px;font-size:35px;}
+.slider-1 >.side-btns > div > span {position:absolute;top:50%;left:20px;transform:translatey(-10%);
+opacity:1;padding:5px; border-radius:50px;font-size:50px;}
 .slider-1 >.side-btns > div:last-child > span {left:auto;right:20px; }
 
 /*날씨*/
@@ -119,9 +119,10 @@ $j(document).ready(function() {
             
             var bottom_of_element = $j(this).offset().top + $j(this).outerHeight() /5;
             var bottom_of_window = $j(window).scrollTop() + $j(window).height();
-            if (bottom_of_window > bottom_of_element && $j(this).css('opacity') !=0.9) 
+            if (bottom_of_window > bottom_of_element && $j(this).css('opacity') !=1) 
             if( bottom_of_window > bottom_of_element ){
                 $j(this).animate({'opacity':'1'},2000);
+                
             }
             
         }); 
