@@ -97,7 +97,7 @@ li{list-style:none;}
 					<a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a>
 					<a href="<%=request.getContextPath() %>/member/memberJoin.do">회원가입</a>
 				</div>
-		
+
 				<ul class ="sub-menu-list">
 					<li>
 						<p>쓰리김 님</p>
