@@ -29,7 +29,6 @@ li{list-style:none;}
     font-weight: normal;
     font-style: normal;
 }
-
 #main{width:1440px; margin:35px auto 70px; text-align:center;}
 #main #content{width:1440px; height:2400px; border:1px solid #000; }
 #main #bottom{width:1440px; height:300px; border:1px solid #000;}
