@@ -297,7 +297,7 @@ var interval2 = setInterval(function() {
       <div id= "main3">   <!--상자형안내판 -->
 <div class="container">
 	       	<div class="item"><!-- 아이탬링크추가 -->
-	       	<a href="https://map.naver.com/v5/search/%EC%95%84%EC%A4%91%EC%A0%80%EC%88%98%EC%A7%80?c=15,0,0,0,dh" target="_blank">
+	       	<a href="https://place.map.kakao.com/27223754" target="_blank">
 	        <img src="resources/main3/main3-1.jpg">
 	        </a>
 	        <div class="text">
@@ -307,7 +307,7 @@ var interval2 = setInterval(function() {
 	       	</div>
 	       	
 	       	<div class="item">
-	       	 	<a href="https://map.naver.com/v5/search/%EC%A0%84%EC%A3%BC%20%EB%8F%99%EB%AC%BC%EC%9B%90/place/11886776?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+	       	 	<a href="https://place.map.kakao.com/8536416" target="_blank">
 	        <img src="resources/main3/main3-2.jpg">
 	        </a>
 	        <div class="text">
@@ -317,7 +317,7 @@ var interval2 = setInterval(function() {
 	     	</div>
 	 
 	        <div class="item">
-	         	<a href="https://map.naver.com/v5/search/%EC%A0%84%EB%8F%99%EC%84%B1%EB%8B%B9/place/12942911?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+	         	<a href="https://place.map.kakao.com/12760599" target="_blank">
 	        <img src="resources/main3/main3-3.jpg">
 	        </a>
 	        <div class="text">	        
@@ -327,7 +327,7 @@ var interval2 = setInterval(function() {
 	        </div>
       
 	        <div class="item">
-	         	<a href="https://map.naver.com/v5/search/%EA%B2%BD%EA%B8%B0%EC%A0%84/place/34648763?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+	         	<a href="https://place.map.kakao.com/10170551" target="_blank">
 	        <img src="resources/main3/main3-4.jpg">
 	        </a>
 	        <div class="text">
@@ -337,7 +337,7 @@ var interval2 = setInterval(function() {
 	     	</div>
 
             <div class="item">
-             	<a href="https://map.naver.com/v5/search/%ED%95%9C%EC%98%A5%EB%A7%88%EC%9D%84/place/13208779?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+             	<a href="https://place.map.kakao.com/10731896" target="_blank">
             <img src="resources/main3/main3-5.jpg">
             </a>
             <div class="text">
@@ -347,7 +347,7 @@ var interval2 = setInterval(function() {
         	</div>
           
             <div class="item">
-             	<a href="https://lib.jeonju.go.kr/index.jeonju?contentsSid=410" target="_blank">
+             	<a href="https://place.map.kakao.com/935843221" target="_blank">
             <img src="resources/main3/main3-6.jpg">
             </a>
             <div class="text">
