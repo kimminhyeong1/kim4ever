@@ -180,7 +180,7 @@ var rectangleBounds = new kakao.maps.LatLngBounds(sw, ne);
 		<table>
 		  <tr>
 		    <td>
-		     <img src="resources/restaurant/샤브잇데이1.jpg" alt="맛집1">
+		     <img src="../resources/restaurant/샤브잇데이1.jpg" alt="맛집1">
 		      <h3>샤브잇데이 송천점</h3>
 		      <p>전북 전주시 덕진구 세병서로 22</p>
 		      <p>평일런치 19,800원</p>
@@ -188,21 +188,21 @@ var rectangleBounds = new kakao.maps.LatLngBounds(sw, ne);
 		    </td>
 		    
 		    <td>
-		      <img src="resources/restaurant/스시아시타.jpg" alt="맛집2">
+		      <img src="../resources/restaurant/스시아시타.jpg" alt="맛집2">
 		      <h3>스시아시타 송천</h3>
 		      <p>전북 전주시 덕진구 송천중앙로 249</p>
 		      <p>아시타 스탠다드A 22,000원</p>
 		      <p>063-222-2222</p>
 		    </td>
 		    <td>
-		     <img src="resources/restaurant/우연.jpg" alt="맛집3">
+		     <img src="../resources/restaurant/우연.jpg" alt="맛집3">
 		      <h3>우연</h3>
 		      <p>전북 전주시 덕진구 세병서로 39 302호</p>
 		      <p>시그니처 코스 90,000원</p>
 		      <p>063-222-2222</p>
 		    </td>
 		    <td>
-		    <img src="resources/restaurant/이삭토스트2.jpg" alt="맛집4">
+		    <img src="../resources/restaurant/이삭토스트2.jpg" alt="맛집4">
 		      <h3>이삭토스트 에코세병호점</h3>
 		      <p>전북 전주시 덕진구 세병로 174-9</p>
 		      <p>햄치즈 토스트 3,100원</p>

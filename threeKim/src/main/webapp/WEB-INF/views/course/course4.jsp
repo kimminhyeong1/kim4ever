@@ -157,7 +157,7 @@ var rectangleBounds = new kakao.maps.LatLngBounds(sw, ne);
 		<table>
 		  <tr>
 		    <td>
-		     <img src="resources/restaurant/이바돔감자탕1.jpg" alt="맛집1">
+		     <img src="../resources/restaurant/이바돔감자탕1.jpg" alt="맛집1">
 		      <h3>이바돔감자탕</h3>
 		      <p>전북 전주시 완산구 모악로 4731</p>
 		      <p>감자탕 소 29,000원</p>
@@ -165,21 +165,21 @@ var rectangleBounds = new kakao.maps.LatLngBounds(sw, ne);
 		    </td>
 		    
 		    <td>
-		      <img src="resources/restaurant/연안식당.jpg" alt="맛집2">
+		      <img src="../resources/restaurant/연안식당.jpg" alt="맛집2">
 		      <h3>연안식당</h3>
 		      <p>전북 전주시 완산구 모악로 4665 1동 103호</p>
 		      <p>꼬막비빔밥 변동</p>
 		      <p>063-222-2222</p>
 		    </td>
 		    <td>
-		     <img src="resources/restaurant/싸움의고수.jpg" alt="맛집3">
+		     <img src="../resources/restaurant/싸움의고수.jpg" alt="맛집3">
 		      <h3>싸움의고수</h3>
 		      <p>전북 전주시 완산구 평화로 120 상가</p>
 		      <p>1인보쌈 도시락 10,700원</p>
 		      <p>063-222-2222</p>
 		    </td>
 		    <td>
-		    <img src="resources/restaurant/부송국수1.jpg" alt="맛집4">
+		    <img src="../resources/restaurant/부송국수1.jpg" alt="맛집4">
 		      <h3>부송국수</h3>
 		      <p>전북 전주시 완산구 평화1길 16-5</p>
 		      <p>잔치국수 6,000원</p>

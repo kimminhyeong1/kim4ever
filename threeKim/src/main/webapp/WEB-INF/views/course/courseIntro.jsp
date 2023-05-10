@@ -17,7 +17,6 @@ li{list-style:none;}
     font-weight: normal;
     font-style: normal;
 }
-
 @font-face {
     font-family: 'omyu_pretty';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
@@ -86,20 +85,18 @@ li{list-style:none;}
 		
 	
 	<div id="courseList">
-	<a target="course" href="<%=request.getContextPath()%>/course/course1.do">01 송천 길</a>
-	|&nbsp;
-	<a target="course" href="<%=request.getContextPath()%>/course/course2.do">02 덕진 길</a>
-	|&nbsp;
-	<a target="course" href="<%=request.getContextPath()%>/course/course3.do">03 오목 길</a>
-	|&nbsp;
-	<a target="course" href="<%=request.getContextPath()%>/course/course4.do">04 평화 길</a>
-	|&nbsp;
-	<a target="course" href="<%=request.getContextPath()%>/course/course5.do">05 효자 길1</a>
-</div>
-
-<iframe id="course" name="course" src="<%=request.getContextPath()%>/course/course1.do"></iframe>
-
-
+		<a target="course" href="course1.do">01 송천 길</a>
+		|&nbsp;
+		<a target="course" href="course2.do">02 덕진 길</a>
+		|&nbsp;
+		<a target="course" href="course3.do">03 오목 길</a>
+		|&nbsp;
+		<a target="course" href="course4.do">04 평화 길</a>
+		|&nbsp;
+		<a target="course" href="course5.do">05 효자 길</a>
+	
+	</div>
+	<iframe id="course" name="course" src="course1.do"></iframe>
 	
 	</div>
 	

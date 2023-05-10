@@ -16,7 +16,6 @@ li{list-style:none;}
     font-weight: normal;
     font-style: normal;
 }
-
 @font-face {
     font-family: 'omyu_pretty';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
@@ -33,7 +32,7 @@ li{list-style:none;}
 
 #main{width:1440px; margin:35px auto 70px; text-align:center;}
 #main #content{width:1440px; height:2400px;}
-#main #content h2{text-align:left; margin-top:50px; margin-left:160px; font-family: 'KCC-Ganpan'; font-size:27px;}
+#main #content h2{text-align:left; margin-top:50px; margin-left:160px; font-family: 'GangwonEdu_OTFBoldA'; font-size:27px;}
 #main #bottom{width:1440px; height:300px;}
 #content table {width:80%; border-collapse:collapse; margin:60px auto 0; line-height:100px; font-size:24px; font-family: 'omyu_pretty';}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
@@ -44,7 +43,8 @@ li{list-style:none;}
 #content table tr th:nth-child(4){width: 80px;}
 #content table tr th:nth-child(5){width: 20px;}
 #btn{text-align:right; margin-top:20px; margin-right:144px; }
-#btn button{width:100px; height:35px; text-align:center; background:#ff9933; border-radius:10px; border:0px solid #ff9933; font-family:'omyu_pretty'; font-size:24px;}
+#btn button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+#btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 /*메뉴바 테이블*/
 .tab__contents {display:none;}
 .show {display: block;}
@@ -153,7 +153,7 @@ const tabContents = document.querySelectorAll(".tab__contents");
 const activeItem = document.querySelector(".active");
 const showing = document.querySelector(".show");
 
-tab.addEventListener("click", (e) => {
+tab.addEventListener("click", (e)=> {
   const listOrder = e.target.dataset.list;
   tabListItems.forEach(function (item) {
     item.classList.remove("active");
@@ -174,7 +174,7 @@ tab.addEventListener("click", (e) => {
 	
 	 	</div>
          <div id="btn">
-         <button type="button" onclick="location.href='boardWrite.jsp'">작성</button> 
+         <button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardWrite.do'">작성</button>
          </div> 
    </div>
    

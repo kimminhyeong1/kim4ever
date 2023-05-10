@@ -174,7 +174,7 @@ var rectangleBounds = new kakao.maps.LatLngBounds(sw, ne);
 		<table>
 		  <tr>
 		    <td>
-		     <img src="resources/restaurant/메르밀.jpg" alt="맛집1">
+		     <img src="../resources/restaurant/메르밀.jpg" alt="맛집1">
 		      <h3>메르밀진미집</h3>
 		      <p>전북 전주시 완산구 전주천동로 94</p>
 		      <p>냉모밀소바 10,000원</p>
@@ -182,21 +182,21 @@ var rectangleBounds = new kakao.maps.LatLngBounds(sw, ne);
 		    </td>
 		    
 		    <td>
-		      <img src="resources/restaurant/두이모.jpg" alt="맛집2">
+		      <img src="../resources/restaurant/두이모.jpg" alt="맛집2">
 		      <h3>두이모 비빔밥와플</h3>
 		      <p>전북 전주시 완산구 자만동2길 21 두이모</p>
 		      <p>비빔밥와플 6,000원</p>
 		      <p>063-222-2222</p>
 		    </td>
 		    <td>
-		     <img src="resources/restaurant/조점례.jpg" alt="맛집3">
+		     <img src="../resources/restaurant/조점례.jpg" alt="맛집3">
 		      <h3>조점례남문피순대</h3>
 		      <p>전북 전주시 완산구 전동3가 2-198</p>
 		      <p>순대국밥 9,000원</p>
 		      <p>063-222-2222</p>
 		    </td>
 		    <td>
-		    <img src="resources/restaurant/베테랑칼국수.jpg" alt="맛집4">
+		    <img src="../resources/restaurant/베테랑칼국수.jpg" alt="맛집4">
 		      <h3>베테랑칼국수</h3>
 		      <p>전북 전주시 완산구 경기전길 135</p>
 		      <p>칼국수 8,000원</p>

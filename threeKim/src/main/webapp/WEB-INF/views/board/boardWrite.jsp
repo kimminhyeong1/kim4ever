@@ -24,18 +24,16 @@ li{list-style:none;}
     font-weight: normal;
     font-style: normal;
 }
-
 @font-face {
     font-family: 'KCC-Ganpan';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
-
 #main{width:1440px; margin:35px auto 70px; text-align:center;}
 #main #content{width:1440px; height:2400px;}
 #main #bottom{width:1440px; height:300px;}
-#main #content h2{text-align:left; margin-top:50px; margin-left:160px;font-family: 'KCC-Ganpan';}
+#main #content h2{text-align:left; margin-top:50px; margin-left:160px; font-family: 'GangwonEdu_OTFBoldA'; font-size:27px;}
 #content table {width:80%; border-collapse:collapse; margin: 60px auto 0; line-height:100px; font-size:24px; font-family: 'omyu_pretty';}
 #content table th{width:140px;padding: 10px;text-align: center;}
 #content table td{padding: 10px; text-align:left; border-left:1px solid #ddd;}
@@ -50,7 +48,8 @@ li{list-style:none;}
 }
 
 #btn{text-align:right; margin-top:20px; margin-right:144px;}
-#btn button{width:100px; height:35px; text-align:center; border-radius:10px;  border:0px solid #ff9933; background:#ff9933;font-family:'omyu_pretty'; font-size:24px; }
+#btn button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+#btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
 </head>
 <body>
@@ -84,7 +83,7 @@ li{list-style:none;}
 		</table>
 		
 		<div id="btn">	
-			<button type="submit">글 등록</button>
+			<button type="submit" onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'" >글 등록</button>
 			<button type="reset">다시 작성</button>
 			<button type="button" onclick="location.href='boardList.jsp'" >목록 보기</button>
 		</div>	

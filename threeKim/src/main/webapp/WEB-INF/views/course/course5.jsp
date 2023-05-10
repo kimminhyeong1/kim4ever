@@ -163,7 +163,7 @@ var rectangleBounds = new kakao.maps.LatLngBounds(sw, ne);
 		<table>
 		  <tr>
 		    <td>
-		     <img src="resources/restaurant/동원순대.jpg" alt="맛집1">
+		     <img src="../resources/restaurant/동원순대.jpg" alt="맛집1">
 		      <h3>동원순대집</h3>
 		      <p>전북 전주시 완산구 쑥고개로 391 동원순대집</p>
 		      <p>순대국밥 10,000원</p>
@@ -171,21 +171,21 @@ var rectangleBounds = new kakao.maps.LatLngBounds(sw, ne);
 		    </td>
 		    
 		    <td>
-		      <img src="resources/restaurant/가츠연1.jpg" alt="맛집2">
+		      <img src="../resources/restaurant/가츠연1.jpg" alt="맛집2">
 		      <h3>가츠연</h3>
 		      <p>전북 전주시 완산구 홍산북로 46-21</p>
 		      <p>명품규카츠 13,000원</p>
 		      <p>063-222-2222</p>
 		    </td>
 		    <td>
-		     <img src="resources/restaurant/수플레.jpg" alt="맛집3">
+		     <img src="../resources/restaurant/수플레.jpg" alt="맛집3">
 		      <h3>수플레</h3>
 		      <p>전북 전주시 완산구 우전2길 63 1층 수플레</p>
 		      <p>아메리카노 4,500원</p>
 		      <p>063-222-2222</p>
 		    </td>
 		    <td>
-		    <img src="resources/restaurant/호순이.jpg" alt="맛집4">
+		    <img src="../resources/restaurant/호순이.jpg" alt="맛집4">
 		      <h3>호순이 감자탕</h3>
 		      <p>전북 전주시 완산구 강변로 78(강변공원 옆) </p>
 		      <p>감자탕 소 30,000원</p>

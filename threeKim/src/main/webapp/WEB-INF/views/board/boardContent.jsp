@@ -16,7 +16,6 @@ li{list-style:none;}
     font-weight: normal;
     font-style: normal;
 }
-
 @font-face {
     font-family: 'omyu_pretty';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
@@ -33,7 +32,7 @@ li{list-style:none;}
 
 #main{width:1440px; margin:35px auto 70px; text-align:center;}
 #main #content{width:1440px; height:2400px;}
-#main #content h2{text-align:left; margin-top:50px; margin-left:160px;font-family: 'KCC-Ganpan';}
+#main #content h2{text-align:left; margin-top:50px; margin-left:160px; font-family: 'GangwonEdu_OTFBoldA'; font-size:27px;}
 #main #bottom{width:1440px; height:300px;}
 #content table {width:80%; border-collapse:collapse; margin:60px auto 0; font-size:24px; font-family: 'omyu_pretty'}
 #content table tr{border:1px solid #ddd;}
@@ -42,6 +41,8 @@ li{list-style:none;}
 #content table tr th {width:120px; text-align:center;  }
 
 #btn{text-align:right; margin-top:20px; margin-right:144px;}
+#btn button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+#btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 #btn input{width:100px; height:30px; font-family:'omyu_pretty'; font-size:24px; background:#ff9933; border-radius:10px; border:0px solid #ff9933;}
 </style>
 

@@ -18,7 +18,6 @@ li{list-style:none;}
     font-weight: normal;
     font-style: normal;
 }
-
 @font-face {
     font-family: 'omyu_pretty';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
@@ -92,14 +91,14 @@ li{list-style:none;}
 <body>
 	<div id="top_logo">
 	<div class = main-nav-left> 
-		<a href="#" class="top-menu"><img src="<%=request.getContextPath()%>/resources/logo/menu.png"></a><!-- SHOP - 서브메뉴 생성 -->        
-			<div class = "sub-menu">
+		<a href="#" class="top-menu"><img src="${pageContext.request.contextPath}/resources/logo/menu.png"></a><!-- SHOP - 서브메뉴 생성 -->        
+			<div class="sub-menu">
 				<div class="top-login">
 					<a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a>
 					<a href="<%=request.getContextPath() %>/member/memberJoin.do">회원가입</a>
 				</div>
 		
-				<ul class = "sub-menu-list">
+				<ul class ="sub-menu-list">
 					<li>
 						<p>쓰리김 님</p>
 					</li>
@@ -118,8 +117,7 @@ li{list-style:none;}
 				</ul>
 			</div>
 	</div>
-		<h1><img src="${pageContext.request.contextPath}/resources/logo/타바1.jpg" alt="타:바" onclick="location.href='${pageContext.request.contextPath}/index.jsp'"/></h1>
-								
+		<h1><img src="${pageContext.request.contextPath}/resources/logo/logo6.jpg" alt="타:바" onclick="location.href='<%=request.getContextPath()%>/index.jsp'"/></h1>									
 	</div>
 
 	

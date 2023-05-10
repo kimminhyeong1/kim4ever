@@ -166,7 +166,7 @@ var rectangleBounds = new kakao.maps.LatLngBounds(sw, ne);
 		<table>
 		  <tr>
 		    <td>
-		     <img src="resources/restaurant/카페상상2.jpg" alt="맛집1">
+		     <img src="../resources/restaurant/카페상상2.jpg" alt="맛집1">
 		      <h3>카페상상</h3>
 		      <p>전북 전주시 덕진구 소리로 31 명인홀 2층</p>
 		      <p>딸기라떼 6,000원</p>
@@ -174,21 +174,21 @@ var rectangleBounds = new kakao.maps.LatLngBounds(sw, ne);
 		    </td>
 		    
 		    <td>
-		      <img src="resources/restaurant/원두막.jpg" alt="맛집2">
+		      <img src="../resources/restaurant/원두막.jpg" alt="맛집2">
 		      <h3>원두막</h3>
 		      <p>전북 전주시 덕진구 건지산로 53-8</p>
 		      <p>다슬기손수제비 10,000원</p>
 		      <p>063-222-2222</p>
 		    </td>
 		    <td>
-		     <img src="resources/restaurant/재영이네1.jpg" alt="맛집3">
+		     <img src="../resources/restaurant/재영이네1.jpg" alt="맛집3">
 		      <h3>재영이네</h3>
 		      <p>전북 전주시 덕진구 소리로 54 8번 재영이네</p>
 		      <p>삽겹살(1인분) 14,000원</p>
 		      <p>063-222-2222</p>
 		    </td>
 		    <td>
-		    <img src="resources/restaurant/소리마당.jpg" alt="맛집4">
+		    <img src="../resources/restaurant/소리마당.jpg" alt="맛집4">
 		      <h3>소리마당</h3>
 		      <p>전북 전주시 덕진구 건지산로 53-1</p>
 		      <p>참옻닭 50,000원</p>

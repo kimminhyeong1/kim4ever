@@ -17,7 +17,6 @@ li{list-style:none;}
     font-weight: normal;
     font-style: normal;
 }
-
 @font-face {
     font-family: 'omyu_pretty';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
@@ -36,7 +35,7 @@ li{list-style:none;}
 #main #content{width:1440px; height:2400px;}
 #main #bottom{width:1440px; height:300px;}
 h2{text-align: center; margin-top:20px;}
-#content table {width: 80%;border-collapse:collapse; border:1px solid #ddd; margin: 60px auto 0; text-align:center;  line-height:100px; font-size:20px;}
+#content table {width: 80%;border-collapse:collapse; border:1px solid #ddd; margin: 60px auto 0; text-align:center;  line-height:100px; font-family:'omyu_pretty'; font-size:24px;}
 #content table td, th {
   border: 1px solid #ddd;
   padding: 8px;
@@ -55,7 +54,8 @@ input{
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-#content table button{width:100px; font-family:'omyu_pretty'; font-size:24px; background:#ff9933; border:0px solid #ff9933; border-radius: 4px;}
+#content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+#content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 
 </style>
 </head>
