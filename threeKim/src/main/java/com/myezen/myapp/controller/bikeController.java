@@ -47,4 +47,3 @@ MemberService ms; //업캐스팅 부모만 지정
 	}
 }
 
-

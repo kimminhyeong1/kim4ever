@@ -51,7 +51,7 @@ li{list-style:none;}
 <body>
 <div id="main">
 <%@include file="../header.jsp" %>
-   
+  
 	<div id="content">
 	
 		<div id="gatheringIntro">

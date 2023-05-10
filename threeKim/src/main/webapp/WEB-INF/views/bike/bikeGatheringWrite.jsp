@@ -53,7 +53,6 @@ h2{text-align: center; margin-top:20px;}
 
 	<div id="content">
 
-
 	
 	<div id="gather">
 	 <p>

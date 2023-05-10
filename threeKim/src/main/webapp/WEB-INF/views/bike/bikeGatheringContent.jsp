@@ -44,7 +44,6 @@ h2{text-align: center; margin-top:20px;}
 #content #gatherCon{width:80%; height:400px; border-collapse:collapse; border:1px solid #ddd; margin:10px auto 0; text-align:center;  line-height:100px;}
 
 </style>
-
 </head>
 <body>
 <div id="main">
