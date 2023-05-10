@@ -47,7 +47,6 @@ li{list-style:none;}
 #main #content button{width:100%; height:40px; margin-top:100px;text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #main #content button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
-
 </head>
 <body>
 <div id="main">
