@@ -37,14 +37,12 @@ li{list-style:none;}
 #content table h2 {text-align:center;font-size:36px; margin-bottom: 5px; font-family: 'omyu_pretty';}
 #content table p {margin:0; text-align:left; margin-left:20px;}
 #content table input[type="number"],
-#content table select {padding: 8px; border-radius: 4px;border: 1px solid #ccc;font-size: 18px;width: 200px; /* input의 너비 조정 */ margin-bottom: 10px; /* input과 input 사이의 간격 조정 */font-family: 'omyu_pretty';}
-#content table button {padding: 8px;border-radius: 4px;font-size: 14px;cursor: pointer;margin-left: 10px; /* 버튼 간 간격 조정 */font-weight:bold; transition: all 0.2s ;border: 0px solid #Fec339;background:#Fec339}
-#content table button {box-shadow: 0px 0px 0px 0px #cc9002}
-#content table button:hover  {border: 0px white;   background-color: rgba(254, 195, 57, 0.4); color:grey;}
+#content table select {padding: 8px; border-radius: 4px;border: 1px solid #ccc;font-size: 18px;width: 200px; margin-bottom: 10px; /* input과 input 사이의 간격 조정 */font-family: 'omyu_pretty';}
 #content table input[type="text"]:hover, 
 #content table input[type="number"]:hover, 
 #content table select:hover {border: 1px solid #FEC337; }
-#content table button{margin-top:10px; width:80px; height:35px; text-align:center;background:#ff9933;font-family: 'omyu_pretty'; font-size:18px;}
+#content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+#content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 #bottom{width:1440px; height:300px;}
 #content table input[type="text"],textarea{
   box-sizing: border-box;
@@ -58,7 +56,6 @@ li{list-style:none;}
 #content table td:nth-child(2){width:800px;}
 #content table td:nth-child(3){width:100px;}
 </style>
-
 </head>
 <body>
 	<div id="main">
@@ -68,7 +65,7 @@ li{list-style:none;}
    
 	<table>
 		<tr>
-			<td rowspan="6" style="width: 300px;"><img src="resources/bikeimg/일반자전거.jpg" alt="일반자전거"></td>
+			<td rowspan="6" style="width: 300px;"><img src="../resources/bikeimg/일반자전거.jpg" alt="일반자전거"></td>
 			<td colspan="3"><h2>일반 자전거</h2></td>
 			
 		</tr>
@@ -122,7 +119,7 @@ li{list-style:none;}
 		<tr>
 			<td colspan="3">
 			<p>이용 금액 : 0000원
-				<button type="button" onclick="location.href='rentHistory.jsp'">예약하기</button>
+				<button type="button" onclick="location.href='<%=request.getContextPath()%>/rent/rentHistory.do'">예약하기</button>
 			</p>
 			</td>
 		</tr>

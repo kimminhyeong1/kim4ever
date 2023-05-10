@@ -13,8 +13,8 @@ li{list-style:none;}
 #main{width:1440px; margin:35px auto 70px; text-align:center; }
 #content{width:1440px; height:1500px;}
 #bottom{width:1440px; height:300px;}
-#content table {width:1000px; height:400px; border-collapse:collapse; margin:160px auto 20px; text-align:center;}
-#content table td {border:1px solid #ddd; padding:10px;font-size:16px; line-height:1.5; text-align:left; margin-left:60px;}
+#content table {width:600px; height:800px; border-collapse:collapse; margin:160px auto 20px; text-align:center;}
+#content table td {border:1px solid #ddd; padding:10px;font-size:16px; line-height:1.5; margin-left:60px;}
 #content table h2 {font-size:24px; margin-bottom:5px; }
 #content table p {margin: 0;}
 #content table input[type="text"],textarea{
@@ -25,9 +25,8 @@ li{list-style:none;}
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-#btn{text-align:right; margin-top:20px; margin-right:220px; }
-#btn button{width:100px; height:35px; text-align:center; background:#ff9933; border-radius:10px; border:0px solid #ff9933; font-family:'omyu_pretty'; font-size:24px;}
-
+#content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+#content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
 </head>
 <body>
@@ -38,54 +37,31 @@ li{list-style:none;}
 	
 		<table>
 			<tr>
-				<td rowspan="4" style="width: 300px;"><input type="file" name="uploadfile"/></td>
-				<td>
-					<label for="name">이름 : </label>
-					<input type="text">
-				</td>
-			</tr>
-			
-			<tr>
-				<td>
-				<label for="explan">설명 : </label>
-				<input type="text">
-				</td>
+				<td style="height:500px;"><input type="file" name="uploadfile"/></td>	
 			</tr>
 			
 		 	<tr>
+		 		<td>
+				<input type="text" placeholder="이름을 입력해 주세요"/>
+				</td>
+			</tr>
+				
+			<tr>
 				<td>
-				<p>
-				<label for="bike-station">대여소 선택:</label>
-					<select id="bike-station" name="bike-station">
-					<option value="samcheon">삼천</option>
-					<option value="hyocheon">효천</option>
-					<option value="seosin">서신</option>
-					<option value="hyoja">효자</option>
-					<option value="jungwhasan">중화산동</option>
-					</select>
-				<label for="bike-quantity">잔여 자전거 수:</label>
-				<input type="number" id="bike-quantity" name="bike-quantity" min="0" value="0" style="width:50px;"> 
-				</p>
+				<input id="price" type="text" placeholder="가격을 입력해 주세요"/>
 				</td>
 			</tr>
 			
 			<tr>
 				<td>
-				<label for="price">가격 : </label>
-				<input id="price" type="text"/>
+					<button type="button" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRent.do'">등록</button>
 				</td>
-			</tr>
-		 
+			</tr> 
 		</table>
 	
-		<div id="btn">
-			<button type="submit">등록</button>
-		</div>
-	
+
 	
 	</div>
-	
-	
 	
 	<div id="bottom">
 	 <%@include file="../bottom.jsp" %>
