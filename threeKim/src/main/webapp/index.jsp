@@ -44,9 +44,9 @@ a{color:inherit; text-decoration:none;}
 /* 슬라이더 1 - 페이지 버튼 */
 .slider-1 > .page-btns {text-align:center; position:absolute; bottom:20px; left:0; width:100%;}
 
-.slider-1 > .page-btns > div {width:50px; height:8px; background-color:rgb(220,220,220); border-radius:4px;   
+.slider-1 > .page-btns > div {width:50px; height:8px; background-color:rgb(255,255,255); border-radius:4px;   
  display:inline-block; cursor:pointer; border: none;}
-.slider-1 > .page-btns > div.active {background-color:rgb(255, 180, 0); border: none;}
+.slider-1 > .page-btns > div.active {background-color:rgb(255, 255, 0); border: none;}
 /* 1 - 슬라이드 */
 .slider-1 > .slides > div {position:absolute; top:0; left:0; right:0; bottom:0; opacity:0; transition:opacity 1.5s;
 background-position:center; background-size:cover; background-repeat:no-repeat; border-radius:20px;  }
@@ -69,7 +69,7 @@ background-image: url("resources/banner2/bg_network.jpg");
 background-size:cover; background-position: center; background-repeat:no-repeat; position:relative;}
 /*메인2_h1*/
 #main2 h1 {position:absolute ;top:10%; left:50%; transform:translate(-50%,-50%); 
-margin: 0;  font-weight:bold;    font-family: 'omyu_pretty';}
+margin: 0;   font-family: 'omyu_pretty';}
   
 /*소형배너*/
 #banner, #banner2 {width:300px; height:450px;overflow:hidden; box-shadow:0px 0px 10px rgba(0, 0, 0, 0.8); 
@@ -237,7 +237,7 @@ setInterval(function(){ $('.slider-1 > .side-btns > div').eq(1).click();}, 3000)
         
    <div id= main2><!-- 메인2번째 구역 -->   
     <h1 class="main2-title">
-      <span data-text="main2">타 : 바와 즐기자!!</span>   <!--메인2 대문 -->
+      <span data-text="main2">타:바와 즐기자!!</span>   <!--메인2 대문 -->
       </h1>      
     <div id="banner">
                     <img src="resources/rentphoto/photo1.jpg"alt="Banner 1">
