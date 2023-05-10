@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.myezen.myapp.persistance.CommentService_Mapper">
+
+<insert id="commentInsert" parameterType="cv">
+insert into comment1230(cidx,cwriter,ccontents,bidx,midx,ip)
+values(cidx_seq.nextval,#{cwriter},#{ccontents},#{bidx},#{midx},#{ip})
+</insert>
+
+<select id="commentSelectAll"  parameterType="Integer" resultType="cv">
+SELECT * FROM(
+   SELECT ROWNUM AS rnum, A.* FROM (
+    SELECT * FROM comment1230  WHERE delyn='N'  and bidx=#{0} ORDER BY cidx asc) A 
+    )B WHERE B.rnum BETWEEN 1 AND #{1}*15</select>
+    
+    
+<select id="commentTotalCnt"  parameterType="Integer" resultType="integer">
+select count(*) as cnt from comment1230 where delyn='N' and bidx=#{bidx}
+</select>
+
+
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 쿼리만드는곳 -->
+<mapper namespace="com.myezen.myapp.persistance.MemberService_Mapper">
+
+<insert id="memberInsert" parameterType="mv">
+
+INSERT INTO member1230(midx,memberId,memberPwd,memberName,memberPhone,memberEmail,memberGender,memberAddr,memberBirth)
+VALUES(midx_seq.nextval,#{memberid},#{memberpwd},#{membername},#{memberphone},#{memberemail},#{membergender},#{memberaddr},#{memberbirth})
+</insert>
+
+
+<select id="memberList" resultType="mv">
+select midx,memberid,membername,membergender,delyn,writeday from member1230 order by midx desc
+</select>
+
+<select id="memberIdCheck" parameterType="String" resultType="int">
+select count(*) as cnt from member1230 where memberid=#{memberId}
+</select>
+
+<select id="memberLogin" parameterType="String" resultType="mv">
+select * from member1230 where delyn='N' and memberid=#{memberId}
+</select>
+
+
+
+
+
+
+
+</mapper>
