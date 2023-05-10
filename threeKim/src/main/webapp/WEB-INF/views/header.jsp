@@ -125,6 +125,7 @@ li{list-style:none;}
 		<p onclick="location.href='<%=request.getContextPath()%>/bike/bikeRent.do'">자전거 대여</p>
 		<p onclick="location.href='<%=request.getContextPath()%>/rent/rentLocation.do'">대여소 위치</p>
 		<p onclick="location.href='<%=request.getContextPath()%>/course/courseIntro.do'">코스 소개</p>
+		<p onclick="location.href='<%=request.getContextPath()%>/bike/bikeGathering.do'">자전거 모임</p>
 		<p onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">게시판</p>
 		
 	</div>

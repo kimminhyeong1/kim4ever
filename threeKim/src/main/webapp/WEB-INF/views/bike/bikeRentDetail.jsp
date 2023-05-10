@@ -112,14 +112,14 @@ li{list-style:none;}
 		    <input type="text" id="verification-code" style="flex: 1; width: 210; ">
 		  </td>
 		  <td>
-		    <button type="button" onclick="verifyCode()">인증하기</button>
+		    <button type="button" onclick="verifyCode()">대여하기</button>
 		  </td>
 		</tr>
 		  
 		<tr>
 			<td colspan="3">
 			<p>이용 금액 : 0000원
-				<button type="button" onclick="location.href='<%=request.getContextPath()%>/rent/rentHistory.do'">예약하기</button>
+				<button type="button" onclick="location.href='<%=request.getContextPath()%>/rent/rentHistory.do'">대여하기</button>
 			</p>
 			</td>
 		</tr>
