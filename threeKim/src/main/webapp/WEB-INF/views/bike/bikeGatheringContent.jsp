@@ -54,7 +54,7 @@ li{list-style:none;}
 	<img src="../resources/bikeimg/bike.jpg" alt="Image 1">
 	</div>
 	<div id="gatherCon"> 
-	<p>바이크어썸은 자전거를 처음 타보는 초보자들도 환영합니다 ! <br/>
+	<p>바이크어썸은 자전거를 처음 타보는 초보자들도 환영합니다 !<br/>
 	같이 라이딩하면서 맛있는거 먹는 모임이에요!</p>
 	<button>가입</button>
 	</div>
