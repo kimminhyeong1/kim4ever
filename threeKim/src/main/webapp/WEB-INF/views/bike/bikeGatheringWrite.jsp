@@ -74,7 +74,7 @@ h2{text-align: center; margin-top:20px;}
   
   	 <button>소모임 생성</button>
   
-  	
+  
 	
 	</div>
 

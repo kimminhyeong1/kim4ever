@@ -59,6 +59,7 @@ li{list-style:none;}
 #content table td:nth-child(3){width:100px;}
 </style>
 </head>
+
 <body>
 	<div id="main">
 	<%@include file="../header.jsp" %>
