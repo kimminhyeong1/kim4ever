@@ -66,6 +66,11 @@ h2{text-align: center; margin-top:20px;}
      <input type="text"/>
      </p>
      
+      <p>
+	 <label>소모임 장소</label>
+     <input type="text"/>
+     </p>
+     
      <p>
 	 <label>소모임 소개</label>
      <input type="text" style="height:200px;"/>

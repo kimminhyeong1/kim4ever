@@ -30,15 +30,14 @@ li{list-style:none;}
     font-style: normal;
 }
 #main{width:1000px; height:1000px; margin:35px auto 70px; text-align:center; background:#ffffff;}
-#main #restaurant{display:flex; justify-content:center; align-items:center;font-family: 'omyu_pretty';}
-#main #restaurant table{width:1000px; height:300px; border:1; margin-top:40px; background:white;}
-#main #restaurant table td{border:1px solid #000; width:250px; border-radius: 30px;  box-shadow: 4px 2px 2px black;
-transition: transform 0.2s ease-in-out; background-color:#eeeeee;}
-#main #restaurant table td:hover {transform: scale(1.05); z-index: 3; background:white; box-shadow:none; border-width:5px;}
-#main #restaurant table td:hover img {transform: scale(1.06);}
+#main #restaurant{display:flex; justify-content:center; align-items:center;font-family: 'omyu_pretty'; margin-left:10px;}
+#main #restaurant table{ height:300px; border:1; margin-top:40px; background:white;}
+#main #restaurant table td{border:1px solid #ddd;   max-width: 230px; border-radius: 10px;;
+transition: transform 0.1s ease-in-out; background-color:#ffff; margin-right:10px;}
+#main #restaurant table td:hover {transform: scale(1.1); z-index: 3; background:white; box-shadow:none; border:1px solid orange;}
 #main #restaurant table h3,p{border-bottom:1px solid #000;}
-#main #restaurant table p:last-child {border-bottom: none;}
-#main #restaurant img{width:230px; height:auto; margin-top:8px; border-radius:30px; z-index:1;} 
+#main #restaurant table p:last-child {border-bottom: none; }
+#main #restaurant img{width:230px; height:300px; border-radius: 10px 10px 0 0; z-index:1; } 
 #main h2{color:#333; font-family: 'KCC-Ganpan'; font-size:30px; margin-top:15px; text-align:center; border-bottom:2px solid #333;
 padding-bottom:10px;}
 </style>
@@ -183,7 +182,7 @@ var rectangleBounds = new kakao.maps.LatLngBounds(sw, ne);
 		    <td>
 		     <img src="../resources/restaurant/재영이네1.jpg" alt="맛집3">
 		      <h3>재영이네</h3>
-		      <p>전북 전주시 덕진구 소리로 54 8번 재영이네</p>
+		      <p>전북 전주시 덕진구 소리로54-8 재영이네</p>
 		      <p>삽겹살(1인분) 14,000원</p>
 		      <p>063-222-2222</p>
 		    </td>
