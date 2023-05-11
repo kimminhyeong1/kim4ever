@@ -42,7 +42,7 @@ li{list-style:none;}
 #content table tr th:nth-child(3){width:50px;}
 #content table tr th:nth-child(4){width:150px;}
 #content table tr th:nth-child(5){width:150px;}
-#content table tr th:nth-child(6){width:50px;}
+#content table tr th:nth-child(6){width:70px;}
 #content table tr th:nth-child(7){width:80px;}
 #content table tr th:nth-child(8){width:250px;}
 #content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
@@ -76,8 +76,8 @@ li{list-style:none;}
 					<td>송천</td>
 					<td>하이브리드자전거</td>
 					<td>2023-05-11</td>
-					<td>16:40</td>
 					<td>2000원</td>
+					<td>16:40</td>
 					<td>자전거 페달이 고장났어요. 조취 부탁드려요!</td>
 				</tr>
 		</table>
