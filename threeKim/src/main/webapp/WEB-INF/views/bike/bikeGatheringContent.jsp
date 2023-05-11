@@ -59,6 +59,8 @@ h2{text-align: center; margin-top:20px;}
 	<div id="gatherCon"> 
 	<p>바이크어썸은 자전거를 처음 타보는 초보자들도 환영합니다 ! <br/>
 	같이 라이딩하면서 맛있는거 먹는 모임이에요!</p>
+	<p>모임위치:</p>
+	<p>날짜:</p>
 	<button>가입</button>
 	</div>
 	

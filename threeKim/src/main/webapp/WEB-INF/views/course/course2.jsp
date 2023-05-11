@@ -40,6 +40,7 @@ transition: transform 0.1s ease-in-out; background-color:#ffff; margin-right:10p
 #main #restaurant img{width:230px; height:300px; border-radius: 10px 10px 0 0; z-index:1; } 
 #main h2{color:#333; font-family: 'KCC-Ganpan'; font-size:30px; margin-top:15px; text-align:center; border-bottom:2px solid #333;
 padding-bottom:10px;}
+
 </style>
 </head>
 <body>
