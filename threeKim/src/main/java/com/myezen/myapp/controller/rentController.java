@@ -22,4 +22,10 @@ RentService rs;
 		
 		return "rent/rentHistory";
 	}
+	
+	@RequestMapping(value="/rentFault.do")
+	public String rentFault() {
+		
+		return "rent/rentFault";
+	}
 }

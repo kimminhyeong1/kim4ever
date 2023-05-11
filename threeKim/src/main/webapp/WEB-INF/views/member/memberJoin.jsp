@@ -35,17 +35,14 @@ li{list-style:none;}
 
 h2{text-align: center; margin-top:20px;}
 #content table {width: 80%;border-collapse:collapse; border:1px solid #ddd; margin: 60px auto 0; text-align:center;  line-height:100px; font-family:'omyu_pretty'; font-size:24px;}
-#content table td, th {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-}
+#content table th{width:150px; text-align:center; border:1px solid #ddd; padding:8px;}
+#content table td{border:1px solid #ddd;padding:8px;text-align:left;}
 #content table td:nth-child(1){width:120px;text-align:center;}
 #content table td:nth-child(2){width:400px; text-align:left;}
 #content table td:nth-child(3){width:100px; border:0;}
 #content table tr:last-child td{text-align:center;}
 #content table tr:last-child td input{display: inline-block; width:120px; height:50px;}
-#content table th{width:240px;text-align:center;}
+#content table th{width:150px;text-align:center;}
 #memberIdCheck {padding: 5px 10px; font-size: 14px; width:120px; height:50px; }
 #content table 
 input{

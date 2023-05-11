@@ -36,7 +36,8 @@ li{list-style:none;}
 #main #bottom{width:1440px; height:300px;}
 h2{text-align: center; margin-top:20px;}
 #content table {width: 80%;border-collapse:collapse; border:1px solid #ddd; margin: 60px auto 0; text-align:center;  line-height:100px; font-family:'omyu_pretty'; font-size:24px;}
-#content table td, th {border:1px solid #ddd;padding:8px;text-align:left;}
+#content table th{width:150px; text-align:center; border:1px solid #ddd; padding:8px;}
+#content table td{border:1px solid #ddd;padding:8px;text-align:left;}
 #content table td:nth-child(1){width:120px;text-align:center;}
 #content table td:nth-child(2){width:400px; text-align:left;}
 #content table tr:last-child td input{display: inline-block; width:120px; height:50px;}
@@ -50,7 +51,6 @@ input{
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-
 #content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 
@@ -76,32 +76,32 @@ function autoHyphen2(target) {
 		    <th colspan="2"><h2>회원정보 수정</h2></th>
 		  </tr>
 				<tr>
-					<td>아이디</td>
+					<th>아이디</th>
 					<td></td>
 				</tr>
 				
 				<tr>
-					<td>비밀번호</td>
+					<th>비밀번호</th>
 					<td><input type="password" name=""></td>
 				</tr>
 				
 				<tr>
-					<td>이름</td>
+					<th>이름</th>
 					<td><input type="text" name=""></td>
 				</tr>
 				
 				<tr>
-					<td>나이</td>
+					<th>나이</th>
 					<td><input type="number" name=""></td>
 				</tr>
 				
 				<tr>
-					<td>휴대폰번호</td>
+					<th>휴대폰번호</th>
 					<td><input type="tel" name="" oninput="autoHyphen2(this)" maxlength="13"></td>
 				</tr>
 				
 				<tr>
-					<td>이메일</td>
+					<th>이메일</th>
 					<td><input type="text" name=""></td>
 				</tr>
 				

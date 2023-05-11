@@ -59,6 +59,7 @@ li{list-style:none;}
 					<th>대여시간</th>
 					<th>가격</th>
 					<th>반납</th>
+					<th></th>
 					
 				</tr>
 			
@@ -71,6 +72,7 @@ li{list-style:none;}
 					<td>09:40</td>
 					<td>2000원</td>
 					<td><button type="button">반납하기</button></td>
+					<td><button type="button" onclick="location.href='<%=request.getContextPath()%>/rent/rentFault.do'">고장/신고</button></td>
 				</tr>
 		</table>
 		
