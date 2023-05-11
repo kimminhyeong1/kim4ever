@@ -23,6 +23,26 @@ BoardService bs; //업캐스팅 부모만 지정
 		return "board/boardContent";
 	}
 	
+	@RequestMapping(value="/boardModify.do")
+	public String boardModify() {
+		
+		return "board/boardModify";
+	}
+	
+	@RequestMapping(value="/boardDelete.do")
+	public String boardDelete() {
+		
+		return "board/boardDelete";
+	}
+	
+	@RequestMapping(value="/boardReply.do")
+	public String boardReply() {
+		
+		return "board/boardReply";
+	}
+	
+	
+	
 	@RequestMapping(value="/boardNoticeWrite.do")
 	public String boardNoticeWrite() {
 		

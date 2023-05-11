@@ -100,7 +100,7 @@ li{list-style:none;}
 
 				<ul class ="sub-menu-list">
 					<li>
-						<p>쓰리김 님</p>
+						<p>김가네 님</p>
 					</li>
 					
 					<li>

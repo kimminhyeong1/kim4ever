@@ -57,7 +57,7 @@ li{list-style:none;}
 		<table>
 		
 			<tr>
-				<th>글 제목</th>
+				<th>제목</th>
 				<td></td>
 				<th style="width:100px; text-align:center;border-left:1px solid #ddd;">조회수</th>
 				<td style="width:200px; text-align:center;"></td>
@@ -96,10 +96,10 @@ li{list-style:none;}
 	
 	</table>
 	<div id="btn">
-      	<input type="button" name="modify" value="수정"  onclick="location.href='boardModify.jsp'" >												
-    	<input type="button" name="delete" value="삭제" onclick="location.href='boardDelete.jsp'" >
-		<input type="button" name="reply" value="답변" onclick="location.href='boardReply.jsp'" >
-		<input type="button" name="list" value="목록"	onclick="location.href='boardList.jsp'" >
+      	<input type="button" name="modify" value="수정"  onclick="location.href='<%=request.getContextPath()%>/board/boardModify.do'" >												
+    	<input type="button" name="delete" value="삭제" onclick="location.href='<%=request.getContextPath()%>/board/boardDelete.do'" >
+		<input type="button" name="reply" value="답변" onclick="location.href='<%=request.getContextPath()%>/board/boardReply.do'" >
+		<input type="button" name="list" value="목록"	onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'" >
 
     </div>
 	</form>
