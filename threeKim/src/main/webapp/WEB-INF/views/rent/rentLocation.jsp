@@ -59,7 +59,8 @@ li{list-style:none;}
 #main #marker3{font-family: 'KCC-Ganpan';}
 #main #marker4{font-family: 'KCC-Ganpan';}
 #main #marker5{font-family: 'KCC-Ganpan';}
-}
+.rs1{font-size: 50px;}
+.rs2{font-size: 15px;}
 
 </style>
 </head>
@@ -95,7 +96,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니
 // 마커를 표시할 위치와 title 객체 배열입니다 
 var positions = [
     {
-    	content: '<div id="marker1"><p id="rs1">오목 대여소</p>남은 갯수:</div>', 
+    	content: '<div id="marker1"><span class="rs1">오목 대여소</span></br><span class="rs2">남은 갯수:</span></div>', 
         latlng: new kakao.maps.LatLng(35.81459776759758, 127.15492513917111)
     },
     {
