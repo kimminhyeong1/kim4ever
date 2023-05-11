@@ -42,9 +42,9 @@ li{list-style:none;}
 #content table tr th:nth-child(3){width: 80px;}
 #content table tr th:nth-child(4){width: 80px;}
 #content table tr th:nth-child(5){width: 20px;}
-#btn{text-align:right; margin-top:20px; margin-right:144px; }
-#btn button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
-#btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+#content #btn{text-align:right; margin-top:20px; margin-right:144px; }
+#content #btn button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+#content #btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 /*메뉴바 테이블*/
 .tab__contents {display:none;}
 .show {display: block;}
@@ -107,8 +107,11 @@ li{list-style:none;}
 	               <td>2023-04-26</td>
 	               <td>17</td>
 	            </tr>
-	            
+	               
 	      		</table>
+	      		<div id="btn">
+         		<button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardNoticeWrite.do'">작성</button>
+         		</div> 
         </div>
         
         <div class="tab__contents" data-order="2">
@@ -130,6 +133,9 @@ li{list-style:none;}
 	               <td>17</td>
 	            </tr>
 	            </table>
+	            <div id="btn">
+         		<button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardQnaWrite.do'">작성</button>
+         		</div> 
         </div>
        
         <div class="tab__contents" data-order="3">
@@ -151,6 +157,9 @@ li{list-style:none;}
 	               <td>17</td>
 	            </tr>
 	            </table>
+	            <div id="btn">
+         		<button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardFaqWrite.do'">작성</button>
+         		</div> 
         </div>
         
 <script>
@@ -180,9 +189,7 @@ tab.addEventListener("click", (e)=> {
 </script>
 	
 	 	</div>
-         <div id="btn">
-         <button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardWrite.do'">작성</button>
-         </div> 
+       
    </div>
    
    
