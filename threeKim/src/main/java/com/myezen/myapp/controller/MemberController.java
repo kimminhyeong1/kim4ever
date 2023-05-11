@@ -34,6 +34,13 @@ public class MemberController {
 		
 	}
 	
+	@RequestMapping(value="/memberList.do")
+	public String memberList() {
+	
+		return "member/memberList";
+		
+	}
+	
 	@RequestMapping(value="/memberMypage.do")
 	public String memberMypage() {
 	
