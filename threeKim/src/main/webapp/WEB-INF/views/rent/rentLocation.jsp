@@ -53,6 +53,14 @@ li{list-style:none;}
   padding-bottom: 10px;
 }
 #main #content h2{margin-top:20px; font-family: 'KCC-Ganpan';}
+
+#main #marker1{font-family: 'KCC-Ganpan';}
+#main #marker2{font-family: 'KCC-Ganpan';}
+#main #marker3{font-family: 'KCC-Ganpan';}
+#main #marker4{font-family: 'KCC-Ganpan';}
+#main #marker5{font-family: 'KCC-Ganpan';}
+}
+
 </style>
 </head>
 <body>
@@ -87,23 +95,23 @@ var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니
 // 마커를 표시할 위치와 title 객체 배열입니다 
 var positions = [
     {
-    	content: '<div>오목 대여소</br>남은 갯수:</div>', 
+    	content: '<div id="marker1"><p id="rs1">오목 대여소</p>남은 갯수:</div>', 
         latlng: new kakao.maps.LatLng(35.81459776759758, 127.15492513917111)
     },
     {
-    	content: '<div>평화 대여소</br>남은 갯수:</div>', 
+    	content: '<div id="marker2">평화 대여소</br>남은 갯수:</div>', 
         latlng: new kakao.maps.LatLng(35.79594860552455 , 127.1321029429742)
     },
     {
-    	content: '<div>덕진 대여소</br>남은 갯수:</div>', 
+    	content: '<div id="marker3">덕진 대여소</br>남은 갯수:</div>', 
         latlng: new kakao.maps.LatLng(35.84934062155616, 127.1605636201495)
     },
     {
-    	content: '<div>송천 대여소</br>남은 갯수:</div>',
+    	content: '<div id="marker4">송천 대여소</br>남은 갯수:</div>',
         latlng: new kakao.maps.LatLng(35.854855187999924, 127.11659646840083)
     },
     {
-    	content: '<div>효자 대여소</br>남은 갯수:</div>',
+    	content: '<div id="marker5">효자 대여소</br>남은 갯수:</div>',
         latlng: new kakao.maps.LatLng(35.819267333182594, 127.11125221813597)
     }
 ];
