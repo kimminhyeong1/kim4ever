@@ -112,6 +112,14 @@ li{list-style:none;}
 					</li>
 					
 					<li>
+						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/member/memberList.do'">회원관리</span></a>
+					</li>
+					
+					<li>
+						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/rent/rentFaultList.do'">신고내역</span></a>
+					</li>
+					
+					<li>
 						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">공지사항</span></a>
 					</li>
 				</ul>

@@ -21,7 +21,6 @@ li{list-style:none;}
     font-weight: normal;
     font-style: normal;
 }
-
 @font-face {
     font-family: 'KCC-Ganpan';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2') format('woff2');
@@ -69,7 +68,7 @@ li{list-style:none;}
 		<img src="../resources/bikeimg/bike.jpg" alt="Image 1">
 		<h3>바이크어썸</h3>
 		<p>자전거를 사랑하는 전주인들의 모임입니다!</p>
-		<div class="loc">덕진구</div>
+		<div class="loc">지역 : 덕진구</div>
 		<button onclick="location.href='<%=request.getContextPath()%>/bike/bikeGatheringContent.do'">구경하기</button>
 		</div>
 		
@@ -77,6 +76,7 @@ li{list-style:none;}
 		<img src="../resources/bikeimg/bike2.jpg" alt="Image 2">
 		<h3>헬로사이클</h3>
 		<p>2~30대 자전거 모임입니다</p>
+		<div class="loc">지역 : 송천동</div>
 		<button onclick="location.href='<%=request.getContextPath()%>/bike/bikeGatheringContent.do'">구경하기</button>
 		</div>
 		
@@ -84,6 +84,7 @@ li{list-style:none;}
 		<img src="../resources/bikeimg/mukbang.jpg" alt="Image 2">
 		<h3>빠리로</h3>
 		<p>자전거타고 맛집도 다니고~</p>
+		<div class="loc">지역 : 평화동</div>
 		<button onclick="location.href='<%=request.getContextPath()%>/bike/bikeGatheringContent.do'">구경하기</button>
 		</div>
 		
@@ -91,6 +92,7 @@ li{list-style:none;}
 		<img src="../resources/bikeimg/mukbang1.jpg" alt="Image 2">
 		<h3>바이크먹방</h3>
 		<p>자전거보다 먹방에 진심!</p>
+		<div class="loc">지역 : 효자동</div>
 		<button onclick="location.href='<%=request.getContextPath()%>/bike/bikeGatheringContent.do'">구경하기</button>
 		</div>
 		
@@ -98,6 +100,7 @@ li{list-style:none;}
 		<img src="../resources/bikeimg/zzanggu.jpg" alt="Image 2">
 		<h3>자전거에미친사람들</h3>
 		<p>자미사입니다~~</p>
+		<div class="loc">지역 : 중앙동</div>
 		<button onclick="location.href='<%=request.getContextPath()%>/bike/bikeGatheringContent.do'">구경하기</button>
 		</div>
 		
@@ -105,6 +108,7 @@ li{list-style:none;}
 		<img src="../resources/bikeimg/mukbang2.gif" alt="Image 2">
 		<h3>타자전거</h3>
 		<p>라이딩 초보들 대환영!</p>
+		<div class="loc">지역 : 완산구</div>
 		<button onclick="location.href='<%=request.getContextPath()%>/bike/bikeGatheringContent.do'">구경하기</button>
 		</div>
 		
@@ -112,13 +116,15 @@ li{list-style:none;}
 		<img src="../resources/bikeimg/bike3.jpg" alt="Image 2">
 		<h3>효자동바이커</h3>
 		<p>자전거를 좋아하는 효자동 사람들입니다~</p>
+		<div class="loc">지역 : 삼천동</div>
 		<button onclick="location.href='<%=request.getContextPath()%>/bike/bikeGatheringContent.do'">구경하기</button>
 		</div>
 		
 		<div class="box">
-		<img src="../resources/bikeimg/bike4.jpg" alt="Image 2">
+		<img src="../resources/bikeimg/bike5.jpg" alt="Image 2">
 		<h3>덕진구바이커</h3>
 		<p>자전거를 좋아하는 덕진구 사람들입니다~</p>
+		<div class="loc">지역 : 평화동</div>
 		<button onclick="location.href='<%=request.getContextPath()%>/bike/bikeGatheringContent.do'">구경하기</button>
 		</div>
  		</div>

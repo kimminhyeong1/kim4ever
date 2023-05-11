@@ -17,6 +17,12 @@ BoardService bs; //업캐스팅 부모만 지정
 		return "board/boardList";
 	}
 	
+	@RequestMapping(value="/boardContent.do")
+	public String boardContent() {
+		
+		return "board/boardContent";
+	}
+	
 	@RequestMapping(value="/boardNoticeWrite.do")
 	public String boardNoticeWrite() {
 		
