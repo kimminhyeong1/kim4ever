@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 <style>
 /*리셋코드*/
-
 *{margin:0;padding:0;}
 li{list-style:none;}
 
@@ -58,7 +57,7 @@ li{list-style:none;}
 	<%@include file="../header.jsp" %>
 	
 	<div id="content">
-	<h2>게시글 작성</h2>
+	<h2>FAQ 게시글 작성</h2>
 	<form>
 		<table>
 			<tr>
