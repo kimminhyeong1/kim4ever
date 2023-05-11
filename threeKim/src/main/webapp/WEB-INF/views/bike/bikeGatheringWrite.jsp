@@ -96,7 +96,6 @@ html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:activ
  $(function() {
      $("#datepicker1").datepicker();
 
-
  });
  
 
