@@ -30,6 +30,7 @@ li{list-style:none;}
     font-style: normal;
 }
 
+
 #main{width:1440px; margin:35px auto 70px; text-align:center;}
 #main #content{width:1440px; height:2400px;}
 #main #content h2{text-align:left; margin-top:50px; margin-left:160px; font-family: 'GangwonEdu_OTFBoldA'; font-size:27px;}
@@ -57,7 +58,7 @@ li{list-style:none;}
 		<table>
 		
 			<tr>
-				<th>글 제목</th>
+				<th>제목</th>
 				<td></td>
 				<th style="width:100px; text-align:center;border-left:1px solid #ddd;">조회수</th>
 				<td style="width:200px; text-align:center;"></td>
@@ -96,10 +97,10 @@ li{list-style:none;}
 	
 	</table>
 	<div id="btn">
-      	<input type="button" name="modify" value="수정"  onclick="location.href='boardModify.jsp'" >												
-    	<input type="button" name="delete" value="삭제" onclick="location.href='boardDelete.jsp'" >
-		<input type="button" name="reply" value="답변" onclick="location.href='boardReply.jsp'" >
-		<input type="button" name="list" value="목록"	onclick="location.href='boardList.jsp'" >
+      	<input type="button" name="modify" value="수정"  onclick="location.href='<%=request.getContextPath()%>/board/boardModify.do'" >												
+    	<input type="button" name="delete" value="삭제" onclick="location.href='<%=request.getContextPath()%>/board/boardDelete.do'" >
+		<input type="button" name="reply" value="답변" onclick="location.href='<%=request.getContextPath()%>/board/boardReply.do'" >
+		<input type="button" name="list" value="목록"	onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'" >
 
     </div>
 	</form>

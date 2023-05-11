@@ -59,8 +59,8 @@ li{list-style:none;}
 #main #marker3{font-family: 'KCC-Ganpan';}
 #main #marker4{font-family: 'KCC-Ganpan';}
 #main #marker5{font-family: 'KCC-Ganpan';}
-.rs1{font-size: 50px;}
-.rs2{font-size: 15px;}
+.rs1{font-size: 40px;}
+.rs2{font-size: 25px;}
 
 </style>
 </head>
@@ -100,19 +100,19 @@ var positions = [
         latlng: new kakao.maps.LatLng(35.81459776759758, 127.15492513917111)
     },
     {
-    	content: '<div id="marker2">평화 대여소</br>남은 갯수:</div>', 
+    	content: '<div id="marker2"><span class="rs1">평화 대여소</span></br><span class="rs2">남은 갯수:</div>', 
         latlng: new kakao.maps.LatLng(35.79594860552455 , 127.1321029429742)
     },
     {
-    	content: '<div id="marker3">덕진 대여소</br>남은 갯수:</div>', 
+    	content: '<div id="marker3"><span class="rs1">덕진 대여소</span></br><span class="rs2">남은 갯수:</div>', 
         latlng: new kakao.maps.LatLng(35.84934062155616, 127.1605636201495)
     },
     {
-    	content: '<div id="marker4">송천 대여소</br>남은 갯수:</div>',
+    	content: '<div id="marker4"><span class="rs1">송천 대여소</span></br><span class="rs2">남은 갯수:</div>',
         latlng: new kakao.maps.LatLng(35.854855187999924, 127.11659646840083)
     },
     {
-    	content: '<div id="marker5">효자 대여소</br>남은 갯수:</div>',
+    	content: '<div id="marker5"><span class="rs1">효자 대여소</span></br><span class="rs2">남은 갯수:</div>',
         latlng: new kakao.maps.LatLng(35.819267333182594, 127.11125221813597)
     }
 ];
