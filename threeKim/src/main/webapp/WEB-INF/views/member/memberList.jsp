@@ -68,7 +68,23 @@ li{list-style:none;}
 				
 				<tr>
 					<td>abcd123</td>
-					<td>김회원</td>
+					<td>김장군</td>
+					<td align="center">
+					<button type="button">삭제</button>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>zzcd123</td>
+					<td>김진상</td>
+					<td align="center">
+					<button type="button">삭제</button>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>dfcd123</td>
+					<td>김두목</td>
 					<td align="center">
 					<button type="button">삭제</button>
 					</td>

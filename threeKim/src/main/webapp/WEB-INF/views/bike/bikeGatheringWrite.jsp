@@ -43,7 +43,7 @@ h2{text-align: center; margin-top:20px;}
 #content #gather{width:80%; height:1500px; border-collapse:collapse; border:1px solid #ddd; margin: 60px auto 0; text-align:center;  line-height:100px;}
 #content #gather label{font-family:'omyu_pretty'; font-size:30px; margin-left:10px;}
 #content #gather p{text-align:left;}
-#content #gather input{box-sizing: border-box; width:100%;padding:20px; border:1px solid #ccc; border-radius:4px;}
+#content #gather input{font-family:'omyu_pretty'; font-size:30px; box-sizing: border-box; width:100%;padding:20px; border:1px solid #ccc; border-radius:4px;}
 #content button{width:100%; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 /*달력css*/
@@ -121,7 +121,7 @@ html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:activ
      
      <p>
 	 <label>소모임 최대 멤버 수</label>
-     <input type="text"/>
+     <input type="number"/>
      </p>
       
       <p>

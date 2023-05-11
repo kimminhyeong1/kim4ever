@@ -56,7 +56,7 @@ li{list-style:none;}
 	<%@include file="../header.jsp" %>
 	
 	<div id="content">
-	<h2>공지사항 게시글 작성</h2>
+	<h2>공지사항  작성</h2>
 	<form>
 		<table>
 			<tr>
