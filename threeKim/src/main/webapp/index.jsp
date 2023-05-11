@@ -37,7 +37,7 @@ li{list-style:none;}
     font-style: normal;
 }
 /* 메인베너 */
-body, ul, li, h1, h2, h3, h4, h5 {margin:0; padding:0; list-style:none;}
+body, ul, li, h1, h2 {margin:0; padding:0; list-style:none;}
 a{color:inherit; text-decoration:none;}
 /* 슬라이더 1 시작 */
 .slider-1 {height:600px;position:relative;}
@@ -70,6 +70,8 @@ background-size:cover; background-position: center; background-repeat:no-repeat;
 /*메인2_h1*/
 #main2 h1 {position:absolute ;top:10%; left:50%; transform:translate(-50%,-50%); 
 margin: 0;   font-family: 'omyu_pretty';}
+
+
   
 /*소형배너*/
 #banner, #banner2 {width:300px; height:450px;overflow:hidden; box-shadow:0px 0px 10px rgba(0, 0, 0, 0.8); 
@@ -87,7 +89,7 @@ border-radius:20px;  float:left; }
 #youtube iframe {border-radius: 20px; box-shadow:0 0 20px rgba(0, 0, 0, 0.8);}
 
 /*메인3*/
-#main3{width:1440px; margin:120px auto; text-align:center;  justify-content: center;  
+#main3{width:1440px; margin:180px auto; text-align:center;  justify-content: center;  
 }
 .container {margin-top:20px;display:flex; flex-wrap:wrap; justify-content:center;  opacity: 0; }
 .item {position:relative; width:calc(27% - 10px); margin-bottom: 20px; margin-right:20px; height:300px;   box-shadow: 4px 0px 4px 0px rgba(0, 0, 0, 0.5); border-radius: 5px;}
@@ -95,7 +97,7 @@ border-radius:20px;  float:left; }
 .item img:hover{transform:scale(1.03); }
 
 .item .text {position:absolute; bottom: 0; left:0; width:89.5%; padding:10px; color:black; text-align: center;}
-.item .text h2 {font-size:29px; margin:0 0 5px;     font-family: 'omyu_pretty';}
+.item .text h2 {font-size:25px; margin:0 0 5px;     font-family: 'omyu_pretty';}
 .item .text p {font-size:14px; margin:0;   font-family: 'omyu_pretty';}
 
 /*메인2 글자효과추가*/
@@ -105,7 +107,22 @@ text-shadow: 3px 1px 1px #000000, 2px 2px 1px #fec339, 4px 2px 1px #ff7f00,
   6px 4px 1px #ff7f00, 5px 5px 1px #fec339, 7px 5px 1px #ff7f00,
   6px 6px 1px #fec339, 8px 6px 1px #ff7f00, 7px 7px 1px  #000000 ,
   9px 7px 1px #ffff;  span {display: block; position: relative; &:before {content: attr(data-text);}}
-
+  
+/*메인3 글자 효과추가-수정중*/
+.main {
+  color: white;
+  font-size: 60px;
+  font-weight: 900;
+  line-height: 0.75em;
+  text-align: center;
+  text-shadow: 3px 1px 1px #000000, 2px 2px 1px #fec339, 4px 2px 1px #ff7f00,
+               3px 3px 1px #fec339, 5px 3px 1px #ff7f00, 4px 4px 1px #fec339,
+               6px 4px 1px #ff7f00, 5px 5px 1px #fec339, 7px 5px 1px #ff7f00,
+               6px 6px 1px #fec339, 8px 6px 1px #ff7f00, 7px 7px 1px #000000 ,
+               9px 7px 1px #ffff;
+  text-transform: uppercase;
+  position: relative;
+}
 
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -237,7 +254,7 @@ setInterval(function(){ $('.slider-1 > .side-btns > div').eq(1).click();}, 3000)
         
    <div id= main2><!-- 메인2번째 구역 -->   
     <h1 class="main2-title">
-      <span data-text="main2">타:바와 즐기자!!</span>   <!--메인2 대문 -->
+      <span data-text="main2">타:바로 즐기자!!</span>   <!--메인2 대문 -->
       </h1>      
     <div id="banner">
                     <img src="resources/rentphoto/photo1.jpg"alt="Banner 1">
@@ -295,8 +312,12 @@ var interval2 = setInterval(function() {
 </script>
 
 	</div>
+		
+
 	   <!--메인3 -->	
       <div id= "main3">   <!--상자형안내판 -->
+          <h3>타:바로 떠나자!!   <!--메인3 대문 -->
+      </h3>  
 <div class="container">
 	       	<div class="item"><!-- 아이탬링크추가 -->
 	       	<a href="https://place.map.kakao.com/27223754" target="_blank">
