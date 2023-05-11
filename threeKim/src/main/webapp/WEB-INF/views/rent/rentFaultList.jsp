@@ -37,14 +37,14 @@ li{list-style:none;}
 #content table {width:90%; border-collapse:collapse; margin:60px auto 0; line-height:60px; font-size:20px;font-family:'omyu_pretty'; font-size:24px;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
-#content table tr th:nth-child(1){width:80px;}
-#content table tr th:nth-child(2){width:150px;}
+#content table tr th:nth-child(1){width:70px;}
+#content table tr th:nth-child(2){width:120px;}
 #content table tr th:nth-child(3){width:50px;}
-#content table tr th:nth-child(4){width:150px;}
-#content table tr th:nth-child(5){width:150px;}
-#content table tr th:nth-child(6){width:70px;}
+#content table tr th:nth-child(4){width:120px;}
+#content table tr th:nth-child(5){width:90px;}
+#content table tr th:nth-child(6){width:100px;}
 #content table tr th:nth-child(7){width:80px;}
-#content table tr th:nth-child(8){width:250px;}
+#content table tr th:nth-child(8){width:300px;}
 #content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
@@ -63,10 +63,9 @@ li{list-style:none;}
 					<th>대여소</th>
 					<th>자전거종류</th>
 					<th>자전거번호</th>
-					<th>대여날짜</th>
-					<th>가격</th>
+					<th>대여날짜</th>			
 					<th>신고시간</th>
-					<th>신고내용</th>
+					<th>내용</th>
 					
 					
 				</tr>
@@ -76,9 +75,8 @@ li{list-style:none;}
 					<td>010-1234-5678</td>
 					<td>송천</td>
 					<td>하이브리드자전거</td>
-					<td>hy00001</td>
+					<td>hy001</td>
 					<td>2023-05-11</td>
-					<td>2000원</td>
 					<td>16:40</td>
 					<td>자전거 페달이 고장났어요. 조취 부탁드려요!</td>
 				</tr>
