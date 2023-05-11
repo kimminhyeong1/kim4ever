@@ -68,15 +68,14 @@ html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:activ
 .ui-datepicker-calendar>tbody>tr>td:hover{background-color: transparent; opacity: 0.6; }  .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus,
 .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus, .ui-button:hover,
 .ui-button:focus{border: 0px solid #cccccc; background-color: transparent; font-weight: normal; color: #2b2b2b; } 
-.ui-widget-header .ui-icon{background-image: url('./btns.png');} 
-.ui-icon-circle-triangle-e{background-position: -20px 0px; background-size: 36px;}
-.ui-icon-circle-triangle-w{background-position: -0px -0px; background-size: 36px;}
 .ui-datepicker-calendar>tbody>tr>td:first-child a{color: red !important;}
 .ui-datepicker-calendar>tbody>tr>td:last-child a{color: #0099ff !important;}
 .ui-datepicker-calendar>thead>tr>th:first-child{color: red !important;}
 .ui-datepicker-calendar>thead>tr>th:last-child{color: #0099ff !important;} 
-.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight { border: 0px; background: #f1f1f1; border-radius: 50%; padding-top: 10px; padding-bottom: 10px; } 
-.inp { padding: 10px 10px; background-color: #f1f1f1; border-radius: 4px; border: 0px;} 
+.ui-datepicker-current-day .ui-state-default { background: #3f51b5 !important; color: #fff; font-weight: bold; border-radius: 50%;  padding-top: 10px; padding-bottom: 10px;}
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight { border: 0px; background: #FFA07A; border-radius: 50%; padding-top: 10px; padding-bottom: 10px; } 
+.inp { padding: 10px 10px; background-color: #FFA07A; border-radius: 4px; border: 0px;} 
 .inp:focus {outline: none; background-color: #eee;} 
 
 </style>
@@ -91,12 +90,16 @@ html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:activ
      dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
      dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
      showMonthAfterYear: true,
-     yearSuffix: '년'
+     yearSuffix: '년',
+     
  });
 
  $(function() {
      $("#datepicker1").datepicker();
+
+
  });
+ 
 
   </script>
 
