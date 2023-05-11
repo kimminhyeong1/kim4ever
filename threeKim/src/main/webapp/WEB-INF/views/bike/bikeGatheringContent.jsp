@@ -39,14 +39,12 @@ li{list-style:none;}
 #content img{width:500px; height:500px;}
 #content #gatherCon p{font-family:'omyu_pretty'; font-size:27px;}
 #content #gatherCon{width:80%; height:400px; border-collapse:collapse; border:1px solid #ddd; margin:10px auto 0; text-align:center;  line-height:100px;}
-
 </style>
 </head>
 <body>
 <div id="main">
 	
 	<%@include file="../header.jsp" %>
-
 	<div id="content">
 	
 	<div id="gather">
