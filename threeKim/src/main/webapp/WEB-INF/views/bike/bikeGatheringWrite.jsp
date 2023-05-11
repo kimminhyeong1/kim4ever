@@ -91,8 +91,7 @@ html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:activ
      dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
      showMonthAfterYear: true,
      yearSuffix: '년',
-     
- });
+      });
 
  $(function() {
      $("#datepicker1").datepicker();
