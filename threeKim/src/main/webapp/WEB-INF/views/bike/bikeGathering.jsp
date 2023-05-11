@@ -9,7 +9,6 @@
 /*리셋코드*/ 
 *{margin:0;padding:0;}
 li{list-style:none;}
-
 @font-face {
     font-family: 'GangwonEdu_OTFBoldA';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
