@@ -25,6 +25,8 @@ li{list-style:none;}
 #content table tr:last-child td input{display: inline-block; width:120px; height:50px;}
 h2{text-align: center; margin-top:20px;}
 #content table input{
+  font-family: 'omyu_pretty';
+  font-size:24px;
   box-sizing: border-box;
   width: 100%;
   padding: 10px;

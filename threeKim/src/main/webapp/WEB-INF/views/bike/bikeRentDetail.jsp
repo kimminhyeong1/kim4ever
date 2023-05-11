@@ -33,9 +33,9 @@ li{list-style:none;}
 #main{width:1440px; margin:35px auto 70px; text-align:center;}
 #content{width:1440px; height:2400px;}
 #content table {width:1100px;height:400px;margin:160px auto 20px;text-align:center; border:none;border-collapse: collapse;font-size: 20px; /* 전체 폰트 크기 조정 */font-family: 'omyu_pretty';border-radius: 10px;}
-#content table td {border:1px solid #ddd; padding:10px; font-size:20px; line-height:1.5;  text-align:center; text-align:left; border-radius:10px;}
+#content table td {border:1px solid #ddd; padding:10px; font-size:24px; line-height:1.5;  text-align:center; text-align:left; border-radius:10px;}
 #content table h2 {text-align:center;font-size:36px; margin-bottom: 5px; font-family: 'omyu_pretty';}
-#content table p {margin:0; text-align:left; margin-left:20px;}
+#content table p {margin:0; text-align:left; margin-left:10px;}
 #content table input[type="number"],
 #content table select {padding: 8px; border-radius: 4px;border: 1px solid #ccc;font-size: 18px;width: 200px; margin-bottom: 10px; /* input과 input 사이의 간격 조정 */font-family: 'omyu_pretty';}
 #content table input[type="text"]:hover, 
@@ -45,6 +45,8 @@ li{list-style:none;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 #bottom{width:1440px; height:300px;}
 #content table input[type="text"],textarea{
+  font-family: 'omyu_pretty';
+  font-size:24px;
   box-sizing: border-box;
   width:100%;
   padding: 10px;
@@ -52,8 +54,8 @@ li{list-style:none;}
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-#content table td:nth-child(1){width:200px;}
-#content table td:nth-child(2){width:800px;}
+#content table td:nth-child(1){width:300px;}
+#content table td:nth-child(2){width:700px;}
 #content table td:nth-child(3){width:100px;}
 </style>
 </head>
@@ -133,11 +135,12 @@ li{list-style:none;}
 </div>
 </body>
 <script type="text/javascript">
-const autoHyphen2 = (target) => {
-    target.value = target.value
-      .replace(/[^0-9]/g, '')
-     .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
-   }
+function autoHyphen2(target) {
+	  target.value = target.value
+	    .replace(/[^0-9]/g, '')
+	    .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3")
+	    .replace(/(\-{1,2})$/g, "");
+	}
 </script>
 <%@include file="../footer.jsp" %>
 </html>

@@ -36,11 +36,7 @@ li{list-style:none;}
 #main #bottom{width:1440px; height:300px;}
 h2{text-align: center; margin-top:20px;}
 #content table {width: 80%;border-collapse:collapse; border:1px solid #ddd; margin: 60px auto 0; text-align:center;  line-height:100px; font-family:'omyu_pretty'; font-size:24px;}
-#content table td, th {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-}
+#content table td, th {border:1px solid #ddd;padding:8px;text-align:left;}
 #content table td:nth-child(1){width:120px;text-align:center;}
 #content table td:nth-child(2){width:400px; text-align:left;}
 #content table tr:last-child td input{display: inline-block; width:120px; height:50px;}
@@ -58,6 +54,14 @@ input{
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 
 </style>
+<script type="text/javascript">
+function autoHyphen2(target) {
+	  target.value = target.value
+	    .replace(/[^0-9]/g, '')
+	    .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3")
+	    .replace(/(\-{1,2})$/g, "");
+	}
+</script>
 </head>
 <body>
 <div id="main">
@@ -88,6 +92,11 @@ input{
 				<tr>
 					<td>나이</td>
 					<td><input type="number" name=""></td>
+				</tr>
+				
+				<tr>
+					<td>휴대폰번호</td>
+					<td><input type="tel" name="" oninput="autoHyphen2(this)" maxlength="13"></td>
 				</tr>
 				
 				<tr>

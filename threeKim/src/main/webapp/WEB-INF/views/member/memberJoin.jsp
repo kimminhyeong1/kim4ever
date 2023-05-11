@@ -49,6 +49,8 @@ h2{text-align: center; margin-top:20px;}
 #memberIdCheck {padding: 5px 10px; font-size: 14px; width:120px; height:50px; }
 #content table 
 input{
+  font-family: 'omyu_pretty';
+  font-size:24px;
   box-sizing: border-box;
   width: 100%;
   padding: 10px;
@@ -143,6 +145,16 @@ function idCheck(){
 
 
 </script> --%>
+
+<script type="text/javascript">
+function autoHyphen2(target) {
+	  target.value = target.value
+	    .replace(/[^0-9]/g, '')
+	    .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3")
+	    .replace(/(\-{1,2})$/g, "");
+	}
+</script>
+
 </head>
 <body>
 <div id="main">
@@ -209,6 +221,18 @@ function idCheck(){
 	    </th>
 	    <td>
 	   		<input type="number" id="member_age" name="member_age" min="0">
+	  	</td>
+	  	<td></td>
+ 	</tr>
+ 	
+ 	<tr>
+ 	
+ 	<tr>
+	    <th>
+	    	<label for="member_phone">휴대폰번호</label>
+	    </th>
+	    <td>
+	   		<input type="tel" id="member_phone" name="member_phone" oninput="autoHyphen2(this)" maxlength="13">
 	  	</td>
 	  	<td></td>
  	</tr>

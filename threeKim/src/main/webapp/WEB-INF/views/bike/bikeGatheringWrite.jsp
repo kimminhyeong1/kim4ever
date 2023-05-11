@@ -55,10 +55,6 @@ h2{text-align: center; margin-top:20px;}
 
 	
 	<div id="gather">
-	 <p>
-	 <label>소모임 이름</label>
-     <input type="text"/>
-     </p>
      
      <p>
 	 <label>소모임 이름</label>
