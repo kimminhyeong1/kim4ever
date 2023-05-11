@@ -62,6 +62,7 @@ li{list-style:none;}
 					<th>연락처</th>
 					<th>대여소</th>
 					<th>자전거종류</th>
+					<th>자전거번호</th>
 					<th>대여날짜</th>
 					<th>가격</th>
 					<th>신고시간</th>
@@ -75,6 +76,7 @@ li{list-style:none;}
 					<td>010-1234-5678</td>
 					<td>송천</td>
 					<td>하이브리드자전거</td>
+					<td>hy00001</td>
 					<td>2023-05-11</td>
 					<td>2000원</td>
 					<td>16:40</td>
