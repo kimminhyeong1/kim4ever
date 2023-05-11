@@ -75,7 +75,7 @@ li{list-style:none;}
 					<td><button type="button" onclick="location.href='<%=request.getContextPath()%>/rent/rentFault.do'">고장/신고</button></td>
 				</tr>
 		</table>
-		
+	
 		
 	
 		<h2>대여 이력</h2>

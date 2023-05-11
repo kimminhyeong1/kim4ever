@@ -26,6 +26,7 @@ li{list-style:none;}
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
 #content button{width:100%; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
@@ -33,6 +34,7 @@ li{list-style:none;}
 <body>
 <div id="main">
 <%@include file="../header.jsp" %>
+	
 	
 	<div id="content">
 		<h2>자전거 고장/신고</h2>
