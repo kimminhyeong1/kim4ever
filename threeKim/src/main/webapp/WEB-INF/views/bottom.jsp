@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+
 <style>
 /*리셋코드*/
 
@@ -41,34 +37,27 @@ li{list-style:none;}
 #main #bottom table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
 
 </style>
-</head>
-<body>
+
 <div id="main">
-
-
-<div id="bottom">
-<h2>이용요금안내</h2>
-<table>
-	<tr>
-    <th>자전거 유형</th>
-    <th>이용요금(1회 이용)</th>
-  </tr>
-  <tr>
-    <td>일반자전거, 2인자전거, 어르신자전거</td>
-    <td>1,000원</td>
-  </tr>
-   <tr>
-    <td>하이브리드 자전거, 커플자전거</td>
-    <td>2,000원</td>
-  </tr>
-  <tr>
-    <td>전기자전거</td>
-    <td>5,000원</td>
-  </tr>
- 
-</table>
+	<div id="bottom">
+		<h2>이용요금안내</h2>
+		<table>
+			<tr>
+			    <th>자전거 유형</th>
+			    <th>이용요금(1회 이용)</th>
+			</tr>
+			<tr>
+			  <td>일반자전거, 2인자전거, 어르신자전거</td>
+			  <td>1,000원</td>
+			</tr>
+			 <tr>
+			  <td>하이브리드 자전거, 커플자전거</td>
+			  <td>2,000원</td>
+			</tr>
+			<tr>
+			  <td>전기자전거</td>
+			  <td>5,000원</td>
+			</tr>
+		</table>
+	</div>
 </div>
-</div>
-</body>
-
-</html>
