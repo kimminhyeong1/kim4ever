@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 <style>
 /*리셋코드*/
-
 *{margin:0;padding:0;}
 li{list-style:none;}
 @font-face {
