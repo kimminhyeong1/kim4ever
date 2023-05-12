@@ -101,29 +101,25 @@ border-radius:20px;  float:left; }
 .item .text p {font-size:14px; margin:0;   font-family: 'omyu_pretty';}
 
 /*메인2 글자효과추가*/
-.main2-title {order: 2; color: white; font-weight: 900;  text-transform: uppercase; font-size: 84px; line-height: 0.75em; text-align: center;
+.main2-title{order: 2; color: white; font-weight: 900;  text-transform: uppercase; font-size: 84px; line-height: 0.75em; text-align: center;
 text-shadow: 3px 1px 1px #000000, 2px 2px 1px #fec339, 4px 2px 1px #ff7f00,
   3px 3px 1px #fec339, 5px 3px 1px #ff7f00, 4px 4px 1px #fec339,
   6px 4px 1px #ff7f00, 5px 5px 1px #fec339, 7px 5px 1px #ff7f00,
   6px 6px 1px #fec339, 8px 6px 1px #ff7f00, 7px 7px 1px  #000000 ,
-  9px 7px 1px #ffff;  span {display: block; position: relative; &:before {content: attr(data-text);}}
+  9px 7px 1px #ffff; } 
   
-/*메인3 글자 효과추가-수정중*/
-.main {
-  color: white;
-  font-size: 60px;
-  font-weight: 900;
-  line-height: 0.75em;
-  text-align: center;
-  text-shadow: 3px 1px 1px #000000, 2px 2px 1px #fec339, 4px 2px 1px #ff7f00,
-               3px 3px 1px #fec339, 5px 3px 1px #ff7f00, 4px 4px 1px #fec339,
-               6px 4px 1px #ff7f00, 5px 5px 1px #fec339, 7px 5px 1px #ff7f00,
-               6px 6px 1px #fec339, 8px 6px 1px #ff7f00, 7px 7px 1px #000000 ,
-               9px 7px 1px #ffff;
-  text-transform: uppercase;
-  position: relative;
-}
+   /*메인3 중앙글씨추가*/
+  .main3-title  {order: 2; color: black; font-weight: 900;  text-transform: uppercase; font-size: 60px; line-height: 0.75em; text-align: center;
+text-shadow: 3px 1px 1px #fec339, 2px 2px 1px #fec339, 4px 2px 1px #fec339,
+  3px 3px 1px #fec339, 5px 3px 1px #fec339, 4px 4px 1px #fec339,
+  6px 4px 1px #fec339, 5px 5px 1px #fec339, 7px 5px 1px #fec339,
+  6px 6px 1px #fec339, 8px 6px 1px #fec339, 7px 7px 1px #fec339,
+  9px 7px 1px #000000;
+  margin-bottom:50px;  font-family: 'omyu_pretty';}
 
+  
+
+  
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -315,9 +311,10 @@ var interval2 = setInterval(function() {
 		
 
 	   <!--메인3 -->	
-      <div id= "main3">   <!--상자형안내판 -->
-          <h3>타:바로 떠나자!!   <!--메인3 대문 -->
-      </h3>  
+     <div id= main3><!-- 메인3번째 구역 -->   
+    <h1 class="main3-title">
+      <span data-text="main3">타:바로 떠나자!!</span>   <!--메인3 대문 -->
+      </h1>   
 <div class="container">
 	       	<div class="item"><!-- 아이탬링크추가 -->
 	       	<a href="https://place.map.kakao.com/27223754" target="_blank">
