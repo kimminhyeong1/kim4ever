@@ -1,10 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 <style>
 
 /*리셋코드*/
@@ -70,8 +65,7 @@ li{list-style:none;}
 .bike-description{margin-top: auto;text-align: center;}
 
 </style>
-</head>
-<body>
+
 	<div id="top_logo">
 	<div class = main-nav-left> 
 		<a href="#" class="top-menu"><img src="${pageContext.request.contextPath}/resources/logo/menu.png"></a><!-- SHOP - 서브메뉴 생성 -->        
@@ -120,7 +114,3 @@ li{list-style:none;}
 		<p onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">게시판</p>
 		
 	</div>
-
-</body>
-
-</html>
