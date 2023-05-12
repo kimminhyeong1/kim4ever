@@ -40,11 +40,9 @@ li{list-style:none;}
 #content table th {width:100px; padding:10px; text-align:center; border-right:1px solid #ddd;}
 #content table td {padding:10px; text-align:center; line-height:50px;}
 #content table tr th {width:120px; text-align:center;  }
-
-#btn{text-align:right; margin-top:20px; margin-right:144px;}
-#btn button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
-#btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
-#btn input{width:100px; height:30px; font-family:'omyu_pretty'; font-size:24px; background:#ff9933; border-radius:10px; border:0px solid #ff9933;}
+#content #btn{text-align:right; margin-top:20px; margin-right:144px; }
+#content #btn button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+#content #btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
 
 </head>
@@ -97,11 +95,10 @@ li{list-style:none;}
 	
 	</table>
 	<div id="btn">
-      	<input type="button" name="modify" value="수정"  onclick="location.href='<%=request.getContextPath()%>/board/boardModify.do'" >												
-    	<input type="button" name="delete" value="삭제" onclick="location.href='<%=request.getContextPath()%>/board/boardDelete.do'" >
-		<input type="button" name="reply" value="답변" onclick="location.href='<%=request.getContextPath()%>/board/boardReply.do'" >
-		<input type="button" name="list" value="목록"	onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'" >
-
+		<button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardModify.do'">수정</button>
+		<button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardDelete.do'">삭제</button>
+		<button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardReply.do'">답변</button>
+		<button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">목록</button>
     </div>
 	</form>
 	</div>
