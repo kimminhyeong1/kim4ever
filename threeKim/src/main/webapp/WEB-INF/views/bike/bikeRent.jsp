@@ -37,7 +37,7 @@ li{list-style:none;}
  .bike-description{border-bottom:1px solid #ddd; border-top:1px solid #ddd;}
 .bike-box img:hover{opacity:1; cursor:pointer; transform:scale(1.1); transition:all 0.3s ease-in-out;}
 .bike-description {font-family:'omyu_pretty'; margin:10px 0;font-size:24px;}
-.bike-rules {font-family:'omyu_pretty'; margin:40px auto;width:70%; padding: 20px;background-color:#f1f1f1; border-radius: 5px;}
+.bike-rules {font-family:'omyu_pretty'; margin:40px auto;width:70%; padding: 20px;background-color:#f1f1f1; border-radius:10px;}
 .bike-rules h2 {font-family:'KCC-Ganpan'; text-align:center; font-size:35px; color:#333; margin-bottom: 20px;}
 .bike-rules p {font-family:'omyu_pretty'; text-align:left; margin-left:40px; font-size:24px; padding:15px 15px; letter-spacing:3px;}
 
