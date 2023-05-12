@@ -49,6 +49,13 @@ li{list-style:none;}
 #btn button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
+<script type="text/javascript">
+	function fnWrite() {
+		if(confirm("글을 등록 하시겠습니까?")) {
+			location.href='<%=request.getContextPath()%>/board/boardList.do';
+		}
+	}
+</script>
 </head>
 <body>
 <div id="main">
@@ -81,9 +88,9 @@ li{list-style:none;}
 		</table>
 		
 		<div id="btn">	
-			<button type="submit" onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'" >글 등록</button>
+			<button type="button" onclick="fnWrite();" >글 등록</button>
 			<button type="reset">다시 작성</button>
-			<button type="button" onclick="location.href='boardList.jsp'" >목록 보기</button>
+			<button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'" >목록 보기</button>
 		</div>	
 		</form>
 			

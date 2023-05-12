@@ -41,6 +41,13 @@ li{list-style:none;}
 #content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
+<script type="text/javascript">
+	function fnReturn() {
+		if(confirm("반납 하시겠습니까?")) {
+			location.href='';
+		}
+	}
+</script>
 </head>
 <body>
 <div id="main">
@@ -71,7 +78,7 @@ li{list-style:none;}
 					<td>2023-04-27</td>
 					<td>09:40</td>
 					<td>2000원</td>
-					<td><button type="button">반납하기</button></td>
+					<td><button type="button" onclick="fnReturn();">반납하기</button></td>
 					<td><button type="button" onclick="location.href='<%=request.getContextPath()%>/rent/rentFault.do'">고장/신고</button></td>
 				</tr>
 		</table>

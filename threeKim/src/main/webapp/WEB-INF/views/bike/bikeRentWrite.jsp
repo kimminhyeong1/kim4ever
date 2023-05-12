@@ -17,7 +17,7 @@ li{list-style:none;}
 #content table td {border:1px solid #ddd; padding:10px;font-size:16px; line-height:1.5; margin-left:60px;}
 #content table h2 {font-size:24px; margin-bottom:5px; }
 #content table p {margin: 0;}
-#content table input[type="text"],textarea{
+#content table input[type="text"],[type="number"],textarea{
   box-sizing: border-box;
   width: 100%;
   padding: 10px;
@@ -28,6 +28,13 @@ li{list-style:none;}
 #content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
+<script type="text/javascript">
+	function fnUpload() {
+		if(confirm("자전거를 등록 하시겠습니까?")) {
+			location.href='<%=request.getContextPath()%>/bike/bikeRent.do';
+		}
+	}
+</script>
 </head>
 <body>
 <div id="main">
@@ -48,13 +55,13 @@ li{list-style:none;}
 				
 			<tr>
 				<td>
-				<input id="price" type="text" placeholder="가격을 입력해 주세요"/>
+				<input id="price" type="number" placeholder="가격을 입력해 주세요"/>
 				</td>
 			</tr>
 			
 			<tr>
 				<td>
-					<button type="button" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRent.do'">등록</button>
+					<button type="button" onclick="fnUpload();">등록</button>
 				</td>
 			</tr> 
 		</table>
