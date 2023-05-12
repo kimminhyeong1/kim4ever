@@ -14,7 +14,7 @@ li{list-style:none;}
 
 #main{width:1440px; margin:35px auto 70px; text-align:center; }
 #main #content{width:1440px; height:2400px;}
-#main #content img{width:60%; height:auto; margin-top:20px;}
+#main #content img{width:60%; height:auto; margin-top:20px; border-radius:10px;}
 #main #bottom{width:1440px; height:300px; }
 #main #content h1 {
   font-size: 35px;
