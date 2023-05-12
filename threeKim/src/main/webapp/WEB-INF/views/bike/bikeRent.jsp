@@ -5,7 +5,7 @@
 <head>
 <title>Home</title>
 <style>
-/*리셋코드*//*5.12 12.33*/
+/*리셋코드*//*5.12  12.33*/
 
 *{margin:0;padding:0;}
 li{list-style:none;}
