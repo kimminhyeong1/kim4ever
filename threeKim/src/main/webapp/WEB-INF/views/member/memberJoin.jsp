@@ -29,6 +29,7 @@ li{list-style:none;}
     font-weight: normal;
     font-style: normal;
 }
+
 #main{width:1440px; margin:35px auto 70px; text-align:center;}
 #main #content{width:1440px; height:2400px;}
 #main #bottom{width:1440px; height:300px; }

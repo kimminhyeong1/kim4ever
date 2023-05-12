@@ -52,7 +52,6 @@ BoardService bs; //업캐스팅 부모만 지정
 		return "board/boardReply";
 	}
 	
-
 	
 	@RequestMapping(value="/boardNoticeWrite.do")
 	public String boardNoticeWrite() {
