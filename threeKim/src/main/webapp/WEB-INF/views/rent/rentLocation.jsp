@@ -54,13 +54,17 @@ li{list-style:none;}
 }
 #main #content h2{margin-top:20px; font-family: 'KCC-Ganpan';}
 
+
+/*마커 폰트 변경*/
 #main #marker1{font-family: 'KCC-Ganpan';}
 #main #marker2{font-family: 'KCC-Ganpan';}
 #main #marker3{font-family: 'KCC-Ganpan';}
 #main #marker4{font-family: 'KCC-Ganpan';}
 #main #marker5{font-family: 'KCC-Ganpan';}
-.rs1{font-size: 40px;}
-.rs2{font-size: 25px;}
+
+/*마커 글씨 크기 변경*/
+.rs1{font-size: 30px;}
+.rs2{font-size: 15px;}
 
 </style>
 </head>
