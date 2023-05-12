@@ -28,6 +28,8 @@ footer {background-color:#eeeeee; height:150px; display:flex; justify-content:ce
 .footer_L, .footer_R{font-family:'GangwonEdu_OTFBoldA'; font-size: 11px;  font-weight:bold; margin-right:50px; margin-left:50px;}
 .footer_L h1{font-size: 40px;font-family: 'KCC-Ganpan';}
 .footer_R h2{text-align:left;}
+@media (max-width: 1500px) {
+  footer{width: 1500px;}}
 </style>
 
 
