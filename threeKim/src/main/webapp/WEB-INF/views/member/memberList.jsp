@@ -34,8 +34,8 @@ li{list-style:none;}
 #main{width:1440px; margin:35px auto 70px; text-align:center; }
 #main #content{width:1440px; height:2400px;text-align:center;}
 #main #bottom{width:1440px; height:300px; }
-#main #content h2{text-align:left; margin-top:50px; margin-left:80px;font-family: 'GangwonEdu_OTFBoldA'; font-size:27px;}
-#content table {width:90%; border-collapse:collapse; margin:60px auto 0; line-height:60px; font-size:20px;font-family:'omyu_pretty'; font-size:24px;}
+#main #content h2{text-align:left; margin-top:50px; margin-left:300px;font-family: 'GangwonEdu_OTFBoldA'; font-size:25px;}
+#content table {width:60%; border-collapse:collapse; margin:60px auto 0; line-height:60px; font-size:20px;font-family:'omyu_pretty'; font-size:24px;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
 #content table tr th:nth-child(1){width: 40px;}
@@ -43,7 +43,6 @@ li{list-style:none;}
 #content table tr th:nth-child(3){width: 20px;}
 #content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
-
 
 </style>
 <script type="text/javascript">

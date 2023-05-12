@@ -35,8 +35,8 @@ li{list-style:none;}
 #main #content #gatheringIntro p{text-align:center; padding:20px; font-family:'GangwonEdu_OTFBoldA'; font-size:21px; margin-top:20px;}
 #main #content #gatheringList{width:100%; display:flex; flex-wrap:wrap;justify-content:center; align-items:center;}
 #main #content #gatheringList h2{text-align:center;; font-family: 'GangwonEdu_OTFBoldA'; font-size:33px; padding:20px;}
-#main #content .box {width:320px; height:450px; margin:20px; padding:20px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:5px; }
-#main #content .box img {width:100%;height:60%;object-fit:cover;margin-bottom:10px;}
+#main #content .box {width:320px; height:450px; margin:20px; padding:20px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:10px; }
+#main #content .box img {width:100%;height:60%; object-fit:cover; margin-bottom:10px; border-radius:10px; }
 #main #content #gatheringList h2 {width:100%; text-align:center; font-size:27px; margin-top:50px; margin-bottom:50px;}
 #main #content #gatheringList button{display:block; width:100px; height:30px; padding:0; margin:10px 85px 15px 85px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #main #content #gatheringList button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}

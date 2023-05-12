@@ -33,7 +33,7 @@ li{list-style:none;}
 #main{width:1440px; margin:35px auto 70px; text-align:center;}
 #main #content{width:1440px; height:2400px;text-align:center;}
 #main #bottom{width:1440px; height:300px;}
-
+#main #content #map{margin-top:50px; width:80%; height:700px; margin-left:130px;}
 #main #content table {border-collapse: collapse; margin:50px auto; width:1000px; background-color:white; box-shadow:0px 0px 10px rgba(0, 0, 0, 0.1); line-height:40px; font-size:24px;  font-family: 'omyu_pretty';}
 #main #content table th {padding: 10px;text-align:center; border-bottom: 1px solid #ddd;background-color: #f2f2f2;}
 #main #content table td:nth-child(1){padding: 10px; text-align:center; border-bottom:1px solid #ddd;}
@@ -76,7 +76,7 @@ li{list-style:none;}
 	<h1>타:바 공영자전거 대여소</h1>
 	
 
-<div id="map" style=" margin-top:50px; width:100%;;height:700px;"></div>
+<div id="map"></div>
 
 
 
