@@ -65,6 +65,9 @@ opacity:1;padding:5px; border-radius:50px;font-size:50px;}
 display:flex; justify-content:center; align-items: center; 
 background-image: url("resources/banner2/bg_network.jpg");
 background-size:cover; background-position: center; background-repeat:no-repeat; position:relative;}
+/*메인2 모바일대응추가*/
+@media (max-width: 1500px) {
+  #main2 {width: 1500px;}}
 /*메인2_h1*/
 #main2 h1 {position:absolute ;top:10%; left:50%; transform:translate(-50%,-50%); 
 margin: 0;   font-family: 'omyu_pretty';}
@@ -248,7 +251,7 @@ setInterval(function(){ $('.slider-1 > .side-btns > div').eq(1).click();}, 3000)
         
    <div id= main2><!-- 메인2번째 구역 -->   
     <h1 class="main2-title">
-      <span data-text="main2">타:바로 즐기자!!</span>   <!--메인2 대문 -->
+      <span data-text="main2">타바로 즐기자!!</span>   <!--메인2 대문 -->
       </h1>      
     <div id="banner">
                     <img src="resources/rentphoto/photo1.jpg"alt="Banner 1">
@@ -313,7 +316,7 @@ var interval2 = setInterval(function() {
     <h1 class="main3-title">
       <span data-text="main3">타:바로 떠나자!!</span>   <!--메인3 대문 -->
       </h1>   
-<div class="container">
+<div class="container"> 
 	       	<div class="item"><!-- 아이탬링크추가 -->
 	       	<a href="https://place.map.kakao.com/27223754" target="_blank">
 	        <img src="resources/main3/main3-1.jpg">

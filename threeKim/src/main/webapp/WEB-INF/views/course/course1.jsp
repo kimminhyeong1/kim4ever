@@ -12,7 +12,7 @@ li{list-style:none;}
 #main{width:1000px; height:1000px; margin:35px auto 70px; text-align:center; background:#ffffff;}
 #main #restaurant{display:flex; justify-content:center; align-items:center;font-family: 'omyu_pretty'; margin-left:10px;}
 #main #restaurant table{ height:300px; border:1; margin-top:40px; background:white;}
-#main #restaurant table td{border:1px solid #ddd;   max-width: 230px; border-radius: 10px;;
+#main #restaurant table td{border:1px solid #ddd;   max-width: 230px; border-radius: 10px;
 transition: transform 0.1s ease-in-out; background-color:#ffff; margin-right:10px;}
 #main #restaurant table td:hover {transform: scale(1.1); z-index: 3; background:white; box-shadow:none; border:1px solid orange;}
 #main #restaurant table h3,p{border-bottom:1px solid #000;}
