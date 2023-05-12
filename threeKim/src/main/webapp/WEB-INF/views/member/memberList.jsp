@@ -49,7 +49,7 @@ li{list-style:none;}
 <script type="text/javascript">
 	function fnDelete() {
 		if(confirm("정말 삭제하시겠습니까?")) {
-			location.href='';
+			location.href='<%=request.getContextPath()%>/member/memberList.do';
 		}
 	}
 </script>

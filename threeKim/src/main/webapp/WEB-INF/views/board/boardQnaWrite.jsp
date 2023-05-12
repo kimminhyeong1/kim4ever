@@ -52,7 +52,7 @@ li{list-style:none;}
 <script type="text/javascript">
 	function fnWrite() {
 		if(confirm("글을 등록 하시겠습니까?")) {
-			location.href="<%=request.getContextPath()%>/board/boardList.do";
+			location.href='<%=request.getContextPath()%>/board/boardList.do';
 		}
 	}
 </script>
