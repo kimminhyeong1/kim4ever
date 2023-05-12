@@ -55,6 +55,7 @@ li{list-style:none;}
 /*사이드바 내부 상단 로그인,회원가입*/
 .sub-menu .top-login {
   display: flex;
+    margin-top:40px;
   justify-content: space-between;
   align-items: center;
   background-color: #f5f5f5;
@@ -64,6 +65,7 @@ li{list-style:none;}
 .sub-menu .top-login a {
   font-family: 'Roboto', sans-serif; 
   font-size: 18px; 
+
   text-decoration: none;
   color: #555; 
   width: 50%;

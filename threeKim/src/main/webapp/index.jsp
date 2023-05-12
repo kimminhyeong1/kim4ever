@@ -13,9 +13,8 @@ li{list-style:none;}
 
 #main{width:1440px; margin:35px auto; text-align:center; border:1px solid #white;      font-family: 'IM_Hyemin-Bold';
 }
-#main #content{ width: 1440px;height: auto !important;/*우선권*/}
+#main #content{width:1440px; height: auto !important;/*우선권*/}
 #main #content img{width:1440x; height:800px;}
-#main #bottom{width:1440px; height:300px;}
 @font-face {
     font-family: 'GangwonEdu_OTFBoldA';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
@@ -376,11 +375,10 @@ var interval2 = setInterval(function() {
           	</div>
         	</div>
         	</div>  
+        	<%@include file="WEB-INF/views/bottom.jsp" %>
       </div>
 
- 	<div id="bottom">
-	<%@include file="WEB-INF/views/bottom.jsp" %>
-	</div>
+ 	
 </body>
 <%@include file="WEB-INF/views/footer.jsp" %>
 </html>

@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.myezen.myapp.service.BoardService;
-import com.myezen.myapp.service.MemberService;
 
 @Controller
 @RequestMapping(value="/board")
@@ -17,10 +16,22 @@ BoardService bs; //업캐스팅 부모만 지정
 		return "board/boardList";
 	}
 	
-	@RequestMapping(value="/boardContent.do")
-	public String boardContent() {
+	@RequestMapping(value="/boardNoticeContent.do")
+	public String boardNoticeContent() {
 		
-		return "board/boardContent";
+		return "board/boardNoticeContent";
+	}
+	
+	@RequestMapping(value="/boardQnaContent.do")
+	public String boardQnaContent() {
+		
+		return "board/boardQnaContent";
+	}
+	
+	@RequestMapping(value="/boardFaqContent.do")
+	public String boardFaqContent() {
+		
+		return "board/boardFaqContent";
 	}
 	
 	@RequestMapping(value="/boardModify.do")

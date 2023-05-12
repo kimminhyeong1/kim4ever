@@ -30,7 +30,7 @@ li{list-style:none;}
 }
 #main{width:1440px; margin:35px auto 70px; text-align:center;}
 #main #content{width:1440px; height:2400px;}
-#main #content h2{text-align:left; margin-top:50px; margin-left:160px; font-family: 'GangwonEdu_OTFBoldA'; font-size:27px;}
+#main #content h2{text-align:left; margin-top:50px; margin-left:160px; font-family: 'GangwonEdu_OTFBoldA'; font-size:25px;}
 #main #bottom{width:1440px; height:300px;}
 #content table {width:80%; border-collapse:collapse; margin:60px auto 0; line-height:100px; font-size:24px; font-family: 'omyu_pretty'; cursor:pointer;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
@@ -96,7 +96,7 @@ li{list-style:none;}
 	         
 	            <tr>
 	               <td>1</td>
-	               <td onclick="location.href='<%=request.getContextPath()%>/board/boardContent.do'">공지사항</td>
+	               <td onclick="location.href='<%=request.getContextPath()%>/board/boardNoticeContent.do'">공지사항</td>
 	               <td>관리자</td>
 	               <td>2023-04-26</td>
 	               <td>17</td>
@@ -104,7 +104,7 @@ li{list-style:none;}
 	            
 	            <tr>
 	               <td>2</td>
-	               <td onclick="location.href='<%=request.getContextPath()%>/board/boardContent.do'">신규 지도 업데이트</td>
+	               <td onclick="location.href='<%=request.getContextPath()%>/board/boardNoticeContent.do'">신규 지도 업데이트</td>
 	               <td>관리자</td>
 	               <td>2023-04-26</td>
 	               <td>17</td>
@@ -129,7 +129,7 @@ li{list-style:none;}
 	         
 	            <tr>
 	               <td>1</td>
-	               <td onclick="location.href='<%=request.getContextPath()%>/board/boardContent.do'">결제 방법 문의</td>
+	               <td onclick="location.href='<%=request.getContextPath()%>/board/boardQnaContent.do'">결제 방법 문의</td>
 	               <td>김아무개</td>
 	               <td>2023-04-26</td>
 	               <td>17</td>
@@ -137,7 +137,7 @@ li{list-style:none;}
 	            
 	            <tr>
 	               <td>2</td>
-	               <td onclick="location.href='<%=request.getContextPath()%>/board/boardContent.do'">대여소 설치요청 하고싶어요</td>
+	               <td onclick="location.href='<%=request.getContextPath()%>/board/boardQnaContent.do'">대여소 설치요청 하고싶어요</td>
 	               <td>김진상</td>
 	               <td>2023-05-21</td>
 	               <td>7</td>
@@ -163,7 +163,7 @@ li{list-style:none;}
 	         
 	            <tr>
 	               <td>1</td>
-	               <td onclick="location.href='<%=request.getContextPath()%>/board/boardContent.do'">자전거 보험 안내</td>
+	               <td onclick="location.href='<%=request.getContextPath()%>/board/boardFaqContent.do'">자전거 보험 안내</td>
 	               <td>김똥개</td>
 	               <td>2023-04-26</td>
 	               <td>17</td>
@@ -171,7 +171,7 @@ li{list-style:none;}
 	            
 	             <tr>
 	               <td>2</td>
-	               <td onclick="location.href='<%=request.getContextPath()%>/board/boardContent.do'">대여한 곳에만 반납해야 하나요?</td>
+	               <td onclick="location.href='<%=request.getContextPath()%>/board/boardFaqContent.do'">대여한 곳에만 반납해야 하나요?</td>
 	               <td>김장군</td>
 	               <td>2023-05-26</td>
 	               <td>12</td>

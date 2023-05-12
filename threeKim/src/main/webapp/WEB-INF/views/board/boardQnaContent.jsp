@@ -29,22 +29,17 @@ li{list-style:none;}
     font-weight: normal;
     font-style: normal;
 }
+
+
 #main{width:1440px; margin:35px auto 70px; text-align:center;}
 #main #content{width:1440px; height:2400px;}
 #main #content h2{text-align:left; margin-top:50px; margin-left:160px; font-family: 'GangwonEdu_OTFBoldA'; font-size:25px;}
 #main #bottom{width:1440px; height:300px;}
-#content table {width:80%; border-collapse:collapse; margin: 60px auto 0; line-height:100px; font-size:24px; font-family: 'omyu_pretty';}
-#content table th{width:140px;padding: 10px;text-align: center;}
-#content table td{padding: 10px; text-align:left; border-left:1px solid #ddd;}
+#content table {width:80%; border-collapse:collapse; margin:60px auto 0; font-size:24px; font-family: 'omyu_pretty'}
 #content table tr{border:1px solid #ddd;}
-#content table input[type="text"],[type="password"],textarea{
-  box-sizing: border-box;
-  width: 100%;
-  padding: 10px;
-  margin: 2px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
+#content table th {width:100px; padding:10px; text-align:center; border-right:1px solid #ddd;}
+#content table td {padding:10px; text-align:center; line-height:50px;}
+#content table tr th {width:120px; text-align:center;  }
 #content #btn{text-align:right; margin-top:20px; margin-right:144px; }
 #content #btn button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content #btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
@@ -56,46 +51,66 @@ li{list-style:none;}
 <%@include file="../header.jsp" %>
    
 	<div id="content">
-	<h2>게시글 수정</h2>
+	<h2>게시글 내용</h2>
  	<form name="frm">
 		<table>
 		
 			<tr>
 				<th>제목</th>
-				<td><input type="text"></td>
-			</tr>
-			
-			<tr>
-				<th>내용</th>
-				<td><textarea cols="70" rows="25"></textarea></td>	
+				<td></td>
+				<th style="width:100px; text-align:center;border-left:1px solid #ddd;">조회수</th>
+				<td style="width:200px; text-align:center;"></td>
 			</tr>
 			
 			<tr>
 				<th>작성자</th>
-				<td><input type="text"></td>
-          	</tr>
-			
-			<tr>
-				<th>비밀번호</th>
-				<td><input type="password"></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				
 			</tr>
 			
 			<tr>
-				<th>첨부파일</th>
-				<td><button type="submit">파일 선택</button></td>
+				<th>글 내용</th>
+				<td style="height:500px;"></td>
+				<td></td>
+				<td></td>
+          		
+			</tr>
+			
+			<tr>
+				<th>파일다운로드</th>
+				<td></td>	
+				<td></td>
+				<td></td>
+          		
+			</tr>
+			
+			<tr>
+				<th>이미지</th>
+				<td></td>	
+				<td></td>
+				<td></td>
 			</tr>
 	
 	</table>
-	<div id="btn">	
-      	<button type="button">수정</button>												
-      	<button type="button">취소</button>												
+	<div id="btn">
+		<button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardModify.do'">수정</button>
+		<button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardDelete.do'">삭제</button>
+		<button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardReply.do'">답변</button>
+		<button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">목록</button>
     </div>
 	</form>
 	</div>
-          
-   	<div id="bottom">
+        
+
+	
+	 
+   
+   
+   <div id="bottom">
   
-   	</div>
+   </div>
 </div>
 </body>
 <%@include file="../footer.jsp" %>
