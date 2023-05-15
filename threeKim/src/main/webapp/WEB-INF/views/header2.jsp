@@ -39,7 +39,7 @@ li{list-style:none;}
 /*메뉴*/
 #menu {width: 1440px;height: 100px; text-align:center; display:flex; justify-content:center; align-items:center; box-sizing:border-box;}
 #menu p {font-size: 21px; font-weight: bold; font-family: 'GangwonEdu_OTFBoldA'; margin: 20px 40px; margin-top:40px;}
-#menu p:hover {color:#ff9900; cursor:pointer;
+#menu p:hover {color:#99CC99; cursor:pointer;
 
 #content{width:1440px; height:1200px;}
 #bottom{width:1440px; height:300px; }
