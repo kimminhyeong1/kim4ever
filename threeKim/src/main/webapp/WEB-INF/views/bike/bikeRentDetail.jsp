@@ -112,7 +112,7 @@ li{list-style:none;}
 		    <label for="verification-code">인증번호</label>
 		  </td>
 		  <td>
-		    <input type="text" id="verification-code" style="flex: 1; width: 210; ">
+		    <input type="text" id="verification-code" style="flex: 1; width: 210;" maxlength="6">
 		  </td>
 		  <td>
 		    <button type="button" onclick="verifyCode()">대여하기</button>

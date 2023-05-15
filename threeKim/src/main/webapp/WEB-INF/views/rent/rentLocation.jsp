@@ -38,33 +38,20 @@ li{list-style:none;}
 #main #content table th {padding: 10px;text-align:center; border-bottom: 1px solid #ddd;background-color: #f2f2f2;}
 #main #content table td:nth-child(1){padding: 10px; text-align:center; border-bottom:1px solid #ddd;}
 #main #content table td:nth-child(2){padding: 10px; text-align:left; border-bottom:1px solid #ddd;}
-#main #content h1 {
-  font-size: 35px;
-  text-align: center;
-  color: #333;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  font-family: 'KCC-Ganpan';
-  font-weight: bold;
-  letter-spacing: -1px;
-  text-shadow: 1px 1px #fff;
-  background-color: #fff;
-  border: none;
-  padding-bottom: 10px;
-}
+#main #content h1 {font-size:35px; text-align:center; color:#333; margin-top:40px; margin-bottom:20px; font-family:'KCC-Ganpan'; font-weight:bold; letter-spacing:-1px; text-shadow:1px 1px #fff; background-color:#fff; border:none;padding-bottom:10px;}
 #main #content h2{margin-top:20px; font-family: 'KCC-Ganpan';}
 
 
 /*마커 폰트 변경*/
-#main #marker1{font-family: 'KCC-Ganpan';}
-#main #marker2{font-family: 'KCC-Ganpan';}
-#main #marker3{font-family: 'KCC-Ganpan';}
-#main #marker4{font-family: 'KCC-Ganpan';}
-#main #marker5{font-family: 'KCC-Ganpan';}
+#main #marker1{font-family:'omyu_pretty';}
+#main #marker2{font-family:'omyu_pretty';}
+#main #marker3{font-family:'omyu_pretty';}
+#main #marker4{font-family:'omyu_pretty';}
+#main #marker5{font-family:'omyu_pretty';}
 
 /*마커 글씨 크기 변경*/
-.rs1{font-size: 30px;}
-.rs2{font-size: 15px;}
+.rs1{font-size:21px; margin-left:30px;}
+.rs2{font-size:15px; margin-left:25px;}
 
 </style>
 </head>
