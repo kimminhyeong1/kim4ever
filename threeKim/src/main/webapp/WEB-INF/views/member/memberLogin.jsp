@@ -93,7 +93,7 @@ h2{text-align: center; margin-top:20px;}
 	<tr>
 		<td colspan="2">
 			<button type="submit">로그인</button>
-			<button type="button">회원가입</button>
+			<button type="button" onclick="location.href='<%=request.getContextPath()%>/member/memberJoin.do'">회원가입</button>
 		</td>
 	</tr>
 	</table>

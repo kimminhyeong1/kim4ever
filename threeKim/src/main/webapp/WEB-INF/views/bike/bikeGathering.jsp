@@ -31,26 +31,27 @@ li{list-style:none;}
 #main #content{width:1440px; height:2400px; border:1px solid #000; }
 #main #bottom{width:1440px; height:300px; border:1px solid #000;}
 #main #content #gatheringIntro{width:100%; height:400px; background-color:#F8F8F8;}
-#main #content #gatheringIntro h2{text-align:center; margin-top:20px; font-family: 'GangwonEdu_OTFBoldA'; font-size:33px; padding:20px; text-shadow:2px 2px 0 #FFD700,-2px -2px 0 #FFD700,2px -2px 0 #FFD700, -2px 2px 0 #FFD700;}
-#main #content #gatheringIntro p{text-align:center; padding:20px; font-family:'GangwonEdu_OTFBoldA'; font-size:21px; margin-top:20px;}
+/* #main #content #gatheringIntro h2{text-align:center; margin-top:20px; font-family: 'GangwonEdu_OTFBoldA'; font-size:33px; padding:20px; text-shadow:2px 2px 0 #FFD700,-2px -2px 0 #FFD700,2px -2px 0 #FFD700, -2px 2px 0 #FFD700;} */
+#main #content #gatheringIntro h2{text-align:center; margin-top:20px; font-family: 'GangwonEdu_OTFBoldA'; font-size:27px; padding:20px; text-shadow: 2px 2px 0 #99CC99, -2px -2px 0 #99CC99, 2px -2px 0 #99CC99, -2px 2px 0 #99CC99;}
+#main #content #gatheringIntro p{text-align:center; padding:20px; font-family:'GangwonEdu_OTFBoldA'; font-size:18px; margin-top:20px;}
 #main #content #gatheringList{width:100%; display:flex; flex-wrap:wrap;justify-content:center; align-items:center;}
 #main #content #gatheringList h2{text-align:center;; font-family: 'GangwonEdu_OTFBoldA'; font-size:33px; padding:20px;}
 #main #content .box {width:320px; height:450px; margin:20px; padding:20px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:10px; }
 #main #content .box img {width:100%;height:60%; object-fit:cover; margin-bottom:10px; border-radius:10px; }
 #main #content #gatheringList h2 {width:100%; text-align:center; font-size:27px; margin-top:50px; margin-bottom:50px;}
-#main #content #gatheringList button{display:block; width:100px; height:30px; padding:0; margin:10px 85px 15px 85px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
-#main #content #gatheringList button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+#main #content #gatheringList button{display:block; width:100px; height:30px; padding:0; margin:10px 85px 15px 85px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}
+#main #content #gatheringList button:active {background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 #main #content .box h3 {margin-top:0;}
 #main #content .box p {font-size: 14px; width: 277px; height: 35px; margin-top: 20px; margin-bottom: 10px; overflow: hidden; display: -webkit-box;
   -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-height: 1.2;  text-overflow: ellipsis;}
 .loc{font-size:14px;}
-#main #content button{width:100%; height:40px; margin-top:100px;text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
-#main #content button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+#main #content button{width:100%; height:40px; margin-top:100px;text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}
+#main #content button:active {background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
 </head>
 <body>
 <div id="main">
-<%@include file="../header.jsp" %>
+<%@include file="../header2.jsp" %>
   
 	<div id="content">
 	

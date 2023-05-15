@@ -36,10 +36,10 @@ footer {background-color:#eeeeee; height:150px; display:flex; justify-content:ce
 <footer>
   <div class="foot">
 	<div class="footer_L">
-		<h1><strong>타:바 taba</strong></h1><hr/>
+		<h1><strong>타:바 taba</strong></h1><hr/><br/>
 		<p>법인(상호)TABA | 사업자등록번호 000-11-111111</p>
 		<p>주소: 전라북도 전주시 전주동 전주로123 빌딩00층 00호</p>
-		<p>대표이사:쓰리김 | 개인정보보호책임자:쓰리김</p>
+		<p>대표이사:김가네 | 개인정보보호책임자:김가네</p>
 		<p>대표전화:063-000-0000</p> 
 	</div>
   

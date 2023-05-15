@@ -250,7 +250,7 @@ function autoHyphen2(target) {
 		<td colspan="3">
 			<button type="button" onclick="check();">회원가입</button>
 			<button type="reset">다시 작성</button>
-			<button type="button" onclick="location.href='memberLogin.me'">로그인</button>
+			<button type="button" onclick="location.href='<%=request.getContextPath()%>/member/memberLogin.do'">로그인</button>
 		</td>
 	</tr>
 	

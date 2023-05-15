@@ -65,6 +65,7 @@ li{list-style:none;}
 .bike-box {display:flex;flex-direction: column; width: 280px; height: 350px; border:1px solid #000; margin:200px 20px 50px 20px;position:relative; overflow:hidden;}
 .bike-box img { position: absolute;top: 40%;left: 50%;transform: translate(-50%, -50%);max-width: 100%;max-height: 100%;}
 .bike-description{margin-top: auto;text-align: center;}
+
 </style>
 
 	<div id="top_logo">
@@ -104,7 +105,7 @@ li{list-style:none;}
 			</div>
 	</div>
 		<div class="logo" style="display:inline-block;">
-		<h1><img src="${pageContext.request.contextPath}/resources/logo/logo6.jpg" alt="타:바" onclick="location.href='<%=request.getContextPath()%>/index.jsp'"/></h1>
+		<h1><img src="${pageContext.request.contextPath}/resources/logo/logo7.jpg" alt="타:바" onclick="location.href='<%=request.getContextPath()%>/index.jsp'"/></h1>
 		</div>
 		<div class="login">
 		<ul>
@@ -113,15 +114,14 @@ li{list-style:none;}
 		</ul>
 		</div>
 	</div>
-	
-	
 
 	
 	<div id="menu">
-		<p onclick="location.href='<%=request.getContextPath()%>/bike/bikeRent.do'">자전거 대여</p>
-		<p onclick="location.href='<%=request.getContextPath()%>/rent/rentLocation.do'">대여소 위치</p>
-		<p onclick="location.href='<%=request.getContextPath()%>/course/courseIntro.do'">코스 소개</p>
-		<p onclick="location.href='<%=request.getContextPath()%>/bike/bikeGathering.do'">자전거 모임</p>
-		<p onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">게시판</p>
+		<p>나의 소모임</p>
+		<p>내가 찜한 소모임</p>
+		<p>소모임 검색</p>
+		<p>근처 모임</p>
+		<p>회원 관리</p>
+		
 		
 	</div>
