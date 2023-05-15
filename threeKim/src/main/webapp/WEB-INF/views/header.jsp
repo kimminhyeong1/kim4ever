@@ -2,11 +2,10 @@
     pageEncoding="UTF-8"%>
 <style>
 /*리셋코드*/
-
 *{margin:0;padding:0;}
 li{list-style:none;}
 
-
+/*사이드메뉴바, 로고, 로그인버튼*/
 #top_logo{width:1440px; height:200px; text-align:center;}
 #top_logo .logo{display:inline-block; text-align:center;}
 #top_logo .logo img{width:200px; height:240px; margin-left:140px; cursor:pointer;transition: all 0.3s ease-in-out;}
@@ -33,25 +32,9 @@ li{list-style:none;}
 .sub-menu-list li:hover a {color:#999;text-shadow:none;}
 
 /*사이드바 내부 상단 로그인,회원가입*/
-.sub-menu .top-login {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f5f5f5;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-.sub-menu .top-login a {
-  font-family: 'Roboto', sans-serif; 
-  font-size: 18px; 
-  text-decoration: none;
-  color: #555; 
-  width: 50%;
-  text-align: center;
-  padding: 10px;
-}
-.sub-menu .top-login a:first-child { border-right: 1px solid #ccc;
-}
+.sub-menu .top-login {display:flex;justify-content:space-between;align-items:center;background-color:#f5f5f5;padding:10px;margin-bottom:10px;}
+.sub-menu .top-login a {font-family:'Roboto', sans-serif; font-size:18px; text-decoration none;color:#555; width:50%;text-align:center;padding:10px;}
+.sub-menu .top-login a:first-child {border-right: 1px solid #ccc;}
 
 /*메뉴*/
 #menu {width: 1440px;height: 100px; text-align:center; display:flex; justify-content:center; align-items:center; box-sizing:border-box;}
@@ -61,10 +44,6 @@ li{list-style:none;}
 #content{width:1440px; height:1200px;}
 #bottom{width:1440px; height:300px; }
 
-#bike{display:flex; flex-wrap:wrap; justify-content:space-between;  width: 100%;}
-.bike-box {display:flex;flex-direction: column; width: 280px; height: 350px; border:1px solid #000; margin:200px 20px 50px 20px;position:relative; overflow:hidden;}
-.bike-box img { position: absolute;top: 40%;left: 50%;transform: translate(-50%, -50%);max-width: 100%;max-height: 100%;}
-.bike-description{margin-top: auto;text-align: center;}
 </style>
 
 	<div id="top_logo">

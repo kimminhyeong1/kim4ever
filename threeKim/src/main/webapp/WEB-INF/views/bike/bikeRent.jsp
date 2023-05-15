@@ -100,19 +100,19 @@ editBtn.addEventListener('click', () => {
             <img src="../resources/bikeimg/전기자전거.jpg" alt="전기자전거">
             <p class="bike-description">전기자전거</p>
             <button class="rent-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentDetail.do'">대여하기</button>
-            </div>
+         </div>
          
          <div class="bike-box">
             <img src="../resources/bikeimg/커플자전거.jpg" alt="커플자전거">
             <p class="bike-description">커플자전거</p>
             <button class="rent-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentDetail.do'">대여하기</button>
-            </div>
+         </div>
          
          <div class="bike-box">
             <img src="../resources/bikeimg/2인자전거.jpg" alt="2인자전거">
             <p class="bike-description">2인자전거</p>
             <button class="rent-btn" onclick="location.href='<%=request.getContextPath()%>/bike/bikeRentDetail.do'">대여하기</button>
-            </div>
+         </div>
          
          <div class="bike-box">
             <img src="../resources/bikeimg/하이브리드 자전거1.jpg" alt="하이브리드1">
