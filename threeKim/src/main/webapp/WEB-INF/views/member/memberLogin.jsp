@@ -54,6 +54,73 @@ h2{text-align: center; margin-top:20px;}
 #content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+function check(){
+    //alert("각 값이 있는지 체크하는 구문을 만들어보세요");
+    var memberId=document.getElementById("memberId");
+	var memberPwd=document.getElementById("memberPwd");
+	var memberPwd2=document.getElementById("memberPwd2");
+	var memberPhone=document.getElementById("memberPhone");
+	var memberEmail=document.getElementById("memberEmail");
+	var memberAddr=document.getElementById("memberAddr");
+	var memberBirth=document.getElementById("memberBirth");
+	
+    var reg_id=/^[a-zA-Z0-9]{4,12}$/; //id 유효성 검사 정규식
+    var reg_pw=/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/; //비밀번호 유효성 검사 정규식
+    var reg_phone=/^\d{3}-\d{3,4}-\d{4}$/; // 휴대폰번호 유효성 검사 정규식
+    var reg_email=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/; // 이메일 유효성 검사 
+    
+ 
+	if(memberId.value==""){
+		alert("아이디를 입력하세요");
+		memberId.focus();
+		return false;
+	};
+	if(!reg_id.test(memberId.value)){
+		alert("아이디는 4~12자리 영문,대소문자,숫자로만 입력하여 주세요.");
+		return false;
+	};
+	
+	if(memberPwd.value==""){
+		alert("비밀번호를 입력하세요.");
+		memberPwd.focus();
+		return false;
+	};
+	
+	var fm=document.frm;
+	//이 경로로 데이터를 감추어서 전송한다
+	fm.action="<%=request.getContextPath()%>/member/memberLoginAction.do"; //
+	fm.method="post";
+	fm.submit(); //전송
+	return;
+};
+
+<%-- function idCheck(){
+//	alert("아이디 체크창입니다.");	
+	let memberId = $("#memberId").val();
+	
+	$.ajax({
+		url: "<%=request.getContextPath()%>/member/memberIdCheck.do",		
+		method: "POST",
+		data: {"memberId": memberId },
+		dataType: "json",
+		success : function(data){	
+			if (data.value =="0"){
+				alert("사용가능한 아이디입니다.");
+				$("#memberIdCheck").val("Y");
+			}else{
+				alert("사용불가한 아이디 입니다");
+			}	
+		},
+		error : function(request,status,error){
+			alert("다시 시도하시기 바랍니다.");		
+		}		
+	});	
+	
+	return;
+} --%>
+</script>
 </head>
 <body>
 <div id="main">
@@ -73,26 +140,26 @@ h2{text-align: center; margin-top:20px;}
 	
 	<tr>
 		<th>
-			<label for="member_id">아이디</label>
+			<label for="memberId">아이디</label>
 		</th>
 	  
 		<td>
-			<input type="text" id="member_id" name="member_id">
+			<input type="text" id="memberId" name="memberId">
 		</td>
 	</tr>
 	  
 	<tr>
 		<th>
-			<label for="member_pw">비밀번호</label>
+			<label for="memberPwd">비밀번호</label>
 		</th>
 		<td>
-			<input type="password" id="pw" name="member_pw">
+			<input type="password" id="pw" name="memberPwd">
 		</td>
 	</tr>
 	
 	<tr>
 		<td colspan="2">
-			<button type="submit">로그인</button>
+			<button type="button" onclick="check();">로그인</button>
 			<button type="button" onclick="location.href='<%=request.getContextPath()%>/member/memberJoin.do'">회원가입</button>
 		</td>
 	</tr>

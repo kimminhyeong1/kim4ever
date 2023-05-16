@@ -1,5 +1,22 @@
 package com.myezen.myapp.service;
 
-public class BoardServiceImpl {
+
+
+
+import org.springframework.stereotype.Service;
+
+
+
+
+@Service("boardServiceImpl")
+public class BoardServiceImpl implements BoardService{
+
+	
+	
+	
+	
+	
+	
+
 
 }

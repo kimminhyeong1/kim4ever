@@ -11,76 +11,14 @@ ${}사용 시 Statement가 생성되고 Statement 매개 변수 값 그대로 �
 but 쿼리주입예방할수없어서 보안 측면에서 불리 -->
 
 
-<sql id="search">
-<if test="searchType != null and searchType.equals('writer')">
-		and writer like '%'||#{keyword}||'%'
-</if>
-
-<if test="searchType != null and searchType.equals('subject')">
-		and  subject like '%'||#{keyword}||'%'
-</if>
-
-</sql>
-
 <select id="boardSelectAll" parameterType="scri" resultType="bv">
 	SELECT * FROM (
 		SELECT ROWNUM AS rnum, A. * FROM(
-		SELECT * FROM board1230 WHERE delYN='N'
+		SELECT * FROM board1234 WHERE delYN='N'
 		<include refid="search" /><!--  =+str+ -->
 		ORDER BY originbidx DESC, depth ASC)A
 		)B WHERE B.rnum BETWEEN (#{page}-1)* #{perPageNum}+1 AND #{page}* #{perPageNum}
 </select>
-
-<select id="boardTotal" parameterType="scri" resultType="int">
-	select count(*) as cnt from board1230 where delyn='N'
-	<include refid="search" />
-</select>
-
-<update id="boardViewCnt" parameterType="int">
-	update board1230 set viewcnt=NVL(viewcnt,0)+1 where bidx = #{bidx}
-</update>
-
-<select id="boardSelectOne" parameterType="int" resultType="bv"> <!-- select하니까 resultType값 필요 -->
-	select * from board1230 where delyn='N' and bidx = #{bidx}
-</select>
-
-<insert id="boardInsert" parameterType="bv">
-	INSERT INTO board1230(bidx,originbidx,depth,level_, subject, contents,writer,ip, midx,pwd,filename) VALUES(bidx_seq.nextval,bidx_seq.nextval,0,0,#{subject},#{contents},#{writer},#{ip},#{midx},#{pwd},#{filename})
-</insert>
-
-<update id="boardModify" parameterType="bv">
-update board1230 set subject=#{subject}, contents=#{contents}, writer=#{writer}, filename=#{filename}, midx=#{midx}, ip=#{ip} where bidx=#{bidx} and pwd=#{pwd}
-</update>
-
-<update id="boardDelete" parameterType="bv">
-update board1230 set delyn='Y' where bidx=#{bidx} and pwd=#{pwd}
-</update>
-
-<update id="boardReplyUpdate" parameterType="HashMap"> <!-- 두개 이상 넘길 때 hashmap 사용하면 됨  -->
-update board1230 set depth=depth+1 where originbidx=#{originbidx} and depth> #{depth}
-</update>
-
-<insert id="boardReplyInsert" parameterType="bv">
-insert into board1230(bidx,originbidx,depth,level_,subject,contents,writer,ip,midx,pwd,filename)
-values(bidx_seq.nextval,#{originbidx},#{depth}+1,#{level_}+1,#{subject},#{contents},#{writer},#{ip},#{midx},#{pwd},#{filename})
-</insert>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

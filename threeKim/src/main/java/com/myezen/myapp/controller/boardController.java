@@ -1,17 +1,25 @@
 package com.myezen.myapp.controller;
 
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.myezen.myapp.domain.BoardVo;
+import com.myezen.myapp.domain.SearchCriteria;
 import com.myezen.myapp.service.BoardService;
 
 @Controller
 @RequestMapping(value="/board")
 public class boardController {
-BoardService bs; //업캐스팅 부모만 지정
+	
 	
 	@RequestMapping(value="/boardList.do")
-	public String boardList() {
+	public String boardList(SearchCriteria scri, Model model) {
+		
+
 		
 		return "board/boardList";
 	}
