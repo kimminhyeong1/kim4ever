@@ -2,13 +2,17 @@ package com.myezen.myapp.controller;
 
 
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.myezen.myapp.domain.MemberVo;
@@ -37,21 +41,44 @@ public class MemberController {
 			@RequestParam("memberId") String memberId,
 			@RequestParam("memberPwd") String memberPwd,
 			@RequestParam("memberName") String memberName,
+			@RequestParam("memberAge") String memberAge,
 			@RequestParam("memberPhone") String memberPhone,
 			@RequestParam("memberEmail") String memberEmail,
-			@RequestParam("memberGender") String memberGender,
-			@RequestParam("memberAddr") String memberAddr,
-			@RequestParam("memberBirth") String memberBirth
+			@RequestParam("memberAddr") String memberAddr
 			) {
 		
 String memberPwd2 = bcryptPasswordEncoder.encode(memberPwd);
 		
-		int value = ms.memberInsert(memberId, memberPwd2, memberName, memberPhone, memberEmail, memberGender, memberAddr, memberBirth);
+		int value = ms.memberInsert(memberId, memberPwd2, memberName, memberAge, memberPhone, memberEmail, memberAddr);
+				
 					
 		return "redirect:/";
 	}
 	
 	
+	@RequestMapping(value="/memberList.do")
+	//value에 안쓰면 둘다 받겠다 get + foward 
+	public String memberList(Model model) {
+		
+		ArrayList<MemberVo> alist = ms.memberList();
+		
+		model.addAttribute("alist",alist); //(model=requestsetattribute)에 담아서 가지고 간다
+		
+		return "member/memberList";
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value="/memberIdCheck.do")
+	public String memberIdCheck(@RequestParam("memberId") String memberId) {
+		String str = null;
+		int value = 0;
+		
+		value = ms.memberIdCheck(memberId);
+		
+		str = "{\"value\":\""+value+"\"}"; //json객체 형태
+		return str; //문자열 말고 json타입의 객체형으로 보내기 위해 str로 넘김 
+	}
 
 	
 	@RequestMapping(value="/memberLogin.do")
@@ -92,13 +119,6 @@ String memberPwd2 = bcryptPasswordEncoder.encode(memberPwd);
 		}
 		
 		return path;	
-	}
-	
-	@RequestMapping(value="/memberList.do")
-	public String memberList() {
-	
-		return "member/memberList";
-		
 	}
 	
 	@RequestMapping(value="/memberMypage.do")

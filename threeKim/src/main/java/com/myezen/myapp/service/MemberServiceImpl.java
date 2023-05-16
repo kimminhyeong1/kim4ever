@@ -22,18 +22,18 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public int memberInsert(String memberId, String memberPwd, String memberName, String memberPhone,
-			String memberEmail, String memberGender, String memberAddr, String memberBirth) {
+	public int memberInsert(String memberId, String memberPwd, String memberName,  String memberAge, String memberPhone,
+			String memberEmail, String memberAddr) {
 		
 		MemberVo mv = new MemberVo();
-		mv.setMemberId(memberId);
+		mv.setMemberid(memberId);
 		mv.setMemberpwd(memberPwd);
 		mv.setMembername(memberName);
+		mv.setMemberage(memberAge);
 		mv.setMemberphone(memberPhone);
 		mv.setMemberemail(memberEmail);
-		mv.setMembergender(memberGender);
 		mv.setMemberaddr(memberAddr);
-		mv.setMemberbirth(memberBirth);
+	
 		
 		int value = msm.memberInsert(mv);
 		

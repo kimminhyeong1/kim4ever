@@ -60,25 +60,10 @@ function check(){
     //alert("각 값이 있는지 체크하는 구문을 만들어보세요");
     var memberId=document.getElementById("memberId");
 	var memberPwd=document.getElementById("memberPwd");
-	var memberPwd2=document.getElementById("memberPwd2");
-	var memberPhone=document.getElementById("memberPhone");
-	var memberEmail=document.getElementById("memberEmail");
-	var memberAddr=document.getElementById("memberAddr");
-	var memberBirth=document.getElementById("memberBirth");
-	
-    var reg_id=/^[a-zA-Z0-9]{4,12}$/; //id 유효성 검사 정규식
-    var reg_pw=/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/; //비밀번호 유효성 검사 정규식
-    var reg_phone=/^\d{3}-\d{3,4}-\d{4}$/; // 휴대폰번호 유효성 검사 정규식
-    var reg_email=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/; // 이메일 유효성 검사 
-    
- 
+
 	if(memberId.value==""){
 		alert("아이디를 입력하세요");
 		memberId.focus();
-		return false;
-	};
-	if(!reg_id.test(memberId.value)){
-		alert("아이디는 4~12자리 영문,대소문자,숫자로만 입력하여 주세요.");
 		return false;
 	};
 	
@@ -96,30 +81,7 @@ function check(){
 	return;
 };
 
-<%-- function idCheck(){
-//	alert("아이디 체크창입니다.");	
-	let memberId = $("#memberId").val();
-	
-	$.ajax({
-		url: "<%=request.getContextPath()%>/member/memberIdCheck.do",		
-		method: "POST",
-		data: {"memberId": memberId },
-		dataType: "json",
-		success : function(data){	
-			if (data.value =="0"){
-				alert("사용가능한 아이디입니다.");
-				$("#memberIdCheck").val("Y");
-			}else{
-				alert("사용불가한 아이디 입니다");
-			}	
-		},
-		error : function(request,status,error){
-			alert("다시 시도하시기 바랍니다.");		
-		}		
-	});	
-	
-	return;
-} --%>
+
 </script>
 </head>
 <body>
@@ -130,9 +92,7 @@ function check(){
 	<div id="content">
 	
 	
-	<form action="memberLoginAction.me" method="post">
-		
-		
+	<form id="frm" name="frm">
 	<table>
 	<tr>
 		<th colspan="2"><h2>로그인</h2></th>
@@ -153,7 +113,7 @@ function check(){
 			<label for="memberPwd">비밀번호</label>
 		</th>
 		<td>
-			<input type="password" id="pw" name="memberPwd">
+			<input type="password" id="memberPwd" name="memberPwd">
 		</td>
 	</tr>
 	

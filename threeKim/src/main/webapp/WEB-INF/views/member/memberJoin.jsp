@@ -64,68 +64,124 @@ input{
 #main #findbutton:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 
 </style>
-<%-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script type="text/javascript">
 
-$(document).ready(function(){
-	//자동실행영역
-}); 
-
-function check(){
+    $(document).ready(function(){
+    });
+    function check(){
+    //alert("각 값이 있는지 체크하는 구문을 만들어보세요");
+    var memberId=document.getElementById("memberId");
+	var memberPwd=document.getElementById("memberPwd");
+	var memberPwd2=document.getElementById("memberPwd2");
+	var memberName=document.getElementById("memberName");
+	var memberAge=document.getElementById("memberAge");
+	var memberPhone=document.getElementById("memberPhone");
+	var memberEmail=document.getElementById("memberEmail");
+	var memberAddr=document.getElementById("memberAddr");
 	
-	if ($("#member_id").val() == ""){
+    var reg_id=/^[a-zA-Z0-9]{4,12}$/; //id 유효성 검사 정규식
+    var reg_pw=/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/; //비밀번호 유효성 검사 정규식
+    var reg_phone=/^\d{3}-\d{3,4}-\d{4}$/; // 휴대폰번호 유효성 검사 정규식
+    var reg_email=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/; // 이메일 유효성 검사 
+    
+ 
+	if(memberId.value==""){
 		alert("아이디를 입력하세요");
-		$("#member_id").focus();
-		return;
-		
-	}else if ($("#member_pw").val() == ""){
-		alert("비밀번호를 입력하세요");
-		$("#member_pw").focus();
-		return;
+		memberId.focus();
+		return false;
+	};
+	
+	if(!reg_id.test(memberId.value)){
+		alert("아이디는 4~12자리 영문,대소문자,숫자로만 입력하여 주세요.");
+		return false;
+	};
+	if(memberPwd.value==""){
+		alert("비밀번호를 입력하세요.");
+		memberPwd.focus();
+		return false;
+	};
+	
+	if(!reg_pw.test(memberPwd.value)){
+		alert("비밀번호는 영문자+숫자+특수문자 조합으로 8~25자리 사용해야 합니다.");
+		memberPwd.focus();
+		return false;
+	};
+	
+	if(memberPwd.value !== memberPwd2.value){
+		alert("비밀번호가 일치하지 않습니다.");
+		memberPwd2.focus();
+		return false;
+	};
 
-	}else if ($("#member_pw2").val() == ""){
-		alert("비밀번호 확인을 입력하세요");
-		$("#member_pw2").focus();
-		return;
-	}else if ($("#member_pw").val() != $("#member_pw2").val()){
-		alert("비밀번호가 일치하지 않습니다");
-		$("#member_pw2").val("");
-		$("#member_pw2").focus();
-		return;
+	if(memberName.value==""){
+		alert("이름을 입력하세요.");
+		memberName.focus();
+		return false;
+	};
+	
+	if(memberPhone.value==""){
+		alert("휴대전화를 입력하세요.");
+		memberPhone.focus();
+		return false;
+	};
+	
+	if(memberAge.value==""){
+		alert("나이를 입력하세요.");
+		memberAge.focus();
+	return false;
+	}; 
+	
+	if(!reg_phone.test(memberPhone.value)){
+		alert("휴대전화는 숫자만 입력할 수 있습니다.")
+		alert("예시에 맞게 입력해주세요.")
+		memberPhone.focus();
+		return false;
+	}
+	if(memberEmail.value==""){
+		alert("이메일을 입력하세요.");
+		memberEmail.focus();
+		return false;
+	};
+	
+	if(!reg_email.test(memberEmail.value)){
+		alert("올바른 이메일 형식이 아닙니다.");
+		alert("예시에 맞게 입력해주세요.")
+		memberEmail.focus();
+		return false;
+	};
+	
+	if(memberAddr.value==""){
+		alert("주소를 입력하세요.");
+		memberAddr.focus();
+	return false;
+	};
 		
-	}else if ($("#member_name").val() == ""){
-		alert("이름을 입력하세요");
-		$("#member_name").focus();
-		return;
 	
-	}else if ($("#member_age").val() == ""){
-		alert("나이를 입력하세요");
-		$("#member_age").focus();
-		return;
 	
-	}else if($("#memberIdCheck").val() != "사용가능"){
+	if($("#memberIdCheck").val() != "사용가능"){
 		alert("아이디 중복체크를 하세요");
-		$("#member_id").focus();
+		$("#memberId").focus();
 	return;
-	}	
+	} 	 
 
 	var fm=document.frm;
 	//이 경로로 데이터를 감추어서 전송한다
-	fm.action="<%=request.getContextPath()%>/memberJoinAction.me"
+	fm.action="<%=request.getContextPath()%>/member/memberJoinAction.do"; //
 	fm.method="post";
 	fm.submit(); //전송
 	return;
-}
+};
 	
 	
 function idCheck(){
 //	alert("아이디 체크창입니다.");	
-	let member_id = $("#member_id").val();
+	let memberId = $("#memberId").val();
 	
 	$.ajax({
-		url: "<%=request.getContextPath()%>/memberIdCheck.me",		
+		url: "<%=request.getContextPath()%>/member/memberIdCheck.do",		
 		method: "POST",
-		data: {"member_id": member_id },
+		data: {"memberId": memberId },
 		dataType: "json",
 		success : function(data){	
 			if (data.value =="0"){
@@ -142,9 +198,8 @@ function idCheck(){
 	
 	return;
 }
-
-
-</script> --%>
+  
+</script>
 
 <script type="text/javascript">
 function autoHyphen2(target) {
@@ -163,7 +218,7 @@ function autoHyphen2(target) {
 
 	<div id="content">
 
-	<form name="frm" id="frm" style="order:1px solid #000;"> 
+	<form name="frm" id="frm"> 
 	
 	<table>
 	
@@ -173,54 +228,54 @@ function autoHyphen2(target) {
   	
   	<tr>
     	<th>
-    		<label for="member_id">아이디</label>
+    		<label for="memberId">아이디</label>
     	</th>
     	
 	    <td>
-	    	<input type="text" id="member_id" name="member_id">
+	    	<input type="text" id="memberId" name="memberId">
 	    </td>
 	    
 	    <td>
-	    	<button type="button">ID 중복 확인</button>
+	    	<button type="button" id="memberIdCheck" name="memberIdCheck" onclick="idCheck();">ID 중복 확인</button>
 	    </td>
  	</tr>
  	
   	<tr>
 	    <th>
-	    	<label for="member_pw">비밀번호</label>
+	    	<label for="memberPwd">비밀번호</label>
 	    </th>
 	    <td>
-	    	<input type="password" id="member_pw" name="member_pw" >
+	    	<input type="password" id="memberPwd" name="memberPwd" >
 	    </td>
 	    <td></td>
   	</tr>
   	
   	<tr>
 	    <th>
-	    	<label for="member_pw2">비밀번호 확인</label>
+	    	<label for="memberPwd2">비밀번호 확인</label>
 	    </th>
 	    <td>
-	    	<input type="password" id="member_pw2" name="member_pw2" >
+	    	<input type="password" id="memberPwd2" name="memberPwd2" >
 	 	</td>
 	 	<td></td>
  	</tr>
  	
     <tr>
 	    <th>
-	    	<label for="member_name">이름</label>
+	    	<label for="memberName">이름</label>
 	    </th>
 	    <td>
-	    	<input type="text" id="member_name" name="member_name">
+	    	<input type="text" id="memberName" name="memberName">
 		</td>
 	  	<td></td>
  	</tr>
  	
  	<tr>
 	    <th>
-	    	<label for="member_age">나이</label>
+	    	<label for="memberAge">나이</label>
 	    </th>
 	    <td>
-	   		<input type="number" id="member_age" name="member_age" min="0">
+	   		<input type="number" id="memberAge" name="memberAge" min="0">
 	  	</td>
 	  	<td></td>
  	</tr>
@@ -229,125 +284,33 @@ function autoHyphen2(target) {
  	
  	<tr>
 	    <th>
-	    	<label for="member_phone">휴대폰번호</label>
+	    	<label for="memberPhone">휴대폰번호</label>
 	    </th>
 	    <td>
-	   		<input type="tel" id="member_phone" name="member_phone" oninput="autoHyphen2(this)" maxlength="13">
+	   		<input type="tel" id="memberPhone" name="memberPhone" oninput="autoHyphen2(this)" maxlength="13">
 	  	</td>
 	  	<td></td>
  	</tr>
  	
  	<tr>
 	    <th>
-	    	<label for="member_email">이메일</label>
+	    	<label for="memberEmail">이메일</label>
 	    </th>
 	    <td>
-	    	<input type="text" id="member_email" name="member_email" maxlength="30">
+	    	<input type="text" id="memberEmail" name="memberEmail" maxlength="30">
 	    </td>
 	    <td></td>
  	</tr>
   	
   	<tr>
 	    <th>
-	    	<label for="member_address">거주지</label>
+	    	<label for="memberAddr">거주지</label>
 	    </th>
 	    <td>	    	
-			<input type="text" id="sample2_address" placeholder="주소"><br>
-			<input type="text" id="sample2_extraAddress" placeholder="지번">
-			<input type="button" id="findbutton" onclick="sample2_execDaumPostcode()" value="우편번호 찾기">
-
-<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
-<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
-<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
-</div>
-
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
-    // 우편번호 찾기 화면을 넣을 element
-    var element_layer = document.getElementById('layer');
-
-    function closeDaumPostcode() {
-        // iframe을 넣은 element를 안보이게 한다.
-        element_layer.style.display = 'none';
-    }
-
-    function sample2_execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                // 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
-
-                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
-                }
-
-                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                if(data.userSelectedType === 'R'){
-                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                        extraAddr += data.bname;
-                    }
-                    // 건물명이 있고, 공동주택일 경우 추가한다.
-                    if(data.buildingName !== '' && data.apartment === 'Y'){
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                    if(extraAddr !== ''){
-                        extraAddr = ' (' + extraAddr + ')';
-                    }
-                    // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("sample2_extraAddress").value = extraAddr;
-                
-                } else {
-                    document.getElementById("sample2_extraAddress").value = '';
-                }
-
-                // 주소 정보를 해당 필드에 넣는다.
-                document.getElementById("sample2_address").value = addr;
-
-                // iframe을 넣은 element를 안보이게 한다.
-                // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
-                element_layer.style.display = 'none';
-            },
-            width : '100%',
-            height : '100%',
-            maxSuggestItems : 5
-        }).embed(element_layer);
-
-        // iframe을 넣은 element를 보이게 한다.
-        element_layer.style.display = 'block';
-
-        // iframe을 넣은 element의 위치를 화면의 가운데로 이동시킨다.
-        initLayerPosition();
-    }
-
-    // 브라우저의 크기 변경에 따라 레이어를 가운데로 이동시키고자 하실때에는
-    // resize이벤트나, orientationchange이벤트를 이용하여 값이 변경될때마다 아래 함수를 실행 시켜 주시거나,
-    // 직접 element_layer의 top,left값을 수정해 주시면 됩니다.
-    function initLayerPosition(){
-        var width = 300; //우편번호서비스가 들어갈 element의 width
-        var height = 400; //우편번호서비스가 들어갈 element의 height
-        var borderWidth = 5; //샘플에서 사용하는 border의 두께
-
-        // 위에서 선언한 값들을 실제 element에 넣는다.
-        element_layer.style.width = width + 'px';
-        element_layer.style.height = height + 'px';
-        element_layer.style.border = borderWidth + 'px solid';
-        // 실행되는 순간의 화면 너비와 높이 값을 가져와서 중앙에 뜰 수 있도록 위치를 계산한다.
-        element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width)/2 - borderWidth) + 'px';
-        element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
-    }
-</script>
+			<input type="text" id="memberAddr" name="memberAddr" placeholder="주소"><br>
+			
 	    </td>
-	    <td></td>
+	   
  	</tr>
  	
   	<tr>

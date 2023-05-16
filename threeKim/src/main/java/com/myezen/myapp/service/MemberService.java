@@ -6,7 +6,7 @@ import com.myezen.myapp.domain.MemberVo;
 
 public interface MemberService {
 
-	public int memberInsert(String memberId, String memberPwd, String memberName, String memberPhone, String memberEmail, String memberGender, String memberAddr, String memberBirth);
+	public int memberInsert(String memberId, String memberPwd, String memberName, String memberAge, String memberPhone, String memberEmail, String memberAddr);
 	
 	public ArrayList<MemberVo> memberList();
 	

@@ -4,21 +4,10 @@
 <!-- 쿼리만드는곳 -->
 <mapper namespace="com.myezen.myapp.persistance.BoardService_Mapper">
 
-<!-- #{}사용 시 PreparedStatement가 생성되고 PreparedStatement 매개 변수 값 안전하게 설정할 수 있다
-
-${}사용 시 Statement가 생성되고 Statement 매개 변수 값 그대로 전달 한다./
-테이블이나 컬럼명을 파라미터로 전달하고 싶을 때 사용,Order by 함수 사용할때 자동 따옴표가 붙으면 함수가 안먹기 때문 ${}를 사용해야한다
-but 쿼리주입예방할수없어서 보안 측면에서 불리 -->
 
 
-<select id="boardSelectAll" parameterType="scri" resultType="bv">
-	SELECT * FROM (
-		SELECT ROWNUM AS rnum, A. * FROM(
-		SELECT * FROM board1234 WHERE delYN='N'
-		<include refid="search" /><!--  =+str+ -->
-		ORDER BY originbidx DESC, depth ASC)A
-		)B WHERE B.rnum BETWEEN (#{page}-1)* #{perPageNum}+1 AND #{page}* #{perPageNum}
-</select>
+
+
 
 
 

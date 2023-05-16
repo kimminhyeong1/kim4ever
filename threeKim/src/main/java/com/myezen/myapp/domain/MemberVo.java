@@ -6,26 +6,24 @@ public class MemberVo {
 	private String memberid;
 	private String memberpwd; 
 	private String membername;
+	private String memberage;
 	private String memberphone;
 	private String memberemail;
-	private String membergender;
-	private String delyn;
-	private String writeday;
-	private String ip;
 	private String memberaddr;
-	private String memberbirth;
+	private String membertype;
+	private String writeday;
 	
 	public int getMidx() {
 		return midx;
 	}
-	public void setMidx(int midx) { 
+	public void setMidx(int midx) {
 		this.midx = midx;
 	}
-	public String getMemberId() {
+	public String getMemberid() {
 		return memberid;
 	}
-	public void setMemberId(String memberId) {
-		this.memberid = memberId;
+	public void setMemberid(String memberid) {
+		this.memberid = memberid;
 	}
 	public String getMemberpwd() {
 		return memberpwd;
@@ -39,6 +37,12 @@ public class MemberVo {
 	public void setMembername(String membername) {
 		this.membername = membername;
 	}
+	public String getMemberage() {
+		return memberage;
+	}
+	public void setMemberage(String memberage) {
+		this.memberage = memberage;
+	}
 	public String getMemberphone() {
 		return memberphone;
 	}
@@ -51,23 +55,17 @@ public class MemberVo {
 	public void setMemberemail(String memberemail) {
 		this.memberemail = memberemail;
 	}
-	public String getMembergender() {
-		return membergender;
+	public String getMemberaddr() {
+		return memberaddr;
 	}
-	public void setMembergender(String membergender) {
-		this.membergender = membergender;
+	public void setMemberaddr(String memberaddr) {
+		this.memberaddr = memberaddr;
 	}
-	public String getMemberbirth() {
-		return memberbirth;
+	public String getMembertype() {
+		return membertype;
 	}
-	public void setMemberbirth(String memberbirth) {
-		this.memberbirth = memberbirth;
-	}
-	public String getDelyn() {
-		return delyn;
-	}
-	public void setDelyn(String delyn) {
-		this.delyn = delyn;
+	public void setMembertype(String membertype) {
+		this.membertype = membertype;
 	}
 	public String getWriteday() {
 		return writeday;
@@ -75,18 +73,5 @@ public class MemberVo {
 	public void setWriteday(String writeday) {
 		this.writeday = writeday;
 	}
-	public String getIp() {
-		return ip;
-	}
-	public void setIp(String ip) {
-		this.ip = ip;
-	}
-	public String getMemberaddr() {
-		return memberaddr;
-	}
-	public void setMemberaddr(String memberaddr) {
-		this.memberaddr = memberaddr;
-	}
-	
 	
 }
