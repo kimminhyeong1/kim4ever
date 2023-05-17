@@ -74,7 +74,7 @@ editBtn.addEventListener('click', () => {
 </head>
 <body>
    <div id="main">
-   <%@include file="../header.jsp" %>
+	<%@include file="../header.jsp" %>
 
    <div id="content">
    

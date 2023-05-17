@@ -67,11 +67,18 @@ li{list-style:none;}
 					<th>삭제</th>
 				</tr>
 			
-				<tr>
-					<td>admin</td>
-					<td>관리자</td>
-					<td>삭제금지</td>
-				</tr>
+				<core:forEach var="i" items="${list }">
+			<tr>
+				<td><a href="memberViewAction.me?member_id=${i.member_id }">${i.member_id }</a></td>
+				<td>${i.member_name }</td>
+				<td align="center">
+					<core:if test="${i.memberId eq 'admin' }">삭제 금지</core:if>
+					<core:if test="${i.memberId ne 'admin' }">
+						<input type="button" value="삭제" style="width:70px; height:30px;"onclick="fnDelete('${i.member_id }')" />
+					</core:if>
+				</td>
+			</tr>
+				</core:forEach>
 				
 				<tr>
 					<td>abcd123</td>

@@ -6,7 +6,7 @@
 
 <insert id="memberInsert" parameterType="mv">
 INSERT INTO member1234(midx,memberId,memberPwd,memberName,memberAge,memberPhone,memberEmail,memberAddr)
-VALUES(midx1_seq.nextval,#{memberid},#{memberpwd},#{membername},#{memberage},#{memberphone},#{memberemail},#{memberaddr})
+VALUES(midx_seq.nextval,#{memberid},#{memberpwd},#{membername},#{memberage},#{memberphone},#{memberemail},#{memberaddr})
 </insert>
 
 

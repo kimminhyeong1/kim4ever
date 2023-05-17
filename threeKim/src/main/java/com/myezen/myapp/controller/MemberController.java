@@ -121,6 +121,16 @@ String memberPwd2 = bcryptPasswordEncoder.encode(memberPwd);
 		return path;	
 	}
 	
+	@RequestMapping(value="/memberLogout.do")
+	public String memberLogout(HttpSession session) {
+		
+		session.removeAttribute("midx");
+		session.removeAttribute("memberName");
+		session.invalidate(); //세션을 없애고 세션에 속해있는 값들을 모두 없앤다
+		
+		return "redirect:/";
+	}
+	
 	@RequestMapping(value="/memberMypage.do")
 	public String memberMypage() {
 	
