@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.myezen.myapp.domain.BoardVo;
+import com.myezen.myapp.domain.PageMaker;
 import com.myezen.myapp.domain.SearchCriteria;
 import com.myezen.myapp.service.BoardService;
 
@@ -15,19 +17,36 @@ import com.myezen.myapp.service.BoardService;
 @RequestMapping(value="/board")
 public class boardController {
 	
+	@Autowired
+	BoardService bs;
+	
+	@Autowired(required=false)
+	PageMaker pm;
 	
 	@RequestMapping(value="/boardList.do")
 	public String boardList(SearchCriteria scri, Model model) {
 		
-
+		int totalCount = bs.boardTotal(scri);
+		pm.setScri(scri);
+		pm.setTotalCount(totalCount);
+		
+		ArrayList<BoardVo> blist = bs.boardSelectAll(scri);
+		
+		model.addAttribute("blist", blist);
+		model.addAttribute("pm", pm);
 		
 		return "board/boardList";
 	}
 	
 	@RequestMapping(value="/boardNoticeContent.do")
-	public String boardNoticeContent() {
+	public String boardContents(@RequestParam("bidx") int bidxInt, Model model) {
 		
-		return "board/boardNoticeContent";
+		int value = bs.boardViewCnt(bidxInt);
+		BoardVo bv = bs.boardSelectOne(bidxInt);
+		
+		model.addAttribute("bv", bv);
+		
+		return "board/boardContents";
 	}
 	
 	@RequestMapping(value="/boardQnaContent.do")

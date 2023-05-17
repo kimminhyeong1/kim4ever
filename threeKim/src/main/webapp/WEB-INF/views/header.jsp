@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <style>
 /*리셋코드*/
 *{margin:0;padding:0;}
 li{list-style:none;}
 
 /*사이드메뉴바, 로고, 로그인버튼*/
-#top_logo{width:1440px; height:200px; text-align:center;}
-#top_logo .logo{display:inline-block; text-align:center;}
+#top_logo{width:1440px; height:200px; text-align:center; position:relative;}
+#top_logo .logo{display:inline-block; text-align:center; position:absolute; left:45.5%; top:50%; transform:translate(-50%, -50%);}
 #top_logo .logo img{width:200px; height:240px; margin-left:140px; cursor:pointer;transition: all 0.3s ease-in-out;}
 #top_logo .login {display:flex;justify-content:flex-end;float:right;}
 #top_logo .login ul {display:flex;list-style:none;margin:0;padding:0;}
@@ -23,13 +24,13 @@ li{list-style:none;}
 .main-nav-left:hover > .sub-menu{height: 100%;/*사이드바 높이*/width: 450px;/* background: #F7F7F7; */  border:1px solid #999; border-left: 0; overflow: hidden}
 
 /*사이드바 내부*/
-.sub-menu-list {display:flex; flex-direction:column; align-items:left; margin-left:30px; clear:both; }
-.sub-menu-list img{width:200px; height: auto;}
-.sub-menu-list li {width:450px; border-bottom:1px solid #f5f5f5; padding-top: 120px; font-family: 'GangwonEdu_OTFBoldA';}
-.sub-menu-list li:first-child {width: 450px;border-bottom: 2px solid orange; padding-top: 120px;}
+.sub-menu-list {display:flex; flex-direction:column; align-items:left; margin-left:30px; clear:both;}
+.sub-menu-list li {width:450px; border-bottom:1px solid #f5f5f5; padding-top:40px; font-family:'GangwonEdu_OTFBoldA';}
 .sub-menu-list li a{color:#000; text-decoration:none; font-weight:bold; font-size: 21px;}
 .sub-menu-list li p{color:#000; text-decoration:none; font-weight:bold; font-size: 21px;}
 .sub-menu-list li:hover a {color:#999;text-shadow:none;}
+.sub-menu-list li:first-child {width:450px;border-bottom: 2px solid #ff9933; }
+.sub-menu-list li:nth-child(7){width:450px; border-bottom:2px solid #99CC99; }
 
 /*사이드바 내부 상단 로그인,회원가입*/
 .sub-menu .top-login {display:flex;justify-content:space-between;align-items:center;background-color:#f5f5f5;padding:10px;margin-bottom:10px;}
@@ -51,14 +52,20 @@ li{list-style:none;}
 		<a href="#" class="top-menu"><img src="${pageContext.request.contextPath}/resources/logo/menu.png"></a><!-- SHOP - 서브메뉴 생성 -->        
 			<div class="sub-menu">
 				<div class="top-login">
-					
-					<a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a>
-					<a href="<%=request.getContextPath() %>/member/memberJoin.do">회원가입</a> 
+				<% if(session.getAttribute("memberName") != null) { %>
+		           <a href="<%=request.getContextPath()%>/member/memberMypage.do"><%= session.getAttribute("memberName") %>님</a>
+		           <a href="<%=request.getContextPath() %>/member/memberLogOut.do">로그아웃</a>
+		        <% } else { %>
+		           <a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a>
+		           <a href="<%=request.getContextPath() %>/member/memberJoin.do">회원가입</a>
+		        <% } %> 
+				
 				</div>
 
 				<ul class ="sub-menu-list">
+				
 					<li>
-						<p>김가네 님</p>
+						<p>자전거 대여</p>
 					</li>
 					
 					<li>
@@ -68,6 +75,7 @@ li{list-style:none;}
 					<li>
 						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/rent/rentHistory.do'">대여내역</span></a>
 					</li>
+					
 					
 					<li>
 						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/member/memberList.do'">회원관리</span></a>
@@ -80,6 +88,30 @@ li{list-style:none;}
 					<li>
 						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">공지사항</span></a>
 					</li>
+					
+					<li>
+						<p>자전거 소모임</p>
+					</li>
+					
+					<li>
+						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/'">나의 소모임</span></a>
+					</li>
+					
+					<li>
+						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/'">내가 찜한 소모임</span></a>
+					</li>
+					
+					<li>
+						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/'">소모임 검색</span></a>
+					</li>
+					
+					<li>
+						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/'">근처모임</span></a>
+					</li>
+					
+					<li>
+						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/'">회원관리</span></a>
+					</li>
 				</ul>
 			</div>
 	</div>
@@ -87,24 +119,18 @@ li{list-style:none;}
 		<h1><img src="${pageContext.request.contextPath}/resources/logo/logo6.jpg" alt="타:바" onclick="location.href='<%=request.getContextPath()%>/index.jsp'"/></h1>
 		</div>
 		<div class="login">
-			    <ul>
-			        <%--  <% if(session.getAttribute("midx") != null) {
-			            int midx = Integer.parseInt(session.getAttribute("midx").toString());
-			            out.println("<li>회원번호:" + midx + "</li>");
-			            String memberName = (String) session.getAttribute("memberName");
-			            out.println("<li>회원이름:" + memberName + "</li>");
-			        %>
-			            <li><a href="<%=request.getContextPath() %>/member/memberLogOut.do">로그아웃</a></li>
-			        <% } else { %>
-			            <li><a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a></li>
-			            <li><a href="<%=request.getContextPath() %>/member/memberJoin.do">회원가입</a></li>
-			        <% } %> --%>
-			  
-     			<li><a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a></li>
-				<li><a href="<%=request.getContextPath() %>/member/memberJoin.do">회원가입</a></li>
-				<li><a href="<%=request.getContextPath() %>/member/memberLogOut.do">로그아웃</a></li>
-    		</ul>
+    		<ul>
+		        <% if(session.getAttribute("memberName") != null) { %>
+		            <li style="margin-top:10px;"><%= session.getAttribute("memberName") %>님이 로그인 하셨습니다.</li>
+		            <li><a href="<%=request.getContextPath() %>/member/memberLogOut.do">로그아웃</a></li>
+		        <% } else { %>
+		            <li><a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a></li>
+		            <li><a href="<%=request.getContextPath() %>/member/memberJoin.do">회원가입</a></li>
+		        <% } %> 
+		    </ul>
 		</div>
+     			
+    	
 	</div>
 	
 	

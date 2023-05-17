@@ -2,8 +2,12 @@ package com.myezen.myapp.controller;
 
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,15 +59,7 @@ String memberPwd2 = bcryptPasswordEncoder.encode(memberPwd);
 		return "redirect:/";
 	}
 	
-	private String getAddressPostcode(String address) {
-	    // TODO: 다음 우편번호 API 호출하여 주소로부터 우편번호를 얻어오는 로직 작성
-	    // 다음 우편번호 API를 사용하여 address를 파라미터로 전달하고, 우편번호를 얻어와서 반환
-	    // 반환된 우편번호를 ms.memberInsert 메서드에 전달
-
-	    // 여기에 다음 우편번호 API 호출 및 처리하는 코드 작성
-
-	    return ""; // 우편번호 반환
-	}
+	
 	
 	
 	@RequestMapping(value="/memberList.do")
@@ -76,7 +72,7 @@ String memberPwd2 = bcryptPasswordEncoder.encode(memberPwd);
 		
 		return "member/memberList";
 	}
-	
+
 	
 	@ResponseBody
 	@RequestMapping(value="/memberIdCheck.do")
@@ -98,6 +94,7 @@ String memberPwd2 = bcryptPasswordEncoder.encode(memberPwd);
 		
 	}
 	
+	
 	@RequestMapping(value="/memberLoginAction.do")
 	public String memberLoginAction(
 			@RequestParam("memberId")String memberId,
@@ -111,8 +108,8 @@ String memberPwd2 = bcryptPasswordEncoder.encode(memberPwd);
 		
 		if(mv!=null && bcryptPasswordEncoder.matches(memerPwd, mv.getMemberpwd()) ) {
 			//loginInterceptor에서 set에 담고있기 때문에 set-->rttr로 바꿔줌
-			rttr.addAttribute("midx",mv.getMidx());
-			rttr.addAttribute("memberName",mv.getMembername());
+			//rttr은 페이지를 벗어나면 사라짐, session으로 담아줘야 유지 됨
+			session.setAttribute("memberName", mv.getMembername());
 			
 			if(session.getAttribute("dest") == null) {
 				path = "redirect:/";	
@@ -140,6 +137,7 @@ String memberPwd2 = bcryptPasswordEncoder.encode(memberPwd);
 		
 		return "redirect:/";
 	}
+	
 	
 	@RequestMapping(value="/memberMypage.do")
 	public String memberMypage() {

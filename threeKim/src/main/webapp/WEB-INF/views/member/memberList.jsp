@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import = "com.myezen.myapp.domain.*" %>
+<%@page import = "java.util.*" %>    
+<%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+ArrayList<MemberVo> alist = (ArrayList<MemberVo>)request.getAttribute("alist");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,15 +44,16 @@ li{list-style:none;}
 #content table {width:60%; border-collapse:collapse; margin:60px auto 0; line-height:60px; font-size:20px;font-family:'omyu_pretty'; font-size:24px;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
-#content table tr th:nth-child(1){width: 40px;}
-#content table tr th:nth-child(2){width: 20px;}
-#content table tr th:nth-child(3){width: 20px;}
+#content table tr th:nth-child(1){width:20px;}
+#content table tr th:nth-child(2){width:40px;}
+#content table tr th:nth-child(3){width:40px;}
+#content table tr th:nth-child(4){width:60px;}
 #content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 
 </style>
 <script type="text/javascript">
-	function fnDelete() {
+	function fnDelete(memberId) {
 		if(confirm("정말 삭제하시겠습니까?")) {
 			location.href='<%=request.getContextPath()%>/member/memberList.do';
 		}
@@ -62,47 +69,30 @@ li{list-style:none;}
 		<h2>회원 리스트</h2>
 		<table>
 				<tr>
+					<th>회원번호</th>
 					<th>아이디</th>
 					<th>이름</th>
+					<th>가입일</th>
 					<th>삭제</th>
 				</tr>
+				<%for(MemberVo mv : alist){ %>
+				<tr>
+					<td><%=mv.getMidx() %></td>
+					<td><%=mv.getMemberid() %></td>
+					<td><%=mv.getMembername() %></td>
+					<td><%=mv.getWriteday() %></td>
+					<td>
+					<% if (mv.getMemberid().equals("admin")) { %>
+						삭제금지
+					<% } else { %>
+						<button type="button" onclick="fnDelete();">삭제</button>
+					<% } %>		
+					</td>
+				</tr>
+				<%} %>
+				
+				
 			
-				<core:forEach var="i" items="${list }">
-			<tr>
-				<td><a href="memberViewAction.me?member_id=${i.member_id }">${i.member_id }</a></td>
-				<td>${i.member_name }</td>
-				<td align="center">
-					<core:if test="${i.memberId eq 'admin' }">삭제 금지</core:if>
-					<core:if test="${i.memberId ne 'admin' }">
-						<input type="button" value="삭제" style="width:70px; height:30px;"onclick="fnDelete('${i.member_id }')" />
-					</core:if>
-				</td>
-			</tr>
-				</core:forEach>
-				
-				<tr>
-					<td>abcd123</td>
-					<td>김장군</td>
-					<td align="center">
-					<button type="button" onclick="fnDelete();">삭제</button>
-					</td>
-				</tr>
-				
-				<tr>
-					<td>zzcd123</td>
-					<td>김진상</td>
-					<td align="center">
-					<button type="button">삭제</button>
-					</td>
-				</tr>
-				
-				<tr>
-					<td>dfcd123</td>
-					<td>김두목</td>
-					<td align="center">
-					<button type="button">삭제</button>
-					</td>
-				</tr>
 			
 		</table>
 		

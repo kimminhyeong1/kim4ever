@@ -13,5 +13,8 @@ public interface MemberService {
 	public int memberIdCheck(String memberId);
 	
 	public MemberVo memberLogin(String memberId);
+
+		
+
 	
 }

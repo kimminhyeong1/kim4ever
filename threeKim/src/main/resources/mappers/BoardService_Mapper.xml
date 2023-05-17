@@ -4,11 +4,34 @@
 <!-- 쿼리만드는곳 -->
 <mapper namespace="com.myezen.myapp.persistance.BoardService_Mapper">
 
+<sql id="search">
+<if test="searchType != null and searchType.equals('writer')">
+		and writer like '%'||#{keyword}||'%'
+</if>
 
+<if test="searchType != null and searchType.equals('subject')">
+		and  subject like '%'||#{keyword}||'%'
+</if>
 
+</sql>
 
+<select id="boardSelectAll" parameterType="scri" resultType="bv">
+	SELECT * FROM (
+		SELECT ROWNUM AS rnum, A. * FROM(
+		SELECT * FROM board1230 WHERE delYN='N'
+		<include refid="search" /><!--  =+str+ -->
+		ORDER BY originbidx DESC, depth ASC)A
+		)B WHERE B.rnum BETWEEN (#{page}-1)* #{perPageNum}+1 AND #{page}* #{perPageNum}
+</select>
 
+<select id="boardTotal" parameterType="scri" resultType="int">
+	select count(*) as cnt from board1230 where delyn='N'
+	<include refid="search" />
+</select>
 
+<select id="boardSelectOne" parameterType="int" resultType="bv"> <!-- select하니까 resultType값 필요 -->
+	select * from board1230 where delyn='N' and bidx = #{bidx}
+</select>
 
 
 </mapper>

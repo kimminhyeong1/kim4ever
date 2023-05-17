@@ -45,7 +45,7 @@ li{list-style:none;}
 #main #content .box p {font-size: 14px; width: 277px; height: 35px; margin-top: 20px; margin-bottom: 10px; overflow: hidden; display: -webkit-box;
   -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-height: 1.2;  text-overflow: ellipsis;}
 .loc{font-size:14px;}
-#main #content button{width:100%; height:40px; margin-top:100px;text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}
+#main #content button{width:100%; height:40px; margin-top:100px;text-align:center; font-family:'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}
 #main #content button:active {background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
 </head>

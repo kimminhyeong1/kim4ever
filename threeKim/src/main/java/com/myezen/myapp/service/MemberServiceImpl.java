@@ -62,5 +62,7 @@ public class MemberServiceImpl implements MemberService {
 		MemberVo mv = msm.memberLogin(memberId);
 		return mv;
 	}
+	
+
 
 }

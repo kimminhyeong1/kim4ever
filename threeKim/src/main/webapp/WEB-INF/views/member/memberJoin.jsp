@@ -44,7 +44,7 @@ h2{text-align: center; margin-top:20px;}
 #content table tr:last-child td{text-align:center;}
 #content table tr:last-child td input{display:inline-block; width:120px; height:50px;}
 #content table th{width:150px;text-align:center;}
-#memberIdCheck {padding:5px 10px; font-size:14px; width:120px; height:50px; }
+#content table #memberIdCheck {padding:5px 10px; font-size:21px; width:120px; height:50px; }
 #content table 
 input{
   font-family: 'omyu_pretty';
