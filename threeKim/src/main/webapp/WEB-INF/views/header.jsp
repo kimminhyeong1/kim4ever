@@ -87,33 +87,28 @@ li{list-style:none;}
 		<h1><img src="${pageContext.request.contextPath}/resources/logo/logo6.jpg" alt="타:바" onclick="location.href='<%=request.getContextPath()%>/index.jsp'"/></h1>
 		</div>
 		<div class="login">
-		<ul>	
-			<%-- <li>	
-			<% if(session.getAttribute("midx")!= null){
-				int midx = Integer.parseInt(session.getAttribute("midx").toString());
-				out.println("회원번호:"+midx);
-				String memberName = (String)session.getAttribute("memberName");
-				out.println("회원이름:"+memberName);
-			%> 
-				<a href="<%=request.getContextPath() %>/member/memberLogout.do">로그아웃</a>
-			<%
-			}else{
-			%>
-				<a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a>
-				<a href="<%=request.getContextPath() %>/member/memberJoin.do">회원가입</a>
-			<%
-			}
-			%>
-			</li> --%>
-			<li><a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a></li>
-			<li><a href="<%=request.getContextPath() %>/member/memberJoin.do">회원가입</a></li>
-			<li><a href="<%=request.getContextPath() %>/member/memberLogout.do">로그아웃</a></li>
-		</ul>
+			    <ul>
+			        <%--  <% if(session.getAttribute("midx") != null) {
+			            int midx = Integer.parseInt(session.getAttribute("midx").toString());
+			            out.println("<li>회원번호:" + midx + "</li>");
+			            String memberName = (String) session.getAttribute("memberName");
+			            out.println("<li>회원이름:" + memberName + "</li>");
+			        %>
+			            <li><a href="<%=request.getContextPath() %>/member/memberLogOut.do">로그아웃</a></li>
+			        <% } else { %>
+			            <li><a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a></li>
+			            <li><a href="<%=request.getContextPath() %>/member/memberJoin.do">회원가입</a></li>
+			        <% } %> --%>
+			  
+     			<li><a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a></li>
+				<li><a href="<%=request.getContextPath() %>/member/memberJoin.do">회원가입</a></li>
+				<li><a href="<%=request.getContextPath() %>/member/memberLogOut.do">로그아웃</a></li>
+    		</ul>
 		</div>
 	</div>
 	
 	
-
+			
 	
 	<div id="menu">
 		<p onclick="location.href='<%=request.getContextPath()%>/bike/bikeRent.do'">자전거 대여</p>

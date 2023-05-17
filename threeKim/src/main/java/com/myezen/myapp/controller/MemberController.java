@@ -121,7 +121,7 @@ String memberPwd2 = bcryptPasswordEncoder.encode(memberPwd);
 		return path;	
 	}
 	
-	@RequestMapping(value="/memberLogout.do")
+	@RequestMapping(value="/memberLogOut.do")
 	public String memberLogout(HttpSession session) {
 		
 		session.removeAttribute("midx");
