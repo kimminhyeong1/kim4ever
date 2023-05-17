@@ -303,15 +303,27 @@ function autoHyphen2(target) {
  	</tr>
   	
   	<tr>
-	    <th>
-	    	<label for="memberAddr">거주지</label>
-	    </th>
-	    <td>	    	
-			<input type="text" id="memberAddr" name="memberAddr" placeholder="주소"><br>
-			
-	    </td>
-	   
- 	</tr>
+    <th>
+        <label for="memberAddr">거주지</label>
+    </th>
+    <td>
+        <input type="text" id="memberAddr" name="memberAddr" placeholder="주소"><br>
+        <input type="button" onclick="openAddressPopup()" value="주소 검색">
+    </td>
+</tr>
+
+<!-- 다음 우편번호 API 스크립트 -->
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    function openAddressPopup() {
+        new daum.Postcode({
+            oncomplete: function (data) {
+                // 선택된 주소를 주소 입력란에 채우기
+                document.getElementById('memberAddr').value = data.address;
+            }
+        }).open();
+    }
+</script>
  	
   	<tr>
 		<td colspan="3">
