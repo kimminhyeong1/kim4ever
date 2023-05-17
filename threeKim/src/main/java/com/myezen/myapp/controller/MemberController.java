@@ -55,6 +55,16 @@ String memberPwd2 = bcryptPasswordEncoder.encode(memberPwd);
 		return "redirect:/";
 	}
 	
+	private String getAddressPostcode(String address) {
+	    // TODO: 다음 우편번호 API 호출하여 주소로부터 우편번호를 얻어오는 로직 작성
+	    // 다음 우편번호 API를 사용하여 address를 파라미터로 전달하고, 우편번호를 얻어와서 반환
+	    // 반환된 우편번호를 ms.memberInsert 메서드에 전달
+
+	    // 여기에 다음 우편번호 API 호출 및 처리하는 코드 작성
+
+	    return ""; // 우편번호 반환
+	}
+	
 	
 	@RequestMapping(value="/memberList.do")
 	//value에 안쓰면 둘다 받겠다 get + foward 
