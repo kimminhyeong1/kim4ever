@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-<%@ page session="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
-<title>Home</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 <style>
 /*리셋코드*//*5.12  12.33*/
 
@@ -48,43 +48,20 @@ li{list-style:none;}
 .rent-btn{display:block; width:100px; height:30px; padding:0; margin:10px 80px 15px 80px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 .rent-btn:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
-<!-- <script type="text/javascript">
-//버튼 요소 가져오기
-const rentBtn = document.querySelector('.rent-btn');
-const editBtn = document.querySelector('.edit-btn'); 
-
-// 일반 사용자인 경우 대여하기 버튼만 보이게 하기
-if (userType === 'normal') {
-  editBtn.style.display = 'none';
-} 
-// 관리자인 경우 작성 페이지 버튼만 보이게 하기
-else if (userType === 'admin') {
-  rentBtn.style.display = 'none';
-  editBtn.style.display = 'block';
-}
-
-// 버튼 클릭 시 페이지 이동
-rentBtn.addEventListener('click', () => {
-  window.location.href = '상세페이지 URL';
-});
-
-editBtn.addEventListener('click', () => {
-  window.location.href = '작성페이지 URL';
-});
-</script> -->
 </head>
-<body>
-   <div id="main">
-	<%@include file="../header.jsp" %>
 
-   <div id="content">
+<body>
+	<div id="main">
+	<%@include file="../header.jsp" %>
+	   
+	<div id="content">
    
          <div class="bike-rules">
             <h2>자전거 이용 수칙</h2>
             <p>1. 자전거 이용시간은 오전9시부터 오후10시까지입니다.</p>
             <p>2. 자전거 이용 시 안전수칙을 준수하시고 음주 시 이용이 불가합니다. </p>
             <p>3. 대여는 5개의 대여소에서 가능하며, 반납은 빌린곳과 무관하게 <br>&nbsp;&nbsp;&nbsp;어느 대여소에서든 가능합니다.</p>
-            <p>4.자전거 고장/이용 문의는 대여내역에서 신고 접수 부탁드립니다! </p>
+            <p>4. 자전거 고장/이용 문의는 대여내역에서 신고 접수 부탁드립니다! </p>
          </div>
    
    
@@ -167,11 +144,20 @@ editBtn.addEventListener('click', () => {
       </section>
    
    </div>
-    
+   
+   
    <div id="bottom">
    <%@include file="../bottom.jsp" %>
    </div>
 </div>
 </body>
+<script type="text/javascript">
+function autoHyphen2(target) {
+	  target.value = target.value
+	    .replace(/[^0-9]/g, '')
+	    .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3")
+	    .replace(/(\-{1,2})$/g, "");
+	}
+</script>
 <%@include file="../footer.jsp" %>
 </html>
