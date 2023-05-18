@@ -83,7 +83,7 @@ li{list-style:none;}
 					
 					<% String membertype = (String) pageContext.findAttribute("membertype"); %>
 
-					<% if (membertype != null && membertype.equals("A")) { %>
+					<% if (membertype != null && membertype.equals("관리자")) { %>
 					<li>
                         <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/member/memberList.do'">회원관리</span></a>
                     </li>

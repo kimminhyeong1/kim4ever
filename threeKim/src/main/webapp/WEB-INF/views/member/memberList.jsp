@@ -46,8 +46,9 @@ li{list-style:none;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
 #content table tr th:nth-child(1){width:20px;}
 #content table tr th:nth-child(2){width:40px;}
-#content table tr th:nth-child(3){width:40px;}
-#content table tr th:nth-child(4){width:60px;}
+#content table tr th:nth-child(3){width:60px;}
+#content table tr th:nth-child(4){width:40px;}
+#content table tr th:nth-child(5){width:30px;}
 #content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 
@@ -55,7 +56,7 @@ li{list-style:none;}
 <script type="text/javascript">
 	function fnDelete(memberId) {
 		if(confirm("정말 삭제하시겠습니까?")) {
-			location.href='<%=request.getContextPath()%>/member/memberList.do';
+			location.href='<%=request.getContextPath()%>/member/delete.do';
 		}
 	}
 </script>
@@ -72,7 +73,7 @@ li{list-style:none;}
 					<th>아이디</th>
 					<th>이름</th>
 					<th>가입일</th>
-					<th>사용자</th>
+					<th>등급</th>
 					<th>삭제</th>
 				</tr>
 				<%for(MemberVo mv : alist){ %>
@@ -82,7 +83,7 @@ li{list-style:none;}
 					<td><%=mv.getWriteday() %></td>
 					<td><%=mv.getMembertype() %></td>
 					<td>
-					<% if (mv.getMembertype().equals("A")) { %>
+					<% if (mv.getMembertype().equals("관리자")) { %>
 						삭제금지
 					<% } else { %>
 						<button type="button" onclick="fnDelete();">삭제</button>
