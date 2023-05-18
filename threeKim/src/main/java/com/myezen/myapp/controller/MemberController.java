@@ -1,13 +1,8 @@
 package com.myezen.myapp.controller;
 
 
-
-import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,7 +97,8 @@ String memberPwd2 = bcryptPasswordEncoder.encode(memberPwd);
 			@RequestParam("memberId")String memberId,
 			@RequestParam("memberPwd")String memerPwd,
 			HttpSession session,
-			RedirectAttributes rttr //담는 용도
+			RedirectAttributes rttr, //담는 용도
+			Model model
 			) {
 		
 		MemberVo mv = ms.memberLogin(memberId);
@@ -111,6 +107,8 @@ String memberPwd2 = bcryptPasswordEncoder.encode(memberPwd);
 		if(mv!=null && bcryptPasswordEncoder.matches(memerPwd, mv.getMemberpwd()) ) {
 			//rttr은 페이지를 벗어나면 사라짐, session으로 담아줘야 유지 됨
 			session.setAttribute("memberName", mv.getMembername());
+			session.setAttribute("membertype", mv.getMembertype());
+			model.addAttribute("membertype", mv.getMembertype());
 			
 			if(session.getAttribute("dest") == null) {
 				path = "redirect:/";	
@@ -119,6 +117,8 @@ String memberPwd2 = bcryptPasswordEncoder.encode(memberPwd);
 				
 				path = "redirect:"+dest;
 			}
+			
+			
 			
 		}else {
 			rttr.addFlashAttribute("msg", "아이디와 비밀번호를 확인 해 주세요.");//일회성 메세지

@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% String msg = "";
+if (request.getAttribute("msg") != null){
+msg = (String)request.getAttribute("msg");
+}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,6 +61,13 @@ h2{text-align: center; margin-top:20px;}
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script type="text/javascript">
+
+$(document).ready(function(){  //자동실행
+	var msg ="<%=msg%>";
+	if(msg !== ""){
+		alert(msg);
+	}
+});
 function check(){
     //alert("각 값이 있는지 체크하는 구문을 만들어보세요");
     var memberId=document.getElementById("memberId");
@@ -80,7 +92,6 @@ function check(){
 	fm.submit(); //전송
 	return;
 };
-
 
 </script>
 </head>
@@ -116,6 +127,7 @@ function check(){
 			<input type="password" id="memberPwd" name="memberPwd">
 		</td>
 	</tr>
+	
 	
 	<tr>
 		<td colspan="2">

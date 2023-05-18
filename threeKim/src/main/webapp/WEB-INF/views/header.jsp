@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="com.myezen.myapp.domain.*" %>
+<%@page import = "com.myezen.myapp.domain.*" %>
 
 <style>
 /*리셋코드*/
@@ -80,14 +80,18 @@ li{list-style:none;}
 						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/rent/rentHistory.do'">대여내역</span></a>
 					</li>
 					
-				
-					<li>
-						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/member/memberList.do'">회원관리</span></a>
-					</li>
 					
+					<% String membertype = (String) pageContext.findAttribute("membertype"); %>
+
+					<% if (membertype != null && membertype.equals("A")) { %>
 					<li>
-						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/rent/rentFaultList.do'">신고내역</span></a>
-					</li>
+                        <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/member/memberList.do'">회원관리</span></a>
+                    </li>
+                    
+                    <li>
+                        <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/rent/rentFaultList.do'">신고내역</span></a>
+                    </li>
+                	<% } %>
 				
 					<li>
 						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">공지사항</span></a>
