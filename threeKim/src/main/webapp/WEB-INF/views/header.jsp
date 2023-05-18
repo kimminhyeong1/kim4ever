@@ -52,15 +52,16 @@ li{list-style:none;}
 		<a href="#" class="top-menu"><img src="${pageContext.request.contextPath}/resources/logo/menu.png"></a><!-- SHOP - 서브메뉴 생성 -->        
 			<div class="sub-menu">
 				<div class="top-login">
-				<% if(session.getAttribute("memberName") != null) { %>
-		           <a href="<%=request.getContextPath()%>/member/memberMypage.do"><%= session.getAttribute("memberName") %>님</a>
-		           <a href="<%=request.getContextPath() %>/member/memberLogOut.do">로그아웃</a>
-		        <% } else { %>
-		           <a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a>
-		           <a href="<%=request.getContextPath() %>/member/memberJoin.do">회원가입</a>
-		        <% } %> 
-				
-				</div>
+            <% if(session.getAttribute("memberName") != null) { %>
+                 <a href="<%=request.getContextPath()%>/member/memberMypage.do"><%= session.getAttribute("memberName") %>님</a>
+                 <a href="<%=request.getContextPath() %>/member/memberLogOut.do">로그아웃</a>
+              <% } else { %>
+                 <a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a>
+                 <a href="<%=request.getContextPath() %>/member/memberJoin.do">회원가입</a>
+              <% } %> 
+            
+            </div>
+
 
 				<ul class ="sub-menu-list">
 				
@@ -120,7 +121,7 @@ li{list-style:none;}
 		</div>
 		<div class="login">
     		<ul>
-		        <% if(session.getAttribute("memberName") != null) { %>
+		      <% if(session.getAttribute("memberName") != null) { %>
 		            <li style="margin-top:10px;"><%= session.getAttribute("memberName") %>님이 로그인 하셨습니다.</li>
 		            <li><a href="<%=request.getContextPath() %>/member/memberLogOut.do">로그아웃</a></li>
 		        <% } else { %>

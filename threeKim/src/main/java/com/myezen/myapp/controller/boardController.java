@@ -24,27 +24,16 @@ public class boardController {
 	PageMaker pm;
 	
 	@RequestMapping(value="/boardList.do")
-	public String boardList(SearchCriteria scri, Model model) {
+	public String boardList() {
 		
-		int totalCount = bs.boardTotal(scri);
-		pm.setScri(scri);
-		pm.setTotalCount(totalCount);
-		
-		ArrayList<BoardVo> blist = bs.boardSelectAll(scri);
-		
-		model.addAttribute("blist", blist);
-		model.addAttribute("pm", pm);
 		
 		return "board/boardList";
 	}
 	
 	@RequestMapping(value="/boardNoticeContent.do")
-	public String boardContents(@RequestParam("bidx") int bidxInt, Model model) {
+	public String boardContents() {
 		
-		int value = bs.boardViewCnt(bidxInt);
-		BoardVo bv = bs.boardSelectOne(bidxInt);
 		
-		model.addAttribute("bv", bv);
 		
 		return "board/boardContents";
 	}

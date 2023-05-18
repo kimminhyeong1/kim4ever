@@ -107,7 +107,6 @@ String memberPwd2 = bcryptPasswordEncoder.encode(memberPwd);
 		String path="";
 		
 		if(mv!=null && bcryptPasswordEncoder.matches(memerPwd, mv.getMemberpwd()) ) {
-			//loginInterceptor에서 set에 담고있기 때문에 set-->rttr로 바꿔줌
 			//rttr은 페이지를 벗어나면 사라짐, session으로 담아줘야 유지 됨
 			session.setAttribute("memberName", mv.getMembername());
 			
