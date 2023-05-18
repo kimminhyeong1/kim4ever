@@ -26,7 +26,7 @@ li{list-style:none;}
 .sub-menu-list {display:flex; flex-direction:column; align-items:left; margin-left:30px; clear:both; }
 .sub-menu-list li {width:450px; border-bottom:1px solid #f5f5f5; padding-top:40px; font-family:'GangwonEdu_OTFBoldA';}
 .sub-menu-list li a{color:#000; text-decoration:none; font-weight:bold; font-size: 21px;}
-.sub-menu-list li p{color:#000; text-decoration:none; font-weight:bold; font-size: 21px;}
+.sub-menu-list li p{color:#000; text-decoration:none; font-weight:bold; font-size: 25px;}
 .sub-menu-list li:hover a {color:#999;text-shadow:none;}
 .sub-menu-list li:first-child {width:450px;border-bottom: 2px solid #ff9933; }
 .sub-menu-list li:nth-child(7){width:450px; border-bottom:2px solid #99CC99; }
@@ -114,7 +114,7 @@ li{list-style:none;}
 		<div class="login">
 			<ul>
 		        <% if(session.getAttribute("memberName") != null) { %>
-		            <li style="margin-top:10px;"><%= session.getAttribute("memberName") %>님이 로그인 하셨습니다.</li>
+		            <li style="margin-top:10px;"><%= session.getAttribute("memberName") %>님</li>
 		            <li><a href="<%=request.getContextPath() %>/member/memberLogOut.do">로그아웃</a></li>
 		        <% } else { %>
 		            <li><a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a></li>

@@ -12,7 +12,7 @@ public class MemberVo {
 	private String memberaddr;
 	private String membertype;
 	private String writeday;
-	
+
 	public int getMidx() {
 		return midx;
 	}

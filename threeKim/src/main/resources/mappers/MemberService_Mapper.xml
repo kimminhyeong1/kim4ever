@@ -11,7 +11,7 @@ VALUES(midx_seq.nextval,#{memberid},#{memberpwd},#{membername},#{memberage},#{me
 
 
 <select id="memberList" resultType="mv">
-select midx,memberid,membername,memberage,delyn,writeday from member1234 order by midx desc
+select memberid,membername,memberage,delyn,writeday,membertype from member1234 order by memberType asc
 </select>
 
 <select id="memberIdCheck" parameterType="String" resultType="int">

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="com.myezen.myapp.domain.*" %>
 
 <style>
 /*리셋코드*/
@@ -26,11 +27,12 @@ li{list-style:none;}
 /*사이드바 내부*/
 .sub-menu-list {display:flex; flex-direction:column; align-items:left; margin-left:30px; clear:both;}
 .sub-menu-list li {width:450px; border-bottom:1px solid #f5f5f5; padding-top:40px; font-family:'GangwonEdu_OTFBoldA';}
-.sub-menu-list li a{color:#000; text-decoration:none; font-weight:bold; font-size: 21px;}
-.sub-menu-list li p{color:#000; text-decoration:none; font-weight:bold; font-size: 21px;}
+.sub-menu-list li a{color:#000; text-decoration:none; font-weight:bold; font-size:21px;}
+.sub-menu-list li p{color:#000; text-decoration:none; font-weight:bold; font-size:25px;}
 .sub-menu-list li:hover a {color:#999;text-shadow:none;}
-.sub-menu-list li:first-child {width:450px;border-bottom: 2px solid #ff9933; }
-.sub-menu-list li:nth-child(7){width:450px; border-bottom:2px solid #99CC99; }
+.sub-menu-list #bike{width:450px; border-bottom: 2px solid #ff9933;}
+.sub-menu-list #gathering{width:450px; border-bottom:2px solid #99CC99;}
+
 
 /*사이드바 내부 상단 로그인,회원가입*/
 .sub-menu .top-login {display:flex;justify-content:space-between;align-items:center;background-color:#f5f5f5;padding:10px;margin-bottom:10px;}
@@ -61,12 +63,18 @@ li{list-style:none;}
               <% } %> 
             
             </div>
-
+            
+				<% MemberVo mv;%>
+				
+				<%
+				mv = new MemberVo();
+				mv.setMembertype("A");
+				%>
 
 				<ul class ="sub-menu-list">
-				
+					
 					<li>
-						<p>자전거 대여</p>
+						<p id="bike">자전거 대여</p>
 					</li>
 					
 					<li>
@@ -77,7 +85,7 @@ li{list-style:none;}
 						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/rent/rentHistory.do'">대여내역</span></a>
 					</li>
 					
-					
+					<%if(mv.getMembertype().equals("A")){ %>
 					<li>
 						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/member/memberList.do'">회원관리</span></a>
 					</li>
@@ -85,13 +93,13 @@ li{list-style:none;}
 					<li>
 						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/rent/rentFaultList.do'">신고내역</span></a>
 					</li>
-					
+					<%} %>
 					<li>
 						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">공지사항</span></a>
 					</li>
 					
 					<li>
-						<p>자전거 소모임</p>
+						<p id="gathering">자전거 소모임</p>
 					</li>
 					
 					<li>
@@ -114,15 +122,17 @@ li{list-style:none;}
 						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/'">회원관리</span></a>
 					</li>
 				</ul>
+				
 			</div>
 	</div>
+
 		<div class="logo" style="display:inline-block;">
 		<h1><img src="${pageContext.request.contextPath}/resources/logo/logo6.jpg" alt="타:바" onclick="location.href='<%=request.getContextPath()%>/index.jsp'"/></h1>
 		</div>
 		<div class="login">
     		<ul>
 		      <% if(session.getAttribute("memberName") != null) { %>
-		            <li style="margin-top:10px;"><%= session.getAttribute("memberName") %>님이 로그인 하셨습니다.</li>
+		            <li style="margin-top:10px;"><%= session.getAttribute("memberName") %>님</li>
 		            <li><a href="<%=request.getContextPath() %>/member/memberLogOut.do">로그아웃</a></li>
 		        <% } else { %>
 		            <li><a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a></li>
@@ -144,3 +154,4 @@ li{list-style:none;}
 		<p onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">게시판</p>
 		<p onclick="location.href='<%=request.getContextPath()%>/bike/bikeGathering.do'">자전거 모임</p>
 	</div>
+	

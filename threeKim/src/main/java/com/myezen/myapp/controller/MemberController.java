@@ -49,6 +49,8 @@ public class MemberController {
 			@RequestParam("memberPhone") String memberPhone,
 			@RequestParam("memberEmail") String memberEmail,
 			@RequestParam("memberAddr") String memberAddr
+			
+
 			) {
 		
 String memberPwd2 = bcryptPasswordEncoder.encode(memberPwd);
@@ -144,6 +146,8 @@ String memberPwd2 = bcryptPasswordEncoder.encode(memberPwd);
 		return "member/memberMypage";
 		
 	}
+	
+	
 	
 	
 	

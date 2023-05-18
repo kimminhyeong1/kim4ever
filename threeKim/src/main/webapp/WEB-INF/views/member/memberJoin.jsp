@@ -102,11 +102,11 @@ input{
 		return false;
 	};
 	
-	if(!reg_pw.test(memberPwd.value)){
+	/* if(!reg_pw.test(memberPwd.value)){
 		alert("비밀번호는 영문자+숫자+특수문자 조합으로 8~25자리 사용해야 합니다.");
 		memberPwd.focus();
 		return false;
-	};
+	}; */
 	
 	if(memberPwd.value !== memberPwd2.value){
 		alert("비밀번호가 일치하지 않습니다.");

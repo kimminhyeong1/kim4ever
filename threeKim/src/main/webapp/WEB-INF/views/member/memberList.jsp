@@ -69,20 +69,20 @@ li{list-style:none;}
 		<h2>회원 리스트</h2>
 		<table>
 				<tr>
-					<th>회원번호</th>
 					<th>아이디</th>
 					<th>이름</th>
 					<th>가입일</th>
+					<th>사용자</th>
 					<th>삭제</th>
 				</tr>
 				<%for(MemberVo mv : alist){ %>
 				<tr>
-					<td><%=mv.getMidx() %></td>
 					<td><%=mv.getMemberid() %></td>
 					<td><%=mv.getMembername() %></td>
 					<td><%=mv.getWriteday() %></td>
+					<td><%=mv.getMembertype() %></td>
 					<td>
-					<% if (mv.getMemberid().equals("admin")) { %>
+					<% if (mv.getMembertype().equals("A")) { %>
 						삭제금지
 					<% } else { %>
 						<button type="button" onclick="fnDelete();">삭제</button>
@@ -90,10 +90,6 @@ li{list-style:none;}
 					</td>
 				</tr>
 				<%} %>
-				
-				
-			
-			
 		</table>
 		
 	</div>
