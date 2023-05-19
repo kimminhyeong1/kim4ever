@@ -14,6 +14,14 @@ public interface BoardService_Mapper {
 	public int boardViewCnt(int bidx);
 	
 	public BoardVo boardSelectOne(int bidx);
+
+	public int boardInsert(BoardVo bv);
+
+	public int boardModify(BoardVo bv);
+
+	public int boardDelete(BoardVo bv);
+
+	public int boardReply(BoardVo bv);
 	
 
 }

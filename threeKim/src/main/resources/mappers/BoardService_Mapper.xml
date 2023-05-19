@@ -30,8 +30,21 @@
 </select>
 
 <select id="boardSelectOne" parameterType="int" resultType="bv"> <!-- select하니까 resultType값 필요 -->
-	select * from board1230 where delyn='N' and bidx = #{bidx}
+	select * from board1234 where delyn='N' and bidx = #{bidx}
 </select>
+
+<update id="boardView" parameterType="int">
+  UPDATE board1234 SET viewcnt = NVL(viewcnt, 0) + 1 WHERE bidx = #{bidx}
+</update>
+
+
+<insert id="boardInsert" parameterType="bv">
+  INSERT INTO board1234(bidx, midx, boardType, writer, writeday, subject, content, boardView, delYN, fileUpload)
+  VALUES (bidx_seq.nextval, #{midx}, #{boardType}, #{writer}, SYSDATE, #{subject}, #{content}, #{boardView}, #{delYN}, #{fileUpload})
+</insert>
+
+
+
 
 
 </mapper>
