@@ -46,7 +46,7 @@ li{list-style:none;}
 #bottom{width:1440px; height:300px; }
 
 </style>
-
+<header>
 	<div id="top_logo">
 	<div class = main-nav-left> 
 		<a href="#" class="top-menu"><img src="${pageContext.request.contextPath}/resources/logo/menu.png"></a><!-- SHOP - 서브메뉴 생성 -->        
@@ -134,3 +134,4 @@ li{list-style:none;}
 		
 		
 	</div>
+</header>

@@ -68,7 +68,7 @@ cursor:pointer;
 <body>
 <div id="main">
 	
-	<%@include file="../header.jsp" %>
+	<%@include file="../header2.jsp" %>
 
 	<div id="content">
 
@@ -84,16 +84,7 @@ cursor:pointer;
 	 <label>소모임 최대 멤버 수</label>
      <input type="number"/>
      </p>
-      
-      <p>
-	 <label>소모임 장소</label>
-     <input type="text"/>
-     </p>
-     
-     <p>
-	 <label>날짜</label>     
-	 <input type="date">    
-	 </p>
+
 	 
      <p>
 	 <label>소모임 소개</label>

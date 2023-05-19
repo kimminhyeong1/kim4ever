@@ -28,22 +28,8 @@ MemberService ms; //업캐스팅 부모만 지정
 		return "bike/bikeRentWrite";
 	}
 	
-	@RequestMapping(value="/bikeGathering.do")
-	public String bikeGathering() {
-		
-		return "bike/bikeGathering";
-	}
+
+
 	
-	@RequestMapping(value="/bikeGatheringWrite.do")
-	public String bikeGatheringWrite() {
-		
-		return "bike/bikeGatheringWrite";
-	}
-	
-	@RequestMapping(value="/bikeGatheringContent.do")
-	public String bikeGatheringContent() {
-		
-		return "bike/bikeGatheringContent";
-	}
 }
 
