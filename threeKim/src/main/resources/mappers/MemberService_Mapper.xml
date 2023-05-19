@@ -27,4 +27,17 @@
 	select * from member1234 where delyn='N' and memberid=#{memberId}
 	</select>
 
+
+<delete id="deleteMember" parameterType="String">
+delete from member1234 WHERE memberid=#{memberId}
+</delete>
+
+<!-- <select id="getMemberInfo" resultType="mv">
+SELECT * FROM member1234 WHERE memberid = #{memberId}
+</select> -->
+
+<select id="getMemberInfo" parameterType="int" resultType="mv">
+SELECT * FROM member1234 WHERE midx = #{midx}
+</select>
+    
 </mapper>

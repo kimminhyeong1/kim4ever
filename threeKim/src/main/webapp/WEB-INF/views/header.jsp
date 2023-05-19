@@ -74,7 +74,7 @@ header{width: 1440px;margin: 35px auto 70px;text-align: center;}
 					</li>
 					
 					<li>
-						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/member/memberMypage.do'">회원정보 수정</span></a>
+						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/member/memberMypage.do'">마이페이지</span></a>
 					</li>
 					
 					<li>

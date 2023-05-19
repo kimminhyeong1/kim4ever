@@ -1,10 +1,16 @@
 package com.myezen.myapp.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD:threeKim/src/main/java/com/myezen/myapp/service/MemberServiceImpl.java
 import org.springframework.mail.javamail.JavaMailSender;
+=======
+import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer.MvcMatchersAuthorizedUrl;
+>>>>>>> 병수:threeKim/java/com/myezen/myapp/service/MemberServiceImpl.java
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,23 +19,28 @@ import com.myezen.myapp.persistance.MemberService_Mapper;
 import com.myezen.myapp.util.MailHandler;
 import com.myezen.myapp.util.TempKey;
 
-@Service("memberServiceImpl")
+@Service("MemberServiceImpl")
 public class MemberServiceImpl implements MemberService {
 
 	
 	private MemberService_Mapper msm;
-	
-	//SqlSession sqlSession mybatis 객체 참조 변수
+	//SqlSession : PreparedStatement와 표현 방법이 다를뿐 같은 기능을 한다.
+	//Autowired : 메모리에 올려둔 주소들이 자동으로 연결 됨
+
 	@Autowired
 	public MemberServiceImpl(SqlSession sqlSession) {
 		this.msm = sqlSession.getMapper(MemberService_Mapper.class);
 	}
 
 	
+<<<<<<< HEAD:threeKim/src/main/java/com/myezen/myapp/service/MemberServiceImpl.java
 	@Autowired
 	JavaMailSender mailSender;//email-context.xml 이메일객체
 
     //회원가입
+=======
+	
+>>>>>>> 병수:threeKim/java/com/myezen/myapp/service/MemberServiceImpl.java
 	@Override
 	public int memberInsert(String memberId, String memberPwd, String memberName,  String memberAge, String memberPhone,
 			String memberEmail, String memberAddr) {
@@ -130,6 +141,48 @@ public class MemberServiceImpl implements MemberService {
 		MemberVo mv = msm.memberLogin(memberId);
 		return mv;
 	}
+<<<<<<< HEAD:threeKim/src/main/java/com/myezen/myapp/service/MemberServiceImpl.java
+=======
+
+
+	@Override
+	public void deleteMember(String memberId) {
+		System.out.println("memberId"+memberId);
+		msm.deleteMember(memberId);
+		
+	}
+
+
+	@Override
+	public MemberVo getMemberInfo(int midx) {
+	  
+	    MemberVo mv = new MemberVo();
+	   
+
+	    return mv;
+	}
+
+
+
+	
+
+	
+
+
+
+	
+	
+	
+
+	
+
+	
+
+
+
+	
+
+>>>>>>> 병수:threeKim/java/com/myezen/myapp/service/MemberServiceImpl.java
 
 	//회원리스트
 	@Override

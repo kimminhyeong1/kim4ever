@@ -28,8 +28,17 @@ public interface MemberService {
 //로그인에서 비밀번호찾기에서 비밀번호 재설정
 	public int memberPwdReset(String memberPwd,String memberId, String memberName, String memberEmail, String mailKey);	
 
+<<<<<<< HEAD:threeKim/src/main/java/com/myezen/myapp/service/MemberService.java
 		
 //회원리스트
 	public ArrayList<MemberVo> memberList();
+=======
+	public void deleteMember(String memberId);
+	
+	public MemberVo getMemberInfo(int midx);
+
+>>>>>>> 병수:threeKim/java/com/myezen/myapp/service/MemberService.java
+	
+	
 	
 }

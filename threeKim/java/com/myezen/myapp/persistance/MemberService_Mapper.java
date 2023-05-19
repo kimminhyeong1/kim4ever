@@ -13,6 +13,7 @@ public interface MemberService_Mapper {
 	public int memberEmailCheck(String memberEmail);
 //로그인	
 	public MemberVo memberLogin(String memberId);
+<<<<<<< HEAD:threeKim/src/main/java/com/myezen/myapp/persistance/MemberService_Mapper.java
 //로그인에서 아이디찾기에서 인증번호보내기
 	//1.인증번호 DB에 담기,이메일이랑 같이
 	public int memberMailAuthSave(String mailKey,String memberEmail);//인증번호 생성해서 나온 인증키
@@ -31,4 +32,10 @@ public interface MemberService_Mapper {
 	public int memberPwdReset(String memberPwd,String memberId, String memberName, String memberEmail);
 //회원리스트	
 	public ArrayList<MemberVo> memberList();
+=======
+	
+	public void deleteMember(String memberId);
+	
+	public MemberVo getMemberInfo(int midx);
+>>>>>>> 병수:threeKim/java/com/myezen/myapp/persistance/MemberService_Mapper.java
 }

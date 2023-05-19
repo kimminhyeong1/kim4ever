@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import = "com.myezen.myapp.domain.*" %>
-<%@page import = "java.util.*" %>  
-
-
+<%@ page import="com.myezen.myapp.domain.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +38,7 @@ li{list-style:none;}
 h2{text-align: center; margin-top:20px;}
 #content table {width:60%; border-collapse:collapse; border:1px solid #ddd; margin: 60px auto 0; text-align:center;  line-height:100px; font-family:'omyu_pretty'; font-size:24px;}
 #content table th{width:150px; text-align:center; border:1px solid #ddd; padding:8px;}
-#content table td{border:1px solid #ddd; padding:8px; text-align:left;}
+#content table td{border:1px solid #ddd;padding:8px;text-align:left;}
 #content table td:nth-child(1){width:120px;text-align:center;}
 #content table td:nth-child(2){width:400px; text-align:left;}
 #content table tr:last-child td input{display: inline-block; width:120px; height:50px;}
@@ -55,7 +52,8 @@ input{
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-#content table button{width:160px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+
+#content table button{width:180px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
 <script type="text/javascript">
@@ -90,45 +88,51 @@ function fnSubmit() {
 		 <tr>
 		    <th colspan="2"><h2>회원정보</h2></th>
 		  </tr>
-		  		
 				<tr>
 					<th>아이디</th>
-					<td>${memberId}</td>
+					<td>${mv.memberId}</td>
 				</tr>
 				
 				<tr>
 					<th>비밀번호</th>
-					<td>${memberPwd}</td>
+					<td><input type="password" name=""></td>
 				</tr>
 				
 				<tr>
 					<th>이름</th>
-					<td>${memberName}</td>
+					<td><input type="text" name=""></td>
 				</tr>
 				
 				<tr>
 					<th>나이</th>
-					<td>${memberAge}</td>
+					<td><input type="number" name=""></td>
 				</tr>
 				
 				<tr>
 					<th>휴대폰번호</th>
-					<td>${memberPhone}</td>
+					<td><input type="tel" name="" oninput="autoHyphen2(this)" maxlength="13"></td>
 				</tr>
 				
 				<tr>
 					<th>이메일</th>
-					<td>${memberEmail}</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<button type="button" onclick="location.href='<%=request.getContextPath()%>/member/memberUpdate.do'">회원정보 수정하기</button>
-					</td>		
+					<td><input type="text" name=""></td>
 				</tr>
 				
-
+				<tr>
+					<td colspan="2">
+						<button type="submit">수정하기</button>
+						<button type="reset">초기화하기</button>
+						<button type="button">취소하기</button>
+					</td>
+					
+					
+				</tr>
+				
 		</table>
+	
+
 	</div>
+	
 	
 	<div id="bottom">	
 	
