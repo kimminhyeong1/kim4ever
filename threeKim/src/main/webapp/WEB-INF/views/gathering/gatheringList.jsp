@@ -20,13 +20,14 @@ li{list-style:none;}
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
-}
+}	
 @font-face {
     font-family: 'KCC-Ganpan';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
+#header{width:1440px; margin:35px auto 70px; text-align:center;}
 #main{width:1440px; margin:35px auto 70px; text-align:center;}
 #main #content{width:1440px; height:2400px; border:1px solid #000; }
 #main #bottom{width:1440px; height:300px; border:1px solid #000;}
@@ -50,8 +51,13 @@ li{list-style:none;}
 </style>
 </head>
 <body>
-<div id="main">
+
+<div id="header">
 <%@include file="../header2.jsp" %>
+</div>
+
+<div id="main">
+
   
 	<div id="content">
 	
@@ -64,13 +70,13 @@ li{list-style:none;}
 		</div>
 	
 		<div id="gatheringList">
-		<h2>자전거 모임</h2>
+		<h2>내 모임</h2>
 		<div class="box">
 		<img src="../resources/bikeimg/bike.jpg" alt="Image 1">
 		<h3>바이크어썸</h3>
 		<p>자전거를 사랑하는 전주인들의 모임입니다!</p>
 		<div class="loc">지역 : 덕진구</div>
-		<button onclick="location.href='<%=request.getContextPath()%>/bike/bikeGatheringContent.do'">구경하기</button>
+		<button onclick="location.href='<%=request.getContextPath()%>/gathering/gatheringContent.do'">들어가기</button>
 		</div>
 		
 		<div class="box">
@@ -78,7 +84,7 @@ li{list-style:none;}
 		<h3>헬로사이클</h3>
 		<p>2~30대 자전거 모임입니다</p>
 		<div class="loc">지역 : 송천동</div>
-		<button onclick="location.href='<%=request.getContextPath()%>/bike/bikeGatheringContent.do'">구경하기</button>
+		<button onclick="location.href='<%=request.getContextPath()%>/gathering/gatheringContent.do'">상세 정보</button>
 		</div>
 		
 		<div class="box">
@@ -86,7 +92,7 @@ li{list-style:none;}
 		<h3>빠리로</h3>
 		<p>자전거타고 맛집도 다니고~</p>
 		<div class="loc">지역 : 평화동</div>
-		<button onclick="location.href='<%=request.getContextPath()%>/bike/bikeGatheringContent.do'">구경하기</button>
+		<button onclick="location.href='<%=request.getContextPath()%>/gathering/gatheringContent.do'">구경하기</button>
 		</div>
 		
 		<div class="box">
@@ -94,7 +100,7 @@ li{list-style:none;}
 		<h3>바이크먹방</h3>
 		<p>자전거보다 먹방에 진심!</p>
 		<div class="loc">지역 : 효자동</div>
-		<button onclick="location.href='<%=request.getContextPath()%>/bike/bikeGatheringContent.do'">구경하기</button>
+		<button onclick="location.href='<%=request.getContextPath()%>/gathering/gatheringContent.do'">자세히 보기</button>
 		</div>
 		
 		<div class="box">
@@ -102,7 +108,7 @@ li{list-style:none;}
 		<h3>자전거에미친사람들</h3>
 		<p>자미사입니다~~</p>
 		<div class="loc">지역 : 중앙동</div>
-		<button onclick="location.href='<%=request.getContextPath()%>/bike/bikeGatheringContent.do'">구경하기</button>
+		<button onclick="location.href='<%=request.getContextPath()%>/gathering/gatheringContent.do'">구경하기</button>
 		</div>
 		
 		<div class="box">
@@ -110,7 +116,7 @@ li{list-style:none;}
 		<h3>타자전거</h3>
 		<p>라이딩 초보들 대환영!</p>
 		<div class="loc">지역 : 완산구</div>
-		<button onclick="location.href='<%=request.getContextPath()%>/bike/bikeGatheringContent.do'">구경하기</button>
+		<button onclick="location.href='<%=request.getContextPath()%>/gathering/gatheringContent.do'">구경하기</button>
 		</div>
 		
 		<div class="box">
@@ -118,7 +124,7 @@ li{list-style:none;}
 		<h3>효자동바이커</h3>
 		<p>자전거를 좋아하는 효자동 사람들입니다~</p>
 		<div class="loc">지역 : 삼천동</div>
-		<button onclick="location.href='<%=request.getContextPath()%>/bike/bikeGatheringContent.do'">구경하기</button>
+		<button onclick="location.href='<%=request.getContextPath()%>/gathering/gatheringContent.do'">구경하기</button>
 		</div>
 		
 		<div class="box">
@@ -126,13 +132,24 @@ li{list-style:none;}
 		<h3>덕진구바이커</h3>
 		<p>자전거를 좋아하는 덕진구 사람들입니다~</p>
 		<div class="loc">지역 : 평화동</div>
-		<button onclick="location.href='<%=request.getContextPath()%>/bike/bikeGatheringContent.do'">구경하기</button>
+		<button onclick="location.href='<%=request.getContextPath()%>/gathering/gatheringContent.do'">구경하기</button>
 		</div>
  		</div>
- 		<button onclick="location.href='<%=request.getContextPath()%>/bike/bikeGatheringWrite.do'">모임만들기</button>
+ 		
+ 	<button onclick="location.href='<%=request.getContextPath()%>/gathering/gatheringCreate.do'">모임만들기</button>
+    
+    </div>    
+ 		
+ 		
+ 		
+
+ 				
+ 			
+ 		
+ 		
 	</div>
 
-        
+    
 
 	
 	 
