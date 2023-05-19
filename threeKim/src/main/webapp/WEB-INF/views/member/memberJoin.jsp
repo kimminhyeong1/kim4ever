@@ -272,7 +272,7 @@
 					
 						 try {		
 							var url = '${pageContext.request.contextPath}/member/memberJoinEmailCheck.do';
-							var param = [{ name: "mEmail", value: email }];			
+							var param = [{ name: "memberEmail", value: email }];			
 				
 							$.ajax({
 								url: url,
@@ -390,32 +390,6 @@
 					return true;
 				});
 				//!휴대폰체크!end
-				//!생년월일체크!
-				$("#memberBirth").blur(function(){
-					var birth = document.getElementById("memberBirth").value;
-					var oMsg = document.getElementById("birthMsg");
-					var oMsgC = document.getElementById("birthMsgCheck");
-					
-					birthFlag = false;
-					
-					var isBirth = /^(19[0-9][0-9]|20\d{2})(0[0-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/;
-					if(!isBirth.test(birth)){
-						oMsg.style.display = "block";
-						oMsg.style.color = "red";
-						oMsg.className = "ability_chk";
-						oMsg.innerHTML = "생년월일을 정확히 입력해 주세요.";
-						return false;
-					}
-
-					if (true) {
-						oMsg.style.display = "none";	
-						birthFlag = true;
-						return true;
-					}
-				
-					return true;
-				});
-				//!생년월일체크!end
 
 				
 				
@@ -445,10 +419,6 @@
 					}
 					if (!phoneFlag) {
 						alert("휴대폰 번호 입력이 잘못 되었습니다.");
-						return false;
-					}
-					if (!birthFlag) {
-						alert("생년월일 입력이 잘못 되었습니다.");
 						return false;
 					}
 			
@@ -638,7 +608,7 @@
 		<main id="main">
 			<div id="content">
 	
-			<form name="frm" id="frm">
+			<form name="frm" id="frm" method="post">
 			<div id="login_out">
 				<table>
 					<tbody> 
