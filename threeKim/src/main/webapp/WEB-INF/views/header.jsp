@@ -6,7 +6,8 @@
 /*리셋코드*/
 *{margin:0;padding:0;}
 li{list-style:none;}
-
+/*헤더부분 영역*/
+header{width: 1440px;margin: 35px auto 70px;text-align: center;}
 /*사이드메뉴바, 로고, 로그인버튼*/
 #top_logo{width:1440px; height:200px; text-align:center; position:relative;}
 #top_logo .logo{display:inline-block; text-align:center; position:absolute; left:45.5%; top:50%; transform:translate(-50%, -50%);}
@@ -48,24 +49,24 @@ li{list-style:none;}
 #bottom{width:1440px; height:300px; }
 
 </style>
-
+<header>
 	<div id="top_logo">
 	<div class = main-nav-left> 
 		<a href="#" class="top-menu"><img src="${pageContext.request.contextPath}/resources/logo/menu.png"></a><!-- SHOP - 서브메뉴 생성 -->        
 			<div class="sub-menu">
 				<div class="top-login">
-            <% if(session.getAttribute("memberName") != null) { %>
-                 <a href="<%=request.getContextPath()%>/member/memberMypage.do"><%= session.getAttribute("memberName") %>님</a>
-                 <a href="<%=request.getContextPath() %>/member/memberLogOut.do">로그아웃</a>
-              <% } else { %>
-                 <a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a>
-                 <a href="<%=request.getContextPath() %>/member/memberJoin.do">회원가입</a>
-              <% } %> 
-            
-            </div>
-            
+	           <% if(session.getAttribute("memberName") != null) { %>
+	                <a href="<%=request.getContextPath()%>/member/memberMypage.do"><%= session.getAttribute("memberName") %>님</a>
+	                <a href="<%=request.getContextPath() %>/member/memberLogOut.do">로그아웃</a>
+	             <% } else { %>
+	                <a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a>
+	                <a href="<%=request.getContextPath() %>/member/memberJoin.do">회원가입</a>
+	             <% } %> 
+	           
+	           </div>
+	           
 				
-
+	
 				<ul class ="sub-menu-list">
 					
 					<li>
@@ -73,7 +74,7 @@ li{list-style:none;}
 					</li>
 					
 					<li>
-						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/member/memberMypage.do'">회원정보 수정</span></a>
+						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/member/memberMypage.do'">마이페이지</span></a>
 					</li>
 					
 					<li>
@@ -82,16 +83,16 @@ li{list-style:none;}
 					
 					
 					<% String membertype = (String) pageContext.findAttribute("membertype"); %>
-
+	
 					<% if (membertype != null && membertype.equals("관리자")) { %>
 					<li>
-                        <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/member/memberList.do'">회원관리</span></a>
-                    </li>
-                    
-                    <li>
-                        <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/rent/rentFaultList.do'">신고내역</span></a>
-                    </li>
-                	<% } %>
+	                       <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/member/memberList.do'">회원관리</span></a>
+	                   </li>
+	                   
+	                   <li>
+	                       <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/rent/rentFaultList.do'">신고내역</span></a>
+	                   </li>
+	               	<% } %>
 				
 					<li>
 						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">공지사항</span></a>
@@ -124,12 +125,12 @@ li{list-style:none;}
 				
 			</div>
 	</div>
-
+	
 		<div class="logo" style="display:inline-block;">
 		<h1><img src="${pageContext.request.contextPath}/resources/logo/logo6.jpg" alt="타:바" onclick="location.href='<%=request.getContextPath()%>/index.jsp'"/></h1>
 		</div>
 		<div class="login">
-    		<ul>
+	   		<ul>
 		      <% if(session.getAttribute("memberName") != null) { %>
 		            <li style="margin-top:10px;"><%= session.getAttribute("memberName") %>님</li>
 		            <li><a href="<%=request.getContextPath() %>/member/memberLogOut.do">로그아웃</a></li>
@@ -139,8 +140,8 @@ li{list-style:none;}
 		        <% } %> 
 		    </ul>
 		</div>
-     			
-    	
+	    			
+	   	
 	</div>
 	
 	
@@ -151,6 +152,7 @@ li{list-style:none;}
 		<p onclick="location.href='<%=request.getContextPath()%>/rent/rentLocation.do'">대여소 위치</p>
 		<p onclick="location.href='<%=request.getContextPath()%>/course/courseIntro.do'">코스 소개</p>
 		<p onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">게시판</p>
-		<p onclick="location.href='<%=request.getContextPath()%>/bike/bikeGathering.do'">자전거 모임</p>
+		<p onclick="location.href='<%=request.getContextPath()%>/gathering/gatheringList.do'">자전거 모임</p>
 	</div>
+</header>
 	
