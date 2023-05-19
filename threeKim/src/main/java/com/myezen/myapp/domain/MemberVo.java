@@ -1,15 +1,15 @@
 package com.myezen.myapp.domain;
 			
-public class MemberVo {
+public class MemberVo {//회원 테이블
 
-	private int midx;
-	private String memberid;
-	private String memberpwd; 
-	private String membername;
-	private String memberage;
-	private String memberphone;
-	private String memberemail;
-	private String memberaddr;
+	private int midx; //회원번호
+	private String memberid; //회원 아이디
+	private String memberpwd; //회원 비밀번호
+	private String membername; //회원 이름
+	private String memberage; //회원 나이
+	private String memberphone; //회원 핸드폰번호
+	private String memberemail; //회원 이메일
+	private String memberaddr; //회원 주소
 	private String membertype;
 	private String writeday;
 

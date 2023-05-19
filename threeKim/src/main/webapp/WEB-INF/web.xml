@@ -9,6 +9,7 @@
 		<param-value>
 			classpath:config/root-context.xml
 			classpath:config/security.xml
+			classpath:config/email-context.xml
 			<!-- /WEB-INF/spring/root-context.xml -->
 		</param-value><!-- bean(스프링 객체생성하기 위한 객체)을 등록하기위한 파일 -->
 	</context-param>

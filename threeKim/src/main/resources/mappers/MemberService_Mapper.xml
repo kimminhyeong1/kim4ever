@@ -3,23 +3,28 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 쿼리만드는곳 -->
 <mapper namespace="com.myezen.myapp.persistance.MemberService_Mapper">
+	<!-- 회원가입 -->
+	<insert id="memberInsert" parameterType="mv">
+		INSERT INTO member1234(midx,memberId,memberPwd,memberName,memberAge,memberPhone,memberEmail,memberAddr)
+		VALUES(midx_seq.nextval,#{memberid},#{memberpwd},#{membername},#{memberage},#{memberphone},#{memberemail},#{memberaddr})
+	</insert>
+	<!-- 회원가입 아이디중복체크 -->
+	<select id="memberIdCheck" parameterType="String" resultType="int">
+		select count(*) from member1234 where delyn='N' and memberId=#{memberId}
+	</select>
+	<!-- 회원가입 이메일중복체크 -->
+	<select id="memberEmailCheck" parameterType="String" resultType="int">
+		select count(*) from member1234 where delyn='N' and memberEmail=#{memberEmail}
+	</select>
+	
+	
+	<select id="memberList" resultType="mv">
+	select memberid,membername,memberage,delyn,writeday,membertype from member1234 order by memberType asc
+	</select>
 
-<insert id="memberInsert" parameterType="mv">
-INSERT INTO member1234(midx,memberId,memberPwd,memberName,memberAge,memberPhone,memberEmail,memberAddr)
-VALUES(midx_seq.nextval,#{memberid},#{memberpwd},#{membername},#{memberage},#{memberphone},#{memberemail},#{memberaddr})
-</insert>
-
-
-<select id="memberList" resultType="mv">
-select memberid,membername,memberage,delyn,writeday,membertype from member1234 order by memberType asc
-</select>
-
-<select id="memberIdCheck" parameterType="String" resultType="int">
-select count(*) as cnt from member1234 where memberid=#{memberId}
-</select>
-
-<select id="memberLogin" parameterType="String" resultType="mv">
-select * from member1234 where delyn='N' and memberid=#{memberId}
-</select>
+	
+	<select id="memberLogin" parameterType="String" resultType="mv">
+	select * from member1234 where delyn='N' and memberid=#{memberId}
+	</select>
 
 </mapper>
