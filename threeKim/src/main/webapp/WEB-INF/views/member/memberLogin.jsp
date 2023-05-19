@@ -52,7 +52,10 @@ msg = (String)request.getAttribute("msg");
 			#content table tr:nth-child(4) td{text-align: left;}
 			#content table tr:nth-child(4) td input{display: inline-block; width: 10%; height: 18px;vertical-align: middle;}
 			#content table tr:nth-child(4) td span{display: inline-block;}
-			
+			/*아이찾기.비밀번호재설정.회원가입부분*/
+			#Login_submenu p{display: inline-block;}
+			#Login_submenu p a{text-decoration-line: none; color: #5e5e5e;}
+			 
 			#content table tr:last-child td input{display: inline-block; width:120px; height:50px;}
 			
 			h2{text-align: center; margin-top:20px;}
@@ -81,21 +84,29 @@ msg = (String)request.getAttribute("msg");
 			}
 		});
 		function check(){
-		    //alert("각 값이 있는지 체크하는 구문을 만들어보세요");
-		    var memberId=document.getElementById("memberId");
-			var memberPwd=document.getElementById("memberPwd");
-		
-			if(memberId.value==""){
-				alert("아이디를 입력하세요");
-				memberId.focus();
-				return false;
-			};
 			
-			if(memberPwd.value==""){
-				alert("비밀번호를 입력하세요.");
-				memberPwd.focus();
-				return false;
-			};
+			var id = $("#memberId").val();
+			var pwd = $("#memberPwd").val();
+			var oMsg = document.getElementById("oMsg");
+			
+		    if (id == "") {
+		        oMsg.style.display = "block";
+				oMsg.style.color = "red";
+				oMsg.innerHTML = "아이디를 입력해주세요.";
+		        return false;
+		      }
+		      if (id.length > 10) {
+		        alert("아이디 확인 후 다시 입력해 주세요.");
+
+		        return false;
+		      }
+		      if (pwd == "") {
+		        oMsg.style.display = "block";
+				oMsg.style.color = "red";
+				oMsg.innerHTML = "비밀번호를 입력해주세요.";
+		        return false;
+		      }
+
 			
 			var fm=document.frm;
 			//이 경로로 데이터를 감추어서 전송한다
@@ -108,7 +119,7 @@ msg = (String)request.getAttribute("msg");
 	</script>
 	</head>
 	<body>
-		<%@include file="../header.jsp" %>
+		<%@include file="../header.jsp" %> 
 		<main id="main">
 			<div id="content">
 				<form id="frm" name="frm">
@@ -127,7 +138,7 @@ msg = (String)request.getAttribute("msg");
 							</tr>
 							<tr>
 								<td>
-									<div>경고문</div>
+									<div id="oMsg"></div>
 								</td>
 							</tr>
 							<tr>
@@ -141,6 +152,11 @@ msg = (String)request.getAttribute("msg");
 								</td>
 							</tr>
 						</table>
+						<div id="Login_submenu"> 
+							<p><a href="${pageContext.request.contextPath}/member/memberIdFind.do">아이디 찾기 |</a></p>
+							<p><a href="${pageContext.request.contextPath}/member/memberPwdFind.do">비밀번호 재설정 |</a></p>
+							<p><a href="${pageContext.request.contextPath}/member/memberJoin.do">회원가입</a></p>
+						</div>
 					</div>
 				</form>
 			</div>
