@@ -6,6 +6,7 @@
 <%
 ArrayList<MemberVo> alist = (ArrayList<MemberVo>)request.getAttribute("alist");
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,9 +45,9 @@ li{list-style:none;}
 #content table {width:60%; border-collapse:collapse; margin:60px auto 0; line-height:60px; font-size:20px;font-family:'omyu_pretty'; font-size:24px;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
-#content table tr th:nth-child(1){width:20px;}
+#content table tr th:nth-child(1){width:30px;}
 #content table tr th:nth-child(2){width:40px;}
-#content table tr th:nth-child(3){width:60px;}
+#content table tr th:nth-child(3){width:120px;}
 #content table tr th:nth-child(4){width:40px;}
 #content table tr th:nth-child(5){width:30px;}
 #content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
@@ -56,7 +57,7 @@ li{list-style:none;}
 <script type="text/javascript">
 	function fnDelete(memberId) {
 		if(confirm("정말 삭제하시겠습니까?")) {
-			location.href='<%=request.getContextPath()%>/member/delete.do';
+			location.href='<%=request.getContextPath()%>/member/memberDelete.do?memberId='+memberId;
 		}
 	}
 </script>
@@ -86,7 +87,7 @@ li{list-style:none;}
 					<% if (mv.getMembertype().equals("관리자")) { %>
 						삭제금지
 					<% } else { %>
-						<button type="button" onclick="fnDelete();">삭제</button>
+						<button type="button" onclick="fnDelete('<%=mv.getMemberid()%>');">삭제</button>
 					<% } %>		
 					</td>
 				</tr>

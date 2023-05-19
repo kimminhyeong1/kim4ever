@@ -14,7 +14,11 @@ public interface MemberService {
 	
 	public MemberVo memberLogin(String memberId);
 
-		
+	public void deleteMember(String memberId);
+	
+	public MemberVo getMemberInfo(int midx);
 
+	
+	
 	
 }

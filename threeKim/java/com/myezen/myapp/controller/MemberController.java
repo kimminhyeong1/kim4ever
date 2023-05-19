@@ -3,13 +3,18 @@ package com.myezen.myapp.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -28,6 +33,12 @@ public class MemberController {
 	
 	@Autowired
 	private BCryptPasswordEncoder bcryptPasswordEncoder;
+	
+	private final SqlSession sqlSession;
+
+	public MemberController(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
 	
 	@RequestMapping(value="/memberJoin.do")
 	public String memberJoin() {
@@ -106,9 +117,15 @@ String memberPwd2 = bcryptPasswordEncoder.encode(memberPwd);
 		
 		if(mv!=null && bcryptPasswordEncoder.matches(memerPwd, mv.getMemberpwd()) ) {
 			//rttr은 페이지를 벗어나면 사라짐, session으로 담아줘야 유지 됨
+			session.setAttribute("midx", mv.getMidx());
+			session.setAttribute("memberId", mv.getMemberid());
+			session.setAttribute("memberPwd", mv.getMemberpwd());
 			session.setAttribute("memberName", mv.getMembername());
+			session.setAttribute("memberAge", mv.getMemberage());
+			session.setAttribute("memberPhone", mv.getMemberphone());
+			session.setAttribute("memberEmail", mv.getMemberemail());
 			session.setAttribute("membertype", mv.getMembertype());
-			model.addAttribute("membertype", mv.getMembertype());
+			
 			
 			if(session.getAttribute("dest") == null) {
 				path = "redirect:/";	
@@ -139,16 +156,27 @@ String memberPwd2 = bcryptPasswordEncoder.encode(memberPwd);
 		return "redirect:/";
 	}
 	
+	@RequestMapping("/memberDelete.do")
+	public String deleteMember(@RequestParam("memberId") String memberId) {
+		//System.out.println("test1");
+		ms.deleteMember(memberId);
+		//System.out.println("test2");
+		return "redirect:/member/memberList.do"; 
 	
-	@RequestMapping(value="/memberMypage.do")
-	public String memberMypage() {
-	
-		return "member/memberMypage";
-		
 	}
 	
+	@RequestMapping("/memberMypage.do")
+	public String memberMypage(Model model,
+			HttpSession session){
+		
+		int midx = (Integer)session.getAttribute("midx");
+		
+		MemberVo mv = ms.getMemberInfo(midx);
 	
+		session.setAttribute("mv", mv);
 	
+		return "member/memberMypage";
+	}
 	
 	
 	

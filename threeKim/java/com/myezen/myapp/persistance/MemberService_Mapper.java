@@ -13,4 +13,8 @@ public interface MemberService_Mapper {
 	public int memberIdCheck(String memberId);
 	
 	public MemberVo memberLogin(String memberId);
+	
+	public void deleteMember(String memberId);
+	
+	public MemberVo getMemberInfo(int midx);
 }
