@@ -6,11 +6,8 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-<<<<<<< HEAD:threeKim/src/main/java/com/myezen/myapp/service/MemberServiceImpl.java
 import org.springframework.mail.javamail.JavaMailSender;
-=======
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer.MvcMatchersAuthorizedUrl;
->>>>>>> 병수:threeKim/java/com/myezen/myapp/service/MemberServiceImpl.java
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,15 +29,10 @@ public class MemberServiceImpl implements MemberService {
 		this.msm = sqlSession.getMapper(MemberService_Mapper.class);
 	}
 
-	
-<<<<<<< HEAD:threeKim/src/main/java/com/myezen/myapp/service/MemberServiceImpl.java
 	@Autowired
 	JavaMailSender mailSender;//email-context.xml 이메일객체
 
     //회원가입
-=======
-	
->>>>>>> 병수:threeKim/java/com/myezen/myapp/service/MemberServiceImpl.java
 	@Override
 	public int memberInsert(String memberId, String memberPwd, String memberName,  String memberAge, String memberPhone,
 			String memberEmail, String memberAddr) {
@@ -141,9 +133,6 @@ public class MemberServiceImpl implements MemberService {
 		MemberVo mv = msm.memberLogin(memberId);
 		return mv;
 	}
-<<<<<<< HEAD:threeKim/src/main/java/com/myezen/myapp/service/MemberServiceImpl.java
-=======
-
 
 	@Override
 	public void deleteMember(String memberId) {
@@ -151,8 +140,6 @@ public class MemberServiceImpl implements MemberService {
 		msm.deleteMember(memberId);
 		
 	}
-
-
 	@Override
 	public MemberVo getMemberInfo(int midx) {
 	  
@@ -162,27 +149,6 @@ public class MemberServiceImpl implements MemberService {
 	    return mv;
 	}
 
-
-
-	
-
-	
-
-
-
-	
-	
-	
-
-	
-
-	
-
-
-
-	
-
->>>>>>> 병수:threeKim/java/com/myezen/myapp/service/MemberServiceImpl.java
 
 	//회원리스트
 	@Override

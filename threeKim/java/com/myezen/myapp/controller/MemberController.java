@@ -35,16 +35,16 @@ public class MemberController {
 	@Autowired
 	private BCryptPasswordEncoder bcryptPasswordEncoder;
 	
-<<<<<<< HEAD:threeKim/src/main/java/com/myezen/myapp/controller/MemberController.java
-//!회원가입페이지
-=======
+
+	
+
 	private final SqlSession sqlSession;
 
 	public MemberController(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 	}
 	
->>>>>>> 병수:threeKim/java/com/myezen/myapp/controller/MemberController.java
+//!회원가입페이지
 	@RequestMapping(value="/memberJoin.do")
 	public String memberJoin() {
 		
@@ -262,8 +262,6 @@ public class MemberController {
 		
 		return "redirect:/";
 	}
-	
-<<<<<<< HEAD:threeKim/src/main/java/com/myezen/myapp/controller/MemberController.java
 	@RequestMapping(value="/memberList.do")
 	//value에 안쓰면 둘다 받겠다 get + foward 
 	public String memberList(Model model) {
@@ -274,14 +272,12 @@ public class MemberController {
 		
 		return "member/memberList";
 	}
-=======
 	@RequestMapping("/memberDelete.do")
 	public String deleteMember(@RequestParam("memberId") String memberId) {
 		//System.out.println("test1");
 		ms.deleteMember(memberId);
 		//System.out.println("test2");
 		return "redirect:/member/memberList.do"; 
->>>>>>> 병수:threeKim/java/com/myezen/myapp/controller/MemberController.java
 	
 	}
 	
