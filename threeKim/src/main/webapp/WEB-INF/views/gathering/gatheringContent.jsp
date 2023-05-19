@@ -34,7 +34,7 @@ li{list-style:none;}
 #content #gather{width:80%; height:600px; border-collapse:collapse; border:1px solid #ddd; margin: 60px auto 0; text-align:center;  line-height:100px;}
 #content #gather label{font-family:'omyu_pretty'; font-size:30px; margin-left:10px;}
 #content #gather input{box-sizing: border-box; width:100%;padding:20px; border:1px solid #ccc; border-radius:4px;}
-#content button{width:100%; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}
+#content button{width:20%; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}
 #content button:active {background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 #content img{width:500px; height:500px;}
 #content #gatherCon p{font-family:'omyu_pretty'; font-size:27px;}
@@ -44,19 +44,19 @@ li{list-style:none;}
 <body>
 <div id="main">
 	
-	<%@include file="../header.jsp" %>
+	<%@include file="../header2.jsp" %>
 	<div id="content">
 	
 	<div id="gather">
-	<h1>바이크어썸</h1>
+	<h1>제목 위치 테스트</h1>
 	<img src="../resources/bikeimg/bike.jpg" alt="Image 1">
 	</div>
-	<div id="gatherCon"> 
+	<div id="gatherCon">
+	<h1>제목 위치 테스트2</h1> 
 	<p>바이크어썸은 자전거를 처음 타보는 초보자들도 환영합니다 !<br/>
-	같이 라이딩하면서 맛있는거 먹는 모임이에요!</p>
-	<p>모임위치:</p>
-	<p>날짜:</p>
-	<button>가입</button>
+	코스는 매번 달라요!</p>
+	<button>가입하기</button>
+	<button onclick="location.href='<%=request.getContextPath()%>/gathering/gatheringList.do'">돌아가기</button>
 	</div>
 	
 	</div>
