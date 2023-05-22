@@ -9,8 +9,9 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">  
 		 <style type="text/css">
-		 	/*부분*/
-
+		 	/*틀부분*/
+		 	.gContainer{width: 1250px;text-align: center;border: 1px solid #bbb;margin: 40px auto;padding: 20px;background-color: #f1f1f1;border-radius: 10px;}
+			#myImg{width: 100px;height: 100px;}
 		 </style>
 	</head>
 	<body>
@@ -58,12 +59,12 @@
 			<div><button class="gBtn2" >더보기</button></div>
 			<div class="gContentTitle" ><h2>내 간단 소개</h2></div>
 			<div>
-				<input type="text" placeholder="멤버보기에 있는 소개입니다.">
+				<input class="gInput" type="text" placeholder="멤버보기에 있는 소개입니다.">
 			</div>
 				<button class="gBtn2">변경하기</button>
 			<div class="gContentTitle" ><h2>내 프로필 설정</h2></div>
 			<div>
-				<img alt="" src="">
+				<img id="myImg" alt="" src="">
 			</div>
 				<button class="gBtn2">변경하기</button>
 

@@ -9,8 +9,10 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">  
 		 <style type="text/css">
-		 	/*부분*/
-
+		 	/*검색부분*/
+			#SearchPart{margin: 30px 0 30px 0; position: relative;}
+			#SearchPart button{position: absolute;width: 50px; height: 50px;border: 0px;background: 0px; top: 3px; right: 380px;}
+			#SearchPart img{width: 40px; height: 40px;}
 		 </style>
 	</head>
 	<body>
@@ -18,9 +20,9 @@
 	<main id="main">
 		<section class="gContainer">
 			
-			<div>
-				<input type="text" placeholder="검색하세요.">
-				<button><img alt="" src=""></button>
+			<div id="SearchPart">
+				<input class="gInput" type="text" placeholder="검색하세요.">
+				<button onclick="location.href='<%=request.getContextPath()%>/gathering/gSearchResult.do'"><img src="../resources/icon/loupe.png"></button>
 			</div>
 			
 			<div class="gContentTitle" >
