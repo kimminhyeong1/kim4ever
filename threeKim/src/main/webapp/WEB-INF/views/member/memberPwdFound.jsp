@@ -18,8 +18,8 @@
 			section button{width: 430px;height: 60px;text-align: center;font-family: 'omyu_pretty';font-size: 30px;border-radius: 10px;border: 0px solid #ff9933;background: #ff9933;}
 			/* section #auth{height: 50px; font-size: 24px;}  */
 			 .memberTitle{position: relative;}
-			 #loginIdFindTitle{position:absolute; color: #ff9933; text-decoration-line: none; top: -100px; left: 0px; font-size: 30px;} 
-			 #loginPwdFindTitle{position:absolute; color: #ddd; text-decoration-line: none; top: -100px; left: 140px; font-size: 30px;} 
+			 #loginIdFindTitle{position:absolute; color: #ddd; text-decoration-line: none; top: -100px; left: 0px; font-size: 30px;} 
+			 #loginPwdFindTitle{position:absolute; color: #ff9933; text-decoration-line: none; top: -100px; left: 140px; font-size: 30px;} 
 		</style> 
 		<script>
             $(document).ready(function(){
