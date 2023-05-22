@@ -17,6 +17,39 @@
 		select count(*) from member1234 where delyn='N' and memberEmail=#{memberEmail}
 	</select>
 	
+	<!-- 로그인에서 아이디찾기 -->
+	<select id="memberIdFind" parameterType="String" resultType="String">
+		select memberId from member1234 where delyn='N' and memberName=#{0} and memberEmail=#{1}
+	</select>
+	<!-- 로그인에서 비밀번호찾기 -->
+	<update id="memberPwdReset" parameterType="String">
+	    update member1234 set memberPwd = #{0} where memberId = #{1} and memberName = #{2} and memberEmail = #{3} and delyn='N'
+	</update>
+	<!-- 로그인에서 비밀번호 찾기 대조 -->
+	<select id="memberPwdFindMatch" parameterType="String" resultType="int">
+		select count(*) from member1234 where delyn='N' and memberId=#{0} and memberName=#{1} and memberEmail=#{2}
+	</select>
+	<!-- 로그인에서 아이디찾기,비밀번호찾기 인증번호저장 -->
+	<insert id="memberMailAuthSave" parameterType="String">
+		INSERT INTO mailAuth1234(mail_idx,mail_key,memberEmail)
+		VALUES(mail_idx_seq.NEXTVAL,#{0},#{1}) 
+	</insert>
+	<!-- 로그인에서 아이디찾기,비밀번호찾기 인증번호 대조 -->
+	<select id="memberMailAuthMatch" parameterType="String" resultType="int">
+		select count(*) from mailAuth1234 where mail_key=#{0} and memberEmail=#{1}
+	</select>
+	<!-- 로그인에서 아이디찾기,비밀번호찾기 인증번호 대조후 삭제 -->
+	<delete id="memberMailAuthKeyDel" parameterType="String">
+		delete from mailAuth1234 where mail_key=#{0} and memberEmail=#{1}
+	</delete>
+	<!-- 로그인에서 아이디찾기 인증번호클릭  대조 -->
+	<select id="memberIdFindMatch" parameterType="String" resultType="int">
+		select count(*) from member1234 where delyn='N' and memberName=#{0} and memberEmail=#{1}
+	</select>	
+	<!-- 로그인에서 비밀번호찾기 인증번호클릭  대조 -->
+	<select id="memberPwdFindAuthMatch" parameterType="String" resultType="int">
+		select count(*) from member1234 where delyn='N' and memberId=#{0} and memberName=#{1} and memberEmail=#{2}
+	</select>
 	
 	<select id="memberList" resultType="mv">
 	select memberid,membername,memberage,delyn,writeday,membertype from member1234 order by memberType asc
