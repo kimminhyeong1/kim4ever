@@ -27,6 +27,10 @@ header{width:1250px; margin:35px auto 70px; text-align:center;}
   -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-height: 1.2;  text-overflow: ellipsis;}
     /*참여멤버*/
     .cardJoinMem{}
+/*메뉴부분*/
+	#gMenu{width: 1250px;text-align: center;margin: 0px auto 0px;}
+	#gMenu #menu{height:0px;}
+	#gMenu #menu p{margin: 0px 40px;}
 /*버튼부분*/
     /*모임기본버튼양식*/
     .gBtn{width:100%; height:40px; margin-top:0px;text-align:center; font-family:'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}

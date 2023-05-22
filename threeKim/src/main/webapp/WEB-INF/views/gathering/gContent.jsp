@@ -2,69 +2,107 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-/*리셋코드*/
-*{margin:0;padding:0;}
-li{list-style:none;}
-@font-face {
-    font-family:'GangwonEdu_OTFBoldA';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family:'omyu_pretty';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family:'KCC-Ganpan';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-#main{width:1440px; margin:35px auto 70px; text-align:center;}
-#main #content{width:1440px; height:2400px;}
-#main #bottom{width:1440px; height:300px; }
-#main #content h2{text-align: center; margin-top:20px;}
-#content #gather{width:80%; height:600px; border-collapse:collapse; border:1px solid #ddd; margin: 60px auto 0; text-align:center;  line-height:100px;}
-#content #gather label{font-family:'omyu_pretty'; font-size:30px; margin-left:10px;}
-#content #gather input{box-sizing: border-box; width:100%;padding:20px; border:1px solid #ccc; border-radius:4px;}
-#content button{width:20%; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}
-#content button:active {background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
-#content img{width:500px; height:500px;}
-#content #gatherCon p{font-family:'omyu_pretty'; font-size:27px;}
-#content #gatherCon{width:80%; height:400px; border-collapse:collapse; border:1px solid #ddd; margin:10px auto 0; text-align:center;  line-height:100px;}
-</style>
-</head>
-<body>
-<div id="main">
-	
+	<head>
+		<meta charset="UTF-8">
+		<title>소모임 검색</title>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">  
+		 <style type="text/css">
+		 	/*부분*/
+
+		 </style>
+	</head>
+	<body>
 	<%@include file="../header2.jsp" %>
-	<div id="content">
-	
-	<div id="gather">
-	<h1>제목 위치 테스트</h1>
-	<img src="../resources/bikeimg/bike.jpg" alt="Image 1">
-	</div>
-	<div id="gatherCon">
-	<h1>제목 위치 테스트2</h1> 
-	<p>바이크어썸은 자전거를 처음 타보는 초보자들도 환영합니다 !<br/>
-	코스는 매번 달라요!</p>
-	<button>가입하기</button>
-	<button onclick="location.href='<%=request.getContextPath()%>/gathering/gatheringList.do'">돌아가기</button>
-	</div>
-	
-	</div>
-
-	<div id="bottom">
-
-	</div>
-</div>
-</body>
-<%@include file="../footer.jsp" %>
+	<%@include file="header3.jsp" %>
+	<main id="main">
+		<section class="gContainer">
+			
+			<div>
+				<input type="text" placeholder="검색하세요.">
+				<button onclick="location.href='<%=request.getContextPath()%>/gathering/gSearchResult.do'"><img alt="" src=""></button>
+			</div>
+			
+			<div class="gContentTitle" >
+				<h2>전주 모임 보기</h2>
+			</div>
+			<div class="gContent" >
+				<div class="card" >
+					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
+					<img class="cardWish" src="../resources/icon/heart.png">
+					<h3 class="cardTitle">바이크어썸</h3>
+					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
+					<p>참여멤버(5/10))</p>
+					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">구경하기</button>
+				</div>
+				<div class="card" >
+					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
+					<img class="cardWish" src="../resources/icon/heart.png">
+					<h3 class="cardTitle">바이크어썸</h3>
+					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
+					<p>참여멤버(5/10))</p>
+					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">구경하기</button>
+				</div>
+				<div class="card" >
+					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
+					<img class="cardWish" src="../resources/icon/heart.png">
+					<h3 class="cardTitle">바이크어썸</h3>
+					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
+					<p>참여멤버(5/10))</p>
+					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">구경하기</button>
+				</div>
+				<div class="card" >
+					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
+					<img class="cardWish" src="../resources/icon/heart.png">
+					<h3 class="cardTitle">바이크어썸</h3>
+					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
+					<p>참여멤버(5/10))</p>
+					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">구경하기</button>
+				</div>			
+			</div>
+			<div><button class="gBtn2" >더보기</button></div>
+			
+			<div class="gContentTitle" >
+				<h2>근처 모임 보기</h2>
+			</div>
+			<div class="gContent" >
+				<div class="card" >
+					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
+					<img class="cardWish" src="../resources/icon/heart.png">
+					<h3 class="cardTitle">바이크어썸</h3>
+					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
+					<p>참여멤버(5/10))</p>
+					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">구경하기</button>
+				</div>
+				<div class="card" >
+					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
+					<img class="cardWish" src="../resources/icon/heart.png">
+					<h3 class="cardTitle">바이크어썸</h3>
+					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
+					<p>참여멤버(5/10))</p>
+					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">구경하기</button>
+				</div>
+				<div class="card" >
+					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
+					<img class="cardWish" src="../resources/icon/heart.png">
+					<h3 class="cardTitle">바이크어썸</h3>
+					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
+					<p>참여멤버(5/10))</p>
+					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">구경하기</button>
+				</div>
+				<div class="card" >
+					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
+					<img class="cardWish" src="../resources/icon/heart.png">
+					<h3 class="cardTitle">바이크어썸</h3>
+					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
+					<p>참여멤버(5/10))</p>
+					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">구경하기</button>
+				</div>			
+			</div>
+			<div><button class="gBtn2" >더보기</button></div>
+		</section>
+	</main>
+	<%@include file="../footer.jsp" %>
+	</body>
 </html>
