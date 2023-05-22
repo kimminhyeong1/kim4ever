@@ -36,15 +36,15 @@ msg = (String)request.getAttribute("msg");
 			    font-style: normal;
 			}
 			
-			#main{width:1440px; margin:35px auto 70px; text-align:center;}
-			#main #content{width:1440px; height:200px;}
-			#main #bottom{width:1440px; height:300px;}
+			#main{width:1250px; margin:35px auto 70px; text-align:center;}
+			#main #content{width:1250px; height:200px;}
+			#main #bottom{width:1250px; height:300px;}
 			#content table{width:30%;border-collapse:collapse;  margin: 60px auto 0; text-align:center;  line-height:30px; font-family:'omyu_pretty'; font-size:21px;}
 			#content table th{width:240px; text-align:center; border:1px solid #fff; padding:8px;}
 			#content table td{padding:8px;text-align:left;}
 			#content table td:nth-child(1){width:240px;text-align:center;}
 			/*로그인 외각선*/
-			#login_out{border: 1px solid #bbb;margin: 40px auto;width: 50%;padding: 20px;background-color: #f1f1f1;border-radius: 10px;}
+			#login_out{border: 1px solid #bbb;margin: 40px auto;width: 55%;padding: 20px;background-color: #f1f1f1;border-radius: 10px;}
 			/*경고문*/
 			#content table tr:nth-child(3) td{padding: 0px;}
 			#content table tr:nth-child(3) td div{width: 240px;text-align: left; padding-left: 10px; color: #f00;}
@@ -154,7 +154,7 @@ msg = (String)request.getAttribute("msg");
 						</table>
 						<div id="Login_submenu"> 
 							<p><a href="${pageContext.request.contextPath}/member/memberIdFind.do">아이디 찾기 |</a></p>
-							<p><a href="${pageContext.request.contextPath}/member/memberPwdFind.do">비밀번호 재설정 |</a></p>
+							<p><a href="${pageContext.request.contextPath}/member/memberPwdFind.do">비밀번호 찾기 |</a></p>
 							<p><a href="${pageContext.request.contextPath}/member/memberJoin.do">회원가입</a></p>
 						</div>
 					</div>
