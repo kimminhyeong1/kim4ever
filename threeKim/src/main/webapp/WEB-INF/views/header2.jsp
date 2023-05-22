@@ -87,19 +87,19 @@ li{list-style:none;}
 					</li>
 					
 					<li>
-						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/'">나의 소모임</span></a>
+						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/gathering/gMyPage.do'">나의 소모임</span></a>
 					</li>
 					
 					<li>
-						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/'">내가 찜한 소모임</span></a>
+						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/gathering/gMyWish.do'">내가 찜한 소모임</span></a>
 					</li>
 					
 					<li>
-						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/'">소모임 검색</span></a>
+						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/gathering/gSearch.do'">소모임 검색</span></a>
 					</li>
 					
 					<li>
-						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/'">근처모임</span></a>
+						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/gathering/gCreate.do'">모임 만들기</span></a>
 					</li>
 					
 					<li>
@@ -126,12 +126,9 @@ li{list-style:none;}
 
 	
 	<div id="menu">
-		<p>나의 소모임</p>
-		<p>내가 찜한 소모임</p>
-		<p>소모임 검색</p>
-		<p>근처 모임</p>
-		<p>회원 관리</p>
-		
-		
+		<p onclick="location.href='<%=request.getContextPath()%>/gathering/gMyPage.do'">나의 소모임</p>
+		<p onclick="location.href='<%=request.getContextPath()%>/gathering/gMyWish.do'">내가 찜한 소모임</p>
+		<p onclick="location.href='<%=request.getContextPath()%>/gathering/gSearch.do'">소모임 검색</p>
+		<p onclick="location.href='<%=request.getContextPath()%>/gathering/gCreate.do'">모임 만들기</p>
 	</div>
 </header>

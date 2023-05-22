@@ -38,7 +38,7 @@
 					<h3 class="cardTitle">바이크어썸</h3>
 					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
 					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gatheringContent.do'">들어가기</button>
+					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">들어가기</button>
 				</div>
 				<div class="card" >
 					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
@@ -46,7 +46,7 @@
 					<h3 class="cardTitle">바이크어썸</h3>
 					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
 					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gatheringContent.do'">들어가기</button>
+					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">들어가기</button>
 				</div>
 				<div class="card" >
 					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
@@ -54,7 +54,7 @@
 					<h3 class="cardTitle">바이크어썸</h3>
 					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
 					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gatheringContent.do'">들어가기</button>
+					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">들어가기</button>
 				</div>
 				<div class="card" >
 					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
@@ -62,7 +62,7 @@
 					<h3 class="cardTitle">바이크어썸</h3>
 					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
 					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gatheringContent.do'">들어가기</button>
+					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">들어가기</button>
 				</div>			
 			</div>
 			<div><button class="gBtn2" >더보기</button></div>
@@ -76,7 +76,7 @@
 					<h3 class="cardTitle">바이크어썸</h3>
 					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
 					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gatheringContent.do'">들어가기</button>
+					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">구경하기</button>
 				</div>
 				<div class="card" >
 					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
@@ -84,7 +84,7 @@
 					<h3 class="cardTitle">바이크어썸</h3>
 					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
 					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gatheringContent.do'">들어가기</button>
+					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">구경하기</button>
 				</div>
 				<div class="card" >
 					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
@@ -92,7 +92,7 @@
 					<h3 class="cardTitle">바이크어썸</h3>
 					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
 					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gatheringContent.do'">들어가기</button>
+					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">구경하기</button>
 				</div>
 				<div class="card" >
 					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
@@ -100,7 +100,7 @@
 					<h3 class="cardTitle">바이크어썸</h3>
 					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
 					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gatheringContent.do'">들어가기</button>
+					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">구경하기</button>
 				</div>
 				<div class="card" >
 					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
@@ -108,7 +108,7 @@
 					<h3 class="cardTitle">바이크어썸</h3>
 					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
 					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gatheringContent.do'">들어가기</button>
+					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">구경하기</button>
 				</div>
 				<div class="card" >
 					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
@@ -116,7 +116,7 @@
 					<h3 class="cardTitle">바이크어썸</h3>
 					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
 					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gatheringContent.do'">들어가기</button>
+					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">구경하기</button>
 				</div>
 				<div class="card" >
 					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
@@ -124,7 +124,7 @@
 					<h3 class="cardTitle">바이크어썸</h3>
 					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
 					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gatheringContent.do'">들어가기</button>
+					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">구경하기</button>
 				</div>
 				<div class="card" >
 					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
@@ -132,7 +132,7 @@
 					<h3 class="cardTitle">바이크어썸</h3>
 					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
 					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gatheringContent.do'">들어가기</button>
+					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">구경하기</button>
 				</div>	 
 			</div>
 			<div><button class="gBtn2" >더보기</button></div>
