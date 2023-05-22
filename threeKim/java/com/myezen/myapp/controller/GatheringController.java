@@ -7,21 +7,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value="/gathering")
 public class GatheringController {
 	
-	@RequestMapping(value="/gatheringList.do")
+	@RequestMapping(value="/gList.do")
 	public String gatheringList() {
 		
-		return "gathering/gatheringList";
+		return "gathering/gList";
 	}
 	
-	@RequestMapping(value="/gatheringCreate.do")
+	@RequestMapping(value="/gCreate.do")
 	public String gatheringCreate() {
 		
-		return "gathering/gatheringCreate";
+		return "gathering/gCreate";
 	}
 	
-	@RequestMapping(value="/gatheringContent.do")
+	@RequestMapping(value="/gContent.do")
 	public String gatheringContent() {
 		
-		return "gathering/gatheringContent";
+		return "gathering/gContent";
 	}
 }

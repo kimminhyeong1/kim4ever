@@ -7,9 +7,9 @@
 *{margin:0;padding:0;}
 li{list-style:none;}
 /*헤더부분 영역*/
-header{width: 1440px;margin: 35px auto 70px;text-align: center;}
+header{width: 1250px;margin: 35px auto 70px;text-align: center;}
 /*사이드메뉴바, 로고, 로그인버튼*/
-#top_logo{width:1440px; height:200px; text-align:center; position:relative;}
+#top_logo{width:1250px; height:200px; text-align:center; position:relative;}
 #top_logo .logo{display:inline-block; text-align:center; position:absolute; left:45.5%; top:50%; transform:translate(-50%, -50%);}
 #top_logo .logo img{width:200px; height:240px; margin-left:140px; cursor:pointer;transition: all 0.3s ease-in-out;}
 #top_logo .login {display:flex;justify-content:flex-end;float:right;}
@@ -41,12 +41,12 @@ header{width: 1440px;margin: 35px auto 70px;text-align: center;}
 .sub-menu .top-login a:first-child {border-right: 1px solid #ccc;}
 
 /*메뉴*/
-#menu {width: 1440px;height: 100px; text-align:center; display:flex; justify-content:center; align-items:center; box-sizing:border-box;}
+#menu {width: 1250px;height: 100px; text-align:center; display:flex; justify-content:center; align-items:center; box-sizing:border-box;}
 #menu p {font-size: 21px; font-weight: bold; font-family: 'GangwonEdu_OTFBoldA'; margin: 20px 40px; margin-top:40px;}
 #menu p:hover {color:#ff9900; cursor:pointer;
 
-#content{width:1440px; height:1200px;}
-#bottom{width:1440px; height:300px; }
+#content{width:1250px; height:1200px;}
+#bottom{width:1250px; height:300px; }
 
 </style>
 <header>
@@ -152,7 +152,7 @@ header{width: 1440px;margin: 35px auto 70px;text-align: center;}
 		<p onclick="location.href='<%=request.getContextPath()%>/rent/rentLocation.do'">대여소 위치</p>
 		<p onclick="location.href='<%=request.getContextPath()%>/course/courseIntro.do'">코스 소개</p>
 		<p onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">게시판</p>
-		<p onclick="location.href='<%=request.getContextPath()%>/gathering/gatheringList.do'">자전거 모임</p>
+		<p onclick="location.href='<%=request.getContextPath()%>/gathering/gList.do'">자전거 모임</p>
 	</div>
 </header>
 	

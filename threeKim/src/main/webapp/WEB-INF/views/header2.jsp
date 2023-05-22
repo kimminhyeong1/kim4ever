@@ -6,7 +6,7 @@
 li{list-style:none;}
 
 /*사이드메뉴바, 로고, 로그인버튼*/
-#top_logo{width:1440px; height:200px; text-align:center; position:relative;}
+#top_logo{width:1250px; height:200px; text-align:center; position:relative;}
 #top_logo .logo{display:inline-block; text-align:center; position:absolute; left:45.5%; top:50%; transform:translate(-50%, -50%);}
 #top_logo .logo img{width:200px; height:240px; margin-left:140px; cursor:pointer;transition: all 0.3s ease-in-out;}
 #top_logo .login {display:flex;justify-content:flex-end;float:right;}
@@ -38,12 +38,12 @@ li{list-style:none;}
 .sub-menu .top-login a:first-child { border-right: 1px solid #ccc;}
 
 /*메뉴*/
-#menu {width: 1440px;height: 100px; text-align:center; display:flex; justify-content:center; align-items:center; box-sizing:border-box;}
+#menu {width: 1250px;height: 100px; text-align:center; display:flex; justify-content:center; align-items:center; box-sizing:border-box;}
 #menu p {font-size: 21px; font-weight: bold; font-family: 'GangwonEdu_OTFBoldA'; margin: 20px 40px; margin-top:40px;}
 #menu p:hover {color:#99CC99; cursor:pointer;
 
-#content{width:1440px; height:1200px;}
-#bottom{width:1440px; height:300px; }
+#content{width:1250px; height:1200px;}
+#bottom{width:1250px; height:300px; }
 
 </style>
 <header>
