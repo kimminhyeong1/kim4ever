@@ -37,10 +37,16 @@
 	</select>
 	
 	<update id="updateMember" parameterType="mv">
-    UPDATE member1234
-    SET memberPwd = #{memberpwd}, memberName = #{membername}, memberAge = #{memberage}, memberPhone = #{memberphone}, memberEmail = #{memberemail}
-    WHERE midx = #{midx}
-	</update>
+  UPDATE member1234
+  <set>
+    <if test="memberpwd != null">memberPwd = #{memberpwd},</if>
+    <if test="membername != null">memberName = #{membername},</if>
+    <if test="memberage != null">memberAge = #{memberage},</if>
+    <if test="memberphone != null">memberPhone = #{memberphone},</if>
+    <if test="memberemail != null">memberEmail = #{memberemail},</if>
+  </set>
+  WHERE midx = #{midx}
+</update>
 	
 	<select id="getMemberByMemberId" parameterType="string" resultType="mv">
   	SELECT * FROM member1234 where memberId = #{memberid}

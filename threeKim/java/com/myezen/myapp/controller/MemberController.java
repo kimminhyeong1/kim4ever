@@ -313,45 +313,61 @@ public class MemberController {
 	//회원정보수정
 	@PostMapping("/memberUpdateAction.do")
 	public String memberUpdateAction( 
-			@RequestParam("memberPwd") String memberpwd,
-		    @RequestParam("memberName") String membername,
-		    @RequestParam("memberAge") String memberage,
-		    @RequestParam("memberPhone") String memberphone,
-		    @RequestParam("memberEmail") String memberemail,
-		    Model model,
-		    HttpSession session) {
-		
-			 //비밀번호 암호화
-		    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		    String encryptedPassword = passwordEncoder.encode(memberpwd);
-		
-			//회원 정보 업데이트
-		 	int midx = (Integer) session.getAttribute("midx");
-		 	MemberVo mv = (MemberVo) session.getAttribute("mv");
-		 	
-		 
-		    mv.setMidx(midx);
-		    mv.setMemberpwd(encryptedPassword);
-		    mv.setMembername(membername);
-		    mv.setMemberage(memberage);
-		    mv.setMemberphone(memberphone);
-		    mv.setMemberemail(memberemail);
+	        @RequestParam("memberPwd") String memberpwd,
+	        @RequestParam("memberName") String membername,
+	        @RequestParam("memberAge") String memberage,
+	        @RequestParam("memberPhone") String memberphone,
+	        @RequestParam("memberEmail") String memberemail,
+	        Model model,
+	        HttpSession session) {
 
-		    //회원 정보 업데이트
-		    ms.updateMember(mv);
-		    
-		    //세션에 업데이트된 mv 저장
-		    session.setAttribute("mv", mv);
-		    session.setAttribute("memberName", mv.getMembername());
-		    session.setAttribute("memberAge", mv.getMemberage());
-		    session.setAttribute("memberPhone", mv.getMemberphone());
-		    session.setAttribute("memberEmail", mv.getMemberemail());
-		    
-		    model.addAttribute("mv", mv);
-		
-	
-		    return "redirect:/";
+	    // 비밀번호 암호화
+	    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+	    String encryptedPassword = passwordEncoder.encode(memberpwd);
 
+	    MemberVo mv = (MemberVo) session.getAttribute("mv");
+
+	    
+	    // 비밀번호 변경 여부 확인 후 업데이트
+	    if (!memberpwd.isEmpty()) {
+	        mv.setMemberpwd(encryptedPassword);
+	    }
+	    
+	    // 이름과 나이 변경 여부 확인
+	    if (!membername.isEmpty()) {
+	        mv.setMembername(membername);
+	    }
+	    if (!memberage.isEmpty()) {
+	        mv.setMemberage(memberage);
+	    }
+
+	    // 휴대폰번호와 이메일 변경 여부 확인 후 업데이트
+	    if (!memberphone.isEmpty()) {
+	        mv.setMemberphone(memberphone);
+	    }
+	    if (!memberemail.isEmpty()) {
+	        mv.setMemberemail(memberemail);
+	    }
+
+	    //mv.setMemberpwd(encryptedPassword);
+	    //mv.setMembername(membername);
+	    //mv.setMemberage(memberage);
+	    //mv.setMemberphone(memberphone);
+	    //mv.setMemberemail(memberemail);
+	   
+	    // 회원 정보 업데이트
+	    ms.updateMember(mv);
+
+	    // 세션에 업데이트된 mv 저장
+	    session.setAttribute("mv", mv);
+	    session.setAttribute("memberName", mv.getMembername());
+	    session.setAttribute("memberAge", mv.getMemberage());
+	    session.setAttribute("memberPhone", mv.getMemberphone());
+	    session.setAttribute("memberEmail", mv.getMemberemail());
+
+	    model.addAttribute("mv", mv);
+
+	    return "redirect:/";
 	}
 	
 	//회원리스트에서 회원정보보기
