@@ -79,7 +79,8 @@ li{list-style:none;}
 				</tr>
 				<%for(MemberVo mv : alist){ %>
 				<tr>
-					<td><%=mv.getMemberid() %></td>
+					<%-- <td><%=mv.getMemberid() %></td> --%>
+					<td><a href="memberListProfile.do?memberId=<%=mv.getMemberid()%>"><%=mv.getMemberid() %></a></td>
 					<td><%=mv.getMembername() %></td>
 					<td><%=mv.getWriteday() %></td>
 					<td><%=mv.getMembertype() %></td>

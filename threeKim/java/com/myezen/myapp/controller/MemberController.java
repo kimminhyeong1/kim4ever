@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -272,6 +273,8 @@ public class MemberController {
 		
 		return "member/memberList";
 	}
+	
+	//회원삭제
 	@RequestMapping("/memberDelete.do")
 	public String deleteMember(@RequestParam("memberId") String memberId) {
 		//System.out.println("test1");
@@ -280,20 +283,83 @@ public class MemberController {
 		return "redirect:/member/memberList.do"; 
 	
 	}
-	
+	//마이페이지
 	@RequestMapping("/memberMypage.do")
-	public String memberMypage(Model model,
-			HttpSession session){
-		
-		int midx = (Integer)session.getAttribute("midx");
-		
-		MemberVo mv = ms.getMemberInfo(midx);
-	
-		session.setAttribute("mv", mv);
-	
-		return "member/memberMypage";
+	public String memberMypage(Model model, HttpSession session) {
+	    int midx = (Integer) session.getAttribute("midx");
+	    
+	    
+	    MemberVo mv = ms.getMemberInfo(midx);
+	    session.setAttribute("mv", mv);
+	    session.setAttribute("memberName", mv.getMembername());
+	    session.setAttribute("memberAge", mv.getMemberage());
+	    session.setAttribute("memberPhone", mv.getMemberphone());
+	    session.setAttribute("memberEmail", mv.getMemberemail());
+	    model.addAttribute("mv", mv);
+	    
+	    
+	    return "member/memberMypage";
 	}
 	
+	//회원정보수정페이지
+	@RequestMapping("/memberUpdate.do")
+	public String memberUdpate(Model model, HttpSession session) {
+		int midx =(Integer) session.getAttribute("midx");
+		MemberVo mv = ms.getMemberInfo(midx);
+		model.addAttribute("mv", mv);
+		return "member/memberUpdate";
+	}
 	
+	//회원정보수정
+	@PostMapping("/memberUpdateAction.do")
+	public String memberUpdateAction( 
+			@RequestParam("memberPwd") String memberpwd,
+		    @RequestParam("memberName") String membername,
+		    @RequestParam("memberAge") String memberage,
+		    @RequestParam("memberPhone") String memberphone,
+		    @RequestParam("memberEmail") String memberemail,
+		    Model model,
+		    HttpSession session) {
+		
+			 //비밀번호 암호화
+		    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		    String encryptedPassword = passwordEncoder.encode(memberpwd);
+		
+			//회원 정보 업데이트
+		 	int midx = (Integer) session.getAttribute("midx");
+		 	MemberVo mv = (MemberVo) session.getAttribute("mv");
+		 	
+		 
+		    mv.setMidx(midx);
+		    mv.setMemberpwd(encryptedPassword);
+		    mv.setMembername(membername);
+		    mv.setMemberage(memberage);
+		    mv.setMemberphone(memberphone);
+		    mv.setMemberemail(memberemail);
+
+		    //회원 정보 업데이트
+		    ms.updateMember(mv);
+		    
+		    //세션에 업데이트된 mv 저장
+		    session.setAttribute("mv", mv);
+		    session.setAttribute("memberName", mv.getMembername());
+		    session.setAttribute("memberAge", mv.getMemberage());
+		    session.setAttribute("memberPhone", mv.getMemberphone());
+		    session.setAttribute("memberEmail", mv.getMemberemail());
+		    
+		    model.addAttribute("mv", mv);
+		
+	
+		    return "redirect:/";
+
+	}
+	
+	//회원리스트에서 회원정보보기
+	@RequestMapping("/memberListProfile.do")
+	public String memberListProfile(@RequestParam("memberId") String memberId, Model model) {
+	    MemberVo mv = ms.getMemberByMemberId(memberId);
+	    model.addAttribute("mv", mv);
+	    return "member/memberListProfile";
+	}
 	
 }

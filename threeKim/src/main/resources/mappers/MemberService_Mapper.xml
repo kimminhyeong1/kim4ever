@@ -28,16 +28,22 @@
 	</select>
 
 
-<delete id="deleteMember" parameterType="String">
-delete from member1234 WHERE memberid=#{memberId}
-</delete>
+	<delete id="deleteMember" parameterType="String">
+	delete from member1234 WHERE memberid=#{memberId}
+	</delete>
 
-<!-- <select id="getMemberInfo" resultType="mv">
-SELECT * FROM member1234 WHERE memberid = #{memberId}
-</select> -->
-
-<select id="getMemberInfo" parameterType="int" resultType="mv">
-SELECT * FROM member1234 WHERE midx = #{midx}
-</select>
+	<select id="getMemberInfo" parameterType="int" resultType="mv">
+	SELECT * FROM member1234 WHERE midx = #{midx}
+	</select>
+	
+	<update id="updateMember" parameterType="mv">
+    UPDATE member1234
+    SET memberPwd = #{memberpwd}, memberName = #{membername}, memberAge = #{memberage}, memberPhone = #{memberphone}, memberEmail = #{memberemail}
+    WHERE midx = #{midx}
+	</update>
+	
+	<select id="getMemberByMemberId" parameterType="string" resultType="mv">
+  	SELECT * FROM member1234 where memberId = #{memberid}
+	</select>
     
 </mapper>

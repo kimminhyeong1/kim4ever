@@ -134,28 +134,44 @@ public class MemberServiceImpl implements MemberService {
 		return mv;
 	}
 
+	//회원리스트
+		@Override
+	public ArrayList<MemberVo> memberList() {
+			
+		ArrayList<MemberVo> alist = msm.memberList();
+			
+		return alist;
+	}
+		
+	//회원삭제
 	@Override
 	public void deleteMember(String memberId) {
 		System.out.println("memberId"+memberId);
 		msm.deleteMember(memberId);
 		
 	}
+	
+	//마이페이지
 	@Override
 	public MemberVo getMemberInfo(int midx) {
 	  
-	    MemberVo mv = new MemberVo();
+	    MemberVo mv = msm.getMemberInfo(midx); // 데이터베이스에서 회원 정보 조회
 	   
-
 	    return mv;
 	}
 
 
-	//회원리스트
+	//회원정보수정
 	@Override
-	public ArrayList<MemberVo> memberList() {
+	public void updateMember(MemberVo mv) {
 		
-		ArrayList<MemberVo> alist = msm.memberList();
+		msm.updateMember(mv);
 		
-		return alist;
+	}
+	@Override
+	public MemberVo getMemberByMemberId(String memberId) {
+		
+		
+		return msm.getMemberByMemberId(memberId);
 	}
 }
