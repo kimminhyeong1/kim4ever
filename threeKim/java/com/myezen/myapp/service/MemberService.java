@@ -29,7 +29,9 @@ public interface MemberService {
 	public int memberPwdReset(String memberPwd,String memberId, String memberName, String memberEmail, String mailKey);		
 //회원리스트
 	public ArrayList<MemberVo> memberList();
+//회원삭제
 	public void deleteMember(String memberId);
+//마이페이지
 	public MemberVo getMemberInfo(int midx);
 	
 	

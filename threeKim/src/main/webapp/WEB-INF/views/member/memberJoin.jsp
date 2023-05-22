@@ -370,7 +370,8 @@
 					
 					phoneFlag = false;
 					
-					var isPhone = /^(01[016789]{1})[0-9]{3,4}[0-9]{4}$/;
+					//var isPhone = /^(01[016789]{1})[0-9]{3,4}[0-9]{4}$/;
+					var isPhone = /^(01[016789]{1})[-]?[0-9]{3,4}[-]?[0-9]{4}$/;  // 수정된 정규 표현식
 					if(!isPhone.test(phone)){
 						oMsg.style.display = "block";
 						oMsg.style.color = "red";
@@ -646,7 +647,7 @@
 						</tr>
 						<tr>
 							<td>
-								<input type="text" id="memberPhone" name="memberPhone" placeholder="휴대폰번호">
+								<input type="text" id="memberPhone" name="memberPhone" oninput="autoHyphen2(this)" maxlength="13" placeholder="휴대폰번호">
 								<p id="phoneMsg" class="ability_chk" style="display:none">휴대폰번호를 정확히 입력해주세요.</p>
 							</td>
 						</tr>
