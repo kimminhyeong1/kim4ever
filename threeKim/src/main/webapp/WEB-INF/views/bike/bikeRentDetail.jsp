@@ -90,7 +90,7 @@ li{list-style:none;}
 					<option value="hyoja">효자</option>
 					</select><br/>
 				<label for="bike-quantity">잔여 자전거:</label>
-				<input type="number" id="bike-quantity" name="bike-quantity" min="0" value="0" style="width:50px;"> 
+				<input type="text" id="bike-quantity" name="bike-quantity" style="width:50px;"> 
 			</p>
 			</td>	
 		</tr>
