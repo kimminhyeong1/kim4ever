@@ -33,7 +33,9 @@ public interface MemberService {
 	public void deleteMember(String memberId);
 //마이페이지
 	public MemberVo getMemberInfo(int midx);
-	
-	
+//회원정보수정
+	public void updateMember(MemberVo mv);
+//회원리스트에서 회원들정보보기
+	public MemberVo getMemberByMemberId(String memberId);
 	
 }

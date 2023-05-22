@@ -40,9 +40,9 @@ li{list-style:none;}
 #main #bottom{width:1440px; height:300px;}
 h2{text-align: center; margin-top:20px;}
 #content table {width:60%; border-collapse:collapse; border:1px solid #ddd; margin: 60px auto 0; text-align:center;  line-height:100px; font-family:'omyu_pretty'; font-size:24px;}
-#content table th{width:150px; text-align:center; border:1px solid #ddd; padding:8px;}
+#content table th{width:200px; text-align:center; border:1px solid #ddd; padding:8px;}
 #content table td{border:1px solid #ddd; padding:8px; text-align:left;}
-#content table td:nth-child(1){width:120px;text-align:center;}
+#content table td:nth-child(1){width:140px;text-align:center;}
 #content table td:nth-child(2){width:400px; text-align:left;}
 #content table tr:last-child td input{display: inline-block; width:120px; height:50px;}
 input{
@@ -66,15 +66,6 @@ function autoHyphen2(target) {
 	    .replace(/(\-{1,2})$/g, "");
 	}
 </script>
-
-<%-- <script type="text/javascript">
-
-function fnSubmit() {
-	if(confirm("정말 수정하시겠습니까?")) {
-		location.href='<%=request.getContextPath()%>/member/memberUpdate.do?memberId='+memberId;
-	}
-}
-</script>  --%>
 
 
 </head>
