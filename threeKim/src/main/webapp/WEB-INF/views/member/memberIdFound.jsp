@@ -4,13 +4,22 @@
 <html lang="ko">
 	<head>
 		<meta charset="UTF-8">
-		<title>겜스터-아이디찾음</title>
+		<title>아이디찾음</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 		<style>
-				
+			main{width:1250px; margin:35px auto 70px; text-align:center;}
+			section{border: 1px solid #bbb;margin: 40px auto;width: 55%;padding: 20px;background-color: #f1f1f1;border-radius: 10px;}
+			input{font-family: 'omyu_pretty';font-size: 24px;box-sizing: border-box;width: 430px;padding: 10px;margin: 2px 0;border: 1px solid #ccc;border-radius: 4px;}
+			section>div{margin-top: 35px;} 
+			section div>div>div{padding: 8px;}
+			section button{width: 430px;height: 60px;text-align: center;font-family: 'omyu_pretty';font-size: 30px;border-radius: 10px;border: 0px solid #ff9933;background: #ff9933;}
+			/* section #auth{height: 50px; font-size: 24px;}  */
+			 .memberTitle{position: relative;}
+			 #loginIdFindTitle{position:absolute; color: #ff9933; text-decoration-line: none; top: -100px; left: 0px; font-size: 30px;} 
+			 #loginPwdFindTitle{position:absolute; color: #ddd; text-decoration-line: none; top: -100px; left: 140px; font-size: 30px;} 
 		</style>
 	</head>
 	<body>
@@ -18,13 +27,13 @@
 		<main>
 	        <section id="loginIdFound" class="memberOut">
 	            <div>
-	                <h2 class="memberTitle"><a id="loginFindTitle" href="${pageContext.request.contextPath}/member/memberIdFind.do">아이디찾기</a> <a href="${pageContext.request.contextPath}/member/memberPwdFind.do">비밀번호찾기</a></h2>
+	                <h2 class="memberTitle"><a id="loginIdFindTitle" href="${pageContext.request.contextPath}/member/memberIdFind.do">아이디찾기</a> <a id="loginPwdFindTitle" href="${pageContext.request.contextPath}/member/memberPwdFind.do">비밀번호찾기</a></h2>
 	                <div class="memberOutBorder">
 	                    <div id="">
-	                        <input type="button" class="memberBar" value="아이디는 ${mId} 입니다.">
+	                        <input type="button" class="memberBar" value="아이디는 ${memberId} 입니다.">
 	                    </div>
 	                    <div id="">
-	                        <input type="button" class="memberBar" value="로그인 하러 가기" onclick="location.href='${pageContext.request.contextPath}/member/memberLogin.do';">
+	                    	<button id="memberIdFind_btn"onclick="location.href='${pageContext.request.contextPath}/member/memberLogin.do'" >로그인 하러 가기</button>
 	                    </div>
 	                </div>
 	            </div>

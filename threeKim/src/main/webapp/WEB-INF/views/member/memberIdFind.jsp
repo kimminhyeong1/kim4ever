@@ -33,7 +33,7 @@
             		var memberEmail = document.getElementById("memberEmail").value;
             		var url = '${pageContext.request.contextPath}/member/memberIdMailAuth.do';
 					var param = [{ name: "memberEmail", value: memberEmail },{ name: "memberName", value: memberName }];
-					if (oneFlag == false) {
+					if (oneFlag == false) { 
 	            		$.ajax({
 							url: url,
 							data: param,
@@ -87,7 +87,7 @@
 		                        <input type="text" id="memberEmail" name="memberEmail" placeholder="이메일">
 		                    </div>
 		                    <div id="">
-		                        <button id="auth" >인증번호 받기</button>
+		                        <input type="button" id="auth"  class="memberBar" value="인증번호 받기">
 		                    </div>
 		                    <div id="">
 		                        <input type="text" id="authBar" name="mailKey" style="display: none;" placeholder="인증번호">

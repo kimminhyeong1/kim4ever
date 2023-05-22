@@ -30,31 +30,31 @@
             		var authBar = $("#authBar");
             		var pwdFind = $("#memberPwdFind_btn");
             		
-					var mId = document.getElementById("mId").value;
-					var mName = document.getElementById("mName").value;
-            		var mEmail = document.getElementById("mEmail").value;
-					if (mId == "" && mName == "" && mEmail == "") {
+					var memberId = document.getElementById("memberId").value;
+					var memberName = document.getElementById("memberName").value;
+            		var memberEmail = document.getElementById("memberEmail").value;
+					if (memberId == "" && memberName == "" && memberEmail == "") {
 						alert("빈칸입니다");
 						return false;
 					}
 					var isID = /^[a-zA-Z0-9]{6,15}$/;//아이디형식
-					if (!isID.test(mId)) {
+					if (!isID.test(memberId)) {
 						alert("아이디형식");
 						return false;
 					}
 					var isName = /^[가-힣]{2,15}$/;
-					if (!isName.test(mName)) {
+					if (!isName.test(memberName)) {
 						alert("이름형식");
 						return false;
 					}
 					var isEmail = /^[ㄱ-힣\w-\.\_]{1,}\@([\da-zA-Z-]{1,}\.){1,}[\da-zA-Z-]{2,3}$/;
-					if (!isEmail.test(mEmail)){
+					if (!isEmail.test(memberEmail)){
 						alert("이메일형식");
 						return false;
 					}
 					
             		var url = '${pageContext.request.contextPath}/member/memberPwdMailAuth.do';
-					var param = [{ name: "mId", value: mId },{ name: "mName", value: mName },{ name: "mEmail", value: mEmail }];
+					var param = [{ name: "memberId", value: memberId },{ name: "memberName", value: memberName },{ name: "memberEmail", value: memberEmail }];
 					if (oneFlag == false) {
 	            		$.ajax({
 							url: url,
@@ -101,16 +101,16 @@
 		                <h2 class="memberTitle"><a id="loginIdFindTitle" href="${pageContext.request.contextPath}/member/memberIdFind.do">아이디찾기</a> <a id="loginPwdFindTitle" href="${pageContext.request.contextPath}/member/memberPwdFind.do">비밀번호찾기</a></h2>
 		                <div class="memberOutBorder">
 		                    <div id="">
-		                        <input type="text" class="memberBar" id="mId" name="mId" placeholder="아이디">
+		                        <input type="text" class="memberBar" id="memberId" name="memberId" placeholder="아이디">
 		                    </div>
 		                    <div id="">
-		                        <input type="text" class="memberBar" id="mName" name="mName" placeholder="이름">
+		                        <input type="text" class="memberBar" id="memberName" name="memberName" placeholder="이름">
 		                    </div>
 		                    <div id="">
-		                        <input type="text" class="memberBar" id="mEmail" name="mEmail" placeholder="이메일">
+		                        <input type="text" class="memberBar" id="memberEmail" name="memberEmail" placeholder="이메일">
 		                    </div>
 		                    <div id="">
-		                    	<button id="auth">인증번호 받기</button>
+		                    	<input type="button" id="auth"  class="memberBar" value="인증번호 받기">
 		                    </div>
 		                    <div id="">
 		                        <input type="text" class="memberBar" id="authBar" style="display: none;" name="mailKey" placeholder="인증번호">
