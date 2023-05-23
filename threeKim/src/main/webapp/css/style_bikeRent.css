@@ -19,6 +19,9 @@
 	/*자전거소개글*/
 	.cardInfo{}
 	/*자전거가격*/
-	.cardContent{}
-/*제목부분*/
-	.QRTitle{font-size:21px; text-align:center;}	
+	.cardContent{}	
+/*QR부분*/	
+	/*QR이미지*/
+	.QRImg{width:265px; height:250px; margin:20px; padding:20px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:10px;}
+	/*QR제목타이틀*/
+	.QRTitle{font-size:35px; text-align:center;}	

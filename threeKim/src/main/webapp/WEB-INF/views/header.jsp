@@ -147,7 +147,7 @@ header{width: 1250px;margin: 35px auto 70px;text-align: center;}
 			
 	
 	<div id="menu">
-		<p onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRent.do'">QR 대여하기 </p>
+		<p onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentQR.do'">QR 대여하기 </p>
 		<p onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentInfo.do'">자전거 소개</p>
 		<p onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentLocation.do'">대여소 위치</p>
 		<p onclick="location.href='<%=request.getContextPath()%>/course/courseIntro.do'">코스 소개</p>
