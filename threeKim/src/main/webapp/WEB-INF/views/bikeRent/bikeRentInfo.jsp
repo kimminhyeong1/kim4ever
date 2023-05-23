@@ -35,20 +35,20 @@
 					<p class="cardPrice">가격 : 1000원</p>
 					
 				</div>
+
+				<div class="card" >
+					<img class="cardImg" src="../resources/bikeimg/하이브리드자전거.jpg">
+					<p class="cardName">하이브리드자전거</p>
+					<p class="cardInfo">비교적 가볍고 적은 힘으로 라이딩을 할수있어요!</p>
+					<p class="cardPrice">가격 : 2000원</p>
+					
+				</div>
 				
 				<div class="card" >
 					<img class="cardImg" src="../resources/bikeimg/전기자전거.jpg">
 					<p class="cardName">전기자전거</p>
 					<p class="cardInfo">전기로 동작해서 편하게 라이딩이 가능합니다!</p>
 					<p class="cardPrice">가격 : 5000원</p>
-					
-				</div>
-				
-				<div class="card" >
-					<img class="cardImg" src="../resources/bikeimg/하이브리드 자전거1.jpg">
-					<p class="cardName">하이브리드자전거</p>
-					<p class="cardInfo">비교적 가볍고 적은 힘으로 라이딩을 할수있어요!</p>
-					<p class="cardPrice">가격 : 1000원</p>
 					
 				</div>
 				
@@ -70,9 +70,12 @@
 			</div>
 			
 			<div>
-				<p style="font-size:40px;">자전거의 종류는 추가적으로 추후에 추가예정입니다</p>
+				<p style="font-size:30px;">- 자전거의 종류는 추가적으로 추후에 추가예정입니다 -</p>
 			</div>
-		
+			
+			<div id="bottom">
+			<%@include file="../bottom.jsp" %>
+			</div>
 			
 			
 			</section>

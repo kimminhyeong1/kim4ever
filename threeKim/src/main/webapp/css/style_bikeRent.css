@@ -12,7 +12,7 @@
 	.bcontent{width:100%; position: relative; }
 /*카드부분*/	
 	/*자전거소개박스*/
-	.card{position:static; display:inline-block; margin:40px; width:300px; text-align:center; top:80px; border:1px solid #ddd; border-radius:10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); background-color:#fff; transition:transform 0.3s ease-in-out;}
+	.card{position:static; display:inline-block; margin:40px; width:300px; text-align:center; top:80px; border:1px solid #ddd; border-radius:10px; box-shadow:0 2px 4px rgba(0, 0, 0, 0.1); background-color:#fff; transition:transform 0.3s ease-in-out;}
 	.card:hover {transform:translateY(-5px);}
 	/*자전거이미지*/
 	.cardImg{width:100%; height:auto; border-radius:20px;}
