@@ -8,20 +8,50 @@
 /*틀부분*/
 	/*큰틀,작은틀 커스텀*/
 	.container{width:1250px; margin:35px auto 70px; text-align:center;}
-	.containerFlex{width:100%; display:flex; flex-wrap:wrap;justify-content:center; align-items:center;}
+	.containerFlex{width:100%; display:flex; flex-wrap:wrap; justify-content:center; align-items:center;}
+	.bcontent{width:100%; position: relative; }
 /*카드부분*/	
 	/*자전거소개박스*/
-	.card{}
+	.card{position:static; display:inline-block; margin:40px; width:300px; text-align:center; top:80px; border:1px solid #ddd; border-radius:10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); background-color:#fff; transition:transform 0.3s ease-in-out;}
+	.card:hover {transform:translateY(-5px);}
 	/*자전거이미지*/
-	.cardImg{}
+	.cardImg{width:100%; height:auto; border-radius:20px;}
 	/*자전거이름*/
-	.cardName{}
+	.cardName{font-family:'omyu_pretty'; padding:10px 0;font-size:24px;border-top:1px solid #ddd;}
 	/*자전거소개글*/
-	.cardInfo{}
+	.cardInfo{font-family:'omyu_pretty';padding:10px 0; font-size:18px; border-bottom:1px solid #ddd; border-top:1px solid #ddd;}
 	/*자전거가격*/
-	.cardContent{}	
+	.cardPrice{font-family:'omyu_pretty'; padding:10px 0; font-size:28px;}
+	/*자전거버튼*/
+	.cardBtn{display:block; width:100px; height:30px; padding:0; margin:10px 80px 15px 80px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+	.cardBtn:hover {background-color: #ffcc66;}
+	.cardBtn:active{background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+	
+/*자전거디테일부분*/
+	#bikeDetail{width:1100px;height:400px;margin:160px auto 20px;text-align:center; border:none;border-collapse: collapse;font-size: 20px; /* 전체 폰트 크기 조정 */font-family: 'omyu_pretty';border-radius: 10px; border:1px solid #000;}
+	#bikeDetail img{width:80%; height:80%;display:block; text-align:center; margin:0 auto;}
+	#bikeDetail td{border:1px solid #ddd; padding:10px; font-size:24px; line-height:1.5;  text-align:center; text-align:left; border-radius:10px;}
+	#bikeDetail h2{text-align:center;font-size:36px; margin-bottom: 5px; font-family: 'omyu_pretty';}
+	#bikeDetail input[type="text"],textarea{font-family:'omyu_pretty'; font-size:24px; box-sizing:border-box; width:100%; padding:10px; margin:2px 0; border:1px solid #ccc; border-radius:4px; }
+	#bikeDetail button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+	#bikeDetail button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+	#bikeDetail label{font-size:30px;}
+	
 /*QR부분*/	
 	/*QR이미지*/
 	.QRImg{width:265px; height:250px; margin:20px; padding:20px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:10px;}
 	/*QR제목타이틀*/
 	.QRTitle{font-size:35px; text-align:center;}	
+	
+/*제목부분*/
+	.QRTitle{font-size:21px; text-align:center;}
+	
+
+	
+	
+
+
+
+
+
+	

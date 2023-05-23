@@ -50,7 +50,7 @@
 				<div class="bike-box">
 				   <img src="../resources/bikeimg/전기자전거.jpg" alt="전기자전거">
 				   <p class="bike-description">전기자전거</p>
-				   <button class="rent-btn" onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentDetail.do'">대여하기</button>
+				   <button class="rent-btn" onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentDetail1.do'">대여하기</button>
 				</div>
 				
 				<div class="bike-box">
