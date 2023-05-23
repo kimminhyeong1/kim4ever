@@ -64,5 +64,51 @@ MemberService ms; //업캐스팅 부모만 지정
 	
 
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//이용중인내역 !김건우
+	@RequestMapping(value="/bikeRentUseList.do")
+	public String bikeRentUseList() {
+		
+		return "bikeRent/bikeRentUseList";
+	}
+	//반납하기 !김건우
+	@RequestMapping(value="/bikeRentReturn.do")
+	public String bikeRentReturn() {
+		
+		return "bikeRent/bikeRentReturn";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
 
