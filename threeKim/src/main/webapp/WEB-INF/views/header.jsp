@@ -132,6 +132,7 @@ header{width: 1250px;margin: 35px auto 70px;text-align: center;}
 	   		<ul>
 		      <% if(session.getAttribute("memberName") != null) { %>
 		            <li style="margin-top:10px;"><%= session.getAttribute("memberName") %>님</li>
+		           	<li style="margin-top:10px;">일반자전거 이용중</li>
 		            <li><a href="<%=request.getContextPath() %>/member/memberLogOut.do">로그아웃</a></li>
 		        <% } else { %>
 		            <li><a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a></li>

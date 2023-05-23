@@ -19,8 +19,10 @@ MemberService ms; //업캐스팅 부모만 지정
 	@RequestMapping(value="/bikeRentDetail.do")
 	public String bikeRentDetail() {
 		
-		return "bike/bikeRentDetail";
+		return "bikeRent/bikeRentDetail";
 	}
+	
+	
 	
 	@RequestMapping(value="/bikeRentWrite.do")
 	public String bikeRentWrite() {

@@ -8,17 +8,42 @@
 /*틀부분*/
 	/*큰틀,작은틀 커스텀*/
 	.container{width:1250px; margin:35px auto 70px; text-align:center;}
-	.containerFlex{width:100%; display:flex; flex-wrap:wrap;justify-content:center; align-items:center;}
+	.containerFlex{width:100%; display:flex; flex-wrap:wrap; justify-content:center; align-items:center;}
+	.bcontent{width:100%; position: relative; }
 /*카드부분*/	
 	/*자전거소개박스*/
-	.card{}
+	.card{position:static; display:inline-block; margin:40px; width:300px; text-align:center; top:80px; border:1px solid #ddd; border-radius:10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); background-color:#fff; transition:transform 0.3s ease-in-out;}
+	.card:hover {transform:translateY(-5px);}
 	/*자전거이미지*/
-	.cardImg{}
+	.cardImg{width:100%; height:auto; border-radius:20px;}
 	/*자전거이름*/
-	.cardName{}
+	.cardName{font-family:'omyu_pretty'; padding:10px 0;font-size:24px;border-top:1px solid #ddd;}
 	/*자전거소개글*/
-	.cardInfo{}
+	.cardInfo{font-family:'omyu_pretty';padding:10px 0; font-size:18px; border-bottom:1px solid #ddd; border-top:1px solid #ddd;}
 	/*자전거가격*/
-	.cardContent{}
+	.cardPrice{font-family:'omyu_pretty'; padding:10px 0; font-size:28px;}
+	/*자전거버튼*/
+	.cardBtn{display:block; width:100px; height:30px; padding:0; margin:10px 80px 15px 80px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+	.cardBtn:hover {background-color: #ffcc66;}
+	.cardBtn:active{background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 /*제목부분*/
-	.QRTitle{font-size:21px; text-align:center;}	
+	.QRTitle{font-size:21px; text-align:center;}
+	
+/*자전거디테일부분*/
+	.box{display:flex;}
+	.left-section{flex-basis:70%; padding:20px; display:flex; justify-contetn;center; align-items:center;}
+	.left-section img {max-width:100%; max-height:100%;}
+	.right-section{flex-basis:30%; padding:20px; display:grid; grid-template-rows:repeat(10, min-content); gap:10px;}
+	.right-section p{margin:0;}
+	.right-section labe{display:block; font-weight:bold; margin-bottm:5px;}
+	.right-section input[type="text"]{width:100%; padding:5px;}
+	.right-section button{padding:5px 10px; background-color:#ff9933; border:none; color:#fff; cursor:pointer;}
+	.right-section button:active{background-color:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+	
+	
+
+
+
+
+
+	.
