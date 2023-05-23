@@ -133,9 +133,13 @@ header{width: 1250px;margin: 35px auto 70px;text-align: center;}
 		      <% if(session.getAttribute("memberName") != null) { %>
 		            <li style="margin-top:10px;"><%= session.getAttribute("memberName") %>님</li>
 		            <li><a href="<%=request.getContextPath() %>/member/memberLogOut.do">로그아웃</a></li>
+   		            <li><a href="<%=request.getContextPath() %>/bikeRent/bikeRentUseList.do">이용중인내역</a></li>
+		            <li><a href="<%=request.getContextPath() %>/bikeRent/bikeRentReturn.do">반납하기</a></li> 
 		        <% } else { %>
 		            <li><a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a></li>
 		            <li><a href="<%=request.getContextPath() %>/member/memberJoin.do">회원가입</a></li>
+		            <li><a href="<%=request.getContextPath() %>/bikeRent/bikeRentUseList.do">이용중인내역</a></li>
+		            <li><a href="<%=request.getContextPath() %>/bikeRent/bikeRentReturn.do">반납하기</a></li> 
 		        <% } %> 
 		    </ul>
 		</div>
@@ -146,7 +150,7 @@ header{width: 1250px;margin: 35px auto 70px;text-align: center;}
 	
 			
 	
-	<div id="menu">
+	<div id="menu">		
 		<p onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRent.do'">QR 대여하기 </p>
 		<p onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentInfo.do'">자전거 소개</p>
 		<p onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentLocation.do'">대여소 위치</p>
