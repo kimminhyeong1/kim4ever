@@ -48,8 +48,8 @@
 					<div><p>대여한 자전거 시간</p><p>:</p><p>2023-05-25 15:50</p></div>
 					<div><p>대여한 자전거 이용 요금</p><p>:</p><p>1000원</p></div>
 					<div id="useListBtn">
-						<button>고장/신고</button>
-						<button>반납하러가기</button>						
+						<button onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentFault.do'">고장/신고</button>
+						<button onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentQR.do'">반납하러가기</button>						
 					</div>
 				</div>
 			</section>
