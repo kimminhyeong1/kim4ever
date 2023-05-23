@@ -3,12 +3,14 @@ package com.myezen.myapp.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.myezen.myapp.service.MemberService;
+import com.myezen.myapp.service.BikeRentService;
+
 
 @Controller
 @RequestMapping(value="/bikeRent")
 public class bikeRentController {
-MemberService ms; //업캐스팅 부모만 지정
+	
+	BikeRentService bs; //업캐스팅 부모만 지정
 	
 	@RequestMapping(value="/bikeRent.do")
 	public String bikeRent() {
