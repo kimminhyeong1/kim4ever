@@ -137,9 +137,7 @@ header{width: 1250px;margin: 35px auto 70px;text-align: center;}
 		            <li><a href="<%=request.getContextPath() %>/bikeRent/bikeRentReturn.do">반납하기</a></li> 
 		        <% } else { %>
 		            <li><a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a></li>
-		            <li><a href="<%=request.getContextPath() %>/member/memberJoin.do">회원가입</a></li>
-		            <li><a href="<%=request.getContextPath() %>/bikeRent/bikeRentUseList.do">이용중인내역</a></li>
-		            <li><a href="<%=request.getContextPath() %>/bikeRent/bikeRentReturn.do">반납하기</a></li> 
+		            <li><a href="<%=request.getContextPath() %>/member/memberJoin.do">회원가입</a></li>  
 		        <% } %> 
 		    </ul>
 		</div>

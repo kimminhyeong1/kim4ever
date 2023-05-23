@@ -113,12 +113,14 @@ li{list-style:none;}
 		</div>
 		<div class="login">
 			<ul>
-		        <% if(session.getAttribute("memberName") != null) { %>
+		      <% if(session.getAttribute("memberName") != null) { %>
 		            <li style="margin-top:10px;"><%= session.getAttribute("memberName") %>님</li>
 		            <li><a href="<%=request.getContextPath() %>/member/memberLogOut.do">로그아웃</a></li>
+   		            <li><a href="<%=request.getContextPath() %>/bikeRent/bikeRentUseList.do">이용중인내역</a></li>
+		            <li><a href="<%=request.getContextPath() %>/bikeRent/bikeRentReturn.do">반납하기</a></li> 
 		        <% } else { %>
 		            <li><a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a></li>
-		            <li><a href="<%=request.getContextPath() %>/member/memberJoin.do">회원가입</a></li>     
+		            <li><a href="<%=request.getContextPath() %>/member/memberJoin.do">회원가입</a></li>  
 		        <% } %> 
 		    </ul>
 		</div>
