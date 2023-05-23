@@ -46,7 +46,7 @@ li{list-style:none;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
 #content table tr th:nth-child(1){width:30px;}
-#content table tr th:nth-child(2){width:40px;}
+#content table tr th:nth-child(2){width:50px;}
 #content table tr th:nth-child(3){width:120px;}
 #content table tr th:nth-child(4){width:40px;}
 #content table tr th:nth-child(5){width:30px;}
