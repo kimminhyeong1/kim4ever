@@ -55,7 +55,13 @@ MemberService ms; //업캐스팅 부모만 지정
 		return "bikeRent/bikeRentFaultList";
 	}
 	
-
+	@RequestMapping(value="/bikeRentInfo.do")
+	public String bikeRentInfo() {
+		
+		return "bikeRent/bikeRentInfo";
+	}
+	
+	
 
 	
 }

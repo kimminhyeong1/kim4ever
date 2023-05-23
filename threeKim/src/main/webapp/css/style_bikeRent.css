@@ -1,0 +1,24 @@
+@charset "UTF-8";
+/*대여페이지 공통부분 CSS*/
+
+/*공통 부분*/
+#main{width:1250px; margin:35px auto 70px; text-align:center;}
+#main #content{width:1250px;}
+
+/*틀부분*/
+	/*큰틀,작은틀 커스텀*/
+	.container{width:1250px; margin:35px auto 70px; text-align:center;}
+	.containerFlex{width:100%; display:flex; flex-wrap:wrap;justify-content:center; align-items:center;}
+/*카드부분*/	
+	/*자전거소개박스*/
+	.card{}
+	/*자전거이미지*/
+	.cardImg{}
+	/*자전거이름*/
+	.cardName{}
+	/*자전거소개글*/
+	.cardInfo{}
+	/*자전거가격*/
+	.cardContent{}
+/*제목부분*/
+	.QRTitle{font-size:21px; text-align:center;}	
