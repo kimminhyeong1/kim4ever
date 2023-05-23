@@ -367,7 +367,7 @@ public class MemberController {
 
 	    model.addAttribute("mv", mv);
 
-	    return "redirect:/";
+	    return "redirect:/member/memberMypage.do";
 	}
 	
 	//회원리스트에서 회원정보보기

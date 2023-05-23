@@ -78,7 +78,7 @@ header{width: 1250px;margin: 35px auto 70px;text-align: center;}
 					</li>
 					
 					<li>
-						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/rent/rentHistory.do'">대여내역</span></a>
+						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentHistory.do'">대여내역</span></a>
 					</li>
 					
 					
@@ -90,7 +90,7 @@ header{width: 1250px;margin: 35px auto 70px;text-align: center;}
 	                   </li>
 	                   
 	                   <li>
-	                       <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/rent/rentFaultList.do'">신고내역</span></a>
+	                       <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentFaultList.do'">신고내역</span></a> 
 	                   </li>
 	               	<% } %>
 				
@@ -147,8 +147,9 @@ header{width: 1250px;margin: 35px auto 70px;text-align: center;}
 			
 	
 	<div id="menu">
-		<p onclick="location.href='<%=request.getContextPath()%>/bike/bikeRent.do'">자전거 대여</p>
-		<p onclick="location.href='<%=request.getContextPath()%>/rent/rentLocation.do'">대여소 위치</p>
+		<p onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRent.do'">QR 대여하기 </p>
+		<p onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentInfo.do'">자전거 소개</p>
+		<p onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentLocation.do'">대여소 위치</p>
 		<p onclick="location.href='<%=request.getContextPath()%>/course/courseIntro.do'">코스 소개</p>
 		<p onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">게시판</p>
 		<p onclick="location.href='<%=request.getContextPath()%>/gathering/gList.do'">자전거 모임</p>

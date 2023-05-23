@@ -74,7 +74,7 @@ public class MemberServiceImpl implements MemberService {
 		 MailHandler mh = new MailHandler(mailSender);
 		 mh.setSubject("[타바 인증메일 입니다.]"); //메일제목 
 		 mh.setText("<h1>타바 메일인증</h1><br>인증번호:"+mailKey); 
-		 mh.setFrom("gamster0404@gmail.com","타바"); 
+		 mh.setFrom("taba1234TA@gmail.com","타바"); 
 		 mh.setTo(memberEmail); 
 		 mh.send();
 		 
