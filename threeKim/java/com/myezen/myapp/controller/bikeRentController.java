@@ -29,6 +29,15 @@ MemberService ms; //업캐스팅 부모만 지정
 	}
 	
 	
+	@RequestMapping(value="/bikeRentQR.do")
+	public String bikeRentQR() {
+		
+		return "bikeRent/bikeRentQR";
+	}
+	
+	
+	
+	
 	
 	
 	@RequestMapping(value="/bikeRentLocation.do")
@@ -60,6 +69,8 @@ MemberService ms; //업캐스팅 부모만 지정
 		
 		return "bikeRent/bikeRentInfo";
 	}
+	
+	
 	
 	
 
