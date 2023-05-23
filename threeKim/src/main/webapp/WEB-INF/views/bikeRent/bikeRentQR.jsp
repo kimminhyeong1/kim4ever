@@ -33,7 +33,7 @@
 			<h2 class="QRTitle">대여소QR</h2>	
 					<div class="containerFlex">
 						<div class="QRcard">
-						<img class="QRImg" src="../resources/main3/main3-1.jpg" alt="">
+						<a href="bikeRentReturn.do"><img class="QRImg"src="../resources/QRcode/Qrcode2.png" alt=""></a>
 						<p>덕진대여소</p>
 						</div>
 						<div class="QRcard">
