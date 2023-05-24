@@ -1,11 +1,20 @@
 package com.myezen.myapp.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.myezen.myapp.service.AdminService;
+import com.myezen.myapp.service.MemberService;
 
 @Controller
 @RequestMapping(value="/admin")
 public class AdminController {
+	@Autowired	
+	AdminService as;
+	@Autowired
+	MemberService ms;
+	
 	//관리자 메인 페이지
 	@RequestMapping(value="/adminPage.do")
 	public String adminPage() {

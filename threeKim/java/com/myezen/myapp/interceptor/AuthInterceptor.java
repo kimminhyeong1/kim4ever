@@ -22,7 +22,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 				
 				response.sendRedirect(request.getContextPath()+"/member/memberLogin.do");
 			}
-			
+			 
 			
 			return  true; //boolean타입이어서 true로 설정해줌
 	} 
