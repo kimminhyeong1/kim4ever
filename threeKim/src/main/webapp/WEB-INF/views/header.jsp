@@ -90,7 +90,7 @@ header{width: 1250px;margin: 35px auto 70px;text-align: center;}
 	                   </li>
 	                   
 	                   <li>
-	                       <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentFaultList.do'">신고내역</span></a> 
+	                       <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/admin/adminPage.do'">관리자페이지</span></a> 
 	                   </li>
 	               	<% } %>
 				
