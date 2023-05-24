@@ -3,14 +3,14 @@ package com.myezen.myapp.domain;
 public class BoardVo {
 	private int bidx;
 	private int midx;
-	private String boardtype;
+	private String boardType;
 	private String writer;
-	private String writeday;
+	private String writeDay;
 	private String subject;
 	private String content;
-	private String boardview;
+	private String boardView;
 	private String delyn;
-	private String fileupload;
+	private String fileUpload;
 	
 	public int getBidx() {
 		return bidx;
@@ -24,11 +24,11 @@ public class BoardVo {
 	public void setMidx(int midx) {
 		this.midx = midx;
 	}
-	public String getBoardtype() {
-		return boardtype;
+	public String getBoardType() {
+		return boardType;
 	}
-	public void setBoardtype(String boardtype) {
-		this.boardtype = boardtype;
+	public void setBoardType(String boardType) {
+		this.boardType = boardType;
 	}
 	public String getWriter() {
 		return writer;
@@ -36,11 +36,11 @@ public class BoardVo {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public String getWriteday() {
-		return writeday;
+	public String getWriteDay() {
+		return writeDay;
 	}
-	public void setWriteday(String writeday) {
-		this.writeday = writeday;
+	public void setWriteDay(String writeDay) {
+		this.writeDay = writeDay;
 	}
 	public String getSubject() {
 		return subject;
@@ -54,11 +54,11 @@ public class BoardVo {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getBoardview() {
-		return boardview;
+	public String getBoardView() {
+		return boardView;
 	}
-	public void setBoardview(String boardview) {
-		this.boardview = boardview;
+	public void setBoardView(String boardView) {
+		this.boardView = boardView;
 	}
 	public String getDelyn() {
 		return delyn;
@@ -66,18 +66,14 @@ public class BoardVo {
 	public void setDelyn(String delyn) {
 		this.delyn = delyn;
 	}
-	public String getFileupload() {
-		return fileupload;
+	public String getFileUpload() {
+		return fileUpload;
 	}
-	public void setFileupload(String fileupload) {
-		this.fileupload = fileupload;
+	public void setFileUpload(String fileUpload) {
+		this.fileUpload = fileUpload;
 	}
 	
 	
-	
-	
-	
-
 	
 
 		

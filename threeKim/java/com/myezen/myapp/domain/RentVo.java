@@ -1,47 +1,48 @@
 package com.myezen.myapp.domain;
 
 public class RentVo {
-	private int RIDX; //대여번호
-	private String RENTDAY; //대여요일
-	private String RENTPLACE; //대여장소
-	private int BKIDX; //자전거번호
+	private int ridx; //대여번호
+	private String rentDay; //대여요일
+	private String rentPlace; //대여장소
+	private int bkidx; //자전거번호
+	private int rsdix; //대여소번호
+	private int midx; //회원번호
 	
-	public int getRIDX() {
-		return RIDX;
+	public int getRidx() {
+		return ridx;
 	}
-	public void setRIDX(int rIDX) {
-		RIDX = rIDX;
+	public void setRidx(int ridx) {
+		this.ridx = ridx;
 	}
-	public String getRENTDAY() {
-		return RENTDAY;
+	public String getRentDay() {
+		return rentDay;
 	}
-	public void setRENTDAY(String rENTDAY) {
-		RENTDAY = rENTDAY;
+	public void setRentDay(String rentDay) {
+		this.rentDay = rentDay;
 	}
-	public String getRENTPLACE() {
-		return RENTPLACE;
+	public String getRentPlace() {
+		return rentPlace;
 	}
-	public void setRENTPLACE(String rENTPLACE) {
-		RENTPLACE = rENTPLACE;
+	public void setRentPlace(String rentPlace) {
+		this.rentPlace = rentPlace;
 	}
-	public int getBKIDX() {
-		return BKIDX;
+	public int getBkidx() {
+		return bkidx;
 	}
-	public void setBKIDX(int bKIDX) {
-		BKIDX = bKIDX;
+	public void setBkidx(int bkidx) {
+		this.bkidx = bkidx;
 	}
-	public int getRSIDX() {
-		return RSIDX;
+	public int getRsdix() {
+		return rsdix;
 	}
-	public void setRSIDX(int rSIDX) {
-		RSIDX = rSIDX;
+	public void setRsdix(int rsdix) {
+		this.rsdix = rsdix;
 	}
-	public int getMIDX() {
-		return MIDX;
+	public int getMidx() {
+		return midx;
 	}
-	public void setMIDX(int mIDX) {
-		MIDX = mIDX;
+	public void setMidx(int midx) {
+		this.midx = midx;
 	}
-	private int RSIDX; //대여소번호
-	private int MIDX; //회원번호
+
 }

@@ -1,33 +1,35 @@
 package com.myezen.myapp.domain;
 
 public class ReturnVo {
-	private int RTIDX; //반납번호
-	private String RETURNDAY; //반납요일
-	private String RETURNPLACE; //반납장소
-	private int RIDX; //대여번호
+	private int rtidx; //반납번호
+	private String returnDay; //반납요일
+	private String returnPlace; //반납장소
+	private int ridx; //대여번호
 	
-	public int getRTIDX() {
-		return RTIDX;
+	public int getRtidx() {
+		return rtidx;
 	}
-	public void setRTIDX(int rTIDX) {
-		RTIDX = rTIDX;
+	public void setRtidx(int rtidx) {
+		this.rtidx = rtidx;
 	}
-	public String getRETURNDAY() {
-		return RETURNDAY;
+	public String getReturnDay() {
+		return returnDay;
 	}
-	public void setRETURNDAY(String rETURNDAY) {
-		RETURNDAY = rETURNDAY;
+	public void setReturnDay(String returnDay) {
+		this.returnDay = returnDay;
 	}
-	public String getRETURNPLACE() {
-		return RETURNPLACE;
+	public String getReturnPlace() {
+		return returnPlace;
 	}
-	public void setRETURNPLACE(String rETURNPLACE) {
-		RETURNPLACE = rETURNPLACE;
+	public void setReturnPlace(String returnPlace) {
+		this.returnPlace = returnPlace;
 	}
-	public int getRIDX() {
-		return RIDX;
+	public int getRidx() {
+		return ridx;
 	}
-	public void setRIDX(int rIDX) {
-		RIDX = rIDX;
+	public void setRidx(int ridx) {
+		this.ridx = ridx;
 	}
+	
+
 }

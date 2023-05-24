@@ -38,13 +38,13 @@ public class MemberServiceImpl implements MemberService {
 			String memberEmail, String memberAddr) {
 		
 		MemberVo mv = new MemberVo();
-		mv.setMemberid(memberId);
-		mv.setMemberpwd(memberPwd);
-		mv.setMembername(memberName);
-		mv.setMemberage(memberAge);
-		mv.setMemberphone(memberPhone);
-		mv.setMemberemail(memberEmail);
-		mv.setMemberaddr(memberAddr);
+		mv.setMemberId(memberId);
+		mv.setMemberPwd(memberPwd);
+		mv.setMemberName(memberName);
+		mv.setMemberAge(memberAge);
+		mv.setMemberPhone(memberPhone);
+		mv.setMemberEmail(memberEmail);
+		mv.setMemberAddr(memberAddr);
 	
 		
 		int value = msm.memberInsert(mv);

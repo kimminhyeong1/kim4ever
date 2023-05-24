@@ -116,7 +116,7 @@ public class boardController {
 			bv.setWriter(writer);
 			bv.setSubject(subject);
 			bv.setContent(content);
-			bv.setFileupload(uploadedFileName);
+			bv.setFileUpload(uploadedFileName);
 			
 			int value = bs.boardInsert(bv);			
 			

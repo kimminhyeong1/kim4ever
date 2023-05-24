@@ -1,26 +1,28 @@
 package com.myezen.myapp.domain;
 
 public class RentalshopVo {
-	private int RSIDX; //대여소번호
-	private String RETALSHOPNAME; //대여소이름
-	private String RETALSHOPLOCATION; //대여소위치
+	private int rsidx; //대여소번호
+	private String rentalshopName; //대여소이름
+	private String rentalshopLocation; //대여소위치
 	
-	public int getRSIDX() {
-		return RSIDX;
+	public int getRsidx() {
+		return rsidx;
 	}
-	public void setRSIDX(int rSIDX) {
-		RSIDX = rSIDX;
+	public void setRsidx(int rsidx) {
+		this.rsidx = rsidx;
 	}
-	public String getRETALSHOPNAME() {
-		return RETALSHOPNAME;
+	public String getRentalshopName() {
+		return rentalshopName;
 	}
-	public void setRETALSHOPNAME(String rETALSHOPNAME) {
-		RETALSHOPNAME = rETALSHOPNAME;
+	public void setRentalshopName(String rentalshopName) {
+		this.rentalshopName = rentalshopName;
 	}
-	public String getRETALSHOPLOCATION() {
-		return RETALSHOPLOCATION;
+	public String getRentalshopLocation() {
+		return rentalshopLocation;
 	}
-	public void setRETALSHOPLOCATION(String rETALSHOPLOCATION) {
-		RETALSHOPLOCATION = rETALSHOPLOCATION;
+	public void setRentalshopLocation(String rentalshopLocation) {
+		this.rentalshopLocation = rentalshopLocation;
 	}
+	
+	
 }

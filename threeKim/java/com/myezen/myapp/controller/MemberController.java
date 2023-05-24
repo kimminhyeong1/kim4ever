@@ -223,16 +223,16 @@ public class MemberController {
 		MemberVo mv = ms.memberLogin(memberId);
 		String path="";
 		
-		if(mv!=null && bcryptPasswordEncoder.matches(memerPwd, mv.getMemberpwd()) ) {
+		if(mv!=null && bcryptPasswordEncoder.matches(memerPwd, mv.getMemberPwd()) ) {
 			//rttr은 페이지를 벗어나면 사라짐, session으로 담아줘야 유지 됨
 			session.setAttribute("midx", mv.getMidx());
-			session.setAttribute("memberId", mv.getMemberid());
-			session.setAttribute("memberPwd", mv.getMemberpwd());
-			session.setAttribute("memberName", mv.getMembername());
-			session.setAttribute("memberAge", mv.getMemberage());
-			session.setAttribute("memberPhone", mv.getMemberphone());
-			session.setAttribute("memberEmail", mv.getMemberemail());
-			session.setAttribute("membertype", mv.getMembertype());
+			session.setAttribute("memberId", mv.getMemberId());
+			session.setAttribute("memberPwd", mv.getMemberPwd());
+			session.setAttribute("memberName", mv.getMemberName());
+			session.setAttribute("memberAge", mv.getMemberAge());
+			session.setAttribute("memberPhone", mv.getMemberPhone());
+			session.setAttribute("memberEmail", mv.getMemberEmail());
+			session.setAttribute("membertype", mv.getMemberType());
 			
 			
 			if(session.getAttribute("dest") == null) {
@@ -291,10 +291,10 @@ public class MemberController {
 	    
 	    MemberVo mv = ms.getMemberInfo(midx);
 	    session.setAttribute("mv", mv);
-	    session.setAttribute("memberName", mv.getMembername());
-	    session.setAttribute("memberAge", mv.getMemberage());
-	    session.setAttribute("memberPhone", mv.getMemberphone());
-	    session.setAttribute("memberEmail", mv.getMemberemail());
+	    session.setAttribute("memberName", mv.getMemberName());
+	    session.setAttribute("memberAge", mv.getMemberAge());
+	    session.setAttribute("memberPhone", mv.getMemberPhone());
+	    session.setAttribute("memberEmail", mv.getMemberEmail());
 	    model.addAttribute("mv", mv);
 	    
 	    
@@ -330,23 +330,23 @@ public class MemberController {
 	    
 	    // 비밀번호 변경 여부 확인 후 업데이트
 	    if (!memberpwd.isEmpty()) {
-	        mv.setMemberpwd(encryptedPassword);
+	        mv.setMemberPwd(encryptedPassword);
 	    }
 	    
 	    // 이름과 나이 변경 여부 확인
 	    if (!membername.isEmpty()) {
-	        mv.setMembername(membername);
+	        mv.setMemberName(membername);
 	    }
 	    if (!memberage.isEmpty()) {
-	        mv.setMemberage(memberage);
+	        mv.setMemberAge(memberage);
 	    }
 
 	    // 휴대폰번호와 이메일 변경 여부 확인 후 업데이트
 	    if (!memberphone.isEmpty()) {
-	        mv.setMemberphone(memberphone);
+	        mv.setMemberPhone(memberphone);
 	    }
 	    if (!memberemail.isEmpty()) {
-	        mv.setMemberemail(memberemail);
+	        mv.setMemberEmail(memberemail);
 	    }
 
 	    //mv.setMemberpwd(encryptedPassword);
@@ -360,10 +360,10 @@ public class MemberController {
 
 	    // 세션에 업데이트된 mv 저장
 	    session.setAttribute("mv", mv);
-	    session.setAttribute("memberName", mv.getMembername());
-	    session.setAttribute("memberAge", mv.getMemberage());
-	    session.setAttribute("memberPhone", mv.getMemberphone());
-	    session.setAttribute("memberEmail", mv.getMemberemail());
+	    session.setAttribute("memberName", mv.getMemberName());
+	    session.setAttribute("memberAge", mv.getMemberAge());
+	    session.setAttribute("memberPhone", mv.getMemberPhone());
+	    session.setAttribute("memberEmail", mv.getMemberEmail());
 
 	    model.addAttribute("mv", mv);
 

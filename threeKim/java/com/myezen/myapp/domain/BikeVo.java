@@ -1,61 +1,42 @@
 package com.myezen.myapp.domain;
 
 public class BikeVo {
-	private int BKIDX; //자전거번호
-	private String BIKECODE; //고유코드
-	private String BIKETYPE; //자전거종류
-	private String BIKELOCATION; //자전거위치
-	private String BIKESTATE; //자전거상태
-	private String QRImagePath; //자전거QR이미지
-	private String BIKECONTENT;
-	 private int RENTPRICE;
-	 
-	public String getBIKECONTENT() {
-		return BIKECONTENT;
+	private int bkidx; //자전거번호
+	private String bikeCode; //고유코드
+	private String bikeType; //자전거종류
+	private String bikeLocation; //자전거위치
+	private String bikeState; //자전거상태
+	
+	public int getBkidx() {
+		return bkidx;
 	}
-	public void setBIKECONTENT(String bIKECONTENT) {
-		BIKECONTENT = bIKECONTENT;
+	public void setBkidx(int bkidx) {
+		this.bkidx = bkidx;
 	}
-	public int getRENTPRICE() {
-		return RENTPRICE;
+	public String getBikeCode() {
+		return bikeCode;
 	}
-	public void setRENTPRICE(int rENTPRICE) {
-		RENTPRICE = rENTPRICE;
+	public void setBikeCode(String bikeCode) {
+		this.bikeCode = bikeCode;
 	}
-	public String getQRImagePath() {
-		return QRImagePath;
+	public String getBikeType() {
+		return bikeType;
 	}
-	public void setQRImagePath(String qRImagePath) {
-		QRImagePath = qRImagePath;
+	public void setBikeType(String bikeType) {
+		this.bikeType = bikeType;
 	}
-	public int getBKIDX() {
-		return BKIDX;
+	public String getBikeLocation() {
+		return bikeLocation;
 	}
-	public void setBKIDX(int bKIDX) {
-		BKIDX = bKIDX;
+	public void setBikeLocation(String bikeLocation) {
+		this.bikeLocation = bikeLocation;
 	}
-	public String getBIKECODE() {
-		return BIKECODE;
+	public String getBikeState() {
+		return bikeState;
 	}
-	public void setBIKECODE(String bIKECODE) {
-		BIKECODE = bIKECODE;
+	public void setBikeState(String bikeState) {
+		this.bikeState = bikeState;
 	}
-	public String getBIKETYPE() {
-		return BIKETYPE;
-	}
-	public void setBIKETYPE(String bIKETYPE) {
-		BIKETYPE = bIKETYPE;
-	}
-	public String getBIKELOCATION() {
-		return BIKELOCATION;
-	}
-	public void setBIKELOCATION(String bIKELOCATION) {
-		BIKELOCATION = bIKELOCATION;
-	}
-	public String getBIKESTATE() {
-		return BIKESTATE;
-	}
-	public void setBIKESTATE(String bIKESTATE) {
-		BIKESTATE = bIKESTATE;
-	}
+ 
+	
 }

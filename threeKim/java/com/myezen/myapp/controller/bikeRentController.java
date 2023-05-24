@@ -2,6 +2,17 @@ package com.myezen.myapp.controller;
 
 
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +25,7 @@ import com.myezen.myapp.service.BikeRentService;
 @Controller
 @RequestMapping(value="/bikeRent")
 public class bikeRentController {
-	
+	@Autowired
 	BikeRentService bs; //업캐스팅 부모만 지정
 	
 	
@@ -46,18 +57,11 @@ public class bikeRentController {
 	
 	/*자전거 QR대여*/
 	@RequestMapping(value="/bikeRentQR.do")
-	public String bikeRentQR(Model model) {
+	public String bikeRentQR() {
 		
 		
-	 	BikeVo bike1 = bs.getBikeDetails(1);
-	    model.addAttribute("bike1", bike1);
-	    System.out.println("bike1"+bike1);
-	    BikeVo bike2 = bs.getBikeDetails(2);
-	    model.addAttribute("bike2", bike2);
-	    System.out.println("bike2"+bike2);
-	    BikeVo bike3 = bs.getBikeDetails(3);
-	    model.addAttribute("bike3", bike3);
-	    System.out.println("bike3"+bike3);
+	 	
+	  
 	    return "bikeRent/bikeRentQR";
 	}
 
@@ -66,10 +70,16 @@ public class bikeRentController {
 	
 	/*자전거상세보기*/	
 	@RequestMapping(value="/bikeRentDetail.do")
-	public String bikeRentDetail() {
+	public String bikeRentDetail(
+			@RequestParam ("bkidx") int bkidx
+			) {
 		
-		
-		
+		System.out.println(bkidx);
+		//리턴값은 참이면 1 아니면 0   받은번호로 서비스 메소드 실행 (번호)
+			//서비스 구현 
+			//자전거 번호로 db에서 조인한테이블을 vo에 담아서 여기서 값을 받고
+			//다시 컨트롤러에 넘김 
+			//컨트롤러에서 값을 받아서 뷰로 보내줌 
 		
 		
 		
@@ -207,6 +217,7 @@ public class bikeRentController {
 	/*----------------------------------------------*/
 	
 	/*반납하기*/
+	/*반납하기 클릭시 반납하기페이지로이동*/
 	@RequestMapping(value="/bikeRentReturn.do")
 	public String bikeRentReturn() {
 		
@@ -222,10 +233,12 @@ public class bikeRentController {
 		
 		return "bikeRent/bikeRentReturn";
 	}
-
-	/*자전거 대여 이력*/
-	@RequestMapping(value="/bikeRentHistory.do")
-	public String bikeRentHistory() {
+	/*최종 반납하기*/
+	/*반납하기페이지에서 최종반납하기 클릭시*/
+	@RequestMapping(value="/bikeRentReturnAction.do")
+	public String bikeRentReturnAction() {
+		
+			
 		
 		
 		
@@ -235,25 +248,55 @@ public class bikeRentController {
 		
 		
 		
-		
-		return "bikeRent/bikeRentHistory";
+		return "redirect:/bikeRent/bikeRentHistory.do";
 	}
 	
 	/*자전거 고장/신고 접수*/
+	/*자전거 고장/신고페이지*/
 	@RequestMapping(value="/bikeRentFault.do")
-	public String bikeRentFault() {
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	public String bikeRentFault( //!required = false null값 받기! !Integer 선언 널 떄문에! 차후에 int형으로 바꿈
+			@RequestParam(value = "ridx" ,required = false) Integer ridx,
+			@RequestParam(value = "URL1" ,required = false) Integer URL1,//이용내역에서온 URL
+			@RequestParam(value = "URL2" ,required = false) Integer URL2,//반납하기에서온 URL
+			Model md
+			) {
+		System.out.println("고장/신고페이지 들어옴");
+		//임시로 ridx 번호는 1로 지정
+			ridx=(int)1;
+			URL1=(int)2;
+			URL2=(int)2;
+			
+			md.addAttribute("ridx", ridx);
+			md.addAttribute("URL1", URL1);
+			md.addAttribute("URL2", URL2);
+
 		return "bikeRent/bikeRentFault";
+	}
+	/*자전거 고장/신고페이지에서 등록 클릭시*/
+	@RequestMapping(value="/bikeRentFaultAction.do")
+	public String bikeRentFaultAction(
+			@RequestParam("ridx") int ridx,
+			@RequestParam("URL1") int URL1,
+			@RequestParam("URL2") int URL2,
+			@RequestParam("errorContent") String errorContent
+			) {
+		System.out.println("고장/신고페이지 에서 작성하기 클릭");
+
+		System.out.println("고장/신고페이지 에서 작성하기 클릭 메서드 실행"+ridx+""+errorContent);
+		 int value = bs.bikeRentErrorInsert(errorContent,ridx);
+			
+		//접수되었다는 메세지 띄우기
+		
+		//전페이지로 돌아가기 
+		 if (URL1==1) {
+			return "redirect:/bikeRent/bikeRentUseList.do";
+		}if (URL2==1) {
+			return "redirect:/bikeRent/bikeRentReturn.do";
+		}
+		else {	
+			return "redirect:/";
+		}
+		
 	}
 	
 	

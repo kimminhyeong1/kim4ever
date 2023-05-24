@@ -3,75 +3,77 @@ package com.myezen.myapp.domain;
 public class MemberVo {//회원 테이블
 
 	private int midx; //회원번호
-	private String memberid; //회원 아이디
-	private String memberpwd; //회원 비밀번호
-	private String membername; //회원 이름
-	private String memberage; //회원 나이
-	private String memberphone; //회원 핸드폰번호
-	private String memberemail; //회원 이메일
-	private String memberaddr; //회원 주소
-	private String membertype;
-	private String writeday;
-
+	private String memberId; //회원 아이디
+	private String memberPwd; //회원 비밀번호
+	private String memberName; //회원 이름
+	private String memberAge; //회원 나이
+	private String memberPhone; //회원 핸드폰번호
+	private String memberEmail; //회원 이메일
+	private String memberAddr; //회원 주소
+	private String memberType;
+	private String writeDay;
+	
 	public int getMidx() {
 		return midx;
 	}
 	public void setMidx(int midx) {
 		this.midx = midx;
 	}
-	public String getMemberid() {
-		return memberid;
+	public String getMemberId() {
+		return memberId;
 	}
-	public void setMemberid(String memberid) {
-		this.memberid = memberid;
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
 	}
-	public String getMemberpwd() {
-		return memberpwd;
+	public String getMemberPwd() {
+		return memberPwd;
 	}
-	public void setMemberpwd(String memberpwd) {
-		this.memberpwd = memberpwd;
+	public void setMemberPwd(String memberPwd) {
+		this.memberPwd = memberPwd;
 	}
-	public String getMembername() {
-		return membername;
+	public String getMemberName() {
+		return memberName;
 	}
-	public void setMembername(String membername) {
-		this.membername = membername;
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
 	}
-	public String getMemberage() {
-		return memberage;
+	public String getMemberAge() {
+		return memberAge;
 	}
-	public void setMemberage(String memberage) {
-		this.memberage = memberage;
+	public void setMemberAge(String memberAge) {
+		this.memberAge = memberAge;
 	}
-	public String getMemberphone() {
-		return memberphone;
+	public String getMemberPhone() {
+		return memberPhone;
 	}
-	public void setMemberphone(String memberphone) {
-		this.memberphone = memberphone;
+	public void setMemberPhone(String memberPhone) {
+		this.memberPhone = memberPhone;
 	}
-	public String getMemberemail() {
-		return memberemail;
+	public String getMemberEmail() {
+		return memberEmail;
 	}
-	public void setMemberemail(String memberemail) {
-		this.memberemail = memberemail;
+	public void setMemberEmail(String memberEmail) {
+		this.memberEmail = memberEmail;
 	}
-	public String getMemberaddr() {
-		return memberaddr;
+	public String getMemberAddr() {
+		return memberAddr;
 	}
-	public void setMemberaddr(String memberaddr) {
-		this.memberaddr = memberaddr;
+	public void setMemberAddr(String memberAddr) {
+		this.memberAddr = memberAddr;
 	}
-	public String getMembertype() {
-		return membertype;
+	public String getMemberType() {
+		return memberType;
 	}
-	public void setMembertype(String membertype) {
-		this.membertype = membertype;
+	public void setMemberType(String memberType) {
+		this.memberType = memberType;
 	}
-	public String getWriteday() {
-		return writeday;
+	public String getWriteDay() {
+		return writeDay;
 	}
-	public void setWriteday(String writeday) {
-		this.writeday = writeday;
+	public void setWriteDay(String writeDay) {
+		this.writeDay = writeDay;
 	}
+
+	
 	
 }

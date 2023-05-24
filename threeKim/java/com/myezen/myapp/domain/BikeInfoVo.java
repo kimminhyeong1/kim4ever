@@ -1,26 +1,30 @@
 package com.myezen.myapp.domain;
 
 public class BikeInfoVo {
-	private String BIKETYPE;
+	private String bikeType;
+	private String bikeContent;
+	private int rentPrice;
 	
-	public String getBIKETYPE() {
-		return BIKETYPE;
+	
+	public String getBikeType() {
+		return bikeType;
 	}
-	public void setBIKETYPE(String bIKETYPE) {
-		BIKETYPE = bIKETYPE;
+	public void setBikeType(String bikeType) {
+		this.bikeType = bikeType;
 	}
-	public String getBIKECONTENT() {
-		return BIKECONTENT;
+	public String getBikeContent() {
+		return bikeContent;
 	}
-	public void setBIKECONTENT(String bIKECONTENT) {
-		BIKECONTENT = bIKECONTENT;
+	public void setBikeContent(String bikeContent) {
+		this.bikeContent = bikeContent;
 	}
-	public int getRENTPRICE() {
-		return RENTPRICE;
+	public int getRentPrice() {
+		return rentPrice;
 	}
-	public void setRENTPRICE(int rENTPRICE) {
-		RENTPRICE = rENTPRICE;
+	public void setRentPrice(int rentPrice) {
+		this.rentPrice = rentPrice;
 	}
-	private String BIKECONTENT;
-	private int RENTPRICE;
+	
+	
+	
 }
