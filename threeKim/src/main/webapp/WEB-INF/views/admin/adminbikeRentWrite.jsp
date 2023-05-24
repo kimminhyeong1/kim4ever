@@ -58,7 +58,7 @@ li{list-style:none;}
 </head>
 <body>
 <div id="main">
-<%@include file="../header4.jsp" %>
+<%@include file="../header.jsp" %>
 	
 	<div id="content">
 		<table>
