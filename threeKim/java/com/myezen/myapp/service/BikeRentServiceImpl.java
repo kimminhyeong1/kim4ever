@@ -20,6 +20,8 @@ public class BikeRentServiceImpl implements BikeRentService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+
 	
 	
 	
@@ -117,7 +119,12 @@ public class BikeRentServiceImpl implements BikeRentService {
 	
 	
 	/*----------------------------------------------*/
-	
+	@Override
+	public int bikeRentErrorInsert(String errorContent,int ridx) {
+		System.out.println("서비스단에 들어옴");
+		int value = brsm.bikeRentErrorInsert(errorContent,ridx);
+		return value;
+	}
 	
 	
 	
