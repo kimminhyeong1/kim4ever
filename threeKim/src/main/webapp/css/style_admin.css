@@ -1,0 +1,15 @@
+@charset "UTF-8";
+/*모임페이지 공통부분 CSS*/
+/* *{outline: 1px solid #f00;} */
+/*header 부분*/
+header{width:1250px; margin:35px auto 70px; text-align:center;}  
+/*footer 부분*/
+
+/*공통 부분*/
+/*틀부분*/
+    /*박스전체틀*/
+    .gContainer{width:1250px; margin:35px auto 70px; text-align:center; border:1px solid #000;}
+    /*박스작은틀*/
+    .gContent{width:100%; display:flex; flex-wrap:wrap;justify-content:center; align-items:center;}
+    /*박스제목*/
+    .gContentTitle h2{width:100%; text-align:center; font-size:27px; margin-top:50px; margin-bottom:50px;}
