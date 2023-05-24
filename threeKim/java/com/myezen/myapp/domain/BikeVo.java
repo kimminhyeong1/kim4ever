@@ -6,7 +6,28 @@ public class BikeVo {
 	private String BIKETYPE; //자전거종류
 	private String BIKELOCATION; //자전거위치
 	private String BIKESTATE; //자전거상태
-	
+	private String QRImagePath; //자전거QR이미지
+	private String BIKECONTENT;
+	 private int RENTPRICE;
+	 
+	public String getBIKECONTENT() {
+		return BIKECONTENT;
+	}
+	public void setBIKECONTENT(String bIKECONTENT) {
+		BIKECONTENT = bIKECONTENT;
+	}
+	public int getRENTPRICE() {
+		return RENTPRICE;
+	}
+	public void setRENTPRICE(int rENTPRICE) {
+		RENTPRICE = rENTPRICE;
+	}
+	public String getQRImagePath() {
+		return QRImagePath;
+	}
+	public void setQRImagePath(String qRImagePath) {
+		QRImagePath = qRImagePath;
+	}
 	public int getBKIDX() {
 		return BKIDX;
 	}

@@ -5,9 +5,9 @@
 <mapper namespace="com.myezen.myapp.persistance.BikeRentService_Mapper">
 
 
-
-
-
+<select id="getBikeDetails" parameterType="int" resultType="com.myezen.myapp.domain.BikeVo">
+SELECT * FROM bike1234 WHERE BKIDX = #{bkidx}
+</select>
 
 
 

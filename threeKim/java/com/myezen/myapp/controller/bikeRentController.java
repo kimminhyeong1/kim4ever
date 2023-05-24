@@ -1,8 +1,13 @@
 package com.myezen.myapp.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.myezen.myapp.domain.BikeVo;
 import com.myezen.myapp.service.BikeRentService;
 
 
@@ -41,22 +46,23 @@ public class bikeRentController {
 	
 	/*자전거 QR대여*/
 	@RequestMapping(value="/bikeRentQR.do")
-	public String bikeRentQR() {
+	public String bikeRentQR(Model model) {
 		
 		
-		
-		
-		
-		
-		
-		return "bikeRent/bikeRentQR";
+	 	BikeVo bike1 = bs.getBikeDetails(1);
+	    model.addAttribute("bike1", bike1);
+	    System.out.println("bike1"+bike1);
+	    BikeVo bike2 = bs.getBikeDetails(2);
+	    model.addAttribute("bike2", bike2);
+	    System.out.println("bike2"+bike2);
+	    BikeVo bike3 = bs.getBikeDetails(3);
+	    model.addAttribute("bike3", bike3);
+	    System.out.println("bike3"+bike3);
+	    return "bikeRent/bikeRentQR";
 	}
-	
-	
-	
-	
-	
-	
+
+
+
 	
 	/*자전거상세보기*/	
 	@RequestMapping(value="/bikeRentDetail.do")
