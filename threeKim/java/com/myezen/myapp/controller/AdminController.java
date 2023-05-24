@@ -6,19 +6,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(value="/admin")
 public class AdminController {
-	//관리자 메인페이지
-		@RequestMapping(value="/adminPage.do")
-		public String adminPage() {
+	//관리자 메인 페이지
+	@RequestMapping(value="/adminPage.do")
+	public String adminPage() {
 			
-			return "admin/adminPage";
+		return "admin/adminPage";
+	}
+
+	//관리자 회원관리 페이지
+	@RequestMapping(value="/adminmemberList.do")
+	public String adminmemberList() {
+			
+		return "admin/adminmemberList";
 		}
 	
-		@RequestMapping(value="/adminbikeRentWrite.do")
-		public String adminbikeRentWrite() {
+	//관리자 게시판관리 페이지
+		@RequestMapping(value="/adminboardList.do")
+		public String adminboardList() {
+				
+			return "admin/adminboardList";
+			}
+	
+	@RequestMapping(value="/adminbikeRegister.do")
+	public String adminbikeRegister() {
 			
-			return "admin/adminbikeRentWrite";
+			return "admin/adminbikeRegister";
 		}
 		
+	
+	
 		
 		
 		
