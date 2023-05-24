@@ -3,12 +3,12 @@ package com.myezen.myapp.domain;
 public class BoardVo {
 	private int bidx;
 	private int midx;
-	private String boardtype;
+	private String boardType;
 	private String writer;
 	private String writeday;
 	private String subject;
 	private String content;
-	private String boardview;
+	private String boardView;
 	private String delyn;
 	private String fileupload;
 	
@@ -24,11 +24,11 @@ public class BoardVo {
 	public void setMidx(int midx) {
 		this.midx = midx;
 	}
-	public String getBoardtype() {
-		return boardtype;
+	public String getBoardType() {
+		return boardType;
 	}
-	public void setBoardtype(String boardtype) {
-		this.boardtype = boardtype;
+	public void setBoardType(String boardType) {
+		this.boardType = boardType;
 	}
 	public String getWriter() {
 		return writer;
@@ -54,11 +54,11 @@ public class BoardVo {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getBoardview() {
-		return boardview;
+	public String getBoardView() {
+		return boardView;
 	}
-	public void setBoardview(String boardview) {
-		this.boardview = boardview;
+	public void setBoardView(String boardView) {
+		this.boardView = boardView;
 	}
 	public String getDelyn() {
 		return delyn;
@@ -72,6 +72,8 @@ public class BoardVo {
 	public void setFileupload(String fileupload) {
 		this.fileupload = fileupload;
 	}
+
+	}
 	
 	
 	
@@ -82,4 +84,4 @@ public class BoardVo {
 
 		
 	
-}
+

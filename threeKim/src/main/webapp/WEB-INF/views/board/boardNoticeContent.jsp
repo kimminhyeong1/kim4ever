@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+     <%@ page import="com.myezen.myapp.domain.BoardVo" %>   
+ 
+ <% BoardVo bv   = (BoardVo)request.getAttribute("bv"); %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,14 +61,19 @@ li{list-style:none;}
 		
 			<tr>
 				<th>제목</th>
-				<td></td>
+			<td> <%=bv.getSubject() %> </td>
+
 				<th style="width:100px; text-align:center;border-left:1px solid #ddd;">조회수</th>
+				<td><%=bv.getBoardView()%></td>
+
+				
 				<td style="width:200px; text-align:center;"></td>
 			</tr>
 			
 			<tr>
 				<th>작성자</th>
-				<td></td>
+<td><%=bv.getWriter() %></td>
+
 				<td></td>
 				<td></td>
 				
@@ -73,7 +82,7 @@ li{list-style:none;}
 			<tr>
 				<th>글 내용</th>
 				<td style="height:500px;"></td>
-				<td></td>
+<td><%=bv.getContent() %>  </td>
 				<td></td>
           		
 			</tr>
@@ -87,17 +96,18 @@ li{list-style:none;}
 			</tr>
 			
 			<tr>
-				<th>이미지</th>
-				<td></td>	
-				<td></td>
-				<td></td>
-			</tr>
+<td>이미지</td>
+<td>
+
+</tr>
 	
 	</table>
 	<div id="btn">
-		<button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardModify.do'">수정</button>
-		<button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardDelete.do'">삭제</button>
-		<button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">목록</button>
+			<c:if test="${midx == bv.getMidx()}"><!-- midx가 동일할때만 출력 -->
+					<button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardModify.do?bidx=<%=bv.getBidx() %>'">수정</button>
+		    		<button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardDelete.do?bidx=<%=bv.getBidx() %>'">삭제</button>
+			</c:if>
+					<button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">목록</button>
     </div>
 	</form>
 	</div>

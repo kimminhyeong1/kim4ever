@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+        <%if (session.getAttribute("midx") == null){	out.println("<script>alert('로그인 하셔야 합니다.'); history.back(-1);</script>");}%>
+             <!-- midx가 null 이면 알림후 뒤로가기 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,9 +53,14 @@ li{list-style:none;}
 </style>
 <script type="text/javascript">
 	function fnWrite() {
+		var fm = document.frm;
 		if(confirm("글을 등록 하시겠습니까?")) {
 			location.href='<%=request.getContextPath()%>/board/boardList.do';
 		}
+		fm.action = "<%=request.getContextPath()%>/board/boardWriteAction2.do";
+		fm.enctype ="multipart/form-data";
+		fm.method="post";
+		fm.submit();
 	}
 </script>
 </head>
@@ -64,25 +71,26 @@ li{list-style:none;}
 	
 	<div id="content">
 	<h2>QnA 게시글 작성</h2>
-	<form>
+		<form name="frm">
+	
 		<table>
 			<tr>
 				<th>작성자</th>
-				<td></td>
+				<td><input type="text" name="writer" maxlength="5" value="<%= session.getAttribute("memberName") %>" readonly></td>
 			</tr>
 			<tr>
 				<th>제목</th>
-				<td><input type="text" style="width: 600px; height:40px;"></td>
+				<td><input type="text" name="subject" style="width: 600px; height:40px;"></td>
 			</tr>
 			<tr>
 				<th>내용</th>
 				<td>
-				<textarea cols="100" rows="8"></textarea>
-				</td>
+	<textarea name="content" cols="100" rows="8"></textarea>	
+		</td>
 			</tr>
 			<tr>
 				<th>첨부 파일</th>
-				<td><input type="file" name="uploadfile"/></td>
+				<td><input type="file" name="fileupload"/></td>
 			</tr>
 			
 		</table>
@@ -103,7 +111,6 @@ li{list-style:none;}
 	
 	
 	</div>
-
 
 </div>
 

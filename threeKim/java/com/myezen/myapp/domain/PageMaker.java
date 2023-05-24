@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class PageMaker {
 //페이지 네비게이션을 사용하기 위한 기능이 담긴 클래스
 	
-	private int displayPageNum = 10; //페이지네비게이션 나타내는 페이징수/ 화면 하단에 보여지는 페이지 개수
+	private int displayPageNum = 5; //페이지네비게이션 나타내는 페이징수/ 화면 하단에 보여지는 페이지 개수
 	private int startPage; //페이징의 시작점
 	private int endPage;   //페이징의 끝점
 	private int totalCount;//전체 게시물 수

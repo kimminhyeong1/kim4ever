@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+         <%@ page import="com.myezen.myapp.domain.BoardVo" %>   
+ 
+ <% BoardVo bv   = (BoardVo)request.getAttribute("bv"); %>   
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,6 +55,7 @@ li{list-style:none;}
 #btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
 
+
 </head>
 <body>
 <div id="main">
@@ -58,23 +63,22 @@ li{list-style:none;}
    
 	<div id="content">
 	<h2>게시글 삭제</h2>
- 	<form name="frm">
+ 	<form name="frm"> 	
+ 	<input type="text" name="bidx" value="<%=bv.getBidx()%>">
+ 	
 		<table>
 			<tr>
 				<th>글제목</th>
-				<td></td>
+				<td> <%=bv.getSubject() %></td>
 			</tr>
 			
 			<tr>
-				<th>비밀번호</th>
-				<td><input type="password" style="width:250px; height:30px;"></td>
-			</tr>
 		
 		</table>
 			
 		<div id="btn">
-			<button type="button" style="width:120px;height:30px;">확인</button>
-			<button type="submit" style="width:120px;height:30px;">취소</button>
+			<button type="button"  onclick="check();" style="width:120px;height:30px;">확인</button>
+			<button type="reset" style="width:120px;height:30px;">취소</button>
 		</div>
 	
 	</form>
@@ -90,5 +94,21 @@ li{list-style:none;}
    </div>
 </div>
 </body>
+<script type="text/javascript">
+
+
+function check(){	
+
+
+	var fm = document.frm;
+	if(confirm("글을 삭제하시겠습니까?")) {
+		location.href='<%=request.getContextPath()%>/board/boardModify.do';
+	}
+	fm.action = "<%=request.getContextPath()%>/board/boardDeleteAction.do";
+	fm.enctype ="multipart/form-data";
+	fm.method="post";
+	fm.submit();
+}
+</script>
 <%@include file="../footer.jsp" %>
 </html>

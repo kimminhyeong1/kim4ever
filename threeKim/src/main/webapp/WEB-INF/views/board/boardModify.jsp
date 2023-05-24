@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="com.myezen.myapp.domain.BoardVo" %>  
+ <% BoardVo bv   = (BoardVo)request.getAttribute("bv"); %>       
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,6 +53,34 @@ li{list-style:none;}
 </style>
 
 </head>
+<script type="text/javascript">
+
+function fnWrite() {
+	var fm = document.frm;
+	
+    if (fm.subject.value == "") {
+        alert("제목을 입력하세요");
+        fm.subject.focus();
+        return;
+    } else if (fm.content.value == "") {
+        alert("내용을 입력하세요");
+        fm.content.focus();
+        return;
+    } else if (fm.writer.value == "") {
+        alert("작성자를 입력하세요");
+        fm.writer.focus();
+        return;
+    }
+
+
+		fm.action = "<%=request.getContextPath()%>/board/boardModifyAction.do";
+		fm.enctype ="multipart/form-data";
+		fm.method="post";
+		fm.submit();
+	}
+
+
+</script>
 <body>
 <div id="main">
 <%@include file="../header.jsp" %>
@@ -58,27 +88,26 @@ li{list-style:none;}
 	<div id="content">
 	<h2>게시글 수정</h2>
  	<form name="frm">
+ 	<input type="hidden" name="bidx" value="<%=bv.getBidx()%>">
+ 	
 		<table>
 		
 			<tr>
 				<th>제목</th>
-				<td><input type="text"></td>
+		<td><input type="text" name="subject" value="<%=bv.getSubject()%>"></td>
 			</tr>
 			
 			<tr>
 				<th>내용</th>
-				<td><textarea cols="70" rows="25"></textarea></td>	
+<td><textarea name="content" cols="70" rows="25"><%=bv.getContent() %></textarea></td>
 			</tr>
 			
 			<tr>
 				<th>작성자</th>
-				<td><input type="text"></td>
+			<td><input type="text" name="writer" maxlength=5 value="<%=bv.getWriter()%>"readonly></td>
           	</tr>
 			
-			<tr>
-				<th>비밀번호</th>
-				<td><input type="password"></td>
-			</tr>
+
 			
 			<tr>
 				<th>첨부파일</th>
@@ -87,9 +116,10 @@ li{list-style:none;}
 	
 	</table>
 	<div id="btn">	
-      	<button type="button">수정</button>												
-      	<button type="button">취소</button>												
+			<button type="button" onclick="fnWrite();" >수정</button>
+			<button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">취소</button>
     </div>
+    
 	</form>
 	</div>
           
@@ -97,6 +127,8 @@ li{list-style:none;}
   
    	</div>
 </div>
+
 </body>
+
 <%@include file="../footer.jsp" %>
 </html>

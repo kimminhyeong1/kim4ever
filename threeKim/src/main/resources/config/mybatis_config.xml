@@ -8,5 +8,10 @@
  <typeAlias alias="scri" type="com.myezen.myapp.domain.SearchCriteria"/>
  <typeAlias alias="cv" type="com.myezen.myapp.domain.CommentVo"/>
 </typeAliases>
+
 </configuration>
+
+
+
+
 

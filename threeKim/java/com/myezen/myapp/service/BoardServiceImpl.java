@@ -33,8 +33,8 @@ public class BoardServiceImpl implements BoardService{
 	}
 	
 	@Override
-	public int boardViewCnt(int bidx) {		
-		int value = bsm.boardViewCnt(bidx);		
+	public int boardView(int bidx) {		
+		int value = bsm.boardView(bidx);		
 		return value;
 	}
 
@@ -48,25 +48,34 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public int boardInsert(BoardVo bv) {
 		int value = bsm.boardInsert(bv);
+		return value;
+	}
+	@Override
+	public int boardInsert2(BoardVo bv) {
+		int value = bsm.boardInsert2(bv);
+		return value;
+	}
+	@Override
+	public int boardInsert3(BoardVo bv) {
+		int value = bsm.boardInsert3(bv);
 		return 0;
 	}
-
 	@Override
 	public int boardModify(BoardVo bv) {
 		int value = bsm.boardModify(bv);
-		return 0;
+		return value;
 	}
 
 	@Override
 	public int boardDelete(BoardVo bv) {
 		int value = bsm.boardDelete(bv);
-		return 0;
+		return value;
 	}
 
 	@Override
 	public int boardReply(BoardVo bv) {
 		int value = bsm.boardReply(bv);
-		return 0;
+		return value;
 	}
 
 

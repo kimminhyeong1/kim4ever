@@ -34,4 +34,8 @@ public interface MemberService {
 	
 	
 	
+	public String getMemberName(String username);
+	
+	
+	
 }

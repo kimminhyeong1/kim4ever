@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,6 +62,7 @@ li{list-style:none;}
 }
 .tab__list__item.active {background-color:#333;color:#fff;border:1px solid #333;}
 
+ a {color: inherit; text-decoration: none;}
 
 </style>
 
@@ -103,14 +106,32 @@ li{list-style:none;}
 	               <td>17</td>
 	            </tr>
 	            
-	            <tr>
-	               <td>2</td>
-	               <td onclick="location.href='<%=request.getContextPath()%>/board/boardNoticeContent.do'">신규 지도 업데이트</td>
-	               <td>관리자</td>
-	               <td>2023-04-26</td>
-	               <td>17</td>
+	      
+   <tr>
+<c:set var="number" value="1" /><!-- 숫자시작값 -->
+<c:forEach var="bv" items="${blist}" varStatus="status">
+  <c:if test="${bv.boardType == 0 && bv.delyn == 'N'}">
+    <tr>
+      <td>${number}</td>
+      <td>
+        <a href="${pageContext.request.contextPath}/board/boardNoticeContent.do?bidx=${bv.bidx}">
+          ${bv.subject}
+        </a>
+      </td>
+      <td>${bv.writer}</td>
+      <td>${bv.writeday.substring(0, 10)}</td>
+      <td>${bv.boardView}</td>
+    </tr>
+    <c:set var="number" value="${number + 1}" /><!-- 번호증가 -->
+  
+  </c:if>
+</c:forEach>
+
+
 	            </tr>
-	               
+	            
+
+
 	      		</table>
 	      		<div id="btn">
          		<button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardNoticeWrite.do'">작성</button>
@@ -118,7 +139,6 @@ li{list-style:none;}
         </div>
         
         <div class="tab__contents" data-order="2">
-	        <h2>문의게시판</h2>
               	<table>
 	            <tr>
 	               <th>No</th>
@@ -137,11 +157,25 @@ li{list-style:none;}
 	            </tr>
 	            
 	            <tr>
-	               <td>2</td>
-	               <td onclick="location.href='<%=request.getContextPath()%>/board/boardQnaContent.do'">대여소 설치요청 하고싶어요</td>
-	               <td>김진상</td>
-	               <td>2023-05-21</td>
-	               <td>7</td>
+<c:set var="number" value="1" /><!-- 숫자시작값 -->
+<c:forEach var="bv" items="${blist}" varStatus="status">
+  <c:if test="${bv.boardType == 1}">
+    <tr>
+      <td>${number}</td>
+      <td>
+        <a href="${pageContext.request.contextPath}/board/boardQnaContent.do?bidx=${bv.bidx}">
+          ${bv.subject}
+        </a>
+      </td>
+      <td>${bv.writer}</td>
+      <td>${bv.writeday.substring(0, 10)}</td>
+      <td>${bv.boardView}</td>
+    </tr>
+    <c:set var="number" value="${number + 1}" /><!-- 번호증가 -->
+  
+  </c:if>
+</c:forEach>
+
 	            </tr>
 	            
 	           
@@ -169,16 +203,51 @@ li{list-style:none;}
 	               <td>2023-04-26</td>
 	               <td>17</td>
 	            </tr>
-	            
-	             <tr>
-	               <td>2</td>
-	               <td onclick="location.href='<%=request.getContextPath()%>/board/boardFaqContent.do'">대여한 곳에만 반납해야 하나요?</td>
-	               <td>김장군</td>
-	               <td>2023-05-26</td>
-	               <td>12</td>
+	            	            <tr>
+<c:set var="number" value="0" />
+<c:forEach var="bv" items="${blist}" varStatus="status">
+  <c:if test="${bv.boardType == 2}">
+    <c:set var="number" value="${number + 1}" /><!-- 번호증가 -->
+    <tr>
+      <td>${number}</td>
+      <td>
+        <a href="${pageContext.request.contextPath}/board/boardFaqContent.do?bidx=${bv.bidx}">
+          ${bv.subject}
+        </a>
+      </td>
+      <td>${bv.writer}</td>
+      <td>${bv.writeday.substring(0, 10)}</td>
+      <td>${bv.boardView}</td>
+    </tr>
+  </c:if>
+</c:forEach>
+
+
 	            </tr>
-	            
+	             
 	            </table>
+	            
+	            <!-- 페이지이동 -->
+	            <table border=0 style="width:300px;width:800px;">
+<tr>
+<td style="text-align:right;">
+<c:if test="${ pm.prev == true }">
+<a href="${pageContext.request.contextPath }/board/boardList.do?page=${pm.startPage-1}&searchType=${ pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } "> ◀</a>
+</c:if>
+</td>
+<td style="text-align:center;width:300px;">
+<c:forEach var="i"  begin="${pm.startPage}" end="${pm.endPage}"  step="1" >
+	<a href="${pageContext.request.contextPath }/board/boardList.do?page=${ i }&searchType=${pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">${ i }</a>
+</c:forEach>	
+</td>
+<td style="width:200px;text-align:left;">
+<c:if test="${pm.next&&pm.endPage >0 }">
+<a href="${pageContext.request.contextPath }/board/boardList.do?page=${pm.endPage+1}&searchType=${pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">▶</a>
+</c:if>
+</td>
+</tr>
+</table>
+
 	            <div id="btn">
          		<button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardFaqWrite.do'">작성</button>
          		</div> 

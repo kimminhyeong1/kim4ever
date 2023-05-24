@@ -15,34 +15,52 @@
 
 </sql>
 
-<select id="boardSelectAll" parameterType="scri" resultType="bv">
-	SELECT * FROM (
-		SELECT ROWNUM AS rnum, A. * FROM(
-		SELECT * FROM board1230 WHERE delYN='N'
-		<include refid="search" /><!--  =+str+ -->
-		ORDER BY originbidx DESC, depth ASC)A
-		)B WHERE B.rnum BETWEEN (#{page}-1)* #{perPageNum}+1 AND #{page}* #{perPageNum}
-</select>
 
 <select id="boardTotal" parameterType="scri" resultType="int">
-	select count(*) as cnt from board1230 where delyn='N'
+	select count(*) as cnt from board1235 where delyn='N'
 	<include refid="search" />
 </select>
 
+<select id="boardSelectAll" parameterType="scri" resultType="bv">
+SELECT * FROM(
+	SELECT ROWNUM AS rnum, A.* FROM (
+	 SELECT * FROM board1235  WHERE delyn='N' 
+	 <include refid="search" />
+	  ORDER BY bidx desc, depth asc) A 
+	 )B WHERE B.rnum BETWEEN (#{page}-1)*#{perPageNum}+1 AND #{page}* #{perPageNum}
+
+</select>
 <select id="boardSelectOne" parameterType="int" resultType="bv"> <!-- select하니까 resultType값 필요 -->
-	select * from board1234 where delyn='N' and bidx = #{bidx}
+	select * from board1235 where delyn='N' and bidx = #{bidx}
 </select>
 
 <update id="boardView" parameterType="int">
-  UPDATE board1234 SET viewcnt = NVL(viewcnt, 0) + 1 WHERE bidx = #{bidx}
+  UPDATE board1235 SET boardView = NVL(boardView, 0) + 1 WHERE bidx = #{bidx}
 </update>
 
 
 <insert id="boardInsert" parameterType="bv">
-  INSERT INTO board1234(bidx, midx, boardType, writer, writeday, subject, content, boardView, delYN, fileUpload)
-  VALUES (bidx_seq.nextval, #{midx}, #{boardType}, #{writer}, SYSDATE, #{subject}, #{content}, #{boardView}, #{delYN}, #{fileUpload})
+  INSERT INTO board1235(bidx ,boardType, writer, writeday, subject, content, boardView ,depth,level_, midx)
+  VALUES (bidx_seq.nextval, 0 , #{writer}, SYSDATE, #{subject}, #{content}, 0,0,0,#{midx})
 </insert>
 
+<insert id="boardInsert2" parameterType="bv">
+  INSERT INTO board1235(bidx ,boardType, writer, writeday, subject, content, boardView ,depth,level_, midx)
+  VALUES (bidx_seq.nextval, 1 , #{writer}, SYSDATE, #{subject}, #{content}, 0,0,0,#{midx})
+</insert>
+
+<insert id="boardInsert3" parameterType="bv">
+  INSERT INTO board1235(bidx ,boardType, writer, writeday, subject, content, boardView ,depth,level_, midx)
+  VALUES (bidx_seq.nextval, 2 , #{writer}, SYSDATE, #{subject}, #{content}, 0,0,0,#{midx})
+</insert>
+
+<update id="boardModify" parameterType="bv">
+update board1235 set subject=#{subject}, content=#{content}, writer=#{writer} where bidx=${bidx}
+</update>
+
+<update id="boardDelete" parameterType="bv">
+    update board1235 set delyn = 'Y' where bidx = #{bidx} and midx = #{midx}
+</update>
 
 
 
