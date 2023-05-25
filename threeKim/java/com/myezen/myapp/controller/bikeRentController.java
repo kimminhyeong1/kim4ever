@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -219,10 +220,26 @@ public class bikeRentController {
 	/*반납하기*/
 	/*반납하기 클릭시 반납하기페이지로이동*/
 	@RequestMapping(value="/bikeRentReturn.do")
-	public String bikeRentReturn() {
+	public String bikeRentReturn(
+			@RequestParam(value = "ridx" ,required = false) Integer ridx,//자전거 번호
+			@RequestParam(value = "rsidx" ,required = false) Integer rsidx,//반납하는 대여소 주소 번호
+			Model md
+			) {
+			//이용중인 내역에서 사용자가 반납하러가기를 누르고 반납소 QR을 찍으면 이쪽으로 넘어온다
+			//그래서 자전거 번호를 그 전에 가져와야한다
 		
+		ridx = (int)1;
+		rsidx= (int)1;
 		
+		//대여한 위치
+		//반납할 위치
+		//사용자 이름
+		//자전거 고유번호
+		//대여한 시간
+		//반납할 시간
+		//자전거 이용요금
 		
+		//이걸 가져오고 모델로 보내준다
 		
 		
 		

@@ -44,16 +44,16 @@
 			<h2 class="QRTitle">대여소QR</h2>	
 					<div class="containerFlex">
 						<div class="QRcard">
-						<a href="bikeRentReturn.do"><img class="QRImg"src="../resources/QRcode/Qrcode1.png" alt=""></a>
-						<p>덕진대여소</p>
-						</div>
-						<div class="QRcard">
-						<img class="QRImg" src="../resources/bikeimg/bike2.jpg" alt="">
-						<p>오목대여소</p>
-						</div>
-						<div class="QRcard">
-						<img class="QRImg" src="../resources/bikeimg/bike.jpg" alt="">
+							<a href="<%=request.getContextPath()%>/bikeRent/bikeRentReturn.do?rsidx=1"><img class="QRImg"src="../resources/QRcode/rsidx1.png" alt=""></a>
 						<p>송천대여소</p>
+						</div>
+						<div class="QRcard">
+							<a href="<%=request.getContextPath()%>/bikeRent/bikeRentReturn.do?rsidx=2"><img class="QRImg" src="../resources/QRcode/rsidx2.png" alt=""></a>
+						<p>효자대여소</p>
+						</div>
+						<div class="QRcard">
+							<a href="<%=request.getContextPath()%>/bikeRent/bikeRentReturn.do?rsidx=3"><img class="QRImg" src="../resources/QRcode/rsidx3.png" alt=""></a>
+						<p>덕진대여소</p>
 						</div>
 					</div>
 				
