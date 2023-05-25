@@ -15,6 +15,7 @@
 		<%@include file="../header4.jsp" %>
 
 		<main id="main">
+		<%@include file="../sider.jsp" %>
 			<section class="aContainer">
 				<div class="aContent"> 
 					
