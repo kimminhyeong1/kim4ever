@@ -92,7 +92,11 @@
 
 	<!-- dddddddddddddddddddddddddddddddddddddddddddddddddddddd -->
 	
-	
+	    <!-- 고장/신고 접수 -->
+    <insert id="bikeRentErrorInsert" parameterType="errorv">
+        INSERT INTO error1234(eidx,ridx,errorContent)
+        VALUES(eidx_seq.NEXTVAL,#{1},#{0})
+    </insert>
 	
 	
 	

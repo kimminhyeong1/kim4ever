@@ -1,24 +1,49 @@
 package com.myezen.myapp.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.myezen.myapp.service.AdminService;
+import com.myezen.myapp.service.MemberService;
 
 @Controller
 @RequestMapping(value="/admin")
 public class AdminController {
-	//관리자 메인페이지
-		@RequestMapping(value="/adminPage.do")
-		public String adminPage() {
+	@Autowired	
+	AdminService as;
+	@Autowired
+	MemberService ms;
+	
+	//관리자 메인 페이지
+	@RequestMapping(value="/adminPage.do")
+	public String adminPage() {
 			
-			return "admin/adminPage";
+		return "admin/adminPage";
+	}
+
+	//관리자 회원관리 페이지
+	@RequestMapping(value="/adminmemberList.do")
+	public String adminmemberList() {
+			
+		return "admin/adminmemberList";
 		}
 	
-		@RequestMapping(value="/adminbikeRentWrite.do")
-		public String adminbikeRentWrite() {
+	//관리자 게시판관리 페이지
+		@RequestMapping(value="/adminboardList.do")
+		public String adminboardList() {
+				
+			return "admin/adminboardList";
+			}
+	
+	@RequestMapping(value="/adminbikeRegister.do")
+	public String adminbikeRegister() {
 			
-			return "admin/adminbikeRentWrite";
+			return "admin/adminbikeRegister";
 		}
 		
+	
+	
 		
 		
 		
