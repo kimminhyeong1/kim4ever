@@ -24,19 +24,19 @@
 				</tr>
 			
 				<tr>
-					<td colspan="3">남녀노소 즐길 수 있는 자전거입니다!</td>
+					<td colspan="3">${bjv.bikeContent }</td>
 				</tr>
 			
 				<tr>
-					<td colspan="3">자전거 고유번호 : hy0101</td>	
+					<td colspan="3">자전거 고유번호 : ${bjv.bikeCode}</td>	
 				</tr>
 				
 				<tr>
-					<td colspan="3">대여소 위치 : 오목대여소</td>
+					<td colspan="3">자전거 위치 : ${bjv.bikeLocation}대여소</td>
 				</tr>
 				
 				<tr>
-					<td colspan="3">이용 요금 : 1000원</td>
+					<td colspan="3">이용 요금 : ${bjv.rentPrice}원</td>
 				</tr>
 			
 				<tr>

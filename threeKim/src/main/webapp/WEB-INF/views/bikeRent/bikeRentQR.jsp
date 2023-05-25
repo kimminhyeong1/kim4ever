@@ -22,18 +22,18 @@
 					<div class="containerFlex">
 						 
                         <div class="QRcard">
-                            <a href="<%=request.getContextPath()%>/bikeRent/bikeRentDetail.do?bkidx=${bike1.bkidx}"><img class="QRImg" src="../resources/QRcode/Qrcode1.png" alt=""></a>
-                            <p>${bike1.bikeCode}</p>
+                            <a href="<%=request.getContextPath()%>/bikeRent/bikeRentDetail.do?bkidx=1"><img class="QRImg" src="../resources/QRcode/Qrcode4.png" alt=""></a>
+                            <p>NOR1</p>
                         </div>
                         
                          <div class="QRcard">
-                            <a href="<%=request.getContextPath()%>/bikeRent/bikeRentDetail.do?bkidx=${bike2.BKIDX}"><img class="QRImg" src="../resources/QRcode/Qrcode2.png" alt=""></a>
-                            <p>${bike2.bikeCode}</p>
+                            <a href="<%=request.getContextPath()%>/bikeRent/bikeRentDetail.do?bkidx=2"><img class="QRImg" src="../resources/QRcode/Qrcode5.png" alt=""></a>
+                            <p>ELE1</p>
                         </div>
                         
                          <div class="QRcard">
-                            <a href="<%=request.getContextPath()%>/bikeRent/bikeRentDetail.do?bkidx=${bike3.BKIDX}"><img class="QRImg" src="../resources/QRcode/Qrcode3.png" alt=""></a>
-                            <p>${bike3.bikeCode}</p>
+                            <a href="<%=request.getContextPath()%>/bikeRent/bikeRentDetail.do?bkidx=3"><img class="QRImg" src="../resources/QRcode/Qrcode6.png" alt=""></a>
+                            <p>ELE2</p>
                         </div>
                      
                    		

@@ -2,8 +2,9 @@ package com.myezen.myapp.controller;
 
 
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+
+
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,14 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
-
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import com.myezen.myapp.domain.BikeVo;
+import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.service.BikeRentService;
 
 
@@ -65,42 +59,35 @@ public class bikeRentController {
 	    return "bikeRent/bikeRentQR";
 	}
 
-
-
-	
+	//BikeJoinVo로 bike관련 Vo들 join시킴
 	/*자전거상세보기*/	
 	@RequestMapping(value="/bikeRentDetail.do")
 	public String bikeRentDetail(
-			@RequestParam ("bkidx") int bkidx
-			) {
-		
-		System.out.println(bkidx);
-		//리턴값은 참이면 1 아니면 0   받은번호로 서비스 메소드 실행 (번호)
-			//서비스 구현 
-			//자전거 번호로 db에서 조인한테이블을 vo에 담아서 여기서 값을 받고
-			//다시 컨트롤러에 넘김 
-			//컨트롤러에서 값을 받아서 뷰로 보내줌 
+			@RequestParam("bkidx") int bkidx,
+			Model model) {
 		
 		
-		
-		
+		  BikeJoinVo bjv = bs.getBikeRentDetail(bkidx);
+		  
+		  model.addAttribute("bjv", bjv);
+		  
 		return "bikeRent/bikeRentDetail";
 	}
 	
-	
-	
-	
-	
-	
-	
+
 	
 	/*이용중인내역*/
 	@RequestMapping(value="/bikeRentUseList.do")
-	public String bikeRentUseList() {
+	public String bikeRentUseList(
+			Model model) {
 		
+		ArrayList<BikeJoinVo> rentalList = bs.getRentalList();
 		
+		model.addAttribute("rentalList", rentalList);
 		
+
 		
+	
 		
 		
 		
@@ -283,7 +270,7 @@ public class bikeRentController {
 		System.out.println("고장/신고페이지 에서 작성하기 클릭");
 
 		System.out.println("고장/신고페이지 에서 작성하기 클릭 메서드 실행"+ridx+""+errorContent);
-		 int value = bs.bikeRentErrorInsert(errorContent,ridx);
+		 //int value = bs.bikeRentErrorInsert(errorContent,ridx);
 			
 		//접수되었다는 메세지 띄우기
 		

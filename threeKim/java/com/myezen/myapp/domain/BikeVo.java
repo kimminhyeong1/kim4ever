@@ -5,7 +5,8 @@ public class BikeVo {
 	private String bikeCode; //고유코드
 	private String bikeType; //자전거종류
 	private String bikeLocation; //자전거위치
-	private String bikeState; //자전거상태
+	private String bikeState; //자전거상태 디폴트값 = 'Y' <대여가능 Y , 대여중  N , 고장 E>
+ 	
 	
 	public int getBkidx() {
 		return bkidx;

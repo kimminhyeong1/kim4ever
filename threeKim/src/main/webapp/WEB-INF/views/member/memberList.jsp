@@ -81,15 +81,15 @@ li{list-style:none;}
 				<%for(MemberVo mv : alist){ %>
 				<tr>
 					<%-- <td><%=mv.getMemberid() %></td> --%>
-					<td><a href="memberListProfile.do?memberId=<%=mv.getMemberid()%>"><%=mv.getMemberid() %></a></td>
-					<td><%=mv.getMembername() %></td>
-					<td><%=mv.getWriteday() %></td>
-					<td><%=mv.getMembertype() %></td>
+					<td><a href="memberListProfile.do?memberId=<%=mv.getMemberId()%>"><%=mv.getMemberId() %></a></td>
+					<td><%=mv.getMemberName() %></td>
+					<td><%=mv.getWriteDay() %></td>
+					<td><%=mv.getMemberType() %></td>
 					<td>
-					<% if (mv.getMembertype().equals("관리자")) { %>
+					<% if (mv.getMemberType().equals("관리자")) { %>
 						삭제금지
 					<% } else { %>
-						<button type="button" onclick="fnDelete('<%=mv.getMemberid()%>');">삭제</button>
+						<button type="button" onclick="fnDelete('<%=mv.getMemberId()%>');">삭제</button>
 					<% } %>		
 					</td>
 				</tr>

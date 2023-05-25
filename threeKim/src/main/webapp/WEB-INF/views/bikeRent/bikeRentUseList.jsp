@@ -41,12 +41,12 @@
 						이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내
 						이용안내이용안내이용안내이용안내이용안내이용안내
 					</p></div>
-					<div><h2>현재 ㅁㅁㅁ을 대여중입니다.</h2></div>
-					<div><p>대여한 자전거 대여소 위치</p><p>:</p><p>효자 대여소</p></div>
-					<div><p>사용자 이름</p><p>:</p><p>홍길동</p></div>
-					<div><p>자전거 고유번호</p><p>:</p><p>AE-4541</p></div>
-					<div><p>대여한 자전거 시간</p><p>:</p><p>2023-05-25 15:50</p></div>
-					<div><p>대여한 자전거 이용 요금</p><p>:</p><p>1000원</p></div>
+					<div><h2>현재 ${bjv.bikeType}을 대여중입니다.</h2></div>
+					<div><p>대여한 자전거 대여소 위치</p><p>:</p><p>${bjv.rentPlace}</p></div>
+					<div><p>사용자 이름</p><p>:</p><p>${bjv.memberName }</p></div>
+					<div><p>자전거 고유번호</p><p>:</p><p>${bjv.bikeCode }</p></div>
+					<div><p>대여한 자전거 시간</p><p>:</p><p>${bjv.rentDay }</p></div>
+					<div><p>대여한 자전거 이용 요금</p><p>:</p><p>${bjv.rentPrice }원</p></div>
 					<div id="useListBtn">
 						<button onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentFault.do'">고장/신고</button>
 						<button onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentQR.do'">반납하러가기</button>						

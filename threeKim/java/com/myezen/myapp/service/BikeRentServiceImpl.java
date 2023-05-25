@@ -1,5 +1,7 @@
 package com.myezen.myapp.service;
 
+
+
 import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
@@ -7,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.myezen.myapp.domain.BikeVo;
+import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.persistance.BikeRentService_Mapper;
 
 @Service("BikeRentServiceImpl")
@@ -24,11 +27,27 @@ public class BikeRentServiceImpl implements BikeRentService {
 		return 0;
 	}
 
+	//자전거상세보기
 	@Override
-	public BikeVo getBikeDetails(int bkidx) {
+	public BikeJoinVo getBikeRentDetail(int bkidx) {
 		
-		return brsm.getBikeDetails(bkidx);
+		 return brsm.getBikeRentDetail(bkidx);
 	}
+
+	 @Override
+	    public ArrayList<BikeJoinVo> getRentalList() {
+	        return brsm.getRentalList();
+	    }
+	@Override
+	public void updateBikeState(int bkidx, String bikeState) {
+		brsm.updateBikeState(bkidx, bikeState);
+		
+	}
+
+	 
+
+	
+
 
 
 
