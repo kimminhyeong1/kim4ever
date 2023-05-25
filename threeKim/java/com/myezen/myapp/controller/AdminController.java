@@ -1,9 +1,15 @@
 package com.myezen.myapp.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.myezen.myapp.domain.JoinVo;
+import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.service.AdminService;
 import com.myezen.myapp.service.MemberService;
 
@@ -24,10 +30,25 @@ public class AdminController {
 
 	//관리자 회원관리 페이지
 	@RequestMapping(value="/adminmemberList.do")
-	public String adminmemberList() {
-			
+	public String memberList(Model model) {
+		
+		ArrayList<JoinVo> alist = as.memberList();
+		
+		model.addAttribute("alist",alist); //(model=requestsetattribute)에 담아서 가지고 간다
+		
 		return "admin/adminmemberList";
-		}
+	}
+	
+	//회원 삭제	
+			@RequestMapping(value="/adiminmemberDelete.do")
+				public String deleteMember(@RequestParam("memberId") String memberId) {
+					//System.out.println("test1");
+					as.deleteMember(memberId);
+					//System.out.println("test2");
+					return "redirect:/member/memberList.do"; 
+			}	
+	
+	
 	
 	//관리자 게시판관리 페이지
 		@RequestMapping(value="/adminboardList.do")
@@ -41,18 +62,7 @@ public class AdminController {
 			
 			return "admin/adminbikeRegister";
 		}
-		
-	
-	
-		
-		
-		
-		
-		
-		/*회원 삭제	
-		@RequestMapping(value="/memberList.do")
-		public String memberList() {
+						
 			
-			return "admin/memberList";
-		}	*/
+
 }

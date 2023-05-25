@@ -51,10 +51,10 @@
                     <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/admin/adminboardList.do'">게시판 관리</span></a>
                 </li>
                 <li>
-                    <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/admin/gMyPage.do'">자전거 관리</span></a>
+                    <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/admin/bikeList.do'">자전거 관리</span></a>
                 </li>
                 <li>
-                    <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/admin/gMyWish.do'">대여소 관리</span></a>
+                    <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/admin/rentalshopList.do'">대여소 관리</span></a>
                 </li>
                 <li>
                     <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/admin/gSearch.do'">모임 관리</span></a>
