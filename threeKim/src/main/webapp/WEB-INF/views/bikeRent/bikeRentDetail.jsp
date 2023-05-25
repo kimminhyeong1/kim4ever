@@ -73,7 +73,7 @@
 				  
 				<tr>
 				  <td colspan="3">
-				  	<button type="button" style="width:100%; height:50px;" onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentUseList.do'">대여하기</button>
+				  	<button type="button" style="width:100%; height:50px;" onclick="location.href='<%=request.getContextPath() %>/bikeRent/bikeRentUseList.do?bkidx=${bjv.bkidx }'">대여하기</button>
 				  </td>
 				</tr>
 			</table>

@@ -3,18 +3,20 @@ package com.myezen.myapp.persistance;
 
 
 
-import java.util.ArrayList;
+
 
 import com.myezen.myapp.domain.BikeJoinVo;
 
 public interface BikeRentService_Mapper {
 
 	//자전거상세보기
-	public BikeJoinVo getBikeRentDetail(int bkidx);
+	public BikeJoinVo RentDetail(int bkidx);
 	
-	public void updateBikeState(int bkidx, String bikeState);
+	//대여 내역
+	public BikeJoinVo RentUseList(int bkidx);
 	
-	public ArrayList<BikeJoinVo> getRentalList();
+	
+	
 	
 	
 	

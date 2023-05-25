@@ -5,7 +5,7 @@
 <mapper namespace="com.myezen.myapp.persistance.BikeRentService_Mapper">
 
 <!-- 자전거 상세보기 : bikeVo와 bikeInfo를 조인하여 JoinVo에 매핑하는 select 문 -->
-<select id="getBikeRentDetail" parameterType="int" resultMap="joinResultMap">
+<select id="RentDetail" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
   SELECT
     b.bkidx,
     b.bikeCode,
@@ -22,52 +22,40 @@
 </select>
 
 
-<resultMap id="joinResultMap" type="com.myezen.myapp.domain.BikeJoinVo">
-  <id property="bkidx" column="bkidx" />
-  <result property="bikeCode" column="bikeCode" />
-  <result property="bikeType" column="bikeType" />
-  <result property="bikeLocation" column="bikeLocation" />
-  <result property="bikeState" column="bikeState" />
-  <result property="bikeContent" column="bikeContent" />
-  <result property="rentPrice" column="rentPrice" />
-</resultMap>
-
-
-<select id="getRentalList" resultMap="rentalResultMap">
-    SELECT
-        b.bikeType,
-        m.memberName,
-        b.bikeCode,
-        r.rentDay,
-        i.rentPrice,
-        r.rentPlace
-    FROM
-        bike1234 b
-        JOIN bikeInfo1234 i ON b.bikeType = i.bikeType
-        JOIN rent1234 r ON b.bkidx = r.bkidx
-        JOIN member1234 m ON r.midx = m.midx
-    WHERE
-        b.bikeState = 'N'
+<select id="RentUseList" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
+ SELECT
+    b.bikeType,
+    b.bikeState,
+    b.bikeLocation,
+    m.memberName,
+    b.bikeCode,
+    r.rentDay,
+    i.rentPrice
+  FROM
+    bike1234 b
+    JOIN bikeInfo1234 i ON b.bikeType = i.bikeType
+    JOIN rent1234 r ON b.bkidx = r.bkidx
+    JOIN member1234 m ON r.midx = m.midx
+  WHERE
+    r.bkidx = #{bkidx}
 </select>
 
-<update id="updateBikeState">
+ <!-- <update id="updateBikeState" parameterType="string">
     UPDATE bike1234
     SET bikeState = #{bikeState}
     WHERE bkidx = #{bkidx}
-</update>
+</update> 
 
-<resultMap id="rentalResultMap" type="com.myezen.myapp.domain.BikeJoinVo">
-    <result property="bikeType" column="bikeType" />
-    <result property="memberName" column="memberName" />
-    <result property="bikeCode" column="bikeCode" />
-    <result property="rentDay" column="rentDay" />
-    <result property="rentPrice" column="rentPrice" />
-    <result property="rentPlace" column="rentPlace" />
-</resultMap>
+<insert id="insertRent" parameterType="com.myezen.myapp.domain.RentalInfo">
+  INSERT INTO rent1234 (bkidx, midx, rentDay)
+  VALUES (#{bkidx}, #{midx}, #{rentDay})
+</insert> -->
 
-
-
-
+<!-- <update id="updateBikeState" parameterType="com.myezen.myapp.domain.Bike">
+  UPDATE bike1234
+  SET bikeState = 'N'
+  WHERE bkidx = #{bkidx}
+</update> --> 
 
 
 
@@ -90,7 +78,18 @@
 
 
 
-	<!-- dddddddddddddddddddddddddddddddddddddddddddddddddddddd -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- dddddddddddddddddddddddddddddddddddddddddddddddd -->
 	
 	    <!-- 고장/신고 접수 -->
     <insert id="bikeRentErrorInsert" parameterType="errorv">

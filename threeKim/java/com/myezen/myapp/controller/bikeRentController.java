@@ -4,7 +4,7 @@ package com.myezen.myapp.controller;
 
 
 
-import java.util.ArrayList;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -65,12 +65,12 @@ public class bikeRentController {
 	@RequestMapping(value="/bikeRentDetail.do")
 	public String bikeRentDetail(
 			@RequestParam("bkidx") int bkidx,
-			Model model) {
+			Model md) {
 		
 		
-		  BikeJoinVo bjv = bs.getBikeRentDetail(bkidx);
+		  BikeJoinVo bjv = bs.RentDetail(bkidx);
 		  
-		  model.addAttribute("bjv", bjv);
+		  md.addAttribute("bjv", bjv);
 		  
 		return "bikeRent/bikeRentDetail";
 	}
@@ -78,22 +78,22 @@ public class bikeRentController {
 
 	
 	/*이용중인내역*/
-	@RequestMapping(value="/bikeRentUseList.do")
-	public String bikeRentUseList(
-			Model model) {
-		
-		ArrayList<BikeJoinVo> rentalList = bs.getRentalList();
-		
-		model.addAttribute("rentalList", rentalList);
-		
-
-		
 	
-		
-		
-		
-		return "bikeRent/bikeRentUseList";
+	@RequestMapping(value="/bikeRentUseList.do") 
+	public String bikeRentUseList(
+			  @RequestParam("bkidx") int bkidx,
+			  Model md) {
+			
+			//업데이트
+			//컬럽삽입
+		    //조회
+		  	BikeJoinVo bjv = bs.RentUseList(bkidx);
+		    
+		  	md.addAttribute("bjv", bjv);
+
+		  return "bikeRent/bikeRentUseList"; 
 	}
+	
 	
 	
 	
