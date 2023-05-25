@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.web.configurers.Expression
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.myezen.myapp.domain.JoinVo;
+import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.persistance.AdminService_Mapper;
 import com.myezen.myapp.persistance.MemberService_Mapper;
@@ -41,9 +41,9 @@ public class AdminServiceImpl implements AdminService {
 
 	//회원리스트
 	@Override
-	public ArrayList<JoinVo> memberList() {
+	public ArrayList<BikeJoinVo> memberList() {
 				
-	ArrayList<JoinVo> alist = asm.memberList();
+	ArrayList<BikeJoinVo> alist = asm.memberList();
 	
 	return alist;
 	}

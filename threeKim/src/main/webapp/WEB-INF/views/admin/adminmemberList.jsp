@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import = "com.myezen.myapp.domain.JoinVo" %>
+<%@page import = "com.myezen.myapp.domain.BikeJoinVo" %>
 <%@page import = "java.util.*" %>    
-<%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-ArrayList<JoinVo> alist = (ArrayList<JoinVo>)request.getAttribute("alist");
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -78,21 +76,24 @@ li{list-style:none;}
 					<th>등급</th>
 					<th>삭제</th>
 				</tr>
-				<%for(JoinVo mv : alist){ %>
-				<tr>
-					<td><a href="adminmemberListProfile.do?memberId=<%=mv.getMemberId()%>"><%=mv.getMemberId()%></a></td>
-					<td><%=mv.getMemberId()%></td>
-					<td><%=mv.getWriteDay() %></td>
-					<td><%=mv.getMemberType()%></td>
-					<td>
-					<% if (mv.getMemberType().equals("관리자")) { %>
-						삭제금지
-					<% } else { %>
-						<button type="button" onclick="fnDelete('<%=mv.getMemberId()%>');">삭제</button>
-					<% } %>		
-					</td>
-				</tr>
-				<%} %>
+				<c:forEach var="bjv" items="${alist}">
+					<tr>
+						<td><a href="adminmemberListProfile.do?memberId=${bjv.memberId}">${bjv.memberId}</a></td>
+						<td>${bjv.memberId}</td>
+						<td>${bjv.writeDay}</td>
+						<td>${bjv.memberType}</td>
+						<td>
+							<c:choose>
+								<c:when test="${bjv.memberType eq '관리자'}">  
+									삭제금지
+								</c:when>
+								<c:otherwise> 
+									<button type="button" onclick="fnDelete('${bjv.memberId}');">삭제</button>
+								</c:otherwise>
+							</c:choose>
+						</td>
+					</tr>
+				</c:forEach>
 		</table>
 		
 	</div>

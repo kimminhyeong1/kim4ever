@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
 <head>
     <style>
         /* 리셋코드 */
@@ -19,6 +17,10 @@
         #top_logo .login a:hover {background-color: #666;}
 
         .side{width:500px;}
+
+		.menu_list {display:flex; flex-direction:column; align-items:left; margin-left:30px; clear:both; width:300px;}
+		.menu_list li {width:100px; border-bottom:1px solid #f5f5f5; padding-top:40px; font-family:'GangwonEdu_OTFBoldA';}
+		.menu_list li a{color:#000; text-decoration:none; font-weight:bold; font-size:21px;}
 
         #content{width:1250px; height:1200px;}
         #bottom{width:1250px; height:300px; }
@@ -42,25 +44,5 @@
                 </ul>
             </div>
         </div>	
-        <nav class="side">
-            <ul class="menu_list">
-                <li>
-                    <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/admin/adminmemberList.do'">회원 관리</span></a>
-                </li>
-                <li>
-                    <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/admin/adminboardList.do'">게시판 관리</span></a>
-                </li>
-                <li>
-                    <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/admin/bikeList.do'">자전거 관리</span></a>
-                </li>
-                <li>
-                    <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/admin/rentalshopList.do'">대여소 관리</span></a>
-                </li>
-                <li>
-                    <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/admin/gSearch.do'">모임 관리</span></a>
-                </li>
-            </ul>
-        </nav>
+
     </header>
-</body>
-</html>
