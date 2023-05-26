@@ -1,5 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%
+
+            Date currentDate = new Date();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String formattedDate = dateFormat.format(currentDate);
+            pageContext.setAttribute("currentTime", formattedDate);
+            
+            
+%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,6 +21,8 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent.css">
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script> 
+		
 		<style type="text/css">
 			/*헤더영역 메뉴*/
 			header #menu{display: none;}
@@ -28,32 +43,52 @@
 			#useListBtn{text-align: center;}
 			
 			  
-		</style>  
+		</style>
+		<script type="text/javascript">
+			$(document).ready(function(){
+		    	$("#btn1").click(function(){
+	
+		            var fm = document.frm;
+		      			
+		      			 fm.action ="<%=request.getContextPath()%>/bikeRent/bikeRentReturnAction.do";  
+		      			 fm.method = "POST";
+		      			 fm.submit();
+		
+		       });//$("#btn1").click(function(){-----end
+				
+			});
+		</script>  
 	</head>
 	<body>
 		<%@include file="../header.jsp" %>
 		<main id="main">
 			<section id="content">
-				<div class="container">
-					<div><h1>이용내역</h1></div>
-					<div><p id="useInfo">
-						이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내
-						이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내
-						이용안내이용안내이용안내이용안내이용안내이용안내
-					</p></div>
-					<div><h2>현재 ㅁㅁㅁ을 반납중입니다.</h2></div>
-					<div><p>대여한 자전거 대여소 위치</p><p>:</p><p>효자 대여소</p></div>
-					<div><p>반납할 자전거 대여소 위치</p><p>:</p><p>덕진 대여소</p></div>
-					<div><p>사용자 이름</p><p>:</p><p>홍길동</p></div>
-					<div><p>자전거 고유번호</p><p>:</p><p>AE-4541</p></div>
-					<div><p>대여한 자전거 시간</p><p>:</p><p>2023-05-25 15:40</p></div>
-					<div><p>반납할 자전거 시간</p><p>:</p><p>2023-05-25 16:00</p></div>
-					<div><p>대여한 자전거 이용 요금</p><p>:</p><p>1000원</p></div>
-					<div id="useListBtn">
-						<button onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentFault.do'">고장/신고</button>
-						<button onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentHistory.do'">최종 반납하기</button>					
+				<form id="frm" name="frm">
+					<div class="container">
+						<div>
+							<input type="hidden" name="ridx" value="${ridx}">
+							<input type="hidden" name="rsidx" value="${rsidx}">
+						</div>
+						<div><h1>이용내역</h1></div>
+						<div><p id="useInfo">
+							이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내
+							이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내
+							이용안내이용안내이용안내이용안내이용안내이용안내
+						</p></div>
+						<div><h2>현재 ㅁㅁㅁ을 반납중입니다.</h2></div>
+						<div><p>대여한 자전거 대여소 위치</p><p>:</p><p>${bjv.rentPlace} 대여소</p></div>
+						<div><p>반납할 자전거 대여소 위치</p><p>:</p><p>${bjv.rentalshopName} 대여소</p></div>
+						<div><p>사용자 이름</p><p>:</p><p>${bjv.memberName}</p></div>
+						<div><p>자전거 고유번호</p><p>:</p><p>${bjv.bkidx}</p></div>
+						<div><p>대여한 자전거 시간</p><p>:</p><p>${bjv.rentDay}</p></div>
+						<div><p>반납할 자전거 시간</p><p>:</p><p>${currentTime}</p></div>
+						<div><p>대여한 자전거 이용 요금</p><p>:</p><p>${bjv.rentPrice}원</p></div>
+						<div id="useListBtn">
+							<button onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentFault.do'">고장/신고</button>
+							<button type="button" id="btn1">최종 반납하기</button>			 		
+						</div>
 					</div>
-				</div>
+				</form>
 			</section>
 		</main>
 		<%@include file="../footer.jsp" %>

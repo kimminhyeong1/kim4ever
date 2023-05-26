@@ -213,15 +213,17 @@ public class bikeRentController {
 	/*반납하기 클릭시 반납하기페이지로이동*/
 	@RequestMapping(value="/bikeRentReturn.do")
 	public String bikeRentReturn(
-			@RequestParam(value = "ridx" ,required = false) Integer ridx,//자전거 번호
-			@RequestParam(value = "rsidx" ,required = false) Integer rsidx,//반납하는 대여소 주소 번호
+			@RequestParam(value = "ridx" ,required = false) Integer ridx,//대여 번호
+			@RequestParam(value = "rsidx") int rsidx,//반납하는 대여소 주소 번호
 			Model md
 			) {
 			//이용중인 내역에서 사용자가 반납하러가기를 누르고 반납소 QR을 찍으면 이쪽으로 넘어온다
 			//그래서 자전거 번호를 그 전에 가져와야한다
 		
 		ridx = (int)1;
-		rsidx= (int)1;
+		System.out.println(rsidx);
+		
+		BikeJoinVo bjv = bs.bikeRentReturnCheck(ridx,rsidx); 
 		
 		//대여한 위치
 		//반납할 위치
@@ -232,8 +234,9 @@ public class bikeRentController {
 		//자전거 이용요금
 		
 		//이걸 가져오고 모델로 보내준다
-		
-		
+		md.addAttribute("bjv",bjv);
+		md.addAttribute("ridx", ridx);
+		md.addAttribute("rsidx", rsidx);
 		
 		
 		
@@ -245,9 +248,25 @@ public class bikeRentController {
 	/*최종 반납하기*/
 	/*반납하기페이지에서 최종반납하기 클릭시*/
 	@RequestMapping(value="/bikeRentReturnAction.do")
-	public String bikeRentReturnAction() {
+	public String bikeRentReturnAction(
+			@RequestParam(value = "ridx" ) int ridx,//대여 번호
+			@RequestParam(value = "rsidx") int rsidx//반납하는 대여소 주소 번호
+			) {
+			
+		System.out.println("최종반납 자전거번호"+ridx);
+		System.out.println("최종반납 대여소 주소 번호"+rsidx);
+		
+		
+		int value = bs.bikeRentReturn(ridx,rsidx); 
+		
+			//자전거테이블
+			//자전거 상태 N으로 바꾸기
+			//자전거 위치 바꾸기
 		
 			
+			//반납테이블 데이터 생성하기
+		
+		System.out.println("출력");
 		
 		
 		
@@ -292,7 +311,7 @@ public class bikeRentController {
 		System.out.println("고장/신고페이지 에서 작성하기 클릭");
 
 		System.out.println("고장/신고페이지 에서 작성하기 클릭 메서드 실행"+ridx+""+errorContent);
-		 //int value = bs.bikeRentErrorInsert(errorContent,ridx);
+		 int value = bs.bikeRentErrorInsert(errorContent,ridx);
 			
 		//접수되었다는 메세지 띄우기
 		
