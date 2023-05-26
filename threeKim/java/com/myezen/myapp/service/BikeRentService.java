@@ -16,8 +16,13 @@ public interface BikeRentService {
 	//자전거상세보기
 	public BikeJoinVo RentDetail(int bkidx);
 	
+	public void updateBikeStateAndMoveInfo(int bkidx);
+	
 	//대여 내역
 	public BikeJoinVo RentUseList(int bkidx);
+	
+	
+	
 	
 
 	 

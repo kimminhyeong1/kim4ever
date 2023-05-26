@@ -87,6 +87,11 @@ public class bikeRentController {
 			//업데이트
 			//컬럽삽입
 		    //조회
+		
+		// 대여 상태 변경 및 정보 이동
+			bs.updateBikeStateAndMoveInfo(bkidx);
+	    
+			 // 대여 내역 조회
 		  	BikeJoinVo bjv = bs.RentUseList(bkidx);
 		    
 		  	md.addAttribute("bjv", bjv);

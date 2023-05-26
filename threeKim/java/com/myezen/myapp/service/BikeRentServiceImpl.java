@@ -7,13 +7,15 @@ package com.myezen.myapp.service;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.persistance.BikeRentService_Mapper;
 
 @Service("BikeRentServiceImpl")
 public class BikeRentServiceImpl implements BikeRentService {
+	
+	
 	private BikeRentService_Mapper brsm;
 	
 	@Autowired
@@ -36,10 +38,11 @@ public class BikeRentServiceImpl implements BikeRentService {
 	
 	//대여 목록 정보 조회
 	@Override
-	
+
 	public BikeJoinVo RentUseList(int bkidx) {
 		//트랜잭션
 		//업데이트
+		
 		//삽입
 		//리스트조회
 		
@@ -47,6 +50,17 @@ public class BikeRentServiceImpl implements BikeRentService {
 		return brsm.RentUseList(bkidx);
 	}
 	
+	@Override
+	public void updateBikeStateAndMoveInfo(int bkidx) {
+
+		 /// 대여 상태 변경
+		brsm.updateBikeState(bkidx);
+       
+        // 정보 이동
+        BikeJoinVo bjv = brsm.RentUseList(bkidx);
+        
+        brsm.insertRentInfo(bjv);
+	}
 
 
 
@@ -163,6 +177,7 @@ public class BikeRentServiceImpl implements BikeRentService {
         int value = brsm.bikeRentErrorInsert(errorContent,ridx);
         return value;
     }
+
 
 
 	

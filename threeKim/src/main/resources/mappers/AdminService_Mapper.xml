@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<<<<<<< HEAD
+
 <mapper namespace="com.myezen.myapp.persistance.AdminService_Mapper">
 
 	<select id="memberList" resultType="mv">
@@ -13,12 +13,8 @@
 	delete from member1234 WHERE memberid=#{memberId}
 	</delete>
 	
-</mapper>	
-=======
-<mapper namespace="com.myezen.myapp.persistance.BikeRentService_Mapper">
-
 
 
 
 </mapper>
->>>>>>> 병수
+

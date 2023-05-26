@@ -21,6 +21,16 @@
     b.bkidx = #{bkidx}
 </select>
 
+<update id="updateBikeState" parameterType="int">
+    UPDATE bike1234
+    SET bikeState = 'N'
+    WHERE bkidx = #{bkidx}
+</update>
+
+<insert id="insertRentInfo" parameterType="com.myezen.myapp.domain.BikeJoinVo">
+    INSERT INTO rent1234 (rentday, rentPlace, bkidx, rsidx, midx)
+    VALUES (#{rentDay, jdbcType=VARCHAR}, #{bikeLocation}, #{bkidx}, #{rsidx}, #{midx})
+</insert>
 
 <select id="RentUseList" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
  SELECT
@@ -40,16 +50,13 @@
     r.bkidx = #{bkidx}
 </select>
 
- <!-- <update id="updateBikeState" parameterType="string">
-    UPDATE bike1234
-    SET bikeState = #{bikeState}
-    WHERE bkidx = #{bkidx}
-</update> 
 
+
+<!--
 <insert id="insertRent" parameterType="com.myezen.myapp.domain.RentalInfo">
   INSERT INTO rent1234 (bkidx, midx, rentDay)
   VALUES (#{bkidx}, #{midx}, #{rentDay})
-</insert> -->
+</insert>  -->
 
 <!-- <update id="updateBikeState" parameterType="com.myezen.myapp.domain.Bike">
   UPDATE bike1234
