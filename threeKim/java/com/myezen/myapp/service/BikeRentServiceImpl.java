@@ -48,110 +48,21 @@ public class BikeRentServiceImpl implements BikeRentService {
 		return brsm.RentUseList(bkidx);
 	}
 	
+	@Override
+	public void RentUseListAction(int bkidx) {
+		 /// 대여 상태 변경
+		brsm.RentUseListAction(bkidx);
+       
+        
+		// 정보 이동
+		BikeJoinVo bjv =brsm.RentUseList(bkidx);
+	   
+        
+        
+        brsm.insertRentInfo(bjv);
+		
+	}
 
-
-
-	
-	 
-
-	
-
-
-
-
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	 
-	
-	
-	
-	
-	
 	
 	
 	
