@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@page import = "com.myezen.myapp.domain.BikeJoinVo" %>
 <%@page import = "java.util.*" %>    
-<%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 ArrayList<BikeJoinVo> alist = (ArrayList<BikeJoinVo>)request.getAttribute("alist");
 %>
@@ -42,7 +42,7 @@ li{list-style:none;}
 #main #content{width:1250px; height:2400px;text-align:center;}
 #main #bottom{width:1250px; height:300px; }
 #main #content h2{text-align:left; margin-top:50px; margin-left:300px;font-family: 'GangwonEdu_OTFBoldA'; font-size:25px;}
-#content table {width:60%; border-collapse:collapse; margin:60px auto 0; line-height:60px; font-size:20px;font-family:'omyu_pretty'; font-size:24px;}
+#content table {width:70%; border-collapse:collapse; margin:60px auto 0; line-height:60px; font-size:20px;font-family:'omyu_pretty'; font-size:24px;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
 #content table tr th:nth-child(1){width:20px;}
@@ -78,21 +78,26 @@ li{list-style:none;}
 					<th>등급</th>
 					<th>삭제</th>
 				</tr>
-				<%for(BikeJoinVo mv : alist){ %>
-				<tr>
-					<td><a href="adminmemberListProfile.do?memberId=<%=mv.getMemberId()%>"><%=mv.getMemberId()%></a></td>
-					<td><%=mv.getMemberId()%></td>
-					<td><%=mv.getWriteDay() %></td>
-					<td><%=mv.getMemberType()%></td>
-					<td>
-					<% if (mv.getMemberType().equals("관리자")) { %>
-						삭제금지
-					<% } else { %>
-						<button type="button" onclick="fnDelete('<%=mv.getMemberId()%>');">삭제</button>
-					<% } %>		
-					</td>
-				</tr>
-				<%} %>
+				
+				<c:forEach var="bjv" items="${alist}">
+					<tr>
+						<td><a href="adminmemberListProfile.do?memberId=${bjv.memberId}">${bjv.memberId}</a></td>
+						<td>${bjv.memberName}</td>
+						<td>${bjv.writeDay}</td>
+						<td>${bjv.memberType}</td>
+						<td>
+							<c:choose>
+								<c:when test="${bjv.memberType eq '관리자'}">  
+									삭제금지
+								</c:when>
+								<c:otherwise> 
+									<button type="button" onclick="fnDelete('${bjv.memberId}');">삭제</button>
+								</c:otherwise>
+							</c:choose>
+						</td>
+					</tr>
+				</c:forEach>
+
 		</table>
 		
 	</div>
