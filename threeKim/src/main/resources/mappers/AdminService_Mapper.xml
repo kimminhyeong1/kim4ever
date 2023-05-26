@@ -13,7 +13,10 @@
 	delete from member1234 WHERE memberid=#{memberId}
 	</delete>
 	
+<<<<<<< HEAD
 </mapper>	
 
 
+=======
+>>>>>>> 병수
 
