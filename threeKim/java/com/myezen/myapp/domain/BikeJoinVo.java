@@ -12,6 +12,8 @@ public class BikeJoinVo {
 	private int bkidx; //자전거번호
 	private String bikeCode; //고유코드
 	private String bikeLocation; //자전거위치
+	
+	
 	private String bikeState; //자전거상태
 	
 	//ErrorVo
@@ -39,7 +41,7 @@ public class BikeJoinVo {
 	
 	//RentVo
 
-	private String rentDay; //대여요일
+	private String rentDay;//대여요일
 	private String rentPlace; //대여장소
 	
 	private int rsdix; //대여소번호
@@ -53,7 +55,12 @@ public class BikeJoinVo {
 	
 	
 	
-	
+	public String getRentDay() {
+		return rentDay;
+	}
+	public void setRentDay(String rentDay) {
+		this.rentDay = rentDay;
+	}
 	
 	
 	public String getBikeType() {
@@ -194,12 +201,7 @@ public class BikeJoinVo {
 	}
 	
 
-	public String getRentDay() {
-		return rentDay;
-	}
-	public void setRentDay(String rentDay) {
-		this.rentDay = rentDay;
-	}
+	
 	public String getRentPlace() {
 		return rentPlace;
 	}

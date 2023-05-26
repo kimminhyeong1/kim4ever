@@ -8,13 +8,12 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.persistance.BikeRentService_Mapper;
 
 @Service("BikeRentServiceImpl")
 public class BikeRentServiceImpl implements BikeRentService {
-	
-	
 	private BikeRentService_Mapper brsm;
 	
 	@Autowired
@@ -44,167 +43,48 @@ public class BikeRentServiceImpl implements BikeRentService {
 		
 		//삽입
 		//리스트조회
+		// 대여 상태 변경
+		RentUseListAction(bkidx);
 		
-		
+		// 대여 내역 조회
 		return brsm.RentUseList(bkidx);
 	}
 	
+	
 	@Override
-	public void updateBikeStateAndMoveInfo(int bkidx) {
-
+	public void RentUseListAction(int bkidx) {
 		 /// 대여 상태 변경
-		brsm.updateBikeState(bkidx);
+		brsm.RentUseListAction(bkidx);
        
-        // 정보 이동
-        BikeJoinVo bjv = brsm.RentUseList(bkidx);
+        
+		// 정보 이동
+		BikeJoinVo bjv =brsm.RentUseList(bkidx);
+	   
+        
         
         brsm.insertRentInfo(bjv);
+		
 	}
 
 
 
-	
-	 
-
-	
-
-
 
 
 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	 
-	
-	
-	
-	
-	
-	
-	
+
+
 	
 	
 	/*----------------------------------------------*/
 	
     @Override
-    //고장/신고하기
     public int bikeRentErrorInsert(String errorContent,int ridx) {
         System.out.println("서비스단에 들어옴");
         int value = brsm.bikeRentErrorInsert(errorContent,ridx);
         return value;
     }
 
-	@Override
-	//반납하기
-	public BikeJoinVo bikeRentReturnCheck(int ridx, int rsidx) {
-		
-		BikeJoinVo bjv = brsm.bikeRentReturnCheck(ridx, rsidx);
-		System.out.println(bjv.getBikeCode());
-		
-		
-		
-		
-		return bjv;
-	}
-	
-	@Override
-	@Transactional
-	//최종반납하기 
-	public int bikeRentReturn(int ridx, int rsidx) {
-		
-		BikeJoinVo bjv = brsm.bikeRentOneSelect(ridx, rsidx);
-		System.out.println(""+bjv.getBkidx()+""+bjv.getBikeLocation()+""+bjv.getBikeState()+""+bjv.getRentalshopName()+""+bjv.getRidx());
-		int value1 =brsm.bikeRentBikeUpdate(bjv.getBkidx(),bjv.getBikeLocation()); //자전거 업데이트
-		int value2 =brsm.bikeRentReturnInsert(bjv.getRentalshopName(),bjv.getRidx());//자전거 반납
-
-
-			return value2;			
-	}
-	
 	
 	
 	
