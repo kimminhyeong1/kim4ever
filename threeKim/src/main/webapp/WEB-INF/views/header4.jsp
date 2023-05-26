@@ -1,16 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        /* 리셋코드 */
-        *{margin:0;padding:0;}
-        li{list-style:none;}
-=======
 <%@page import = "com.myezen.myapp.domain.*" %>
->>>>>>> kmh
 
 <style>
 /*리셋코드*/
@@ -35,20 +25,6 @@ header{width: 1250px;margin: 35px auto 70px;text-align: center;}
 .sub-menu{width: 0; height: 400px; overflow:hidden; background:white ;transition-duration: 0.5s;}
 .main-nav-left:hover > .sub-menu{height: 100%;/*사이드바 높이*/width: 450px;/* background: #F7F7F7; */  border:1px solid #999; border-left: 0; overflow: hidden}
 
-<<<<<<< HEAD
-        #content{width:1250px; height:1200px;}
-        #bottom{width:1250px; height:300px; }
-    </style>
-</head>
-<body>
-    <header>
-        <div id="top_logo">
-            <div class="logo" style="display:inline-block;">
-                <h1><img src="${pageContext.request.contextPath}/resources/logo/logo6.jpg" alt="타:바" onclick="location.href='<%=request.getContextPath()%>/index.jsp'"/></h1>
-            </div>
-            <div class="login">
-                <ul>
-=======
 /*사이드바 내부*/
 .sub-menu-list {display:flex; flex-direction:column; align-items:left; margin-left:30px; clear:both;}
 .sub-menu-list li {width:450px; border-bottom:1px solid #f5f5f5; padding-top:40px; font-family:'GangwonEdu_OTFBoldA';}
@@ -154,47 +130,22 @@ header{width: 1250px;margin: 35px auto 70px;text-align: center;}
 		</div>
 		<div class="login">
 	   		     <ul>
->>>>>>> kmh
                     <% if(session.getAttribute("memberName") != null) { %>
                         <li style="margin-top:10px;">관리자 모드 실행중</li>
-                        <li><a href="<%=request.getContextPath() %>/member/memberLogOut.do">나가기</a></li>
+                        <li><a href="<%=request.getContextPath() %>/index.jsp">나가기</a></li>
                     <% } else { %>
                         <li><a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a></li>
                         <li><a href="<%=request.getContextPath() %>/member/memberJoin.do">회원가입</a></li>  
                     <% } %> 
                 </ul>
-<<<<<<< HEAD
-            </div>
-        </div>	
-        <nav class="side">
-            <ul class="menu_list">
-                <li>
-                    <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/admin/adminmemberList.do'">회원 관리</span></a>
-                </li>
-                <li>
-                    <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/admin/adminboardList.do'">게시판 관리</span></a>
-                </li>
-                <li>
-                    <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/admin/bikeList.do'">자전거 관리</span></a>
-                </li>
-                <li>
-                    <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/admin/rentalshopList.do'">대여소 관리</span></a>
-                </li>
-                <li>
-                    <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/admin/gSearch.do'">모임 관리</span></a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-</body>
-</html>
-=======
 		</div>
 	    			
 	   	
 	</div>
 	
+	
 			
+	
 	<div id="menu">		
 		<p onclick="location.href='<%=request.getContextPath()%>/admin/adminmemberList.do'">회원 관리 </p>
 		<p onclick="location.href='<%=request.getContextPath()%>/admin/adminboardList.do'">게시판 관리</p>
@@ -205,4 +156,3 @@ header{width: 1250px;margin: 35px auto 70px;text-align: center;}
 	</div>
 </header>
 	
->>>>>>> kmh
