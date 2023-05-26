@@ -50,10 +50,7 @@ public class BikeRentServiceImpl implements BikeRentService {
 		return brsm.RentUseList(bkidx);
 	}
 	
-<<<<<<< HEAD
-=======
-	
->>>>>>> 병수
+
 	@Override
 	public void RentUseListAction(int bkidx) {
 		 /// 대여 상태 변경
@@ -69,19 +66,10 @@ public class BikeRentServiceImpl implements BikeRentService {
 		
 	}
 
-<<<<<<< HEAD
-	
-	
-=======
 
 
 
 
-
-	
-
-
->>>>>>> 병수
 	
 	
 	/*----------------------------------------------*/
