@@ -3,15 +3,18 @@ package com.myezen.myapp.controller;
 
 
 
-
-
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.service.BikeRentService;
@@ -75,26 +78,54 @@ public class bikeRentController {
 		return "bikeRent/bikeRentDetail";
 	}
 	
-
 	
+	
+	
+	//자전거대여정보업데이트
+	@RequestMapping(value="/bikeRentUpdate.do", method=RequestMethod.POST)
+	@ResponseBody
+	public String bikeRentUpdate(
+			@ModelAttribute("bjv") BikeJoinVo bjv,
+			HttpServletRequest request,
+			Model md
+			) {
+	    HttpSession session = request.getSession();
+	    int midx = (int) session.getAttribute("midx");
+	    bjv.setMidx(midx);
+	
+	    System.out.println("bjv"+bjv.getBkidx());
+	    
+	    // 자전거 상태 업데이트
+	    bs.updateBikeState(bjv.getBkidx());
+		
+	    System.out.println("자전거 상태 업데이트");
+	    
+	    // 대여 정보 삽입
+	    bs.insertRentInfo(bjv, request);
+		
+		System.out.println("update들어감");
+			
+		return "bikeRent/bikeRentUpdate";
+	}
+	
+
 	/*이용중인내역*/
 	
 	@RequestMapping(value="/bikeRentUseList.do") 
 	public String bikeRentUseList(
-			  @RequestParam("bkidx") int bkidx,
-			  Model md) {
+			@RequestParam("bkidx") int bkidx,
+		    @RequestParam("rkidx") int rsidx,
+		    @RequestParam("midx") int midx,
+			Model md) {
 			
-			//업데이트
-			//컬럽삽입
-		    //조회
-			// 대여 상태 변경 및 정보 이동
-			bs.RentUseListAction(bkidx);
-	    
-			 // 대여 내역 조회
-		  	BikeJoinVo bjv = bs.RentUseList(bkidx);
-		    
-		    
-		  	md.addAttribute("bjv", bjv);
+	
+			
+		
+		//대여 내역 조회		
+		BikeJoinVo bjv = bs.RentUseList(bkidx, rsidx, midx);
+				 
+		md.addAttribute("bjv", bjv);
+				
 
 		  return "bikeRent/bikeRentUseList"; 
 	}

@@ -22,18 +22,22 @@
 </select>
 
 <insert id="insertRentInfo" parameterType="com.myezen.myapp.domain.BikeJoinVo">
-    INSERT INTO rent1234 (ridx, rentPlace, bkidx, rsidx, midx)
-    VALUES (ridx_seq.NEXTVAL, #{rentPlace,jdbcType=VARCHAR}, #{bkidx}, #{rsidx}, #{midx})
+    INSERT INTO rent1234 (ridx, rentDay, rentPlace, bkidx, rsidx, midx)
+    VALUES (ridx_seq.NEXTVAL, SYSDATE , #{rentPlace}, #{bkidx}, #{rsidx}, #{midx})
 </insert>
 
 
-<update id="RentUseListAction" parameterType="int">
+<update id="updateBikeState" parameterType="int">
     UPDATE bike1234
     SET bikeState = 'N'
     WHERE bkidx = #{bkidx}
 </update>
 
-
+<select id="getBikeLocationByBkidx" parameterType="int" resultType="java.lang.String">
+        SELECT bikeLocation
+        FROM bike1234
+        WHERE bkidx = #{bkidx}
+    </select>
 
 
 <select id="RentUseList" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
