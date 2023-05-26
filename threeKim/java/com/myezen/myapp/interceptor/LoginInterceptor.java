@@ -9,7 +9,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 
-	@Override																							//담아서 화면까지 가져가는 용도
+	@Override //핸들러가 실행은 완료 되었지만 아직 View가 생성되기 이전에 호출된다.	//담아서 화면까지 가져가는 용도
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) {
 		
 		Object midx = modelAndView.getModel().get("midx");
@@ -22,7 +22,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		} 
 	}
 	
-	@Override
+	@Override //컨트롤러가 호출되기 전에 실행됨
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
 		
 		HttpSession session = request.getSession();

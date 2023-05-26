@@ -6,6 +6,8 @@ package com.myezen.myapp.service;
 
 
 
+import java.util.ArrayList;
+
 import com.myezen.myapp.domain.BikeJoinVo;
 
 public interface BikeRentService {
@@ -34,7 +36,8 @@ public interface BikeRentService {
     public BikeJoinVo bikeRentReturnCheck(int ridx, int rsidx);
 	//반납하기 체크하고 최종반납하기 메소드
     public int bikeRentReturn(int ridx, int rsidx);
-	
+	//대여이력보기
+    public ArrayList<BikeJoinVo> bikeRentHistoryList(int midx);
 	
 	
 	

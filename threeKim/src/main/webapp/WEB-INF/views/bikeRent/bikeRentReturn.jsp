@@ -80,7 +80,13 @@
 						<div><p>반납할 자전거 대여소 위치</p><p>:</p><p>${bjv.rentalshopName} 대여소</p></div>
 						<div><p>사용자 이름</p><p>:</p><p>${bjv.memberName}</p></div>
 						<div><p>자전거 고유번호</p><p>:</p><p>${bjv.bkidx}</p></div>
-						<div><p>대여한 자전거 시간</p><p>:</p><p>${bjv.rentDay}</p></div>
+						<div>
+							<p>대여한 자전거 시간</p><p>:</p><p>
+								<fmt:parseDate value="${bjv.rentDay}" pattern="yyyy-mm-dd hh:mm:ss.s" var="parsedRentDay" />
+								<fmt:formatDate value="${parsedRentDay}" pattern="yyyy-mm-dd hh:mm:ss" var="formattedRentDay" />
+								${formattedRentDay}
+							</p>
+						</div>
 						<div><p>반납할 자전거 시간</p><p>:</p><p>${currentTime}</p></div>
 						<div><p>대여한 자전거 이용 요금</p><p>:</p><p>${bjv.rentPrice}원</p></div>
 						<div id="useListBtn">

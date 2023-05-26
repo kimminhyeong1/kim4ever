@@ -5,6 +5,8 @@ package com.myezen.myapp.persistance;
 
 
 
+import java.util.ArrayList;
+
 import com.myezen.myapp.domain.BikeJoinVo;
 
 public interface BikeRentService_Mapper {
@@ -39,6 +41,8 @@ public interface BikeRentService_Mapper {
     public int bikeRentBikeUpdate(int bkidx, String bikeLocation);
 	//2. 반납테이블에 컬럼 생성하기
     public int bikeRentReturnInsert(String RentalshopName,int ridx);
+    //대여이력보기
+    public ArrayList<BikeJoinVo> bikeRentHistoryList(int midx);
 	
 	
 	

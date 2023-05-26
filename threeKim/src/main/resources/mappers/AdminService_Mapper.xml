@@ -15,10 +15,5 @@
 	
 </mapper>	
 
-<mapper namespace="com.myezen.myapp.persistance.BikeRentService_Mapper">
 
-
-
-
-</mapper>
 

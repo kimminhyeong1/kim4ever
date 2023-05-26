@@ -4,6 +4,8 @@ package com.myezen.myapp.service;
 
 
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -170,6 +172,8 @@ public class BikeRentServiceImpl implements BikeRentService {
 	//반납하기
 	public BikeJoinVo bikeRentReturnCheck(int ridx, int rsidx) {
 		
+		System.out.println("반납하기 서비스단들어오기");
+		
 		BikeJoinVo bjv = brsm.bikeRentReturnCheck(ridx, rsidx);
 		System.out.println(bjv.getBikeCode());
 		
@@ -190,6 +194,15 @@ public class BikeRentServiceImpl implements BikeRentService {
 		int value2 =brsm.bikeRentReturnInsert(bjv.getRentalshopName(),bjv.getRidx());//자전거 반납
 
 			return value2;			
+	}
+
+	@Override
+	//대여이력보기
+	public ArrayList<BikeJoinVo> bikeRentHistoryList(int midx) {
+		
+		ArrayList<BikeJoinVo> bjvlist = brsm.bikeRentHistoryList(midx);
+
+		return bjvlist;
 	}
 	
 	

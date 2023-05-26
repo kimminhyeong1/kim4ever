@@ -133,6 +133,15 @@
 		(rtidx_seq.nextval,#{0},#{1}) 
 	</insert>
 	
+	<select id="bikeRentHistoryList" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
+		SELECT membername,memberphone,bike1234.biketype,rentplace,returnplace,rentday,returnday,rentprice 
+		FROM rent1234
+		JOIN member1234 ON member1234.midx = rent1234.midx
+		JOIN return1234 ON return1234.ridx = rent1234.ridx
+		JOIN bike1234 ON bike1234.bkidx = rent1234.bkidx
+		JOIN bikeinfo1234	ON bikeinfo1234.biketype= bike1234.biketype
+		where member1234.midx = #{midx}
+	</select>
 	
 	
 	
