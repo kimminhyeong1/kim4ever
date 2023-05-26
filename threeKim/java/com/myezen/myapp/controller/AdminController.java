@@ -36,13 +36,13 @@ public class AdminController {
 	}
 	
 	//회원 삭제	
-			@RequestMapping(value="/adminmemberDelete.do")
-				public String deleteMember(@RequestParam("memberId") String memberId) {
-					//System.out.println("test1");
-					as.deleteMember(memberId);
-					//System.out.println("test2");
-					return "redirect:/admin/adminmemberList.do"; 
-			}	
+	@RequestMapping(value="/adminmemberDelete.do")
+	public String deleteMember(@RequestParam("memberId") String memberId) {
+		//System.out.println("test1");
+		as.deleteMember(memberId);
+		//System.out.println("test2");
+		return "redirect:/admin/adminmemberList.do"; 
+	}	
 	
 	
 	
@@ -64,7 +64,11 @@ public class AdminController {
 
 	//관리사 신고 내역 페이지
 	@RequestMapping(value="/adminbikeError.do")
-	public String adminbikeError() {
+	public String errorList(Model model) {
+		
+		ArrayList<BikeJoinVo> elist = as.errorList();
+		
+		model.addAttribute("elist",elist);
 		
 		return "admin/adminbikeError";
 	}

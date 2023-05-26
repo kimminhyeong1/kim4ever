@@ -9,6 +9,7 @@ public interface AdminService_Mapper {
 	//회원삭제
 	public void deleteMember(String memberId);
 	//회원리스트	
-		public ArrayList<BikeJoinVo> memberList();
-	
+	public ArrayList<BikeJoinVo> memberList();
+	//신고리스트	
+	public ArrayList<BikeJoinVo> errorList(); 
 }

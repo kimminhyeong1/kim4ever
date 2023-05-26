@@ -48,6 +48,14 @@ public class AdminServiceImpl implements AdminService {
 	return alist;
 	}
 
+	//신고내역 리스트
+	@Override
+	public ArrayList<BikeJoinVo> errorList() {
+
+	ArrayList<BikeJoinVo> elist = asm.errorList();
+		return elist;
+	}
+
 
 
 

@@ -287,7 +287,7 @@ public class bikeRentController {
 		System.out.println("고장/신고페이지 에서 작성하기 클릭");
 
 		System.out.println("고장/신고페이지 에서 작성하기 클릭 메서드 실행"+ridx+""+errorContent);
-		 //int value = bs.bikeRentErrorInsert(errorContent,ridx);
+		 int value = bs.bikeRentErrorInsert(errorContent,ridx);
 			
 		//접수되었다는 메세지 띄우기
 		

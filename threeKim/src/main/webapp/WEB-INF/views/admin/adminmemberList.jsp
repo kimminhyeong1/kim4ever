@@ -79,7 +79,7 @@ li{list-style:none;}
 				<c:forEach var="bjv" items="${alist}">
 					<tr>
 						<td><a href="adminmemberListProfile.do?memberId=${bjv.memberId}">${bjv.memberId}</a></td>
-						<td>${bjv.memberId}</td>
+						<td>${bjv.memberName}</td>
 						<td>${bjv.writeDay}</td>
 						<td>${bjv.memberType}</td>
 						<td>

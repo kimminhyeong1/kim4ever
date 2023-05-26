@@ -2,23 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<<<<<<< HEAD
 <mapper namespace="com.myezen.myapp.persistance.AdminService_Mapper">
-
+		
+	<!--관리자 회원관리 리스트  -->
 	<select id="memberList" resultType="mv">
 	select memberid,membername,memberage,delyn,writeday,membertype from member1234 order by memberType asc
 	</select>
 	
+	<!--관리자 회원삭제  -->
 	<delete id="deleteMember" parameterType="String">
 	delete from member1234 WHERE memberid=#{memberId}
 	</delete>
+
+	<!--관리자 고장 내역 리스트-->
+	<select id="errorList" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
+	SELECT
+		m.memberName,
+		m.memberPhone,
+		r.rentPlace,
+		b.bikeType,
+		b.bikeCode,
+		e.errorDay,
+		e.errorContent
+	FROM rent1234 r
+	JOIN member1234 m ON m.midx = r.midx
+	JOIN bike1234 b ON b.bkidx = r.bkidx
+	JOIN error1234 e ON	e.ridx = r.ridx		
+	</select>
 	
-</mapper>	
-=======
-<mapper namespace="com.myezen.myapp.persistance.BikeRentService_Mapper">
-
-
-
 
 </mapper>
->>>>>>> 병수
