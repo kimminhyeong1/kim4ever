@@ -2,10 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<<<<<<< HEAD
-
-=======
->>>>>>> kmh
 <mapper namespace="com.myezen.myapp.persistance.AdminService_Mapper">
 		
 	<!--관리자 회원관리 리스트  -->
@@ -34,11 +30,7 @@
 	JOIN error1234 e ON	e.ridx = r.ridx		
 	</select>
 	
-<<<<<<< HEAD
 
-</mapper>	
-
-=======
 
 </mapper>
->>>>>>> kmh
+

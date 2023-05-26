@@ -2,15 +2,12 @@ package com.myezen.myapp.service;
 
 import java.util.ArrayList;
 
+import com.myezen.myapp.domain.BikeJoinVo;
+
 
 
 public interface AdminService {
-<<<<<<< HEAD
-	/*
-	 * //회원삭제 public void deleteMember(String memberId); //회원리스트 public
-	 * ArrayList<JoinVo> memberList();
-	 */
-=======
+
 	//회원삭제
 		public void deleteMember(String memberId);
 	//회원리스트
@@ -18,5 +15,5 @@ public interface AdminService {
 	//고장 신고내역 리스트
 		public ArrayList<BikeJoinVo> errorList();
 		
->>>>>>> kmh
+
 }

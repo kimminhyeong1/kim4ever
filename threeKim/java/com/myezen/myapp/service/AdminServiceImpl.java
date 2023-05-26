@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configurers.Expression
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.persistance.AdminService_Mapper;
 import com.myezen.myapp.persistance.MemberService_Mapper;
@@ -29,24 +30,7 @@ public class AdminServiceImpl implements AdminService {
 		this.asm = sqlSession.getMapper(AdminService_Mapper.class);
 	}
 	
-<<<<<<< HEAD
-	/*
-	 * //회원삭제
-	 * 
-	 * @Override public void deleteMember(String memberId) {
-	 * System.out.println("memberId"+memberId); asm.deleteMember(memberId);
-	 * 
-	 * }
-	 * 
-	 * //회원리스트
-	 * 
-	 * @Override public ArrayList<JoinVo> memberList() {
-	 * 
-	 * ArrayList<JoinVo> alist = asm.memberList();
-	 * 
-	 * return alist; }
-	 */
-=======
+
 				
 	//회원삭제
 	@Override
@@ -73,7 +57,7 @@ public class AdminServiceImpl implements AdminService {
 		return elist;
 	}
 
->>>>>>> kmh
+
 
 
 
