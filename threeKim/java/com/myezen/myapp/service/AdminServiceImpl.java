@@ -49,15 +49,6 @@ public class AdminServiceImpl implements AdminService {
 	return alist;
 	}
 
-	//자전거 리스트
-	@Override
-	public ArrayList<BikeJoinVo> bikeList() {
-		
-	ArrayList<BikeJoinVo> klist = asm.bikeList();
-	
-	return klist;
-	}
-	
 	//신고내역 리스트
 	@Override
 	public ArrayList<BikeJoinVo> errorList() {
@@ -66,7 +57,7 @@ public class AdminServiceImpl implements AdminService {
 		return elist;
 	}
 
-	
+
 
 
 

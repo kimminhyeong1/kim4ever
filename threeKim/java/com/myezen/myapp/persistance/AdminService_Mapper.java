@@ -13,6 +13,5 @@ public interface AdminService_Mapper {
 	public ArrayList<BikeJoinVo> memberList();
 	//신고리스트	
 	public ArrayList<BikeJoinVo> errorList(); 
-	//자전거리스트
-	public ArrayList<BikeJoinVo> bikeList(); 
+
 }

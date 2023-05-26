@@ -14,6 +14,6 @@ public interface AdminService {
 		public ArrayList<BikeJoinVo> memberList();	
 	//고장 신고내역 리스트
 		public ArrayList<BikeJoinVo> errorList();
-	//자전거리스트	
-		public ArrayList<BikeJoinVo> bikeList(); 	
+		
+
 }

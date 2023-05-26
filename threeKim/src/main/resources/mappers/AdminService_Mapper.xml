@@ -30,12 +30,7 @@
 	JOIN error1234 e ON	e.ridx = r.ridx		
 	</select>
 	
-	<!-- 관리자 자전거 리스트 -->
-	<select id="bikeList" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
-	SELECT * FROM bike1234 WHERE bkidx BETWEEN 1 AND 10
 
-	</select>
-	
 
 </mapper>
 
