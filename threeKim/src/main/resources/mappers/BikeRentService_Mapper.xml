@@ -97,11 +97,38 @@
         INSERT INTO error1234(eidx,ridx,errorContent)
         VALUES(eidx_seq.NEXTVAL,#{1},#{0})
     </insert>
+    <select id="bikeRentReturnCheck" resultType="com.myezen.myapp.domain.BikeJoinVo">
+    	SELECT *
+		FROM rent1234
+		JOIN rentalshop1234 ON rent1234.rsidx = rentalshop1234.rsidx
+		JOIN bike1234 ON rent1234.bkidx = bike1234.bkidx
+		LEFT JOIN return1234 ON rent1234.ridx = return1234.ridx
+		JOIN member1234 ON rent1234.midx = member1234.midx
+		JOIN bikeinfo1234 ON bike1234.bikeType = bikeinfo1234.bikeType
+		WHERE rent1234.ridx = #{0} AND rentalshop1234.rsidx = #{1}
+    </select>
+    <!-- 최종 반납하기에서 컬럼값들가져오기  -->
+    <select id="bikeRentOneSelect" resultType="com.myezen.myapp.domain.BikeJoinVo">
+		SELECT *
+		FROM rent1234
+		JOIN rentalshop1234 ON rent1234.rsidx = rentalshop1234.rsidx
+		JOIN bike1234 ON rent1234.bkidx = bike1234.bkidx
+		WHERE rent1234.ridx = #{0} AND rentalshop1234.rsidx = #{1} AND bike1234.BIKESTATE = 'N'
+    </select>
 	
-	
-	
-	
-	
+	<update id="bikeRentBikeUpdate" parameterType="com.myezen.myapp.domain.BikeJoinVo">
+		UPDATE bike1234
+		SET
+		bikeLocation = #{1}, bikeState='Y' 
+		WHERE
+		bkidx = #{0}
+	</update>
+	<insert id="bikeRentReturnInsert" parameterType="com.myezen.myapp.domain.BikeJoinVo">
+		 INSERT INTO RETURN1234
+		(rtidx,returnplace,ridx)
+		VALUES
+		(rtidx_seq.nextval,#{0},#{1}) 
+	</insert>
 	
 	
 	

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.myezen.myapp.domain.BikeVo;
 import com.myezen.myapp.domain.BikeJoinVo;
@@ -138,7 +139,7 @@ public class BikeRentServiceImpl implements BikeRentService {
 	
 	
 	
-	
+	 
 	
 	
 	
@@ -151,11 +152,38 @@ public class BikeRentServiceImpl implements BikeRentService {
 	/*----------------------------------------------*/
 	
     @Override
+    //고장/신고하기
     public int bikeRentErrorInsert(String errorContent,int ridx) {
         System.out.println("서비스단에 들어옴");
         int value = brsm.bikeRentErrorInsert(errorContent,ridx);
         return value;
     }
+
+	@Override
+	//반납하기
+	public BikeJoinVo bikeRentReturnCheck(int ridx, int rsidx) {
+		
+		BikeJoinVo bjv = brsm.bikeRentReturnCheck(ridx, rsidx);
+		System.out.println(bjv.getBikeCode());
+		
+		
+		
+		
+		return bjv;
+	}
+	
+	@Override
+	@Transactional
+	//최종반납하기 
+	public int bikeRentReturn(int ridx, int rsidx) {
+		
+		BikeJoinVo bjv = brsm.bikeRentOneSelect(ridx, rsidx);
+		System.out.println(""+bjv.getBkidx()+""+bjv.getBikeLocation()+""+bjv.getBikeState()+""+bjv.getRentalshopName()+""+bjv.getRidx());
+		int value1 =brsm.bikeRentBikeUpdate(bjv.getBkidx(),bjv.getBikeLocation()); //자전거 업데이트
+		int value2 =brsm.bikeRentReturnInsert(bjv.getRentalshopName(),bjv.getRidx());//자전거 반납
+
+			return value2;			
+	}
 	
 	
 	
