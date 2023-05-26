@@ -5,15 +5,9 @@ package com.myezen.myapp.persistance;
 
 
 
-<<<<<<< HEAD
 import java.util.ArrayList;
-=======
 
 
-
-
-
->>>>>>> 병수
 
 import com.myezen.myapp.domain.BikeJoinVo;
 
@@ -41,10 +35,8 @@ public interface BikeRentService_Mapper {
 	
     //고장/신고 작성 메소드
     public int bikeRentErrorInsert(String errorContent,int ridx);
-<<<<<<< HEAD
 
-=======
->>>>>>> 병수
+
     //대여소 QR을 찍고 반납하기 메소드
     public BikeJoinVo bikeRentReturnCheck(int ridx, int rsidx);
     
@@ -56,15 +48,12 @@ public interface BikeRentService_Mapper {
     public int bikeRentBikeUpdate(int bkidx, String bikeLocation);
 	//2. 반납테이블에 컬럼 생성하기
     public int bikeRentReturnInsert(String RentalshopName,int ridx);
-<<<<<<< HEAD
+
     //대여이력보기
     public ArrayList<BikeJoinVo> bikeRentHistoryList(int midx);
 
 	
-=======
 
-
->>>>>>> 병수
 	
 	
 	
