@@ -234,6 +234,8 @@ public class MemberController {
 			session.setAttribute("memberEmail", mv.getMemberEmail());
 			session.setAttribute("membertype", mv.getMemberType());
 			
+			//비밀번호 지우기
+			session.removeAttribute("memberPwd");
 			
 			if(session.getAttribute("dest") == null) {
 				path = "redirect:/";	
