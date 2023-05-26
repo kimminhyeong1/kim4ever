@@ -1,154 +1,91 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %><!-- 날짜태그 -->
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-/*리셋코드*/
-
-*{margin:0;padding:0;}
-li{list-style:none;}
-
-@font-face {
-    font-family: 'GangwonEdu_OTFBoldA';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'omyu_pretty';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'KCC-Ganpan';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-
-#main{width:1440px; margin:35px auto 70px; text-align:center;}
-#main #content{width:1440px; height:2400px; text-align:center;}
-#main #bottom{width:1440px; height:300px; }
-#main #content h2{text-align:left; margin-top:50px; margin-left:80px;font-family: 'GangwonEdu_OTFBoldA'; font-size:27px;}
-#content table {width:90%; border-collapse:collapse; margin:60px auto 0; line-height:60px; font-size:20px;font-family:'omyu_pretty'; font-size:24px;}
-#content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
-#content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
-#content table tr th:nth-child(2){width: 130px;}
-#content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
-#content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
-</style>
-<script type="text/javascript">
-	function fnReturn() {
-		if(confirm("반납 하시겠습니까?")) {
-			location.href='';
-		}
-	}
-</script>
-</head>
-<body>
-<div id="main">
-	
-	<%@include file="../header.jsp" %>
-
-	<div id="content">
-		<h2>이용 내역</h2>
-		<table>
-				<tr>
-					<th>고객명</th>
-					<th>연락처</th>
-					<th>대여소</th>
-					<th>자전거종류</th>
-					<th>대여날짜</th>
-					<th>대여시간</th>
-					<th>가격</th>
-					<th>반납</th>
-					<th></th>
+	<head>
+		<meta charset="UTF-8">
+		<title>타다-대여 이력 보기</title>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent.css">
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script> 
+		<style>
+		#main{width:1440px; margin:35px auto 70px; text-align:center;}
+		#main #content{width:1440px; height:2400px; text-align:center;}
+		#main #bottom{width:1440px; height:300px; }
+		#main #content h2{text-align:left; margin-top:50px; margin-left:80px;font-family: 'GangwonEdu_OTFBoldA'; font-size:27px;}
+		#content table {width:90%; border-collapse:collapse; margin:60px auto 0; line-height:60px; font-size:20px;font-family:'omyu_pretty'; font-size:24px;}
+		#content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
+		#content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
+		#content table tr th:nth-child(2){width: 130px;}
+		#content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+		#content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+		</style>
+		<script type="text/javascript">
+			function fnReturn() {
+				if(confirm("반납 하시겠습니까?")) {
+					location.href='';
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<%@include file="../header.jsp" %>
+		<div id="main">
+			<div id="content">
+				<h2>대여 이력</h2>
+				<c:choose>
+					<c:when test="${empty bjvlist}"><!-- 대여이력이 없으면 실행 -->
+							<div style="margin-top: 50px;margin-left: 80px;font-family: 'GangwonEdu_OTFBoldA';font-size: 27px;"> 대여 이력이 없습니다. </div>
+					</c:when>
+					<c:otherwise>
+						<table>
+							<tr>
+								<th>고객명</th>
+								<th>연락처</th>	
+								<th>자전거종류</th>
+								<th>대여장소</th>
+								<th>반납장소</th>
+								<th>대여날짜</th>
+								<th>대여시간</th>
+								<th>반납시간</th>
+								<th>가격</th> 
+							</tr>
+							<c:forEach var="bjv" items="${bjvlist}">
+								<tr>
+									<td>${bjv.memberName}</td>
+									<td>${bjv.memberPhone}</td>
+									<td>${bjv.bikeType}</td>
+									<td>${bjv.rentPlace}</td>
+									<td>${bjv.returnPlace}</td>
+									<td><!-- 대여날짜 -->
+							            <fmt:parseDate value="${bjv.rentDay}" pattern="yyyy-mm-dd" var="parsedRentDay1" /><!-- 날짜 변경 -->
+			            				<fmt:formatDate value="${parsedRentDay1}" pattern="yyyy-mm-dd" var="formattedRentDay1" /><!-- 시간 설정 변경 -->
+				           	 			${formattedRentDay1}	
+									</td>
+									<td><!-- 대여시간 -->
+							            <fmt:parseDate value="${bjv.rentDay}" pattern="yyyy-MM-dd HH:mm:ss.S" var="parsedRentDay2" /><!-- 날짜 변경 -->
+			            				<fmt:formatDate value="${parsedRentDay2}" pattern="HH:mm" var="formattedRentDay2" /><!-- 시간 설정 변경 -->
+				           	 			${formattedRentDay2}	
+									</td>
+									<td><!-- 반납시간 -->
+							            <fmt:parseDate value="${bjv.returnDay}" pattern="yyyy-MM-dd HH:mm:ss.S" var="parsedRentDay3" /><!-- 날짜 변경 -->
+			            				<fmt:formatDate value="${parsedRentDay3}" pattern="HH:mm" var="formattedRentDay3" /><!-- 시간 설정 변경 -->
+				           	 			${formattedRentDay3}						
+									</td>
+									<td>${bjv.rentPrice}원</td>
+								</tr>
+							</c:forEach>
+						</table>
 					
-				</tr>
+					</c:otherwise>
+				</c:choose>
+			</div>
 			
-				<tr>
-					<td>김병수</td>
-					<td>010-1234-5678</td>
-					<td>효천</td>
-					<td>전기자전거</td>
-					<td>2023-04-27</td>
-					<td>09:40</td>
-					<td>2000원</td>
-					<td><button type="button" onclick="fnReturn();">반납하기</button></td>
-					<td><button type="button" onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentFault.do'">고장/신고</button></td>
-				</tr>
-		</table>
-	
-		
-	
-		<h2>대여 이력</h2>
-		<table>
-				<tr>
-					<th>고객명</th>
-					<th>연락처</th>	
-					<th>자전거종류</th>
-					<th>대여장소</th>
-					<th>반납장소</th>
-					<th>대여날짜</th>
-					<th>대여시간</th>
-					<th>반납시간</th>
-					<th>가격</th>
-					
-					
-				</tr>
-			
-				<tr>
-					<td>김병수</td>
-					<td>010-1234-5678</td>
-					<td>전기자전거</td>
-					<td>송천</td>
-					<td>아중</td>
-					<td>2023-04-27</td>
-					<td>09:40</td>
-					<td>11:25</td>
-					<td>2000원</td>
-				</tr>
-				
-				<tr>
-					<td>김지원</td>
-					<td>010-1234-5678</td>
-					<td>일반자전거</td>
-					<td>덕진</td>
-					<td>오목</td>
-					<td>2023-02-27</td>
-					<td>11:40</td>
-					<td>15:25</td>
-					<td>1000원</td>
-				</tr>
-				
-				<tr>
-					<td>김민형</td>
-					<td>010-1234-5678</td>
-					<td>일반자전거</td>
-					<td>효자</td>
-					<td>평화</td>
-					<td>2023-02-27</td>
-					<td>15:40</td>
-					<td>17:25</td>
-					<td>1000원</td>
-				</tr>
-		</table>
-		
-	
-	
-	
-	
-	
-	</div>
-	
-	<div id="bottom">
-	</div>
-</div>
-</body>
-
-<%@include file="../footer.jsp" %>
+			<div id="bottom"></div>
+		</div>
+		<%@include file="../footer.jsp" %>
+	</body>
 </html>

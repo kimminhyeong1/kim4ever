@@ -6,6 +6,10 @@ package com.myezen.myapp.controller;
 
 
 
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -118,6 +122,7 @@ public class bikeRentController {
 		ridx = (int)1;
 		rsidx= (int)1;
 		
+		System.out.println("반납하기메소드결과");
 		//대여한 위치
 		//반납할 위치
 		//사용자 이름
@@ -202,6 +207,26 @@ public class bikeRentController {
 		}
 		
 	}
+	
+	/*사용자가 대여이력보기*/
+	@RequestMapping(value="/bikeRentHistory.do")
+	public String bikeRentHistory(
+			HttpSession session,
+			Model md
+			) {
+		 int midx = (int) session.getAttribute("midx");
+		//로그인한 회원번호를 담아서 대여이력을 보여준다
+		 
+		 System.out.println("midx는:"+midx);
+		 
+		 ArrayList<BikeJoinVo> bjvlist = bs.bikeRentHistoryList(midx);
+		 
+		 System.out.println("결과는"+bjvlist);
+		 
+		 md.addAttribute("bjvlist", bjvlist);
+			return "bikeRent/bikeRentHistory";
+		}
+		
 	
 	
 	

@@ -4,6 +4,8 @@ package com.myezen.myapp.service;
 
 
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -80,6 +82,46 @@ public class BikeRentServiceImpl implements BikeRentService {
         int value = brsm.bikeRentErrorInsert(errorContent,ridx);
         return value;
     }
+
+
+	@Override
+	//반납하기
+	public BikeJoinVo bikeRentReturnCheck(int ridx, int rsidx) {
+		
+		System.out.println("반납하기 서비스단들어오기");
+		
+		BikeJoinVo bjv = brsm.bikeRentReturnCheck(ridx, rsidx);
+		System.out.println(bjv.getBikeCode());
+		
+		
+		
+		
+		return bjv;
+	}
+	
+	@Override
+	@Transactional
+	//최종반납하기 
+	public int bikeRentReturn(int ridx, int rsidx) {
+		
+		BikeJoinVo bjv = brsm.bikeRentOneSelect(ridx, rsidx);
+		System.out.println(""+bjv.getBkidx()+""+bjv.getBikeLocation()+""+bjv.getBikeState()+""+bjv.getRentalshopName()+""+bjv.getRidx());
+		int value1 =brsm.bikeRentBikeUpdate(bjv.getBkidx(),bjv.getBikeLocation()); //자전거 업데이트
+		int value2 =brsm.bikeRentReturnInsert(bjv.getRentalshopName(),bjv.getRidx());//자전거 반납
+
+			return value2;			
+	}
+
+	@Override
+	//대여이력보기
+	public ArrayList<BikeJoinVo> bikeRentHistoryList(int midx) {
+		
+		ArrayList<BikeJoinVo> bjvlist = brsm.bikeRentHistoryList(midx);
+
+		return bjvlist;
+	}
+	
+	
 
 	
 	
