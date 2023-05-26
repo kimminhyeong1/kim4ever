@@ -41,12 +41,23 @@ public class AdminController {
 	 * return "admin/adminmemberList"; }
 	 */
 	//회원 삭제	
+<<<<<<< HEAD
 	/*
 	 * @RequestMapping(value="/adiminmemberDelete.do") public String
 	 * deleteMember(@RequestParam("memberId") String memberId) {
 	 * //System.out.println("test1"); as.deleteMember(memberId);
 	 * //System.out.println("test2"); return "redirect:/member/memberList.do"; }
 	 */
+=======
+	@RequestMapping(value="/adminmemberDelete.do")
+	public String deleteMember(@RequestParam("memberId") String memberId) {
+		//System.out.println("test1");
+		as.deleteMember(memberId);
+		//System.out.println("test2");
+		return "redirect:/admin/adminmemberList.do"; 
+	}	
+	
+>>>>>>> kmh
 	
 	
 	//관리자 게시판관리 페이지
@@ -61,7 +72,21 @@ public class AdminController {
 			
 			return "admin/adminbikeRegister";
 		}
+<<<<<<< HEAD
 						
+=======
+
+	//관리사 신고 내역 페이지
+	@RequestMapping(value="/adminbikeError.do")
+	public String errorList(Model model) {
+		
+		ArrayList<BikeJoinVo> elist = as.errorList();
+		
+		model.addAttribute("elist",elist);
+		
+		return "admin/adminbikeError";
+	}
+>>>>>>> kmh
 			
 
 }

@@ -78,6 +78,7 @@ li{list-style:none;}
 					<th>등급</th>
 					<th>삭제</th>
 				</tr>
+<<<<<<< HEAD
 				<%for(BikeJoinVo mv : alist){ %>
 				<tr>
 					<td><a href="adminmemberListProfile.do?memberId=<%=mv.getMemberId()%>"><%=mv.getMemberId()%></a></td>
@@ -93,6 +94,26 @@ li{list-style:none;}
 					</td>
 				</tr>
 				<%} %>
+=======
+				<c:forEach var="bjv" items="${alist}">
+					<tr>
+						<td><a href="adminmemberListProfile.do?memberId=${bjv.memberId}">${bjv.memberId}</a></td>
+						<td>${bjv.memberName}</td>
+						<td>${bjv.writeDay}</td>
+						<td>${bjv.memberType}</td>
+						<td>
+							<c:choose>
+								<c:when test="${bjv.memberType eq '관리자'}">  
+									삭제금지
+								</c:when>
+								<c:otherwise> 
+									<button type="button" onclick="fnDelete('${bjv.memberId}');">삭제</button>
+								</c:otherwise>
+							</c:choose>
+						</td>
+					</tr>
+				</c:forEach>
+>>>>>>> kmh
 		</table>
 		
 	</div>

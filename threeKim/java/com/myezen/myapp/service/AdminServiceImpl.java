@@ -29,6 +29,7 @@ public class AdminServiceImpl implements AdminService {
 		this.asm = sqlSession.getMapper(AdminService_Mapper.class);
 	}
 	
+<<<<<<< HEAD
 	/*
 	 * //회원삭제
 	 * 
@@ -45,6 +46,34 @@ public class AdminServiceImpl implements AdminService {
 	 * 
 	 * return alist; }
 	 */
+=======
+				
+	//회원삭제
+	@Override
+	public void deleteMember(String memberId) {
+	System.out.println("memberId"+memberId);
+	asm.deleteMember(memberId);
+		
+		}
+
+	//회원리스트
+	@Override
+	public ArrayList<BikeJoinVo> memberList() {
+				
+	ArrayList<BikeJoinVo> alist = asm.memberList();
+	
+	return alist;
+	}
+
+	//신고내역 리스트
+	@Override
+	public ArrayList<BikeJoinVo> errorList() {
+
+	ArrayList<BikeJoinVo> elist = asm.errorList();
+		return elist;
+	}
+
+>>>>>>> kmh
 
 
 

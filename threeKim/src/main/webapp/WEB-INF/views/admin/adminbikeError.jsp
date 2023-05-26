@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import = "com.myezen.myapp.domain.BikeJoinVo" %>
+<%@page import = "java.util.*" %>      
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,10 +43,10 @@ li{list-style:none;}
 #content table tr th:nth-child(1){width:70px;}
 #content table tr th:nth-child(2){width:150px;}
 #content table tr th:nth-child(3){width:60px;}
-#content table tr th:nth-child(4){width:150px;}
+#content table tr th:nth-child(4){width:100px;}
 #content table tr th:nth-child(5){width:90px;}
-#content table tr th:nth-child(6){width:120px;}
-#content table tr th:nth-child(7){width:250px;}
+#content table tr th:nth-child(6){width:200px;}
+#content table tr th:nth-child(7){width:280px;}
 #content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
@@ -51,10 +54,9 @@ li{list-style:none;}
 <body>
 <%@include file="../header4.jsp" %>
 <div id="main">
-<%@include file="../sider.jsp" %>
 	<div id="content">
 
-		<h2>자전거 고장/신고 내역</h2>
+		<h2>자전거 신고 내역</h2>
 		<table>
 				<tr>
 					<th>고객명</th>
@@ -67,17 +69,17 @@ li{list-style:none;}
 					
 					
 				</tr>
-			
-				<tr>
-					<td>김건우</td>
-					<td>010-1234-5678</td>
-					<td>송천</td>
-					<td>하이브리드자전거</td>
-					<td>hy001</td>
-					<td>2023-05-11</td>
-					<td>16:40</td>
-					<td></td>
-				</tr>
+			<c:forEach var="ejv" items="${elist}">
+					<tr>						
+						<td>${ejv.memberName}</td>
+						<td>${ejv.memberPhone}</td>
+						<td>${ejv.rentPlace}</td>
+						<td>${ejv.bikeType}</td>
+						<td>${ejv.bikeCode}</td>
+						<td>${ejv.errorDay}</td>
+						<td>${ejv.errorContent}</td>					
+					</tr>
+			</c:forEach>
 		</table>
 	
 		
