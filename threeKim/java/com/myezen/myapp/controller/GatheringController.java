@@ -18,6 +18,12 @@ public class GatheringController {
 		
 		return "gathering/gCreate";
 	}
+//모임간단소개페이지
+	@RequestMapping(value="/gSimpleInfo.do")
+	public String gSimpleInfo() {
+		
+		return "gathering/gSimpleInfo";
+	}
 //모임상세보기페이지
 	@RequestMapping(value="/gContent.do")
 	public String gContent() {
