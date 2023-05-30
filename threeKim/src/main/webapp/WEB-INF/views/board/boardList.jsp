@@ -167,7 +167,7 @@ li{list-style:none;}
 										<td>
 										<c:forEach begin="1" end="${bv.level_}" var="i">
 						          
-						          <c:if test="${i == bv.level_}">▕▂</c:if>
+						          <c:if test="${i == bv.level_}">ㄴ</c:if>
 						        </c:forEach>
 						        
 										<a 	href="${pageContext.request.contextPath}/board/boardQnaContent.do?bidx=${bv.bidx}">
