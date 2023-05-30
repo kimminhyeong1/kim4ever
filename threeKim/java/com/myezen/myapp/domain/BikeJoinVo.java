@@ -42,6 +42,7 @@ public class BikeJoinVo {
 	//RentVo
 
 	private String rentDay;//대여요일
+
 	private String rentPlace; //대여장소
 	
 	private int rsdix; //대여소번호
@@ -55,14 +56,14 @@ public class BikeJoinVo {
 	
 	
 	
+
+	
 	public String getRentDay() {
 		return rentDay;
 	}
 	public void setRentDay(String rentDay) {
 		this.rentDay = rentDay;
 	}
-	
-	
 	public String getBikeType() {
 		return bikeType;
 	}

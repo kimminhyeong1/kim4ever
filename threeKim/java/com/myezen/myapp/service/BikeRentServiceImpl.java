@@ -6,10 +6,15 @@ package com.myezen.myapp.service;
 
 import java.util.ArrayList;
 
+
+import javax.servlet.http.HttpServletRequest;
+
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.persistance.BikeRentService_Mapper;
@@ -28,55 +33,66 @@ public class BikeRentServiceImpl implements BikeRentService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	//자전거상세보기
+	//QR로 넘어온 자전거정보 조회
 	@Override
 	public BikeJoinVo RentDetail(int bkidx) {
 		
 		 return brsm.RentDetail(bkidx);
 	}
 	
-	//대여 목록 정보 조회
+	//bikeState를 Y(사용가능)에서 N(사용중)으로 변경 쿼리
 	@Override
-
-	public BikeJoinVo RentUseList(int bkidx) {
-		//트랜잭션
-		//업데이트
+	public void updateBikeState(int bkidx) {
+		brsm.updateBikeState(bkidx);
 		
-		//삽입
-		//리스트조회
-		// 대여 상태 변경
-		RentUseListAction(bkidx);
-		
-		// 대여 내역 조회
-		return brsm.RentUseList(bkidx);
 	}
 	
-
+	//bike1234의 테이블의 자전거정보들을 rent1234테이블로 삽입 쿼리
 	@Override
-	public void RentUseListAction(int bkidx) {
-		 /// 대여 상태 변경
-		brsm.RentUseListAction(bkidx);
-       
-        
-		// 정보 이동
-		BikeJoinVo bjv =brsm.RentUseList(bkidx);
-	   
-        
-        
-        brsm.insertRentInfo(bjv);
+	public void insertRentInfo(BikeJoinVo bjv, HttpServletRequest request) {
 		
+		//bkidx(자전거번호)를 가져와서 그 bkidx에 해당하는 위치를 가져온다
+		int bkidx = bjv.getBkidx();
+		String bikeLocation = brsm.getBikeLocationByBkidx(bkidx);
+		
+		//bikeLocation값을 받아와서 rentPlace로 설정
+		bjv.setRentPlace(bikeLocation);
+		
+		
+		    
+		brsm.insertRentInfo(bjv);
+		
+	}
+	
+	//bkidx로 자전거위치 가져오는 쿼리
+	@Override
+	public String getBikeLocationByBkidx(int bkidx) {
+		
+		return brsm.getBikeLocationByBkidx(bkidx);
+	}
+
+	
+	//대여 목록 정보 조회
+	@Override
+	public BikeJoinVo RentUseList(int bkidx,int rkidx, int midx) {
+		
+		return brsm.RentUseList(bkidx, rkidx, midx);
 	}
 
 
 
 
 
+	
+	
+	
+	
 	
 	
 	/*----------------------------------------------*/
 	
     @Override
+    //고장/신고하기
     public int bikeRentErrorInsert(String errorContent,int ridx) {
         System.out.println("서비스단에 들어옴");
         int value = brsm.bikeRentErrorInsert(errorContent,ridx);
@@ -88,8 +104,10 @@ public class BikeRentServiceImpl implements BikeRentService {
 	//반납하기
 	public BikeJoinVo bikeRentReturnCheck(int ridx, int rsidx) {
 		
+
 		System.out.println("반납하기 서비스단들어오기");
 		
+
 		BikeJoinVo bjv = brsm.bikeRentReturnCheck(ridx, rsidx);
 		System.out.println(bjv.getBikeCode());
 		
@@ -98,6 +116,7 @@ public class BikeRentServiceImpl implements BikeRentService {
 		
 		return bjv;
 	}
+
 	
 	@Override
 	@Transactional
@@ -124,9 +143,7 @@ public class BikeRentServiceImpl implements BikeRentService {
 	
 
 	
-	
-	
-	
+
 	
 	
 	
