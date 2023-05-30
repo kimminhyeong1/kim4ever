@@ -1,7 +1,7 @@
 package com.myezen.myapp.domain;
 
 public class SearchCriteria extends Criteria {
-
+//검색
 	private String searchType;
 	
 	private String keyword;

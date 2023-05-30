@@ -6,7 +6,7 @@ public class Criteria {
 	private int perPageNum; //화면에 출력되는 리스트 수
 	public Criteria(){
 		this.page=1;
-		this.perPageNum=15;
+		this.perPageNum=5;
 	}
 	
 	public int getPage() {

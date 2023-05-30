@@ -1,9 +1,11 @@
 package com.myezen.myapp.service;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.myezen.myapp.domain.BoardVo;
 import com.myezen.myapp.domain.SearchCriteria;
@@ -33,8 +35,8 @@ public class BoardServiceImpl implements BoardService{
 	}
 	
 	@Override
-	public int boardViewCnt(int bidx) {		
-		int value = bsm.boardViewCnt(bidx);		
+	public int boardView(int bidx) {		
+		int value = bsm.boardView(bidx);		
 		return value;
 	}
 
@@ -45,29 +47,56 @@ public class BoardServiceImpl implements BoardService{
 		return bv;
 	}
 
+	
 	@Override
-	public int boardInsert(BoardVo bv) {
-		int value = bsm.boardInsert(bv);
-		return 0;
+	public BoardVo boardSelectQna(int bidx) {		
+		BoardVo bv = bsm.boardSelectQna(bidx);		
+		return bv;
 	}
 
 	@Override
+	public int boardInsert(BoardVo bv) {
+		int value = bsm.boardInsert(bv);
+		return value;
+	}
+	@Override
+	public int boardInsert2(BoardVo bv) {
+		int value = bsm.boardInsert2(bv);
+		return value;
+	}
+	@Override
+	public int boardInsert3(BoardVo bv) {
+		int value = bsm.boardInsert3(bv);
+		return value;
+	}
+	@Override
 	public int boardModify(BoardVo bv) {
 		int value = bsm.boardModify(bv);
-		return 0;
+		return value;
 	}
 
 	@Override
 	public int boardDelete(BoardVo bv) {
 		int value = bsm.boardDelete(bv);
-		return 0;
+		return value;
 	}
 
+	@Transactional
 	@Override
 	public int boardReply(BoardVo bv) {
-		int value = bsm.boardReply(bv);
-		return 0;
+		System.out.println("depth3" + bv.getDepth());
+		
+		HashMap<String,Integer> hm = new HashMap<String,Integer>();
+		hm.put("bidx", bv.getBidx());
+		hm.put("depth", bv.getDepth());
+		
+		bsm.boardReplyUpdate(hm);
+		int value = bsm.boardReplyInsert(bv);		
+		
+		return value;
 	}
+	
+
 
 
 	

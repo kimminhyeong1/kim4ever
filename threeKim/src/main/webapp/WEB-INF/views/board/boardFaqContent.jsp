@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="com.myezen.myapp.domain.BoardVo"%>
+<%BoardVo bv = (BoardVo) request.getAttribute("bv");%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,70 +51,105 @@ li{list-style:none;}
 </style>
 
 </head>
-<body>
-<div id="main">
-<%@include file="../header.jsp" %>
-   
-	<div id="content">
-	<h2>게시글 내용</h2>
- 	<form name="frm">
-		<table>
-		
-			<tr>
-				<th>제목</th>
-				<td></td>
-				<th style="width:100px; text-align:center;border-left:1px solid #ddd;">조회수</th>
-				<td style="width:200px; text-align:center;"></td>
-			</tr>
-			
-			<tr>
-				<th>작성자</th>
-				<td></td>
-				<td></td>
-				<td></td>
-				
-			</tr>
-			
-			<tr>
-				<th>글 내용</th>
-				<td style="height:500px;"></td>
-				<td></td>
-				<td></td>
-          		
-			</tr>
-			
-			<tr>
-				<th>파일다운로드</th>
-				<td></td>	
-				<td></td>
-				<td></td>
-          		
-			</tr>
-			
-			<tr>
-				<th>이미지</th>
-				<td></td>	
-				<td></td>
-				<td></td>
-			</tr>
-	
-	</table>
-	<div id="btn">
-		<button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardModify.do'">수정</button>
-		<button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardDelete.do'">삭제</button>
-		<button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">목록</button>
-    </div>
-	</form>
-	</div>
-        
 
-	
-	 
-  
-   <div id="bottom">
-  
-   </div>
-</div>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+    var originalFileName = "<%=bv.getFilename()%>";
+    var downloadLink = '<%=request.getContextPath()%>/board/displayFile.do?fileName=' + originalFileName + '&down=1';
+    var downloadElement = $("<a>")
+      .attr("href", downloadLink)
+      .attr("download", originalFileName)
+      .text(originalFileName);
+    $("#download").append(downloadElement);
+  });
+	  
+	function getOriginalFileName(fileName){	
+		var idx = fileName.lastIndexOf("_")+1;	
+		return fileName.substr(idx);
+	}
+	//파일이 이미지일경우
+	function getImageLink(fileName){
+		
+		if (!checkImageType(fileName)) {
+			return fileName;
+		}	
+		//위치 폴더뽑기
+		var front = fileName.substr(0,12);
+		//alert(front);
+		//파일이름뽑기
+		var end = fileName.substr(14);	
+		//alert(end);
+		return front+end;	
+	}
+	function checkImageType(fileName){
+		
+		var pattern = /jpg$|gif$|png$|jpeg$/i;
+		return fileName.match(pattern);
+	}
+	</script>
+<body>
+	<div id="main">
+		<%@include file="../header.jsp"%>
+
+		<div id="content">
+			<h2>게시글 내용</h2>
+			<form name="frm">
+				<table>
+					<tr>
+						<th>제목</th>
+						<td><%=bv.getSubject()%></td>
+						
+						<th style="width: 100px; text-align: center; border-left: 1px solid #ddd;">조회수</th>
+						<td><%=bv.getBoardView()%></td>
+						<td style="width: 200px; text-align: center;"></td>
+					</tr>
+
+					<tr>
+						<th>작성자</th>
+						<td><%=bv.getWriter()%></td>
+					</tr>
+
+					<tr>
+						<th>글 내용</th>
+						<td style="height: 500px;"></td>
+						<td><%=bv.getContent()%></td>
+					</tr>
+
+					<tr>
+						<th>파일다운로드</th>
+						<td>
+							<div id="download"></div>
+							</td>
+						<td>
+							<!-- 이미지일경우만 --> <% 	if (bv.getFilename() != null) {
+								String exp = bv.getFilename().substring(bv.getFilename().length() - 3, bv.getFilename().length());
+ 								if (exp.equals("jpg") || exp.equals("gif") || exp.equals("png")) { %>
+ 								 <img src="<%=request.getContextPath()%>/board/displayFile.do?fileName=<%=bv.getFilename()%>"
+								width="100px" height="100px" /> <%} } %>
+						</td>				
+				</table>
+				
+				<div id="btn">
+					<c:if test="${midx == bv.getMidx()}">		<!-- midx가 동일할때만 출력 -->				
+						<button type="button"
+							onclick="location.href='<%=request.getContextPath()%>/board/boardModify.do?bidx=<%=bv.getBidx()%>'">수정</button>
+						<button type="button"
+							onclick="location.href='<%=request.getContextPath()%>/board/boardDelete.do?bidx=<%=bv.getBidx()%>'">삭제</button>
+					</c:if>
+					<button type="button"
+						onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">목록</button>
+				</div>
+			</form>
+		</div>
+
+
+
+
+
+		<div id="bottom"></div>
+	</div>
 </body>
-<%@include file="../footer.jsp" %>
+<%@include file="../footer.jsp"%>
 </html>

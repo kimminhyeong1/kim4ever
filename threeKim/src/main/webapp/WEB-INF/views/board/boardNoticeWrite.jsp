@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+if (session.getAttribute("midx") == null){	
+	out.println("<script>alert('로그인 하셔야 합니다.'); history.back(-1);</script>");
+}
+%>    <!-- midx가 null 이면 알림후 뒤로가기 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,16 +55,34 @@ li{list-style:none;}
 #btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
 <script type="text/javascript">
-	function fnWrite() {
-		var fm = document.frm;
+//확인
+function fnWrite() {
+	var fm = document.frm;
+	
+    if (fm.subject.value == "") {
+        alert("제목을 입력하세요");
+        fm.subject.focus();
+        return;
+    } else if (fm.content.value == "") {
+        alert("내용을 입력하세요");
+        fm.contents.focus();
+        return;
+    } else if (fm.writer.value == "") {
+        alert("작성자를 입력하세요");
+        fm.writer.focus();
+        return;
+    }
+
 		if(confirm("글을 등록 하시겠습니까?")) {
 			location.href='<%=request.getContextPath()%>/board/boardList.do';
 		}
-		fm.action = "<%=request.getContextPath()%>/board/boardNoticeWriteAction.do";
+		fm.action = "<%=request.getContextPath()%>/board/boardWriteAction.do";
 		fm.enctype ="multipart/form-data";
 		fm.method="post";
 		fm.submit();
 	}
+	
+
 </script>
 
 </head>
@@ -73,8 +96,10 @@ li{list-style:none;}
 	<form name="frm">
 		<table>
 			<tr>
-				<th>작성자</th>
-				<td><input type="text" name="writer" maxlength=5></td>
+			
+				<th>작성자</th><!-- 세션으로 받아서 읽기모드로 출력 -->
+				<td><input type="text" name="writer" maxlength="5" value="<%= session.getAttribute("memberName") %>" readonly></td>
+
 			</tr>
 			<tr>
 				<th>제목</th>
@@ -88,7 +113,7 @@ li{list-style:none;}
 			</tr>
 			<tr>
 				<th>첨부 파일</th>
-				<td><input type="file" name="fileupload"></td>
+				<td><input type="file" name="filename"></td>
 			</tr>
 			
 		</table>

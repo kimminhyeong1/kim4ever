@@ -26,9 +26,9 @@ public class UploadFileUtiles {
 		String savedName = uid.toString() +"_"+originalName;
 		
 //		String path = UploadFileUtiles.class.getResource("").getPath();
-//		System.out.println("ÇöÀçÅ¬·¡½ºpath:"+path);
+//		System.out.println("ï¿½ï¿½ï¿½ï¿½Å¬ï¿½ï¿½ï¿½ï¿½path:"+path);
 		
-//  	½ÇÇàµÇ´Â ½Ã½ºÅÛ À§Ä¡	
+//  	ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½Ã½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡	
 //		System.out.println(System.getProperty("user.dir"));
        
 //        String realpath = request.getSession().getServletContext().getRealPath(uploadPath);
@@ -37,7 +37,7 @@ public class UploadFileUtiles {
 		String savedPath = calcPath(uploadPath);
 		
 		File target = new File(uploadPath+savedPath,savedName);
-//  	µî·ÏÇÑ ÆÄÀÏ »ó´ë°æ·Î
+//  	ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
 //		String loc = target.getCanonicalPath();
 
 		FileCopyUtils.copy(fileData,target);
@@ -107,10 +107,9 @@ public class UploadFileUtiles {
 		
 		BufferedImage sourceImg = 
 				ImageIO.read(new File(uploadPath+path,fileName));
-		BufferedImage destImg = 
-				Scalr.resize(sourceImg, 
-						Scalr.Method.AUTOMATIC, 
-						Scalr.Mode.FIT_TO_HEIGHT,100);
+		BufferedImage destImg = Scalr.resize(sourceImg, Scalr.Method.AUTOMATIC,
+				Scalr.Mode.AUTOMATIC, (int) (sourceImg.getWidth() * 0.8), (int) (sourceImg.getHeight() * 0.8));
+		//ë¦¬ì‚¬ì´ì¦ˆ .8ë¡œ 
 		
 		String thumbnailName = 
 				uploadPath + 
@@ -123,10 +122,10 @@ public class UploadFileUtiles {
 		File newFile = new File(thumbnailName);
 	//	System.out.println("newFile:"+newFile);
 		String formatName = fileName.substring(fileName.lastIndexOf(".")+1);
-	
+	      
 	//	System.out.println("destImg"+destImg);
 		boolean flag = ImageIO.write(destImg, formatName.toUpperCase(), newFile);
-		System.out.println("º¹»ç¿©ºÎ flag"+flag);
+		System.out.println("ï¿½ï¿½ï¿½ç¿©ï¿½ï¿½ flag"+flag);
 		return thumbnailName.substring(uploadPath.length()).replace(File.separatorChar, '/');
 	}	
 }

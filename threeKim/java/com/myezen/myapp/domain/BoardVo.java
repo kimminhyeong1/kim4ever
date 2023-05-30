@@ -1,16 +1,31 @@
 package com.myezen.myapp.domain;
 
 public class BoardVo {
-	private int bidx;
+	private int bidx;	
+	private int rebidx;
 	private int midx;
 	private String boardType;
 	private String writer;
-	private String writeDay;
+	private String writeday;
 	private String subject;
 	private String content;
 	private String boardView;
 	private String delyn;
-	private String fileUpload;
+	private String filename;
+	private int depth;
+	private int level_;
+	private int sortN; //가상번호
+	private int test; //임시번호
+	
+	
+	public int getTest() {
+		return test;
+	}
+	public void setTest(int test) {
+		this.test = test;
+	}
+	
+	
 	
 	public int getBidx() {
 		return bidx;
@@ -36,11 +51,11 @@ public class BoardVo {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public String getWriteDay() {
-		return writeDay;
+	public String getWriteday() {
+		return writeday;
 	}
-	public void setWriteDay(String writeDay) {
-		this.writeDay = writeDay;
+	public void setWriteday(String writeday) {
+		this.writeday = writeday;
 	}
 	public String getSubject() {
 		return subject;
@@ -66,16 +81,51 @@ public class BoardVo {
 	public void setDelyn(String delyn) {
 		this.delyn = delyn;
 	}
-	public String getFileUpload() {
-		return fileUpload;
+	public String getFilename() {
+		return filename;
 	}
-	public void setFileUpload(String fileUpload) {
-		this.fileUpload = fileUpload;
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
+
+	public int getDepth() {
+		return depth;
+	}
+	public void setDepth(int depth) {
+		this.depth = depth;
+	}
+	public int getLevel_() {
+		return level_;
+	}
+	public void setLevel_(int level_) {
+		this.level_ = level_;
+	}
+	
+	public int getRebidx() {
+		return rebidx;
+	}
+	public void setRebidx(int rebidx) {
+		this.rebidx = rebidx;
+	}
+	public int getSortN() {
+		return sortN;
+	}
+	public void setSortN(int sortN) {
+		this.sortN = sortN;
+	}
+
+	
+	
+	
+	}
+	
+	
 	
 	
 	
 
+	
+
 		
 	
-}
+

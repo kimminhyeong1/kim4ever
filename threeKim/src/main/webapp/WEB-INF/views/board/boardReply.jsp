@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+        <%if (session.getAttribute("midx") == null){	
+	out.println("<script>alert('로그인 하셔야 합니다.'); history.back(-1);</script>");}
+%>    <!-- midx가 null 이면 알림후 뒤로가기 -->
+ <% BoardVo bv = (BoardVo)request.getAttribute("bv"); %>   
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,48 +56,80 @@ li{list-style:none;}
 #btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
 
+<script type="text/javascript">
+function check() {
+    var fm = document.frm;
+    if (fm.subject.value === "") {
+        alert("제목을 입력하세요");
+        fm.subject.focus();
+        return;
+    } else if (fm.content.value === "") {
+        alert("내용을 입력하세요");
+        fm.content.focus();
+        return;
+    }
+
+    fm.action = "<%=request.getContextPath()%>/board/boardReplyAction.do";
+    fm.method = "post";
+    fm.enctype = "multipart/form-data";
+    fm.submit();
+}
+
+
+</script>
 </head>
 <body>
-<div id="main">
-<%@include file="../header.jsp" %>
-   
-	<div id="content">
-	<h2>게시글 답변</h2>
- 	<form name="frm">
-		<table>
-		
-			<tr>
-				<th>제목</th>
-				<td><input type="text"></td>
-			</tr>
-			
-			<tr>
-				<th>내용</th>
-				<td><textarea cols="70" rows="25"></textarea></td>	
-			</tr>
-			
-			<tr>
-				<th>작성자</th>
-				<td><input type="text"></td>
-          	</tr>
-			
-			<tr>
-				<th>비밀번호</th>
-				<td><input type="password"></td>
-			</tr>
-	
-	</table>
-	<div id="btn">
-		<button type="button">수정</button>												
-      	<button type="button">취소</button>	
-    </div>
-	</form>
+	<div id="main">
+		<%@include file="../header.jsp"%>
+
+		<div id="content">
+			<h2>게시글 답변</h2>
+			<form name="frm">
+				<input type="hidden" name="depth" value="<%=bv.getDepth()%>">
+				<input type="hidden" name="level_" value="<%=bv.getLevel_()%>">
+				<input type="hidden" name="bidx" maxlength="5"
+					value="<%=session.getAttribute("bidx")%>"> <input
+					type="hidden" name="rebidx" maxlength="5"
+					value="<%=session.getAttribute("rebidx")%>"> <input
+					type="hidden" name="bidx" maxlength="5"
+					value="<%=session.getAttribute("bidx")%>">
+				<table>
+
+					<tr>
+						<th>제목</th>
+						<td><input type="text" name="subject"></td>
+					</tr>
+
+					<tr>
+						<th>내용</th>
+						<td><textarea name="content" cols="50" rows="5"></textarea></td>
+					</tr>
+
+					<tr>
+						<th>작성자</th>
+						<!-- 세션으로 받아서 읽기모드로 출력 -->
+						<td><input type="text" name="writer" maxlength="5"
+							value="<%=session.getAttribute("memberName")%>" readonly></td>
+					</tr>
+
+					<tr>
+						<th>파일첨부</th>
+						<td><input type="file" name="filename"></td>\
+
+					</tr>
+
+				</table>
+				<div id="btn">
+					<button type="button" onclick="check();">답변하기</button>
+					<button type="button"
+						onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">취소</button>
+
+				</div>
+			</form>
+		</div>
+
+		<div id="bottom"></div>
 	</div>
-          
-   	<div id="bottom">
-  
-   	</div>
-</div>
 </body>
 <%@include file="../footer.jsp" %>
 </html>

@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ page import="com.myezen.myapp.domain.BoardVo"%>
+<%BoardVo bv = (BoardVo) request.getAttribute("bv");%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+
 /*리셋코드*/ 
 *{margin:0;padding:0;}
 li{list-style:none;}
@@ -51,52 +54,90 @@ li{list-style:none;}
 </style>
 
 </head>
-<body>
-<div id="main">
-<%@include file="../header.jsp" %>
-   
-	<div id="content">
-	<h2>게시글 수정</h2>
- 	<form name="frm">
-		<table>
-		
-			<tr>
-				<th>제목</th>
-				<td><input type="text"></td>
-			</tr>
-			
-			<tr>
-				<th>내용</th>
-				<td><textarea cols="70" rows="25"></textarea></td>	
-			</tr>
-			
-			<tr>
-				<th>작성자</th>
-				<td><input type="text"></td>
-          	</tr>
-			
-			<tr>
-				<th>비밀번호</th>
-				<td><input type="password"></td>
-			</tr>
-			
-			<tr>
-				<th>첨부파일</th>
-				<td><button type="submit">파일 선택</button></td>
-			</tr>
+<script type="text/javascript">
+
+function fnWrite() {
+	var fm = document.frm;
 	
-	</table>
-	<div id="btn">	
-      	<button type="button">수정</button>												
-      	<button type="button">취소</button>												
-    </div>
-	</form>
+    if (fm.subject.value == "") {
+        alert("제목을 입력하세요");
+        fm.subject.focus();
+        return;
+    } else if (fm.content.value == "") {
+        alert("내용을 입력하세요");
+        fm.content.focus();
+        return;
+    } else if (fm.writer.value == "") {
+        alert("작성자를 입력하세요");
+        fm.writer.focus();
+        return;
+    }
+
+
+	fm.action = "<%=request.getContextPath()%>/board/boardModifyAction.do";
+		fm.enctype = "multipart/form-data";
+		fm.method = "post";
+		fm.submit();
+	}
+function getOriginalFileName(fileName){	
+	var idx = fileName.lastIndexOf("_")+1;	
+	return fileName.substr(idx);
+}
+</script>
+
+<body>
+	<div id="main">
+		<%@include file="../header.jsp"%>
+
+		<div id="content">
+			<h2>게시글 수정</h2>
+			<form name="frm">
+				<input type="hidden" name="bidx" value="<%=bv.getBidx()%>"><!-- 게시글번호 숨김 -->
+
+				<table>
+
+					<tr>
+						<th>제목</th>
+						<td><input type="text" name="subject"
+							value="<%=bv.getSubject()%>"></td>
+					</tr>
+
+					<tr>
+						<th>내용</th>
+						<td><textarea name="content" cols="70" rows="25"><%=bv.getContent()%></textarea></td>
+					</tr>
+
+					<tr>
+						<th>작성자</th>
+						<td><input type="text" name="writer" maxlength=5
+							value="<%=bv.getWriter()%>" readonly></td>
+					</tr>
+
+					<tr>
+						<th>첨부파일</th>
+						<td><input type="file" name="filename">
+						<span id="filenm"></span>
+						</td>
+					</tr>
+				</table>
+				
+				<div id="btn">
+					<button type="button" onclick="fnWrite();">수정</button>
+					<button type="button"
+						onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">취소</button>
+				</div>
+
+			</form>
+				<script type="text/javascript">
+					var originalFileName = getOriginalFileName("<%=bv.getFilename()%>");
+					document.getElementById("filenm").innerHTML = originalFileName;
+				</script>
+		</div>
+
+		<div id="bottom"></div>
 	</div>
-          
-   	<div id="bottom">
-  
-   	</div>
-</div>
+
 </body>
-<%@include file="../footer.jsp" %>
+
+<%@include file="../footer.jsp"%>
 </html>
