@@ -116,7 +116,7 @@
 					<div class="gPaging">1-2-3</div><!-- 페이징 -->
 				</div><!-- gBoardList 끝 -->
 				<div id="writeBtn">
-					<button class="gBtn2" onclick="location.href='${pageContext.request.contextPath}/gathering/gBoardWrite.do'">글쓰기</button>
+					<button class="gBtn2">글쓰기</button>
 				</div>
 					
 				
