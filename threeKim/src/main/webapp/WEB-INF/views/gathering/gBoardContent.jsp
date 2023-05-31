@@ -43,81 +43,8 @@
 		<%@include file="header3.jsp" %>
 		<main id="main">
 			<section class="gContainer">
-				<div class="gBoardList">
-					<div id="searchCategory">
-						<div> 
-							<select>
-								<option>공지사항</option>	
-								<option>취미</option>	
-								<option>일상</option>	
-								<option>정모</option>	
-								<option>가입인사</option>	
-							</select> 
-						</div>
-						<div><input type="text" placeholder="내용을 입력해주세요."></div>
-						<div> <button class="gBtn2">검색하기</button> </div>
-					</div>
-					<div class="gNotice">
-						<div>
-							<div>공지사항</div>
-							<div>공지사항 제목</div>
-						</div>
-						<div>일정이 취소되었습니다</div>
-					</div>
-					<div class="gNotice">
-						<div>
-							<div>공지사항</div>
-							<div>필독사항</div>
-						</div>
-						<div>1. 규칙을 지키자 2. 일정을 잘 맞추자</div>
-					</div>
-					<div class="gBoard">
-						<div>
-							<div class="gProfileimage"><img alt="프로필사진" src="../resources/images/profile.jpg"></div>
-							<div>
-								<div>모임장</div>
-								<div>이름</div>
-							</div>
-							<div>
-								<div>2023-05-30 12:00</div>
-							</div>					
-						</div>
-						<div>게시글제목 <span>카테고리이름</span> </div>
-						<div>게시글내용게시글내용게시글내용게시글내용게시글내용게시글내용게시글내용게시글내용</div>
-					</div>	
-					<div class="gBoard">
-						<div>
-							<div class="gProfileimage"><img alt="프로필사진" src="../resources/images/profile.jpg"></div>
-							<div>
-								<div>모임장</div>
-								<div>이름</div>
-							</div>
-							<div>
-								<div>2023-05-30 12:00</div>
-							</div>					
-						</div>
-						<div>게시글제목 <span>카테고리이름</span> </div>
-						<div>게시글내용게시글내용게시글내용게시글내용게시글내용게시글내용게시글내용게시글내용</div>
-					</div>	
-					<div class="gBoard">
-						<div>
-							<div class="gProfileimage"><img alt="프로필사진" src="../resources/images/profile.jpg"></div>
-							<div>
-								<div>모임장</div>
-								<div>이름</div>
-							</div>
-							<div>
-								<div>2023-05-30 12:00</div>
-							</div>					
-						</div>
-						<div>게시글제목 <span>카테고리이름</span> </div>
-						<div>게시글내용게시글내용게시글내용게시글내용게시글내용게시글내용게시글내용게시글내용</div>
-					</div>
-					<div class="gPaging">1-2-3</div><!-- 페이징 -->
-				</div><!-- gBoardList 끝 -->
-				<div id="writeBtn">
-					<button class="gBtn2" onclick="location.href='${pageContext.request.contextPath}/gathering/gBoardWrite.do'">글쓰기</button>
-				</div>
+				
+
 					
 				
 			</section>
