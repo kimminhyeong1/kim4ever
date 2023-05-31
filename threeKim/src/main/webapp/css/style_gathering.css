@@ -42,7 +42,9 @@ header{width:1250px; margin:35px auto 70px; text-align:center;}
 	.gBtn2:active{background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 /*인풋부분*/
 	.gInput{font-family: 'omyu_pretty';font-size: 24px;box-sizing: border-box;width: 40%;padding: 10px;margin: 2px 0;border: 1px solid #ccc;border-radius: 4px;}	
-	 
+/*보기부분*/
+	/*보기부분에 인풋박스처럼 박스부분*/
+	.boxContent{background: #fff;font-family: 'omyu_pretty';font-size: 24px;box-sizing: border-box;width: 40%;padding: 10px;margin: 2px 0;border: 1px solid #ccc;border-radius: 4px;}	 
  /*
  공통 부분
  틀부분

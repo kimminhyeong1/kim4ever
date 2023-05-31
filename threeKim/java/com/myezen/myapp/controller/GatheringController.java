@@ -1,11 +1,22 @@
 package com.myezen.myapp.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.myezen.myapp.domain.ScheduleVo;
 
 @Controller
 @RequestMapping(value="/gathering")
 public class GatheringController {
+	
+	
+	
+	
+	
 //모임메인페이지
 	@RequestMapping(value="/gList.do")
 	public String gList() {
@@ -26,10 +37,50 @@ public class GatheringController {
 	}
 //모임상세보기페이지
 	@RequestMapping(value="/gContent.do")
-	public String gContent() {
+	public String gContent(
+			Model md
+			) {
+		//ArrayListList<Event> events = calendarService.getAllEvents(); //일정 가져오기
+		//md.addAttribute("events", events);
+		ScheduleVo event = new ScheduleVo();
+		event.setTitle("제목");
+		event.setStart("2023-06-01T10:00:00");
+		event.setEnd("2023-06-02T12:00:00");
 		
+		ArrayList<ScheduleVo> events = new ArrayList<ScheduleVo>();
+		events.add(event);
+		System.out.println(events.get(0));
+		
+
+
+		md.addAttribute("events", events);
 		return "gathering/gContent";
 	}
+//모임상세보기에서 일정 만들기 페이지
+	@RequestMapping(value="/gScheduleMake.do")
+	public String gScheduleMake() {
+		
+		return "gathering/gScheduleMake";
+	}
+	//일정 만들기 페이지에서 일정 만들기 버튼 클릭
+		@RequestMapping(value="/gScheduleMakeAction.do")
+		public String gScheduleMakeAction(
+				@RequestParam("title") String title, @RequestParam("start") String start, @RequestParam("end") String end
+				) {
+			//calendarService.createEvent(title, start, end);
+			
+			return "gathering/gContent";
+		}
+//모임상세보기에서 일정 보기 페이지
+	@RequestMapping(value="/gScheduleDetails.do")
+	public String gScheduleDetails() {
+		
+		return "gathering/gScheduleDetails";
+	}
+	
+	
+	
+	
 	//모임 게시판
 	@RequestMapping(value="/gBoardList.do")
 	public String gBoardList() {
