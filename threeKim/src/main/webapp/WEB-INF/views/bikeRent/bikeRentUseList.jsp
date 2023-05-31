@@ -25,7 +25,7 @@
 			/*이용내역 내용*/
 			#useInfo{width:80%; font-size:22px; line-height:35px;}
 			/*이용내역 내용 버튼*/
-			#useListBtn{text-align: center;}
+			#useListBtn{text-align:center;}
 			
 			  
 		</style>  
@@ -50,7 +50,7 @@
 					<div><p>대여한 자전거 이용 요금</p><p>:</p><p>${bjv.rentPrice }원</p></div>
 					<div id="useListBtn">
 						<button onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentFault.do'">고장/신고</button>
-						<button onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeReturnQR.do'">반납하러가기</button>						
+						<button onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeReturnQR.do?ridx=${ridx}'">반납하러가기</button>						
 					</div>
 				</div>
 			</section>

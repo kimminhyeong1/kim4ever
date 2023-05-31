@@ -21,7 +21,7 @@
 			<h2 class="QRTitle">대여소QR</h2>	
 					<div class="containerFlex">
 						<div class="QRcard">
-							<a href="<%=request.getContextPath()%>/bikeRent/bikeRentReturn.do?rsidx=1"><img class="QRImg"src="../resources/QRcode/rsidx1.png" alt=""></a>
+							<a href="<%=request.getContextPath()%>/bikeRent/bikeRentReturn.do?ridx=${bjv.ridx }&rsidx=1"><img class="QRImg"src="../resources/QRcode/rsidx1.png" alt=""></a>
 						<p>송천대여소</p>
 						</div>
 						<div class="QRcard">

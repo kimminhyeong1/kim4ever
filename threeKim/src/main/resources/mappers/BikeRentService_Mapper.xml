@@ -42,13 +42,18 @@
 	SELECT ridx_seq.NEXTVAL, SYSDATE, #{rentPlace}, #{bkidx}, #{rsidx}, #{midx}
 	FROM dual
 	WHERE NOT EXISTS (SELECT 1 FROM rent1234 WHERE bkidx = #{bkidx})
+	<selectKey resultType="int" keyProperty="ridx" order="AFTER">
+       select ridx_seq.CURRVAL as ridx FROM DUAL
+    </selectKey>   
 </insert>
 
 <select id="getBikeLocationByBkidx" parameterType="int" resultType="java.lang.String">
         SELECT bikeLocation
         FROM bike1234
         WHERE bkidx = #{bkidx}
-    </select>
+</select>
+
+
 
 
 <select id="RentUseList" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
