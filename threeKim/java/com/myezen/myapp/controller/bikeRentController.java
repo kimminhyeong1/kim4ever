@@ -109,11 +109,11 @@ public class bikeRentController {
 	    int rsidx = bs.bikeGetRsidx(bjv.getBkidx());
 	    
 		// 대여 정보 삽입
-	    bs.insertRentInfo(bjv, rsidx);
+	    int ridx = bs.insertRentInfo(bjv, rsidx);
 		
-		System.out.println("insertInfo 실행");
+		System.out.println("insertInfo 실행"+ridx);
 			
-		return "redirect:/bikeRent/bikeRentUseList.do?bkidx=" + bjv.getBkidx();
+		return "redirect:/bikeRent/bikeRentUseList.do?bkidx=" + bjv.getBkidx()+"&ridx="+ridx;
 	}
 	
 
@@ -121,12 +121,14 @@ public class bikeRentController {
 	@RequestMapping(value="/bikeRentUseList.do") 
 	public String bikeRentUseList(
 			@RequestParam("bkidx") int bkidx,
+			@RequestParam("ridx") int ridx,
 			Model md) {
 			
 		//대여 내역 조회		
 		BikeJoinVo bjv = bs.RentUseList(bkidx);
 				 
 		md.addAttribute("bjv", bjv);
+		md.addAttribute("ridx", ridx);
 		System.out.println(bjv.getRidx());
 				
 
@@ -135,9 +137,9 @@ public class bikeRentController {
 	
 	/*자전거 QR대여*/
 	@RequestMapping(value="/bikeReturnQR.do")
-	public String bikeReturnQR() {
+	public String bikeReturnQR(@RequestParam("ridx") int ridx,Model md) {
 		
-		
+		md.addAttribute("ridx", ridx);
 	 	
 	  
 	    return "bikeRent/bikeReturnQR";
@@ -155,7 +157,7 @@ public class bikeRentController {
 			) {
 			//이용중인 내역에서 사용자가 반납하러가기를 누르고 반납소 QR을 찍으면 이쪽으로 넘어온다
 			//그래서 자전거 번호를 그 전에 가져와야한다
-
+		System.out.println("반납하기 자전거번호"+ridx+"반납소 번호"+rsidx);
 	
 
 		BikeJoinVo bjv = bs.bikeRentReturnCheck(ridx,rsidx); 

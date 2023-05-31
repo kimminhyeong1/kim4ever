@@ -6,28 +6,28 @@
 	<!-- 회원가입 -->
 	<insert id="memberInsert" parameterType="mv">
 		INSERT INTO member1234(midx,memberId,memberPwd,memberName,memberAge,memberPhone,memberEmail,memberAddr)
-		VALUES(midx_seq.nextval,#{memberid},#{memberpwd},#{membername},#{memberage},#{memberphone},#{memberemail},#{memberaddr})
+		VALUES(midx_seq.nextval,#{memberId},#{memberPwd},#{memberName},#{memberAge},#{memberPhone},#{memberEmail},#{memberAddr})
 	</insert>
 	<!-- 회원가입 아이디중복체크 -->
 	<select id="memberIdCheck" parameterType="String" resultType="int">
-		select count(*) from member1234 where delyn='N' and memberId=#{memberId}
+		select count(*) from member1234 where MEMBERDELYN='N' and memberId=#{memberId}
 	</select>
 	<!-- 회원가입 이메일중복체크 -->
 	<select id="memberEmailCheck" parameterType="String" resultType="int">
-		select count(*) from member1234 where delyn='N' and memberEmail=#{memberEmail}
+		select count(*) from member1234 where MEMBERDELYN='N' and memberEmail=#{memberEmail}
 	</select>
 	
 	<!-- 로그인에서 아이디찾기 -->
 	<select id="memberIdFind" parameterType="String" resultType="String">
-		select memberId from member1234 where delyn='N' and memberName=#{0} and memberEmail=#{1}
+		select memberId from member1234 where MEMBERDELYN='N' and memberName=#{0} and memberEmail=#{1}
 	</select>
 	<!-- 로그인에서 비밀번호찾기 -->
 	<update id="memberPwdReset" parameterType="String">
-	    update member1234 set memberPwd = #{0} where memberId = #{1} and memberName = #{2} and memberEmail = #{3} and delyn='N'
+	    update member1234 set memberPwd = #{0} where memberId = #{1} and memberName = #{2} and memberEmail = #{3} and MEMBERDELYN='N'
 	</update>
 	<!-- 로그인에서 비밀번호 찾기 대조 -->
 	<select id="memberPwdFindMatch" parameterType="String" resultType="int">
-		select count(*) from member1234 where delyn='N' and memberId=#{0} and memberName=#{1} and memberEmail=#{2}
+		select count(*) from member1234 where MEMBERDELYN='N' and memberId=#{0} and memberName=#{1} and memberEmail=#{2}
 	</select>
 	<!-- 로그인에서 아이디찾기,비밀번호찾기 인증번호저장 -->
 	<insert id="memberMailAuthSave" parameterType="String">
@@ -44,20 +44,20 @@
 	</delete>
 	<!-- 로그인에서 아이디찾기 인증번호클릭  대조 -->
 	<select id="memberIdFindMatch" parameterType="String" resultType="int">
-		select count(*) from member1234 where delyn='N' and memberName=#{0} and memberEmail=#{1}
+		select count(*) from member1234 where MEMBERDELYN='N' and memberName=#{0} and memberEmail=#{1}
 	</select>	
 	<!-- 로그인에서 비밀번호찾기 인증번호클릭  대조 -->
 	<select id="memberPwdFindAuthMatch" parameterType="String" resultType="int">
-		select count(*) from member1234 where delyn='N' and memberId=#{0} and memberName=#{1} and memberEmail=#{2}
+		select count(*) from member1234 where MEMBERDELYN='N' and memberId=#{0} and memberName=#{1} and memberEmail=#{2}
 	</select>
 	
 	<select id="memberList" resultType="mv">
-	select memberid,membername,memberage,delyn,writeday,membertype from member1234 order by memberType asc
+	select memberid,membername,memberage,MEMBERDELYN,writeday,membertype from member1234 order by memberType asc
 	</select>
 
 	
 	<select id="memberLogin" parameterType="String" resultType="mv">
-	select * from member1234 where delyn='N' and memberid=#{memberId}
+	select * from member1234 where MEMBERDELYN='N' and memberid=#{memberId}
 	</select>
 
 
@@ -69,7 +69,7 @@
 	SELECT * FROM member1234 WHERE midx = #{midx}
 	</select>
 	
-	<update id="updateMember" parameterType="mv">
+	<update id="updateMember" parameterType="mv"> 
   UPDATE member1234
   <set>
     <if test="memberpwd != null">memberPwd = #{memberpwd},</if>

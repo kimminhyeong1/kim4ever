@@ -83,8 +83,8 @@
 						<div><p>자전거 고유번호</p><p>:</p><p>${bjv.bikeCode}</p></div>
 						<div>
 							<p>대여한 자전거 시간</p><p>:</p><p>
-								<fmt:parseDate value="${bjv.rentDay}" pattern="yyyy-mm-dd hh:mm:ss.s" var="parsedRentDay" />
-								<fmt:formatDate value="${parsedRentDay}" pattern="yyyy-mm-dd hh:mm:ss" var="formattedRentDay" />
+								<fmt:parseDate value="${bjv.rentDay}" pattern="yyyy-MM-dd HH:mm:ss.S" var="parsedRentDay" />
+								<fmt:formatDate value="${parsedRentDay}" pattern="yyyy-MM-dd HH:mm:ss" var="formattedRentDay" />
 								${formattedRentDay}
 							</p>
 						</div>

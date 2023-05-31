@@ -55,7 +55,7 @@ public class BikeRentServiceImpl implements BikeRentService {
 		
 	//bike1234의 테이블의 자전거정보들을 rent1234테이블로 삽입 쿼리
 	@Override
-	public BikeJoinVo insertRentInfo(BikeJoinVo bjv, int rsidx) {
+	public int insertRentInfo(BikeJoinVo bjv, int rsidx) {
 		
 		//bkidx(자전거번호)를 가져와서 그 bkidx에 해당하는 위치를 가져온다
 		int bkidx = bjv.getBkidx();
@@ -65,9 +65,9 @@ public class BikeRentServiceImpl implements BikeRentService {
 		bjv.setRentPlace(bikeLocation);
 		//bikeGetRsidx에서 받아온 rsidx를 받는다
 		bjv.setRsidx(rsidx);
-		brsm.insertRentInfo(bjv);
+		
 		    
-		return brsm.RentUseList(bkidx);
+		return brsm.insertRentInfo(bjv);
 	}
 	
 	//bkidx로 자전거위치 가져오는 쿼리

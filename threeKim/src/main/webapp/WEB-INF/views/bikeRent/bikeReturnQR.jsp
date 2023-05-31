@@ -21,15 +21,15 @@
 			<h2 class="QRTitle">대여소QR</h2>	
 					<div class="containerFlex">
 						<div class="QRcard">
-							<a href="<%=request.getContextPath()%>/bikeRent/bikeRentReturn.do?ridx=${bjv.ridx }&rsidx=1"><img class="QRImg"src="../resources/QRcode/rsidx1.png" alt=""></a>
+							<a href="<%=request.getContextPath()%>/bikeRent/bikeRentReturn.do?ridx=${ridx}&rsidx=1"><img class="QRImg"src="../resources/QRcode/rsidx1.png" alt=""></a>
 						<p>송천대여소</p>
 						</div>
 						<div class="QRcard">
-							<a href="<%=request.getContextPath()%>/bikeRent/bikeRentReturn.do?ridx=${bjv.ridx }&rsidx=2"><img class="QRImg" src="../resources/QRcode/rsidx2.png" alt=""></a>
+							<a href="<%=request.getContextPath()%>/bikeRent/bikeRentReturn.do?ridx=${ridx}&rsidx=2"><img class="QRImg" src="../resources/QRcode/rsidx2.png" alt=""></a>
 						<p>효자대여소</p>
 						</div>
 						<div class="QRcard">
-							<a href="<%=request.getContextPath()%>/bikeRent/bikeRentReturn.do?ridx=${bjv.ridx }&rsidx=3"><img class="QRImg" src="../resources/QRcode/rsidx3.png" alt=""></a>
+							<a href="<%=request.getContextPath()%>/bikeRent/bikeRentReturn.do?ridx=${ridx}&rsidx=3"><img class="QRImg" src="../resources/QRcode/rsidx3.png" alt=""></a>
 						<p>덕진대여소</p>
 						</div>
 					</div>

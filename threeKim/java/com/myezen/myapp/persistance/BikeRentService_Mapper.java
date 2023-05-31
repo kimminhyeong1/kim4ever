@@ -22,7 +22,7 @@ public interface BikeRentService_Mapper {
 	public int bikeGetRsidx(int bkidx);
 	
 	//인설트문 bike1234테이블(자전거관련정보)에서 대여를 해야하니까 rent1234(대여)로 insert 
-	public void insertRentInfo(BikeJoinVo bjv);
+	public int insertRentInfo(BikeJoinVo bjv);
 
 	 
 	
