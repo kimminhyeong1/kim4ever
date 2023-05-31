@@ -23,7 +23,7 @@
 			.container button{display:inline-block; width:45%; height:55px; margin-top:0px;text-align:center; font-family:'omyu_pretty'; font-size:25px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 			.container button:active{background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 			/*이용내역 내용*/
-			#useInfo{width: 80%;}
+			#useInfo{width:80%; font-size:22px; line-height:35px;}
 			/*이용내역 내용 버튼*/
 			#useListBtn{text-align: center;}
 			
@@ -37,11 +37,12 @@
 				<div class="container">
 					<div><h1>이용내역</h1></div>
 					<div><p id="useInfo">
-						이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내
-						이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내
-						이용안내이용안내이용안내이용안내이용안내이용안내
+						1. 자전거 이용시간은 오전9시부터 오후10시까지입니다.<br>
+						2. 반납은 대여한 장소와 무관하게 어느 대여소에서든 가능합니다.<br>
+						3. 자전거에 문제가 생겼을 경우 고장/신고 접수 부탁드립니다.<br>
+						4. 안전수칙을 준수하시고 음주 시 이용이 불가합니다.<br>
 					</p></div>
-					<div><h2>현재 ${bjv.bikeType}를  대여 중입니다.</h2></div>
+					<div><h2>현재 <span style="color:red">${bjv.bikeType}</span>를  대여 중입니다.</h2></div>
 					<div><p>대여한 자전거 대여소 위치</p><p>:</p><p>${bjv.bikeLocation }</p></div>
 					<div><p>사용자 이름</p><p>:</p><p>${bjv.memberName }</p></div>
 					<div><p>자전거 고유번호</p><p>:</p><p>${bjv.bikeCode}</p></div>

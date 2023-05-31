@@ -46,10 +46,16 @@ public class BikeRentServiceImpl implements BikeRentService {
 		brsm.updateBikeState(bkidx);
 		
 	}
-	
+	//bike1234와 rentalShop1234조인해서 rsidx(대여소번호) 가져오기
+	@Override
+	public int bikeGetRsidx(int bkidx) {
+		
+		return brsm.bikeGetRsidx(bkidx);
+	}
+		
 	//bike1234의 테이블의 자전거정보들을 rent1234테이블로 삽입 쿼리
 	@Override
-	public void insertRentInfo(BikeJoinVo bjv, HttpServletRequest request) {
+	public void insertRentInfo(BikeJoinVo bjv, int rsidx) {
 		
 		//bkidx(자전거번호)를 가져와서 그 bkidx에 해당하는 위치를 가져온다
 		int bkidx = bjv.getBkidx();
@@ -57,7 +63,8 @@ public class BikeRentServiceImpl implements BikeRentService {
 		
 		//bikeLocation값을 받아와서 rentPlace로 설정
 		bjv.setRentPlace(bikeLocation);
-		
+		//bikeGetRsidx에서 받아온 rsidx를 받는다
+		bjv.setRsidx(rsidx);
 		
 		    
 		brsm.insertRentInfo(bjv);
@@ -74,9 +81,9 @@ public class BikeRentServiceImpl implements BikeRentService {
 	
 	//대여 목록 정보 조회
 	@Override
-	public BikeJoinVo RentUseList(int bkidx,int rkidx, int midx) {
+	public BikeJoinVo RentUseList(int bkidx) {
 		
-		return brsm.RentUseList(bkidx, rkidx, midx);
+		return brsm.RentUseList(bkidx);
 	}
 
 
@@ -139,9 +146,8 @@ public class BikeRentServiceImpl implements BikeRentService {
 
 		return bjvlist;
 	}
-	
-	
 
+	
 	
 
 	

@@ -4,8 +4,10 @@ package com.myezen.myapp.controller;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
@@ -87,13 +89,12 @@ public class bikeRentController {
 	
 	//자전거대여정보업데이트
 	@RequestMapping(value="/bikeRentUpdate.do", method=RequestMethod.POST)
-	@ResponseBody
 	public String bikeRentUpdate(
 			@ModelAttribute("bjv") BikeJoinVo bjv,
 			HttpServletRequest request,
 			Model md
-			) {
-	    HttpSession session = request.getSession();
+			){
+	    HttpSession session = request.getSession();//애매,qa
 	    int midx = (int) session.getAttribute("midx");
 	    bjv.setMidx(midx);
 	
@@ -104,34 +105,31 @@ public class bikeRentController {
 		
 	    System.out.println("자전거 상태 업데이트");
 	    
-	    // 대여 정보 삽입
-	    bs.insertRentInfo(bjv, request);
+	    //rsidx가져오기	    
+	    int rsidx = bs.bikeGetRsidx(bjv.getBkidx());
+	    
+		// 대여 정보 삽입
+	    bs.insertRentInfo(bjv, rsidx);
 		
-		System.out.println("update들어감");
+		System.out.println("insertInfo 실행");
 			
-		return "bikeRent/bikeRentUpdate";
+		return "redirect:/bikeRent/bikeRentUseList.do?bkidx=" + bjv.getBkidx();
 	}
 	
 
 	/*이용중인내역*/
-	
 	@RequestMapping(value="/bikeRentUseList.do") 
 	public String bikeRentUseList(
 			@RequestParam("bkidx") int bkidx,
-		    @RequestParam("rkidx") int rsidx,
-		    @RequestParam("midx") int midx,
 			Model md) {
 			
-	
-			
-		
 		//대여 내역 조회		
-		BikeJoinVo bjv = bs.RentUseList(bkidx, rsidx, midx);
+		BikeJoinVo bjv = bs.RentUseList(bkidx);
 				 
 		md.addAttribute("bjv", bjv);
 				
 
-		  return "bikeRent/bikeRentUseList"; 
+		 return "bikeRent/bikeRentUseList"; 
 	}
 	
 	

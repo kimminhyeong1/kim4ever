@@ -28,11 +28,14 @@ public interface BikeRentService {
 	//업데이트문 bikeState Y(사용가능) ->N(사용중)
 	public void updateBikeState(int bkidx);
 	
+	//셀렉문 bike1234와 rentalshop1234 조인해서 rsdix값 꺼내오기
+	public int bikeGetRsidx(int bkidx); 
+	
 	//인설트문 bike1234테이블(자전거관련정보)에서 대여를 해야하니까 rent1234(대여)로 insert 
-	public void insertRentInfo(BikeJoinVo bjv, HttpServletRequest request);
+	public void insertRentInfo(BikeJoinVo bjv, int rsidx);
 	
 	//대여 내역
-	public BikeJoinVo RentUseList(int bkidx,int rkidx, int midx);
+	public BikeJoinVo RentUseList(int bkidx);
 	
 	public String getBikeLocationByBkidx(int bkidx);
 	
