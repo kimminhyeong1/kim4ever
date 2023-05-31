@@ -8,27 +8,18 @@
 <script type="text/javascript">
 
 function rental() {
-	 $(document).ready(function() {
-	        $("#frm").on("submit", function(e) {
-	            e.preventDefault(); // 폼 전송 기본 동작 막기
-	            
-	            $.ajax({
-	                url: $(this).attr("action"), //현재 폼의 action속성
-	                type: $(this).attr("method"), //현재 폼의 method 속성
-	                data: $(this).serialize(), //현재 폼의 모든 입력 필드를 직렬화하여 쿼리 문자열로 반환
-	                success: function(response) {
-	                    // 처리 성공 시, 페이지 리다이렉트 (진짜 대여페이지로 넘김)
-	                    location.href = "${pageContext.request.contextPath}/bikeRent/bikeRentUseList.do";
-	                },
-	                error: function(xhr, status, error) {
-	                    // 처리 실패 시, 에러 처리
-	                    console.error(error);
-	                }
-	            });
-	        });
-	    });
-	            
-	
+    $(document).ready(function() {
+        $("#frm").on("submit", function(e) {
+            e.preventDefault(); // 폼 전송 기본 동작 막기 -> submit이 동작했을 때 페이지를 새로고침 안시키기 위해서 사용
+
+            var fm = document.frm;
+            fm.action = "${pageContext.request.contextPath}/bikeRent/bikeRentUpdate.do";
+            fm.method = "post";
+
+            fm.submit();
+        });
+    }); 
+}
 </script>
 		<meta charset="UTF-8">
 		<title>타다-자전거 소개</title>
@@ -43,7 +34,7 @@ function rental() {
 		<main id="main">
 			<section class="container">
 			<div id="content">
-				<form id="frm" name="frm" action="${pageContext.request.contextPath}/bikeRent/bikeRentUpdate.do" method="POST">
+				<form id="frm" name="frm" action="${pageContext.request.contextPath}/bikeRent/bikeRentUpdate.do" method="post">
 				
 			    <input type="hidden" name="bkidx" value="${bjv.bkidx}">
 			
