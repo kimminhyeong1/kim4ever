@@ -42,7 +42,7 @@
 						3. 자전거에 문제가 생겼을 경우 고장/신고 접수 부탁드립니다.<br>
 						4. 안전수칙을 준수하시고 음주 시 이용이 불가합니다.<br>
 					</p></div>
-					<div><h2>현재 <span style="color:red">${bjv.bikeType}</span>를  대여 중입니다.</h2></div>
+					<div><h2>현재 <span style="color:blue">${bjv.bikeType}</span>를  대여 중입니다.</h2></div>
 					<div><p>대여한 자전거 대여소 위치</p><p>:</p><p>${bjv.bikeLocation }</p></div>
 					<div><p>사용자 이름</p><p>:</p><p>${bjv.memberName }</p></div>
 					<div><p>자전거 고유번호</p><p>:</p><p>${bjv.bikeCode}</p></div>
@@ -50,7 +50,7 @@
 					<div><p>대여한 자전거 이용 요금</p><p>:</p><p>${bjv.rentPrice }원</p></div>
 					<div id="useListBtn">
 						<button onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentFault.do'">고장/신고</button>
-						<button onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentQR.do'">반납하러가기</button>						
+						<button onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeReturnQR.do'">반납하러가기</button>						
 					</div>
 				</div>
 			</section>

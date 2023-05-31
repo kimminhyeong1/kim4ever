@@ -71,32 +71,6 @@
 
 
 
-<!--
-<insert id="insertRent" parameterType="com.myezen.myapp.domain.RentalInfo">
-  INSERT INTO rent1234 (bkidx, midx, rentDay)
-  VALUES (#{bkidx}, #{midx}, #{rentDay})
-</insert>  -->
-
-<!-- <update id="updateBikeState" parameterType="com.myezen.myapp.domain.Bike">
-  UPDATE bike1234
-  SET bikeState = 'N'
-  WHERE bkidx = #{bkidx}
-</update> --> 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

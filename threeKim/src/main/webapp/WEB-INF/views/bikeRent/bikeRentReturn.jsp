@@ -75,7 +75,7 @@
 							이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내이용안내
 							이용안내이용안내이용안내이용안내이용안내이용안내
 						</p></div>
-						<div><h2>현재 ㅁㅁㅁ을 반납중입니다.</h2></div>
+						<div><h2>현재 <span style="color:red">${bjv.bikeType}</span>를 반납중입니다.</h2></div>
 						<div><p>대여한 자전거 대여소 위치</p><p>:</p><p>${bjv.rentPlace} 대여소</p></div>
 						<div><p>반납할 자전거 대여소 위치</p><p>:</p><p>${bjv.rentalshopName} 대여소</p></div>
 						<div><p>사용자 이름</p><p>:</p><p>${bjv.memberName}</p></div>

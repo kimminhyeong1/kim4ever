@@ -132,7 +132,15 @@ public class bikeRentController {
 		 return "bikeRent/bikeRentUseList"; 
 	}
 	
-	
+	/*자전거 QR대여*/
+	@RequestMapping(value="/bikeReturnQR.do")
+	public String bikeReturnQR() {
+		
+		
+	 	
+	  
+	    return "bikeRent/bikeReturnQR";
+	}
 
 	
 	/*----------------------------------------------*/
