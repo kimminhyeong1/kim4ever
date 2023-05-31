@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 	<head>
@@ -57,8 +58,11 @@
 			#gMembers>div:nth-child(3){width: 7%;  display: inline-block;vertical-align: top;margin-top: 20px;}
 			#gMembers>div:nth-child(4){width: 7%; display: inline-block;vertical-align: top; margin-top: 20px; margin-left: 10px;}
 			/*모임일정부분*/
-			#gSchedule{margin-top:30px;width: 100%; height: 1000px; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;}
-			#calendar {}
+			#gSchedule{margin-top:30px;width: 100%; height: 1110px; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;text-align: left;}
+			#gSchedule>div:nth-child(1){font-size: 20px;font-weight: bold;margin-top: 15px;margin-left: 20px;} 
+			#calendar {margin: 20px 20px;}
+			#gSchedule>div:nth-child(3){text-align: right;margin-right: 20px;}
+			#gSchedule>div:nth-child(3)>button{width: 150px; height: 50px;}
 			/*모임공지사항부분*/
 			#gNotice{margin-top:30px;width: 100%;  border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;}
 			/*공지사항부분*/
@@ -76,8 +80,37 @@
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth'
+        	initialView: 'dayGridMonth',
+        	locale: 'ko', // 한국어로 설정
+        	events: [
+                // JSP에서 서버로부터 받은 일정 데이터를 여기에 반영
+                // 예시: 서버에서 events라는 이름으로 일정 데이터를 넘겨준다고 가정
+                <c:forEach var="event" items="${events}">
+                    {
+                        title: '${event.title}',
+                        start: '${event.start}',
+                        end: '${event.end}'
+                    },
+                </c:forEach>
+                    
+            ],
+            eventClick: function(info) {
+                // 클릭한 일정의 정보를 가져옴
+                var eventId = info.event.id; // 일정의 고유 ID
+                var eventTitle = info.event.title; // 일정 제목
+                var eventStart = info.event.start; // 일정 시작일
+                var eventEnd = info.event.end; // 일정 종료일
+
+                // 클릭한 일정의 정보를 페이지로 전달하여 이동
+                window.location.href = '${pageContext.request.contextPath}/gathering/gScheduleDetails.do?id=' + eventId +
+                                        '&title=' + encodeURIComponent(eventTitle) +
+                                        '&start=' + eventStart.toISOString() +
+                                        '&end=' + eventEnd.toISOString();
+              }
+        	
         });
+        
+        calendarEl.style.width = '1210px;'; // 원하는 너비로 설정
         calendar.render();
       });
 
@@ -150,8 +183,9 @@
 				<div><button class="gBtn">더보기</button></div>			
 			</div>
 			<div id="gSchedule">
+				<div>모임 일정</div>
 				<div id='calendar'></div>
-	
+				<div><button class="gBtn2" onclick="location.href='<%=request.getContextPath()%>/gathering/gScheduleMake.do'">일정 만들기</button></div>
 			</div>
 			<div id="gNotice">
 				<div class="gNotice">

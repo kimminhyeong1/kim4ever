@@ -14,7 +14,7 @@
 			/*검색하기 부분*/
 			#searchCategory{text-align: right; font-size: 20px; margin: 40px 60px; height: 30px; font-family: 'omyu_pretty';} 
 			#searchCategory>div{display: inline-block; vertical-align: top;} 
-			#searchCategory>div>select{width: 80px; height: 30px; font-size: 18px;} 
+			#searchCategory>div>select{width: 80px; height: 30px; font-size: 18px; font-family: 'omyu_pretty';} 
 			#searchCategory>div>input{width: 300px; height: 26px; font-size: 18px;} 
 			#searchCategory>div>button{width: 100px; height: 30px; margin-top: 0px;margin-bottom: 0px;} 
 			/*공지사항부분*/
