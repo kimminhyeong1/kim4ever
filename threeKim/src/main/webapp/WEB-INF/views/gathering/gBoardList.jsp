@@ -11,6 +11,12 @@
 			.gContainer{border: 1px solid #0000;}
 			/*게시글 틀*/ 
 			.gBoardList { width: 100%; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;}
+			/*검색하기 부분*/
+			#searchCategory{text-align: right; font-size: 20px; margin: 40px 60px; height: 30px; font-family: 'omyu_pretty';} 
+			#searchCategory>div{display: inline-block; vertical-align: top;} 
+			#searchCategory>div>select{width: 80px; height: 30px; font-size: 18px;} 
+			#searchCategory>div>input{width: 300px; height: 26px; font-size: 18px;} 
+			#searchCategory>div>button{width: 100px; height: 30px; margin-top: 0px;margin-bottom: 0px;} 
 			/*공지사항부분*/
 			.gNotice{text-align: left; font-size: 20px; margin: 40px 60px;}
 			.gNotice>div>div{display: inline-block; font-size: 25px; font-weight: bold;}
@@ -26,8 +32,10 @@
 			.gBoard>div:nth-child(2){clear: both;margin-top: 10px; font-weight: bold;}/*게시글제목*/
 			.gBoard>div:nth-child(2)>span{font-size: 18px;}/*게시글 카테고리*/
 			.gBoard>div:nth-child(3){font-size: 18px; margin-top: 10px; border-bottom: 2px solid #bbb; padding-bottom: 10px; margin-top: 10px;}/*게시글 내용*/
-			
-			
+			/*버튼 부분*/
+			#writeBtn{text-align: right;}	
+			/*페이징 부분*/
+			.gPaging{font-size: 25px;}		
 		</style>
 	</head>
 	<body>
@@ -36,6 +44,19 @@
 		<main id="main">
 			<section class="gContainer">
 				<div class="gBoardList">
+					<div id="searchCategory">
+						<div> 
+							<select>
+								<option>공지사항</option>	
+								<option>취미</option>	
+								<option>일상</option>	
+								<option>정모</option>	
+								<option>가입인사</option>	
+							</select> 
+						</div>
+						<div><input type="text" placeholder="내용을 입력해주세요."></div>
+						<div> <button class="gBtn2">검색하기</button> </div>
+					</div>
 					<div class="gNotice">
 						<div>
 							<div>공지사항</div>
@@ -92,8 +113,11 @@
 						<div>게시글제목 <span>카테고리이름</span> </div>
 						<div>게시글내용게시글내용게시글내용게시글내용게시글내용게시글내용게시글내용게시글내용</div>
 					</div>
-					<div>1-2-3</div><!-- 페이징 -->
+					<div class="gPaging">1-2-3</div><!-- 페이징 -->
 				</div><!-- gBoardList 끝 -->
+				<div id="writeBtn">
+					<button class="gBtn2">글쓰기</button>
+				</div>
 					
 				
 			</section>

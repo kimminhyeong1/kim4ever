@@ -60,7 +60,12 @@
 			#gSchedule{margin-top:30px;width: 100%; height: 1000px; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;}
 			#calendar {}
 			/*모임공지사항부분*/
-			#gNotice{margin-top:30px;width: 100%; height: 300px; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;}
+			#gNotice{margin-top:30px;width: 100%;  border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;}
+			/*공지사항부분*/
+			.gNotice{text-align: left; font-size: 20px; margin: 40px 60px;}
+			.gNotice>div>div{display: inline-block; font-size: 25px; font-weight: bold;}
+			.gNotice>div>div:nth-child(1){color: #f00; margin-right: 20px;}
+			.gNotice>div:nth-child(2){border-bottom: 2px solid #bbb; padding-bottom: 10px; margin-top: 10px;}/* 끝나는바*/
 			/*모임기타버튼부분*/
 			#gReportExit{margin-top:30px;width: 100%; height: 100px; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;text-align: right;}
 			#gReportExit>button{color: rgb(149, 165, 166);margin-top: 30px;margin-left: 10px;margin-right: 20px;width: 132px;height: 40px;font-size: 25px;border: 1px solid #0000;}
@@ -149,7 +154,27 @@
 	
 			</div>
 			<div id="gNotice">
-				공지사항
+				<div class="gNotice">
+					<div>
+						<div>공지사항</div>
+						<div>공지사항 제목</div>
+					</div>
+					<div>일정이 취소되었습니다</div>
+				</div>
+				<div class="gNotice">
+					<div>
+						<div>공지사항</div>
+						<div>공지사항 제목</div>
+					</div>
+					<div>일정이 취소되었습니다</div>
+				</div>
+				<div class="gNotice">
+					<div>
+						<div>공지사항</div>
+						<div>공지사항 제목</div>
+					</div>
+					<div>일정이 취소되었습니다</div>
+				</div>
 			</div>
 			<div id="gReportExit">
 				<button>모임 신고하기</button> 
