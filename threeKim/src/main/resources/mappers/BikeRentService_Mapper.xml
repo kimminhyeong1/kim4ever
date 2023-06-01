@@ -88,21 +88,20 @@
         VALUES(eidx_seq.NEXTVAL,#{1},#{0})
     </insert>
     <select id="bikeRentReturnCheck" resultType="com.myezen.myapp.domain.BikeJoinVo">
-    	SELECT *
-		FROM rent1234
-		JOIN rentalshop1234 ON rent1234.rsidx = rentalshop1234.rsidx
+		SELECT * FROM rent1234
 		JOIN bike1234 ON rent1234.bkidx = bike1234.bkidx
 		JOIN member1234 ON rent1234.midx = member1234.midx
 		JOIN bikeinfo1234 ON bike1234.bikeType = bikeinfo1234.bikeType
-		WHERE rent1234.ridx = #{0} AND rentalshop1234.rsidx = #{1}
+		JOIN rentalshop1234 ON rentalshop1234.rsidx = #{1}
+		WHERE rent1234.ridx = #{0} 
     </select>
     <!-- 최종 반납하기에서 컬럼값들가져오기  -->
     <select id="bikeRentOneSelect" resultType="com.myezen.myapp.domain.BikeJoinVo">
 		SELECT *
 		FROM rent1234
-		JOIN rentalshop1234 ON rent1234.rsidx = rentalshop1234.rsidx
 		JOIN bike1234 ON rent1234.bkidx = bike1234.bkidx
-		WHERE rent1234.ridx = #{0} AND rentalshop1234.rsidx = #{1} AND bike1234.BIKESTATE = 'N'
+		JOIN rentalshop1234 ON rentalshop1234.rsidx = #{1}
+		WHERE rent1234.ridx = #{0} AND bike1234.BIKESTATE = 'N'
     </select>
 	
 	<update id="bikeRentBikeUpdate" parameterType="com.myezen.myapp.domain.BikeJoinVo">
