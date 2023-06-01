@@ -30,9 +30,6 @@
 	JOIN error1234 e ON	e.ridx = r.ridx		
 	</select>
 	
-<<<<<<< HEAD
-
-=======
 	<!-- 관리자 자전거 리스트 -->
 	<select id="bikeList" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
 	SELECT * FROM bike1234 WHERE bkidx BETWEEN 1 AND 10
@@ -42,7 +39,7 @@
 	<select id="getMemberByMemberId" parameterType="string" resultType="com.myezen.myapp.domain.BikeJoinVo">
   	SELECT * FROM member1234 where memberId = #{memberid}
 	</select>
->>>>>>> kmh
+
 
 	<!-- 대여소 리스트 -->
 	<select id="rentalshopList" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">

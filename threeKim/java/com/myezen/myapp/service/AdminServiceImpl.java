@@ -76,9 +76,6 @@ public class AdminServiceImpl implements AdminService {
 		return elist;
 	}
 
-
-<<<<<<< HEAD
-=======
 	//회원 상세정보
 	@Override
 	public BikeJoinVo getMemberByMemberId(String memberId) {
@@ -118,15 +115,6 @@ public class AdminServiceImpl implements AdminService {
 
 
 
-
-
-
-
-
-	
-
-	
->>>>>>> kmh
 
 
 

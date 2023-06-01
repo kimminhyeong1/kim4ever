@@ -42,23 +42,7 @@ public class AdminController {
 	}
 
 	
-<<<<<<< HEAD
-	  //관리자 회원관리 페이지
-	  
-	  @RequestMapping(value="/adminmemberList.do") 
-	  public String memberList(
-			  Model model
-			  ) {
-	  
-	  ArrayList<BikeJoinVo> alist = as.memberList();
-	  
-	  model.addAttribute("alist",alist); //(model=requestsetattribute)에 담아서 가지고 간다
-	  
-	  return "admin/adminmemberList"; }
 
-=======
-	
-	
 	
 	//관리자 회원 관리 페이지	  
 	@RequestMapping(value="/adminmemberList.do") 
@@ -78,7 +62,7 @@ public class AdminController {
 		    return "member/memberListProfile";
 		}
 	
->>>>>>> kmh
+
 	//회원 삭제	
 
 	@RequestMapping(value="/adminmemberDelete.do")
@@ -105,8 +89,7 @@ public class AdminController {
 			return "admin/adminbikeRegister";
 		}
 
-<<<<<<< HEAD
-=======
+
 	//관리자 자전거 관리 페이지
 	@RequestMapping(value="/adminbikeList.do")
 	public String adminbikeList(Model model) {
@@ -128,7 +111,7 @@ public class AdminController {
 			
 		return "admin/adminrentalshopList";
 		}
->>>>>>> kmh
+
 
 	//관리자 대여소 등록 페이지
 	@RequestMapping(value="/adminrentalshopRegister.do")

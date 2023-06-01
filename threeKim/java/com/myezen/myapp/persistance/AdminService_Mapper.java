@@ -19,9 +19,6 @@ public interface AdminService_Mapper {
 	public ArrayList<BikeJoinVo> memberList();
 	//신고 리스트	
 	public ArrayList<BikeJoinVo> errorList(); 
-<<<<<<< HEAD
-
-=======
 	//자전거 리스트
 	public ArrayList<BikeJoinVo> bikeList();
 	//대여소 리스트
@@ -32,5 +29,5 @@ public interface AdminService_Mapper {
 	public int adminrentalshopNameCheck(String rentalshopName);
 	//회원 상세정보
 	public BikeJoinVo getMemberByMemberId(String memberId);
->>>>>>> kmh
+
 }
