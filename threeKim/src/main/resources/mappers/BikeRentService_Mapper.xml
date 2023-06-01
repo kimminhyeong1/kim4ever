@@ -126,6 +126,7 @@
 		JOIN bike1234 ON bike1234.bkidx = rent1234.bkidx
 		JOIN bikeinfo1234	ON bikeinfo1234.biketype= bike1234.biketype
 		where member1234.midx = #{midx}
+		ORDER BY rent1234.rentday DESC
 	</select>
 	
 	

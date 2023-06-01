@@ -112,6 +112,8 @@ public class bikeRentController {
 	    int value = bs.insertRentInfo(bjv, rsidx);
 		
 		System.out.println("insertInfo 실행"+bjv.getRidx());
+		session.setAttribute("ridx", bjv.getRidx());
+		session.setAttribute("bkidx", bjv.getBkidx());
 			
 		return "redirect:/bikeRent/bikeRentUseList.do?bkidx=" + bjv.getBkidx()+"&ridx="+bjv.getRidx();
 	}
@@ -120,16 +122,19 @@ public class bikeRentController {
 	/*이용중인내역*/
 	@RequestMapping(value="/bikeRentUseList.do") 
 	public String bikeRentUseList(
-			@RequestParam("bkidx") int bkidx,
-			@RequestParam("ridx") int ridx,
-			Model md) {
-			
+			HttpServletRequest request,
+			Model md
+			) {
+		//세션값가져오기
+		HttpSession session = request.getSession();
+		int ridx = (int) session.getAttribute("ridx");
+		int bkidx = (int) session.getAttribute("bkidx");
+		
 		//대여 내역 조회		
 		BikeJoinVo bjv = bs.RentUseList(bkidx);
 				 
 		md.addAttribute("bjv", bjv);
 		md.addAttribute("ridx", ridx);
-		System.out.println(bjv.getRidx());
 				
 
 		 return "bikeRent/bikeRentUseList"; 
@@ -178,8 +183,11 @@ public class bikeRentController {
 	@RequestMapping(value="/bikeRentReturnAction.do")
 	public String bikeRentReturnAction(
 			@RequestParam(value = "ridx" ) int ridx,//대여 번호
-			@RequestParam(value = "rsidx") int rsidx//반납하는 대여소 주소 번호
+			@RequestParam(value = "rsidx") int rsidx,//반납하는 대여소 주소 번호
+			HttpServletRequest request
 			) {
+		//세션값
+		HttpSession session = request.getSession();
 
 		System.out.println("최종반납 자전거번호"+ridx);
 		System.out.println("최종반납 대여소 주소 번호"+rsidx);
@@ -195,6 +203,8 @@ public class bikeRentController {
 			//반납테이블 데이터 생성하기
 
 		System.out.println("출력");
+		session.removeAttribute("ridx");
+		session.removeAttribute("bkidx");
 		
 		return "redirect:/bikeRent/bikeRentHistory.do";
 	}
