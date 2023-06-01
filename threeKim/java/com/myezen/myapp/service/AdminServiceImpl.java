@@ -30,7 +30,26 @@ public class AdminServiceImpl implements AdminService {
 		this.asm = sqlSession.getMapper(AdminService_Mapper.class);
 	}
 	
+	//관리자 메인페이지 총 자전거
+	@Override
+	public int getTotalBkidxCount() {
+		
+		return asm.getTotalBkidxCount();
+	}
 
+	//관리자 메인페이지 대여중인 자전거
+	@Override
+	public int getTotalRidxCount() {
+		
+		return asm.getTotalRidxCount();
+	}
+	
+	//관리자 메인페이지 고장난 자전거
+	@Override
+	public int getTotalErrorCount() {
+		
+		return asm.getTotalErrorCount();
+	}
 				
 	//회원삭제
 	@Override
@@ -65,6 +84,53 @@ public class AdminServiceImpl implements AdminService {
 	ArrayList<BikeJoinVo> elist = asm.errorList();
 		return elist;
 	}
+
+
+	//회원 상세정보
+	@Override
+	public BikeJoinVo getMemberByMemberId(String memberId) {
+
+		return asm.getMemberByMemberId(memberId);
+	}
+
+
+	//대여소 리스트
+	@Override
+	public ArrayList<BikeJoinVo> rentalshopList() {
+		
+	ArrayList<BikeJoinVo> rlist = asm.rentalshopList();
+		return rlist;
+	}
+
+	//대여소 추가
+	@Override
+	public int rentalshopInsert(String rentalshopName, String rentalshopLocation) {
+		
+		BikeJoinVo rv = new BikeJoinVo();
+		rv.setRentalshopName(rentalshopName);
+		rv.setRentalshopLocation(rentalshopLocation);
+		
+		int value = asm.rentalshopInsert(rv);
+		return value;
+	}
+
+	//대여소 추가 대여소 이름 중복
+	@Override
+	public int adminrentalshopNameCheck(String rentalshopName) {
+		int value = asm.adminrentalshopNameCheck(rentalshopName);
+		return value;
+	}
+
+	
+
+
+
+
+
+
+
+
+	
 
 	
 
