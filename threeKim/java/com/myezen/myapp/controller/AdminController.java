@@ -64,7 +64,6 @@ public class AdminController {
 	
 
 	//회원 삭제	
-
 	@RequestMapping(value="/adminmemberDelete.do")
 	public String deleteMember(@RequestParam("memberId") String memberId) {
 		//System.out.println("test1");
@@ -76,13 +75,16 @@ public class AdminController {
 
 	
 	
-	//관리자 게시판관리 페이지
+	//게시판관리 페이지
 		@RequestMapping(value="/adminboardList.do")
 		public String adminboardList() {
 				
+			
 			return "admin/adminboardList";
 			}
-	
+
+		
+	//자전거 등록페이지	
 	@RequestMapping(value="/adminbikeRegister.do")
 	public String adminbikeRegister() {
 			
@@ -90,7 +92,7 @@ public class AdminController {
 		}
 
 
-	//관리자 자전거 관리 페이지
+	// 자전거 관리 페이지
 	@RequestMapping(value="/adminbikeList.do")
 	public String adminbikeList(Model model) {
 		
