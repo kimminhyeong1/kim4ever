@@ -28,21 +28,19 @@ public class AdminController {
 	//관리자 메인 페이지
 	@RequestMapping(value="/adminPage.do", method = RequestMethod.GET)
 	public String adminPage(Model model) {
+		//자전거 총 갯수
 		int bkidxCount = as.getTotalBkidxCount();
         model.addAttribute("bkidxCount", bkidxCount);
-        			
+        //대여중인 자전거			
         int ridxCount = as.getTotalRidxCount();
         model.addAttribute("ridxCount", ridxCount);
- 
+        //고장 난 자전거
         int errorCount = as.getTotalErrorCount();
         model.addAttribute("errorCount", errorCount);
         
         return "admin/adminPage";
         
 	}
-
-	
-
 	
 	//관리자 회원 관리 페이지	  
 	@RequestMapping(value="/adminmemberList.do") 
@@ -62,7 +60,6 @@ public class AdminController {
 		    return "member/memberListProfile";
 		}
 	
-
 	//회원 삭제	
 	@RequestMapping(value="/adminmemberDelete.do")
 	public String deleteMember(@RequestParam("memberId") String memberId) {
@@ -71,10 +68,7 @@ public class AdminController {
 		//System.out.println("test2");
 		return "redirect:/admin/adminmemberList.do"; 
 	}	
-	
-
-	
-	
+		
 	//게시판관리 페이지
 		@RequestMapping(value="/adminboardList.do")
 		public String adminboardList() {
@@ -90,7 +84,6 @@ public class AdminController {
 			
 			return "admin/adminbikeRegister";
 		}
-
 
 	// 자전거 관리 페이지
 	@RequestMapping(value="/adminbikeList.do")
@@ -114,7 +107,6 @@ public class AdminController {
 		return "admin/adminrentalshopList";
 		}
 
-
 	//관리자 대여소 등록 페이지
 	@RequestMapping(value="/adminrentalshopRegister.do")
 	public String adminrentalshopRegister() {
@@ -134,17 +126,26 @@ public class AdminController {
 		return hm; 
 	}
 	
-	//관리자 대여소 등록 페이지
-		@RequestMapping(value="/adminrentalshopRegisterAction.do", method = RequestMethod.POST)
-		public String adminrentalshopRegisterAction(
-				@RequestParam("rentalshopName") String rentalshopName,
-				@RequestParam("rentalshopLocation") String rentalshopLocation
-				) {
-			int value = as.rentalshopInsert(rentalshopName, rentalshopLocation);
+	//대여소 등록 페이지
+	@RequestMapping(value="/adminrentalshopRegisterAction.do", method = RequestMethod.POST)
+	public String adminrentalshopRegisterAction(
+		@RequestParam("rentalshopName") String rentalshopName,
+		@RequestParam("rentalshopLocation") String rentalshopLocation
+		) {
+		int value = as.rentalshopInsert(rentalshopName, rentalshopLocation);
 			
-			return "redirect:/admin/adminrentalshopList.do";	
+		return "redirect:/admin/adminrentalshopList.do";	
 		}	
 	
+	//대여소 삭제
+		@RequestMapping(value="/adminrentalshopDelete.do")
+		public String deleteRentalshop(@RequestParam("rentalshopName") String rentalshopName) {
+			//System.out.println("test1");
+			as.deleteRentalshop(rentalshopName);
+			//System.out.println("test2");
+			return "redirect:/admin/adminrentalshopList.do"; 
+		}		
+		
 	//관리자 신고 내역 페이지
 	@RequestMapping(value="/adminbikeError.do")
 	public String errorList(Model model) {

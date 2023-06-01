@@ -18,7 +18,7 @@ import com.myezen.myapp.persistance.MemberService_Mapper;
 
 
 
-@Service("AdminImpl")
+@Service("AdminServiceImpl")
 
 
 public class AdminServiceImpl implements AdminService {
@@ -111,11 +111,19 @@ public class AdminServiceImpl implements AdminService {
 		return value;
 	}
 
-	//대여소 추가 대여소 이름 중복
+	//대여소 이름 중복
 	@Override
 	public int adminrentalshopNameCheck(String rentalshopName) {
 		int value = asm.adminrentalshopNameCheck(rentalshopName);
 		return value;
+	}
+
+	//대여소 삭제
+	@Override	
+	public void deleteRentalshop(String rentalshopName) {
+		System.out.println("rentalshopName"+rentalshopName);
+		asm.deleteRentalshop(rentalshopName);
+		
 	}
 
 	

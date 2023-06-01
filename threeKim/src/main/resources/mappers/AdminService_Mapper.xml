@@ -57,7 +57,12 @@
 		select count(*) from rentalshop1234 where rentalshopName=#{rentalshopName}
 	</select>
 
-
+	<!--대여소 삭제  -->
+	<delete id="deleteRentalshop" parameterType="String">
+	delete from rentalshop1234 WHERE rentalshopName=#{rentalshopName}
+	</delete>
+	
+	
 	<update id="bikeState" parameterType="String">
   	UPDATE bike1234
   	SET bikeState = #{bikeState}
