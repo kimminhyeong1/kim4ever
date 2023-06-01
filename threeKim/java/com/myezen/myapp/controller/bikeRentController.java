@@ -25,14 +25,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.service.BikeRentService;
 import com.myezen.myapp.util.AESUtil;
+import com.myezen.myapp.util.QRCodeUtil;
 
 
 @Controller
 @RequestMapping(value="/bikeRent")
 public class bikeRentController {
+	
+	
 	@Autowired
 	BikeRentService bs; //업캐스팅 부모만 지정
 	
+
 	
 	/*관리자페이지 자전거 등록*/
 	@RequestMapping(value="/bikeRentWrite.do")
@@ -70,7 +74,20 @@ public class bikeRentController {
         String encryptedData = (String)request.getAttribute("encryptedData");
         System.out.println("암호화된 데이터 가져옴"+encryptedData);
 		
-	 	
+        /*QR생성부분*/
+
+    	QRCodeUtil qrCodeUtil = new QRCodeUtil();
+        String url = "/myapp/bikeRent/bikeRentDetail.do?bkidx=34"; // QR 코드에 포함될 URL
+        int width = 300; // 원하는 가로 크기
+        int height = 300; // 원하는 세로 크기
+
+        // QR 코드 생성
+        String qrCode = qrCodeUtil.generateQRCode(url, width, height);
+
+        // JSP로 전달할 데이터 설정
+        md.addAttribute("qrCode", qrCode);
+        
+
 	  
 	    return "bikeRent/bikeRentQR";
 	}

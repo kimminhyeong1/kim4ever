@@ -35,6 +35,11 @@
                             <a href="<%=request.getContextPath()%>/bikeRent/bikeRentDetail.do?bkidx=3"><img class="QRImg" src="../resources/QRcode/Qrcode6.png" alt=""></a>
                             <p>ELE2</p>
                         </div>
+                        
+                        <div class="QRcard">
+                            <a href="<%=request.getContextPath()%>/bikeRent/bikeRentDetail.do?bkidx=3"><img class="QRImg" src="data:image/png;base64,${qrCode}" alt=""></a>
+                            <p>QR생성</p>
+                        </div>
    		
 					</div>
 				</div>
