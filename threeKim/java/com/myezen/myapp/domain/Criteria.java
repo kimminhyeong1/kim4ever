@@ -4,10 +4,19 @@ public class Criteria {
 	
 	private int page;
 	private int perPageNum;   
+	private int boardType;
+
+	public int getBoardType() {
+		return boardType;
+	}
+
+	public void setBoardType(int boardType) {
+		this.boardType = boardType;
+	}
 
 	public Criteria(){
 		this.page = 1;
-		this.perPageNum = 20;
+		this.perPageNum = 15;
 	}	
 	
 	public int getPage() {

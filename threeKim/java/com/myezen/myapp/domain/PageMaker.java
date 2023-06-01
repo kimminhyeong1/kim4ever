@@ -86,7 +86,7 @@ public class PageMaker {
 			endPage  = tempEndPage;
 		}
 		
-		prev  = (startPage ==1 ? false : true);   //false硫� �븞�굹���궡湲�
+		prev  = (startPage ==1 ? false : true);   //false
 		next  = (endPage*scri.getPerPageNum() >= totalCount ? false : true); 
 		
 	}
