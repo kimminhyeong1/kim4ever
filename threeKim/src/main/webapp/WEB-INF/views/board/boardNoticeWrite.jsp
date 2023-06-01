@@ -34,7 +34,7 @@ li{list-style:none;}
     font-style: normal;
 }
 #main{width:1440px; margin:35px auto 70px; text-align:center;}
-#main #content{width:1440px; height:2400px;}
+#main #content{width:1440px; height:auto;}
 #main #bottom{width:1440px; height:300px;}
 #main #content h2{text-align:left; margin-top:50px; margin-left:160px; font-family: 'GangwonEdu_OTFBoldA'; font-size:25px;}
 #content table {width:80%; border-collapse:collapse; margin: 60px auto 0; line-height:100px; font-size:24px; font-family: 'omyu_pretty';}

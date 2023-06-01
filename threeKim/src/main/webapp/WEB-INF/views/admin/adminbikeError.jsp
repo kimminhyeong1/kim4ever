@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@page import = "com.myezen.myapp.domain.BikeJoinVo" %>
 <%@page import = "java.util.*" %>      
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %><!-- 날짜태그 -->    
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,12 +42,13 @@ li{list-style:none;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
 #content table tr th:nth-child(1){width:70px;}
-#content table tr th:nth-child(2){width:150px;}
-#content table tr th:nth-child(3){width:60px;}
-#content table tr th:nth-child(4){width:100px;}
-#content table tr th:nth-child(5){width:90px;}
+#content table tr th:nth-child(2){width:180px;}
+#content table tr th:nth-child(3){width:70px;}
+#content table tr th:nth-child(4){width:120px;}
+#content table tr th:nth-child(5){width:120px;}
 #content table tr th:nth-child(6){width:200px;}
-#content table tr th:nth-child(7){width:280px;}
+#content table tr th:nth-child(7){width:230px;}
+#content table tr th:nth-child(8){width:120px;}
 #content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
@@ -66,8 +68,7 @@ li{list-style:none;}
 					<th>자전거번호</th>		
 					<th>신고시간</th>
 					<th>내용</th>
-					
-					
+					<th></th>					
 				</tr>
 			<c:forEach var="ejv" items="${elist}">
 					<tr>						
@@ -75,9 +76,14 @@ li{list-style:none;}
 						<td>${ejv.memberPhone}</td>
 						<td>${ejv.rentPlace}</td>
 						<td>${ejv.bikeType}</td>
-						<td>${ejv.bikeCode}</td>
-						<td>${ejv.errorDay}</td>
-						<td>${ejv.errorContent}</td>					
+						<td>${ejv.bikeCode}</td>  
+						<td>
+				            <fmt:parseDate value="${ejv.errorDay}" pattern="yyyy-MM-dd HH:mm" var="parsedRentDay" /><!-- 날짜 변경 -->
+            				<fmt:formatDate value="${parsedRentDay}" pattern="yyyy-MM-dd HH:mm" var="formattedRentDay" /><!-- 시간 설정 변경 -->
+	           	 			${formattedRentDay}
+						</td>   
+						<td>${ejv.errorContent}</td>
+						<td><button type="button" onclick="check();">수리 완료</button></td>					
 					</tr>
 			</c:forEach>
 		</table>
