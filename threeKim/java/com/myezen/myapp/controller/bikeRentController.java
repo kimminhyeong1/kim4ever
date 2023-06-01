@@ -109,11 +109,11 @@ public class bikeRentController {
 	    int rsidx = bs.bikeGetRsidx(bjv.getBkidx());
 	    
 		// 대여 정보 삽입
-	    int ridx = bs.insertRentInfo(bjv, rsidx);
+	    int value = bs.insertRentInfo(bjv, rsidx);
 		
-		System.out.println("insertInfo 실행"+ridx);
+		System.out.println("insertInfo 실행"+bjv.getRidx());
 			
-		return "redirect:/bikeRent/bikeRentUseList.do?bkidx=" + bjv.getBkidx()+"&ridx="+ridx;
+		return "redirect:/bikeRent/bikeRentUseList.do?bkidx=" + bjv.getBkidx()+"&ridx="+bjv.getRidx();
 	}
 	
 
