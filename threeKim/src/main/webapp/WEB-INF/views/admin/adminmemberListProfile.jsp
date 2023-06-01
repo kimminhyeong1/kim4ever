@@ -65,7 +65,7 @@ input{
 <body>
 <div id="main">
 
-	<%@include file="../header.jsp" %>
+	<%@include file="../header4.jsp" %>
 	
 	<div id="content">
 		
@@ -77,36 +77,36 @@ input{
 		  		
 				<tr>
 					<th>아이디</th>
-					<td>${mv.memberid}</td>
+					<td>${mv.memberId}</td>
 				</tr>
 				
 				<tr>
 					<th>비밀번호</th>
-					<td>${mv.memberpwd}</td>
+					<td>${mv.memberPwd}</td>
 				</tr>
 				
 				<tr>
 					<th>이름</th>
-					<td>${mv.membername}</td>
+					<td>${mv.memberName}</td>
 				</tr>
 				
 				<tr>
 					<th>나이</th>
-					<td>${mv.memberage}</td>
+					<td>${mv.memberAge}</td>
 				</tr>
 				
 				<tr>
 					<th>휴대폰번호</th>
-					<td>${mv.memberphone}</td>
+					<td>${mv.memberPhone}</td>
 				</tr>
 				
 				<tr>
 					<th>이메일</th>
-					<td>${mv.memberemail}</td>
+					<td>${mv.memberEmail}</td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<button type="button" onclick="location.href='<%=request.getContextPath()%>/member/memberList.do'">회원 목록</button>
+						<button type="button" onclick="location.href='<%=request.getContextPath()%>/admin/adminmemberList.do'">회원 목록</button>
 					</td>		
 				</tr>
 				
