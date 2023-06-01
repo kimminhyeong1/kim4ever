@@ -39,11 +39,22 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 				}
 				
 			}
+			String bikeRentUseList = request.getContextPath() + "/bikeRent/bikeRentUseList.do";
+			String bikeReturnQR = request.getContextPath() + "/bikeRent/bikeReturnQR.do";
+			String bikeRentReturn = request.getContextPath() + "/bikeRent/bikeRentReturn.do";
 			
 			//ridx값이 null이면 메인페이지로 보내기
-			if (session.getAttribute("ridx")==null) {
-				// 다른 주소로 리다이렉트
-				response.sendRedirect(request.getContextPath()+"/index.jsp");
+			if (request.getRequestURI().equals(bikeRentUseList) || 
+				request.getRequestURI().equals(bikeReturnQR) ||
+				request.getRequestURI().equals(bikeRentReturn)
+				) {
+				if (session.getAttribute("ridx")==null) {
+					response.sendRedirect(request.getContextPath()+"/index.jsp");
+					return  true;
+				}else {
+					return  true;
+				}
+				
 			}
 			
 			return  true; //boolean타입이어서 true로 설정해줌
