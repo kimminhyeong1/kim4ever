@@ -98,12 +98,17 @@
 
 	<!-- 관리자 메인페이지 대여중인 자전거 -->
 	<select id="getTotalRidxCount" resultType="java.lang.Integer">
-        SELECT COUNT(*) FROM rent1234
+         SELECT COUNT(*) FROM bike1234 where bikeState LIKE 'N'
     </select>
 	
 	<!-- 관리자 메인페이지 고장 난 자전거  -->
 	<select id="getTotalErrorCount" resultType="java.lang.Integer">
         SELECT COUNT(*) FROM bike1234 where bikeState LIKE 'E'
+    </select>
+	
+	<!-- 관리자 메인페이지 대여 가능한 자전거  -->
+	<select id="getTotalRentCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM bike1234 where bikeState LIKE 'Y'
     </select>
 	
 </mapper>

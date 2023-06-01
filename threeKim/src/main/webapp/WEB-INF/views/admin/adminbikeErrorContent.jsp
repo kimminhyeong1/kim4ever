@@ -46,6 +46,8 @@ h2{text-align: center; margin-top:20px;}
 #content table td:nth-child(1){width:140px;text-align:center;}
 #content table td:nth-child(2){width:400px; text-align:left;}
 #content table tr:last-child td input{display: inline-block; width:120px; height:50px;}
+#content table button{width:160px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+#content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 input{
   font-family: 'omyu_pretty';
   font-size:24px;
@@ -113,7 +115,11 @@ input{
 					<th>고장 내용</th>
 					<td>${ejv.errorContent}</td>
 				</tr>
-
+				<tr>
+					<td colspan="2">
+						<button type="button" onclick="location.href='<%=request.getContextPath()%>/admin/adminmemberList.do'">수리센터 보내기</button>
+					</td>		
+				</tr>
 		</table>
 				
 		

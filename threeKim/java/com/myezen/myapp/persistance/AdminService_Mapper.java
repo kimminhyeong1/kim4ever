@@ -13,6 +13,8 @@ public interface AdminService_Mapper {
 	public int getTotalRidxCount();
 	//관리자 메인페이지 고장난 자전거
 	public int getTotalErrorCount();
+	//관리자 메인페이지 대여 가능한 자전거
+	public int getTotalRentCount();
 	//회원 삭제
 	public void deleteMember(String memberId);
 	//회원 리스트	

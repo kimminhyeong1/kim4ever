@@ -58,7 +58,7 @@ li{list-style:none;}
 <div id="main">
 	<div id="content">
 
-		<h2>신고 내역</h2>
+		<h2>신고 내역</h2><h2>신고 내역</h2>		
 		<table>
 				<tr>
 					<th>고객명</th>

@@ -50,7 +50,14 @@ public class AdminServiceImpl implements AdminService {
 		
 		return asm.getTotalErrorCount();
 	}
-				
+	
+	//관리자 메인페이지 대여 가능한 자전거
+	@Override
+	public int getTotalRentCount() {
+		
+		return asm.getTotalRentCount();
+	}
+	
 	//회원삭제
 	@Override
 	public void deleteMember(String memberId) {
@@ -132,6 +139,8 @@ public class AdminServiceImpl implements AdminService {
 		asm.deleteRentalshop(rentalshopName);
 		
 	}
+
+	
 
 	
 

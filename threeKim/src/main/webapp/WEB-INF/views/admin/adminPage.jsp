@@ -42,8 +42,8 @@
 					</div>	
 					
 					<div class="abox">
-						<h3 class="cardTitle">신규 가입자</h3>
-						<p class="pcontent">1명</p>				
+						<h3 class="cardTitle">대여 가능한 자전거</h3>
+						<p class="pcontent">${rentCount}대</p>				
 					</div>
 				
 				</div>		

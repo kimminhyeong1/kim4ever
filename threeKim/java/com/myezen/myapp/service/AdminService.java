@@ -14,7 +14,9 @@ public interface AdminService {
 	//관리자 메인페이지 대여 중인 자전거
 		public int getTotalRidxCount();
 	//관리자 메인페이지 고장난 자전거
-		public int getTotalErrorCount();	
+		public int getTotalErrorCount();
+	//관리자 메인페이지 대여 가능한 자전거
+		public int getTotalRentCount();	
 	//회원삭제
 		public void deleteMember(String memberId);
 	//회원리스트
