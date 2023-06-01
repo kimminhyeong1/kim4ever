@@ -10,15 +10,16 @@
   $(document).ready(function() {
     	
 
-   	    // sendVerificationCode() 함수 등록
-        $("#verification-button").on("click", function() {
-            sendVerificationCode();
-        });
+		//sendVerificationCode() 함수 등록
+	  	$("#verification-button").on("click", function() {
+	      sendVerificationCode();
+	  	});
+		
+		//verificationCode() 함수 등록
+	  	$("#verification-code").on("click", function() {
+	  		verifyCode();
+	  	});
         
-        // verifyCode() 함수 등록
-        $("#verify-button").on("click", function() {
-            verifyCode();
-        });
     	
 
         $("#frm").on("submit", function(e) {
@@ -34,24 +35,24 @@
     
 
     
- function sendVerificationCode() {
-     var phoneNumber = $("#phone-number").val();
-     $.ajax({
-         url: "${pageContext.request.contextPath}/sendVerificationCode",
-         type: "POST",
-         data: {
-             phoneNumber: phoneNumber
-         },
-         success: function() {
-             // 인증 코드 발송 성공 시 처리할 로직 작성
-             alert("인증 코드를 발송했습니다.");
-         },
-         error: function() {
-             // 인증 코드 발송 실패 시 처리할 로직 작성
-             alert("인증 코드 발송에 실패했습니다.");
-         }
-     });
- }
+  function sendVerificationCode() {
+	    var phoneNumber = $("#phone-number").val();
+	    $.ajax({
+	    	url: "${pageContext.request.contextPath}/sendVerificationCode",
+	        type: "POST",
+	        data: {
+	            phoneNumber: phoneNumber
+	        },
+	        success: function() {
+	            // 인증 코드 발송 성공 시 처리할 로직 작성
+	            alert("인증 코드를 발송했습니다.");
+	        },
+	        error: function() {
+	            // 인증 코드 발송 실패 시 처리할 로직 작성
+	            alert("인증 코드 발송에 실패했습니다.");
+	        }
+	    });
+	}
 
  // 인증 코드 확인
  function verifyCode() {
@@ -108,7 +109,7 @@
 				
 				<tr>
 				  <td colspan="2">
-				    <input type="text" id="phone-number" maxlength="13">
+				    <input type="text" id="phone-number">
 				  </td>
 				  
 				  <td>
