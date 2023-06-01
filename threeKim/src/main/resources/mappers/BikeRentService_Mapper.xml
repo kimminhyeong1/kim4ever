@@ -25,7 +25,7 @@
 <update id="updateBikeState" parameterType="int">
     UPDATE bike1234
     SET bikeState = 'N'
-    WHERE bkidx = #{bkidx} AND bikeState !='N'
+    WHERE bkidx = #{bkidx} 
 </update>
 
 <!-- bike1234와 rent1234 조인문으로 rsidx 꺼내오기 -->
@@ -39,9 +39,7 @@
 <!-- bike1234에서 대여하기버튼을 누르면 대여테이블인 rent1234로 데이터삽입 쿼리 -->
 <insert id="insertRentInfo" parameterType="com.myezen.myapp.domain.BikeJoinVo">
   	INSERT INTO rent1234 (ridx, rentDay, rentPlace, bkidx, rsidx, midx)
-	SELECT ridx_seq.NEXTVAL, SYSDATE, #{rentPlace}, #{bkidx}, #{rsidx}, #{midx}
-	FROM dual
-	WHERE NOT EXISTS (SELECT 1 FROM rent1234 WHERE bkidx = #{bkidx})
+	VALUES(ridx_seq.NEXTVAL, SYSDATE, #{rentPlace}, #{bkidx}, #{rsidx}, #{midx})
 	<selectKey resultType="int" keyProperty="ridx" order="AFTER">
        select ridx_seq.CURRVAL as ridx FROM DUAL
     </selectKey>   
@@ -72,6 +70,8 @@
     JOIN member1234 m ON r.midx = m.midx
   WHERE
     r.bkidx = #{bkidx}
+    ORDER BY r.rentDay DESC
+	FETCH FIRST 1 ROW ONLY
 </select>
 
 
