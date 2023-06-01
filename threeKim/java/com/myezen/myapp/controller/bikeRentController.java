@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.service.BikeRentService;
+import com.myezen.myapp.util.AESUtil;
 
 
 @Controller
@@ -61,8 +62,13 @@ public class bikeRentController {
 	
 	/*자전거 QR대여*/
 	@RequestMapping(value="/bikeRentQR.do")
-	public String bikeRentQR() {
-		
+	public String bikeRentQR(
+			HttpServletRequest request,
+			Model md
+			) {
+		 // 암호화된 데이터를 받아옵니다.
+        String encryptedData = (String)request.getAttribute("encryptedData");
+        System.out.println("암호화된 데이터 가져옴"+encryptedData);
 		
 	 	
 	  
@@ -74,8 +80,19 @@ public class bikeRentController {
 	@RequestMapping(value="/bikeRentDetail.do")
 	public String bikeRentDetail(
 			@RequestParam("bkidx") int bkidx,
+			HttpServletRequest request,
 			Model md) {
-		
+        // 암호화된 데이터를 받아옵니다.
+        String encryptedData = request.getParameter("data");
+        // 복호화 처리
+        try {
+            String decryptedData = AESUtil.decrypt(encryptedData);
+            // 처리된 데이터를 모델에 담아서 뷰로 전달
+            md.addAttribute("decryptedData", decryptedData);
+        } catch (Exception e) {
+            // 예외 처리 로직
+            e.printStackTrace(); // 예외 정보를 콘솔에 출력하거나, 적절한 예외 처리를 수행합니다.
+        }
 		
 		  BikeJoinVo bjv = bs.RentDetail(bkidx);
 		  

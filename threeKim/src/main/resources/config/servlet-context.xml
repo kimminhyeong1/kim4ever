@@ -36,6 +36,8 @@
 	
 	<beans:bean id="loginInterceptor" class="com.myezen.myapp.interceptor.LoginInterceptor"></beans:bean>
 	
+	<beans:bean id="encryptInterceptor" class="com.myezen.myapp.interceptor.EncryptInterceptor"></beans:bean>
+	
 	
 	<interceptors>
 		<interceptor><!-- 인증필요한 페이지 --> 
@@ -51,6 +53,10 @@
 		<interceptor><!-- 로그인 -->
 			<mapping path="/member/memberLoginAction.do"/>
 			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+		<interceptor><!-- 암호화/복호화 -->
+			<mapping path="/bikeRent/bikeRentQR.do"/> <!-- 자전거 QR 페이지 -->
+			<beans:ref bean="encryptInterceptor"/>
 		</interceptor>
 
 	</interceptors>
