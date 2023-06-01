@@ -55,9 +55,9 @@ public class AdminController {
 	//관리자 회원 상세정보
 		@RequestMapping("/adminmemberListProfile.do")
 		public String memberListProfile(@RequestParam("memberId") String memberId, Model model) {
-		    BikeJoinVo mv = as.getMemberByMemberId(memberId);
-		    model.addAttribute("mv", mv);
-		    return "member/memberListProfile";
+		    BikeJoinVo bjv = as.getMemberByMemberId(memberId);
+		    model.addAttribute("bjv", bjv);
+		    return "admin/adminmemberListProfile";
 		}
 	
 	//회원 삭제	
@@ -157,6 +157,13 @@ public class AdminController {
 		return "admin/adminbikeError";
 	}
 
-			
+	//관리자 신고 내역 내용 상세페이지
+	@RequestMapping("/adminbikeErrorContent.do")
+	public String getErrorContent(@RequestParam("eidx") int eidx, Model model) {
+	 BikeJoinVo ejv = as.getErrorContent(eidx);	 
+	 model.addAttribute("ejv", ejv);
+	 return "admin/adminbikeErrorContent";
+}
+	
 
 }

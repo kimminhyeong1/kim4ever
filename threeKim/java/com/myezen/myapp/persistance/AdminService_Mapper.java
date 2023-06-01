@@ -17,8 +17,10 @@ public interface AdminService_Mapper {
 	public void deleteMember(String memberId);
 	//회원 리스트	
 	public ArrayList<BikeJoinVo> memberList();
-	//신고 리스트	
-	public ArrayList<BikeJoinVo> errorList(); 
+	//고장 내역 리스트	
+	public ArrayList<BikeJoinVo> errorList();
+	//고장  내역 상세 페이지	
+	public BikeJoinVo getErrorContent(int eidx);
 	//자전거 리스트
 	public ArrayList<BikeJoinVo> bikeList();
 	//대여소 리스트

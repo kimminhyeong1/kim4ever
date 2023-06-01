@@ -21,6 +21,8 @@ public interface AdminService {
 		public ArrayList<BikeJoinVo> memberList();	
 	//고장 신고내역 리스트
 		public ArrayList<BikeJoinVo> errorList();
+	//고장 신고 상세 페이지	
+		public BikeJoinVo getErrorContent(int eidx);
 	//자전거리스트	
 		public ArrayList<BikeJoinVo> bikeList();
 	//대여소 리스트
