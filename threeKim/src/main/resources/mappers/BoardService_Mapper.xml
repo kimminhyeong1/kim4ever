@@ -22,12 +22,20 @@
 </select>
 
 <select id="boardSelectAll" parameterType="scri" resultType="bv">
- SELECT CASE WHEN level_ = 0 THEN RANK() OVER (PARTITION BY boardtype, level_ ORDER BY rebidx asc) END AS sortN
- 			, board1235.* 
-  FROM board1235 
-  WHERE delyn = 'N' 
-  ORDER BY rebidx DESC, level_ asc
-  
+SELECT *
+FROM (
+  SELECT
+    CASE WHEN level_ = 0 THEN RANK() OVER (PARTITION BY boardtype, level_ ORDER BY rebidx ASC) END AS sortN, board1235.*<!-- sorty 는 sortn과 반대 -->
+    ,CASE WHEN level_ = 0 THEN RANK() OVER (PARTITION BY boardtype, level_ ORDER BY rebidx DESC) END AS sortY
+  FROM board1235
+  WHERE delyn = 'N'
+  ORDER BY sortN DESC
+) B
+ORDER BY rebidx DESC, level_ ASC, writeday ASC
+
+
+
+     
 </select>
 <select id="boardSelectOne" parameterType="int" resultType="bv"> <!-- select하니까 resultType값 필요 -->
 	select * from board1235 where delyn='N' and bidx = #{bidx}
@@ -60,7 +68,7 @@
  			, board1235.* 
   FROM board1235 
   WHERE delyn = 'N' 
-  ORDER BY rebidx DESC, level_ ASC
+  ORDER BY rebidx DESC, level_ ASC, writeday asc 
 </select>
 
 
