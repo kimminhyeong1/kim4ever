@@ -68,14 +68,21 @@ public class AdminServiceImpl implements AdminService {
 	return alist;
 	}
 
-	//신고내역 리스트
+	//고장 내역 리스트
 	@Override
 	public ArrayList<BikeJoinVo> errorList() {
 
 	ArrayList<BikeJoinVo> elist = asm.errorList();
 		return elist;
 	}
-
+	
+	//고장 내역 상세보기
+	@Override
+	public BikeJoinVo getErrorContent(int eidx) {
+		
+		return asm.getErrorContent(eidx);
+	}
+	
 	//회원 상세정보
 	@Override
 	public BikeJoinVo getMemberByMemberId(String memberId) {
@@ -128,8 +135,13 @@ public class AdminServiceImpl implements AdminService {
 
 	
 
+
+
 	
 
+	
+
+	
 
 
 
