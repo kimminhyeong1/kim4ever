@@ -37,7 +37,9 @@ public class AdminController {
         //고장 난 자전거
         int errorCount = as.getTotalErrorCount();
         model.addAttribute("errorCount", errorCount);
-        
+        //대여 가능한 자전거
+        int rentCount = as.getTotalRentCount();
+        model.addAttribute("rentCount", rentCount);
         return "admin/adminPage";
         
 	}
