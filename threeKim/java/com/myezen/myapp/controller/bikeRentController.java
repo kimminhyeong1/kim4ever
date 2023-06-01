@@ -168,7 +168,7 @@ public class bikeRentController {
 
 		//이걸 가져오고 모델로 보내준다
 		md.addAttribute("bjv",bjv);
-		md.addAttribute("ridx", bjv.getRidx());
+		md.addAttribute("ridx", ridx);
 		md.addAttribute("rsidx", rsidx);
 		
 		return "bikeRent/bikeRentReturn";
