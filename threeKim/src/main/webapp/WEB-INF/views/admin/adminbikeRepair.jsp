@@ -58,7 +58,7 @@ li{list-style:none;}
 <div id="main">
 	<div id="content">
 
-		<h2>신고 내역</h2><h2>신고 내역</h2>		
+		<h2>자전거 신고 내역</h2>
 		<table>
 				<tr>
 					<th>고객명</th>
@@ -82,17 +82,8 @@ li{list-style:none;}
             				<fmt:formatDate value="${parsedRentDay}" pattern="yyyy-MM-dd HH:mm" var="formattedRentDay" /><!-- 시간 설정 변경 -->
 	           	 			${formattedRentDay}
 						</td>   
-						<td><a href="adminbikeErrorContent.do?eidx=${ejv.eidx}">${ejv.errorContent}</a></td>
-						<td>
-							<c:choose>
-								<c:when test="${ejv.errorState eq 'D'}">  
-									대기중
-								</c:when>
-								<c:when test="${ejv.errorState eq 'R'}">  
-									수리중
-								</c:when>
-							</c:choose>
-						</td>				
+						<td><a href="${pageContext.request.contextPath}/admin/adminErrorContents.do?eidx=${ejv.eidx}">${ejv.errorContent}</a></td>
+						<td><button type="button" onclick="check();">수리 완료</button></td>					
 					</tr>
 			</c:forEach>
 		</table>

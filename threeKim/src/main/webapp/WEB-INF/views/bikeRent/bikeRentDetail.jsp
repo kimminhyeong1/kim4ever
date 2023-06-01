@@ -7,8 +7,21 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 
-function rental() {
-    $(document).ready(function() {
+  $(document).ready(function() {
+    	
+
+		//sendVerificationCode() 함수 등록
+	  	$("#verification-button").on("click", function() {
+	      sendVerificationCode();
+	  	});
+		
+		//verificationCode() 함수 등록
+	  	$("#verification-code").on("click", function() {
+	  		verifyCode();
+	  	});
+        
+    	
+
         $("#frm").on("submit", function(e) {
             e.preventDefault(); // 폼 전송 기본 동작 막기 -> submit이 동작했을 때 페이지를 새로고침 안시키기 위해서 사용
 
@@ -19,6 +32,34 @@ function rental() {
             fm.submit();
         });
     }); 
+    
+
+    
+  function sendVerificationCode() {
+	    var phoneNumber = $("#phone-number").val();
+	    $.ajax({
+	    	url: "${pageContext.request.contextPath}/sendVerificationCode",
+	        type: "POST",
+	        data: {
+	            phoneNumber: phoneNumber
+	        },
+	        success: function() {
+	            // 인증 코드 발송 성공 시 처리할 로직 작성
+	            alert("인증 코드를 발송했습니다.");
+	        },
+	        error: function() {
+	            // 인증 코드 발송 실패 시 처리할 로직 작성
+	            alert("인증 코드 발송에 실패했습니다.");
+	        }
+	    });
+	}
+
+ // 인증 코드 확인
+ function verifyCode() {
+     var verificationCode = $("#verification-code").val();
+     // 인증 코드 확인 로직 작성   
+    
+  
 }
 </script>
 		<meta charset="UTF-8">
@@ -68,7 +109,7 @@ function rental() {
 				
 				<tr>
 				  <td colspan="2">
-				    <input type="text" id="phone-number" oninput="autoHyphen2(this)" maxlength="13">
+				    <input type="text" id="phone-number">
 				  </td>
 				  
 				  <td>
@@ -95,8 +136,6 @@ function rental() {
 				<tr>
 				  <td colspan="3">
 				  	<button type="submit" style="width:100%; height:50px;">대여하기</button>
-				  	
-				  	<%-- onclick="location.href='<%=request.getContextPath() %>/bikeRent/bikeRentUseList.do?bkidx=${bjv.bkidx }'" --%>
 				  </td>
 				</tr>
 			</table>
@@ -106,12 +145,5 @@ function rental() {
 		</main>
 		<%@include file="../footer.jsp" %>
 	</body>
-<!-- <script type="text/javascript">
-function autoHyphen2(target) {
-	  target.value = target.value
-	    .replace(/[^0-9]/g, '')
-	    .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3")
-	    .replace(/(\-{1,2})$/g, "");
-	}
-</script> -->
+
 </html>

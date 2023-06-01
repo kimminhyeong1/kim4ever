@@ -4,7 +4,7 @@
 <%@page import = "java.util.*" %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-ArrayList<BikeJoinVo> klist = (ArrayList<BikeJoinVo>)request.getAttribute("klist");
+ArrayList<BikeJoinVo> rlist = (ArrayList<BikeJoinVo>)request.getAttribute("rlist");
 %>
 
 <!DOCTYPE html>
@@ -46,12 +46,21 @@ li{list-style:none;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
 #content table tr th:nth-child(1){width:50px;}
-#content table tr th:nth-child(2){width:50px;}
-#content table tr th:nth-child(3){width:50px;}
-#content table tr th:nth-child(4){width:80px;}
+#content table tr th:nth-child(2){width:130px;}
+#content table tr th:nth-child(3){width:15px;}
+
 button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
+
+<script type="text/javascript">
+	function Delete(rentalshopName) {
+		if(confirm(rentalshopName + " 대여소를 삭제하시겠습니까?")) {
+			location.href='<%=request.getContextPath()%>/admin/adminrentalshopDelete.do?rentalshopName='+rentalshopName;
+		}
+	}
+</script>
+
 
 </head>
 
@@ -61,24 +70,24 @@ button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transfo
 	<%@include file="../header4.jsp"%>
 	
 	<div id="content">
-		<h2>자전거 리스트</h2>
+		<h2>대여소 리스트</h2>
 		<table>
 			<tr>
-				<th>번호</th>
-				<th>종류</th>
-				<th>위치</th>
-				<th>상태</th>
+				<th>대여소명</th>
+				<th>대여소 위치</th>
+				<th></th>
 			</tr>
 	
-		<c:forEach var="kv" items="${klist}">
+		<c:forEach var="rv" items="${rlist}">
 			<tr>
-				<td>${kv.bikeCode}</td>
-				<td>${kv.bikeType}</td>
-				<td>${kv.bikeLocation}</td>
-				<td>${kv.bikeState}</td>
+				<td>${rv.rentalshopName}</td>
+				<td>${rv.rentalshopLocation}</td>
+				<td><button type="button" onclick="Delete('${rv.rentalshopName}');">삭제</button></td>
 			</tr>
 		</c:forEach>		
 		</table>
+	<button type="button" id="button" onclick="location.href='<%=request.getContextPath()%>/admin/adminrentalshopRegister.do'">추가 등록</button>
+	
 	</div>
 	
 	

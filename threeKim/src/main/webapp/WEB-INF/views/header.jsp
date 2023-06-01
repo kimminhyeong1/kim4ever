@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import = "com.myezen.myapp.domain.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <style>
 /*리셋코드*/
@@ -133,8 +134,10 @@ header{width: 1250px;margin: 35px auto 70px;text-align: center;}
 		      <% if(session.getAttribute("memberName") != null) { %>
 		            <li style="margin-top:10px;"><%= session.getAttribute("memberName") %>님</li>
 		            <li><a href="<%=request.getContextPath() %>/member/memberLogOut.do">로그아웃</a></li>
-   		            <li><a href="<%=request.getContextPath() %>/bikeRent/bikeRentUseList.do">이용중인내역</a></li>
-		            <li><a href="<%=request.getContextPath() %>/bikeRent/bikeRentReturn.do">반납하기</a></li> 
+   		            <c:if test="${not empty sessionScope.midx && not empty sessionScope.ridx}"> 
+   		            	<li><a href="<%=request.getContextPath() %>/bikeRent/bikeRentUseList.do">이용중인내역</a></li>			
+					</c:if>
+		            <!--<li><a href="<%=request.getContextPath() %>/bikeRent/bikeRentReturn.do">반납하기</a></li>-->
 		        <% } else { %>
 		            <li><a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a></li>
 		            <li><a href="<%=request.getContextPath() %>/member/memberJoin.do">회원가입</a></li>  
@@ -145,11 +148,14 @@ header{width: 1250px;margin: 35px auto 70px;text-align: center;}
 	   	
 	</div>
 	
-	
+
 			
 	
 	<div id="menu">		
-		<p onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentQR.do'">QR 대여하기 </p>
+		<c:if test="${not empty sessionScope.midx && empty sessionScope.ridx}"> 
+			<p onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentQR.do'">QR 대여하기 </p>
+		</c:if>
+		<p>세션 ridx값${sessionScope.ridx} bkidx값${sessionScope.bkidx}</p>
 		<p onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentInfo.do'">자전거 소개</p>
 		<p onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentLocation.do'">대여소 위치</p>
 		<p onclick="location.href='<%=request.getContextPath()%>/course/courseIntro.do'">코스 소개</p>

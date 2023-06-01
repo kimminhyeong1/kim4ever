@@ -7,11 +7,33 @@ import com.myezen.myapp.domain.MemberVo;
 
 public interface AdminService_Mapper {
 
-	//회원삭제
+	//관리자 메인페이지 자전거 총 갯수
+	public int getTotalBkidxCount();
+	//관리자 메인페이지 대여 중인 자전거
+	public int getTotalRidxCount();
+	//관리자 메인페이지 고장난 자전거
+	public int getTotalErrorCount();
+	//관리자 메인페이지 대여 가능한 자전거
+	public int getTotalRentCount();
+	//회원 삭제
 	public void deleteMember(String memberId);
-	//회원리스트	
+	//회원 리스트	
 	public ArrayList<BikeJoinVo> memberList();
-	//신고리스트	
-	public ArrayList<BikeJoinVo> errorList(); 
+	//고장 내역 리스트	
+	public ArrayList<BikeJoinVo> errorList();
+	//고장  내역 상세 페이지	
+	public BikeJoinVo getErrorContent(int eidx);
+	//자전거 리스트
+	public ArrayList<BikeJoinVo> bikeList();
+	//대여소 리스트
+	public ArrayList<BikeJoinVo> rentalshopList();
+	//대여소 등록
+	public int rentalshopInsert(BikeJoinVo rv);
+	//대여소 등록 이름 중복체크
+	public int adminrentalshopNameCheck(String rentalshopName);
+	//대여소 삭제	
+	public void deleteRentalshop(String rentalshopName);
+	//회원 상세정보
+	public BikeJoinVo getMemberByMemberId(String memberId);
 
 }

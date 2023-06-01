@@ -131,7 +131,7 @@ public class BikeRentServiceImpl implements BikeRentService {
 		
 		BikeJoinVo bjv = brsm.bikeRentOneSelect(ridx, rsidx);
 		System.out.println(""+bjv.getBkidx()+""+bjv.getBikeLocation()+""+bjv.getBikeState()+""+bjv.getRentalshopName()+""+bjv.getRidx());
-		int value1 =brsm.bikeRentBikeUpdate(bjv.getBkidx(),bjv.getBikeLocation()); //자전거 업데이트
+		int value1 =brsm.bikeRentBikeUpdate(bjv.getBkidx(),bjv.getRentalshopName()); //자전거 업데이트
 		int value2 =brsm.bikeRentReturnInsert(bjv.getRentalshopName(),bjv.getRidx());//자전거 반납
 
 			return value2;			

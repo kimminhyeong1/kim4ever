@@ -17,17 +17,33 @@
 
 
 <select id="boardTotal" parameterType="scri" resultType="int">
-	select count(*) as cnt from board1235 where delyn='N'
+	select count(*) as cnt from board1235 where delyn='N' AND boardtype = 1 
 	<include refid="search" />
 </select>
 
 <select id="boardSelectAll" parameterType="scri" resultType="bv">
- SELECT CASE WHEN level_ = 0 THEN RANK() OVER (PARTITION BY boardtype, level_ ORDER BY rebidx asc) END AS sortN
- 			, board1235.* 
-  FROM board1235 
-  WHERE delyn = 'N' 
-  ORDER BY rebidx DESC, level_ asc
-  
+
+SELECT *
+FROM (
+  SELECT
+    CASE WHEN delyn = 'N' THEN RANK() OVER (PARTITION BY boardtype ORDER BY modified_rebidx ASC) END AS sortN,
+    board1235.*,
+    CASE WHEN delyn = 'N' THEN RANK() OVER (PARTITION BY boardtype ORDER BY modified_rebidx DESC) END AS sortY
+  FROM (
+    SELECT board1235.*,
+           CASE WHEN level_ = 1
+                THEN rebidx - (ROW_NUMBER() OVER (PARTITION BY rebidx ORDER BY writeday) * 0.01)
+                ELSE rebidx
+           END AS modified_rebidx
+    FROM board1235
+    WHERE delyn = 'N' 
+  ) board1235
+) B
+WHERE (sortY BETWEEN (#{page}-1)*#{perPageNum}+1 AND #{page}*#{perPageNum}) 
+ORDER BY rebidx DESC, level_ ASC, writeday ASC
+
+
+     
 </select>
 <select id="boardSelectOne" parameterType="int" resultType="bv"> <!-- select하니까 resultType값 필요 -->
 	select * from board1235 where delyn='N' and bidx = #{bidx}
@@ -60,7 +76,7 @@
  			, board1235.* 
   FROM board1235 
   WHERE delyn = 'N' 
-  ORDER BY rebidx DESC, level_ ASC
+  ORDER BY rebidx DESC, level_ ASC, writeday asc 
 </select>
 
 

@@ -34,7 +34,7 @@ li{list-style:none;}
 }
 
 #main{width:1440px; margin:35px auto 70px; text-align:center;}
-#main #content{width:1440px; height:2400px;}
+#main #content{width:1440px; height:auto;}
 #main #content h2{text-align:left; margin-top:50px; margin-left:160px; font-family: 'GangwonEdu_OTFBoldA'; font-size:25px;}
 #main #bottom{width:1440px; height:300px;}
 #content table {width:80%; border-collapse:collapse; margin:60px auto 0; line-height:100px; font-size:24px; font-family: 'omyu_pretty'; cursor:pointer;}
@@ -85,6 +85,7 @@ li{list-style:none;}
 
 				<div class="tab__contents show" data-order="1">
 <!-- 공지사항 -->			
+
 					<h2>공지사항</h2>
 					<table>
 						<tr>
@@ -94,13 +95,12 @@ li{list-style:none;}
 							<th>작성일</th>
 							<th>조회수</th>
 						</tr>
-						<tr>
-							<c:forEach var="bv" items="${blist}" varStatus="status">
-								<c:if test="${bv.boardType == 0 && bv.delyn == 'N'}"><!-- 보드타입 o delyn 이 n -->
+										<c:forEach var="bv" items="${blist}" varStatus="status">
+								<c:if test="${bv.boardType == 0 && bv.delyn == 'N'}"><!-- 보드타입 0 delyn 이 n -->
 									<tr>
 										<td>${bv.sortN}</td>
 										<td><a
-											href="${pageContext.request.contextPath}/board/boardNoticeContent.do?bidx=${bv.bidx}">
+											href="${pageContext.request.contextPath}/board/boardFaqContent.do?bidx=${bv.bidx}">
 												${bv.subject} </a></td>
 										<td>${bv.writer}</td>
 										<td>${bv.writeday.substring(0, 10)}</td>
@@ -108,31 +108,11 @@ li{list-style:none;}
 									</tr>	
 								</c:if>
 							</c:forEach>
-						</tr>
-
-
+							</table>
 						
-					</table>
-					
-					   <table><!-- 페이징 -->
-				        <tr>
-				          <td style="text-align: right;">
-				            <c:if test="${pm.prev == true}">
-				              <a href="${pageContext.request.contextPath}/board/boardList.do?page=${pm.startPage-1}&searchType=${pm.scri.searchType}&keyword=${pm.encoding(pm.scri.keyword)}">◀</a>
-				            </c:if>
-				          </td>
-				          <td style="text-align: center; width: 300px;">
-				            <c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}" step="1">
-				              <a href="${pageContext.request.contextPath}/board/boardList.do?page=${i}&searchType=${pm.scri.searchType}&keyword=${pm.encoding(pm.scri.keyword)}">${i}</a>
-				            </c:forEach>
-				          </td>
-				          <td style="width: 200px; text-align: left;">
-				            <c:if test="${pm.next && pm.endPage > 0}">
-				              <a href="${pageContext.request.contextPath}/board/boardList.do?page=${pm.endPage+1}&searchType=${pm.scri.searchType}&keyword=${pm.encoding(pm.scri.keyword)}">▶</a>
-				            </c:if>
-				          </td>
-				        </tr>
-				      </table>
+
+		
+		
 <!-- 버튼 -->
 					<div id="btn">
 					<button type="button"
@@ -167,7 +147,7 @@ li{list-style:none;}
 										<td>
 										<c:forEach begin="1" end="${bv.level_}" var="i">
 						          
-						          <c:if test="${i == bv.level_}">ㄴ</c:if>
+						          <c:if test="${i == bv.level_}">&nbsp;&nbsp; ㄴ </c:if>
 						        </c:forEach>
 						        
 										<a 	href="${pageContext.request.contextPath}/board/boardQnaContent.do?bidx=${bv.bidx}">
@@ -182,26 +162,26 @@ li{list-style:none;}
 		
 					</table>
 					
-					  <table><!-- 페이징 -->
-    <tr>
-      <td style="text-align: right;">
-        <c:if test="${pm.prev == true}">
-          <a href="${pageContext.request.contextPath}/board/boardList.do?page=${pm.startPage-1}&searchType=${pm.scri.searchType}&keyword=${pm.encoding(pm.scri.keyword)}">◀</a>
-        </c:if>
-      </td>
-      <td style="text-align: center; width: 300px;">
-        <c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}" step="1">
-          <a href="${pageContext.request.contextPath}/board/boardList.do?page=${i}&searchType=${pm.scri.searchType}&keyword=${pm.encoding(pm.scri.keyword)}">${i}</a>
-        </c:forEach>
-      </td>
-      <td style="width: 200px; text-align: left;">
-        <c:if test="${pm.next && pm.endPage > 0}">
-          <a href="${pageContext.request.contextPath}/board/boardList.do?page=${pm.endPage+1}&searchType=${pm.scri.searchType}&keyword=${pm.encoding(pm.scri.keyword)}">▶</a>
-        </c:if>
-      </td>
-    </tr>
-  </table>
-					
+				<table><!-- 페이징 -->
+  <tr>
+    <td style="text-align: right;">
+      <c:if test="${pm.prev == true}">
+        <a href="${pageContext.request.contextPath}/board/boardList.do?page=${pm.startPage-1}">◀</a>
+      </c:if>
+    </td>
+    <td style="text-align: center; width: 300px;">
+         <c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}" step="1">
+        <a href="${pageContext.request.contextPath}/board/boardList.do?page=${i}">${i}</a>
+      </c:forEach>
+    </td>
+    <td style="width: 200px; text-align: left;">
+      <c:if test="${pm.next && pm.endPage > 0}">
+        <a href="${pageContext.request.contextPath}/board/boardList.do?page=${pm.endPage+1}">▶</a>
+      </c:if>
+    </td>
+  </tr>
+</table>
+		
 					<div id="btn">
 						<button type="button"
 							onclick="location.href='<%=request.getContextPath()%>/board/boardQnaWrite.do'">작성</button>
@@ -220,7 +200,6 @@ li{list-style:none;}
 							<th>작성일</th>
 							<th>조회수</th>
 						</tr>
-
 				<c:forEach var="bv" items="${blist}" varStatus="status">
 								<c:if test="${bv.boardType == 2 && bv.delyn == 'N'}"><!-- 보드타입 2 delyn 이 n -->
 									<tr>
@@ -233,31 +212,8 @@ li{list-style:none;}
 										<td>${bv.boardView}</td>
 									</tr>	
 								</c:if>
-							</c:forEach>
-
-
-<!-- 페이지이동 -->
-					
-			<tr>
-			<td style="text-align: right;"><c:if test="${ pm.prev == true }">
-					<a 	href="${pageContext.request.contextPath }/board/boardList.do?page=${pm.startPage-1}&searchType=${ pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">◀</a>
-				</c:if>
-				</td>
-			<td style="text-align: center; width: 300px;"><c:forEach var="i"
-					begin="${pm.startPage}" end="${pm.endPage}" step="1">
-					<a 	href="${pageContext.request.contextPath }/board/boardList.do?page=${ i }&searchType=${pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">${ i }</a>
-				</c:forEach>
-				</td>
-			<td style="width: 200px; text-align: left;"><c:if
-					test="${pm.next&&pm.endPage >0 }">
-					<a 	href="${pageContext.request.contextPath }/board/boardList.do?page=${pm.endPage+1}&searchType=${pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">▶</a>
-				</c:if>
-				</td>
-		</tr>
-
-					</table>
-
-					
+							</c:forEach>			
+							</table>	
 				
 
 					<div id="btn">
@@ -310,7 +266,9 @@ document.addEventListener("DOMContentLoaded", function() {
           content.classList.remove("show");
         }
       });
-
+      // 탭 변경 시 고정 URL로 이동
+      const url = "/myapp/board/boardList.do";
+      window.location.href = url;
       // 선택된 탭을 로컬 스토리지에 저장
       localStorage.setItem("selectedTab", listOrder);
     }

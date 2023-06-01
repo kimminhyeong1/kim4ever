@@ -14,6 +14,7 @@ public class BoardVo {
 	private String filename;
 	private int depth;
 	private int level_;
+	
 	private int sortN; //가상번호
 	private int test; //임시번호
 	

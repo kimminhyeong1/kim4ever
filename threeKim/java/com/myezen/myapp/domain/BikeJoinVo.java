@@ -21,6 +21,7 @@ public class BikeJoinVo {
 	private String errorContent; //고장 글 내용
 	private String errorDay; //신고 시간
 	
+	private String errorState; //고장 상태
 	//MemberVo
 
 	private String memberId; //회원 아이디
@@ -124,7 +125,12 @@ public class BikeJoinVo {
 	public void setErrorDay(String errorDay) {
 		this.errorDay = errorDay;
 	}
-	
+	public String getErrorState() {
+		return errorState;
+	}
+	public void setErrorState(String errorState) {
+		this.errorState = errorState;
+	}
 
 	public String getMemberId() {
 		return memberId;

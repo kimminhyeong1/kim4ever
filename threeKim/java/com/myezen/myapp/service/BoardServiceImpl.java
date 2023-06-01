@@ -47,7 +47,6 @@ public class BoardServiceImpl implements BoardService{
 		return bv;
 	}
 
-	
 	@Override
 	public BoardVo boardSelectQna(int bidx) {		
 		BoardVo bv = bsm.boardSelectQna(bidx);		
@@ -95,6 +94,7 @@ public class BoardServiceImpl implements BoardService{
 		
 		return value;
 	}
+	
 	
 
 

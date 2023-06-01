@@ -25,7 +25,7 @@
 <update id="updateBikeState" parameterType="int">
     UPDATE bike1234
     SET bikeState = 'N'
-    WHERE bkidx = #{bkidx} AND bikeState !='N'
+    WHERE bkidx = #{bkidx} 
 </update>
 
 <!-- bike1234와 rent1234 조인문으로 rsidx 꺼내오기 -->
@@ -39,9 +39,7 @@
 <!-- bike1234에서 대여하기버튼을 누르면 대여테이블인 rent1234로 데이터삽입 쿼리 -->
 <insert id="insertRentInfo" parameterType="com.myezen.myapp.domain.BikeJoinVo">
   	INSERT INTO rent1234 (ridx, rentDay, rentPlace, bkidx, rsidx, midx)
-	SELECT ridx_seq.NEXTVAL, SYSDATE, #{rentPlace}, #{bkidx}, #{rsidx}, #{midx}
-	FROM dual
-	WHERE NOT EXISTS (SELECT 1 FROM rent1234 WHERE bkidx = #{bkidx})
+	VALUES(ridx_seq.NEXTVAL, SYSDATE, #{rentPlace}, #{bkidx}, #{rsidx}, #{midx})
 	<selectKey resultType="int" keyProperty="ridx" order="AFTER">
        select ridx_seq.CURRVAL as ridx FROM DUAL
     </selectKey>   
@@ -72,6 +70,8 @@
     JOIN member1234 m ON r.midx = m.midx
   WHERE
     r.bkidx = #{bkidx}
+    ORDER BY r.rentDay DESC
+	FETCH FIRST 1 ROW ONLY
 </select>
 
 
@@ -88,21 +88,20 @@
         VALUES(eidx_seq.NEXTVAL,#{1},#{0})
     </insert>
     <select id="bikeRentReturnCheck" resultType="com.myezen.myapp.domain.BikeJoinVo">
-    	SELECT *
-		FROM rent1234
-		JOIN rentalshop1234 ON rent1234.rsidx = rentalshop1234.rsidx
+		SELECT * FROM rent1234
 		JOIN bike1234 ON rent1234.bkidx = bike1234.bkidx
 		JOIN member1234 ON rent1234.midx = member1234.midx
 		JOIN bikeinfo1234 ON bike1234.bikeType = bikeinfo1234.bikeType
-		WHERE rent1234.ridx = #{0} AND rentalshop1234.rsidx = #{1}
+		JOIN rentalshop1234 ON rentalshop1234.rsidx = #{1}
+		WHERE rent1234.ridx = #{0} 
     </select>
     <!-- 최종 반납하기에서 컬럼값들가져오기  -->
     <select id="bikeRentOneSelect" resultType="com.myezen.myapp.domain.BikeJoinVo">
 		SELECT *
 		FROM rent1234
-		JOIN rentalshop1234 ON rent1234.rsidx = rentalshop1234.rsidx
 		JOIN bike1234 ON rent1234.bkidx = bike1234.bkidx
-		WHERE rent1234.ridx = #{0} AND rentalshop1234.rsidx = #{1} AND bike1234.BIKESTATE = 'N'
+		JOIN rentalshop1234 ON rentalshop1234.rsidx = #{1}
+		WHERE rent1234.ridx = #{0} AND bike1234.BIKESTATE = 'N'
     </select>
 	
 	<update id="bikeRentBikeUpdate" parameterType="com.myezen.myapp.domain.BikeJoinVo">
@@ -127,6 +126,7 @@
 		JOIN bike1234 ON bike1234.bkidx = rent1234.bkidx
 		JOIN bikeinfo1234	ON bikeinfo1234.biketype= bike1234.biketype
 		where member1234.midx = #{midx}
+		ORDER BY rent1234.rentday DESC
 	</select>
 	
 	

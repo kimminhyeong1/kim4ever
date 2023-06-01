@@ -59,9 +59,6 @@ public class boardController {
 		
 		ArrayList<BoardVo> blist = bs.boardSelectAll(scri);
 		
-		System.out.println(""+blist.get(1).getSortN());
-		System.out.println(""+blist.get(1).getTest());
-		
 		model.addAttribute("blist", blist);
 		model.addAttribute("pm", pm);
 	

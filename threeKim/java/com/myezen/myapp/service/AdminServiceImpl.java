@@ -18,7 +18,7 @@ import com.myezen.myapp.persistance.MemberService_Mapper;
 
 
 
-@Service("AdminImpl")
+@Service("AdminServiceImpl")
 
 
 public class AdminServiceImpl implements AdminService {
@@ -30,8 +30,34 @@ public class AdminServiceImpl implements AdminService {
 		this.asm = sqlSession.getMapper(AdminService_Mapper.class);
 	}
 	
+	//관리자 메인페이지 총 자전거
+	@Override
+	public int getTotalBkidxCount() {
+		
+		return asm.getTotalBkidxCount();
+	}
 
-				
+	//관리자 메인페이지 대여중인 자전거
+	@Override
+	public int getTotalRidxCount() {
+		
+		return asm.getTotalRidxCount();
+	}
+	
+	//관리자 메인페이지 고장난 자전거
+	@Override
+	public int getTotalErrorCount() {
+		
+		return asm.getTotalErrorCount();
+	}
+	
+	//관리자 메인페이지 대여 가능한 자전거
+	@Override
+	public int getTotalRentCount() {
+		
+		return asm.getTotalRentCount();
+	}
+	
 	//회원삭제
 	@Override
 	public void deleteMember(String memberId) {
@@ -49,13 +75,82 @@ public class AdminServiceImpl implements AdminService {
 	return alist;
 	}
 
-	//신고내역 리스트
+	//고장 내역 리스트
 	@Override
 	public ArrayList<BikeJoinVo> errorList() {
 
 	ArrayList<BikeJoinVo> elist = asm.errorList();
 		return elist;
 	}
+	
+	//고장 내역 상세보기
+	@Override
+	public BikeJoinVo getErrorContent(int eidx) {
+		
+		return asm.getErrorContent(eidx);
+	}
+	
+	//회원 상세정보
+	@Override
+	public BikeJoinVo getMemberByMemberId(String memberId) {
+
+		return asm.getMemberByMemberId(memberId);
+	}
+
+	//관리자 자전거 리스트
+	@Override
+	public ArrayList<BikeJoinVo> bikeList() {
+		
+	ArrayList<BikeJoinVo> klist = asm.bikeList();	
+		return klist;
+	}
+	
+	//대여소 리스트
+	@Override
+	public ArrayList<BikeJoinVo> rentalshopList() {
+		
+	ArrayList<BikeJoinVo> rlist = asm.rentalshopList();
+		return rlist;
+	}
+
+	//대여소 추가
+	@Override
+	public int rentalshopInsert(String rentalshopName, String rentalshopLocation) {
+		
+		BikeJoinVo rv = new BikeJoinVo();
+		rv.setRentalshopName(rentalshopName);
+		rv.setRentalshopLocation(rentalshopLocation);
+		
+		int value = asm.rentalshopInsert(rv);
+		return value;
+	}
+
+	//대여소 이름 중복
+	@Override
+	public int adminrentalshopNameCheck(String rentalshopName) {
+		int value = asm.adminrentalshopNameCheck(rentalshopName);
+		return value;
+	}
+
+	//대여소 삭제
+	@Override	
+	public void deleteRentalshop(String rentalshopName) {
+		System.out.println("rentalshopName"+rentalshopName);
+		asm.deleteRentalshop(rentalshopName);
+		
+	}
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
 
 
 

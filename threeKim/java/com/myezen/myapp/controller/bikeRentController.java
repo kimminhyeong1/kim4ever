@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.service.BikeRentService;
+import com.myezen.myapp.util.AESUtil;
 
 
 @Controller
@@ -61,8 +62,13 @@ public class bikeRentController {
 	
 	/*자전거 QR대여*/
 	@RequestMapping(value="/bikeRentQR.do")
-	public String bikeRentQR() {
-		
+	public String bikeRentQR(
+			HttpServletRequest request,
+			Model md
+			) {
+		 // 암호화된 데이터를 받아옵니다.
+        String encryptedData = (String)request.getAttribute("encryptedData");
+        System.out.println("암호화된 데이터 가져옴"+encryptedData);
 		
 	 	
 	  
@@ -74,8 +80,19 @@ public class bikeRentController {
 	@RequestMapping(value="/bikeRentDetail.do")
 	public String bikeRentDetail(
 			@RequestParam("bkidx") int bkidx,
+			HttpServletRequest request,
 			Model md) {
-		
+        // 암호화된 데이터를 받아옵니다.
+        String encryptedData = request.getParameter("data");
+        // 복호화 처리
+        try {
+            String decryptedData = AESUtil.decrypt(encryptedData);
+            // 처리된 데이터를 모델에 담아서 뷰로 전달
+            md.addAttribute("decryptedData", decryptedData);
+        } catch (Exception e) {
+            // 예외 처리 로직
+            e.printStackTrace(); // 예외 정보를 콘솔에 출력하거나, 적절한 예외 처리를 수행합니다.
+        }
 		
 		  BikeJoinVo bjv = bs.RentDetail(bkidx);
 		  
@@ -109,27 +126,32 @@ public class bikeRentController {
 	    int rsidx = bs.bikeGetRsidx(bjv.getBkidx());
 	    
 		// 대여 정보 삽입
-	    int ridx = bs.insertRentInfo(bjv, rsidx);
+	    int value = bs.insertRentInfo(bjv, rsidx);
 		
-		System.out.println("insertInfo 실행"+ridx);
+		System.out.println("insertInfo 실행"+bjv.getRidx());
+		session.setAttribute("ridx", bjv.getRidx());
+		session.setAttribute("bkidx", bjv.getBkidx());
 			
-		return "redirect:/bikeRent/bikeRentUseList.do?bkidx=" + bjv.getBkidx()+"&ridx="+ridx;
+		return "redirect:/bikeRent/bikeRentUseList.do?bkidx=" + bjv.getBkidx()+"&ridx="+bjv.getRidx();
 	}
 	
 
 	/*이용중인내역*/
 	@RequestMapping(value="/bikeRentUseList.do") 
 	public String bikeRentUseList(
-			@RequestParam("bkidx") int bkidx,
-			@RequestParam("ridx") int ridx,
-			Model md) {
-			
+			HttpServletRequest request,
+			Model md
+			) {
+		//세션값가져오기
+		HttpSession session = request.getSession();
+		int ridx = (int) session.getAttribute("ridx");
+		int bkidx = (int) session.getAttribute("bkidx");
+		
 		//대여 내역 조회		
 		BikeJoinVo bjv = bs.RentUseList(bkidx);
 				 
 		md.addAttribute("bjv", bjv);
 		md.addAttribute("ridx", ridx);
-		System.out.println(bjv.getRidx());
 				
 
 		 return "bikeRent/bikeRentUseList"; 
@@ -168,7 +190,7 @@ public class bikeRentController {
 
 		//이걸 가져오고 모델로 보내준다
 		md.addAttribute("bjv",bjv);
-		md.addAttribute("ridx", bjv.getRidx());
+		md.addAttribute("ridx", ridx);
 		md.addAttribute("rsidx", rsidx);
 		
 		return "bikeRent/bikeRentReturn";
@@ -178,8 +200,11 @@ public class bikeRentController {
 	@RequestMapping(value="/bikeRentReturnAction.do")
 	public String bikeRentReturnAction(
 			@RequestParam(value = "ridx" ) int ridx,//대여 번호
-			@RequestParam(value = "rsidx") int rsidx//반납하는 대여소 주소 번호
+			@RequestParam(value = "rsidx") int rsidx,//반납하는 대여소 주소 번호
+			HttpServletRequest request
 			) {
+		//세션값
+		HttpSession session = request.getSession();
 
 		System.out.println("최종반납 자전거번호"+ridx);
 		System.out.println("최종반납 대여소 주소 번호"+rsidx);
@@ -195,6 +220,8 @@ public class bikeRentController {
 			//반납테이블 데이터 생성하기
 
 		System.out.println("출력");
+		session.removeAttribute("ridx");
+		session.removeAttribute("bkidx");
 		
 		return "redirect:/bikeRent/bikeRentHistory.do";
 	}

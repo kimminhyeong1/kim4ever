@@ -6,12 +6,12 @@
 		
 	<!--관리자 회원관리 리스트  -->
 	<select id="memberList" resultType="mv">
-	select memberid,membername,memberage,delyn,writeday,membertype from member1234 order by memberType asc
+	select memberId,memberName,memberAge,memberDelYN,writeDay,memberType from member1234 order by memberType asc
 	</select>
 	
 	<!--관리자 회원삭제  -->
 	<delete id="deleteMember" parameterType="String">
-	delete from member1234 WHERE memberid=#{memberId}
+	delete from member1234 WHERE memberId=#{memberId}
 	</delete>
 
 	<!--관리자 고장 내역 리스트-->
@@ -22,15 +22,94 @@
 		r.rentPlace,
 		b.bikeType,
 		b.bikeCode,
+		e.eidx,
 		e.errorDay,
-		e.errorContent
+		e.errorContent,
+		e.errorState
 	FROM rent1234 r
 	JOIN member1234 m ON m.midx = r.midx
 	JOIN bike1234 b ON b.bkidx = r.bkidx
 	JOIN error1234 e ON	e.ridx = r.ridx		
 	</select>
 	
+	<!-- 고장 내역 상세 보기 -->
+	<select id="getErrorContent" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
+  	SELECT
+		m.memberName,
+		m.memberPhone,
+		r.rentPlace,
+		b.bikeType,
+		b.bikeCode,
+		e.eidx,
+		e.errorDay,
+		e.errorContent,
+		e.errorState
+	FROM rent1234 r
+	JOIN member1234 m ON m.midx = r.midx
+	JOIN bike1234 b ON b.bkidx = r.bkidx
+	JOIN error1234 e ON	e.ridx = r.ridx	
+	where
+	e.eidx =#{eidx}
+	</select>
+	
+	<!-- 관리자 자전거 리스트 -->
+	<select id="bikeList" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
+	SELECT * FROM bike1234 WHERE bkidx BETWEEN 1 AND 10
+	</select>
+	
+	<!-- 회원 상세 정보 보기 -->
+	<select id="getMemberByMemberId" parameterType="string" resultType="com.myezen.myapp.domain.BikeJoinVo">
+  	SELECT * FROM member1234 where memberId = #{memberId}
+	</select>
 
 
+	<!-- 대여소 리스트 -->
+	<select id="rentalshopList" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
+	SELECT * FROM rentalshop1234 order by rsidx asc
+	</select>
+	
+	<!-- 대여소 등록 -->
+	<insert id="rentalshopInsert" parameterType="String">
+		INSERT INTO rentalshop1234(rsidx,rentalshopName,rentalshopLocation)
+		VALUES(rsidx_seq.nextval,#{rentalshopName},#{rentalshopLocation})
+	</insert>
+
+	<!-- 대여소 등록 페이지 이름 중복체크-->
+	<select id="adminrentalshopNameCheck" parameterType="String" resultType="int">
+		select count(*) from rentalshop1234 where rentalshopName=#{rentalshopName}
+	</select>
+
+	<!--대여소 삭제  -->
+	<delete id="deleteRentalshop" parameterType="String">
+	delete from rentalshop1234 WHERE rentalshopName=#{rentalshopName}
+	</delete>
+	
+	<!--관리자 자전거 리스트 상태-->
+	<update id="bikeState" parameterType="String">
+  	UPDATE bike1234
+  	SET bikeState = #{bikeState}
+ 	WHERE bikeId = #{bikeId}
+	</update>
+
+	<!-- 관리자 메인페이지 자전거 총 갯수 -->
+	<select id="getTotalBkidxCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM bike1234
+    </select>
+
+	<!-- 관리자 메인페이지 대여중인 자전거 -->
+	<select id="getTotalRidxCount" resultType="java.lang.Integer">
+         SELECT COUNT(*) FROM bike1234 where bikeState LIKE 'N'
+    </select>
+	
+	<!-- 관리자 메인페이지 고장 난 자전거  -->
+	<select id="getTotalErrorCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM bike1234 where bikeState LIKE 'E'
+    </select>
+	
+	<!-- 관리자 메인페이지 대여 가능한 자전거  -->
+	<select id="getTotalRentCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM bike1234 where bikeState LIKE 'Y'
+    </select>
+	
 </mapper>
 
