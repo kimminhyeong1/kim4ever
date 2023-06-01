@@ -147,7 +147,7 @@ li{list-style:none;}
 										<td>
 										<c:forEach begin="1" end="${bv.level_}" var="i">
 						          
-						          <c:if test="${i == bv.level_}">ㄴ</c:if>
+						          <c:if test="${i == bv.level_}">&nbsp;&nbsp; ㄴ </c:if>
 						        </c:forEach>
 						        
 										<a 	href="${pageContext.request.contextPath}/board/boardQnaContent.do?bidx=${bv.bidx}">
@@ -161,7 +161,26 @@ li{list-style:none;}
 						</tr>
 		
 					</table>
-						
+					
+				<table><!-- 페이징 -->
+  <tr>
+    <td style="text-align: right;">
+      <c:if test="${pm.prev == true}">
+        <a href="${pageContext.request.contextPath}/board/boardList.do?page=${pm.startPage-1}">◀</a>
+      </c:if>
+    </td>
+    <td style="text-align: center; width: 300px;">
+         <c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}" step="1">
+        <a href="${pageContext.request.contextPath}/board/boardList.do?page=${i}">${i}</a>
+      </c:forEach>
+    </td>
+    <td style="width: 200px; text-align: left;">
+      <c:if test="${pm.next && pm.endPage > 0}">
+        <a href="${pageContext.request.contextPath}/board/boardList.do?page=${pm.endPage+1}">▶</a>
+      </c:if>
+    </td>
+  </tr>
+</table>
 		
 					<div id="btn">
 						<button type="button"
