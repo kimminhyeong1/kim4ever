@@ -36,15 +36,23 @@
 	
 	<beans:bean id="loginInterceptor" class="com.myezen.myapp.interceptor.LoginInterceptor"></beans:bean>
 	
+	
 	<interceptors>
 		<interceptor><!-- 인증필요한 페이지 --> 
-			<mapping path="bikeRent/bikeRentHistory.do"/> 
+			<mapping path="/bikeRent/bikeRentHistory.do"/> <!-- 대여이력 페이지 -->
+			<mapping path="/bikeRent/bikeRentQR.do"/> <!-- 자전거 QR 페이지 -->
+			<mapping path="/bikeRent/bikeRentDetail.do"/> <!-- 대여하기 페이지 -->
+			<mapping path="/bikeRent/bikeRentUseList.do"/> <!-- 이용내역 페이지 -->
+			<mapping path="/bikeRent/bikeReturnQR.do"/> <!-- 대여소 QR 페이지 -->
+			<mapping path="/bikeRent/bikeRentReturn.do"/> <!-- 반납하기 페이지 -->
+			
 			<beans:ref bean="authInterceptor"/>
 		</interceptor>
 		<interceptor><!-- 로그인 -->
 			<mapping path="/member/memberLoginAction.do"/>
 			<beans:ref bean="loginInterceptor"/>
 		</interceptor>
+
 	</interceptors>
 	
 	<context:component-scan base-package="com.myezen.myapp.controller" />

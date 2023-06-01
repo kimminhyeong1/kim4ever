@@ -21,8 +21,30 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 				saveDest(request);
 				
 				response.sendRedirect(request.getContextPath()+"/member/memberLogin.do");
+				
 			}
-			 
+			
+			System.out.println(request.getRequestURI().equals(request.getContextPath() + "/bikeRent/bikeRentQR.do"));
+			
+			//!/bikeRent/bikeRentQR or bikeRentDetail.do대여한 고객이 대여하기를 들어오면 못 들어가게 돌려보내기
+			String bikeRentQR = request.getContextPath() + "/bikeRent/bikeRentQR.do";
+			String bikeRentDetail = request.getContextPath() + "/bikeRent/bikeRentDetail.do";
+			
+			if (request.getRequestURI().equals(bikeRentQR) || request.getRequestURI().equals(bikeRentDetail)) {
+				if (session.getAttribute("ridx")!=null) {
+					response.sendRedirect(request.getContextPath()+"/index.jsp");
+					return  true;
+				}else {
+					return  true;
+				}
+				
+			}
+			
+			//ridx값이 null이면 메인페이지로 보내기
+			if (session.getAttribute("ridx")==null) {
+				// 다른 주소로 리다이렉트
+				response.sendRedirect(request.getContextPath()+"/index.jsp");
+			}
 			
 			return  true; //boolean타입이어서 true로 설정해줌
 	} 
