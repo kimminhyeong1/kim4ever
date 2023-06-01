@@ -27,6 +27,8 @@ public interface AdminService_Mapper {
 	public int rentalshopInsert(BikeJoinVo rv);
 	//대여소 등록 이름 중복체크
 	public int adminrentalshopNameCheck(String rentalshopName);
+	//대여소 삭제	
+	public void deleteRentalshop(String rentalshopName);
 	//회원 상세정보
 	public BikeJoinVo getMemberByMemberId(String memberId);
 

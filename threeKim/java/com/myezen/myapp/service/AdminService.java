@@ -28,7 +28,9 @@ public interface AdminService {
 	//대여소 등록
 		public int rentalshopInsert(String rentalshopName, String rentalshopLocation);			
 	//대여소 등록 이름 중복체크
-		public int adminrentalshopNameCheck(String rentalshopName);		
+		public int adminrentalshopNameCheck(String rentalshopName);
+	//대여소 삭제	
+		public void deleteRentalshop(String rentalshopName);
 	//회원 상세정보
 		public BikeJoinVo getMemberByMemberId(String memberId);	
 }
