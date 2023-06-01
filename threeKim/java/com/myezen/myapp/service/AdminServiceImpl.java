@@ -83,7 +83,14 @@ public class AdminServiceImpl implements AdminService {
 		return asm.getMemberByMemberId(memberId);
 	}
 
-
+	//관리자 자전거 리스트
+	@Override
+	public ArrayList<BikeJoinVo> bikeList() {
+		
+	ArrayList<BikeJoinVo> klist = asm.bikeList();	
+		return klist;
+	}
+	
 	//대여소 리스트
 	@Override
 	public ArrayList<BikeJoinVo> rentalshopList() {
@@ -110,6 +117,8 @@ public class AdminServiceImpl implements AdminService {
 		int value = asm.adminrentalshopNameCheck(rentalshopName);
 		return value;
 	}
+
+	
 
 	
 

@@ -6,12 +6,12 @@
 		
 	<!--관리자 회원관리 리스트  -->
 	<select id="memberList" resultType="mv">
-	select memberid,membername,memberage,delyn,writeday,membertype from member1234 order by memberType asc
+	select memberId,memberName,memberAge,memberDelYN,writeDay,memberType from member1234 order by memberType asc
 	</select>
 	
 	<!--관리자 회원삭제  -->
 	<delete id="deleteMember" parameterType="String">
-	delete from member1234 WHERE memberid=#{memberId}
+	delete from member1234 WHERE memberId=#{memberId}
 	</delete>
 
 	<!--관리자 고장 내역 리스트-->
@@ -37,7 +37,7 @@
 	
 	<!-- 회원 상세 정보 보기 -->
 	<select id="getMemberByMemberId" parameterType="string" resultType="com.myezen.myapp.domain.BikeJoinVo">
-  	SELECT * FROM member1234 where memberId = #{memberid}
+  	SELECT * FROM member1234 where memberId = #{memberId}
 	</select>
 
 
