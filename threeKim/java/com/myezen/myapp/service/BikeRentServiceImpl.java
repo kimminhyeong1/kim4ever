@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.persistance.BikeRentService_Mapper;
+import com.myezen.myapp.util.QRCodeUtil;
 
 @Service("BikeRentServiceImpl")
 public class BikeRentServiceImpl implements BikeRentService {
@@ -28,11 +29,7 @@ public class BikeRentServiceImpl implements BikeRentService {
 		this.brsm = sqlSession.getMapper(BikeRentService_Mapper.class);
 	}
 
-	@Override //!차후삭제!
-	public int abc() { 
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 	//QR로 넘어온 자전거정보 조회
 	@Override
 	public BikeJoinVo RentDetail(int bkidx) {
@@ -85,14 +82,6 @@ public class BikeRentServiceImpl implements BikeRentService {
 		return brsm.RentUseList(bkidx);
 	}
 
-
-
-
-
-	
-	
-	
-	
 	
 	
 	/*----------------------------------------------*/
@@ -144,6 +133,34 @@ public class BikeRentServiceImpl implements BikeRentService {
 		ArrayList<BikeJoinVo> bjvlist = brsm.bikeRentHistoryList(midx);
 
 		return bjvlist;
+	}
+
+
+	@Override
+	public ArrayList<String> QRCode() {
+		
+		// QR 코드 설정
+		String url1 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?bkidx=1"; // QR 코드에 포함될 URL
+		String url2 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?bkidx=2"; // QR 코드에 포함될 URL
+		String url3 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?bkidx=3"; // QR 코드에 포함될 URL
+		int width = 300; // 원하는 가로 크기
+		int height = 300; // 원하는 세로 크기
+		
+		// QR 코드 생성
+		QRCodeUtil qrCodeUtil1 = new QRCodeUtil();
+		String qrCode1 = qrCodeUtil1.generateQRCode(url1, width, height);
+		QRCodeUtil qrCodeUtil2 = new QRCodeUtil();
+		String qrCode2 = qrCodeUtil2.generateQRCode(url2, width, height);
+		QRCodeUtil qrCodeUtil3 = new QRCodeUtil();
+		String qrCode3 = qrCodeUtil3.generateQRCode(url3, width, height);
+		
+		// QR 코드 담기
+		ArrayList<String> QRList = new ArrayList<>();
+		QRList.add(qrCode1);
+		QRList.add(qrCode2);
+		QRList.add(qrCode3);
+		
+		return QRList;
 	}
 
 	

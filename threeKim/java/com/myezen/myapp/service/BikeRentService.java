@@ -15,11 +15,12 @@ import javax.servlet.http.HttpServletRequest;
 
 
 import com.myezen.myapp.domain.BikeJoinVo;
+import com.myezen.myapp.util.QRCodeUtil;
 
 public interface BikeRentService {
 	
-	//!차후삭제!!
-	int abc();
+	//QR생성
+	public ArrayList<String> QRCode();
 	
 	//자전거상세보기
 	public BikeJoinVo RentDetail(int bkidx);

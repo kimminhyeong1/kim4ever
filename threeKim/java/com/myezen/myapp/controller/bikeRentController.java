@@ -75,17 +75,13 @@ public class bikeRentController {
         System.out.println("암호화된 데이터 가져옴"+encryptedData);
 		
         /*QR생성부분*/
-
-    	QRCodeUtil qrCodeUtil = new QRCodeUtil();
-        String url = "/myapp/bikeRent/bikeRentDetail.do?bkidx=34"; // QR 코드에 포함될 URL
-        int width = 300; // 원하는 가로 크기
-        int height = 300; // 원하는 세로 크기
-
-        // QR 코드 생성
-        String qrCode = qrCodeUtil.generateQRCode(url, width, height);
+        /*QR생성부분 서비스부분에서 실행*/
+        ArrayList<String> QRList = bs.QRCode();  
 
         // JSP로 전달할 데이터 설정
-        md.addAttribute("qrCode", qrCode);
+        md.addAttribute("QRCode1", QRList.get(0));
+        md.addAttribute("QRCode2", QRList.get(1));
+        md.addAttribute("QRCode3", QRList.get(2));
         
 
 	  
