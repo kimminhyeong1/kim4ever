@@ -42,7 +42,9 @@ public interface BikeRentService {
 	
 	public String getBikeLocationByBkidx(int bkidx);
 	
-	
+	//휴대폰 인증
+    public void certifiedPhoneNumber(String userPhoneNumber, int randomNumber);
+
 	
 	
 	/*----------------------------------------------*/
@@ -56,9 +58,7 @@ public interface BikeRentService {
 
 	//대여이력보기
     public ArrayList<BikeJoinVo> bikeRentHistoryList(int midx);
-
-
-	
+ 
 	
 	
 	

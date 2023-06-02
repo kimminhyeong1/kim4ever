@@ -314,8 +314,17 @@ public class bikeRentController {
 			return "bikeRent/bikeRentHistory";
 		}
 		
-	
-	
+	//휴대폰 인증
+	@RequestMapping(value = "/phoneCheck.do", method = RequestMethod.GET)
+	@ResponseBody
+	public String sendSMS(@RequestParam("phone") String userPhoneNumber) { // 휴대폰 문자보내기
+		int randomNumber = (int)((Math.random()* (999999 - 100000 + 1)) + 100000);//난수 생성
+		
+		bs.certifiedPhoneNumber(userPhoneNumber,randomNumber);
+		System.out.println("userPhoneNumber는?"+userPhoneNumber);
+		System.out.println("Received phone number: " + userPhoneNumber);
+		return Integer.toString(randomNumber);
+	}
 	
 	
 	

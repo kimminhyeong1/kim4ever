@@ -24,11 +24,10 @@ public interface BikeRentService_Mapper {
 	//인설트문 bike1234테이블(자전거관련정보)에서 대여를 해야하니까 rent1234(대여)로 insert 
 	public int insertRentInfo(BikeJoinVo bjv);
 
-	 
-	
 	//대여 내역
 	public BikeJoinVo RentUseList(int bkidx);
-		
+	
+	//휴대폰 인증
 	public String getBikeLocationByBkidx(int bkidx);
 	
 	
@@ -56,7 +55,7 @@ public interface BikeRentService_Mapper {
     //대여이력보기
     public ArrayList<BikeJoinVo> bikeRentHistoryList(int midx);
 
-	
+    public void certifiedPhoneNumber(String userPhoneNumber, int randomNumber);
 
 	
 	
