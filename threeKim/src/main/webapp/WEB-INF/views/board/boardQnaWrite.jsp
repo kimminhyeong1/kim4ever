@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
         <%if (session.getAttribute("midx") == null){	out.println("<script>alert('로그인 하셔야 합니다.'); history.back(-1);</script>");}%>
              <!-- midx가 null 이면 알림후 뒤로가기 -->
+              <% BoardVo bv   = (BoardVo)request.getAttribute("bv"); %>   
+             
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,12 +73,14 @@ li{list-style:none;}
 
 		<div id="content">
 			<h2>QnA 게시글 작성</h2>
-			<form name="frm">
-
+						<form name="frm">
+<input type="hidden" name="writer" value="<%=session.getAttribute("memberName")%>"><!-- writer로 저장 -->
 				<table>
 					<tr>
 						<th>작성자</th>
-						<td><input type="text" name="writer" maxlength="5" 	value="<%=session.getAttribute("memberName")%>" readonly></td>
+						<td>	<%= session.getAttribute("memberName") %>									
+							</td>
+							
 					</tr>
 					
 					<tr>

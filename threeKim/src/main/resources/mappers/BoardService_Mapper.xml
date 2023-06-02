@@ -28,18 +28,18 @@ FROM (
   SELECT
     CASE WHEN delyn = 'N' THEN RANK() OVER (PARTITION BY boardtype ORDER BY modified_rebidx ASC) END AS sortN,
     board1235.*,
-    CASE WHEN delyn = 'N' THEN RANK() OVER (PARTITION BY boardtype ORDER BY modified_rebidx DESC) END AS sortY
+    CASE WHEN delyn = 'N' THEN RANK() OVER (PARTITION BY boardtype ORDER BY modified_rebidx DESC) END AS sortY <!-- sortn반대로 순번 -->
   FROM (
     SELECT board1235.*,
            CASE WHEN level_ = 1
-                THEN rebidx - (ROW_NUMBER() OVER (PARTITION BY rebidx ORDER BY writeday) * 0.01)
+                THEN rebidx - (ROW_NUMBER() OVER (PARTITION BY rebidx ORDER BY writeday) * 0.01)<!-- 댓글 -->
                 ELSE rebidx
            END AS modified_rebidx
     FROM board1235
     WHERE delyn = 'N' 
   ) board1235
 ) B
-WHERE (sortY BETWEEN (#{page}-1)*#{perPageNum}+1 AND #{page}*#{perPageNum}) 
+WHERE (sortY BETWEEN (#{page}-1)*#{perPageNum}+1 AND #{page}*#{perPageNum}) <!-- 페이징 -->
 ORDER BY rebidx DESC, level_ ASC, writeday ASC
 
 

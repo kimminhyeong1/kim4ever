@@ -87,56 +87,56 @@ function fnWrite() {
 
 </head>
 <body>
-<div id="main">
+	<div id="main">
 
-	<%@include file="../header.jsp" %>
-	
-	<div id="content">
-	<h2>공지사항  작성</h2>
-	<form name="frm">
-		<table>
-			<tr>
-			
-				<th>작성자</th><!-- 세션으로 받아서 읽기모드로 출력 -->
-				<td><input type="text" name="writer" maxlength="5" value="<%= session.getAttribute("memberName") %>" readonly></td>
+		<%@include file="../header.jsp"%>
 
-			</tr>
-			<tr>
-				<th>제목</th>
-				<td><input type="text" name="subject" style="width: 600px; height:40px;"></td>
-			</tr>
-			<tr>
-				<th>내용</th>
-				<td>
-				<textarea name="content" cols="100" rows="8"></textarea>
-				</td>
-			</tr>
-			<tr>
-				<th>첨부 파일</th>
-				<td><input type="file" name="filename"></td>
-			</tr>
-			
-		</table>
-		
-		<div id="btn">	
-			<button type="button" onclick="fnWrite();" >글 등록</button>
-			<button type="reset">다시 작성</button>
-			<button type="button" onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'" >목록 보기</button>
-		</div>	
-		</form>
-			
-		
+		<div id="content">
+			<h2>공지사항 작성</h2>
+			<form name="frm">
+				<input type="hidden" name="writer"
+					value="<%=session.getAttribute("memberName")%>">
+				<!-- writer로 저장 -->
+				<table>
+					<tr>
+						<th>작성자</th>
+						<td><%=session.getAttribute("memberName")%></td>
+
+					</tr>
+					<tr>
+						<th>제목</th>
+						<td><input type="text" name="subject"
+							style="width: 600px; height: 40px;"></td>
+					</tr>
+					<tr>
+						<th>내용</th>
+						<td><textarea name="content" cols="100" rows="8"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<th>첨부 파일</th>
+						<td><input type="file" name="filename"></td>
+					</tr>
+
+				</table>
+
+				<div id="btn">
+					<button type="button" onclick="fnWrite();">글 등록</button>
+					<button type="reset">다시 작성</button>
+					<button type="button"
+						onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">목록
+						보기</button>
+				</div>
+			</form>
+
+
+		</div>
+
+
+		<div id="bottom"></div>
+
+
 	</div>
-	
-
-	<div id="bottom">
-	
-	
-	
-	</div>
-
-
-</div>
 
 </body>
 <%@include file="../footer.jsp" %>
