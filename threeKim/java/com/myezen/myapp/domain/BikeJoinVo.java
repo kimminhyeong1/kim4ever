@@ -1,5 +1,6 @@
 package com.myezen.myapp.domain;
 
+import java.security.Timestamp;
 
 public class BikeJoinVo {
 	
@@ -55,7 +56,35 @@ public class BikeJoinVo {
 	private String returnPlace; //반납장소
 	private int ridx; //대여번호
 	
-	
+	private int id;
+    private String phoneNumber;
+    private String verificationCode;
+    private char verificationStatus;
+    
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+    public String getVerificationCode() {
+        return verificationCode;
+    }
+    public void setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
+    }
+    public char getVerificationStatus() {
+        return verificationStatus;
+    }
+    public void setVerificationStatus(char verificationStatus) {
+        this.verificationStatus = verificationStatus;
+    }
 	
 
 	

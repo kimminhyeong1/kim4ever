@@ -54,18 +54,31 @@
 		
       //휴대폰 인증번호 대조
         $("#phoneChk2").click(function(){
-        	if($("#phone2").val() == code2){
-        		$(".successPhoneChk").text("인증번호가 일치합니다.");
-        		$(".successPhoneChk").css("color","green");
-        		$("#phoneDoubleChk").val("true");
-        		$("#phone2").attr("disabled",true);
-        	}else{
-        		$(".successPhoneChk").text("인증번호가 일치하지 않습니다.");
-        		$(".successPhoneChk").css("color","red");
-        		$("#phoneDoubleChk").val("false");
-        		$(this).attr("autofocus",true);
-        	}
-        })
+        	var phoneNumber = $("#phone").val();
+            var verificationCode = $("#phone2").val();
+            $.ajax({
+                type: "POST",
+                url: "verifyPhoneNumber.do",
+                data: {
+                    phoneNumber: phoneNumber,
+                    verificationCode: verificationCode
+                },
+                cache: false,
+                success: function(data) {
+                    if (data === "success") {
+                        $(".successPhoneChk").text("인증번호가 일치합니다.");
+                        $(".successPhoneChk").css("color", "green");
+                        $("#phoneDoubleChk").val("true");
+                        $("#phone2").attr("disabled", true);
+                    } else {
+                        $(".successPhoneChk").text("인증번호가 일치하지 않습니다.");
+                        $(".successPhoneChk").css("color", "red");
+                        $("#phoneDoubleChk").val("false");
+                        $("#phone2").focus();
+                    }
+                }
+            });
+        });
         
   })
 </script>

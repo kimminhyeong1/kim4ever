@@ -27,8 +27,27 @@ public interface BikeRentService_Mapper {
 	//대여 내역
 	public BikeJoinVo RentUseList(int bkidx);
 	
-	//휴대폰 인증
 	public String getBikeLocationByBkidx(int bkidx);
+	
+	
+	//휴대폰번호,인증번호 데이터베이스에 저장
+	public void savePhoneNumberVerification(BikeJoinVo bjv);
+	//인증번호를 받아서 일치 여부 확인
+	public boolean verifyPhoneNumber(String userPhoneNumber, int randomNumber);
+	//휴대폰 번호를 받아서 해당 번호에 대해 저장된 인증번호를 가져오는 역할
+	public int getSavedRandomNumber(String userPhoneNumber);
+	//휴대폰 인증완료 -> 인증상태 Y로 변경
+	public void updateVerificationStatus(String userPhoneNumber);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

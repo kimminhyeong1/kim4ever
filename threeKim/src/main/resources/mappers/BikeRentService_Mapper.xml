@@ -74,6 +74,47 @@
 	FETCH FIRST 1 ROW ONLY
 </select>
 
+<!-- 휴대폰 번호, 인증번호 데이터베이스에 저장 -->
+<insert id="savePhoneNumberVerification" parameterType="com.myezen.myapp.domain.BikeJoinVo">
+    INSERT INTO PHONE1234 (PHONENUMBER, VERIFICATIONCODE)
+    VALUES (#{phoneNumber}, #{verificationCode})
+</insert>
+
+<!-- 인증번호를 받아서 일치 여부 확인 -->
+<select id="verifyPhoneNumber" parameterType="java.util.HashMap" resultType="boolean">
+ 
+    SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+	FROM PHONE1234
+	WHERE PHONENUMBER = #{userPhoneNumber}
+	AND VERIFICATIONCODE = #{randomNumber}
+	AND VERIFICATIONSTATUS = 'N';
+</select>
+
+<!-- 휴대폰 번호를 받아서 해당 번호에 대해 저장된 인증번호를 가져옴 -->
+<select id="getSavedRandomNumber" parameterType="java.lang.String" resultType="int">
+    SELECT VERIFICATIONCODE
+    FROM PHONE1234
+    WHERE PHONENUMBER = #{userPhoneNumber}
+    AND VERIFICATIONSTATUS = 'N'
+    ORDER BY CREATED_AT DESC
+    FETCH FIRST 1 ROW ONLY
+</select>
+
+<update id="updateVerificationStatus" parameterType="java.lang.String">
+ UPDATE PHONE1234
+    SET VERIFICATIONCODE = null,
+        VERIFICATIONSTATUS = 'Y'
+    WHERE PHONENUMBER = #{userPhoneNumber}
+</update>
+
+
+
+
+
+
+
+
+
 
 
 

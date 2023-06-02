@@ -9,9 +9,11 @@ import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +28,9 @@ import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.service.BikeRentService;
 import com.myezen.myapp.util.AESUtil;
 import com.myezen.myapp.util.QRCodeUtil;
+
+import net.nurigo.java_sdk.api.Message;
+import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 
 @Controller
@@ -320,13 +325,70 @@ public class bikeRentController {
 	public String sendSMS(@RequestParam("phone") String userPhoneNumber) { // 휴대폰 문자보내기
 		int randomNumber = (int)((Math.random()* (999999 - 100000 + 1)) + 100000);//난수 생성
 		
-		bs.certifiedPhoneNumber(userPhoneNumber,randomNumber);
+		  // CoolSMS API 사용
+		  String api_key = "NCSQ6K8YB71UK1Q5"; 
+		  String api_secret ="RCJYGI0IER077RL27WSVXY75ZDIFKGFT"; 
+		  Message coolsms = new Message(api_key, api_secret);
+	  
+		  HashMap<String, String> params = new HashMap<String, String>();
+		  params.put("to", userPhoneNumber); // 수신전화번호
+		  params.put("from","01056309412"); // 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
+		  params.put("type","SMS"); params.put("text", "[TEST] 인증번호는" + "["+randomNumber+"]" + "입니다.");
+		
+		  try {
+		        JSONObject obj = (JSONObject) coolsms.send(params);
+		        System.out.println(obj.toString());
+		    } catch (CoolsmsException e) {
+		        System.out.println(e.getMessage());
+		        System.out.println(e.getCode());
+		    }
+		
 		System.out.println("userPhoneNumber는?"+userPhoneNumber);
 		System.out.println("Received phone number: " + userPhoneNumber);
+		
+		// 휴대폰 인증 정보를 데이터베이스에 저장
+		BikeJoinVo bjv = new BikeJoinVo();
+		bjv.setPhoneNumber(userPhoneNumber);
+		bjv.setVerificationCode(Integer.toString(randomNumber));
+		bs.savePhoneNumberVerification(bjv);
+	    
+		
+		//bs.certifiedPhoneNumber(userPhoneNumber,randomNumber);
+		
 		return Integer.toString(randomNumber);
 	}
 	
+	//인증번호 대조 확인
+	@RequestMapping(value = "/verifyPhoneNumber.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String verifyPhoneNumber(@RequestParam("phoneNumber") String phoneNumber,
+	                               @RequestParam("verificationCode") String verificationCode) {
+		boolean isVerified = bs.verifyPhoneNumber(phoneNumber, Integer.parseInt(verificationCode));
+
+	    if (isVerified) {
+	        // 인증번호 일치
+	        return "success";
+	    } else {
+	        // 인증번호 불일치
+	        return "failure";
+	    }
+	}
 	
+	// 저장된 인증번호 가져오기
+	@RequestMapping(value = "/getSavedRandomNumber.do", method = RequestMethod.GET)
+	@ResponseBody
+	public int getSavedRandomNumber(@RequestParam("phoneNumber") String phoneNumber) {
+	    int savedRandomNumber = bs.getSavedRandomNumber(phoneNumber);
+	    return savedRandomNumber;
+	}
+
+	// 인증번호 수정
+	@RequestMapping(value = "/updateVerificationStatus.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String updateVerificationStatus(@RequestParam("phoneNumber") String phoneNumber) {
+	    bs.updateVerificationStatus(phoneNumber);
+	    return "success";
+	}
 	
 	
 	

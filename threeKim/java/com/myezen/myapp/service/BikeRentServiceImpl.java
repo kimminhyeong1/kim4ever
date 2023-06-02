@@ -86,40 +86,52 @@ public class BikeRentServiceImpl implements BikeRentService {
 		return brsm.RentUseList(bkidx);
 	}
 	
-	//휴대폰인증
+	//휴대폰번호,인증번호 데이터베이스에 저장
 	@Override
-	public void certifiedPhoneNumber(String userPhoneNumber, int randomNumber) {
-		String api_key = "NCSQ6K8YB71UK1Q5";
-	    String api_secret = "RCJYGI0IER077RL27WSVXY75ZDIFKGFT";
-	    Message coolsms = new Message(api_key, api_secret);
+	public void savePhoneNumberVerification(BikeJoinVo bjv) {
+		brsm.savePhoneNumberVerification(bjv);
+		
+	}
 
-<<<<<<< HEAD
-=======
-	    HashMap<String, String> params = new HashMap<String, String>();
-	    params.put("to", userPhoneNumber);    // 수신전화번호
-	    params.put("from", "01056309412");    // 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
-	    params.put("type", "SMS");
-	    params.put("text", "[TEST] 인증번호는" + "["+randomNumber+"]" + "입니다."); // 문자 내용 입력
-	    params.put("app_version", "test app 1.2"); // application name and version
+	//인증번호 받아서 일치 여부 확인
+	@Override
+	public boolean verifyPhoneNumber(String userPhoneNumber, int randomNumber) {
+		 int savedRandomNumber = brsm.getSavedRandomNumber(userPhoneNumber);
+	        if (savedRandomNumber == randomNumber) {
+	            // 인증번호 일치
+	        	brsm.updateVerificationStatus(userPhoneNumber); // 인증번호수정
+	            return true;
+	        }
+	        return false;
+	    }
 
-	    try {
-	        JSONObject obj = (JSONObject) coolsms.send(params);
-	        System.out.println(obj.toString());
-	      } catch (CoolsmsException e) {
-	        System.out.println(e.getMessage());
-	        System.out.println(e.getCode());
-	      }
+	//휴대폰번호를 받아서 해당 번호에 대해 저장된 인증번호를 가져옴
+	@Override
+	public int getSavedRandomNumber(String userPhoneNumber) {
+		return brsm.getSavedRandomNumber(userPhoneNumber);
+	}
+
+	//인증번호가 일치하면 인증상태 ->Y로 변경 , 인증번호를 NULL값으로 변경 
+	@Override
+	public void updateVerificationStatus(String userPhoneNumber) {
+		brsm.updateVerificationStatus(userPhoneNumber);
 		
 	}
 
 
 
 
+
+	
+
+
+
+
 	
 	
 	
 	
->>>>>>> 휴대폰인증
+
 	
 	
 	/*----------------------------------------------*/
@@ -231,8 +243,7 @@ public class BikeRentServiceImpl implements BikeRentService {
 		return QRList;
 	}
 
-	
-	
+
 	
 
 	
