@@ -2,6 +2,8 @@ package com.myezen.myapp.persistance;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.MemberVo;
 
@@ -23,6 +25,10 @@ public interface AdminService_Mapper {
 	public ArrayList<BikeJoinVo> errorList();
 	//고장  내역 상세 페이지	
 	public BikeJoinVo getErrorContent(int eidx);
+	//bikeState E로 업데이트
+	public void updateBikeState(int eidx);
+	//수리 내역 페이지
+	public ArrayList<BikeJoinVo> repairList();
 	//자전거 리스트
 	public ArrayList<BikeJoinVo> bikeList();
 	//대여소 리스트

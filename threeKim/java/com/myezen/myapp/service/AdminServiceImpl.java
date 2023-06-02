@@ -75,7 +75,7 @@ public class AdminServiceImpl implements AdminService {
 	return alist;
 	}
 
-	//고장 내역 리스트
+	//신고 내역 리스트
 	@Override
 	public ArrayList<BikeJoinVo> errorList() {
 
@@ -83,11 +83,26 @@ public class AdminServiceImpl implements AdminService {
 		return elist;
 	}
 	
-	//고장 내역 상세보기
+	//신고 내역 상세보기
 	@Override
 	public BikeJoinVo getErrorContent(int eidx) {
 		
 		return asm.getErrorContent(eidx);
+	}
+	
+	//errorState D에서 R로 업데이트
+	@Override
+	public void updateBikeState(int eidx) {
+	asm.updateBikeState(eidx);
+		
+	}
+	
+	//수리 내역 페이지
+	@Override
+	public ArrayList<BikeJoinVo> repairList() {
+	
+	ArrayList<BikeJoinVo> elist = asm.repairList();	
+		return elist;
 	}
 	
 	//회원 상세정보
@@ -139,6 +154,16 @@ public class AdminServiceImpl implements AdminService {
 		asm.deleteRentalshop(rentalshopName);
 		
 	}
+
+	
+
+	
+
+	
+
+	
+
+	
 
 	
 

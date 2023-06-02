@@ -2,6 +2,8 @@ package com.myezen.myapp.service;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.MemberVo;
 
@@ -25,6 +27,10 @@ public interface AdminService {
 		public ArrayList<BikeJoinVo> errorList();
 	//고장 신고 상세 페이지	
 		public BikeJoinVo getErrorContent(int eidx);
+	//bikeState E로 업데이트
+		public void updateBikeState(int eidx);
+	//수리 내역 페이지
+		public ArrayList<BikeJoinVo> repairList();	
 	//자전거리스트	
 		public ArrayList<BikeJoinVo> bikeList();
 	//대여소 리스트
@@ -36,5 +42,6 @@ public interface AdminService {
 	//대여소 삭제	
 		public void deleteRentalshop(String rentalshopName);
 	//회원 상세정보
-		public BikeJoinVo getMemberByMemberId(String memberId);	
+		public BikeJoinVo getMemberByMemberId(String memberId);
+		
 }
