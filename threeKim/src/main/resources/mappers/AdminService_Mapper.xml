@@ -22,10 +22,10 @@
 		r.rentPlace,
 		b.bikeType,
 		b.bikeCode,
+		b.bikeState,
 		e.eidx,
 		e.errorDay,
-		e.errorContent,
-		e.errorState
+		e.errorContent
 	FROM rent1234 r
 	JOIN member1234 m ON m.midx = r.midx
 	JOIN bike1234 b ON b.bkidx = r.bkidx
@@ -50,6 +50,35 @@
 	JOIN error1234 e ON	e.ridx = r.ridx	
 	where
 	e.eidx =#{eidx}
+	</select>
+	
+	<!-- 수리버튼 누르면 bikeState R로 변경 -->
+	<update id="updateBikeState" parameterType="int">
+   	UPDATE bike1234
+		SET bikeState = 'E'
+		WHERE bkidx IN (SELECT b.bkidx
+      		FROM rent1234 r
+      		JOIN bike1234 b ON b.bkidx = r.bkidx
+      		JOIN error1234 e ON e.ridx = r.ridx
+      		WHERE e.eidx =#{eidx})
+	</update>
+	
+	<!-- 수리 내역 리스트 -->
+	<select id="repairList" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
+	SELECT
+		m.memberName,
+		m.memberPhone,
+		r.rentPlace,
+		b.bikeType,
+		b.bikeCode,
+		b.bikeState,
+		e.eidx,
+		e.errorDay,
+		e.errorContent
+	FROM rent1234 r
+	JOIN member1234 m ON m.midx = r.midx
+	JOIN bike1234 b ON b.bkidx = r.bkidx
+	JOIN error1234 e ON	e.ridx = r.ridx		
 	</select>
 	
 	<!-- 관리자 자전거 리스트 -->

@@ -45,10 +45,6 @@ li{list-style:none;}
 #content table tr th:nth-child(2){width:180px;}
 #content table tr th:nth-child(3){width:70px;}
 #content table tr th:nth-child(4){width:120px;}
-#content table tr th:nth-child(5){width:120px;}
-#content table tr th:nth-child(6){width:200px;}
-#content table tr th:nth-child(7){width:230px;}
-#content table tr th:nth-child(8){width:120px;}
 #content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
@@ -58,42 +54,20 @@ li{list-style:none;}
 <div id="main">
 	<div id="content">
 
-		<h2>신고 내역</h2>
-		<h2 onclick="location.href='<%=request.getContextPath()%>/admin/adminbikeRepairList.do'">수리 내역</h2>		
+		<h2>신고 내역</h2>	
 		<table>
 				<tr>
-					<th>고객명</th>
-					<th>연락처</th>
-					<th>대여소</th>
 					<th>자전거종류</th>
 					<th>자전거번호</th>		
-					<th>신고시간</th>
 					<th>내용</th>
 					<th></th>					
 				</tr>
 			<c:forEach var="ejv" items="${elist}">
 					<tr>						
-						<td>${ejv.memberName}</td>
-						<td>${ejv.memberPhone}</td>
-						<td>${ejv.rentPlace}</td>
 						<td>${ejv.bikeType}</td>
 						<td>${ejv.bikeCode}</td>  
-						<td>
-				            <fmt:parseDate value="${ejv.errorDay}" pattern="yyyy-MM-dd HH:mm" var="parsedRentDay" /><!-- 날짜 변경 -->
-            				<fmt:formatDate value="${parsedRentDay}" pattern="yyyy-MM-dd HH:mm" var="formattedRentDay" /><!-- 시간 설정 변경 -->
-	           	 			${formattedRentDay}
-						</td>   
-						<td><a href="adminbikeErrorContent.do?eidx=${ejv.eidx}">${ejv.errorContent}</a></td>
-						<td>
-							<c:choose>
-								<c:when test="${ejv.bikeState eq 'Y'}">  
-									대기중
-								</c:when>
-								<c:when test="${ejv.bikeState eq 'E'}">  
-									수리중
-								</c:when>
-							</c:choose>
-						</td>				
+						<td>${ejv.errorContent}</td>
+						<td>${ejv.bikeState}</td>				
 					</tr>
 			</c:forEach>
 		</table>

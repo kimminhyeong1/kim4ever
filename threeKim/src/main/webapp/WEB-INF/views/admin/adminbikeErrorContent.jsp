@@ -117,7 +117,7 @@ input{
 				</tr>
 				<tr>
 					<td colspan="2">
-						<button type="button" onclick="location.href='<%=request.getContextPath()%>/admin/adminmemberList.do'">수리센터 보내기</button>
+						<button type="button" onclick="location.href='<%=request.getContextPath()%>/admin/adminbikeRepairAction.do?eidx=${ejv.eidx}'">수리센터 보내기</button>
 					</td>		
 				</tr>
 		</table>

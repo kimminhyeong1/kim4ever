@@ -3,9 +3,13 @@ package com.myezen.myapp.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -52,7 +56,8 @@ public class AdminController {
   
 		model.addAttribute("alist",alist); //(model=requestsetattribute)에 담아서 가지고 간다
   
-		return "admin/adminmemberList"; }
+		return "admin/adminmemberList";
+	}
 	
 	//관리자 회원 상세정보
 		@RequestMapping("/adminmemberListProfile.do")
@@ -165,7 +170,29 @@ public class AdminController {
 	 BikeJoinVo ejv = as.getErrorContent(eidx);	 
 	 model.addAttribute("ejv", ejv);
 	 return "admin/adminbikeErrorContent";
-}
+	}
+	
+	//수리센터 버튼 누를 시 bikeState E로 변경
+	@RequestMapping("/adminbikeRepairAction.do")
+	public String UpdateBikeState(int eidx) {
+		//System.out.println("test1");
+		as.updateBikeState(eidx);
+		//System.out.println("test2");
+		return "redirect:/admin/adminbikeError.do";
+	}	
+	
+	//관리자 수리 내역 페이지
+	@RequestMapping(value="/adminbikeRepairList.do") 
+	public String repairList(Model model) {
+  
+		ArrayList<BikeJoinVo> elist = as.repairList();
+  
+		model.addAttribute("elist",elist); 
+  
+		return "admin/adminbikeRepairList";
+	}
+	
 	
 
+	
 }
