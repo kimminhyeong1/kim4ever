@@ -93,9 +93,6 @@ public class BikeRentServiceImpl implements BikeRentService {
 		String api_key = "NCSQ6K8YB71UK1Q5";
 	    String api_secret = "RCJYGI0IER077RL27WSVXY75ZDIFKGFT";
 	    Message coolsms = new Message(api_key, api_secret);
-
-<<<<<<< HEAD
-=======
 	    HashMap<String, String> params = new HashMap<String, String>();
 	    params.put("to", userPhoneNumber);    // 수신전화번호
 	    params.put("from", "01056309412");    // 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
@@ -113,14 +110,6 @@ public class BikeRentServiceImpl implements BikeRentService {
 		
 	}
 
-
-
-
-	
-	
-	
-	
->>>>>>> 휴대폰인증
 	
 	
 	/*----------------------------------------------*/
@@ -186,9 +175,9 @@ public class BikeRentServiceImpl implements BikeRentService {
 		
 		
 		// QR 코드 설정
-		String url1 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?key="+ebkidx1; // QR 코드에 포함될 URL
-		String url2 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?key="+ebkidx2; // QR 코드에 포함될 URL
-		String url3 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?key="+ebkidx3; // QR 코드에 포함될 URL
+		String url1 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail/"+ebkidx1+"/view.do"; // QR 코드에 포함될 URL
+		String url2 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail/"+ebkidx2+"/view.do"; // QR 코드에 포함될 URL
+		String url3 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail/"+ebkidx3+"/view.do"; // QR 코드에 포함될 URL
 		int width = 300; // 원하는 가로 크기
 		int height = 300; // 원하는 세로 크기
 		
@@ -220,9 +209,9 @@ public class BikeRentServiceImpl implements BikeRentService {
         String ersidx3 = AESUtil.encrypt("3");
 		
 		// QR 코드 설정
-		String url1 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?key="+ersidx1; // QR 코드에 포함될 URL
-		String url2 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?key="+ersidx2; // QR 코드에 포함될 URL
-		String url3 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?key="+ersidx3; // QR 코드에 포함될 URL
+		String url1 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail/"+ersidx1+"/view.do"; // QR 코드에 포함될 URL
+		String url2 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail/"+ersidx2+"/view.do"; // QR 코드에 포함될 URL
+		String url3 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail/"+ersidx3+"/view.do"; // QR 코드에 포함될 URL
 		int width = 300; // 원하는 가로 크기
 		int height = 300; // 원하는 세로 크기
 		
