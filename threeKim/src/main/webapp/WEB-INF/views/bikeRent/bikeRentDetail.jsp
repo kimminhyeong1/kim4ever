@@ -83,7 +83,7 @@
 			
 				<table id="bikeDetail">
 				<tr>
-					<td rowspan="10"><img src="../resources/bikeimg/일반자전거.jpg" alt="일반자전거"></td>
+					<td rowspan="10"><img src="${pageContext.request.contextPath}/resources/bikeimg/일반자전거.jpg" alt="일반자전거"></td>
 					<td colspan="3"><h2>일반 자전거</h2></td>
 				</tr>
 			

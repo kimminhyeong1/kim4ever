@@ -55,7 +55,7 @@
 			<beans:ref bean="loginInterceptor"/>
 		</interceptor>
 		<interceptor><!-- 암호화/복호화 -->
-			<mapping path="/bikeRent/bikeRentQR.do"/> <!-- 자전거 QR 페이지 -->
+			<mapping path="/bikeRent/bikeRentQR.dodd"/> <!-- 자전거 QR 페이지 --><!-- 바뀔수있음 -->
 			<beans:ref bean="encryptInterceptor"/>
 		</interceptor>
 

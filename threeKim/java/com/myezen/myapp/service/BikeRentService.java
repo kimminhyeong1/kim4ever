@@ -20,9 +20,9 @@ import com.myezen.myapp.util.QRCodeUtil;
 public interface BikeRentService {
 	
 	//QR자전거생성
-	public ArrayList<String> QRBikeCode();
+	public ArrayList<String> QRBikeCode() throws Exception;
 	//QR대여소생성
-	public ArrayList<String> QRRentalShopCode();
+	public ArrayList<String> QRRentalShopCode() throws Exception;
 	
 	//자전거상세보기
 	public BikeJoinVo RentDetail(int bkidx);

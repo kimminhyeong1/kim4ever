@@ -17,15 +17,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.service.BikeRentService;
 import com.myezen.myapp.util.AESUtil;
 import com.myezen.myapp.util.QRCodeUtil;
+
 
 
 @Controller
@@ -69,44 +72,45 @@ public class bikeRentController {
 	public String bikeRentQR(
 			HttpServletRequest request,
 			Model md
-			) {
-		 // 암호화된 데이터를 받아옵니다.
-        String encryptedData = (String)request.getAttribute("encryptedData");
-        System.out.println("암호화된 데이터 가져옴"+encryptedData);
+			)throws Exception {
 		
+		/*암호화부분*/
+        /*URL파라미터값 암호화*/
+        String ebkidx1 = AESUtil.encrypt("1");
+        String ebkidx2 = AESUtil.encrypt("2");
+        String ebkidx3 = AESUtil.encrypt("3");
+        // 모델로 전달
+        md.addAttribute("ebkidx1", ebkidx1);
+        md.addAttribute("ebkidx2", ebkidx2); 
+        md.addAttribute("ebkidx3", ebkidx3);
+        
+        
         /*QR생성부분*/
         /*QR생성부분 서비스부분에서 실행*/
         ArrayList<String> QRList = bs.QRBikeCode();  
 
-        // JSP로 전달할 데이터 설정
+        // 모델로 전달
         md.addAttribute("QRCode1", QRList.get(0));
         md.addAttribute("QRCode2", QRList.get(1));
         md.addAttribute("QRCode3", QRList.get(2));
         
-
-	  
 	    return "bikeRent/bikeRentQR";
 	}
 
 	//BikeJoinVo로 bike관련 Vo들 join시킴
-	/*자전거상세보기*/	
-	@RequestMapping(value="/bikeRentDetail.do")
+	/*자전거상세보기*/	 
+	@RequestMapping(value="/bikeRentDetail/{key}/view.do")//.do로 끝나야 경로가 맞는다 
 	public String bikeRentDetail(
-			@RequestParam("bkidx") int bkidx,
+			@PathVariable("key") String ebkidx, // bkidx 으로 받는이유는 암호화할때 value로 받으면 +같은 특수문자도 들어가있어서 가져올때 잘못 보여준다
 			HttpServletRequest request,
-			Model md) {
-        // 암호화된 데이터를 받아옵니다.
-        String encryptedData = request.getParameter("data");
-        // 복호화 처리
-        try {
-            String decryptedData = AESUtil.decrypt(encryptedData);
-            // 처리된 데이터를 모델에 담아서 뷰로 전달
-            md.addAttribute("decryptedData", decryptedData);
-        } catch (Exception e) {
-            // 예외 처리 로직
-            e.printStackTrace(); // 예외 정보를 콘솔에 출력하거나, 적절한 예외 처리를 수행합니다.
-        }
-		
+			Model md) throws Exception {
+		 System.out.println("암호화된키"+ebkidx);
+		 //복호화
+		 String dbkidx = AESUtil.decrypt(ebkidx);
+		 int bkidx = Integer.parseInt(dbkidx);
+		 System.out.println("복호화한키"+bkidx);
+		 
+		 
 		  BikeJoinVo bjv = bs.RentDetail(bkidx);
 		  
 		  md.addAttribute("bjv", bjv);
@@ -124,11 +128,9 @@ public class bikeRentController {
 			HttpServletRequest request,
 			Model md
 			){
-	    HttpSession session = request.getSession();//애매,qa
+	    HttpSession session = request.getSession();
 	    int midx = (int) session.getAttribute("midx");
 	    bjv.setMidx(midx);
-	
-	    System.out.println("bjv"+bjv.getBkidx());
 	    
 	    // 자전거 상태 업데이트
 	    bs.updateBikeState(bjv.getBkidx());
@@ -142,10 +144,10 @@ public class bikeRentController {
 	    int value = bs.insertRentInfo(bjv, rsidx);
 		
 		System.out.println("insertInfo 실행"+bjv.getRidx());
-		session.setAttribute("ridx", bjv.getRidx());
-		session.setAttribute("bkidx", bjv.getBkidx());
+		session.setAttribute("ridx", bjv.getRidx());//세션값에 저장
+		session.setAttribute("bkidx", bjv.getBkidx());//세션값에 저장
 			
-		return "redirect:/bikeRent/bikeRentUseList.do?bkidx=" + bjv.getBkidx()+"&ridx="+bjv.getRidx();
+		return "redirect:/bikeRent/bikeRentUseList.do";
 	}
 	
 
@@ -170,9 +172,29 @@ public class bikeRentController {
 		 return "bikeRent/bikeRentUseList"; 
 	}
 	
-	/*자전거 QR대여*/
+	/*대여소 QR 반납하기*/
 	@RequestMapping(value="/bikeReturnQR.do")
-	public String bikeReturnQR(@RequestParam("ridx") int ridx,Model md) {
+	public String bikeReturnQR(
+			HttpServletRequest request,
+			Model md
+			) throws Exception {
+		//세션값가져오기
+		HttpSession session = request.getSession();
+		int ridx = (int) session.getAttribute("ridx");
+		
+		/*암호화부분*/
+        /*URL파라미터값 암호화*/
+        String ersidx1 = AESUtil.encrypt("1");
+        String ersidx2 = AESUtil.encrypt("2");
+        String ersidx3 = AESUtil.encrypt("3");
+        // 모델로 전달
+        md.addAttribute("ersidx1", ersidx1);
+        md.addAttribute("ersidx2", ersidx2); 
+        md.addAttribute("ersidx3", ersidx3);
+		
+		
+		
+		
 		
         /*QR생성부분*/
         /*QR생성부분 서비스부분에서 실행*/
@@ -192,14 +214,24 @@ public class bikeRentController {
 	/*----------------------------------------------*/
 	
 	/*반납하기*/
-	@RequestMapping(value="/bikeRentReturn.do")
+	@RequestMapping(value="/bikeRentReturn/{key}/view.do")
 	public String bikeRentReturn(
-			@RequestParam(value = "ridx" ) int ridx,//대여 번호
-			@RequestParam(value = "rsidx") int rsidx,//반납하는 대여소 주소 번호
+			@PathVariable("key") String ersidx,//반납하는 대여소 주소 번호
+			HttpServletRequest request,
 			Model md
-			) {
+			) throws Exception {
 			//이용중인 내역에서 사용자가 반납하러가기를 누르고 반납소 QR을 찍으면 이쪽으로 넘어온다
 			//그래서 자전거 번호를 그 전에 가져와야한다
+		//세션값가져오기
+		
+		 System.out.println("암호화된키"+ersidx);
+		 //복호화
+		 String drsidx = AESUtil.decrypt(ersidx);
+		 int rsidx = Integer.parseInt(drsidx);
+		 System.out.println("복호화한키"+rsidx);
+		
+		HttpSession session = request.getSession();
+		int ridx = (int) session.getAttribute("ridx");//대여번호
 		System.out.println("반납하기 자전거번호"+ridx+"반납소 번호"+rsidx);
 	
 
@@ -220,13 +252,12 @@ public class bikeRentController {
 	/*반납하기페이지에서 최종반납하기 클릭시*/
 	@RequestMapping(value="/bikeRentReturnAction.do")
 	public String bikeRentReturnAction(
-			@RequestParam(value = "ridx" ) int ridx,//대여 번호
 			@RequestParam(value = "rsidx") int rsidx,//반납하는 대여소 주소 번호
 			HttpServletRequest request
 			) {
 		//세션값
 		HttpSession session = request.getSession();
-
+		int ridx = (int) session.getAttribute("ridx");//대여번호
 		System.out.println("최종반납 자전거번호"+ridx);
 		System.out.println("최종반납 대여소 주소 번호"+rsidx);
 

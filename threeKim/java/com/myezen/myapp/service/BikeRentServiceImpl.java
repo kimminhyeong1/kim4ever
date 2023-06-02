@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.persistance.BikeRentService_Mapper;
+import com.myezen.myapp.util.AESUtil;
 import com.myezen.myapp.util.QRCodeUtil;
 
 import net.nurigo.java_sdk.api.Message;
@@ -176,12 +177,18 @@ public class BikeRentServiceImpl implements BikeRentService {
 	
 	@Override
 	//자전거QR생성
-	public ArrayList<String> QRBikeCode() {
+	public ArrayList<String> QRBikeCode() throws Exception {
+		
+		/*URL파라미터값 암호화*/
+        String ebkidx1 = AESUtil.encrypt("1");
+        String ebkidx2 = AESUtil.encrypt("2");
+        String ebkidx3 = AESUtil.encrypt("3");
+		
 		
 		// QR 코드 설정
-		String url1 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?bkidx=1"; // QR 코드에 포함될 URL
-		String url2 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?bkidx=2"; // QR 코드에 포함될 URL
-		String url3 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?bkidx=3"; // QR 코드에 포함될 URL
+		String url1 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?key="+ebkidx1; // QR 코드에 포함될 URL
+		String url2 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?key="+ebkidx2; // QR 코드에 포함될 URL
+		String url3 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?key="+ebkidx3; // QR 코드에 포함될 URL
 		int width = 300; // 원하는 가로 크기
 		int height = 300; // 원하는 세로 크기
 		
@@ -205,12 +212,17 @@ public class BikeRentServiceImpl implements BikeRentService {
 
 	@Override
 	//대여소QR생성
-	public ArrayList<String> QRRentalShopCode() {
+	public ArrayList<String> QRRentalShopCode() throws Exception {
+		
+		/*URL파라미터값 암호화*/
+        String ersidx1 = AESUtil.encrypt("1");
+        String ersidx2 = AESUtil.encrypt("2");
+        String ersidx3 = AESUtil.encrypt("3");
 		
 		// QR 코드 설정
-		String url1 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?rsidx=1"; // QR 코드에 포함될 URL
-		String url2 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?rsidx=2"; // QR 코드에 포함될 URL
-		String url3 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?rsidx=3"; // QR 코드에 포함될 URL
+		String url1 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?key="+ersidx1; // QR 코드에 포함될 URL
+		String url2 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?key="+ersidx2; // QR 코드에 포함될 URL
+		String url3 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?key="+ersidx3; // QR 코드에 포함될 URL
 		int width = 300; // 원하는 가로 크기
 		int height = 300; // 원하는 세로 크기
 		
