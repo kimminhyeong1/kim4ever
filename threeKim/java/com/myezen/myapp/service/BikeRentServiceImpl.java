@@ -135,14 +135,44 @@ public class BikeRentServiceImpl implements BikeRentService {
 		return bjvlist;
 	}
 
-
+	
 	@Override
-	public ArrayList<String> QRCode() {
+	//자전거QR생성
+	public ArrayList<String> QRBikeCode() {
 		
 		// QR 코드 설정
 		String url1 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?bkidx=1"; // QR 코드에 포함될 URL
 		String url2 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?bkidx=2"; // QR 코드에 포함될 URL
 		String url3 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?bkidx=3"; // QR 코드에 포함될 URL
+		int width = 300; // 원하는 가로 크기
+		int height = 300; // 원하는 세로 크기
+		
+		// QR 코드 생성
+		QRCodeUtil qrCodeUtil1 = new QRCodeUtil();
+		String qrCode1 = qrCodeUtil1.generateQRCode(url1, width, height);
+		QRCodeUtil qrCodeUtil2 = new QRCodeUtil();
+		String qrCode2 = qrCodeUtil2.generateQRCode(url2, width, height);
+		QRCodeUtil qrCodeUtil3 = new QRCodeUtil();
+		String qrCode3 = qrCodeUtil3.generateQRCode(url3, width, height);
+		
+		// QR 코드 담기
+		ArrayList<String> QRList = new ArrayList<>();
+		QRList.add(qrCode1);
+		QRList.add(qrCode2);
+		QRList.add(qrCode3);
+		
+		return QRList;
+	}
+
+
+	@Override
+	//대여소QR생성
+	public ArrayList<String> QRRentalShopCode() {
+		
+		// QR 코드 설정
+		String url1 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?rsidx=1"; // QR 코드에 포함될 URL
+		String url2 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?rsidx=2"; // QR 코드에 포함될 URL
+		String url3 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail.do?rsidx=3"; // QR 코드에 포함될 URL
 		int width = 300; // 원하는 가로 크기
 		int height = 300; // 원하는 세로 크기
 		

@@ -19,8 +19,10 @@ import com.myezen.myapp.util.QRCodeUtil;
 
 public interface BikeRentService {
 	
-	//QR생성
-	public ArrayList<String> QRCode();
+	//QR자전거생성
+	public ArrayList<String> QRBikeCode();
+	//QR대여소생성
+	public ArrayList<String> QRRentalShopCode();
 	
 	//자전거상세보기
 	public BikeJoinVo RentDetail(int bkidx);

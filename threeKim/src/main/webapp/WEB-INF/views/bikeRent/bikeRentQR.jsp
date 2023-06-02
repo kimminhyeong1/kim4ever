@@ -20,23 +20,18 @@
 			<h2 class="QRTitle">자전거QR</h2>
 				<div class="container">
 					<div class="containerFlex">
-						 
                         <div class="QRcard">
                             <a href="<%=request.getContextPath()%>/bikeRent/bikeRentDetail.do?bkidx=1"><img class="QRImg" src="data:image/png;base64,${QRCode1}" alt=""></a>
                             <p>NOR1</p>
                         </div>
-                        
                          <div class="QRcard">
                             <a href="<%=request.getContextPath()%>/bikeRent/bikeRentDetail.do?bkidx=2"><img class="QRImg" src="data:image/png;base64,${QRCode2}" alt=""></a>
                             <p>ELE1</p>
                         </div>
-                        
                          <div class="QRcard">
                             <a href="<%=request.getContextPath()%>/bikeRent/bikeRentDetail.do?bkidx=3"><img class="QRImg" src="data:image/png;base64,${QRCode3}" alt=""></a>
                             <p>ELE2</p>
                         </div>                      
-
-   		
 					</div>
 				</div>
 		

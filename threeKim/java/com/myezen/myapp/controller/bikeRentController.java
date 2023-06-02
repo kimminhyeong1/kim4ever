@@ -76,7 +76,7 @@ public class bikeRentController {
 		
         /*QR생성부분*/
         /*QR생성부분 서비스부분에서 실행*/
-        ArrayList<String> QRList = bs.QRCode();  
+        ArrayList<String> QRList = bs.QRBikeCode();  
 
         // JSP로 전달할 데이터 설정
         md.addAttribute("QRCode1", QRList.get(0));
@@ -174,9 +174,17 @@ public class bikeRentController {
 	@RequestMapping(value="/bikeReturnQR.do")
 	public String bikeReturnQR(@RequestParam("ridx") int ridx,Model md) {
 		
-		md.addAttribute("ridx", ridx);
-	 	
+        /*QR생성부분*/
+        /*QR생성부분 서비스부분에서 실행*/
+        ArrayList<String> QRList = bs.QRRentalShopCode();  
+
+        // JSP로 전달할 데이터 설정
+        md.addAttribute("QRCode1", QRList.get(0));
+        md.addAttribute("QRCode2", QRList.get(1));
+        md.addAttribute("QRCode3", QRList.get(2));
 	  
+        md.addAttribute("ridx", ridx);
+        
 	    return "bikeRent/bikeReturnQR";
 	}
 
