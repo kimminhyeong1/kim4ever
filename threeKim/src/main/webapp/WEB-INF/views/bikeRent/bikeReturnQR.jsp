@@ -21,20 +21,20 @@
 			<h2 class="QRTitle">대여소QR</h2>	
 					<div class="containerFlex">
 						<div class="QRcard">
-							<a href="<%=request.getContextPath()%>/bikeRent/bikeRentReturn.do?ridx=${ridx}&rsidx=1"><img class="QRImg"src="data:image/png;base64,${QRCode1}" alt=""></a>
+							<a href="${pageContext.request.contextPath}/bikeRent/bikeRentReturn/${ersidx1}/view.do"><img class="QRImg"src="data:image/png;base64,${QRCode1}" alt=""></a>
 						<p>송천대여소</p>
 						</div>
 						<div class="QRcard">
-							<a href="<%=request.getContextPath()%>/bikeRent/bikeRentReturn.do?ridx=${ridx}&rsidx=2"><img class="QRImg" src="data:image/png;base64,${QRCode2}" alt=""></a>
+							<a href="${pageContext.request.contextPath}/bikeRent/bikeRentReturn/${ersidx2}/view.do"><img class="QRImg" src="data:image/png;base64,${QRCode2}" alt=""></a>
 						<p>효자대여소</p>
 						</div>
 						<div class="QRcard">
-							<a href="<%=request.getContextPath()%>/bikeRent/bikeRentReturn.do?ridx=${ridx}&rsidx=3"><img class="QRImg" src="data:image/png;base64,${QRCode3}" alt=""></a>
+							<a href="${pageContext.request.contextPath}/bikeRent/bikeRentReturn/${ersidx3}/view.do"><img class="QRImg" src="data:image/png;base64,${QRCode3}" alt=""></a>
 						<p>덕진대여소</p>
 						</div>
 					</div>
 				
-			
+			 
 			
 			</section>
 		</main>
