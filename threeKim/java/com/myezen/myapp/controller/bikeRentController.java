@@ -418,9 +418,14 @@ public class bikeRentController {
 	}
 	
 	
-	
-	
-	
+	/* ******************************************************************/
+	/*자전거 결제*/
+	@RequestMapping(value="/pay.do")
+	public String pay()
+	{	  
+	    return "bikeRent/pay";
+	}
+
 	
 	
 	

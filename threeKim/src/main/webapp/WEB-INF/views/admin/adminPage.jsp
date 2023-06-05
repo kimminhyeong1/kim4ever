@@ -54,28 +54,28 @@
 							<h2>대여소 현황</h2>													
 							<tr>
 							<td>송천</td>
-							<td>일반 : 10대</td>
-							<td>전기 : 12대</td>							
+							<td>일반 : ${snorCount}대</td>
+							<td>전기 : ${seleCount}대</td>							
 							</tr>
 							<tr>
 							<td>효자</td>
-							<td>일반 : 10대</td>
-							<td>전기 : 12대</td>							
+							<td>일반 : ${hnorCount}대</td>
+							<td>전기 : ${heleCount}대</td>							
 							</tr>
 							<tr>
-							<td>송천</td>
-							<td>일반 : 10대</td>
-							<td>전기 : 12대</td>							
+							<td>덕진</td>
+							<td>일반 : ${dnorCount}대</td>
+							<td>전기 : ${deleCount}대</td>							
 							</tr>
 							<tr>
-							<td>송천</td>
-							<td>일반 : 10대</td>
-							<td>전기 : 12대</td>							
+							<td>평화</td>
+							<td>일반 : ${pnorCount}대</td>
+							<td>전기 : ${peleCount}대</td>							
 							</tr>
 							<tr>
-							<td>송천</td>
-							<td>일반 : 10대</td>
-							<td>전기 : 12대</td>							
+							<td>오목</td>
+							<td>일반 : ${onorCount}대</td>
+							<td>전기 : ${oeleCount}대</td>							
 							</tr>
 						</table>					
 					</div>		

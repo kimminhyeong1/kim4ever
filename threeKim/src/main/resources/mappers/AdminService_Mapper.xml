@@ -140,5 +140,56 @@
         SELECT COUNT(*) FROM bike1234 where bikeState LIKE 'Y'
     </select>
 	
+	<!-- 관리자 메인페이지 송천  일반 자전거 잔여 수 -->
+	<select id="getSNorCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM bike1234 where bikeState LIKE 'Y' and bikeLocation Like '송천' and bikeType Like '일반자전거'
+    </select>
+
+	<!-- 관리자 메인페이지 송천  전기 자전거 잔여 수 -->
+	<select id="getSEleCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM bike1234 where bikeState LIKE 'Y' and bikeLocation Like '송천' and bikeType Like '전기자전거'
+    </select>
+
+	<!-- 관리자 메인페이지 효자  일반 자전거 잔여 수 -->
+	<select id="getHNorCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM bike1234 where bikeState LIKE 'Y' and bikeLocation Like '효자' and bikeType Like '일반자전거'
+    </select>
+
+	<!-- 관리자 메인페이지 효자  전기 자전거 잔여 수 -->
+	<select id="getHEleCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM bike1234 where bikeState LIKE 'Y' and bikeLocation Like '효자' and bikeType Like '전기자전거'
+    </select>
+	
+	<!-- 관리자 메인페이지 덕진  일반 자전거 잔여 수 -->
+	<select id="getDNorCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM bike1234 where bikeState LIKE 'Y' and bikeLocation Like '덕진' and bikeType Like '일반자전거'
+    </select>
+	
+	<!-- 관리자 메인페이지 덕진  전기 자전거 잔여 수 -->
+	<select id="getDEleCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM bike1234 where bikeState LIKE 'Y' and bikeLocation Like '덕진' and bikeType Like '전기자전거'
+    </select>
+    
+	<!-- 관리자 메인페이지 평화  일반 자전거 잔여 수 -->
+	<select id="getPNorCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM bike1234 where bikeState LIKE 'Y' and bikeLocation Like '평화' and bikeType Like '일반자전거'
+    </select>
+    
+    <!-- 관리자 메인페이지 평화  전기 자전거 잔여 수 -->
+	<select id="getPEleCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM bike1234 where bikeState LIKE 'Y' and bikeLocation Like '평화' and bikeType Like '전기자전거'
+    </select>
+	
+	<!-- 관리자 메인페이지 오목  일반 자전거 잔여 수 -->
+	<select id="getONorCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM bike1234 where bikeState LIKE 'Y' and bikeLocation Like '오목' and bikeType Like '일반자전거'
+    </select>
+	
+	<!-- 관리자 메인페이지 오목  전기 자전거 잔여 수 -->
+	<select id="getOEleCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM bike1234 where bikeState LIKE 'Y' and bikeLocation Like '오목' and bikeType Like '전기자전거'
+    </select>
+	
+	
 </mapper>
 
