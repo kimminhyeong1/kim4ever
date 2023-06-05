@@ -253,6 +253,14 @@ public class BikeRentServiceImpl implements BikeRentService {
 	}
 
 
+	@Override
+	//대여소 자전거 남은 갯수
+	public ArrayList<Integer> availableStations() {
+		
+		return null;
+	}
+
+
 	
 
 	

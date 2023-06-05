@@ -60,8 +60,9 @@ public class bikeRentController {
 	}
 	/*자전거 대여소 위치*/
 	@RequestMapping(value="/bikeRentLocation.do")
-	public String bikeRentLocation() {
-		
+	public String bikeRentLocation(Model md) {
+		ArrayList<Integer> alist = bs.availableStations();
+		md.addAttribute("alist", alist);
 		return "bikeRent/bikeRentLocation";
 	}
 	/*자전거 소개글*/ 
