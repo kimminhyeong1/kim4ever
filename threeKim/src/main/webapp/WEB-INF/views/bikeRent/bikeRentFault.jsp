@@ -15,7 +15,7 @@
 			/*헤더영역 메뉴*/
 			header #menu{display: none;}
 			/*틀부분*/
-			.container{border: 1px solid #bbb;margin: 40px auto;width: 55%;padding: 20px;background-color: #f1f1f1;border-radius: 10px;}
+			.container{border: 1px solid #bbb;margin: 40px auto;width: 68.5% ;padding: 20px;background-color: #f1f1f1;border-radius: 10px;}
 			.container>div{padding: 20px; text-align: left;}
 			.container>div>p{display: inline-block; } 
 			.container>div>p:nth-child(1){width: 40%; margin-left: 60px;} 
