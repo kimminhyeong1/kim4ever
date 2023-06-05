@@ -12,35 +12,44 @@
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20f538f14cf29a1eb30d2f9dbaa4e1fb&libraries=services,clusterer,drawing"></script> <!-- 카카오지도APIkey -->
 		<style>
 		
-		#main{width:1250px; margin:35px auto 70px; text-align:center; }
-		#content{width:1250px; height:1500px;}
-		#bottom{width:1250px; height:300px;}
-		#content img{width:600px; height:400px; margin-top:40px;}
-		#content table {width:600px; height:400px; border-collapse:collapse; margin:50px auto 20px; text-align:center;}
-		#content table td {border:1px solid #ddd; padding:10px;font-size:16px; line-height:1.5; margin-left:60px;}
-		#content table h2 {font-size:24px; margin-bottom:5px; }
-		#content table p {margin: 0;}
-		#content table input[type="text"],textarea{
-		  box-sizing: border-box;
-		  width: 100%;
-		  padding: 10px;
-		  margin: 2px 0;
-		  border: 1px solid #ccc;
-		  border-radius: 4px;
-		}
-		
-		#content button{width:100%; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
-		#content button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+			/*헤더영역 메뉴*/
+			header #menu{display: none;}
+			/*틀부분*/
+			.container{border: 1px solid #bbb;margin: 40px auto;width: 55%;padding: 20px;background-color: #f1f1f1;border-radius: 10px;}
+			.container>div{padding: 20px; text-align: left;}
+			.container>div>p{display: inline-block; } 
+			.container>div>p:nth-child(1){width: 40%; margin-left: 60px;} 
+			.container>div>p:nth-child(2){width: 5%;} 
+			.container{font-size: 24px;}
+			.container h1{font-size: 50px; text-align: center;}
+			.container h2{font-size: 40px; text-align: center;}
+			.container button{display:inline-block; width:45%; height:55px; margin-top:0px;text-align:center; font-family:'omyu_pretty'; font-size:25px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+			.container button:active{background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+			/*이용내역 내용*/
+			#useInfo{width:80%; font-size:22px; line-height:35px;}
+			/*이용내역 내용 버튼*/
+			#useListBtn{text-align:center;}
+			
 		</style>
 		<script type="text/javascript">
 			$(document).ready(function(){
-		    	$("#btn1").click(function(){
+		    	
+				// 자전거가 움직이지 않나요? 버튼 클릭 시
+				  $("button").click(function() {
+				    // container A 비활성화
+				    $(".container.A").css("display", "none");
+				    // container B 활성화
+				    $(".container.B").css("display", "block");
+				    
+				    initMap();//맵실행
+				    
+				  });
+				
+				
+				
+				$("#btn1").click(function(){
 		
 		            var fm = document.frm;
-		         
-		            // 위치 및 주소 값을 입력 폼에 저장
-		            fm.latitude.value = document.getElementById('latitude').value;
-		            fm.longitude.value = document.getElementById('longitude').value;
 		            		      			
 		      			 fm.action ="<%=request.getContextPath()%>/bikeRent/bikeRentFaultAction.do";  
 		      			 fm.method = "POST";
@@ -93,7 +102,7 @@
 	            if (status === kakao.maps.services.Status.OK) {
 	              if (result.length > 0) {
 	                var address = result[0].address.address_name;
-	                document.getElementById('address').innerHTML = '현재 주소: ' + address;
+	                document.getElementById('address2').innerHTML = '현재 주소: ' + address;
 	                document.getElementById('position').innerHTML = '위치: ' + latitude + ', ' + longitude;
 	              }
 	            }
@@ -115,8 +124,12 @@
 	            if (status === kakao.maps.services.Status.OK) {
 	              if (result.length > 0) {
 	                var address = result[0].address.address_name;
-	                document.getElementById('address').innerHTML = '현재 주소: ' + address;
+	                document.getElementById('address2').innerHTML = '현재 주소: ' + address;
 	                document.getElementById('position').innerHTML = '위치: ' + latitude + ', ' + longitude;
+	             // 인풋 값 설정
+	                document.getElementById('latitude').value = latitude;
+	                document.getElementById('longitude').value = longitude;
+	                document.getElementById('address').value = address;
 	              }
 	            }
 	          });
@@ -127,16 +140,19 @@
 	          if (status === kakao.maps.services.Status.OK) {
 	            if (result.length > 0) {
 	              var address = result[0].address.address_name;
-	              document.getElementById('address').innerHTML = '현재 주소: ' + address;
+	              document.getElementById('address2').innerHTML = '현재 주소: ' + address;
 	              document.getElementById('position').innerHTML = '위치: ' + latitude + ', ' + longitude;
+		             // 인풋 값 설정
+	                document.getElementById('latitude').value = latitude;
+	                document.getElementById('longitude').value = longitude;
+	                document.getElementById('address').value = address;
 	            }
 	          }
 	        });
 	      });
 	    }
 
-	    // HTML 로딩 완료 후 initMap 함수 호출
-	    document.addEventListener('DOMContentLoaded', initMap);
+	    
 		</script> 
 
 	</head>
@@ -144,52 +160,43 @@
 		<%@include file="../header.jsp" %>
 		<div id="main">	
 			<div id="content">
-				<h2>자전거 고장/신고</h2>
-				<form name="frm" id="frm">
-					<div>
-			            <label>위치</label>
-			            <div id="map" style="width: 1000px; height: 500px;"></div>
-			            <input type="hidden" id="latitude" name="latitude">
-			            <input type="hidden" id="longitude" name="longitude">
-			        </div>
-					<p id="address">현재 주소: </p>
-					<p id="position">위치: </p>
-
-			        <div>
-			            <label>이미지</label>
-			            <input type="file" name="image">
-			        </div>
-	                <div>
-			            <label>내용</label>
-			            <textarea name="content"></textarea>
-			        </div>
-					<table>
-						<tr>
-							<td>
-								<img src="../resources/bikeimg/bikeDetail.png" alt="bikeDetail">
-							</td> 
-						</tr>
-					 	<tr>
-					 		<td>
-								<textarea cols="100" rows="15" name="errorContent"></textarea>
-							</td>
-						</tr>
-						<tr>
-							<td>
-							 	<button type="button" id="btn1">작성하기</button>
-							 	
-							</td> 
-						</tr>	
-					</table>
-				</form>
-			</div>
-			
-			<div id="bottom">
-			 <%@include file="../bottom.jsp" %>
+				<div class="container A">
+					<div><h2>안내사항</h2></div>
+					<div>고장/신고는 자전거가 움직이지 않거나 사고가 일어났을 때 접수가 가능한 페이지입니다,</div>
+					<div><span>다른 잔고장인 경우에는</span>반납이 끝나고 나오는 이용 리뷰 페이지를 이용해 주시길 바랍니다.</div>
+					<div><button type="button">자전거가 움직이지 않나요?[고장/신고]</button></div>
+					<div><button type="button">돌아가기</button></div>
+				</div>
+				<div class="container B" style="display: none;">
+					<form name="frm" id="frm">
+						<h2>자전거 고장/신고</h2>
+						<div>
+				            <h3>위치</h3>
+				            <div>지금 자전거 위치를 지정해주세요.</div>
+				            <div id="map" style="width: 860px; height: 500px;"></div>
+				            <input type="hidden" id="latitude" name="latitude" value=""><!-- 위도 -->
+				            <input type="hidden" id="longitude" name="longitude" value=""><!-- 경도 -->
+				            <input type="hidden" id="address" name="address" value=""><!-- 주소 -->
+				        </div>
+						<p id="address2">현재 주소: </p>
+						<p id="position">위치: </p>
+	
+				        <div>
+				            <h3>사진</h3>
+				            <div>자전거가 위치한 사진을 찍어주세요.</div>
+				            <input type="file" name="image">
+				        </div>
+		                <div>
+				            <h3>고장내용</h3>
+				            <div>아래의 사진을 보시고 고장 난 부위를 설명해 주세요.</div>
+				            <img src="../resources/bikeimg/bikeDetail.png" alt="bikeDetail">
+							<textarea cols="100" rows="15" name="errorContent"></textarea>
+				        </div>
+				       <div><button type="button" id="btn1">작성하기</button></div>
+					</form>
+				</div>
 			</div>
 		</div>
 		<%@include file="../footer.jsp" %>
-		
-
 	</body>
 </html>

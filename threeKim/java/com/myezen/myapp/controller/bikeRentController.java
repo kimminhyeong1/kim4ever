@@ -308,10 +308,15 @@ public class bikeRentController {
 	/*자전거 고장/신고페이지에서 등록 클릭시*/
 	@RequestMapping(value="/bikeRentFaultAction.do")
 	public String bikeRentFaultAction(
-			@RequestParam("errorContent") String errorContent,
-			HttpServletRequest request
+			@RequestParam("latitude") String latitude, //위도
+			@RequestParam("longitude") String longitude, //경도
+			@RequestParam("address") String address, //주소
+			@RequestParam("errorContent") String errorContent,//고장메세지
+			HttpServletRequest request,
+			Model md
 			) {
 		System.out.println("고장/신고페이지 에서 작성하기 클릭");
+		System.out.println("위도값"+latitude+"경도값"+longitude+"주소값"+address);
 		
 		//세션값가져오기
 		HttpSession session = request.getSession();
@@ -320,10 +325,18 @@ public class bikeRentController {
 		System.out.println("고장/신고페이지 에서 작성하기 클릭 메서드 실행"+ridx+""+errorContent);
 		 int value = bs.bikeRentErrorInsert(errorContent,ridx);
 			
+		 
+		 
+		 md.addAttribute("latitude",latitude);
+		 md.addAttribute("longitude",longitude);
+		 md.addAttribute("address",address);
+		 md.addAttribute("errorContent",errorContent);
+		 
+		 
 		//접수되었다는 메세지 띄우기
 		
-		//홈페이지로 돌아가기 
-			return "redirect:/";
+		//홈페이지로 돌아가기  //임시로 고장페이지 결과보기 주소 설정
+			return "bikeRent/bikeRentFaultResult";
 		
 	}
 	
