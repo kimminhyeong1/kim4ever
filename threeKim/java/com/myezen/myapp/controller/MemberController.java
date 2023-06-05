@@ -73,24 +73,27 @@ public class MemberController {
 		hm.put("value",value); //0은 거짓 1은 참
 		return hm; 
 	}
-		//!회원가입페이지에서 기본회원가입 가입하기 버튼 클릭
-		@RequestMapping(value="/memberJoinAction.do", method = RequestMethod.POST)
-		public String memberJoinAction(
-				@RequestParam("memberId") String memberId,
-				@RequestParam("memberPwd") String memberPwd,
-				@RequestParam("memberName") String memberName,
-				@RequestParam("memberAge") String memberAge,
-				@RequestParam("memberPhone") String memberPhone,
-				@RequestParam("memberEmail") String memberEmail,
-				@RequestParam("memberAddr") String memberAddr
-				) {
+	//!회원가입페이지에서 기본회원가입 가입하기 버튼 클릭
+	@RequestMapping(value="/memberJoinAction.do", method = RequestMethod.POST)
+	public String memberJoinAction(
+			@RequestParam("memberId") String memberId,
+			@RequestParam("memberPwd") String memberPwd,
+			@RequestParam("memberName") String memberName,
+			@RequestParam("memberAge") String memberAge,
+			@RequestParam("memberPhone") String memberPhone,
+			@RequestParam("memberEmail") String memberEmail,
+			@RequestParam("memberAddr") String memberAddr
 			
-			String memberPwd2 = bcryptPasswordEncoder.encode(memberPwd);
-			
-			int value = ms.memberInsert(memberId, memberPwd2, memberName, memberAge, memberPhone, memberEmail, memberAddr);
-							
-			return "redirect:/";
-		}
+			) {
+		
+		String memberPwd2 = bcryptPasswordEncoder.encode(memberPwd);
+		
+	
+		
+		int value = ms.memberInsert(memberId, memberPwd2, memberName, memberAge, memberPhone, memberEmail, memberAddr);
+						
+		return "redirect:/";
+	}
 //!아이디찾기페이지
 	@RequestMapping(value = "/memberIdFind.do")
 	public String memberIdFind() {
@@ -315,40 +318,40 @@ public class MemberController {
 	//회원정보수정
 	@PostMapping("/memberUpdateAction.do")
 	public String memberUpdateAction( 
-	        @RequestParam("memberPwd") String memberpwd,
-	        @RequestParam("memberName") String membername,
-	        @RequestParam("memberAge") String memberage,
-	        @RequestParam("memberPhone") String memberphone,
-	        @RequestParam("memberEmail") String memberemail,
+	        @RequestParam("memberPwd") String memberPwd,
+	        @RequestParam("memberName") String memberName,
+	        @RequestParam("memberAge") String memberAge,
+	        @RequestParam("memberPhone") String memberPhone,
+	        @RequestParam("memberEmail") String memberEmail,
 	        Model model,
 	        HttpSession session) {
 
 	    // 비밀번호 암호화
 	    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-	    String encryptedPassword = passwordEncoder.encode(memberpwd);
+	    String encryptedPassword = passwordEncoder.encode(memberPwd);
 
 	    MemberVo mv = (MemberVo) session.getAttribute("mv");
 
 	    
 	    // 비밀번호 변경 여부 확인 후 업데이트
-	    if (!memberpwd.isEmpty()) {
+	    if (!memberPwd.isEmpty()) {
 	        mv.setMemberPwd(encryptedPassword);
 	    }
 	    
 	    // 이름과 나이 변경 여부 확인
-	    if (!membername.isEmpty()) {
-	        mv.setMemberName(membername);
+	    if (!memberName.isEmpty()) {
+	        mv.setMemberName(memberName);
 	    }
-	    if (!memberage.isEmpty()) {
-	        mv.setMemberAge(memberage);
+	    if (!memberAge.isEmpty()) {
+	        mv.setMemberAge(memberAge);
 	    }
 
 	    // 휴대폰번호와 이메일 변경 여부 확인 후 업데이트
-	    if (!memberphone.isEmpty()) {
-	        mv.setMemberPhone(memberphone);
+	    if (!memberPhone.isEmpty()) {
+	        mv.setMemberPhone(memberPhone);
 	    }
-	    if (!memberemail.isEmpty()) {
-	        mv.setMemberEmail(memberemail);
+	    if (!memberEmail.isEmpty()) {
+	        mv.setMemberEmail(memberEmail);
 	    }
 
 	    //mv.setMemberpwd(encryptedPassword);

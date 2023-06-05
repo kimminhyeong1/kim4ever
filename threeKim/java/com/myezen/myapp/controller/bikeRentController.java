@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.myezen.myapp.domain.BikeJoinVo;
+import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.service.BikeRentService;
 import com.myezen.myapp.util.AESUtil;
 import com.myezen.myapp.util.QRCodeUtil;
@@ -362,8 +363,11 @@ public class bikeRentController {
 	//휴대폰 인증
 	@RequestMapping(value = "/phoneCheck.do", method = RequestMethod.GET)
 	@ResponseBody
-	public String sendSMS(@RequestParam("phone") String userPhoneNumber) { // 휴대폰 문자보내기
+	public String sendSMS(@RequestParam("phone") String userPhoneNumber, HttpSession session) { // 휴대폰 문자보내기
+		
+	
 		int randomNumber = (int)((Math.random()* (999999 - 100000 + 1)) + 100000);//난수 생성
+		
 		
 		  // CoolSMS API 사용
 		  String api_key = "NCSQ6K8YB71UK1Q5"; 
@@ -373,7 +377,7 @@ public class bikeRentController {
 		  HashMap<String, String> params = new HashMap<String, String>();
 		  params.put("to", userPhoneNumber); // 수신전화번호
 		  params.put("from","01056309412"); // 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
-		  params.put("type","SMS"); params.put("text", "[타바] 인증번호는" + "["+randomNumber+"]" + "입니다.");
+		  params.put("type","SMS"); params.put("text", "[타다] 인증번호는" + "["+randomNumber+"]" + "입니다.");
 		
 		  try {
 		        JSONObject obj = (JSONObject) coolsms.send(params);
@@ -386,18 +390,31 @@ public class bikeRentController {
 		System.out.println("userPhoneNumber는?"+userPhoneNumber);
 		System.out.println("Received phone number: " + userPhoneNumber);
 		
+		//로그인한 사용자의 midx 값을 가져옴
+	    int midx = (int) session.getAttribute("midx");
+	    
+	    //회원의 휴대폰 번호를 데이터베이스에서 가져옴
+	    MemberVo mv = bs.getMemberPhoneByMidx(midx);
+	    
+	    //가져온 휴대폰 번호를 memberPhoneNumber로 정의
+	    String memberPhoneNumber = mv.getMemberPhone();
+	    System.out.println("회원가입 시 가입한 휴대폰번호는? " + memberPhoneNumber);
+	    
+	    //memberPhoneNumber와 userPhoneNumber가 일치하면 인증번호 전송
+	    if (userPhoneNumber.equals(memberPhoneNumber)) {
+	    	
 		// 휴대폰 인증 정보를 데이터베이스에 저장
 		BikeJoinVo bjv = new BikeJoinVo();
 		bjv.setPhoneNumber(userPhoneNumber);
 		bjv.setVerificationCode(Integer.toString(randomNumber));
 		bs.savePhoneNumberVerification(bjv);
-	    
-		
-		//bs.certifiedPhoneNumber(userPhoneNumber,randomNumber);
-		
+	  
 		return Integer.toString(randomNumber);
+		
+	    }else {
+	        return "error";
+	    }
 	}
-	
 	//인증번호 대조 확인
 	@RequestMapping(value = "/verifyPhoneNumber.do", method = RequestMethod.POST)
 	@ResponseBody

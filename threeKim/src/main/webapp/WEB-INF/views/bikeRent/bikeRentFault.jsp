@@ -166,6 +166,7 @@
 		<%@include file="../header.jsp" %>
 		<div id="main">	
 			<div id="content">
+
 				<div class="container A">
 					<div><h2>안내사항</h2></div>
 					<div>고장/신고는 자전거가 움직이지 않거나 사고가 일어났을 때 접수가 가능한 페이지입니다,</div>
@@ -201,6 +202,36 @@
 				       <div><button type="button" id="btn3">작성하기</button></div>
 					</form>
 				</div>
+
+				<h2>자전거 고장/신고</h2>
+				<form name="frm" id="frm">
+					<input type="hidden" value="${ridx}" name="ridx">
+					<input type="hidden" value="${URL1}" name="URL1">
+					<input type="hidden" value="${URL2}" name="URL2">
+					<table>
+						<tr>
+							<td>
+								<img src="../resources/bikeimg/bikeDetail2.GIF" alt="bikeDetail">
+							</td> 
+						</tr>
+					 	<tr>
+					 		<td>
+								<textarea cols="100" rows="15" name="errorContent"></textarea>
+							</td>
+						</tr>
+						<tr>
+							<td>
+							 	<button type="button" id="btn1">작성하기</button>
+							 	
+							</td> 
+						</tr>	
+					</table>
+				</form>
+			</div>
+			
+			<div id="bottom">
+			 <%@include file="../bottom.jsp" %>
+
 			</div>
 		</div>
 		<%@include file="../footer.jsp" %>

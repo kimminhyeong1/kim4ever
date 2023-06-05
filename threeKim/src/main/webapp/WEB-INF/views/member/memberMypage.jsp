@@ -58,14 +58,7 @@ input{
 #content table button{width:160px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
-<script type="text/javascript">
-function autoHyphen2(target) {
-	  target.value = target.value
-	    .replace(/[^0-9]/g, '')
-	    .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3")
-	    .replace(/(\-{1,2})$/g, "");
-	}
-</script>
+
 
 
 </head>
