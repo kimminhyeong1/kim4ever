@@ -38,4 +38,5 @@ public interface MemberService {
 //회원리스트에서 회원들정보보기
 	public MemberVo getMemberByMemberId(String memberId);
 	
+
 }

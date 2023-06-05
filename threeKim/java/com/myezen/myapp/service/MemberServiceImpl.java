@@ -174,4 +174,5 @@ public class MemberServiceImpl implements MemberService {
 		
 		return msm.getMemberByMemberId(memberId);
 	}
+
 }

@@ -28,19 +28,21 @@
       //휴대폰 번호 인증
         var code2 = "";
         $("#phoneChk").click(function(){
-        	alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호를 확인해 주세요.");
+        	
         	var phone = $("#phone").val();
+        	
         	$.ajax({
                 type:"GET",
-                url:"phoneCheck.do?phone=" + phone,
+                url:"${pageContext.request.contextPath}/bikeRent/phoneCheck.do?phone=" + phone,
                 cache : false,
                 success:function(data){
                 	if(data == "error"){
-                		alert("휴대폰 번호가 올바르지 않습니다.")
+                		alert("휴대폰 번호가 올바르지 않습니다. \n회원가입 시 입력한 전화번호를 입력해 주세요")
         				$(".successPhoneChk").text("유효한 번호를 입력해주세요.");
         				$(".successPhoneChk").css("color","red");
         				$("#phone").attr("autofocus",true);
-                	}else{	        		
+                	}else{	        	
+                		alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호를 확인해 주세요.");
                 		$("#phone2").attr("disabled",false);
                 		$("#phoneChk2").css("display","inline-block");
                 		$(".successPhoneChk").text("인증번호를 입력하세요.");
@@ -58,7 +60,7 @@
             var verificationCode = $("#phone2").val();
             $.ajax({
                 type: "POST",
-                url: "verifyPhoneNumber.do",
+                url: "${pageContext.request.contextPath}/bikeRent/verifyPhoneNumber.do",
                 data: {
                     phoneNumber: phoneNumber,
                     verificationCode: verificationCode

@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import com.myezen.myapp.domain.BikeJoinVo;
+import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.persistance.BikeRentService_Mapper;
 import com.myezen.myapp.util.AESUtil;
 import com.myezen.myapp.util.QRCodeUtil;
@@ -118,6 +119,13 @@ public class BikeRentServiceImpl implements BikeRentService {
 		
 	}
 
+	//midx로 휴대폰번호 조회하기
+	@Override public MemberVo getMemberPhoneByMidx(int midx) {
+	  
+		return brsm.getMemberPhoneByMidx(midx); 
+	}
+	
+	
 
 
 
@@ -253,6 +261,7 @@ public class BikeRentServiceImpl implements BikeRentService {
 	}
 
 
+
 	@Override
 	//대여소 자전거 남은 갯수
 	public ArrayList<Integer> availableStations() {
@@ -261,7 +270,7 @@ public class BikeRentServiceImpl implements BikeRentService {
 	}
 
 
-	
+
 
 	
 	
