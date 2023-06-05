@@ -286,48 +286,44 @@ public class bikeRentController {
 	/*자전거 고장/신고 접수*/
 	/*자전거 고장/신고페이지*/
 	@RequestMapping(value="/bikeRentFault.do")
-	public String bikeRentFault( //!required = false null값 받기! !Integer 선언 널 떄문에! 차후에 int형으로 바꿈
-			@RequestParam(value = "ridx" ,required = false) Integer ridx,
-			@RequestParam(value = "URL1" ,required = false) Integer URL1,//이용내역에서온 URL
-			@RequestParam(value = "URL2" ,required = false) Integer URL2,//반납하기에서온 URL
+	public String bikeRentFault(
+			HttpServletRequest request,
 			Model md
 			) {
 		System.out.println("고장/신고페이지 들어옴");
-		//임시로 ridx 번호는 1로 지정
-			ridx=(int)1;
-			URL1=(int)2;
-			URL2=(int)2;
+		//세션값가져오기
+		HttpSession session = request.getSession();
+		int ridx = (int) session.getAttribute("ridx");
+			
+			
+			
+			
+			
 			
 			md.addAttribute("ridx", ridx);
-			md.addAttribute("URL1", URL1);
-			md.addAttribute("URL2", URL2);
+
 
 		return "bikeRent/bikeRentFault";
 	}
 	/*자전거 고장/신고페이지에서 등록 클릭시*/
 	@RequestMapping(value="/bikeRentFaultAction.do")
 	public String bikeRentFaultAction(
-			@RequestParam("ridx") int ridx,
-			@RequestParam("URL1") int URL1,
-			@RequestParam("URL2") int URL2,
-			@RequestParam("errorContent") String errorContent
+			@RequestParam("errorContent") String errorContent,
+			HttpServletRequest request
 			) {
 		System.out.println("고장/신고페이지 에서 작성하기 클릭");
+		
+		//세션값가져오기
+		HttpSession session = request.getSession();
+		int ridx = (int) session.getAttribute("ridx");
 
 		System.out.println("고장/신고페이지 에서 작성하기 클릭 메서드 실행"+ridx+""+errorContent);
 		 int value = bs.bikeRentErrorInsert(errorContent,ridx);
 			
 		//접수되었다는 메세지 띄우기
 		
-		//전페이지로 돌아가기 
-		 if (URL1==1) {
-			return "redirect:/bikeRent/bikeRentUseList.do";
-		}if (URL2==1) {
-			return "redirect:/bikeRent/bikeRentReturn.do";
-		}
-		else {	
+		//홈페이지로 돌아가기 
 			return "redirect:/";
-		}
 		
 	}
 	

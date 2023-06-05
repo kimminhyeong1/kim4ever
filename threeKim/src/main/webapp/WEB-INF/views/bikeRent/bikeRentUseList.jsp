@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -46,7 +48,13 @@
 					<div><p>대여한 자전거 대여소 위치</p><p>:</p><p>${bjv.bikeLocation }</p></div>
 					<div><p>사용자 이름</p><p>:</p><p>${bjv.memberName }</p></div>
 					<div><p>자전거 고유번호</p><p>:</p><p>${bjv.bikeCode}</p></div>
-					<div><p>대여한 자전거 시간</p><p>:</p><p>${bjv.rentDay }</p></div>
+					<div><p>대여한 자전거 시간</p><p>:</p><p>
+					<fmt:parseDate value="${bjv.rentDay}" pattern="yyyy-MM-dd HH:mm:ss.S" var="parsedRentDay" />
+					<fmt:formatDate value="${parsedRentDay}" pattern="yyyy-MM-dd HH:mm:ss" var="formattedRentDay" />
+					${formattedRentDay}					
+					</p></div>
+					
+					
 					<div><p>대여한 자전거 이용 요금</p><p>:</p><p>${bjv.rentPrice }원</p></div>
 					<div id="useListBtn">
 						<button onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentFault.do'">고장/신고</button>
