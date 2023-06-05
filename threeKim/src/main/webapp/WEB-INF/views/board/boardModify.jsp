@@ -128,10 +128,10 @@ function getOriginalFileName(fileName){
 				</div>
 
 			</form>
-				<script type="text/javascript">
-					var originalFileName = getOriginalFileName("<%=bv.getFilename()%>");
-					document.getElementById("filenm").innerHTML = originalFileName;
-				</script>
+		<script type="text/javascript">
+				var originalFileName = getOriginalFileName("<%=bv.getFilename()%>");
+				document.getElementById("filenm").innerHTML = originalFileName;
+		</script>
 		</div>
 
 		<div id="bottom"></div>
