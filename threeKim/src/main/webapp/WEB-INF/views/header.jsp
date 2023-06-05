@@ -74,27 +74,22 @@ header{width: 1250px;margin: 35px auto 70px;text-align: center;}
 						<p id="bike">자전거 대여</p>
 					</li>
 					
+					<% String membertype = (String) pageContext.findAttribute("membertype"); %>
+
+					<% if ("관리자".equals(membertype)) { %>	                   
 					<li>
-						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/member/memberMypage.do'">마이페이지</span></a>
+						 <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/admin/adminPage.do'">관리자페이지</span></a> 
 					</li>
-					
+					<% } else { %>
+					<li>
+						 <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/member/memberMypage.do'">마이페이지</span></a>
+					</li>
+					<% } %>
+							
 					<li>
 						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentHistory.do'">대여내역</span></a>
 					</li>
-					
-					
-					<% String membertype = (String) pageContext.findAttribute("membertype"); %>
-	
-					<% if (membertype != null && membertype.equals("관리자")) { %>
-					<li>
-	                       <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/member/memberList.do'">회원관리</span></a>
-	                   </li>
-	                   
-	                   <li>
-	                       <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/admin/adminPage.do'">관리자페이지</span></a> 
-	                   </li>
-	               	<% } %>
-				
+
 					<li>
 						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">공지사항</span></a>
 					</li>
