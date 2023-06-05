@@ -107,7 +107,12 @@
     WHERE PHONENUMBER = #{userPhoneNumber}
 </update>
 
-
+<!-- midx로 회원 정보 조회 -->
+	<select id="getMemberPhoneByMidx" parameterType="int" resultType="com.myezen.myapp.domain.MemberVo">
+	    SELECT memberPhone
+	    FROM member1234
+	    WHERE midx = #{midx}
+	</select>
 
 
 

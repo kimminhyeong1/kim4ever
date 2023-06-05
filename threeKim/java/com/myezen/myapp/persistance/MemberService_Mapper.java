@@ -42,4 +42,5 @@ public interface MemberService_Mapper {
 	
 	
 	
+	
 }

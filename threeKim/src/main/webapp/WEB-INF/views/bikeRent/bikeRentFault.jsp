@@ -58,7 +58,7 @@
 					<table>
 						<tr>
 							<td>
-								<img src="../resources/bikeimg/bikeDetail.png" alt="bikeDetail">
+								<img src="../resources/bikeimg/bikeDetail2.GIF" alt="bikeDetail">
 							</td> 
 						</tr>
 					 	<tr>

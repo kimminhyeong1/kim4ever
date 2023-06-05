@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 
 
 import com.myezen.myapp.domain.BikeJoinVo;
+import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.util.QRCodeUtil;
 
 public interface BikeRentService {
@@ -52,8 +53,8 @@ public interface BikeRentService {
 	public int getSavedRandomNumber(String userPhoneNumber);
 	//휴대폰 인증완료 -> 인증상태 Y로 변경
 	public void updateVerificationStatus(String userPhoneNumber);
-	
-	
+	//midx로 휴대폰번호 조회하기
+	public MemberVo getMemberPhoneByMidx(int midx);
 	
 	
 	
