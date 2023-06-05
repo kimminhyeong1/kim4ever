@@ -58,6 +58,77 @@ public class AdminServiceImpl implements AdminService {
 		return asm.getTotalRentCount();
 	}
 	
+	//관리자 메인페이지 송천 일반 자전거 대여 가능 수
+	@Override
+	public int getSNorCount() {
+				
+		return asm.getSNorCount();
+	}
+	
+	//관리자 메인페이지 송천 전기 자전거 대여 가능 수
+	@Override
+	public int getSEleCount() {
+		
+		return asm.getSEleCount();
+	}
+		
+	//관리자 메인페이지 효자 일반 자전거 대여 가능 수
+	@Override
+	public int getHNorCount() {
+		
+		return asm.getHNorCount();
+	}
+
+	//관리자 메인페이지 효자 전기 자전거 대여 가능 수
+	@Override
+	public int getHEleCount() {
+		
+		return asm.getHEleCount();
+	}
+		
+	//관리자 메인페이지 덕진 일반 자전거 대여 가능 수
+	@Override
+	public int getDNorCount() {
+		
+		return asm.getDNorCount();
+	}
+	
+	//관리자 메인페이지 덕진 전기 자전거 대여 가능 수
+	@Override
+	public int getDEleCount() {
+		
+		return asm.getDEleCount();
+	}
+	
+	//관리자 메인페이지 평화 일반 자전거 대여 가능 수
+	@Override
+	public int getPNorCount() {
+		
+		return asm.getPNorCount();
+	}
+	
+	//관리자 메인페이지 평화 전기 자전거 대여 가능 수
+	@Override
+	public int getPEleCount() {
+		
+		return asm.getPEleCount();
+	}
+	
+	//관리자 메인페이지 오목 일반 자전거 대여 가능 수
+	@Override
+	public int getONorCount() {
+		
+		return asm.getONorCount();
+	}
+	
+	//관리자 메인페이지 오목 전기 자전거 대여 가능 수
+	@Override
+	public int getOEleCount() {
+		
+		return asm.getOEleCount();
+	}
+	
+	
 	//회원삭제
 	@Override
 	public void deleteMember(String memberId) {
@@ -154,6 +225,32 @@ public class AdminServiceImpl implements AdminService {
 		asm.deleteRentalshop(rentalshopName);
 		
 	}
+
+
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
 
 	
 
