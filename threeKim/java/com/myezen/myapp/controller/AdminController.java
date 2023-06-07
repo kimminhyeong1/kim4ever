@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.MemberVo;
+import com.myezen.myapp.domain.SearchCriteria;
 import com.myezen.myapp.service.AdminService;
 import com.myezen.myapp.service.MemberService;
 
@@ -189,12 +190,13 @@ public class AdminController {
 		}		
 		
 	//관리자 신고 내역 페이지
-	@RequestMapping(value="/adminbikeError.do")
-	public String errorList(Model model) {
-		
-		ArrayList<BikeJoinVo> elist = as.errorList();
+	@RequestMapping(value="/adminbikeError.do",method = RequestMethod.GET)
+	public String errorList(SearchCriteria scri, Model model) {
+		System.out.println("어드민컨트롤러 들어옴");
+		ArrayList<BikeJoinVo> elist = as.searchBikeErrors(scri);
 		
 		model.addAttribute("elist",elist);
+		model.addAttribute("searchCriteria", scri);
 		
 		return "admin/adminbikeError";
 	}
@@ -217,15 +219,17 @@ public class AdminController {
 	}	
 	
 	//관리자 수리 내역 페이지
-	@RequestMapping(value="/adminbikeRepairList.do") 
-	public String repairList(Model model) {
+	@RequestMapping(value="/adminbikeRepairList.do",method = RequestMethod.GET) 
+	public String repairList(SearchCriteria scri,Model model) {
   
-		ArrayList<BikeJoinVo> elist = as.repairList();
+		ArrayList<BikeJoinVo> elist = as.searchBikerepairList(scri);
   
 		model.addAttribute("elist",elist); 
+		model.addAttribute("searchCriteria", scri);
   
 		return "admin/adminbikeRepairList";
 	}
+	
 	
 	
 

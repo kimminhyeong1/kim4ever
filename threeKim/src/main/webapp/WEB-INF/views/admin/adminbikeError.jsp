@@ -3,7 +3,7 @@
 <%@page import = "com.myezen.myapp.domain.BikeJoinVo" %>
 <%@page import = "java.util.*" %>      
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %><!-- 날짜태그 -->    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,19 +66,20 @@ li{list-style:none;}
 <%@include file="../header4.jsp" %>
 <div id="main">
 	<div id="content">
-
+		<form action="${pageContext.request.contextPath }/admin/adminbikeError.do" method="get">
 		<h2><a id="bikeError" href="${pageContext.request.contextPath}/admin/adminbikeError.do">신고 내역</a> <a id="bikeRepair" href="${pageContext.request.contextPath}/admin/adminbikeRepairList.do">수리 내역</a></h2>	
+		
 		<div class="search">
 			<select id="searchType" name="searchType">
 				<option value="">검색조건</option>
-				<option value="name">고객명</option> 
-				<option value="phone">연락처</option>
-				<option value="place">대여소</option>
+				<option value="memberName">고객명</option> 
+				<option value="memberPhone">연락처</option>
+				<option value="rentPlace">대여소</option>
 			</select>
-			<input class="form-control" type="text" id="keyword" name="keyword" 
-				value="${pageMaker.cri.keyword}" placeholder="검색어를 입력하세요"/>
-			<button id="searchBtn">Search</button>
+			<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요"/>
+			<button type="submit" id="searchBtn">검색</button>
 		</div>
+		</form>
 		<table>
 				<tr>
 					<th>고객명</th>
@@ -116,7 +117,7 @@ li{list-style:none;}
 					</tr>
 			</c:forEach>
 		</table>
-	
+		
 		
 	
 		

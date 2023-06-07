@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.MemberVo;
+import com.myezen.myapp.domain.SearchCriteria;
 
 
 
@@ -44,13 +45,13 @@ public interface AdminService {
 	//회원리스트
 		public ArrayList<BikeJoinVo> memberList();	
 	//고장 신고내역 리스트
-		public ArrayList<BikeJoinVo> errorList();
+		public ArrayList<BikeJoinVo> searchBikeErrors(SearchCriteria scri);
 	//고장 신고 상세 페이지	
 		public BikeJoinVo getErrorContent(int eidx);
 	//bikeState E로 업데이트
 		public void updateBikeState(int eidx);
 	//수리 내역 페이지
-		public ArrayList<BikeJoinVo> repairList();	
+		public ArrayList<BikeJoinVo> searchBikerepairList(SearchCriteria scri);	
 	//자전거리스트	
 		public ArrayList<BikeJoinVo> bikeList();
 	//대여소 리스트

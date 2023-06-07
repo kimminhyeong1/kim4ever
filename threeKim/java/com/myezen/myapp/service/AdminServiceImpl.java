@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.MemberVo;
+import com.myezen.myapp.domain.SearchCriteria;
 import com.myezen.myapp.persistance.AdminService_Mapper;
 import com.myezen.myapp.persistance.MemberService_Mapper;
 
@@ -148,10 +149,9 @@ public class AdminServiceImpl implements AdminService {
 
 	//신고 내역 리스트
 	@Override
-	public ArrayList<BikeJoinVo> errorList() {
+	public ArrayList<BikeJoinVo> searchBikeErrors(SearchCriteria scri) {
 
-	ArrayList<BikeJoinVo> elist = asm.errorList();
-		return elist;
+		return asm.searchBikeErrors(scri);
 	}
 	
 	//신고 내역 상세보기
@@ -164,16 +164,15 @@ public class AdminServiceImpl implements AdminService {
 	//errorState D에서 R로 업데이트
 	@Override
 	public void updateBikeState(int eidx) {
-	asm.updateBikeState(eidx);
+		asm.updateBikeState(eidx);
 		
 	}
 	
 	//수리 내역 페이지
 	@Override
-	public ArrayList<BikeJoinVo> repairList() {
-	
-	ArrayList<BikeJoinVo> elist = asm.repairList();	
-		return elist;
+	public ArrayList<BikeJoinVo> searchBikerepairList(SearchCriteria scri) {
+
+		return asm.searchBikerepairList(scri);	
 	}
 	
 	//회원 상세정보

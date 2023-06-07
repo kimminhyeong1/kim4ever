@@ -60,19 +60,20 @@ li{list-style:none;}
 <%@include file="../header4.jsp" %>
 <div id="main">
 	<div id="content">
-
+		<form action="${pageContext.request.contextPath }/admin/adminbikeRepairList.do" method="get">
 		<h2><a id="bikeError" href="${pageContext.request.contextPath}/admin/adminbikeError.do">신고 내역</a>  <a id="bikeRepair" href="${pageContext.request.contextPath}/admin/adminbikeRepairList.do">수리 내역</a></h2>
 		<div class="search">
 			<select id="searchType" name="searchType">
 				<option value="">검색조건</option>
-				<option value="name">자전거종류</option> 
-				<option value="phone">자전거번호</option>
-				<option value="place">내용</option>
+				<option value="bikeType">자전거종류</option> 
+				<option value="bikeCode">자전거번호</option>
+				<option value="errorContent">내용</option>
+				<option value="bikeState">상태</option>
 			</select>
-			<input class="form-control" type="text" id="keyword" name="keyword" 
-				value="${pageMaker.cri.keyword}" placeholder="검색어를 입력하세요"/>
-			<button id="searchBtn">Search</button>
+			<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요"/>
+			<button type="submit" id="searchBtn">검색</button>
 		</div>	
+		</form>
 		<table>
 				<tr>
 					<th>자전거종류</th>
