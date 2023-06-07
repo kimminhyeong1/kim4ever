@@ -1,5 +1,6 @@
 package com.myezen.myapp.persistance;
 
+
 import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Param;
@@ -7,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.domain.RentalshopVo;
+import com.myezen.myapp.domain.SearchCriteria;
 
 public interface AdminService_Mapper {
 
@@ -43,13 +45,13 @@ public interface AdminService_Mapper {
 	//회원 리스트	
 	public ArrayList<BikeJoinVo> memberList();
 	//고장 내역 리스트	
-	public ArrayList<BikeJoinVo> errorList();
+	public ArrayList<BikeJoinVo> searchBikeErrors(SearchCriteria scri);
 	//고장  내역 상세 페이지	
 	public BikeJoinVo getErrorContent(int eidx);
 	//bikeState E로 업데이트
 	public void updateBikeState(int eidx);
 	//수리 내역 페이지
-	public ArrayList<BikeJoinVo> repairList();
+	public ArrayList<BikeJoinVo> searchBikerepairList(SearchCriteria scri);	
 	//자전거 리스트
 	public ArrayList<BikeJoinVo> bikeList();
 	//대여소 리스트
@@ -62,5 +64,6 @@ public interface AdminService_Mapper {
 	public void deleteRentalshop(String rentalshopName);
 	//회원 상세정보
 	public BikeJoinVo getMemberByMemberId(String memberId);
+	
 
 }

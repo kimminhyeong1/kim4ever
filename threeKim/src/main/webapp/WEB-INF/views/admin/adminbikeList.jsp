@@ -82,7 +82,7 @@ button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transfo
 			</tr>
 		</c:forEach>		
 		</table>
-		<button onclick="location.href='${pageContext.request.contextPath}/bikeRent/bikeRentInfo.do'">자전거 등록/추가 하러가기</button>
+		<button onclick="location.href='${pageContext.request.contextPath}/bikeRent/bikeRentInfo.do'">자전거 등록/삭제 하러가기</button>
 	</div>
 	
 	
