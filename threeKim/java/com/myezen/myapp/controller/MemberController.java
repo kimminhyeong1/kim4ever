@@ -2,6 +2,7 @@ package com.myezen.myapp.controller;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +25,17 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.service.MemberService;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken.Payload;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
+import com.google.api.client.googleapis.util.Utils;
+import com.google.api.client.http.HttpTransport;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.JsonFactory;
+
+
+import java.io.UnsupportedEncodingException;
+
 
 
 
@@ -44,6 +57,71 @@ public class MemberController {
 	public MemberController(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 	}
+	
+	/*/member/login/oauth2/code/google*/
+	//!구글로그인
+		@RequestMapping(value="/login/oauth2/code/google.do")
+		public String google(@RequestBody String idTokenString,String g_csrf_token,String credential) {
+			
+			// 백엔드에 액세스하는 앱의 CLIENT_ID를 지정합니다.
+	        String CLIENT_ID = "225367376527-0b4amsji9p7soai6hnhnt2bkbp4ma82p.apps.googleusercontent.com";
+	        
+	        HttpTransport transport = Utils.getDefaultTransport();
+	        JsonFactory jsonFactory = Utils.getDefaultJsonFactory();
+	        
+	        GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(transport, jsonFactory)
+	                .setAudience(Collections.singletonList(CLIENT_ID))
+	                .build();
+
+		        GoogleIdToken idToken = null;
+		        try {
+		            idToken = verifier.verify(credential);
+		        } catch (Exception e) {
+		            // 검증 예외 처리
+		        	System.out.println("유효하지 않은 ID 토큰입니다.");
+		        	e.printStackTrace();
+		            
+		        }
+			
+
+				if (idToken != null) {
+				  Payload payload = idToken.getPayload();
+
+				  // 사용자 식별자 출력
+				  String userId = payload.getSubject();
+				  System.out.println("User ID: " + userId);
+
+				  // Payload에서 프로필 정보 가져오기
+				  String email = payload.getEmail();
+				  boolean emailVerified = Boolean.valueOf(payload.getEmailVerified());
+				  String name = (String) payload.get("name");
+				  String pictureUrl = (String) payload.get("picture");
+				  String locale = (String) payload.get("locale");
+				  String familyName = (String) payload.get("family_name");
+				  String givenName = (String) payload.get("given_name");
+				  
+				 
+				  
+				  System.out.println("구글로그인 들어옴"+email+" ! "+emailVerified+" ! "+name+" ! "+pictureUrl+" ! "+locale+" ! "+familyName+" ! "+givenName+" ! ");
+				  
+				// 프로필 정보 사용 또는 저장
+				// G Suite 도메인 소유권 확인
+		            String hostedDomain = payload.getHostedDomain();
+		            if (hostedDomain != null && hostedDomain.equals("your_domain.com")) {
+		                // G Suite 도메인에 한정된 로직 수행
+		            }
+		            System.out.println("토큰이 성공적으로 검증되었습니다.");
+		            
+		        } else {
+		            
+		        	System.out.println("유효하지 않은 ID 토큰입니다.");
+		        }
+			return "redirect:/member/memberLogin.do";
+		}
+	
+	
+	
+	
 	
 //!회원가입페이지
 	@RequestMapping(value="/memberJoin.do")
