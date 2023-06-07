@@ -301,6 +301,19 @@
 		    <artifactId>javaSDK</artifactId>
 		    <version>2.2</version>
 		</dependency>
+		
+		<!-- 구글 API 로그인 라이브러리 -->
+		<!-- 2023-06-07 -->
+	   <!-- https://mvnrepository.com/artifact/com.google.api-client/google-api-client -->
+		<dependency>
+		    <groupId>com.google.api-client</groupId>
+		    <artifactId>google-api-client</artifactId>
+		    <version>2.2.0</version>
+		</dependency>
+
+
+
+
 
 		<!-- 결제 -->
 		<dependency>

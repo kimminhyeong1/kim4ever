@@ -10,32 +10,10 @@ msg = (String)request.getAttribute("msg");
 	<head>
 		<meta charset="UTF-8">
 		<title>로그인</title>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_rent.css"> 
 		<style>
-			/*리셋코드*/
-			
-			*{margin:0;padding:0;}
-			li{list-style:none;}
-			@font-face {
-			    font-family: 'GangwonEdu_OTFBoldA';
-			    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
-			    font-weight: normal;
-			    font-style: normal;
-			}
-			
-			@font-face {
-			    font-family: 'omyu_pretty';
-			    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
-			    font-weight: normal;
-			    font-style: normal;
-			}
-			
-			@font-face {
-			    font-family: 'KCC-Ganpan';
-			    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2') format('woff2');
-			    font-weight: normal;
-			    font-style: normal;
-			}
-			
 			#main{width:1250px; margin:35px auto 70px; text-align:center;}
 			#main #content{width:1250px; height:200px;}
 			#main #bottom{width:1250px; height:300px;}
@@ -73,8 +51,12 @@ msg = (String)request.getAttribute("msg");
 			/*버튼부분*/
 			#content table button{width:430px; height:60px; text-align:center; font-family: 'omyu_pretty'; font-size:30px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 			#content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+			/*구글로그인부분*/
+			.g_id_signin{display: inline-block; margin-top: 20px;}
+			
 		</style>
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script src="https://accounts.google.com/gsi/client" async defer></script><!-- 구글 로그인 -->
 	<script type="text/javascript">
 	
 		$(document).ready(function(){  //자동실행
@@ -223,6 +205,25 @@ msg = (String)request.getAttribute("msg");
 							<p><a href="${pageContext.request.contextPath}/member/memberIdFind.do">아이디 찾기 |</a></p>
 							<p><a href="${pageContext.request.contextPath}/member/memberPwdFind.do">비밀번호 찾기 |</a></p>
 							<p><a href="${pageContext.request.contextPath}/member/memberJoin.do">회원가입</a></p>
+						</div>
+						<div>
+							<div id="g_id_onload"
+							     data-client_id="225367376527-0b4amsji9p7soai6hnhnt2bkbp4ma82p.apps.googleusercontent.com"
+							     data-context="signin"
+							     data-ux_mode="popup"
+							     data-login_uri="${pageContext.request.contextPath}/member/login/oauth2/code/google.do"
+							     data-auto_prompt="false">
+							</div>
+							
+							<div class="g_id_signin"
+							     data-type="standard"
+							     data-shape="rectangular"
+							     data-theme="outline"
+							     data-text="signin_with"
+							     data-size="large"
+							     data-logo_alignment="left"
+							     data-width="430">
+							</div>
 						</div>
 					</div>
 				</form>
