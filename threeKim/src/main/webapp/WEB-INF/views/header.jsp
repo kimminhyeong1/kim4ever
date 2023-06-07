@@ -74,9 +74,9 @@ header{width: 1250px;margin: 35px auto 70px;text-align: center;}
 						<p id="bike">자전거 대여</p>
 					</li>
 					
-					<% String membertype = (String) pageContext.findAttribute("membertype"); %>
+					<% String memberType = (String) pageContext.findAttribute("memberType"); %>
 
-					<% if ("관리자".equals(membertype)) { %>	                   
+					<% if ("관리자".equals(memberType)) { %>	                   
 					<li>
 						 <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/admin/adminPage.do'">관리자페이지</span></a> 
 					</li>
