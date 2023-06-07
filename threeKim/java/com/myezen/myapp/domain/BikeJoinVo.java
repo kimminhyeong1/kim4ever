@@ -40,6 +40,10 @@ public class BikeJoinVo {
 	private int rsidx; //대여소번호
 	private String rentalshopName; //대여소이름
 	private String rentalshopLocation; //대여소위치
+	private String rentalshopLatitude; //대여소위도
+	private String rentalshopLongitude; //대여소경도
+	private String rentalshopCnt; //대여소 남은 갯수 //가상컬럼
+	
 	
 	//RentVo
 
@@ -287,6 +291,24 @@ public class BikeJoinVo {
 	}
 	public void setRidx(int ridx) {
 		this.ridx = ridx;
+	}
+	public String getRentalshopLatitude() {
+		return rentalshopLatitude;
+	}
+	public void setRentalshopLatitude(String rentalshopLatitude) {
+		this.rentalshopLatitude = rentalshopLatitude;
+	}
+	public String getRentalshopLongitude() {
+		return rentalshopLongitude;
+	}
+	public void setRentalshopLongitude(String rentalshopLongitude) {
+		this.rentalshopLongitude = rentalshopLongitude;
+	}
+	public String getRentalshopCnt() {
+		return rentalshopCnt;
+	}
+	public void setRentalshopCnt(String rentalshopCnt) {
+		this.rentalshopCnt = rentalshopCnt;
 	}
 	
 

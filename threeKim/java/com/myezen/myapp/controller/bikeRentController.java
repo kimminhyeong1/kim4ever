@@ -62,8 +62,28 @@ public class bikeRentController {
 	/*자전거 대여소 위치*/
 	@RequestMapping(value="/bikeRentLocation.do")
 	public String bikeRentLocation(Model md) {
-		ArrayList<Integer> alist = bs.availableStations();
-		md.addAttribute("alist", alist);
+		ArrayList<BikeJoinVo> bjvlist = bs.availableStations();
+		ArrayList<HashMap<String, Object>> positions = new ArrayList<>();
+
+		    for (BikeJoinVo bikeJoinVo : bjvlist) {
+		    	HashMap<String, Object> position = new HashMap<>();
+		    	System.out.println(bikeJoinVo.getRsidx());
+		        String content = "<div id=\"marker" + bikeJoinVo.getRsidx() + "\">";
+		        content += "<span class=\"rs1\">" + bikeJoinVo.getRentalshopName() + "대여소</span></br>";
+		        content += "<span class=\"rs2\">남은 갯수: " + bikeJoinVo.getRentalshopCnt() + "</span></div>";
+		        
+		        String latitude = bikeJoinVo.getRentalshopLatitude();
+        		String longitude = bikeJoinVo.getRentalshopLongitude();
+		        
+		        position.put("content", content);
+		        position.put("latitude", latitude);
+		        position.put("longitude", longitude);
+
+		        positions.add(position);
+		    }
+
+		    md.addAttribute("positions", positions);
+		md.addAttribute("bjvlist", bjvlist);
 		return "bikeRent/bikeRentLocation";
 	}
 	/*자전거 소개글*/ 

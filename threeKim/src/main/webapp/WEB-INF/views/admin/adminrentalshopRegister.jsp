@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>회원가입</title>
+		<title>대여소-등록</title>
 		<style>
 		/*리셋코드*/
 		
@@ -41,7 +41,7 @@
 		h2{text-align: center; margin-top:0px;margin-bottom: 20px;}   
 		#content table {width:60%;border-collapse:collapse;  margin:10px auto 0; text-align:center;  line-height:0px; font-family:'omyu_pretty'; font-size:21px;}
 		#content table th{width:150px; text-align:center;  padding:8px;}   
-		#content table td{padding:8px;text-align:left;}  
+		#content table td{padding:8px;text-align:left;line-height: 30px;}  
 		#content table td:nth-child(1){width:120px;text-align:center;}
 		#content table td:nth-child(2){width:400px; text-align:left;}
 		#content table td:nth-child(3){width:100px; border:0;}
@@ -69,6 +69,7 @@
 		
 		</style>
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20f538f14cf29a1eb30d2f9dbaa4e1fb&libraries=services,clusterer,drawing"></script> <!-- 카카오지도APIkey -->
 		<script type="text/javascript">
 				//!전역변수!
 				var idFlag;
@@ -76,7 +77,10 @@
 				var nameFlag;
 
 				var addressFlag;
+			 	
 			$(document).ready(function(){
+				initMap();//맵실행
+				
 				//!대여소 이름 체크!
 				
 				$("#rentalshopName").blur(function(){//blur input값에 쓰고 다른데로 갈때 발동
@@ -169,12 +173,143 @@
 		        new daum.Postcode({
 		            oncomplete: function (data) {
 		                // 선택된 주소를 주소 입력란에 채우기
+		                document.getElementById('address').value = data.address;
+		                document.getElementById('address2').innerHTML = data.address;
 		                document.getElementById('rentalshopLocation').value = data.address;
+		             // 주소로 위도, 경도 검색
+		                var geocoder = new kakao.maps.services.Geocoder();
+		                geocoder.addressSearch(data.address, function(result, status) {
+		                  if (status === kakao.maps.services.Status.OK) {
+		                    var position = new kakao.maps.LatLng(result[0].y, result[0].x);
+		                    marker.setPosition(position);
+		                    map.setCenter(position);
+		                    // 위도, 경도 표시하기
+	                        document.getElementById('latitude').value = result[0].y;
+	                        document.getElementById('longitude').value = result[0].x;
+	                        document.getElementById('position').innerHTML = "좌표: "+result[0].y+" , "+result[0].x+"";
+	                        
+		                  }
+		                });
 		            }
 		        }).open();
 		    }
 		</script>
-		
+
+
+<script>
+var map;
+var marker;
+
+function initMap() {
+  // 사용자의 현재 위치를 가져옵니다.
+  navigator.geolocation.getCurrentPosition(function(position) {
+    var latitude = position.coords.latitude; // 위도
+    var longitude = position.coords.longitude; // 경도
+
+    var initialLatLng = new kakao.maps.LatLng(latitude, longitude);
+
+    var mapOptions = {
+      center: initialLatLng,
+      level: 2
+    };
+
+    // 지도 생성
+    map = new kakao.maps.Map(document.getElementById('map'), mapOptions);
+
+    // 마커 생성
+    marker = new kakao.maps.Marker({
+      position: map.getCenter(),
+      draggable: true // 마커를 드래그할 수 있도록 설정
+    });
+    marker.setMap(map);
+
+    // 주소를 좌표로 변환하는 Geocoder 객체 생성
+    var geocoder = new kakao.maps.services.Geocoder();
+
+    // 마커 생성 함수
+    function createMarker(address) {
+      // 주소를 좌표로 변환
+      geocoder.addressSearch(address, function(result, status) {
+        if (status === kakao.maps.services.Status.OK) {
+          var position = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+          // 마커 생성
+          marker.setPosition(position);
+          map.setCenter(position);
+        }
+      });
+    }
+
+    // 마커 드래그 이벤트 리스너 등록
+    kakao.maps.event.addListener(marker, 'dragend', function() {
+      var position = marker.getPosition(); // 마커의 좌표를 가져옵니다.
+      var latitude = position.getLat(); // 위도
+      var longitude = position.getLng(); // 경도
+      document.getElementById('latitude').value = latitude;
+      document.getElementById('longitude').value = longitude;
+
+      // 좌표를 주소로 변환
+      geocoder.coord2Address(longitude, latitude, function(result, status) {
+        if (status === kakao.maps.services.Status.OK) {
+          if (result.length > 0) {
+            var address = result[0].address.address_name;
+            document.getElementById('address2').innerHTML = '현재 주소: ' + address;
+            document.getElementById('position').innerHTML = '좌표: ' + latitude + ', ' + longitude;
+          }
+        }
+      });
+    });
+
+    // 주소 값을 가져와서 마커를 생성합니다.
+    var address = document.getElementById('address').value;
+    createMarker(address);
+
+    // 지도 드래그 이벤트 리스너 등록
+    kakao.maps.event.addListener(map, 'dragend', function() {
+      var centerLatLng = map.getCenter();
+      marker.setPosition(centerLatLng);
+
+      var latitude = centerLatLng.getLat();
+      var longitude = centerLatLng.getLng();
+      document.getElementById('latitude').value = latitude;
+      document.getElementById('longitude').value = longitude;
+
+      // 좌표를 주소로 변환
+      geocoder.coord2Address(longitude, latitude, function(result, status) {
+        if (status === kakao.maps.services.Status.OK) {
+          if (result.length > 0) {
+            var address = result[0].address.address_name;
+            document.getElementById('address2').innerHTML = '현재 주소: ' + address;
+            document.getElementById('position').innerHTML = '좌표: ' + latitude + ', ' + longitude;
+            // 입력값 설정
+            document.getElementById('latitude').value = latitude;
+            document.getElementById('longitude').value = longitude;
+            document.getElementById('address').value = address;
+            document.getElementById('rentalshopLocation').value = address;
+          }
+        }
+      });
+    });
+
+    // 초기 위치의 좌표를 주소로 변환
+    geocoder.coord2Address(longitude, latitude, function(result, status) {
+      if (status === kakao.maps.services.Status.OK) {
+        if (result.length > 0) {
+          var address = result[0].address.address_name;
+          document.getElementById('address2').innerHTML = '현재 주소: ' + address;
+          document.getElementById('position').innerHTML = '좌표: ' + latitude + ', ' + longitude;
+          // 입력값 설정
+          document.getElementById('latitude').value = latitude;
+          document.getElementById('longitude').value = longitude;
+          document.getElementById('address').value = address;
+          document.getElementById('rentalshopLocation').value = address;
+          
+        }
+      }
+    });
+  });
+}
+</script>
 	</head>
 	<body>
 		<%@include file="../header4.jsp" %>
@@ -203,12 +338,27 @@
 							</td>
 						</tr> 
 						<tr>
+							<td>
+							<div>
+				            	<h3>위치</h3>
+					            <div>대여소 위치를 지정해주세요.</div>
+					            <div id="map" style="width: 700px; height: 500px;"></div>
+					            <input type="hidden" id="latitude" name="latitude" value=""><!-- 위도 -->
+					            <input type="hidden" id="longitude" name="longitude" value=""><!-- 경도 -->
+					            <input type="hidden" id="address" name="address" value=""><!-- 주소 -->
+				        	</div>
+							<p id="address2">현재 주소: </p>
+							<p id="position">위치: </p>
+							</td>
+						</tr>
+						<tr>
 							<td colspan="2">
 								<button type="button" onclick="Signup();">등록하기</button>
 							</td>
 						</tr>
 					</tbody>
 				</table>
+						
 			</div> 
 		</form>
 		</div>

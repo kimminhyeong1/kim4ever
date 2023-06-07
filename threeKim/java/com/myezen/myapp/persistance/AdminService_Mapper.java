@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.MemberVo;
+import com.myezen.myapp.domain.RentalshopVo;
 
 public interface AdminService_Mapper {
 
@@ -54,7 +55,7 @@ public interface AdminService_Mapper {
 	//대여소 리스트
 	public ArrayList<BikeJoinVo> rentalshopList();
 	//대여소 등록
-	public int rentalshopInsert(BikeJoinVo rv);
+	public int rentalshopInsert(String rentalshopName, String rentalshopLocation,String latitude ,String longitude);	
 	//대여소 등록 이름 중복체크
 	public int adminrentalshopNameCheck(String rentalshopName);
 	//대여소 삭제	

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -23,15 +24,9 @@
 			#main #content h2{margin-top:20px; font-family: 'KCC-Ganpan';}
 			
 			/*마커 폰트 변경*/
-			#main #marker1{font-family:'omyu_pretty';}
-			#main #marker2{font-family:'omyu_pretty';}
-			#main #marker3{font-family:'omyu_pretty';}
-			#main #marker4{font-family:'omyu_pretty';}
-			#main #marker5{font-family:'omyu_pretty';}
-			
 			/*마커 글씨 크기 변경*/
-			.rs1{font-size:21px; margin-left:30px;}
-			.rs2{font-size:15px; margin-left:25px;}
+			.rs1{font-size:21px; margin-left:30px; font-family:'omyu_pretty';}
+			.rs2{font-size:15px; margin-left:25px; font-family:'omyu_pretty';}
 		</style>
 	</head>
 <body>
@@ -46,30 +41,14 @@
 		          <th>대여소명</th>
 		          <th>위치</th>
 		        </tr>
-		      
-		        <tr>
-		          <td>송천 대여소</td>
-		          <td>전라북도 전주시 덕진구 송천동1가 318-12</td>
-		        </tr>
-		        
-		         <tr>
-		          <td>덕진 대여소</td>
-		          <td>전라북도 전주시 덕진구 동부대로 680</td>
-		        </tr>
-		        
-		        <tr>
-		          <td>오목 대여소</td>
-		          <td>전라북도 전주시 완산구 교동 산1-11</td>
-		        </tr>
-		        <tr>
-		          <td>평화 대여소</td>
-		          <td>전라북도 전주시 완산구 백제대로 13</td>
-		        </tr>
-		        <tr>
-		       	  <td>효자 대여소</td>
-		       	  <td>전라북도 전주시 완산구 효자동3가 1554</td>
-		        </tr>
+		      	<c:forEach var="bjvlist" items="${bjvlist}">
+	           		<tr>
+			          <td>${bjvlist.rentalshopName} 대여소</td>
+			          <td>${bjvlist.rentalshopLocation}</td>
+			        </tr>
+        		</c:forEach>
 		    </table>
+		    
 		    <h2>대여소 운영 안내</h2>
 		  	<table>
 			    <tr>
@@ -110,7 +89,7 @@
 	    };
 	
 	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-	 
+	/*
 	// 마커를 표시할 위치와 title 객체 배열입니다 
 	var positions = [
 	    {
@@ -134,20 +113,30 @@
 	        latlng: new kakao.maps.LatLng(35.819267333182594, 127.11125221813597)
 	    }
 	];
-	
-	for (var i = 0; i < positions.length; i ++) {
-	    // 마커를 생성합니다
-	    var marker = new kakao.maps.Marker({
-	        map: map, // 마커를 표시할 지도
-	        position: positions[i].latlng // 마커의 위치
-	    });
-	
+	*/
+	//마커를 표시할 위치 정보 배열 
+    var positions = [
+        <c:forEach var="position" items="${positions}">
+            {
+                content: '${position.content}',
+                latlng: new kakao.maps.LatLng(${position.latitude}, ${position.longitude})
+            },
+        </c:forEach>
+    ];
+ 	// 지도에 마커 추가
+    for (var i = 0; i < positions.length; i++) {
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: positions[i].latlng
+        });
+        
 	var infowindow = new kakao.maps.InfoWindow({
 	    content: positions[i].content // 인포윈도우에 표시할 내용
 	});
 	
 	//인포윈도우를 열어줍니다
 	infowindow.open(map, marker);
+	
 	}
 	
 	/* 전에했던거 마우스를 가져가면 이벤트 발생

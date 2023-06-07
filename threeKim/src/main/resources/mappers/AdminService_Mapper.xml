@@ -98,9 +98,9 @@
 	</select>
 	
 	<!-- 대여소 등록 -->
-	<insert id="rentalshopInsert" parameterType="String">
-		INSERT INTO rentalshop1234(rsidx,rentalshopName,rentalshopLocation)
-		VALUES(rsidx_seq.nextval,#{rentalshopName},#{rentalshopLocation})
+	<insert id="rentalshopInsert" parameterType="String"> 
+		INSERT INTO rentalshop1234(rsidx,rentalshopName,rentalshopLocation,rentalshopLatitude,rentalshopLongitude)
+		VALUES(rsidx_seq.nextval,#{0},#{1},#{2},#{3})
 	</insert>
 
 	<!-- 대여소 등록 페이지 이름 중복체크-->

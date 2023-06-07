@@ -264,9 +264,12 @@ public class BikeRentServiceImpl implements BikeRentService {
 
 	@Override
 	//대여소 자전거 남은 갯수
-	public ArrayList<Integer> availableStations() {
+	public ArrayList<BikeJoinVo> availableStations() {
 		
-		return null;
+		ArrayList<BikeJoinVo> bjvlist = brsm.availableStations();
+		
+		
+		return bjvlist;
 	}
 
 

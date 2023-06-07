@@ -75,7 +75,7 @@ public interface BikeRentService {
     public ArrayList<BikeJoinVo> bikeRentHistoryList(int midx);
 	
     //대여소 자전거 남은 갯수
-    public ArrayList<Integer>availableStations();
+    public ArrayList<BikeJoinVo>availableStations();
 	
 	
 	

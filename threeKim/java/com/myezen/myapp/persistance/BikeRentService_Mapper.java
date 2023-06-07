@@ -76,6 +76,9 @@ public interface BikeRentService_Mapper {
     public ArrayList<BikeJoinVo> bikeRentHistoryList(int midx);
 
     public void certifiedPhoneNumber(String userPhoneNumber, int randomNumber);
+    
+    //대여소 자전거 남은 갯수
+    public ArrayList<BikeJoinVo>availableStations();
 
 	
 	

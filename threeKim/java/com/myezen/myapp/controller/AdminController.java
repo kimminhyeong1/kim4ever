@@ -166,13 +166,15 @@ public class AdminController {
 		return hm; 
 	}
 	
-	//대여소 등록 페이지
+	//대여소 등록 페이지 //등록하면 bikeRentController에 bikeRentLocation.do에 보여줌 
 	@RequestMapping(value="/adminrentalshopRegisterAction.do", method = RequestMethod.POST)
 	public String adminrentalshopRegisterAction(
-		@RequestParam("rentalshopName") String rentalshopName,
-		@RequestParam("rentalshopLocation") String rentalshopLocation
+		@RequestParam("rentalshopName") String rentalshopName,//대여소 이름
+		@RequestParam("rentalshopLocation") String rentalshopLocation,//대여소 주소
+		@RequestParam("latitude") String latitude, //위도
+		@RequestParam("longitude") String longitude //경도
 		) {
-		int value = as.rentalshopInsert(rentalshopName, rentalshopLocation);
+		int value = as.rentalshopInsert(rentalshopName, rentalshopLocation ,latitude ,longitude);
 			
 		return "redirect:/admin/adminrentalshopList.do";	
 		}	

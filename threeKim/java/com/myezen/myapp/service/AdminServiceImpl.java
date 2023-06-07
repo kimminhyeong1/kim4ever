@@ -201,13 +201,10 @@ public class AdminServiceImpl implements AdminService {
 
 	//대여소 추가
 	@Override
-	public int rentalshopInsert(String rentalshopName, String rentalshopLocation) {
+	public int rentalshopInsert(String rentalshopName, String rentalshopLocation ,String latitude, String longitude) {
+
+		int value = asm.rentalshopInsert(rentalshopName,rentalshopLocation,latitude,longitude);
 		
-		BikeJoinVo rv = new BikeJoinVo();
-		rv.setRentalshopName(rentalshopName);
-		rv.setRentalshopLocation(rentalshopLocation);
-		
-		int value = asm.rentalshopInsert(rv);
 		return value;
 	}
 
@@ -225,6 +222,8 @@ public class AdminServiceImpl implements AdminService {
 		asm.deleteRentalshop(rentalshopName);
 		
 	}
+
+
 
 
 
