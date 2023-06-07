@@ -22,7 +22,9 @@ ArrayList<BikeJoinVo> bikeList = (ArrayList<BikeJoinVo>)request.getAttribute("bi
 			#bikeNotice{text-align:center;}
 			#bikeNotice button{width:400px; height:50px; border-radius:10px; border:0px solid #ff9933; font-family:'omyu_pretty'; font-size:30px; background:#ff9933;}
 			#bikeNotice p{margin-top:40px;}
-			#bcontent .deleteBtn {position: absolute;top:0;right:0;width:30px;height:30px;background-color:#ff0000;color:#fff;font-size:20px;border:none;border-radius:50%;cursor:pointer;}
+			#bcontent .deleteBtn {display: none; position: absolute;top:0;right:0;width:30px;height:30px;background-color:#ff0000;color:#fff;font-size:20px;border:none;border-radius:50%;cursor:pointer;}
+			#bcontent .card:hover .deleteBtn {display:block;}
+}
 		 </style>
 	 <script>
 		function deleteBike(bikeType) {
