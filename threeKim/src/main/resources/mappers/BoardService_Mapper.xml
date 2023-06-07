@@ -17,7 +17,7 @@
 
 
 <select id="boardTotal" parameterType="scri" resultType="int">
-	select count(*) as cnt from board1235 where delyn='N' AND boardtype = 1 
+	select count(*) as cnt from board1234 where delyn='N' AND boardtype = 1 
 	<include refid="search" />
 </select>
 
@@ -27,17 +27,17 @@ SELECT *
 FROM (
   SELECT
     CASE WHEN delyn = 'N' THEN RANK() OVER (PARTITION BY boardtype ORDER BY modified_rebidx ASC) END AS sortN,
-    board1235.*,
+    board1234.*,
     CASE WHEN delyn = 'N' THEN RANK() OVER (PARTITION BY boardtype ORDER BY modified_rebidx DESC) END AS sortY <!-- sortn반대로 순번 -->
   FROM (
-    SELECT board1235.*,
+    SELECT board1234.*,
            CASE WHEN level_ = 1
                 THEN rebidx - (ROW_NUMBER() OVER (PARTITION BY rebidx ORDER BY writeday) * 0.01)<!-- 댓글 -->
                 ELSE rebidx
            END AS modified_rebidx
-    FROM board1235
+    FROM board1234
     WHERE delyn = 'N' 
-  ) board1235
+  ) board1234
 ) B
 WHERE (sortY BETWEEN (#{page}-1)*#{perPageNum}+1 AND #{page}*#{perPageNum}) <!-- 페이징 -->
 ORDER BY rebidx DESC, level_ ASC, writeday ASC
@@ -46,7 +46,7 @@ ORDER BY rebidx DESC, level_ ASC, writeday ASC
      
 </select>
 <select id="boardSelectOne" parameterType="int" resultType="bv"> <!-- select하니까 resultType값 필요 -->
-	select * from board1235 where delyn='N' and bidx = #{bidx}
+	select * from board1234 where delyn='N' and bidx = #{bidx}
 </select>
 
 
@@ -60,7 +60,7 @@ ORDER BY rebidx DESC, level_ ASC, writeday ASC
   <result property="subject" column="SUBJECT"/>
   <result property="content" column="CONTENT"/>
   <result property="boardView" column="BOARDVIEW"/>
-  <result property="delyn" column="DELYN"/>
+  <result property="delyn" column="delyn"/>
   <result property="filename" column="FILENAME"/>
   <result property="depth" column="DEPTH"/>
   <result property="level_" column="LEVEL_"/>
@@ -73,50 +73,50 @@ ORDER BY rebidx DESC, level_ ASC, writeday ASC
 
 <select id="boardSelectQna" parameterType="int" resultType="bv" ><!-- 답변글용 -->
  SELECT NVL(CASE WHEN level_ = 0 THEN RANK() OVER (PARTITION BY boardtype, level_ ORDER BY rebidx DESC) END,0) AS sortN
- 			, board1235.* 
-  FROM board1235 
+ 			, board1234.* 
+  FROM board1234 
   WHERE delyn = 'N' 
   ORDER BY rebidx DESC, level_ ASC, writeday asc 
 </select>
 
 
 <update id="boardView" parameterType="int">
-  UPDATE board1235 SET boardView = NVL(boardView, 0) + 1 WHERE bidx = #{bidx}
+  UPDATE board1234 SET boardView = NVL(boardView, 0) + 1 WHERE bidx = #{bidx}
 </update>
 
 
 <insert id="boardInsert" parameterType="bv"><!-- 공지 -->
-  INSERT INTO board1235(bidx ,boardType, writer, writeday, subject, content, boardView ,depth,level_, midx,filename,rebidx)
+  INSERT INTO board1234(bidx ,boardType, writer, writeday, subject, content, boardView ,depth,level_, midx,filename,rebidx)
   VALUES (bidx_seq.nextval, 0 , #{writer}, SYSDATE, #{subject}, #{content}, 0,0,0,#{midx},#{filename}, bidx_seq.currval)
 </insert>
 
 <insert id="boardInsert2" parameterType="bv"><!-- qna --><!-- rebidx와 bidx값 동일한값 넣어줌 -->
-  INSERT INTO board1235(bidx, boardType, writer, writeday, subject, content, boardView, depth, level_, midx, filename, rebidx)
+  INSERT INTO board1234(bidx, boardType, writer, writeday, subject, content, boardView, depth, level_, midx, filename, rebidx)
   VALUES (bidx_seq.nextval, 1, #{writer}, SYSDATE, #{subject}, #{content}, 0, 0, 0, #{midx}, #{filename}, bidx_seq.currval)
 </insert>
 
 
 <insert id="boardInsert3" parameterType="bv"><!-- faq -->
-  INSERT INTO board1235(bidx ,boardType, writer, writeday, subject, content, boardView ,depth,level_, midx,filename,rebidx)
+  INSERT INTO board1234(bidx ,boardType, writer, writeday, subject, content, boardView ,depth,level_, midx,filename,rebidx)
   VALUES (bidx_seq.nextval, 2 , #{writer}, SYSDATE, #{subject}, #{content}, 0,0,0,#{midx},#{filename}, bidx_seq.currval)
 </insert>
 
 <update id="boardModify" parameterType="bv">
-update board1235 set subject=#{subject}, content=#{content}, writer=#{writer},filename=#{filename} where bidx=${bidx}
+update board1234 set subject=#{subject}, content=#{content}, writer=#{writer},filename=#{filename} where bidx=${bidx}
 </update>
 
 <update id="boardDelete" parameterType="bv">
-    update board1235 set delyn = 'Y' where bidx = #{bidx} and midx = #{midx}
+    update board1234 set delyn = 'Y' where bidx = #{bidx} and midx = #{midx}
 </update>
 
 
 <!-- 답글 -->
 <update id="boardReplyUpdate"  parameterType="HashMap">
-update board1235 set depth =depth+1 where bidx = #{bidx} and depth >#{depth}
+update board1234 set depth =depth+1 where bidx = #{bidx} and depth >#{depth}
 </update>
 
 <insert id="boardReplyInsert" parameterType="bv"><!-- 세션에서 rebidx에 bidx를 넣고 그값을 rebidx에 넣음 -->
-  insert into board1235 (bidx, rebidx, boardType, depth, level_, subject, content, writer, midx ,filename)
+  insert into board1234 (bidx, rebidx, boardType, depth, level_, subject, content, writer, midx ,filename)
   values (bidx_seq.nextval, #{rebidx}, 1, #{depth}+1, #{level_}+1, #{subject}, #{content}, #{writer}, #{midx},#{filename})
 </insert>
 

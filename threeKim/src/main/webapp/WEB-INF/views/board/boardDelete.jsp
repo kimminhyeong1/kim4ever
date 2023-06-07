@@ -63,7 +63,7 @@ li{list-style:none;}
 		<div id="content">
 			<h2>게시글 삭제</h2>
 			<form name="frm">
-				<input type="text" name="bidx" value="<%=bv.getBidx()%>">
+				<input type="hidden" name="bidx" value="<%=bv.getBidx()%>">
 
 				<table>
 					<tr>
