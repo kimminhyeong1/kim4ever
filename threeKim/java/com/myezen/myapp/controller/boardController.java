@@ -94,7 +94,7 @@ public class boardController {
 		
 		model.addAttribute("bv", bv);
 		
-		return "board/boardFaqContent";
+		return "board/boardFaqContent"; 
 	}
 	
 	@RequestMapping(value="/boardModify.do")

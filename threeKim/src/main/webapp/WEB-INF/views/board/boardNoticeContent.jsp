@@ -132,13 +132,14 @@ $(document).ready(function() {
 						</td>
 				</table>
 				<div id="btn">
-					<c:if test="${midx == bv.getMidx()}">
-						<!-- midx가 동일할때만 출력 -->
-						<button type="button"
-							onclick="location.href='<%=request.getContextPath()%>/board/boardModify.do?bidx=<%=bv.getBidx()%>'">수정</button>
-						<button type="button"
-							onclick="location.href='<%=request.getContextPath()%>/board/boardDelete.do?bidx=<%=bv.getBidx()%>'">삭제</button>
-					</c:if>
+					<c:choose>
+					  <c:when test="${midx == bv.getMidx() || membertype == '관리자'}">
+					    <!-- midx가 동일하거나 membertype가 '관리자'일 때 출력 -->
+					    <button type="button" onclick="location.href='${pageContext.request.contextPath}/board/boardModify.do?bidx=${bv.getBidx()}'">수정</button>
+					    <button type="button" onclick="location.href='${pageContext.request.contextPath}/board/boardDelete.do?bidx=${bv.getBidx()}'">삭제</button>
+					  </c:when>
+					</c:choose>
+
 					<button type="button"
 						onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">목록</button>
 				</div>
