@@ -50,8 +50,10 @@ li{list-style:none;}
 #content table tr th:nth-child(2){width:50px;}
 #content table tr th:nth-child(3){width:50px;}
 #content table tr th:nth-child(4){width:80px;}
-button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+button{width:250px; height:40px; margin-top:20px; margin-left:600px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+
+
 </style>
 
 </head>
@@ -63,7 +65,6 @@ button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transfo
 	
 	<div id="content">
 		<h2>자전거 리스트</h2>
-		<p>자전거 상태  Y : 사용가능 / N : 사용중</p>
 		<table>
 			<tr>
 				<th>번호</th>
@@ -81,6 +82,7 @@ button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transfo
 			</tr>
 		</c:forEach>		
 		</table>
+		<button onclick="location.href='${pageContext.request.contextPath}/bikeRent/bikeRentInfo.do'">자전거 등록/삭제 하러가기</button>
 	</div>
 	
 	

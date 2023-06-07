@@ -14,24 +14,41 @@
 	delete from member1234 WHERE memberId=#{memberId}
 	</delete>
 
-	<!--관리자 고장 내역 리스트-->
-	<select id="errorList" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
-	SELECT
-		m.memberName,
-		m.memberPhone,
-		r.rentPlace,
-		b.bikeType,
-		b.bikeCode,
-		b.bikeState,
-		e.eidx,
-		e.errorDay,
-		e.errorContent
-	FROM rent1234 r
-	JOIN member1234 m ON m.midx = r.midx
-	JOIN bike1234 b ON b.bkidx = r.bkidx
-	JOIN error1234 e ON	e.ridx = r.ridx		
-	</select>
 	
+	
+	<select id="searchBikeErrors" parameterType="com.myezen.myapp.domain.SearchCriteria"
+	  resultType="com.myezen.myapp.domain.BikeJoinVo">
+	  SELECT
+	    m.memberName,
+	    m.memberPhone,
+	    r.rentPlace,
+	    b.bikeType,
+	    b.bikeCode,
+	    b.bikeState,
+	    e.eidx,
+	    e.errorDay,
+	    e.errorContent
+	  FROM rent1234 r
+	  JOIN member1234 m ON m.midx = r.midx
+	  JOIN bike1234 b ON b.bkidx = r.bkidx
+	  JOIN error1234 e ON e.ridx = r.ridx
+	  WHERE 1=1
+		<if test="searchType != null and searchType != ''">
+		    <choose>
+		        <when test="searchType == 'memberName'">
+		            AND m.memberName LIKE '%'||#{keyword}||'%'
+		        </when>
+		        <when test="searchType == 'memberPhone'">
+		            AND m.memberPhone LIKE '%'||#{keyword}||'%'
+		        </when>
+		        <when test="searchType == 'rentPlace'">
+		            AND r.rentPlace LIKE '%'||#{keyword}||'%'
+		        </when>
+		    </choose>
+		</if>
+	</select>
+
+
 	<!-- 고장 내역 상세 보기 -->
 	<select id="getErrorContent" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
   	SELECT
@@ -64,7 +81,7 @@
 	</update>
 	
 	<!-- 수리 내역 리스트 -->
-	<select id="repairList" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
+	<select id="searchBikerepairList" parameterType="com.myezen.myapp.domain.SearchCriteria" resultType="com.myezen.myapp.domain.BikeJoinVo">
 	SELECT
 		m.memberName,
 		m.memberPhone,
@@ -78,7 +95,24 @@
 	FROM rent1234 r
 	JOIN member1234 m ON m.midx = r.midx
 	JOIN bike1234 b ON b.bkidx = r.bkidx
-	JOIN error1234 e ON	e.ridx = r.ridx		
+	JOIN error1234 e ON	e.ridx = r.ridx
+	WHERE 1=1
+	<if test="searchType != null and searchType != ''">
+		<choose>
+			<when test="searchType == 'bikeType'">
+				AND b.bikeType LIKE '%'||#{keyword}||'%'
+			</when>
+			<when test="searchType == 'bikeCode'">
+				AND b.bikeCode LIKE '%'||#{keyword}||'%'
+			</when>
+			<when test="searchType == 'errorContent'">
+				AND e.errorContent LIKE '%'||#{keyword}||'%'
+			</when>
+			<when test="searchType == 'bikeState'">
+				AND b.bikeState LIKE '%'||#{keyword}||'%'
+			</when>
+		</choose>
+	</if>		
 	</select>
 	
 	<!-- 관리자 자전거 리스트 -->
@@ -190,6 +224,16 @@
         SELECT COUNT(*) FROM bike1234 where bikeState LIKE 'Y' and bikeLocation Like '오목' and bikeType Like '전기자전거'
     </select>
 	
+	
+	<sql id="search">
+		<if test="searchType != null and searchType.equals('writer')">
+				and writer like '%'||#{keyword}||'%'
+		</if>
+		
+		<if test="searchType != null and searchType.equals('subject')">
+				and  subject like '%'||#{keyword}||'%'
+		</if>
+	</sql>
 	
 </mapper>
 
