@@ -67,13 +67,8 @@ button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transfo
 <body>
 
 
-
-
-
-
 <div id="main">
 	<%@include file="../header4.jsp"%>
-	
 	
 
 	<div id="content">

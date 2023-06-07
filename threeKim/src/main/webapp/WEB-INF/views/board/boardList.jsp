@@ -116,7 +116,7 @@ li{list-style:none;}
 		
 <!-- 버튼 -->
 					<div id="btn">
-						<c:if test="${membertype == '관리자'}">
+						<c:if test="${memberType == '관리자'}">
 				    		<button type="button" onclick="location.href='${pageContext.request.contextPath}/board/boardNoticeWrite.do'">작성</button>
 				    	</c:if>
 					</div>
@@ -220,7 +220,7 @@ li{list-style:none;}
 				
 
 					<div id="btn">
-						<c:if test="${membertype == '관리자'}">					
+						<c:if test="${memberType == '관리자'}">					
 						<button type="button"
 							onclick="location.href='<%=request.getContextPath()%>/board/boardFaqWrite.do'">작성</button>
 							</c:if>
