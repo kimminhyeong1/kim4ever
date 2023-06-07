@@ -30,21 +30,22 @@
                 pay_method : 'card',
                 merchant_uid: "IMP"+makeMerchantUid, 
                 name : ' 타:바 자전거 대여',
-         	    amount: '10', // 가격
+         	    amount: '20', // 가격
                 buyer_name : ' <%=session.getAttribute("memberName")%>',
                 buyer_tel : '구매자 번호',
                 buyer_addr : '전주시 덕진구',
                 buyer_postcode : '123-456',
                 popup: true,
-
-                m_redirect_url: '<%=request.getContextPath()%>/bikeRent/bikeRentUpdate.do',
-                	notice_url: "<%=request.getContextPath()%>/webhook/view.do" 
-                	// 웹훅url 웹훅연동을 생략하시는 경우 결제결과를 정상적으로 수신받지 못하는 상황이 발생
+				
+                m_redirect_url: '<%=request.getContextPath()%>/bikeRent/bikeRentUpdate.do'
+                 
+                	
                 	                	
            }, function(rsp) {
     			console.log(rsp);
     		    if ( rsp.success ) {
     		    	var msg = rsp.name+'결제가 완료되었습니다.' + '\n';
+    		    	alert("결제 완료 구문");
     		        msg += '구매자 : ' + rsp.buyer_name + '\n';
     		        msg += '결제 금액 : ' + rsp.paid_amount ;
     		    } else {

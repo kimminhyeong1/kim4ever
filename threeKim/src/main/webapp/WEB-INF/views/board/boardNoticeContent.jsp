@@ -44,6 +44,8 @@ li{list-style:none;}
 #content table th {width:100px; padding:10px; text-align:center; border-right:1px solid #ddd;}
 #content table td {padding:10px; text-align:center; line-height:50px;}
 #content table tr th {width:120px; text-align:center;  }
+#content  table td { white-space: pre-line;}
+
 #content #btn{text-align:right; margin-top:20px; margin-right:144px; }
 #content #btn button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content #btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
@@ -114,8 +116,8 @@ $(document).ready(function() {
 
 					<tr>
 						<th>글 내용</th>
-						<td style="height: 500px;"></td>
-						<td><%=bv.getContent()%></td>
+						<td style="height: 500px; width: 1800px;"><%=bv.getContent()%></td>
+
 					</tr>
 
 					<tr>

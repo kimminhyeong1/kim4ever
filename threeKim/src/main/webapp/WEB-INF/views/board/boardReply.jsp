@@ -87,6 +87,7 @@ function check() {
 			<form name="frm">
 				<input type="hidden" name="depth" value="<%=bv.getDepth()%>">
 				<input type="hidden" name="level_" value="<%=bv.getLevel_()%>">
+				<input type="hidden" name="writer" value="<%=session.getAttribute("memberName")%>" >
 				<input type="hidden" name="bidx" maxlength="5"
 					value="<%=session.getAttribute("bidx")%>"> <input
 					type="hidden" name="rebidx" maxlength="5"
@@ -108,8 +109,7 @@ function check() {
 					<tr>
 						<th>작성자</th>
 						<!-- 세션으로 받아서 읽기모드로 출력 -->
-						<td><input type="text" name="writer" maxlength="5"
-							value="<%=session.getAttribute("memberName")%>" readonly></td>
+						<td><%=session.getAttribute("memberName")%></td>
 					</tr>
 
 					<tr>
