@@ -8,6 +8,7 @@ public class BikeJoinVo {
 	private String bikeType;
 	private String bikeContent;
 	private int rentPrice;
+	private String uploadFile;
 	
 	//BikeVo
 	private int bkidx; //자전거번호
@@ -61,6 +62,15 @@ public class BikeJoinVo {
     private String verificationCode;
     private char verificationStatus;
     
+    
+    public String getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(String uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+	
+	
     public int getId() {
         return id;
     }

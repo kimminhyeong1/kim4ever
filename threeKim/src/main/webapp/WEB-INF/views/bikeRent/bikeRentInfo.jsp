@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import = "com.myezen.myapp.domain.BikeJoinVo" %>
+<%@page import = "java.util.*" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+ArrayList<BikeJoinVo> bikeList = (ArrayList<BikeJoinVo>)request.getAttribute("bikeList");
+%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,8 +19,18 @@
 			#bikeIntro{margin:40px auto;width:70%; padding: 20px;background-color:#f1f1f1; border-radius:10px;} 
 			#bikeIntro h2{font-family:'KCC-Ganpan'; text-align:center; font-size:35px; color:#333; margin-bottom: 20px;}
 			#bikeIntro p{font-family:'omyu_pretty'; text-align:left; margin-left:40px; font-size:24px; padding:15px 15px; letter-spacing:3px;}
-			.card p{}
-		 </style> 
+			#bikeNotice{text-align:center;}
+			#bikeNotice button{width:400px; height:50px; border-radius:10px; border:0px solid #ff9933; font-family:'omyu_pretty'; font-size:30px; background:#ff9933;}
+			#bikeNotice p{margin-top:40px;}
+			#bcontent .deleteBtn {position: absolute;top:0;right:0;width:30px;height:30px;background-color:#ff0000;color:#fff;font-size:20px;border:none;border-radius:50%;cursor:pointer;}
+		 </style>
+	 <script>
+		function deleteBike(bikeType) {
+		  if (confirm("정말로 자전거를 삭제하시겠습니까?")) {
+		    location.href = "${pageContext.request.contextPath}/bikeRent/bikeRentDeleteAction.do?bikeType=" + bikeType;
+		  }
+		}
+	</script>
 	</head>
 	<body>
 		<%@include file="../header.jsp" %>
@@ -28,56 +44,31 @@
 	           <p>4. 자전거 고장/신고 문의는 대여내역에서 신고 접수 부탁드립니다! </p>
 			</div>
 			<div id="bcontent">
-				<div class="card" >
-					<img class="cardImg" src="../resources/bikeimg/일반자전거.jpg">
-					<p class="cardName">일반자전거</p>
-					<p class="cardInfo">남녀노소 즐길 수 있는 자전거입니다!</p>
-					<p class="cardPrice">가격 : 1000원</p>
-					
-				</div>
-
-				<div class="card" >
-					<img class="cardImg" src="../resources/bikeimg/하이브리드자전거.jpg">
-					<p class="cardName">하이브리드자전거</p>
-					<p class="cardInfo">비교적 가볍고 적은 힘으로 라이딩을 할수있어요!</p>
-					<p class="cardPrice">가격 : 2000원</p>
-					
-				</div>
-				
-				<div class="card" >
-					<img class="cardImg" src="../resources/bikeimg/전기자전거.jpg">
-					<p class="cardName">전기자전거</p>
-					<p class="cardInfo">전기로 동작해서 편하게 라이딩이 가능합니다!</p>
-					<p class="cardPrice">가격 : 5000원</p>
-					
-				</div>
-				
-				<div class="card" >
-					<img class="cardImg" src="../resources/btn/+button.png">
-							
-				</div>
-			
-				<div class="card" >
-					<img class="cardImg" src="../resources/btn/+button.png">
-					
-				</div>
-				
-				<div class="card" >
-					<img class="cardImg" src="../resources/btn/+button.png">
-				
-				</div>
-			
+			  <c:forEach var="bjv" items="${bikeList}">
+		        <div class="card">
+		        <c:if test="${sessionScope.memberType eq '관리자'}">
+		        	<button class="deleteBtn" onclick="deleteBike('${bjv.bikeType}')">X</button>
+        	    </c:if>
+				    <img class="cardImg" src="${pageContext.request.contextPath}/resources/bikeImages/${bjv.uploadFile}" alt="이미지" onload="imageLoaded(this)">
+		            <p class="cardName">${bjv.bikeType }</p>
+		            <p class="cardInfo">${bjv.bikeContent}</p>
+		            <p class="cardPrice">${bjv.rentPrice }원</p>
+		        </div>
+		    </c:forEach>
 			</div>
-			
-			<div>
-				<p style="font-size:30px;">- 자전거의 종류는 추가적으로 추후에 추가예정입니다 -</p>
+				
+			<div id="bikeNotice">
+			<c:if test="${sessionScope.memberType eq '관리자'}">
+				<button class="createBtn" onclick="location.href='${pageContext.request.contextPath}/bikeRent/bikeRentWrite.do'">등록</button>
+			</c:if>
+			<p style="font-size:30px;">- 자전거의 종류는 추가적으로 추후에 추가예정입니다 -</p>
 			</div>
 			
 			<div id="bottom">
 			<%@include file="../bottom.jsp" %>
 			</div>
 			
-			
+	
 			</section>
 		</main>
 		<%@include file="../footer.jsp" %>

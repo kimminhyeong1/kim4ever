@@ -4,18 +4,21 @@ package com.myezen.myapp.service;
 
 
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
-
+import org.apache.commons.io.FilenameUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import org.springframework.web.multipart.MultipartFile;
 
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.MemberVo;
@@ -125,7 +128,48 @@ public class BikeRentServiceImpl implements BikeRentService {
 		return brsm.getMemberPhoneByMidx(midx); 
 	}
 	
+	//자전거 소개에서 추가등록할때 이미지 경로
+	@Override
+	public String processBikeRentWrite(MultipartFile file, BikeJoinVo bjv) {
+		
+		String savedFilePath = "C:\\Users\\503-2\\Documents\\threekim\\threeKim\\src\\main\\webapp\\resources\\bikeImages";
+		// 파일을 실제 경로에 저장
+	    try {
+	        String originalFilename = file.getOriginalFilename();
+	        String extension = FilenameUtils.getExtension(originalFilename);
+	        String newFilename = UUID.randomUUID().toString() + "." + extension;
+	        String fullPath = savedFilePath + "\\" + newFilename;
+	        File destination = new File(fullPath);
+	        file.transferTo(destination);
+
+	        // BikeJoinVo에 업로드된 파일명 설정
+	        bjv.setUploadFile(newFilename);
+
+	        // 데이터베이스에 자전거 정보 삽입
+	        brsm.insertBikeRent(bjv);
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+
+	    return savedFilePath;
+	}
+
+	//자전거 소개 정보조회
+	@Override
+	public ArrayList<BikeJoinVo> getBikeList() {
+		 ArrayList<BikeJoinVo> bikeList = brsm.getBikeList();
+		   
+		    
+		    return bikeList;
+	}
 	
+	//자전거 정보삭제
+	@Override
+	public void deleteBikeByType(String bikeType) {
+		brsm.deleteBikeByType(bikeType);
+		
+	}
+
 
 
 
@@ -268,6 +312,9 @@ public class BikeRentServiceImpl implements BikeRentService {
 		
 		return null;
 	}
+
+
+	
 
 
 

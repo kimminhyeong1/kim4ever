@@ -25,7 +25,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.myezen.myapp.domain.BikeInfoVo;
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.service.BikeRentService;
@@ -45,7 +48,17 @@ public class bikeRentController {
 	@Autowired
 	BikeRentService bs; //업캐스팅 부모만 지정
 	
-
+	/*자전거 소개글*/ 
+	@RequestMapping(value="/bikeRentInfo.do")
+	public String bikeRentInfo(Model model) {
+			
+		
+	    ArrayList<BikeJoinVo> bikeList = bs.getBikeList();
+	    
+	    model.addAttribute("bikeList", bikeList);
+	
+		return "bikeRent/bikeRentInfo";
+	}
 	
 	/*관리자페이지 자전거 등록*/
 	@RequestMapping(value="/bikeRentWrite.do")
@@ -53,6 +66,43 @@ public class bikeRentController {
 		
 		return "bikeRent/bikeRentWrite";
 	}
+	
+	/*자전거소개 페이지에서 자전거 추가 등록*/
+	@RequestMapping(value = "/bikeRentWriteAction.do", method = RequestMethod.POST)
+	    public String bikeRentWriteAction(
+	    		@ModelAttribute BikeJoinVo bjv,
+                @RequestParam("uploadfile") MultipartFile file, Model model,
+                RedirectAttributes redirectAttributes) {
+
+		 System.out.println("bjv는?"+bjv);
+		 System.out.println("업로드파일?"+file);
+		 
+		 String savedFilePath = bs.processBikeRentWrite(file, bjv);
+		   
+		 	//등록된 자전거 정보를 다시 조회하여 모델에 추가
+		    ArrayList<BikeJoinVo> bikeList = bs.getBikeList();
+		    
+		    //저장된 파일 경로를 모델에 추가
+		    model.addAttribute("savedFilePath", "resources/bikeImages/" + savedFilePath);
+		    
+		    redirectAttributes.addFlashAttribute("message", "자전거가 성공적으로 등록되었습니다.");
+		    redirectAttributes.addFlashAttribute("refresh", true);
+	 
+		    
+		    return "redirect:/bikeRent/bikeRentInfo.do";
+	    }
+	
+	 @RequestMapping(value = "/bikeRentDeleteAction.do", method = RequestMethod.GET)
+	  public String bikeRentDeleteAction(@RequestParam("bikeType") String bikeType, RedirectAttributes redirectAttributes) {
+	    bs.deleteBikeByType(bikeType);
+	    redirectAttributes.addFlashAttribute("message", "자전거가 성공적으로 삭제되었습니다.");
+	    return "redirect:/bikeRent/bikeRentInfo.do";
+	  }
+	 
+	 
+	 
+	 
+	 
 	/*관리자페이지 자전거 고장/신고 내역*/
 	@RequestMapping(value="/bikeRentFaultList.do")
 	public String bikeRentFaultList() {
@@ -66,12 +116,7 @@ public class bikeRentController {
 		md.addAttribute("alist", alist);
 		return "bikeRent/bikeRentLocation";
 	}
-	/*자전거 소개글*/ 
-	@RequestMapping(value="/bikeRentInfo.do")
-	public String bikeRentInfo() {
-		
-		return "bikeRent/bikeRentInfo";
-	}
+	
 	/*----------------------------------------------*/
 	
 	/*자전거 QR대여*/

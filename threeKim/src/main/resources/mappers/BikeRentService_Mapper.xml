@@ -113,13 +113,22 @@
 	    FROM member1234
 	    WHERE midx = #{midx}
 	</select>
+	<!-- 자전거 소개 페이지에서 자전거 추가 등록 -->
+ 	<insert id="insertBikeRent"  parameterType="com.myezen.myapp.domain.BikeJoinVo">
+        INSERT INTO bikeInfo1234 (bikeType, bikeContent, rentPrice, uploadFile)
+        VALUES (#{bikeType}, #{bikeContent}, #{rentPrice}, #{uploadFile})
+    </insert>
+    
+    <!-- bike1234 자전거 정보 조회 -->
+	<select id="getBikeList" resultType="com.myezen.myapp.domain.BikeJoinVo">
+	    SELECT * FROM bikeInfo1234
+	</select>
 
-
-
-
-
-
-
+	<!-- 자전거 삭제 -->
+	 <delete id="deleteBikeByType">
+        DELETE FROM bikeInfo1234
+        WHERE bikeType = #{bikeType}
+    </delete>
 
 
 

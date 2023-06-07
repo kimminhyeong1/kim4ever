@@ -12,6 +12,7 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.web.multipart.MultipartFile;
 
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.MemberVo;
@@ -55,11 +56,12 @@ public interface BikeRentService {
 	public void updateVerificationStatus(String userPhoneNumber);
 	//midx로 휴대폰번호 조회하기
 	public MemberVo getMemberPhoneByMidx(int midx);
-	
-	
-	
-	
-	
+	//자전거소개 자전거등록
+	public String processBikeRentWrite(MultipartFile file, BikeJoinVo bjv);
+	//자전거 정보 조회
+	public ArrayList<BikeJoinVo> getBikeList();
+	//자전거 정보 삭제
+	public void deleteBikeByType(String bikeType);
 	
 	
 	/*----------------------------------------------*/
