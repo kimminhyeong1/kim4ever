@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  <% BoardVo bv = (BoardVo)request.getAttribute("bv"); %>   
+ 
 
 <!DOCTYPE html>
 <html>
@@ -100,7 +101,7 @@ li{list-style:none;}
 									<tr>
 										<td>${bv.sortN}</td>
 										<td><a
-											href="${pageContext.request.contextPath}/board/boardFaqContent.do?bidx=${bv.bidx}">
+											href="${pageContext.request.contextPath}/board/boardNoticeContent.do?bidx=${bv.bidx}">
 												${bv.subject} </a></td>
 										<td>${bv.writer}</td>
 										<td>${bv.writeday.substring(0, 10)}</td>
@@ -115,9 +116,11 @@ li{list-style:none;}
 		
 <!-- 버튼 -->
 					<div id="btn">
-					<button type="button"
-							onclick="location.href='<%=request.getContextPath()%>/board/boardNoticeWrite.do'">작성</button>
+						<c:if test="${membertype == '관리자'}">
+				    		<button type="button" onclick="location.href='${pageContext.request.contextPath}/board/boardNoticeWrite.do'">작성</button>
+				    	</c:if>
 					</div>
+	
 				</div>
 
 <!-- QNA -->
@@ -217,8 +220,10 @@ li{list-style:none;}
 				
 
 					<div id="btn">
+						<c:if test="${membertype == '관리자'}">					
 						<button type="button"
 							onclick="location.href='<%=request.getContextPath()%>/board/boardFaqWrite.do'">작성</button>
+							</c:if>
 					</div>
 				</div>
 
