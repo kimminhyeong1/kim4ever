@@ -7,7 +7,7 @@ package com.myezen.myapp.persistance;
 
 import java.util.ArrayList;
 
-
+import org.springframework.web.multipart.MultipartFile;
 
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.MemberVo;
@@ -41,11 +41,12 @@ public interface BikeRentService_Mapper {
 	public void updateVerificationStatus(String userPhoneNumber);
 	//midx로 휴대폰번호 조회하기
 	public MemberVo getMemberPhoneByMidx(int midx);
-	
-	
-	
-	
-	
+	//자전거소개 추가등록
+	public void insertBikeRent(BikeJoinVo bjv);
+	//자전거소개 정보조회
+	public ArrayList<BikeJoinVo> getBikeList();
+	//자전거소개 정보삭제
+	public void deleteBikeByType(String bikeType);
 	
 	
 	

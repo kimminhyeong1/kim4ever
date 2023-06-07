@@ -49,10 +49,19 @@ li{list-style:none;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
 <script type="text/javascript">
-	function fnUpload() {
-		if(confirm("자전거를 등록 하시겠습니까?")) {
-			location.href='<%=request.getContextPath()%>/bike/bikeRent.do';
-		}
+function fnUpload() {
+	  var uploadFile = document.querySelector('input[name="uploadfile"]').files[0];
+	  var bikeTypeInput = document.getElementById('bikeType');
+	  var bikeContentInput = document.getElementById('bikeContent');
+	  var rentPriceInput = document.getElementById('rentPrice');
+
+	  if (uploadFile && bikeTypeInput.value && bikeContentInput.value && rentPriceInput.value) {
+	    if (confirm("자전거를 등록 하시겠습니까?")) {
+	      var uploadForm = document.getElementById("uploadForm");
+	      uploadForm.action = "${pageContext.request.contextPath}/bikeRent/bikeRentWriteAction.do";
+	      uploadForm.submit();
+	    }
+	  }
 	}
 </script>
 </head>
@@ -61,20 +70,29 @@ li{list-style:none;}
 <%@include file="../header4.jsp" %>
 	
 	<div id="content">
+		<form id="uploadForm" method="post" enctype="multipart/form-data">
 		<table>
 			<tr>
-				<td style="height:500px;"><input type="file" name="uploadfile"/></td>	
+				<td style="height:500px;">
+				<input type="file" name="uploadfile"/>
+				</td>	
 			</tr>
 			
 		 	<tr>
 		 		<td>
-				<input type="text" placeholder="이름을 입력해 주세요"/>
+				<input type="text" id="bikeType" name="bikeType" placeholder="이름을 입력해 주세요"/>
+				</td>
+			</tr>
+			
+			<tr>
+		 		<td>
+				<input type="text" id="bikeContent" name="bikeContent" placeholder="한줄 소개글을 입력해 주세요"/>
 				</td>
 			</tr>
 				
 			<tr>
 				<td>
-				<input id="price" type="number" placeholder="가격을 입력해 주세요"/>
+				<input type="text" id="rentPrice" name="rentPrice" placeholder="가격을 입력해 주세요"/>
 				</td>
 			</tr>
 			
@@ -84,9 +102,7 @@ li{list-style:none;}
 				</td>
 			</tr> 
 		</table>
-	
-
-	
+		</form>
 	</div>
 	
 	<div id="bottom">

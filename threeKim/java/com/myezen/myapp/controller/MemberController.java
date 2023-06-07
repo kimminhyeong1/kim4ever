@@ -235,7 +235,7 @@ public class MemberController {
 			session.setAttribute("memberAge", mv.getMemberAge());
 			session.setAttribute("memberPhone", mv.getMemberPhone());
 			session.setAttribute("memberEmail", mv.getMemberEmail());
-			session.setAttribute("membertype", mv.getMemberType());
+			session.setAttribute("memberType", mv.getMemberType());
 			
 			//비밀번호 지우기 //2023-05-26
 			session.removeAttribute("memberPwd"); 
