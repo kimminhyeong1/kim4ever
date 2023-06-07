@@ -91,7 +91,6 @@
 						<div><p>반납할 자전거 시간</p><p>:</p><p>${currentTime}</p></div>
 						<div><p>대여한 자전거 이용 요금</p><p>:</p><p>${bjv.rentPrice}원</p></div>
 						<div id="useListBtn">
-							<button onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentFault.do'">고장/신고</button>
 							<button type="button" id="btn1">최종 반납하기</button>			 		
 						</div>
 					</div>

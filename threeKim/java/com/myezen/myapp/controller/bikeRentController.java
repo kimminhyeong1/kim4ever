@@ -67,7 +67,6 @@ public class bikeRentController {
 
 		    for (BikeJoinVo bikeJoinVo : bjvlist) {
 		    	HashMap<String, Object> position = new HashMap<>();
-		    	System.out.println(bikeJoinVo.getRsidx());
 		        String content = "<div id=\"marker" + bikeJoinVo.getRsidx() + "\">";
 		        content += "<span class=\"rs1\">" + bikeJoinVo.getRentalshopName() + "대여소</span></br>";
 		        content += "<span class=\"rs2\">남은 갯수: " + bikeJoinVo.getRentalshopCnt() + "</span></div>";
