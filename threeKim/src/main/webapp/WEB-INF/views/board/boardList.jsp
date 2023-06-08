@@ -38,9 +38,9 @@ li{list-style:none;}
 #main #content{width:1440px; height:auto;}
 #main #content h2{text-align:left; margin-top:50px; margin-left:160px; font-family: 'GangwonEdu_OTFBoldA'; font-size:25px;}
 #main #bottom{width:1440px; height:300px;}
-#content table {width:80%; border-collapse:collapse; margin:60px auto 0; line-height:100px; font-size:24px; font-family: 'omyu_pretty'; cursor:pointer;}
+#content table {width:80%; border-collapse:collapse; margin:60px auto 0; line-height:100px; font-size:24px; font-family: 'omyu_pretty'; cursor:pointer;  white-space: nowrap;  overflow: hidden; text-overflow: ellipsis;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
-#content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
+#content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;  }
 #content table tr th:nth-child(1){width: 20px;}
 #content table tr th:nth-child(2){width: 80px;}
 #content table tr th:nth-child(3){width: 80px;}
@@ -165,25 +165,26 @@ li{list-style:none;}
 		
 					</table>
 					
-				<table><!-- 페이징 -->
-  <tr>
-    <td style="text-align: right;">
-      <c:if test="${pm.prev == true}">
-        <a href="${pageContext.request.contextPath}/board/boardList.do?page=${pm.startPage-1}">◀</a>
-      </c:if>
-    </td>
-    <td style="text-align: center; width: 300px;">
-         <c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}" step="1">
-        <a href="${pageContext.request.contextPath}/board/boardList.do?page=${i}">${i}</a>
-      </c:forEach>
-    </td>
-    <td style="width: 200px; text-align: left;">
-      <c:if test="${pm.next && pm.endPage > 0}">
-        <a href="${pageContext.request.contextPath}/board/boardList.do?page=${pm.endPage+1}">▶</a>
-      </c:if>
-    </td>
-  </tr>
-</table>
+			<table>
+<!-- 페이징 -->
+  				<tr style="border-bottom: none;">
+				    <td style="width: 200px; text-align: right;">
+				      <c:if test="${pm.prev == true}">
+				        <a href="${pageContext.request.contextPath}/board/boardList.do?page=${pm.startPage-1}">◀</a>
+				      </c:if>
+				    </td>
+				    <td style="text-align: center; width: 300px; font-size:30px;">
+				         <c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}" step="1">
+				        <a href="${pageContext.request.contextPath}/board/boardList.do?page=${i}">${i}</a>
+				      </c:forEach>
+				    </td>
+				    <td style="width: 200px; text-align: left;">
+				      <c:if test="${pm.next && pm.endPage > 0}">
+				        <a href="${pageContext.request.contextPath}/board/boardList.do?page=${pm.endPage+1}">▶</a>
+				      </c:if>
+				    </td>
+				  </tr>
+				</table>
 		
 					<div id="btn">
 						<button type="button"

@@ -3,6 +3,7 @@ package com.myezen.myapp.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -16,9 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.myezen.myapp.domain.BikeJoinVo;
+import com.myezen.myapp.domain.BoardVo;
 import com.myezen.myapp.domain.MemberVo;
+import com.myezen.myapp.domain.PageMaker;
 import com.myezen.myapp.domain.SearchCriteria;
 import com.myezen.myapp.service.AdminService;
+import com.myezen.myapp.service.BoardService;
 import com.myezen.myapp.service.MemberService;
 
 @Controller
@@ -110,13 +114,6 @@ public class AdminController {
 		return "redirect:/admin/adminmemberList.do"; 
 	}	
 		
-	//게시판관리 페이지
-		@RequestMapping(value="/adminboardList.do")
-		public String adminboardList() {
-				
-			
-			return "admin/adminboardList";
-			}
 
 		
 	//자전거 등록페이지	
@@ -167,15 +164,13 @@ public class AdminController {
 		return hm; 
 	}
 	
-	//대여소 등록 페이지 //등록하면 bikeRentController에 bikeRentLocation.do에 보여줌 
+	//대여소 등록 페이지
 	@RequestMapping(value="/adminrentalshopRegisterAction.do", method = RequestMethod.POST)
 	public String adminrentalshopRegisterAction(
-		@RequestParam("rentalshopName") String rentalshopName,//대여소 이름
-		@RequestParam("rentalshopLocation") String rentalshopLocation,//대여소 주소
-		@RequestParam("latitude") String latitude, //위도
-		@RequestParam("longitude") String longitude //경도
+		@RequestParam("rentalshopName") String rentalshopName,
+		@RequestParam("rentalshopLocation") String rentalshopLocation
 		) {
-		int value = as.rentalshopInsert(rentalshopName, rentalshopLocation ,latitude ,longitude);
+		int value = as.rentalshopInsert(rentalshopName, rentalshopLocation);
 			
 		return "redirect:/admin/adminrentalshopList.do";	
 		}	
@@ -190,13 +185,12 @@ public class AdminController {
 		}		
 		
 	//관리자 신고 내역 페이지
-	@RequestMapping(value="/adminbikeError.do",method = RequestMethod.GET)
-	public String errorList(SearchCriteria scri, Model model) {
-		System.out.println("어드민컨트롤러 들어옴");
-		ArrayList<BikeJoinVo> elist = as.searchBikeErrors(scri);
+	@RequestMapping(value="/adminbikeError.do")
+	public String errorList(Model model) {
+		
+		ArrayList<BikeJoinVo> elist = as.errorList();
 		
 		model.addAttribute("elist",elist);
-		model.addAttribute("searchCriteria", scri);
 		
 		return "admin/adminbikeError";
 	}
@@ -219,19 +213,47 @@ public class AdminController {
 	}	
 	
 	//관리자 수리 내역 페이지
-	@RequestMapping(value="/adminbikeRepairList.do",method = RequestMethod.GET) 
-	public String repairList(SearchCriteria scri,Model model) {
+	@RequestMapping(value="/adminbikeRepairList.do") 
+	public String repairList(Model model) {
   
-		ArrayList<BikeJoinVo> elist = as.searchBikerepairList(scri);
+		ArrayList<BikeJoinVo> elist = as.repairList();
   
 		model.addAttribute("elist",elist); 
-		model.addAttribute("searchCriteria", scri);
   
 		return "admin/adminbikeRepairList";
 	}
 	
 	
 	
-
 	
+	
+	
+////////////////	 		게시글 관리			///////////////// 	
+	
+	
+	@Autowired
+	BoardService bs;
+		
+	@Autowired(required=false)	
+	PageMaker pm;
+	
+	@Resource(name="uploadPath")
+	String uploadPath;
+	
+	@RequestMapping(value="/adminboardList.do")
+	public String adminboardList(SearchCriteria scri,  Model model) {		
+		
+		int totalCount = bs.boardTotal(scri);
+		pm.setScri(scri);
+		pm.setTotalCount(totalCount);
+		
+		ArrayList<BoardVo> blist = bs.boardSelectAll(scri);
+		
+		model.addAttribute("blist", blist);
+		model.addAttribute("pm", pm);
+	
+		return "admin/adminboardList";
+	}
+
+
 }
