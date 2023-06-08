@@ -43,8 +43,10 @@ public interface MemberService_Mapper {
 //소셜로그인
 
 	//구글로그인
-	public int socialMemberInsert(String memberId,String memberPwd,String memberName);
-	//구글 아이디있는지 확인
+	public int googleMemberInsert(String memberId,String memberPwd,String memberName);
+	//카카오로그인
+	public int kakaoMemberInsert(String memberId,String memberPwd,String memberName);
+	//소셜 아이디있는지 확인
 	public int socialMemberCheck(String memberId);
 	
 	
