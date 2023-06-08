@@ -115,8 +115,8 @@
 	</select>
 	<!-- 자전거 소개 페이지에서 자전거 추가 등록 -->
  	<insert id="insertBikeRent"  parameterType="com.myezen.myapp.domain.BikeJoinVo">
-        INSERT INTO bikeInfo1234 (bikeType, bikeContent, rentPrice, uploadFile)
-        VALUES (#{bikeType}, #{bikeContent}, #{rentPrice}, #{uploadFile})
+        INSERT INTO bikeInfo1234 (bikeType, bikeContent, rentPrice, bikeCode, uploadFile)
+        VALUES (#{bikeType}, #{bikeContent}, #{rentPrice}, #{bikeCode}, #{uploadFile})
     </insert>
     
     <!-- bike1234 자전거 정보 조회 -->
