@@ -31,6 +31,7 @@ public interface AdminService_Mapper {
 	public ArrayList<BikeJoinVo> memberList();
 	//고장 내역 리스트	
 	public ArrayList<BikeJoinVo> searchBikeErrors(SearchCriteria scri);
+	public int searchBikeErrorsCount(SearchCriteria scri);
 	//고장  내역 상세 페이지	
 	public BikeJoinVo getErrorContent(int eidx);
 	//bikeState E로 업데이트

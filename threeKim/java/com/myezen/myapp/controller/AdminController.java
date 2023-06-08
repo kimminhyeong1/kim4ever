@@ -33,7 +33,8 @@ public class AdminController {
 	AdminService as;
 	@Autowired
 	MemberService ms;
-	
+	@Autowired(required=false)	
+	PageMaker pm;
 	
 	//관리자 메인 페이지
 	@RequestMapping(value="/adminPage.do", method = RequestMethod.GET)
@@ -147,16 +148,18 @@ public class AdminController {
 		return hm; 
 	}
 	
-	//대여소 등록 페이지
-	@RequestMapping(value="/adminrentalshopRegisterAction.do", method = RequestMethod.POST)
-	public String adminrentalshopRegisterAction(
-		@RequestParam("rentalshopName") String rentalshopName,
-		@RequestParam("rentalshopLocation") String rentalshopLocation
-		) {
-		int value = as.rentalshopInsert(rentalshopName, rentalshopLocation);
-			
-		return "redirect:/admin/adminrentalshopList.do";	
-		}	
+	//대여소 등록 페이지 //등록하면 bikeRentController에 bikeRentLocation.do에 보여줌 
+		@RequestMapping(value="/adminrentalshopRegisterAction.do", method = RequestMethod.POST)
+		public String adminrentalshopRegisterAction(
+			@RequestParam("rentalshopName") String rentalshopName,//대여소 이름
+			@RequestParam("rentalshopLocation") String rentalshopLocation,//대여소 주소
+			@RequestParam("latitude") String latitude, //위도
+			@RequestParam("longitude") String longitude //경도
+			) {
+			int value = as.rentalshopInsert(rentalshopName, rentalshopLocation ,latitude ,longitude);
+				
+			return "redirect:/admin/adminrentalshopList.do";	
+			}	
 	
 	//대여소 삭제
 		@RequestMapping(value="/adminrentalshopDelete.do")
@@ -169,11 +172,16 @@ public class AdminController {
 		
 	//관리자 신고 내역 페이지
 	@RequestMapping(value="/adminbikeError.do")
-	public String errorList(Model model) {
+	public String errorList(SearchCriteria scri, Model model) {
 		
-		ArrayList<BikeJoinVo> elist = as.errorList();
+		int totalCount = as.searchBikeErrorsCount(scri); //전체 게시물 갯수 조회
+	    pm.setScri(scri); //
+	    pm.setTotalCount(totalCount); 
+		
+		ArrayList<BikeJoinVo> elist = as.searchBikeErrors(scri); //전체 게시물 조회
 		
 		model.addAttribute("elist",elist);
+		model.addAttribute("pm", pm); 
 		
 		return "admin/adminbikeError";
 	}
@@ -197,9 +205,9 @@ public class AdminController {
 	
 	//관리자 수리 내역 페이지
 	@RequestMapping(value="/adminbikeRepairList.do") 
-	public String repairList(Model model) {
+	public String repairList(SearchCriteria scri,Model model) {
   
-		ArrayList<BikeJoinVo> elist = as.repairList();
+		ArrayList<BikeJoinVo> elist = as.searchBikerepairList(scri);
   
 		model.addAttribute("elist",elist); 
   
@@ -217,8 +225,7 @@ public class AdminController {
 	@Autowired
 	BoardService bs;
 		
-	@Autowired(required=false)	
-	PageMaker pm;
+
 	
 	@Resource(name="uploadPath")
 	String uploadPath;

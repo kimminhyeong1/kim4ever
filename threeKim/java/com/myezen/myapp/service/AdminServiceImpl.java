@@ -100,6 +100,11 @@ public class AdminServiceImpl implements AdminService {
 		return asm.searchBikeErrors(scri);
 	}
 	
+	@Override
+	public int searchBikeErrorsCount(SearchCriteria scri) {
+		 return asm.searchBikeErrorsCount(scri);
+	}
+	
 	//신고 내역 상세보기
 	@Override
 	public BikeJoinVo getErrorContent(int eidx) {
@@ -173,6 +178,8 @@ public class AdminServiceImpl implements AdminService {
 
 
 	
+
+
 
 
 
