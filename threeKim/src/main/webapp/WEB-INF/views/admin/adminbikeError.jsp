@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import = "com.myezen.myapp.domain.BikeJoinVo" %>
+<%@page import = "com.myezen.myapp.domain.PageMaker" %>
+<%@page import = "com.myezen.myapp.domain.SearchCriteria" %>
 <%@page import = "java.util.*" %>      
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>   
@@ -57,7 +59,7 @@ li{list-style:none;}
 #content .search select {width:120px;height:30px;font-size:14px;padding:5px;}
 #content .search input[type="text"] {width:200px;height:17px;font-size:14px;padding:5px;}
 #content .search button {width:80px;height:30px;font-size:14px;padding:5px;}
-
+.pagination{margin-top:20px; font-size:40px; }
 
 
 </style>
@@ -71,10 +73,10 @@ li{list-style:none;}
 		
 		<div class="search">
 			<select id="searchType" name="searchType">
-				<option value="">검색조건</option>
 				<option value="memberName">고객명</option> 
 				<option value="memberPhone">연락처</option>
 				<option value="rentPlace">대여소</option>
+				<option value="errorContent">내용</option>
 			</select>
 			<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요"/>
 			<button type="submit" id="searchBtn">검색</button>
@@ -82,6 +84,7 @@ li{list-style:none;}
 		</form>
 		<table>
 				<tr>
+					<th>번호</th>
 					<th>고객명</th>
 					<th>연락처</th>
 					<th>대여소</th>
@@ -93,6 +96,7 @@ li{list-style:none;}
 				</tr>
 			<c:forEach var="ejv" items="${elist}">
 					<tr>						
+						<td>${ejv.eidx }
 						<td>${ejv.memberName}</td>
 						<td>${ejv.memberPhone}</td>
 						<td>${ejv.rentPlace}</td>
@@ -118,6 +122,25 @@ li{list-style:none;}
 			</c:forEach>
 		</table>
 		
+		<table>
+			<tr>
+				<td>
+					<c:if test="${ pm.prev == true }">
+					<a href="${pageContext.request.contextPath }/admin/adminbikeError.do?page=${pm.startPage-1}&searchType=${ pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } "> ◀</a>
+					</c:if>
+				</td>
+				<td>
+					<c:forEach var="i"  begin="${pm.startPage}" end="${pm.endPage}"  step="1" >
+						<a href="${pageContext.request.contextPath }/admin/adminbikeError.do?page=${ i }&searchType=${pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">${ i }</a>
+					</c:forEach>	
+				</td>
+					<td>
+					<c:if test="${pm.next&&pm.endPage >0 }">
+					<a href="${pageContext.request.contextPath }/admin/adminbikeError.do?page=${pm.endPage+1}&searchType=${pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">▶</a>
+					</c:if>
+				</td>
+			</tr>
+		</table>
 		
 	
 		
@@ -133,5 +156,5 @@ li{list-style:none;}
 </div>
 </body>
 
-<%@include file="../footer.jsp" %>
+<%-- <%@include file="../footer.jsp" %> --%>
 </html>
