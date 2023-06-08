@@ -78,7 +78,19 @@ button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transfo
 				<td>${kv.bikeCode}</td>
 				<td>${kv.bikeType}</td>
 				<td>${kv.bikeLocation}</td>
-				<td>${kv.bikeState}</td>
+				<td>
+				<c:choose>
+								<c:when test="${kv.bikeState eq 'Y'}">  
+									대여 가능
+								</c:when>
+								<c:when test="${kv.bikeState eq 'N'}">  
+									대여 중
+								</c:when>
+								<c:when test="${kv.bikeState eq 'E'}">  
+									고장
+								</c:when>
+				</c:choose>				
+				</td>
 			</tr>
 		</c:forEach>		
 		</table>
