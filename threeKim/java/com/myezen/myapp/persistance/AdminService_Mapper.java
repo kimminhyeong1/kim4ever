@@ -38,6 +38,7 @@ public interface AdminService_Mapper {
 	public void updateBikeState(int eidx);
 	//수리 내역 페이지
 	public ArrayList<BikeJoinVo> searchBikerepairList(SearchCriteria scri);	
+	public int searchBikerepairListCount(SearchCriteria scri);
 	//자전거 리스트
 	public ArrayList<BikeJoinVo> bikeList();
 	//대여소 리스트

@@ -207,9 +207,14 @@ public class AdminController {
 	@RequestMapping(value="/adminbikeRepairList.do") 
 	public String repairList(SearchCriteria scri,Model model) {
   
+		int totalCount = as.searchBikerepairListCount(scri); //전체 게시물 갯수 조회
+	    pm.setScri(scri); //
+	    pm.setTotalCount(totalCount); 
+	    
 		ArrayList<BikeJoinVo> elist = as.searchBikerepairList(scri);
   
 		model.addAttribute("elist",elist); 
+		model.addAttribute("pm", pm); 
   
 		return "admin/adminbikeRepairList";
 	}

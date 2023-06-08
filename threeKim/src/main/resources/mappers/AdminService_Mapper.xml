@@ -32,11 +32,11 @@
 		GROUP BY
     	a.RENTALSHOPNAME	
 	</select>
-						
+
 
 	
 <sql id="search1">
- <if test="searchType != null and searchType != ''">
+<if test="searchType != null and searchType != ''">
         <choose>
           <when test="searchType == 'memberName'">
             AND m.memberName LIKE '%'||#{keyword}||'%'
@@ -93,19 +93,13 @@
 	
 	
 	
-	
-	
-	
-	
 	 <select id="searchBikeErrorsCount" resultType="int">
         SELECT COUNT(*)
 		  FROM rent1234 r
 		  JOIN member1234 m ON m.midx = r.midx
 		  JOIN bike1234 b ON b.bkidx = r.bkidx
 		  JOIN error1234 e ON e.ridx = r.ridx
-		  WHERE errorState='D'
 		  <if test="searchType != null and searchType != ''">
-
 		    <choose>
 		        <when test="searchType == 'memberName'">
 		            AND m.memberName LIKE '%'||#{keyword}||'%'
@@ -121,7 +115,6 @@
 	            </when>
 		    </choose>
 		</if>
-	
      </select>
      
 
@@ -157,6 +150,27 @@
       		WHERE e.eidx =#{eidx})
 	</update>
 	
+	
+	<sql id="search2">
+		<if test="searchType != null and searchType != ''">
+		<choose>
+			<when test="searchType == 'bikeType'">
+				AND b.bikeType LIKE '%'||#{keyword}||'%'
+			</when>
+			<when test="searchType == 'bikeCode'">
+				AND b.bikeCode LIKE '%'||#{keyword}||'%'
+			</when>
+			<when test="searchType == 'errorContent'">
+				AND e.errorContent LIKE '%'||#{keyword}||'%'
+			</when>
+			<when test="searchType == 'bikeState'">
+				AND b.bikeState LIKE '%'||#{keyword}||'%'
+			</when>
+		</choose>
+		</if>		
+</sql>
+
+
 	<!-- 수리 내역 리스트 -->
 	<select id="searchBikerepairList" parameterType="com.myezen.myapp.domain.SearchCriteria" resultType="com.myezen.myapp.domain.BikeJoinVo">
 	SELECT
@@ -174,6 +188,21 @@
 	JOIN bike1234 b ON b.bkidx = r.bkidx
 	JOIN error1234 e ON	e.ridx = r.ridx
 	WHERE 1=1
+	 <include refid="search2" />
+      ORDER BY e.errorDay DESC
+    ) A
+       <![CDATA[WHERE ROWNUM <= #{page} * #{perPageNum}]]>
+    
+  ) B
+  <![CDATA[WHERE B.rnum >= (#{page} - 1) * #{perPageNum} + 1]]>
+	</select>
+	
+	<select id="searchBikerepairListCount" resultType="int">
+       SELECT count(*) as cnt
+	FROM rent1234 r
+	JOIN member1234 m ON m.midx = r.midx
+	JOIN bike1234 b ON b.bkidx = r.bkidx
+	JOIN error1234 e ON	e.ridx = r.ridx
 	<if test="searchType != null and searchType != ''">
 		<choose>
 			<when test="searchType == 'bikeType'">
@@ -190,7 +219,7 @@
 			</when>
 		</choose>
 	</if>		
-	</select>
+     </select>
 	
 	<!-- 관리자 자전거 리스트 -->
 	<select id="bikeList" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
