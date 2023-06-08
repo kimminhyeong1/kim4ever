@@ -4,6 +4,7 @@ package com.myezen.myapp.controller;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -25,6 +26,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.service.MemberService;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken.Payload;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
@@ -33,8 +36,13 @@ import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
 
-
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 
 
@@ -129,7 +137,7 @@ public class MemberController {
 		            System.out.println(value);
 		            if (value == 0) {
 		            	//회원가입 메소드
-						int value2 =  ms.socialMemberInsert(memberId,memberPwd,memberName);
+						int value2 =  ms.googleMemberInsert(memberId,memberPwd,memberName);
 						value = ms.socialMemberCheck(memberId);	
 					}
 		            //DB에 값이 있으면 로그인 부분 실행
@@ -161,13 +169,56 @@ public class MemberController {
 	
 //!카카오로그인
 	@RequestMapping(value="/login/oauth2/code/kakao.do")
-	public String kakao(@RequestParam("code") String code) {
-		System.out.println(code);
-		 
+	public String kakao(@RequestParam("code") String code,HttpSession session) throws Throwable {
+
+		// 1번 카카오톡에 사용자 코드 받기(jsp의 a태그 href에 경로 있음)
+		// 2번 받은 code를 iKakaoS.getAccessToken로 보냄 ###access_Token###로 찍어서 잘 나오면은 다음단계진행
+		// 3번 받은 access_Token를 iKakaoS.getUserInfo로 보냄 userInfo받아옴, userInfo에 nickname, email정보가 담겨있음
+				// 1번
+				System.out.println("code:" + code);
+				
+				// 2번
+				String access_Token = ms.getAccessToken(code);
+				System.out.println("###access_Token#### : " + access_Token);
+				// 위의 access_Token 받는 걸 확인한 후에 밑에 진행
+				// 3번
+				HashMap<String, Object> userInfo = ms.getUserInfo(access_Token);
+				System.out.println("###nickname#### : " + userInfo.get("nickname"));
+				System.out.println("###email#### : " + userInfo.get("email"));
+				
+				//변수선언
+	            String memberId = (String) userInfo.get("email");
+				String memberPwd = bcryptPasswordEncoder.encode(memberId);
+				String memberName = (String) userInfo.get("email");
+				
+				//DB에 ID값이 있는지 확인
+	            int value = ms.socialMemberCheck(memberId);	
+	            System.out.println(value);
+	            if (value == 0) {
+	            	//회원가입 메소드
+					int value2 =  ms.kakaoMemberInsert(memberId,memberPwd,memberName); 
+					value = ms.socialMemberCheck(memberId);	
+				}
+	            //DB에 값이 있으면 로그인 부분 실행
+	            if (value == 1) {
+	            	//로그인 메소드
+	            	System.out.println("들어옴");
+	            	MemberVo mv = ms.memberLogin(memberId);
+	            	
+	            	if(mv!=null && bcryptPasswordEncoder.matches(memberId, mv.getMemberPwd()) ) {
+	            		session.setAttribute("midx", mv.getMidx());
+	            		session.setAttribute("memberId", mv.getMemberId());
+	            		session.setAttribute("memberName", mv.getMemberName());
+	            		session.setAttribute("memberType", mv.getMemberType());
+	            	}
+	            
+	            	
+					
+				}
+				
+				
 		
-		
-		
-		return "member/memberJoin";
+		return "redirect:/";
 	
 	}
 	

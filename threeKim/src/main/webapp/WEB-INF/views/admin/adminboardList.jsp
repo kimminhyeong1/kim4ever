@@ -105,7 +105,7 @@ li{list-style:none;}
 						</tr>
 										<c:forEach var="bv" items="${blist}" varStatus="status">
 									<tr>				
-										<td>${bv.boardType === 0 ? '공지' : bv.boardType === 1 ? 'Q&A' : bv.boardType === 2 ? 'FAQ' : ''}</td>
+										<td>${bv.boardType }</td>
 										<td>${bv.sortN}</td>									
 										<td>${bv.subject}</td>									
 										<td>${bv.writer}</td>									

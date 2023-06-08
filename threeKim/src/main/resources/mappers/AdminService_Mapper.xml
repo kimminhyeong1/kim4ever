@@ -32,8 +32,7 @@
 		GROUP BY
     	a.RENTALSHOPNAME	
 	</select>
-							
-	
+
 
 	
 <sql id="search1">
