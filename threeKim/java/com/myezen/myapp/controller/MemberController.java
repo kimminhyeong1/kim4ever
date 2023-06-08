@@ -159,7 +159,17 @@ public class MemberController {
 			return "redirect:/";
 		}
 	
+//!카카오로그인
+	@RequestMapping(value="/login/oauth2/code/kakao.do")
+	public String kakao(@RequestParam("code") String code) {
+		System.out.println(code);
+		 
+		
+		
+		
+		return "member/memberJoin";
 	
+	}
 	
 	
 	
