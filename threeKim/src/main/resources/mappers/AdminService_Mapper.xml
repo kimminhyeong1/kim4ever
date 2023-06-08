@@ -189,6 +189,8 @@
 	<select id="getOEleCount" resultType="java.lang.Integer">
         SELECT COUNT(*) FROM bike1234 where bikeState LIKE 'Y' and bikeLocation Like '오목' and bikeType Like '전기자전거'
     </select>
+    
+
 	
 	
 </mapper>
