@@ -1,5 +1,6 @@
 package com.myezen.myapp.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -59,76 +60,21 @@ public class AdminServiceImpl implements AdminService {
 		return asm.getTotalRentCount();
 	}
 	
-	//관리자 메인페이지 송천 일반 자전거 대여 가능 수
+	//관리자 메인페이지 대여소 별 대여 가능 자전거 수
 	@Override
-	public int getSNorCount() {
-				
-		return asm.getSNorCount();
+	public ArrayList<BikeJoinVo> canRentBike() {
+		
+		ArrayList<BikeJoinVo> rblist = asm.canRentBike();
+		
+		return rblist;
 	}
 	
-	//관리자 메인페이지 송천 전기 자전거 대여 가능 수
+	//관리자 메인페이지 이용현황 어제 요일 표시
 	@Override
-	public int getSEleCount() {
+	public String yesterday() {
 		
-		return asm.getSEleCount();
+		return asm.yesterday();
 	}
-		
-	//관리자 메인페이지 효자 일반 자전거 대여 가능 수
-	@Override
-	public int getHNorCount() {
-		
-		return asm.getHNorCount();
-	}
-
-	//관리자 메인페이지 효자 전기 자전거 대여 가능 수
-	@Override
-	public int getHEleCount() {
-		
-		return asm.getHEleCount();
-	}
-		
-	//관리자 메인페이지 덕진 일반 자전거 대여 가능 수
-	@Override
-	public int getDNorCount() {
-		
-		return asm.getDNorCount();
-	}
-	
-	//관리자 메인페이지 덕진 전기 자전거 대여 가능 수
-	@Override
-	public int getDEleCount() {
-		
-		return asm.getDEleCount();
-	}
-	
-	//관리자 메인페이지 평화 일반 자전거 대여 가능 수
-	@Override
-	public int getPNorCount() {
-		
-		return asm.getPNorCount();
-	}
-	
-	//관리자 메인페이지 평화 전기 자전거 대여 가능 수
-	@Override
-	public int getPEleCount() {
-		
-		return asm.getPEleCount();
-	}
-	
-	//관리자 메인페이지 오목 일반 자전거 대여 가능 수
-	@Override
-	public int getONorCount() {
-		
-		return asm.getONorCount();
-	}
-	
-	//관리자 메인페이지 오목 전기 자전거 대여 가능 수
-	@Override
-	public int getOEleCount() {
-		
-		return asm.getOEleCount();
-	}
-	
 	
 	//회원삭제
 	@Override
@@ -221,6 +167,12 @@ public class AdminServiceImpl implements AdminService {
 		asm.deleteRentalshop(rentalshopName);
 		
 	}
+
+	
+	
+
+
+	
 
 
 
