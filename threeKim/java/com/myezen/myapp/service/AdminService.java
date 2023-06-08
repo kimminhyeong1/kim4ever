@@ -37,7 +37,8 @@ public interface AdminService {
 	//bikeState E로 업데이트
 		public void updateBikeState(int eidx);
 	//수리 내역 페이지
-		public ArrayList<BikeJoinVo> searchBikerepairList(SearchCriteria scri);	
+		public ArrayList<BikeJoinVo> searchBikerepairList(SearchCriteria scri);
+		public int searchBikerepairListCount(SearchCriteria scri);
 	//자전거리스트	
 		public ArrayList<BikeJoinVo> bikeList();
 	//대여소 리스트

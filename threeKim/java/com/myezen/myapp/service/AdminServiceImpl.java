@@ -126,6 +126,12 @@ public class AdminServiceImpl implements AdminService {
 		return asm.searchBikerepairList(scri);	
 	}
 	
+	@Override
+	public int searchBikerepairListCount(SearchCriteria scri) {
+
+		return asm.searchBikerepairListCount(scri);
+	}
+	
 	//회원 상세정보
 	@Override
 	public BikeJoinVo getMemberByMemberId(String memberId) {
@@ -172,6 +178,8 @@ public class AdminServiceImpl implements AdminService {
 		asm.deleteRentalshop(rentalshopName);
 		
 	}
+
+	
 
 	
 	

@@ -110,10 +110,10 @@ li{list-style:none;}
 						<td><a href="adminbikeErrorContent.do?eidx=${ejv.eidx}">${ejv.errorContent}</a></td>
 						<td>
 							<c:choose>
-								<c:when test="${ejv.bikeState eq 'Y'}">  
+								<c:when test="${ejv.errorState eq 'D'}">  
 									대기중
 								</c:when>
-								<c:when test="${ejv.bikeState eq 'E'}">  
+								<c:when test="${ejv.errorState eq 'R'}">  
 									수리중
 								</c:when>
 							</c:choose>
