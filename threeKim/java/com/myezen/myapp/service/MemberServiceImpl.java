@@ -174,5 +174,17 @@ public class MemberServiceImpl implements MemberService {
 		
 		return msm.getMemberByMemberId(memberId);
 	}
+	//소셜 회원가입
+	@Override
+	public int socialMemberInsert(String memberId, String memberPwd, String memberName) {
+		int value = msm.socialMemberInsert(memberId,memberPwd,memberName);
+		return value;
+	}
+	//소셜 멤버 확인
+	@Override
+	public int socialMemberCheck(String memberId) {
+		int value = msm.socialMemberCheck(memberId);
+		return value;
+	}
 
 }

@@ -61,7 +61,12 @@ public class MemberController {
 	/*/member/login/oauth2/code/google*/
 	//!구글로그인
 		@RequestMapping(value="/login/oauth2/code/google.do")
-		public String google(@RequestBody String idTokenString,String g_csrf_token,String credential) {
+		public String google(
+				HttpSession session,
+				Model model,
+				@RequestBody String idTokenString,String g_csrf_token,String credential
+				) {
+			
 			
 			// 백엔드에 액세스하는 앱의 CLIENT_ID를 지정합니다.
 	        String CLIENT_ID = "225367376527-0b4amsji9p7soai6hnhnt2bkbp4ma82p.apps.googleusercontent.com";
@@ -112,11 +117,46 @@ public class MemberController {
 		            }
 		            System.out.println("토큰이 성공적으로 검증되었습니다.");
 		            
+		            //변수선언
+		            String memberId = email;
+					String memberPwd = bcryptPasswordEncoder.encode(userId);
+					String memberName = name;
+		            
+		            
+					System.out.println("DB에 ID값이 있는지 확인");
+		            //DB에 ID값이 있는지 확인
+		            int value = ms.socialMemberCheck(memberId);	
+		            System.out.println(value);
+		            if (value == 0) {
+		            	//회원가입 메소드
+						int value2 =  ms.socialMemberInsert(memberId,memberPwd,memberName);
+						value = ms.socialMemberCheck(memberId);	
+					}
+		            //DB에 값이 있으면 로그인 부분 실행
+		            if (value == 1) {
+		            	//로그인 메소드
+		            	System.out.println("들어옴");
+		            	MemberVo mv = ms.memberLogin(memberId);
+		            	
+		            	if(mv!=null && bcryptPasswordEncoder.matches(userId, mv.getMemberPwd()) ) {
+		            		session.setAttribute("midx", mv.getMidx());
+		            		session.setAttribute("memberId", mv.getMemberId());
+		            		session.setAttribute("memberName", mv.getMemberName());
+		            		session.setAttribute("memberType", mv.getMemberType());
+		            	}
+		            
+		            	
+						
+					}
+		            
+		            
+		            
+		            
 		        } else {
 		            
 		        	System.out.println("유효하지 않은 ID 토큰입니다.");
 		        }
-			return "redirect:/member/memberLogin.do";
+			return "redirect:/";
 		}
 	
 	
@@ -308,15 +348,9 @@ public class MemberController {
 			//rttr은 페이지를 벗어나면 사라짐, session으로 담아줘야 유지 됨
 			session.setAttribute("midx", mv.getMidx());
 			session.setAttribute("memberId", mv.getMemberId());
-			session.setAttribute("memberPwd", mv.getMemberPwd());
 			session.setAttribute("memberName", mv.getMemberName());
-			session.setAttribute("memberAge", mv.getMemberAge());
-			session.setAttribute("memberPhone", mv.getMemberPhone());
-			session.setAttribute("memberEmail", mv.getMemberEmail());
 			session.setAttribute("memberType", mv.getMemberType());
 			
-			//비밀번호 지우기 //2023-05-26
-			session.removeAttribute("memberPwd"); 
 			
 			if(session.getAttribute("dest") == null) {
 				path = "redirect:/";	
