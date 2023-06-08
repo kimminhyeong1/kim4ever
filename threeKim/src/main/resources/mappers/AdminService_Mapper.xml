@@ -32,25 +32,7 @@
 		GROUP BY
     	a.RENTALSHOPNAME	
 	</select>
-							
-	<select id="searchBikeErrors" parameterType="com.myezen.myapp.domain.SearchCriteria"
-	  resultType="com.myezen.myapp.domain.BikeJoinVo">
-	  SELECT
-	    m.memberName,
-	    m.memberPhone,
-	    r.rentPlace,
-	    b.bikeType,
-	    b.bikeCode,
-	    b.bikeState,
-	    e.eidx,
-	    e.errorDay,
-	    e.errorContent
-	  FROM rent1234 r
-	  JOIN member1234 m ON m.midx = r.midx
-	  JOIN bike1234 b ON b.bkidx = r.bkidx
-	  JOIN error1234 e ON e.ridx = r.ridx
-	  WHERE 1=1
-		<if test="searchType != null and searchType != ''">
+						
 
 	
 <sql id="search1">
