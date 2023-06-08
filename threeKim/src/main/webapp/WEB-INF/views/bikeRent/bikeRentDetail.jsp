@@ -14,67 +14,75 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <script type="text/javascript">
- 
-      
-      //휴대폰 번호 인증
-        var code2 = "";
-        $("#phoneChk").click(function(){
-        	
-        	var phone = $("#phone").val();
-        	
-        	$.ajax({
-                type:"GET",
-                url:"${pageContext.request.contextPath}/bikeRent/phoneCheck.do?phone=" + phone,
-                cache : false,
-                success:function(data){
-                	if(data == "error"){
-                		alert("휴대폰 번호가 올바르지 않습니다. \n회원가입 시 입력한 전화번호를 입력해 주세요")
-        				$(".successPhoneChk").text("유효한 번호를 입력해주세요.");
-        				$(".successPhoneChk").css("color","red");
-        				$("#phone").attr("autofocus",true);
-                	}else{	        	
-                		alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호를 확인해 주세요.");
-                		$("#phone2").attr("disabled",false);
-                		$("#phoneChk2").css("display","inline-block");
-                		$(".successPhoneChk").text("인증번호를 입력하세요.");
-                		$(".successPhoneChk").css("color","green");
-                		$("#phone").attr("readonly",true);
-                		code2 = data;
-                	}
-                }
-            });
+$(document).ready(function() {
+    $("#frm").on("submit", function(e) {
+        e.preventDefault(); // 폼 전송 기본 동작 막기 -> submit이 동작했을 때 페이지를 새로고침 안시키기 위해서 사용
+
+        var fm = document.frm;
+        fm.action = "${pageContext.request.contextPath}/bikeRent/bikeRentUpdate.do";
+        fm.method = "post";
+        fm.submit();
+    });
+    
+  //휴대폰 번호 인증
+    var code2 = "";
+    $("#phoneChk").click(function(){
+    	alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호를 확인해 주세요.");
+    	var phone = $("#phone").val();
+    	$.ajax({
+            type:"GET",
+            url:"phoneCheck.do?phone=" + phone,
+            cache : false,
+            success:function(data){
+            	if(data == "error"){
+            		alert("휴대폰 번호가 올바르지 않습니다.")
+    				$(".successPhoneChk").text("유효한 번호를 입력해주세요.");
+    				$(".successPhoneChk").css("color","red");
+    				$("#phone").attr("autofocus",true);
+            	}else{	        		
+            		$("#phone2").attr("disabled",false);
+            		$("#phoneChk2").css("display","inline-block");
+            		$(".successPhoneChk").text("인증번호를 입력하세요.");
+            		$(".successPhoneChk").css("color","green");
+            		$("#phone").attr("readonly",true);
+            		code2 = data;
+            	}
+            }
         });
-		
-      //휴대폰 인증번호 대조
-        $("#phoneChk2").click(function(){
-        	var phoneNumber = $("#phone").val();
-            var verificationCode = $("#phone2").val();
-            $.ajax({
-                type: "POST",
-                url: "${pageContext.request.contextPath}/bikeRent/verifyPhoneNumber.do",
-                data: {
-                    phoneNumber: phoneNumber,
-                    verificationCode: verificationCode
-                },
-                cache: false,
-                success: function(data) {
-                    if (data === "success") {
-                        $(".successPhoneChk").text("인증번호가 일치합니다.");
-                        $(".successPhoneChk").css("color", "green");
-                        $("#phoneDoubleChk").val("true");
-                        $("#phone2").attr("disabled", true);
-                    } else {
-                        $(".successPhoneChk").text("인증번호가 일치하지 않습니다.");
-                        $(".successPhoneChk").css("color", "red");
-                        $("#phoneDoubleChk").val("false");
-                        $("#phone2").focus();
-                    }
+    });
+	
+  //휴대폰 인증번호 대조
+    $("#phoneChk2").click(function(){
+    	var phoneNumber = $("#phone").val();
+        var verificationCode = $("#phone2").val();
+        $.ajax({
+            type: "POST",
+            url: "verifyPhoneNumber.do",
+            data: {
+                phoneNumber: phoneNumber,
+                verificationCode: verificationCode
+            },
+            cache: false,
+            success: function(data) {
+                if (data === "success") {
+                    $(".successPhoneChk").text("인증번호가 일치합니다.");
+                    $(".successPhoneChk").css("color", "green");
+                    $("#phoneDoubleChk").val("true");
+                    $("#phone2").attr("disabled", true);
+                    
+                } else {
+                    $(".successPhoneChk").text("인증번호가 일치하지 않습니다.");
+                    $(".successPhoneChk").css("color", "red");
+                    $("#phoneDoubleChk").val("false");
+                    $("#phone2").focus();
                 }
-            });
-        }); 
-        
-      
-        var IMP = window.IMP;
+            }
+        });
+    });
+    
+})
+
+  <%--      var IMP = window.IMP;
         IMP.init("imp67011510");
 
         var today = new Date();
@@ -116,8 +124,7 @@
                 }
                 alert(msg);
             });
-        }
-
+        } --%>
 </script>
         
  
@@ -189,7 +196,7 @@
 				  
 				<tr>
 				  <td colspan="3">
-				  	<button onclick="requestPay()" style="width:100%; height:50px;">대여하기</button>
+				  	<button type="submit" onclick="requestPay()" style="width:100%; height:50px;">대여하기</button>
 				  </td>
 				</tr>
 			</table>

@@ -31,11 +31,7 @@
                          <div class="QRcard">
                             <a href="${pageContext.request.contextPath}/bikeRent/bikeRentDetail/${ebkidx3}/view.do"><img class="QRImg" src="data:image/png;base64,${QRCode3}" alt=""></a>
                             <p>ELE2</p>
-                        </div>                   
-                         <div class="QRcard"><!-- 결제테스트중 -->
-                            <a href="<%=request.getContextPath()%>/bikeRent/pay.do"><img class="QRImg" src="data:image/png;base64,${QRCode3}" alt=""></a>
-                            <p>ELE2</p>
-                        </div>                     
+                        </div>  
 					</div>
 				</div>
 			</section>
