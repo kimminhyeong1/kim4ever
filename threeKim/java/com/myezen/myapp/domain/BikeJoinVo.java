@@ -20,12 +20,17 @@ public class BikeJoinVo {
 	
 	//ErrorVo
 	private int eidx; //고장번호
-	private String errorContent; //고장 글 내용
-	private String errorDay; //신고 시간
+	private String errorContent; 	//고장 글 내용
+	private String errorDay; 		//신고 시간	
+	private String errorState; 		//고장 상태
+	private String errorLatitude;  	//고장 위도
+	private String errorLongitude; 	//고장 경도
+	private String errorLocation; 	//고장 위치
 	
-	private String errorState; //고장 상태
+	
+	
+	
 	//MemberVo
-
 	private String memberId; //회원 아이디
 	private String memberPwd; //회원 비밀번호
 	private String memberName; //회원 이름
@@ -190,6 +195,26 @@ public class BikeJoinVo {
 		this.errorState = errorState;
 	}
 
+	public String getErrorLatitude() {
+		return errorLatitude;
+	}
+	public void setErrorLatitude(String errorLatitude) {
+		this.errorLatitude = errorLatitude;
+	}
+	public String getErrorLongitude() {
+		return errorLongitude;
+	}
+	public void setErrorLongitude(String errorLongitude) {
+		this.errorLongitude = errorLongitude;
+	}
+	public String getErrorLocation() {
+		return errorLocation;
+	}
+	public void setErrorLocation(String errorLocation) {
+		this.errorLocation = errorLocation;
+	}
+		
+	
 	public String getMemberId() {
 		return memberId;
 	}
