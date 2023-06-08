@@ -102,7 +102,7 @@ li{list-style:none;}
 										<td>${bv.sortN}</td>
 										<td><a
 											href="${pageContext.request.contextPath}/board/boardNoticeContent.do?bidx=${bv.bidx}">
-												${bv.subject} </a></td>
+												${bv.subject}</a></td>
 										<td>${bv.writer}</td>
 										<td>${bv.writeday.substring(0, 10)}</td>
 										<td>${bv.boardView}</td>
