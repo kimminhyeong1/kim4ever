@@ -1,6 +1,7 @@
 package com.myezen.myapp.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.myezen.myapp.domain.MemberVo;
 
@@ -41,9 +42,16 @@ public interface MemberService {
 //소셜로그인
 	
 	//구글로그인
-	public int socialMemberInsert(String memberId,String memberPwd,String memberName);
-	//구글 아이디있는지 확인
+	public int googleMemberInsert(String memberId,String memberPwd,String memberName);
+	//카카오로그인
+	public int kakaoMemberInsert(String memberId,String memberPwd,String memberName);
+	//소셜 아이디있는지 확인
 	public int socialMemberCheck(String memberId);
+	
+	//카카오로그인
+	public String getAccessToken(String authorize_code) throws Throwable;
+	//카카오유저정보
+	public HashMap<String, Object> getUserInfo(String access_Token) throws Throwable;
 	
 
 }
