@@ -32,6 +32,8 @@
 		GROUP BY
     	a.RENTALSHOPNAME	
 	</select>
+
+
 	
 <sql id="search1">
 <if test="searchType != null and searchType != ''">
