@@ -422,9 +422,9 @@ public class bikeRentController {
 		}
 		
 	//휴대폰 인증
-	@RequestMapping(value = "bikeRentDetail/{key}/phoneCheck.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/phoneCheck.do", method = RequestMethod.GET)
 	@ResponseBody
-	public String sendSMS(@RequestParam("phone") String userPhoneNumber, HttpSession session ,@PathVariable("key") String ebkidx) { // 휴대폰 문자보내기
+	public String sendSMS(@RequestParam("phone") String userPhoneNumber, HttpSession session ) { // 휴대폰 문자보내기
 	
 		int randomNumber = (int)((Math.random()* (999999 - 100000 + 1)) + 100000);//난수 생성
 		
