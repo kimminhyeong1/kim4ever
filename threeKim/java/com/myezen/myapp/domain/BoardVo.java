@@ -10,7 +10,7 @@ public class BoardVo {
 	private String subject;
 	private String content;
 	private String boardView;
-	private String delyn;
+	private String boarddelyn;
 	private String filename;
 	private int depth;
 	private int level_;
@@ -19,6 +19,12 @@ public class BoardVo {
 	private int test; //임시번호
 	
 	
+	public String getBoarddelyn() {
+		return boarddelyn;
+	}
+	public void setBoarddelyn(String boarddelyn) {
+		this.boarddelyn = boarddelyn;
+	}
 	public int getTest() {
 		return test;
 	}
@@ -76,12 +82,7 @@ public class BoardVo {
 	public void setBoardView(String boardView) {
 		this.boardView = boardView;
 	}
-	public String getDelyn() {
-		return delyn;
-	}
-	public void setDelyn(String delyn) {
-		this.delyn = delyn;
-	}
+
 	public String getFilename() {
 		return filename;
 	}

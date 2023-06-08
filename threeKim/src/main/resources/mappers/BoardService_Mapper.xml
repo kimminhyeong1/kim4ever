@@ -17,7 +17,7 @@
 
 
 <select id="boardTotal" parameterType="scri" resultType="int">
-	select count(*) as cnt from board1234 where delyn='N' AND boardtype = 1 
+	select count(*) as cnt from board1234 where boarddelyn='N' AND boardtype = 1 
 	<include refid="search" />
 </select>
 
@@ -26,9 +26,9 @@
 SELECT *
 FROM (
   SELECT
-    CASE WHEN delyn = 'N' THEN RANK() OVER (PARTITION BY boardtype ORDER BY modified_rebidx ASC) END AS sortN,
+    CASE WHEN boarddelyn = 'N' THEN RANK() OVER (PARTITION BY boardtype ORDER BY modified_rebidx ASC) END AS sortN,
     board1234.*,
-    CASE WHEN delyn = 'N' THEN RANK() OVER (PARTITION BY boardtype ORDER BY modified_rebidx DESC) END AS sortY <!-- sortn반대로 순번 -->
+    CASE WHEN boarddelyn = 'N' THEN RANK() OVER (PARTITION BY boardtype ORDER BY modified_rebidx DESC) END AS sortY <!-- sortn반대로 순번 -->
   FROM (
     SELECT board1234.*,
            CASE WHEN level_ = 1
@@ -36,7 +36,7 @@ FROM (
                 ELSE rebidx
            END AS modified_rebidx
     FROM board1234
-    WHERE delyn = 'N' 
+    WHERE boarddelyn = 'N' 
   ) board1234
 ) B
 WHERE (sortY BETWEEN (#{page}-1)*#{perPageNum}+1 AND #{page}*#{perPageNum}) <!-- 페이징 -->
@@ -46,36 +46,15 @@ ORDER BY rebidx DESC, level_ ASC, writeday ASC
      
 </select>
 <select id="boardSelectOne" parameterType="int" resultType="bv"> <!-- select하니까 resultType값 필요 -->
-	select * from board1234 where delyn='N' and bidx = #{bidx}
+	select * from board1234 where boarddelyn='N' and bidx = #{bidx}
 </select>
 
-
-<!-- <resultMap id="boardResultMap" type="com.myezen.myapp.domain.BoardVo">
-  <id property="bidx" column="BIDX"/>
-  <result property="rebidx" column="REBIDX"/>
-  <result property="midx" column="MIDX"/>
-  <result property="boardType" column="BOARDTYPE"/>
-  <result property="writer" column="WRITER"/>
-  <result property="writeday" column="WRITEDAY"/>
-  <result property="subject" column="SUBJECT"/>
-  <result property="content" column="CONTENT"/>
-  <result property="boardView" column="BOARDVIEW"/>
-  <result property="delyn" column="delyn"/>
-  <result property="filename" column="FILENAME"/>
-  <result property="depth" column="DEPTH"/>
-  <result property="level_" column="LEVEL_"/>
-  <result property="sortN" column="sortN"/>
-</resultMap>
-<select id="boardSelectQna" parameterType="int" resultMap="boardResultMap">답변글용
- SELECT  CASE WHEN level_ = 0 THEN RANK() OVER (PARTITION BY boardtype, level_ ORDER BY rebidx DESC) END AS sortN,
-  board1235.*FROM board1235 WHERE delyn = 'N' ORDER BY rebidx DESC, level_ ASC
-</select> -->
 
 <select id="boardSelectQna" parameterType="int" resultType="bv" ><!-- 답변글용 -->
  SELECT NVL(CASE WHEN level_ = 0 THEN RANK() OVER (PARTITION BY boardtype, level_ ORDER BY rebidx DESC) END,0) AS sortN
  			, board1234.* 
   FROM board1234 
-  WHERE delyn = 'N' 
+  WHERE boarddelyn = 'N' 
   ORDER BY rebidx DESC, level_ ASC, writeday asc 
 </select>
 
@@ -106,7 +85,7 @@ update board1234 set subject=#{subject}, content=#{content}, writer=#{writer},fi
 </update>
 
 <update id="boardDelete" parameterType="bv">
-    update board1234 set delyn = 'Y' where bidx = #{bidx} and midx = #{midx}
+    update board1234 set boarddelyn = 'Y' where bidx = #{bidx} and midx = #{midx}
 </update>
 
 

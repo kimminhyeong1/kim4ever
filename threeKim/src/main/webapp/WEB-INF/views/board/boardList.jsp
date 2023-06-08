@@ -97,7 +97,7 @@ li{list-style:none;}
 							<th>조회수</th>
 						</tr>
 										<c:forEach var="bv" items="${blist}" varStatus="status">
-								<c:if test="${bv.boardType == 0 && bv.delyn == 'N'}"><!-- 보드타입 0 delyn 이 n -->
+								<c:if test="${bv.boardType == 0 && bv.boarddelyn == 'N'}"><!-- 보드타입 0 delyn 이 n -->
 									<tr>
 										<td>${bv.sortN}</td>
 										<td><a
@@ -136,7 +136,7 @@ li{list-style:none;}
 						</tr>
 	<tr>
 							<c:forEach var="bv" items="${blist}" varStatus="status">
-								<c:if test="${bv.boardType == 1 && bv.delyn == 'N'}"><!-- 보드타입 o delyn 이 n -->
+								<c:if test="${bv.boardType == 1 && bv.boarddelyn == 'N'}"><!-- 보드타입 o delyn 이 n -->
 									<tr>
 										<c:choose>
 											<c:when test="${bv.sortN != 0}">
@@ -205,7 +205,7 @@ li{list-style:none;}
 							<th>조회수</th>
 						</tr>
 				<c:forEach var="bv" items="${blist}" varStatus="status">
-								<c:if test="${bv.boardType == 2 && bv.delyn == 'N'}"><!-- 보드타입 2 delyn 이 n -->
+								<c:if test="${bv.boardType == 2 && bv.boarddelyn == 'N'}"><!-- 보드타입 2 delyn 이 n -->
 									<tr>
 										<td>${bv.sortN}</td>
 										<td><a
