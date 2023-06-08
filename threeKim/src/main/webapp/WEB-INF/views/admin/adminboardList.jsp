@@ -44,12 +44,12 @@ li{list-style:none;}
 
 #main #bottom{width:1440px; height:300px;}
 #content table {width:80%; border-collapse:collapse; margin:60px auto 0; line-height:40px; font-size:20px; font-family: 'omyu_pretty'; cursor:pointer;  white-space: nowrap; overflow: hidden;  text-overflow: ellipsis; }
-#content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
-#content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
+#content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000; white-space: nowrap; overflow: hidden;  text-overflow: ellipsis; }
+#content table td{width:100px;padding: 10px; text-align:left;border-bottom:1px solid #CCCCCC; white-space: nowrap; overflow: hidden;  text-overflow: ellipsis; }
 #content table tr th:nth-child(1){width: 10px;}
 #content table tr th:nth-child(2){width: 80px;}
 #content table tr th:nth-child(3){width: 20px;}
-#content table tr th:nth-child(4){width: 80px;}
+#content table tr th:nth-child(4){width: 60px;}
 #content table tr th:nth-child(5){width: 10px;}
 #content table tr th:nth-child(6){width: 10px;}
 #content table tr th:nth-child(7){width: 20px;}
@@ -91,6 +91,7 @@ li{list-style:none;}
 					<h2>게시판관리</h2>
 					<table>
 						<tr>
+							<th>게시판</th>							
 							<th>No</th>
 							<th>제목</th>
 							<th>작성자</th>
@@ -103,7 +104,8 @@ li{list-style:none;}
 							
 						</tr>
 										<c:forEach var="bv" items="${blist}" varStatus="status">
-									<tr>						
+									<tr>				
+										<td>${bv.boardType === 0 ? '공지' : bv.boardType === 1 ? 'Q&A' : bv.boardType === 2 ? 'FAQ' : ''}</td>
 										<td>${bv.sortN}</td>									
 										<td>${bv.subject}</td>									
 										<td>${bv.writer}</td>									
