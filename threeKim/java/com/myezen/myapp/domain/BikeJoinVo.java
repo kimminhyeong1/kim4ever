@@ -44,10 +44,25 @@ public class BikeJoinVo {
 	private String rentalshopLatitude; //대여소위도
 	private String rentalshopLongitude; //대여소경도
 	private String rentalshopCnt; //대여소 남은 갯수 //가상컬럼
+	private String bikeNorCnt; //일반자전거 남은 갯수 //가상컬럼
+	private String bikeEleCnt; //전기자전거 남은 갯수 //가상컬럼
+	
 	
 	
 	//RentVo
 
+	public String getBikeNorCnt() {
+		return bikeNorCnt;
+	}
+	public void setBikeNorCnt(String bikeNorCnt) {
+		this.bikeNorCnt = bikeNorCnt;
+	}
+	public String getBikeEleCnt() {
+		return bikeEleCnt;
+	}
+	public void setBikeEleCnt(String bikeEleCnt) {
+		this.bikeEleCnt = bikeEleCnt;
+	}
 	private String rentDay;//대여요일
 
 	private String rentPlace; //대여장소

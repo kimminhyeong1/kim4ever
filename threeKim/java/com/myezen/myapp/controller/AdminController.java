@@ -49,45 +49,25 @@ public class AdminController {
         model.addAttribute("errorCount", errorCount);
         //대여 가능한 자전거
         int rentCount = as.getTotalRentCount();
-        model.addAttribute("rentCount", rentCount);       
-        //송천 일반 자전거 대여 가능 수
-        int snorCount = as.getSNorCount();
-        model.addAttribute("snorCount", snorCount);
-        //송천 전기 자전거 대여 가능 수
-        int seleCount = as.getSEleCount();
-        model.addAttribute("seleCount", seleCount);
-        //효자 일반 자전거 대여 가능 수
-        int hnorCount = as.getHNorCount();
-        model.addAttribute("hnorCount", hnorCount);
-        //효자 전기 자전거 대여 가능 수
-        int heleCount = as.getHEleCount();
-        model.addAttribute("heleCount", heleCount);
-        //덕진 일반 자전거 대여 가능 수
-        int dnorCount = as.getDNorCount();
-        model.addAttribute("dnorCount", dnorCount);
-        //덕진 전기 자전거 대여 가능 수
-        int deleCount = as.getDEleCount();
-        model.addAttribute("deleCount", deleCount);
-        //평화 일반 자전거 대여 가능 수
-        int pnorCount = as.getPNorCount();
-        model.addAttribute("pnorCount", pnorCount);
-        //평화 전기 자전거 대여 가능 수
-        int peleCount = as.getPEleCount();
-        model.addAttribute("peleCount", peleCount);
-        //오목 일반 자전거 대여 가능 수
-        int onorCount = as.getONorCount();
-        model.addAttribute("onorCount", onorCount);
-        //오목 전기 자전거 대여 가능 수
-        int oeleCount = as.getOEleCount();
-        model.addAttribute("oeleCount", oeleCount);
-        //이용 현황 어제 요일 표시
-        LocalDate yesterday = as.yesterday();
+        model.addAttribute("rentCount", rentCount);
+        //자전거 대여소 별 대여 가능 자전거 수
+        ArrayList<BikeJoinVo> rblist = as.canRentBike();
+
+		    for (BikeJoinVo bikeJoinVo : rblist) {
+		    	
+		        String content = bikeJoinVo.getRentalshopName();
+		        content += bikeJoinVo.getBikeNorCnt()+'대';
+		        content += bikeJoinVo.getBikeEleCnt();		       		       
+		   }		
+		model.addAttribute("rblist", rblist);		
+		//이용 현황 어제 요일 표시
+		String yesterday = as.yesterday();
         model.addAttribute("yesterday", yesterday);
-        
-             
-        return "admin/adminPage";
+		
+		return "admin/adminPage";
 	}
-	
+        
+       
 	
 	//관리자 회원 관리 페이지	  
 	@RequestMapping(value="/adminmemberList.do") 

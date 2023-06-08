@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,11 +13,12 @@
 	.aContent{height:200px; flex-wrap:nowrap; width:100%;}
 	.aContent2{display: flex;}	   
     .abox{width:265px; height:150px; margin:20px; padding:30px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:10px; }	
-	.abox2{width:570px; height:350px; margin:20px 20px 20px 35px; padding:5px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:10px;}
+	.abox2{width:570px; height:auto; margin:20px 20px 20px 35px; padding:5px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:10px;}
 	.abox3{width:570px; height:350px; margin:20px; padding:5px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:10px;}
 	.cardTitle{margin-bottom:40px;}	
-	.abox2 table, .abox3 table {width: 70%; border-collapse: collapse;margin: 15px 	83.703px ;line-height: 60px;font-size: 18px;font-family: 'omyu_pretty';}
+	.abox2 table, .abox3 table {width: 60%; border-collapse: collapse;margin: 15px 	83.703px ;line-height: 60px;font-size: 18px;font-family: 'omyu_pretty';}
 	.pcontent {font-size:32px;}	
+	.abox2 th{font-size:35px;}
 		
 		</style>
 	</head>
@@ -51,37 +53,24 @@
 				<div class="aContent2">	
 					<div class="abox2">
 						<table>
-							<h2>대여소 현황</h2>													
+						<h2>대여소 현황</h2>																				
 							<tr>
-							<td>송천</td>
-							<td>일반 : ${snorCount}대</td>
-							<td>전기 : ${seleCount}대</td>							
-							</tr>
-							<tr>
-							<td>효자</td>
-							<td>일반 : ${hnorCount}대</td>
-							<td>전기 : ${heleCount}대</td>							
-							</tr>
-							<tr>
-							<td>덕진</td>
-							<td>일반 : ${dnorCount}대</td>
-							<td>전기 : ${deleCount}대</td>							
-							</tr>
-							<tr>
-							<td>평화</td>
-							<td>일반 : ${pnorCount}대</td>
-							<td>전기 : ${peleCount}대</td>							
-							</tr>
-							<tr>
-							<td>오목</td>
-							<td>일반 : ${onorCount}대</td>
-							<td>전기 : ${oeleCount}대</td>							
-							</tr>
+								<th>대여소</th>
+								<th>일반</th>
+								<th>전기</th>
+							</tr>	
+							<c:forEach var="rblist" items="${rblist}">
+	           				<tr>
+						         <td>${rblist.rentalshopName}</td>
+						         <td>${rblist.bikeNorCnt}대</td>
+						         <td>${rblist.bikeEleCnt}대</td>
+			        		</tr>
+        					</c:forEach>
 						</table>					
 					</div>		
 					<div class="abox3">
 						<table>
-							<h2>이용 현황</h2>													
+						<h2>이용 현황</h2>													
 							<tr>
 							<td>${yesterday}</td>
 							<td>일반 : 55대</td>

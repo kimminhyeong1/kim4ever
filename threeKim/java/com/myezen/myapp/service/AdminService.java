@@ -21,28 +21,10 @@ public interface AdminService {
 		public int getTotalErrorCount();
 	//관리자 메인페이지 대여 가능한 자전거
 		public int getTotalRentCount();
-	//관리자 메인페이지 송천 일반 자전거 대여 가능 수
-		public int getSNorCount();
-	//관리자 메인페이지 송천 전기 자전거 대여 가능 수
-		public int getSEleCount();	
-	//관리자 메인페이지 효자 일반 자전거 대여 가능 수
-		public int getHNorCount();
-	//관리자 메인페이지 효자 전기 자전거 대여 가능 수
-		public int getHEleCount();	
-	//관리자 메인페이지 덕진 일반 자전거 대여 가능 수
-		public int getDNorCount();
-	//관리자 메인페이지 덕진 전기 자전거 대여 가능 수
-		public int getDEleCount();		
-	//관리자 메인페이지 평화 일반 자전거 대여 가능 수
-		public int getPNorCount();
-	//관리자 메인페이지 평화 전기 자전거 대여 가능 수
-		public int getPEleCount();
-	//관리자 메인페이지 오목 일반 자전거 대여 가능 수
-		public int getONorCount();
-	//관리자 메인페이지 오목 전기 자전거 대여 가능 수
-		public int getOEleCount();
+	//관리자 메인페이지 자전거 대여 가능 수
+		 public ArrayList<BikeJoinVo>canRentBike();	
 	//관리자 메인페이지 이용 현황 어제 요일 표시
-		public LocalDate yesterday();
+		public String yesterday();
 	//회원삭제
 		public void deleteMember(String memberId);
 	//회원리스트
