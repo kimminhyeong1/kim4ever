@@ -14,6 +14,12 @@
 	delete from member1234 WHERE memberId=#{memberId}
 	</delete>
 
+	<!--관리자 메인페이지 이용현황 어제 요일 -->
+	<select id="yesterday" parameterType="String" resultType="com.myezen.myapp.domain.BikeJoinVo">
+    SELECT CAST(SYSDATE - 1 AS DATE) AS yesterday FROM DUAL
+	</select>
+
+	
 	
 	
 	<select id="searchBikeErrors" parameterType="com.myezen.myapp.domain.SearchCriteria"

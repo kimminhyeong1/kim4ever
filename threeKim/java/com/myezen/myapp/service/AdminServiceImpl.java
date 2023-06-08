@@ -1,5 +1,6 @@
 package com.myezen.myapp.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -129,6 +130,12 @@ public class AdminServiceImpl implements AdminService {
 		return asm.getOEleCount();
 	}
 	
+	//관리자 메인페이지 이용현황 어제 요일 표시
+	@Override
+	public LocalDate yesterday() {
+		
+		return asm.yesterday();
+	}
 	
 	//회원삭제
 	@Override
@@ -221,6 +228,11 @@ public class AdminServiceImpl implements AdminService {
 		asm.deleteRentalshop(rentalshopName);
 		
 	}
+
+	
+
+
+	
 
 
 

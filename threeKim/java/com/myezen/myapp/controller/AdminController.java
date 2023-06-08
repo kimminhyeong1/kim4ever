@@ -1,5 +1,6 @@
 package com.myezen.myapp.controller;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -75,12 +76,14 @@ public class AdminController {
         //오목 전기 자전거 대여 가능 수
         int oeleCount = as.getOEleCount();
         model.addAttribute("oeleCount", oeleCount);
-        
-        
+        //이용 현황 어제 요일 표시
+        LocalDate yesterday = as.yesterday();
+        model.addAttribute("yesterday", yesterday);
         
              
         return "admin/adminPage";
 	}
+	
 	
 	//관리자 회원 관리 페이지	  
 	@RequestMapping(value="/adminmemberList.do") 

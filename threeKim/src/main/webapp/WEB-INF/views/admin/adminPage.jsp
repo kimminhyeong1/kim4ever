@@ -83,7 +83,7 @@
 						<table>
 							<h2>이용 현황</h2>													
 							<tr>
-							<td>5월 30일</td>
+							<td>${yesterday}</td>
 							<td>일반 : 55대</td>
 							<td>전기 : 26대</td>							
 							</tr>

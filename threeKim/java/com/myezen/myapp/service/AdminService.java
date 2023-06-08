@@ -1,5 +1,6 @@
 package com.myezen.myapp.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Param;
@@ -40,6 +41,8 @@ public interface AdminService {
 		public int getONorCount();
 	//관리자 메인페이지 오목 전기 자전거 대여 가능 수
 		public int getOEleCount();
+	//관리자 메인페이지 이용 현황 어제 요일 표시
+		public LocalDate yesterday();
 	//회원삭제
 		public void deleteMember(String memberId);
 	//회원리스트
