@@ -83,5 +83,16 @@
   	SELECT * FROM member1234 where memberId = #{memberId}
 	</select>
 	
+	<!--소셜 회원가입 -->
+	<insert id="socialMemberInsert" parameterType="String">
+		INSERT INTO member1234(midx,memberId,memberPwd,memberName,memberEmail,memberLoginType)
+		VALUES(midx_seq.nextval,#{0},#{1},#{2},#{0},'구글')
+	</insert>
+	<!--소셜 멤버 확인 -->
+	<select id="socialMemberCheck" parameterType="String" resultType="int">
+		select count(*) from member1234 where MEMBERDELYN='N' and memberId=#{0}
+	</select>
+	
+	
     
 </mapper>

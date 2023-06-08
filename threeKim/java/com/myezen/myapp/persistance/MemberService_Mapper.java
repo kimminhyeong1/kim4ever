@@ -40,6 +40,12 @@ public interface MemberService_Mapper {
 //회원리스트에서 회원들정보보기
 	public MemberVo getMemberByMemberId(String memberId);
 	
+//소셜로그인
+
+	//구글로그인
+	public int socialMemberInsert(String memberId,String memberPwd,String memberName);
+	//구글 아이디있는지 확인
+	public int socialMemberCheck(String memberId);
 	
 	
 	
