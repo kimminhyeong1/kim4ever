@@ -83,11 +83,7 @@ public class bikeRentController {
 		    ArrayList<BikeJoinVo> bikeList = bs.getBikeList();
 		    
 		    //저장된 파일 경로를 모델에 추가
-		    model.addAttribute("savedFilePath", "resources/bikeImages/" + savedFilePath);
-		    
-		    redirectAttributes.addFlashAttribute("message", "자전거가 성공적으로 등록되었습니다.");
-		    redirectAttributes.addFlashAttribute("refresh", true);
-	 
+		    model.addAttribute("savedFilePath", "/resources/bikeImages/" + savedFilePath);
 		    
 		    return "redirect:/bikeRent/bikeRentInfo.do";
 	    }

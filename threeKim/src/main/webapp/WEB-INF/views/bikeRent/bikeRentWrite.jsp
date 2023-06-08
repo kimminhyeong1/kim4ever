@@ -85,6 +85,12 @@ function fnUpload() {
 			</tr>
 			
 			<tr>
+				<td>
+				<input type="text" id="bikeCode" name="bikeCode" placeholder="자전거 코드를 입력해 주세요"/>
+				</td>
+			</tr>
+			
+			<tr>
 		 		<td>
 				<input type="text" id="bikeContent" name="bikeContent" placeholder="한줄 소개글을 입력해 주세요"/>
 				</td>
