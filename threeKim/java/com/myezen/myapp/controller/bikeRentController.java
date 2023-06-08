@@ -355,13 +355,7 @@ public class bikeRentController {
 		System.out.println("고장/신고페이지 들어옴");
 		//세션값가져오기
 		HttpSession session = request.getSession();
-		int ridx = (int) session.getAttribute("ridx");
-			
-			
-			
-			
-			
-			
+		int ridx = (int) session.getAttribute("ridx");			
 			md.addAttribute("ridx", ridx);
 
 

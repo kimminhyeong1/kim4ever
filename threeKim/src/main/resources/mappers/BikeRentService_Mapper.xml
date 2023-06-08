@@ -139,8 +139,8 @@
 	
 	    <!-- 고장/신고 접수 -->
     <insert id="bikeRentErrorInsert" parameterType="errorv">
-        INSERT INTO error1234(eidx,ridx,errorContent)
-        VALUES(eidx_seq.NEXTVAL,#{1},#{0})
+        INSERT INTO error1234(eidx,ridx,errorContent,latitude,longitude,uploadfile) <!-- 위도,경도,파일 추가중 -->
+        VALUES(eidx_seq.NEXTVAL,#{1},#{0},#{latitude},#{longitude},#{uploadfile}) <!-- 추가중 -->
     </insert>
     <select id="bikeRentReturnCheck" resultType="com.myezen.myapp.domain.BikeJoinVo">
 		SELECT * FROM rent1234

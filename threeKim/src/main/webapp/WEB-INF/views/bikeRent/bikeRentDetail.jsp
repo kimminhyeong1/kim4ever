@@ -18,7 +18,7 @@
 <script type="text/javascript">
 
 
-var IMP = window.IMP;
+<%-- var IMP = window.IMP;
 IMP.init("imp67011510");
 
 var today = new Date();
@@ -129,7 +129,19 @@ function requestPay() {
         });
                   
       
-  })
+  }) --%>
+  
+  $("#frm").on("submit", function(e) {
+      e.preventDefault(); // 폼 전송 기본 동작 막기 -> submit이 동작했을 때 페이지를 새로고침 안시키기 위해서 사용
+
+      var fm = document.frm;
+      fm.action = "${pageContext.request.contextPath}/bikeRent/bikeRentUpdate.do";
+      fm.method = "post";
+      fm.submit();
+  });
+  
+  
+
 </script>
         
  
@@ -201,7 +213,9 @@ function requestPay() {
 				  
 				<tr>
 				  <td colspan="3">
-			<button id="rentButton"  type="button" onclick="requestPay()" style="width:100%; height:50px;" disabled>대여하기</button>
+			<!-- <button id="rentButton"  type="button" onclick="requestPay()" style="width:100%; height:50px;" disabled>대여하기</button> -->
+						<button type="submit" style="width:100%; height:50px;" >대여하기</button>
+			
 				  </td>
 				</tr>
 			</table>
