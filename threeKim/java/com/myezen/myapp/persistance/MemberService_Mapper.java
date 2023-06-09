@@ -37,6 +37,8 @@ public interface MemberService_Mapper {
 	public MemberVo getMemberInfo(int midx);
 //회원정보수정
 	public void updateMember(MemberVo mv);
+//회원탈퇴
+	public void withdrawMember(String memberId);
 //회원리스트에서 회원들정보보기
 	public MemberVo getMemberByMemberId(String memberId);
 	

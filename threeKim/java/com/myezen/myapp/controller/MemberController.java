@@ -466,9 +466,16 @@ public class MemberController {
 		return "redirect:/member/memberList.do"; 
 	
 	}
+	
 	//마이페이지
 	@RequestMapping("/memberMypage.do")
-	public String memberMypage(Model model, HttpSession session) {
+	public String memberMypage() {   
+	    return "member/memberMypage";
+	}
+	
+	//회원정보수정
+	@RequestMapping("/memberEditInformation.do")
+	public String memberEditInformation(Model model, HttpSession session) {
 	    int midx = (Integer) session.getAttribute("midx");
 	    
 	    
@@ -481,7 +488,7 @@ public class MemberController {
 	    model.addAttribute("mv", mv);
 	    
 	    
-	    return "member/memberMypage";
+	    return "member/memberEditInformation";
 	}
 	
 	//회원정보수정페이지
@@ -550,8 +557,22 @@ public class MemberController {
 
 	    model.addAttribute("mv", mv);
 
-	    return "redirect:/member/memberMypage.do";
+	    return "redirect:/member/memberEditInformation.do";
 	}
+	
+	//회원탈퇴
+	@RequestMapping(value = "/member/memberWithdrawal.do", method = RequestMethod.GET)
+	public String memberWithdrawal(HttpServletRequest request, HttpSession session) {
+	   
+		String memberId = (String) session.getAttribute("memberId");
+
+		ms.withdrawMember(memberId);
+		
+		 session.invalidate();
+		 
+	    return "redirect:/member/memberWithdrawal.do";
+	}
+
 	
 	//회원리스트에서 회원정보보기
 	@RequestMapping("/memberListProfile.do")
