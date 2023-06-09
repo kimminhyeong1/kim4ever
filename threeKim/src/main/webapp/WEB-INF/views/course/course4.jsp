@@ -132,7 +132,7 @@ var sw = new kakao.maps.LatLng(35.81222242569394, 127.11979821722417), // 사각
 // 사각형을 생성할 때 영역정보는 LatLngBounds 객체로 넘겨줘야 합니다
 var rectangleBounds = new kakao.maps.LatLngBounds(sw, ne);
 </script>
-	<h2>주변 맛집 리스트</h2>
+	<h2>타바  추천 맛집 pick !</h2>
 	<div id="restaurant">
 		<table>
 		  <tr>
