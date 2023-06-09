@@ -26,6 +26,7 @@ public class BikeJoinVo {
 	private String errorLatitude;  	//고장 위도
 	private String errorLongitude; 	//고장 경도
 	private String errorLocation; 	//고장 위치
+	private String errorImage; 	//고장 이미지
 	
 	
 	
@@ -366,6 +367,12 @@ public class BikeJoinVo {
 	}
 	public void setRentalshopCnt(String rentalshopCnt) {
 		this.rentalshopCnt = rentalshopCnt;
+	}
+	public String getErrorImage() {
+		return errorImage;
+	}
+	public void setErrorImage(String errorImage) {
+		this.errorImage = errorImage;
 	}
 	
 

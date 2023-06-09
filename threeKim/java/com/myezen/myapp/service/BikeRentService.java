@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.myezen.myapp.domain.BikeJoinVo;
+import com.myezen.myapp.domain.ErrorVo;
 import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.util.QRCodeUtil;
 
@@ -66,8 +67,8 @@ public interface BikeRentService {
 	
 	/*----------------------------------------------*/
     //고장/신고 작성 메소드
-    public int bikeRentErrorInsert(String errorContent,int ridx);
-
+    public int bikeRentErrorInsert(ErrorVo ev,MultipartFile file);
+    
 	//대여소 QR을 찍고 반납하기 체크 메소드
     public BikeJoinVo bikeRentReturnCheck(int ridx, int rsidx);
 	//반납하기 체크하고 최종반납하기 메소드
