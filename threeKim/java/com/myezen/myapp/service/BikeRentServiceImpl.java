@@ -137,6 +137,8 @@ public class BikeRentServiceImpl implements BikeRentService {
 	@Override
 	public String processBikeRentWrite(MultipartFile file, BikeJoinVo bjv) {
 		
+		//배포했을때
+        //String savedFilePath = request.getSession().getServletContext().getRealPath("/resources/bikeImages");
 		String savedFilePath = "D://threekim//threeKim//src//main//webapp//resources/bikeImages";
 		// 파일을 실제 경로에 저장
 	    try {
