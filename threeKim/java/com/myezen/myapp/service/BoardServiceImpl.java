@@ -26,10 +26,23 @@ public class BoardServiceImpl implements BoardService{
 		
 		return blist;
 	}
+	@Override
+	public ArrayList<BoardVo> boardSelectAll2(SearchCriteria scri) {		
+		ArrayList<BoardVo> blist = bsm.boardSelectAll2(scri);
+		
+		return blist;
+	}
+
 
 	@Override
 	public int boardTotal(SearchCriteria scri) {		
 		int value = bsm.boardTotal(scri);
+		
+		return value;
+	}
+	@Override
+	public int boardTotal2(SearchCriteria scri) {		
+		int value = bsm.boardTotal2(scri);
 		
 		return value;
 	}
@@ -77,6 +90,17 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public int boardDelete(BoardVo bv) {
 		int value = bsm.boardDelete(bv);
+		return value;
+	}
+	
+	@Override
+	public int adminboardDelete(BoardVo bv) {
+		int value = bsm.adminboardDelete(bv);
+		return value;
+	}
+	@Override
+	public int adminboardBack(BoardVo bv) {
+		int value = bsm.adminboardBack(bv);
 		return value;
 	}
 
