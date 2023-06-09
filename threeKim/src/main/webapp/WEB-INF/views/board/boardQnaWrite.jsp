@@ -64,6 +64,8 @@ li{list-style:none;}
 		fm.method="post";
 		fm.submit();
 	}
+	
+	
 </script>
 </head>
 <body>
@@ -74,7 +76,7 @@ li{list-style:none;}
 		<div id="content">
 			<h2>QnA 게시글 작성</h2>
 						<form name="frm">
-<input type="hidden" name="writer" value="<%=session.getAttribute("memberName")%>"><!-- writer로 저장 -->
+<input type="hidden" name="writer" value=""><!-- writer로 저장 -->
 				<table>
 					<tr>
 						<th>작성자</th>
@@ -85,7 +87,7 @@ li{list-style:none;}
 						<c:if test="${memberType != '관리자'}">
 						    <p><%= session.getAttribute("memberName") %></p>
 						</c:if>
-						<td>
+						</td>
 							
 					</tr>
 					
@@ -97,7 +99,7 @@ li{list-style:none;}
 					
 					<tr>
 						<th>내용</th>
-						<td><textarea name="content" cols="100" rows="8"  style="font-size: 26px;">value="<%=session.getAttribute("member")%></textarea></td>
+						<td><textarea name="content" cols="100" rows="8"  style="font-size: 26px;"></textarea></td>
 					</tr>
 					
 					<tr>

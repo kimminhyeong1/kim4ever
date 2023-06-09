@@ -9,6 +9,8 @@ import com.myezen.myapp.domain.SearchCriteria;
 public interface BoardService_Mapper {
 
 	public ArrayList<BoardVo> boardSelectAll(SearchCriteria scri);
+	public ArrayList<BoardVo> boardSelectAll2(SearchCriteria scri);
+
 	
 	public int boardTotal(SearchCriteria scri);
 		
@@ -30,6 +32,10 @@ public interface BoardService_Mapper {
 	public int boardReplyUpdate(HashMap hm);
 	
 	public int boardReplyInsert(BoardVo bv);
+	public int boardTotal2(SearchCriteria scri);
+	public int adminboardDelete(BoardVo bv);
+	public int adminboardBack(BoardVo bv);
+
 	
 }
 	

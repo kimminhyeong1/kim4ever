@@ -24,10 +24,19 @@ public interface BoardService {
 	public int boardDelete(BoardVo bv);
 	
 	public int boardReply(BoardVo bv);
+	
+	public int adminboardDelete(BoardVo bv);
+	public int adminboardBack(BoardVo bv);
+
+
 
 	int boardView(int bidx);
 
 	public BoardVo boardSelectQna(int bidx);
+
+	public ArrayList<BoardVo> boardSelectAll2(SearchCriteria scri);
+
+	public int boardTotal2(SearchCriteria scri);
 
 	
 	

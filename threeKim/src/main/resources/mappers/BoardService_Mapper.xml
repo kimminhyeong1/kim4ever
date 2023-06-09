@@ -6,11 +6,11 @@
 
 <sql id="search"><!-- 검색기능 -->
 <if test="searchType != null and searchType.equals('writer')">
-		and writer like '%'||#{keyword}||'%'
+		where writer like '%'||#{keyword}||'%'
 </if>
 
 <if test="searchType != null and searchType.equals('subject')">
-		and  subject like '%'||#{keyword}||'%'
+		where  subject like '%'||#{keyword}||'%'
 </if>
 
 </sql>
@@ -20,6 +20,7 @@
 	select count(*) as cnt from board1234 where boarddelyn='N' AND boardtype = 1 
 	<include refid="search" />
 </select>
+
 
 <select id="boardSelectAll" parameterType="scri" resultType="bv">
 
@@ -87,6 +88,15 @@ update board1234 set subject=#{subject}, content=#{content}, writer=#{writer},fi
 <update id="boardDelete" parameterType="bv">
     update board1234 set boarddelyn = 'Y' where bidx = #{bidx} and midx = #{midx}
 </update>
+<!-- 관리게시판삭제 -->
+<update id="adminboardDelete" parameterType="bv">
+    update board1234 set boarddelyn = 'Y' where bidx = #{bidx} 
+</update>
+
+<!-- 관리게시판복구 -->
+<update id="adminboardBack" parameterType="bv">
+    update board1234 set boarddelyn = 'N' where bidx = #{bidx} 
+</update>
 
 
 <!-- 답글 -->
@@ -100,6 +110,20 @@ update board1234 set depth =depth+1 where bidx = #{bidx} and depth >#{depth}
 </insert>
 
 
+<select id="boardSelectAll2" parameterType="scri" resultType="bv">
 
+
+SELECT * FROM(
+	SELECT ROWNUM AS rnum, A.* FROM (
+	 SELECT * FROM board1234 
+	 <include refid="search" />
+	  ORDER BY bidx desc, depth asc) A 
+	 )B WHERE B.rnum BETWEEN (#{page}-1)*#{perPageNum}+1 AND #{page}* #{perPageNum}
+</select>
+
+<select id="boardTotal2" parameterType="scri" resultType="int">
+	select count(*) as cnt from board1234 
+	<include refid="search" />
+</select>
 
 </mapper>
