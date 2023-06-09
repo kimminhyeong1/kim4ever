@@ -86,13 +86,34 @@ public class AdminServiceImpl implements AdminService {
 
 	//회원리스트
 	@Override
-	public ArrayList<BikeJoinVo> memberList() {
+	public ArrayList<BikeJoinVo> memberList(SearchCriteria scri) {
 				
-	ArrayList<BikeJoinVo> alist = asm.memberList();
+	ArrayList<BikeJoinVo> alist = asm.memberList(scri);
 	
 	return alist;
 	}
+	
+	@Override
+	public int memberListCount(SearchCriteria scri) {
+			
+		return asm.memberListCount(scri);
+	}
 
+	@Override
+	public ArrayList<BikeJoinVo> memberOutList(SearchCriteria scri) {
+		
+		ArrayList<BikeJoinVo> alist = asm.memberOutList(scri);
+
+		return alist;
+	}
+
+	@Override
+	public int memberOutListCount(SearchCriteria scri) {
+
+		return asm.memberOutListCount(scri);
+	}
+	
+	
 	//신고 내역 리스트
 	@Override
 	public ArrayList<BikeJoinVo> searchBikeErrors(SearchCriteria scri) {
@@ -178,6 +199,11 @@ public class AdminServiceImpl implements AdminService {
 		asm.deleteRentalshop(rentalshopName);
 		
 	}
+
+
+
+
+
 
 	
 

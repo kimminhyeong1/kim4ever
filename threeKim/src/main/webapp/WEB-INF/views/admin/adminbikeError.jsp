@@ -58,7 +58,6 @@ li{list-style:none;}
 #content .search select {width:120px;height:30px;font-size:14px;padding:5px;}
 #content .search input[type="text"] {width:200px;height:17px;font-size:14px;padding:5px;}
 #content .search button {width:80px;height:30px;font-size:14px;padding:5px;}
-.pagination{margin-top:20px; font-size:40px; }
 
 
 </style>

@@ -28,7 +28,10 @@ public interface AdminService {
 	//회원삭제
 		public void deleteMember(String memberId);
 	//회원리스트
-		public ArrayList<BikeJoinVo> memberList();	
+		public ArrayList<BikeJoinVo> memberList(SearchCriteria scri);	
+		public int memberListCount(SearchCriteria scri);
+		public ArrayList<BikeJoinVo> memberOutList(SearchCriteria scri);	
+		public int memberOutListCount(SearchCriteria scri);
 	//고장 신고내역 리스트
 		public ArrayList<BikeJoinVo> searchBikeErrors(SearchCriteria scri);
 		public int searchBikeErrorsCount(SearchCriteria scri);

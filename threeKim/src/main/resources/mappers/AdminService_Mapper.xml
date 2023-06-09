@@ -3,15 +3,98 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.myezen.myapp.persistance.AdminService_Mapper">
-		
-	<!--관리자 회원관리 리스트  -->
-	<select id="memberList" resultType="mv">
-	select memberId,memberName,memberAge,memberDelYN,writeDay,memberType from member1234 order by memberType asc
-	</select>
+	
+	
+	
+<sql id="search3">
+ <if test="searchType != null and searchType != ''">
+    <choose>
+      <when test="searchType == 'memberId'">
+        AND memberId LIKE '%' || #{keyword} || '%'
+      </when>
+      <when test="searchType == 'memberName'">
+        AND memberName LIKE '%' || #{keyword} || '%'
+      </when>
+      <when test="searchType == 'memberType'">
+        AND memberType LIKE '%' || #{keyword} || '%'
+      </when>
+    </choose>
+  </if>
+</sql>
+
+	
+<!--관리자 회원관리 리스트  -->
+<select id="memberList" resultType="com.myezen.myapp.domain.BikeJoinVo">
+  SELECT *
+  FROM (
+    SELECT ROWNUM AS rnum, A.*
+    FROM (
+	  SELECT memberId, memberName, memberAge, memberDelYN, writeDay, memberType
+	  FROM member1234
+	  WHERE memberDelYN = 'N'
+	   <include refid="search3" />
+	  ORDER BY memberType ASC
+	   ) A
+       <![CDATA[WHERE ROWNUM <= #{page} * #{perPageNum}]]>
+  	) B
+  <![CDATA[WHERE B.rnum >= (#{page} - 1) * #{perPageNum} + 1]]>
+</select>
+
+
+
+<select id="memberListCount" resultType="int">
+	  SELECT count(*) as cnt
+	  FROM member1234
+	  WHERE memberDelYN = 'N'
+	   <include refid="search3" />
+	  ORDER BY memberType ASC
+</select>
+
+
+<sql id="search4">
+ <if test="searchType != null and searchType != ''">
+    <choose>
+      <when test="searchType == 'memberId'">
+        AND memberId LIKE '%' || #{keyword} || '%'
+      </when>
+      <when test="searchType == 'memberName'">
+        AND memberName LIKE '%' || #{keyword} || '%'
+      </when>
+    </choose>
+  </if>
+</sql>
+
+	<!--관리자 탈퇴회원관리 리스트  -->
+<select id="memberOutList" resultType="com.myezen.myapp.domain.BikeJoinVo">
+ SELECT *
+  FROM (
+    SELECT ROWNUM AS rnum, A.*
+    FROM (
+	  SELECT memberId, memberName, memberAge, memberDelYN, memberOutDay, memberType
+	  FROM member1234
+	  WHERE memberDelYN = 'Y'
+	  <include refid="search4" />
+	  ORDER BY memberOutDay desc
+	   ) A
+       <![CDATA[WHERE ROWNUM <= #{page} * #{perPageNum}]]>
+  	) B
+  <![CDATA[WHERE B.rnum >= (#{page} - 1) * #{perPageNum} + 1]]>
+</select>
+
+<select id="memberOutListCount" resultType="int">
+	  SELECT count(*) as cnt
+	  FROM member1234
+	  WHERE memberDelYN = 'Y'
+	   <include refid="search4" />
+	   ORDER BY memberOutDay desc
+	   
+</select>
+
+
 	
 	<!--관리자 회원삭제  -->
 	<delete id="deleteMember" parameterType="String">
-	delete from member1234 WHERE memberId=#{memberId}
+	UPDATE member1234 SET memberDelYN ='Y', memberOutDay = SYSDATE WHERE memberId=#{memberId}
 	</delete>
 
 
@@ -36,7 +119,7 @@
 
 	
 <sql id="search1">
-<if test="searchType != null and searchType != ''">
+	<if test="searchType != null and searchType != ''">
         <choose>
           <when test="searchType == 'memberName'">
             AND m.memberName LIKE '%'||#{keyword}||'%'

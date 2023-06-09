@@ -73,13 +73,37 @@ public class AdminController {
 	//관리자 회원 관리 페이지	  
 	@RequestMapping(value="/adminmemberList.do") 
 	public String memberList(SearchCriteria scri, Model model) {
+		
+		int totalCount = as.memberListCount(scri); //전체 게시물 갯수 조회
+	    pm.setScri(scri); //
+	    pm.setTotalCount(totalCount); 
+	    
   
-		ArrayList<BikeJoinVo> alist = as.memberList();
+		ArrayList<BikeJoinVo> alist = as.memberList(scri);
   
 		model.addAttribute("alist",alist); //(model=requestsetattribute)에 담아서 가지고 간다
+		model.addAttribute("pm", pm);
   
 		return "admin/adminmemberList";
 	}
+	
+	//관리자 탈퇴 회원 관리 페이지	  
+	@RequestMapping(value="/adminmemberOutList.do") 
+	public String adminmemberOutList(SearchCriteria scri, Model model) {
+		
+		int totalCount = as.memberOutListCount(scri); //전체 게시물 갯수 조회
+	    pm.setScri(scri); //
+	    pm.setTotalCount(totalCount); 
+	    
+		
+		ArrayList<BikeJoinVo> alist = as.memberOutList(scri);
+  
+		model.addAttribute("alist",alist);
+		model.addAttribute("pm", pm);
+		
+		return "admin/adminmemberOutList";
+	}
+	
 	
 	//관리자 회원 상세정보
 		@RequestMapping("/adminmemberListProfile.do")

@@ -28,7 +28,11 @@ public interface AdminService_Mapper {
 	//회원 삭제
 	public void deleteMember(String memberId);
 	//회원 리스트	
-	public ArrayList<BikeJoinVo> memberList();
+	public ArrayList<BikeJoinVo> memberList(SearchCriteria scri);
+	//회원 리스트 총합계
+	public int memberListCount(SearchCriteria scri);
+	public ArrayList<BikeJoinVo> memberOutList(SearchCriteria scri);
+	public int memberOutListCount(SearchCriteria scri);
 	//고장 내역 리스트	
 	public ArrayList<BikeJoinVo> searchBikeErrors(SearchCriteria scri);
 	public int searchBikeErrorsCount(SearchCriteria scri);
