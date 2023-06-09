@@ -328,5 +328,10 @@ public class MemberServiceImpl implements MemberService {
 		int value = msm.kakaoMemberInsert(memberId,memberPwd,memberName);
 		return value;
 	}
+	@Override
+	public void withdrawMember(String memberId) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

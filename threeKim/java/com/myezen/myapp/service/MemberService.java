@@ -38,7 +38,8 @@ public interface MemberService {
 	public void updateMember(MemberVo mv);
 //회원리스트에서 회원들정보보기
 	public MemberVo getMemberByMemberId(String memberId);
-	
+//회원탈퇴
+	public void withdrawMember(String memberId);
 //소셜로그인
 	
 	//구글로그인

@@ -78,6 +78,15 @@
 	  </set>
 	  WHERE midx = #{midx}
 	</update>
+	
+	<!-- 회원탈퇴 -->
+	<update id="withdrawMember" parameterType="String">
+    UPDATE members
+    SET memberDelYN = 'Y',
+        memberOutDay = SYSDATE
+    WHERE memberId = #{memberId}
+	</update>
+
 	<!-- 회원아이디 조회 -->
 	<select id="getMemberByMemberId" parameterType="string" resultType="mv">
   	SELECT * FROM member1234 where memberId = #{memberId}

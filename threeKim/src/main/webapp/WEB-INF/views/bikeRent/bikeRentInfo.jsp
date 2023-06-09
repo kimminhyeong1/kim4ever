@@ -55,6 +55,7 @@ ArrayList<BikeJoinVo> bikeList = (ArrayList<BikeJoinVo>)request.getAttribute("bi
 		        <c:if test="${sessionScope.memberType eq '관리자'}">
 		        	<button class="deleteBtn" onclick="deleteBike('${bjv.bikeType}')">X</button>
         	    </c:if>
+				   <%-- <img class="cardImg" src="//192.168.0.157/bteam/${bjv.uploadFile}" alt="이미지"> --%>
 				    <img class="cardImg" src="${pageContext.request.contextPath}/resources/bikeImages/${bjv.uploadFile}" alt="이미지">
 		            <p class="cardName">${bjv.bikeType } / ${bjv.bikeCode }</p>
 		            <p class="cardInfo">${bjv.bikeContent}</p>

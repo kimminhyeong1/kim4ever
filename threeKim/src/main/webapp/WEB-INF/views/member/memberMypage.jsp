@@ -38,26 +38,16 @@ li{list-style:none;}
 #main{width:1440px; margin:35px auto 70px; text-align:center;}
 #main #content{width:1440px; height:2400px;}
 #main #bottom{width:1440px; height:300px;}
-h2{text-align: center; margin-top:20px;}
-#content table {width:60%; border-collapse:collapse; border:1px solid #ddd; margin: 60px auto 0; text-align:center;  line-height:100px; font-family:'omyu_pretty'; font-size:24px;}
+#content table h2{margin-top:40px;}
+#content table {width:60%; height:20%; border-collapse:collapse; border:1px solid #ddd; margin: 60px auto 0; font-family:'omyu_pretty'; }
 #content table th{width:200px; text-align:center; border:1px solid #ddd; padding:8px;}
-#content table td{border:1px solid #ddd; padding:8px; text-align:left;}
-#content table td:nth-child(1){width:140px;text-align:center;}
-#content table td:nth-child(2){width:400px; text-align:left;}
-#content table tr:last-child td input{display: inline-block; width:120px; height:50px;}
-input{
-  font-family: 'omyu_pretty';
-  font-size:24px;
-  box-sizing: border-box;
-  width: 100%;
-  padding: 10px;
-  margin: 2px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-#content table button{width:160px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
-#content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+#content table td {border:1px solid #ddd;padding:20px;text-align:left;vertical-align:middle;height:100px; font-size:30px;}
+#content table img{width:60px; height:50px; float:right; margin: 0 auto; vertical-align:middle;}
+#content table td a {display:flex;  color:#333;}
+#content table td a.logout-btn {display:inline-block;padding:10px 20px;background-color:#ff9800;color:#fff;text-decoration:none;border-radius:5px;transition:background-color 0.3s ease;}
+#content table td a.logout-btn:hover {background-color: #FF6600;}
 </style>
+
 
 
 
@@ -68,50 +58,35 @@ input{
 	<%@include file="../header.jsp" %>
 	
 	<div id="content">
+		<table>
+			<tr>
+				<td colspan="2" >
+					<h2><%= session.getAttribute("memberName") %>님 환영합니다.</h2>
+					<a class="logout-btn" style="float:right;  " href="<%=request.getContextPath() %>/member/memberLogOut.do">로그아웃</a>
+				</td>
+			</tr>
+			
+			<tr>
+				<td onclick="window.location.href='<%=request.getContextPath() %>/member/memberEditInformation.do'">회원정보수정<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
+				<td>내 게시글<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
+			</tr>
+		
+			<tr>
+				<td>이용중인내역<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
+				<td>대여내역<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
+			</tr>
+		
+			<tr>
+				<td>나의 소모임<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
+				<td>내가 찜한 모임<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
+			</tr>
+		</table>
+		
+		  
+		  
 		
 	
-		<table>
-		 <tr>
-		    <th colspan="2"><h2>회원정보</h2></th>
-		  </tr>
-		  		
-				<tr>
-					<th>아이디</th>
-					<td>${memberId}</td>
-				</tr>
-				
-				<tr>
-					<th>비밀번호</th>
-					<td>${memberPwd}</td>
-				</tr>
-				
-				<tr>
-					<th>이름</th>
-					<td>${memberName}</td>
-				</tr>
-				
-				<tr>
-					<th>나이</th>
-					<td>${memberAge}</td>
-				</tr>
-				
-				<tr>
-					<th>휴대폰번호</th>
-					<td>${memberPhone}</td>
-				</tr>
-				
-				<tr>
-					<th>이메일</th>
-					<td>${memberEmail}</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<button type="button" onclick="location.href='<%=request.getContextPath()%>/member/memberUpdate.do'">회원정보 수정하기</button>
-					</td>		
-				</tr>
-				
-
-		</table>
+		
 	</div>
 	
 	<div id="bottom">	
