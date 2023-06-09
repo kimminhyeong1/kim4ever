@@ -222,8 +222,6 @@ public class AdminController {
 	
 	
 	
-	
-	
 ////////////////	 		게시글 관리			///////////////// 	
 	
 	
