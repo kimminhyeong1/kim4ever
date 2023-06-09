@@ -77,8 +77,7 @@ li{list-style:none;}
 	<div id="main">
 		<%@include file="../header4.jsp"%>
 
-		<div id="content">
-			
+		<div id="content">			
 <!-- 공지사항 -->			
 
 					<h2>게시판관리</h2>
