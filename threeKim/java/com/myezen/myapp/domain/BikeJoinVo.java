@@ -53,29 +53,24 @@ public class BikeJoinVo {
 	private String rentalshopCnt; //대여소 남은 갯수 //가상컬럼
 	private String bikeNorCnt; //일반자전거 남은 갯수 //가상컬럼
 	private String bikeEleCnt; //전기자전거 남은 갯수 //가상컬럼
-	
+
 	
 	
 	//RentVo
 
-	public String getBikeNorCnt() {
-		return bikeNorCnt;
-	}
-	public void setBikeNorCnt(String bikeNorCnt) {
-		this.bikeNorCnt = bikeNorCnt;
-	}
-	public String getBikeEleCnt() {
-		return bikeEleCnt;
-	}
-	public void setBikeEleCnt(String bikeEleCnt) {
-		this.bikeEleCnt = bikeEleCnt;
-	}
+	
+	
 	private String rentDay;//대여요일
 
 	private String rentPlace; //대여장소
 	
 	private int rsdix; //대여소번호
 	private int midx; //회원번호
+	
+	private String dayago; //관리자 메인 페이지 이용 현황 날짜  //가상컬럼
+	private String rentNorCount; //관리자 메인 페이지 이용 현황 일반 자전거 개수 //가상컬럼
+	private String rentEleCount; //관리자 메인 페이지 이용 현황 전기 자전거 개수 //가상컬럼
+
 	
 	//ReturnVo
 	private int rtidx; //반납번호
@@ -375,6 +370,37 @@ public class BikeJoinVo {
 		this.errorImage = errorImage;
 	}
 	
-
+	public String getBikeNorCnt() {
+		return bikeNorCnt;
+	}
+	public void setBikeNorCnt(String bikeNorCnt) {
+		this.bikeNorCnt = bikeNorCnt;
+	}
+	public String getBikeEleCnt() {
+		return bikeEleCnt;
+	}
+	public void setBikeEleCnt(String bikeEleCnt) {
+		this.bikeEleCnt = bikeEleCnt;
+	}
+	
+	public String getRentNorCount() {
+		return rentNorCount;
+	}
+	public void setRentNorCount(String rentNorCount) {
+		this.rentNorCount = rentNorCount;
+	}
+	public String getRentEleCount() {
+		return rentEleCount;
+	}
+	public void setRentEleCount(String rentEleCount) {
+		this.rentEleCount = rentEleCount;
+	}
+	public String getDayago() {
+		return dayago;
+	}
+	public void setDayago(String dayago) {
+		this.dayago = dayago;
+	}
+	
 	
 }

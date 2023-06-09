@@ -23,8 +23,8 @@ public interface AdminService_Mapper {
 	public int getTotalRentCount();	
 	//관리자 메인페이지 자전거 대여 가능 수
 	public ArrayList<BikeJoinVo>canRentBike();	
-	//관리자 메인페이지 이용 현황 어제 요일 표시
-	public String yesterday();
+	//관리자 메인페이지 이용 현황 자전거 수
+	public ArrayList<BikeJoinVo>getRentalCountByDateRange();	
 	//회원 삭제
 	public void deleteMember(String memberId);
 	//회원 리스트	
