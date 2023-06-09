@@ -38,9 +38,10 @@ public class BikeJoinVo {
 	private String memberPhone; //회원 핸드폰번호
 	private String memberEmail; //회원 이메일
 	private String memberAddr; //회원 주소
-	private String memberType;
-	private String writeDay;
-	
+	private String memberType; //등급
+	private String writeDay; // 가입한 시간
+	private String memberOutDay; //탈퇴한 시간
+
 
 	//RentalshopVo
 	private int rsidx; //대여소번호
@@ -86,7 +87,13 @@ public class BikeJoinVo {
     private String verificationCode;
     private char verificationStatus;
     
-    
+	public String getMemberOutDay() {
+		return memberOutDay;
+	}
+	public void setMemberOutDay(String memberOutDay) {
+		this.memberOutDay = memberOutDay;
+	}
+	
     public String getUploadFile() {
 		return uploadFile;
 	}

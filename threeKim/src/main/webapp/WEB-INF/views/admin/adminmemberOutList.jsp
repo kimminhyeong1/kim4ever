@@ -56,8 +56,8 @@ li{list-style:none;}
 #content .search select {width:120px;height:30px;font-size:14px;padding:5px;}
 #content .search input[type="text"] {width:200px;height:17px;font-size:14px;padding:5px;}
 #content .search button {width:80px;height:30px;font-size:14px;padding:5px;}
-#content #memberList{color: #000; margin-right:10px;} 
-#content #memberOutList{color: #ddd;} 
+#content #memberList{color: #ddd; margin-right:10px;} 
+#content #memberOutList{color: #000;} 
 </style>
 <script type="text/javascript">
 	function fnDelete(memberId) {
@@ -74,13 +74,12 @@ li{list-style:none;}
 	<%@include file="../header4.jsp"%>
 	
 	<div id="content">
-	<form action="${pageContext.request.contextPath}/admin/adminmemberList.do" method="get">
+	<form action="${pageContext.request.contextPath}/admin/adminmemberOutList.do" method="get">
 		<h2><a id="memberList" href="${pageContext.request.contextPath}/admin/adminmemberList.do" >회원 리스트</a><a id="memberOutList" href="${pageContext.request.contextPath}/admin/adminmemberOutList.do">탈퇴 회원 리스트</a></h2>
 		<div class="search">
 			<select id="searchType" name="searchType">
 				<option value="memberId">아이디</option> 
 				<option value="memberName">이름</option>
-				<option value="memberType">등급</option>
 			</select>
 			<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요"/>
 			<button type="submit" id="searchBtn">검색</button>
@@ -91,27 +90,17 @@ li{list-style:none;}
 				<tr>
 					<th>아이디</th>
 					<th>이름</th>
-					<th>가입일</th>
-					<th>등급</th>
-					<th>삭제</th>
+					<th>탈퇴일</th>
+			
 				</tr>
 				
 				<c:forEach var="bjv" items="${alist}">
 					<tr>
 						<td><a href="adminmemberListProfile.do?memberId=${bjv.memberId}">${bjv.memberId}</a></td>
 						<td>${bjv.memberName}</td>
-						<td>${bjv.writeDay}</td>
-						<td>${bjv.memberType}</td>
-						<td>
-							<c:choose>
-								<c:when test="${bjv.memberType eq '관리자'}">  
-									삭제금지
-								</c:when>
-								<c:otherwise> 
-									<button type="button" onclick="fnDelete('${bjv.memberId}');">삭제</button>
-								</c:otherwise>
-							</c:choose>
-						</td>
+						<td>${bjv.memberOutDay}</td>
+						
+
 					</tr>
 				</c:forEach>
 		</table>
@@ -119,17 +108,17 @@ li{list-style:none;}
 			<tr>
 				<td>
 					<c:if test="${ pm.prev == true }">
-					<a href="${pageContext.request.contextPath }/admin/adminmemberList.do?page=${pm.startPage-1}&searchType=${ pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } "> ◀</a>
+					<a href="${pageContext.request.contextPath }/admin/adminmemberOutList.do?page=${pm.startPage-1}&searchType=${ pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } "> ◀</a>
 					</c:if>
 				</td>
 				<td>
 					<c:forEach var="i"  begin="${pm.startPage}" end="${pm.endPage}"  step="1" >
-						<a href="${pageContext.request.contextPath }/admin/adminmemberList.do?page=${ i }&searchType=${pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">${ i }</a>
+						<a href="${pageContext.request.contextPath }/admin/adminmemberOutList.do?page=${ i }&searchType=${pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">${ i }</a>
 					</c:forEach>	
 				</td>
 					<td>
 					<c:if test="${pm.next&&pm.endPage >0 }">
-					<a href="${pageContext.request.contextPath }/admin/adminmemberList.do?page=${pm.endPage+1}&searchType=${pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">▶</a>
+					<a href="${pageContext.request.contextPath }/admin/adminmemberOutList.do?page=${pm.endPage+1}&searchType=${pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">▶</a>
 					</c:if>
 				</td>
 			</tr>
