@@ -81,7 +81,7 @@
 	
 	<!-- 회원탈퇴 -->
 	<update id="withdrawMember" parameterType="String">
-    UPDATE members
+    UPDATE member1234
     SET memberDelYN = 'Y',
         memberOutDay = SYSDATE
     WHERE memberId = #{memberId}

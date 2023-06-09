@@ -561,16 +561,16 @@ public class MemberController {
 	}
 	
 	//회원탈퇴
-	@RequestMapping(value = "/member/memberWithdrawal.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/memberWithdrawal.do", method = RequestMethod.GET)
 	public String memberWithdrawal(HttpServletRequest request, HttpSession session) {
 	   
 		String memberId = (String) session.getAttribute("memberId");
 
 		ms.withdrawMember(memberId);
 		
-		 session.invalidate();
+		session.invalidate(); //회원탈퇴니까 세션에 담겨진 정보 싹 날려보냄
 		 
-	    return "redirect:/member/memberWithdrawal.do";
+	    return "redirect:/";
 	}
 
 	

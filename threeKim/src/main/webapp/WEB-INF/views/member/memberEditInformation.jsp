@@ -62,7 +62,10 @@ input{
 <script>
 function confirmWithdrawal() {
     if (confirm("정말로 회원 탈퇴하시겠습니까?")) {
-        location.href = '<%=request.getContextPath()%>/member/memberWithdrawal.do';
+        var memberId = '<%= session.getAttribute("memberId") %>';
+        location.href = '<%= request.getContextPath() %>/member/memberWithdrawal.do';
+    } else {
+        alert("회원 탈퇴가 취소되었습니다.");
     }
 }
 </script>

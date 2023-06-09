@@ -177,6 +177,13 @@ public class MemberServiceImpl implements MemberService {
 		msm.updateMember(mv);
 		
 	}
+	//회원탈퇴
+	@Override
+	public void withdrawMember(String memberId) {
+		msm.withdrawMember(memberId);
+		
+	}
+	
 	@Override
 	public MemberVo getMemberByMemberId(String memberId) {
 		
@@ -328,10 +335,6 @@ public class MemberServiceImpl implements MemberService {
 		int value = msm.kakaoMemberInsert(memberId,memberPwd,memberName);
 		return value;
 	}
-	@Override
-	public void withdrawMember(String memberId) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }
