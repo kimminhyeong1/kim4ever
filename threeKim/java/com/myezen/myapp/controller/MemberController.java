@@ -189,7 +189,7 @@ public class MemberController {
 				//변수선언
 	            String memberId = (String) userInfo.get("email");
 				String memberPwd = bcryptPasswordEncoder.encode(memberId);
-				String memberName = (String) userInfo.get("email");
+				String memberName = (String) userInfo.get("nickname");
 				
 				//DB에 ID값이 있는지 확인
 	            int value = ms.socialMemberCheck(memberId);	
