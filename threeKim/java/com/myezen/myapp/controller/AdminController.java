@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.myezen.myapp.util.DateUtils;
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.BoardVo;
 import com.myezen.myapp.domain.MemberVo;
@@ -64,9 +63,7 @@ public class AdminController {
 		model.addAttribute("rblist", rblist);		
 		
 		//이용 현황 자전거 개수		
-		int daysAgo = 5; // 5를 넣으면 과거 이력이 5일 전 까지 나옴
-		String[] dateArray = DateUtils.createDateArray(daysAgo);
-		model.addAttribute("dateArray", dateArray);
+	
 
 		ArrayList<BikeJoinVo> rbclist = as.getRentalCountByDateRange();
 		System.out.println(rbclist.get(0).getRentNorCount());
