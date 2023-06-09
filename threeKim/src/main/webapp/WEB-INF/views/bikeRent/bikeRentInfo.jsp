@@ -35,7 +35,11 @@ ArrayList<BikeJoinVo> bikeList = (ArrayList<BikeJoinVo>)request.getAttribute("bi
 	</script>
 	</head>
 	<body>
-		<%@include file="../header.jsp" %>
+		<% if ("관리자".equals((String) session.getAttribute("memberType"))) { %>
+		    <%@include file="../header4.jsp" %>
+		<% } else { %>
+		    <%@include file="../header.jsp" %>
+		<% } %>
 		<main id="main">
 			<section id="container">
 			<div id="bikeIntro">
