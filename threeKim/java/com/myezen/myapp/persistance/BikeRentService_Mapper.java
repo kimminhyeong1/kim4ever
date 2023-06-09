@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.myezen.myapp.domain.BikeJoinVo;
+import com.myezen.myapp.domain.ErrorVo;
 import com.myezen.myapp.domain.MemberVo;
 
 public interface BikeRentService_Mapper {
@@ -58,8 +59,9 @@ public interface BikeRentService_Mapper {
 	/*----------------------------------------------*/
 	
     //고장/신고 작성 메소드
-    public int bikeRentErrorInsert(String errorContent,int ridx);
-
+    public int bikeRentErrorInsert(ErrorVo ev);
+    //자전거 상태 E로 변경
+    public int bikeRentStateE(int ridx);
 
     //대여소 QR을 찍고 반납하기 메소드
     public BikeJoinVo bikeRentReturnCheck(int ridx, int rsidx);

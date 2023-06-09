@@ -55,9 +55,8 @@
 				
 				$("#btn3").click(function(){
 		
-		            var fm = document.frm;
-		            		      			
-		      			 fm.action ="${pageContext.request.contextPath}/bikeRent/bikeRentFaultAction.do";  
+		            var fm = document.frm;		
+		      			 fm.action ="${pageContext.request.contextPath}/bikeRent/bikeRentFaultAction.do";   
 		      			 fm.method = "POST";
 		      			 fm.submit();
 		
@@ -175,15 +174,15 @@
 					<div><button type="button" id="btn2">돌아가기</button></div>
 				</div>
 				<div class="container B" style="display: none;">
-					<form name="frm" id="frm">
+					<form name="frm" id="frm" enctype="multipart/form-data">
 						<h2>자전거 고장/신고</h2>
 						<div>
 				            <h3>위치</h3>
 				            <div>지금 자전거 위치를 지정해주세요.</div>
 				            <div id="map" style="width: 860px; height: 500px;"></div>
-				            <input type="hidden" id="latitude" name="latitude" value=""><!-- 위도 -->
-				            <input type="hidden" id="longitude" name="longitude" value=""><!-- 경도 -->
-				            <input type="hidden" id="address" name="address" value=""><!-- 주소 -->
+				            <input type="hidden" id="latitude" name="errorLatitude" value=""><!-- 위도 -->
+				            <input type="hidden" id="longitude" name="errorLongitude" value=""><!-- 경도 -->
+				            <input type="hidden" id="address" name="errorLocation" value=""><!-- 주소 -->
 				        </div>
 						<p id="address2">현재 주소: </p>
 						<p id="position">위치: </p>
@@ -191,7 +190,7 @@
 				        <div>
 				            <h3>사진</h3>
 				            <div>자전거가 위치한 사진을 찍어주세요.</div>
-				            <input type="file" name="image">
+				            <input type="file" name="errorImg"> 
 				        </div>
 		                <div>
 				            <h3>고장내용</h3>

@@ -134,11 +134,17 @@
 
 <!-- dddddddddddddddddddddddddddddddddddddddddddddddd -->
 	
-	    <!-- 고장/신고 접수 -->
-    <insert id="bikeRentErrorInsert" parameterType="errorv">
-        INSERT INTO error1234(eidx,ridx,errorContent) <!-- 위도,경도,파일 추가중 -->
-        VALUES(eidx_seq.NEXTVAL,#{1},#{0}) <!-- 추가중 -->
+    <!-- 고장/신고 접수 -->
+    <insert id="bikeRentErrorInsert" parameterType="com.myezen.myapp.domain.BikeJoinVo">
+        INSERT INTO error1234(eidx,ridx,bkidx,errorContent,errorLatitude,errorLongitude,errorLocation,errorImage) 
+		VALUES(eidx_seq.NEXTVAL,#{ridx},#{bkidx},#{errorContent},#{errorLatitude},#{errorLongitude},#{errorLocation},#{errorImage}) 
     </insert>
+    <update id="bikeRentStateE" parameterType="int">
+	UPDATE BIKE1234
+	SET BIKESTATE = 'E'
+	WHERE BKIDX = #{0}
+	</update>
+    
     <select id="bikeRentReturnCheck" resultType="com.myezen.myapp.domain.BikeJoinVo">
 		SELECT * FROM rent1234
 		JOIN bike1234 ON rent1234.bkidx = bike1234.bkidx

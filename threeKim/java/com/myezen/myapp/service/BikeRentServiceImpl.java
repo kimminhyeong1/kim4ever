@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FilenameUtils;
@@ -18,9 +19,11 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import com.myezen.myapp.domain.BikeJoinVo;
+import com.myezen.myapp.domain.ErrorVo;
 import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.persistance.BikeRentService_Mapper;
 import com.myezen.myapp.util.AESUtil;
@@ -28,6 +31,7 @@ import com.myezen.myapp.util.QRCodeUtil;
 
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
+
 
 @Service("BikeRentServiceImpl")
 public class BikeRentServiceImpl implements BikeRentService {
@@ -37,6 +41,7 @@ public class BikeRentServiceImpl implements BikeRentService {
 	public BikeRentServiceImpl(SqlSession sqlSession) {
 		this.brsm = sqlSession.getMapper(BikeRentService_Mapper.class);
 	}
+
 
 	
 	//QR로 넘어온 자전거정보 조회
@@ -132,7 +137,7 @@ public class BikeRentServiceImpl implements BikeRentService {
 	@Override
 	public String processBikeRentWrite(MultipartFile file, BikeJoinVo bjv) {
 		
-		String savedFilePath = "C:\\Users\\503-8\\Documents\\threekim\\threeKim\\src\\main\\webapp\\resources\\bikeImages";
+		String savedFilePath = "D://threekim//threeKim//src//main//webapp//resources/bikeImages";
 		// 파일을 실제 경로에 저장
 	    try {
 	        String originalFilename = file.getOriginalFilename();
@@ -180,17 +185,48 @@ public class BikeRentServiceImpl implements BikeRentService {
 
 
 	
-	
+	@Autowired
+	private HttpServletRequest request;
 	
 	
 	
 	/*----------------------------------------------*/
 	
     @Override
-    //고장/신고하기
-    public int bikeRentErrorInsert(String errorContent,int ridx) {
+    @Transactional
+    //고장/신고하기 //String errorContent,int ridx,String latitude,String longitude,String address
+    public int bikeRentErrorInsert(ErrorVo ev,MultipartFile file) {
         System.out.println("서비스단에 들어옴");
-        int value = brsm.bikeRentErrorInsert(errorContent,ridx);
+        int value = 0;
+        //배포했을때
+        //String savedFilePath = request.getSession().getServletContext().getRealPath("/resources/bikeError");
+		// 파일을 실제 경로에 저장
+        String savedFilePath = "D://threekim//threeKim//src//main//webapp//resources/bikeError";
+        System.out.println(savedFilePath);
+	    try {
+	        String originalFilename = file.getOriginalFilename();
+	        String extension = FilenameUtils.getExtension(originalFilename);
+	        String newFilename = UUID.randomUUID().toString() + "." + extension;
+	        String fullPath = savedFilePath + "\\" + newFilename;
+	        File destination = new File(fullPath);
+	        file.transferTo(destination);
+
+	        // ErrorVo에 업로드된 파일명 설정
+	        ev.setErrorImage(newFilename);
+
+	        //고장테이블에 고장정보 삽입
+	        value = brsm.bikeRentErrorInsert(ev);
+	        //자전거테이블에 자전거 상태 E로 변환
+	        value = brsm.bikeRentStateE(ev.getBkidx()); 
+	        
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+
+	    
+	
+        
+        
         return value;
     }
 
