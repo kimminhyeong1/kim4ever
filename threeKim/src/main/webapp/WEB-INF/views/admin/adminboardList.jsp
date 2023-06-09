@@ -100,8 +100,7 @@ li{list-style:none;}
 							<th>게시판</th>	
 							<th>작성일</th>
 							<th>수정</th>
-							<th>삭제</th>
-							
+							<th>삭제</th>							
 						</tr>
 										<c:forEach var="bv" items="${blist}" varStatus="status">
 									<tr>				
