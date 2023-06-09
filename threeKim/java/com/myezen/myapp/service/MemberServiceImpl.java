@@ -250,11 +250,10 @@ public class MemberServiceImpl implements MemberService {
 
 			access_Token = jsonMap.get("access_token").toString();
 			refresh_Token = jsonMap.get("refresh_token").toString();
-			id_token = jsonMap.get("id_token").toString(); //id_token
+			//id_token = jsonMap.get("id_token").toString(); //id_token
 
 			System.out.println("access_token : " + access_Token);
 			System.out.println("refresh_token : " + refresh_Token);
-			System.out.println("id_token : " + id_token);
 
 			br.close();
 			bw.close();
@@ -271,7 +270,7 @@ public class MemberServiceImpl implements MemberService {
 				HashMap<String, Object> userInfo = new HashMap<String, Object>();
 				String reqURL = "https://kapi.kakao.com/v2/user/me";
 
-				try {
+				try { 
 					URL url = new URL(reqURL);
 					HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 					conn.setRequestMethod("GET");

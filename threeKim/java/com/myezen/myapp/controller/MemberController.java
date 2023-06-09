@@ -434,6 +434,11 @@ public class MemberController {
 //!로그아웃 클릭
 	@RequestMapping(value="/memberLogOut.do")
 	public String memberLogout(HttpSession session) {
+		String access_Token ="";
+		access_Token = (String) session.getAttribute("access_Token");
+		if (access_Token!=null) {
+			System.out.println("토큰");
+		}
 		
 		session.removeAttribute("midx");
 		session.removeAttribute("memberName");
