@@ -93,8 +93,7 @@ li{list-style:none;}
 							<th>날짜</th>	
 							<th>조회수</th>
 							<th>수정</th>
-							<th>삭제</th>
-							
+							<th>삭제</th>							
 						</tr>
 										<c:forEach var="bv" items="${blist}" varStatus="status">
 									<tr>				
