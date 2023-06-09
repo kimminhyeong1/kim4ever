@@ -72,7 +72,7 @@ public class AdminController {
 	
 	//관리자 회원 관리 페이지	  
 	@RequestMapping(value="/adminmemberList.do") 
-	public String memberList(Model model) {
+	public String memberList(SearchCriteria scri, Model model) {
   
 		ArrayList<BikeJoinVo> alist = as.memberList();
   
