@@ -261,8 +261,7 @@ public class AdminController {
 		return path;
 	}
 
-	// 관리자게시글 복구 액션
-	  
+	// 관리자게시글 복구 액션	  
 	  @RequestMapping(value="/adminboardBackAction.do") public String
 	  adminboardBackAction(
 	  
