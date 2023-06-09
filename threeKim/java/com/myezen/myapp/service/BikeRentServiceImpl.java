@@ -132,7 +132,7 @@ public class BikeRentServiceImpl implements BikeRentService {
 	@Override
 	public String processBikeRentWrite(MultipartFile file, BikeJoinVo bjv) {
 		
-		String savedFilePath = "C:\\Users\\503-2\\Documents\\threekim\\threeKim\\src\\main\\webapp\\resources\\bikeImages";
+		String savedFilePath = "C:\\Users\\503-8\\Documents\\threekim\\threeKim\\src\\main\\webapp\\resources\\bikeImages";
 		// 파일을 실제 경로에 저장
 	    try {
 	        String originalFilename = file.getOriginalFilename();
