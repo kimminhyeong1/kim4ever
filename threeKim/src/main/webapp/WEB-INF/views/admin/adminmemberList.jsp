@@ -97,7 +97,25 @@ li{list-style:none;}
 						</td>
 					</tr>
 				</c:forEach>
-
+		</table>
+		<table>
+			<tr>
+				<td>
+					<c:if test="${ pm.prev == true }">
+					<a href="${pageContext.request.contextPath }/admin/adminmemberList.do?page=${pm.startPage-1}&searchType=${ pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } "> ◀</a>
+					</c:if>
+				</td>
+				<td>
+					<c:forEach var="i"  begin="${pm.startPage}" end="${pm.endPage}"  step="1" >
+						<a href="${pageContext.request.contextPath }/admin/adminmemberList.do?page=${ i }&searchType=${pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">${ i }</a>
+					</c:forEach>	
+				</td>
+					<td>
+					<c:if test="${pm.next&&pm.endPage >0 }">
+					<a href="${pageContext.request.contextPath }/admin/adminmemberList.do?page=${pm.endPage+1}&searchType=${pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">▶</a>
+					</c:if>
+				</td>
+			</tr>
 		</table>
 		
 	</div>
