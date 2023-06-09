@@ -51,9 +51,6 @@
         WHERE bkidx = #{bkidx}
 </select>
 
-
-
-
 <select id="RentUseList" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
  SELECT
     b.bikeType,

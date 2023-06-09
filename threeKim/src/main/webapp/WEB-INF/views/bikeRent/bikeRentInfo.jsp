@@ -68,8 +68,7 @@ ArrayList<BikeJoinVo> bikeList = (ArrayList<BikeJoinVo>)request.getAttribute("bi
 			
 			<div id="bottom">
 			<%@include file="../bottom.jsp" %>
-			</div>
-			
+			</div>		
 	
 			</section>
 		</main>

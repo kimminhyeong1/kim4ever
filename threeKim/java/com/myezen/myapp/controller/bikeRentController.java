@@ -44,7 +44,6 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 @RequestMapping(value="/bikeRent")
 public class bikeRentController {
 	
-	
 	@Autowired
 	BikeRentService bs; //업캐스팅 부모만 지정
 	
