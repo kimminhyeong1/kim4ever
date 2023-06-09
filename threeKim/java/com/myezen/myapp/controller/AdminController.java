@@ -273,4 +273,49 @@ public class AdminController {
 	}
 
 
+	// 관리자게시글 삭제 액션
+	@RequestMapping(value = "/adminboardDeleteAction.do")
+	public String adminboardDeleteAction(@RequestParam("bidx") int bidx, HttpSession session) throws Exception {
+
+		BoardVo bv = new BoardVo();
+		bv.setBidx(bidx);
+		System.out.println(bidx + "관리게시판bidx");
+		int value = bs.adminboardDelete(bv);
+		System.out.println("삭제값: " + value);
+
+		String path = "";
+		if (value == 1) {
+			path = "redirect:/admin/adminboardList.do";
+			System.out.println("관리자게시판삭제 성공");
+
+		} else {
+			path = "redirect:/admin/adminboardList.do";
+			System.out.println("관리자게시판삭제 오류");
+		}
+		return path;
+	}
+
+	
+	
+	// 관리자게시글 복구 액션	  
+	  @RequestMapping(value="/adminboardBackAction.do") public String
+	  adminboardBackAction(
+	  
+	  @RequestParam("bidx") int bidx, HttpSession session) throws Exception {
+	  
+	  
+	  BoardVo bv = new BoardVo(); bv.setBidx(bidx); System.out.println(bidx
+	  +"관리게시판bidx"); int value = bs.adminboardBack(bv); 
+	  System.out.println("삭제값: "+ value);
+	  
+	  String path = ""; if (value == 1)
+	  { path = "redirect:/admin/adminboardList.do"; 
+	  System.out.println("관리자게시판복구 성공");
+	  
+	  
+	  } else { path = "redirect:/admin/adminboardList.do";
+	  System.out.println("관리자게시판복구 오류"); } return path; }
+	 
+
+
 }
