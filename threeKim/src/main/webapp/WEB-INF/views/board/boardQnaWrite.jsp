@@ -78,20 +78,26 @@ li{list-style:none;}
 				<table>
 					<tr>
 						<th>작성자</th>
-						<td>	<%= session.getAttribute("memberName") %>									
-							</td>
+						<td>
+						<c:if test="${memberType == '관리자'}">
+						    <p>관리자</p>
+						</c:if>
+						<c:if test="${memberType != '관리자'}">
+						    <p><%= session.getAttribute("memberName") %></p>
+						</c:if>
+						<td>
 							
 					</tr>
 					
 					<tr>
 						<th>제목</th>
 						<td><input type="text" name="subject"
-							style="width: 600px; height: 40px;"></td>
+							style="width: 600px; height: 40px; font-size: 26px;"></td>
 					</tr>
 					
 					<tr>
 						<th>내용</th>
-						<td><textarea name="content" cols="100" rows="8"></textarea></td>
+						<td><textarea name="content" cols="100" rows="8"  style="font-size: 26px;">value="<%=session.getAttribute("member")%></textarea></td>
 					</tr>
 					
 					<tr>

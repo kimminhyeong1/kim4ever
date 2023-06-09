@@ -101,8 +101,8 @@ $(document).ready(function() {
 						<td><%=bv.getSubject()%></td>
 
 						<th style="width: 100px; text-align: center; border-left: 1px solid #ddd;">조회수</th>
-						<td><%=bv.getBoardView()%></td>
-						<td style="width: 200px; text-align: center;"></td>
+						<td style="width: 200px; text-align: center;"><%=bv.getBoardView()%></td>
+
 					</tr>
 
 					<tr>
@@ -112,7 +112,7 @@ $(document).ready(function() {
 
 					<tr>
 						<th>글 내용</th>
-							<td style="height: 500px; width: 1800px;"><%=bv.getContent()%></td>
+							<td style="height: 500px; width: 1800px; text-align:left;"><%=bv.getContent()%></td>
 
 					</tr>
 					

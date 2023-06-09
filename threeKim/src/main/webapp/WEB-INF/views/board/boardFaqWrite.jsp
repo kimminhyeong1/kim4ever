@@ -87,12 +87,12 @@ li{list-style:none;}
 					<tr>
 						<th>제목</th>
 						<td><input type="text" name="subject"
-							style="width: 600px; height: 40px;"></td>
+							style="width: 600px; height: 40px; font-size: 26px;"></td>
 					</tr>
 
 					<tr>
 						<th>내용</th>
-						<td><textarea name="content" cols="100" rows="8"></textarea>
+						<td><textarea name="content" cols="100" rows="8"  style="font-size: 26px;"></textarea>
 						</td>
 					</tr>
 
