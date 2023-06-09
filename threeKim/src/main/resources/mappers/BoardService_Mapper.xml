@@ -112,7 +112,6 @@ update board1234 set depth =depth+1 where bidx = #{bidx} and depth >#{depth}
 
 <select id="boardSelectAll2" parameterType="scri" resultType="bv">
 
-
 SELECT * FROM(
 	SELECT ROWNUM AS rnum, A.* FROM (
 	 SELECT * FROM board1234 
