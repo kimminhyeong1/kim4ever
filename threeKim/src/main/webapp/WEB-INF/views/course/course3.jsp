@@ -149,7 +149,7 @@ var rectangleBounds = new kakao.maps.LatLngBounds(sw, ne);
 
 
 </script>
-<h2>주변 맛집 리스트</h2>
+<h2>타바  추천 맛집 pick !</h2>
 	<div id="restaurant">
 		<table>
 		  <tr>
