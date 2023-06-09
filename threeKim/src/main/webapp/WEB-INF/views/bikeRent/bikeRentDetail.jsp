@@ -31,7 +31,7 @@ $(document).ready(function() {
     	var phone = $("#phone").val();
     	$.ajax({
             type:"GET",
-            url:"phoneCheck.do?phone=" + phone,
+            url:"${pageContext.request.contextPath}/bikeRent/phoneCheck.do?phone=" + phone,
             cache : false,
             success:function(data){
             	if(data == "error"){
@@ -57,7 +57,7 @@ $(document).ready(function() {
         var verificationCode = $("#phone2").val();
         $.ajax({
             type: "POST",
-            url: "verifyPhoneNumber.do",
+            url: "${pageContext.request.contextPath}/bikeRent/verifyPhoneNumber.do",
             data: {
                 phoneNumber: phoneNumber,
                 verificationCode: verificationCode
