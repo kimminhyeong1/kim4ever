@@ -22,9 +22,9 @@ public interface AdminService {
 	//관리자 메인페이지 대여 가능한 자전거
 		public int getTotalRentCount();
 	//관리자 메인페이지 자전거 대여 가능 수
-		 public ArrayList<BikeJoinVo>canRentBike();	
-	//관리자 메인페이지 이용 현황 어제 요일 표시
-		public String yesterday();
+		 public ArrayList<BikeJoinVo>canRentBike();		
+	//관리자 메인페이지 이용 현황 자전거 수
+		public ArrayList<BikeJoinVo>getRentalCountByDateRange();	
 	//회원삭제
 		public void deleteMember(String memberId);
 	//회원리스트

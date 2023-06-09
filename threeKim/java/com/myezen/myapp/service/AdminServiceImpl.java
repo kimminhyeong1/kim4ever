@@ -69,12 +69,15 @@ public class AdminServiceImpl implements AdminService {
 		return rblist;
 	}
 	
-	//관리자 메인페이지 이용현황 어제 요일 표시
+	//관리자 메인페이지 이용현황 자전거 수
 	@Override
-	public String yesterday() {
+	public ArrayList<BikeJoinVo> getRentalCountByDateRange() {
 		
-		return asm.yesterday();
+		ArrayList<BikeJoinVo> rbclist = asm.getRentalCountByDateRange();
+		
+		return rbclist;
 	}
+		
 	
 	//회원삭제
 	@Override
@@ -182,28 +185,11 @@ public class AdminServiceImpl implements AdminService {
 	
 
 	
-	
-
-
-	
-
-
-
-
-
-
 
 	
 
 	
 
-	
-
-	
-
-	
-
-	
 
 	
 

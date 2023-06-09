@@ -14,11 +14,12 @@
 	.aContent2{display: flex;}	   
     .abox{width:265px; height:150px; margin:20px; padding:30px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:10px; }	
 	.abox2{width:570px; height:auto; margin:20px 20px 20px 35px; padding:5px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:10px;}
-	.abox3{width:570px; height:350px; margin:20px; padding:5px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:10px;}
+	.abox3{width:570px; margin:20px; padding:5px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:10px;}
 	.cardTitle{margin-bottom:40px;}	
 	.abox2 table, .abox3 table {width: 60%; border-collapse: collapse;margin: 15px 	83.703px ;line-height: 60px;font-size: 18px;font-family: 'omyu_pretty';}
 	.pcontent {font-size:32px;}	
 	.abox2 th{font-size:35px;}
+	.abox3 th{font-size:35px;}
 		
 		</style>
 	</head>
@@ -62,41 +63,32 @@
 							<c:forEach var="rblist" items="${rblist}">
 	           				<tr>
 						         <td>${rblist.rentalshopName}</td>
-						         <td>${rblist.bikeNorCnt}대</td>
-						         <td>${rblist.bikeEleCnt}대</td>
+						         <td>${rblist.bikeNorCnt}</td>
+						         <td>${rblist.bikeEleCnt}</td>
 			        		</tr>
         					</c:forEach>
 						</table>					
 					</div>		
 					<div class="abox3">
 						<table>
-						<h2>이용 현황</h2>													
-							<tr>
-							<td>${yesterday}</td>
-							<td>일반 : 55대</td>
-							<td>전기 : 26대</td>							
-							</tr>
-							<tr>
-							<td>5월 31일</td>
-							<td>일반 : 10대</td>
-							<td>전기 : 12대</td>							
-							</tr>
-							<tr>
-							<td>5월 31일</td>
-							<td>일반 : 10대</td>
-							<td>전기 : 12대</td>							
-							</tr>
-							<tr>
-							<td>5월 31일</td>
-							<td>일반 : 10대</td>
-							<td>전기 : 12대</td>							
-							</tr>
-							<tr>
-							<td>5월 31일</td>
-							<td>일반 : 10대</td>
-							<td>전기 : 12대</td>							
-							</tr>
-						</table>					
+			   			 <h2>이용 현황</h2>
+			    <thead>
+			        <tr>
+			            <th>날짜</th>
+			            <th>일반</th>
+			            <th>전기</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			        <c:forEach var="rbclist" items="${rbclist}">
+			            <tr>
+			                <td>${rbclist.dayago}</td>
+				         	<td>${rbclist.rentNorCount}</td>
+				         	<td>${rbclist.rentEleCount}</td>
+			            </tr>
+			        </c:forEach>
+			    </tbody>
+			</table>					
 					</div>
 				</div>	
 								

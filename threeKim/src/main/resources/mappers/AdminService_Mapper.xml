@@ -16,10 +16,31 @@
 
 
 	<!--관리자 메인페이지 이용현황 어제 요일 -->
-<select id="yesterday" parameterType="String" resultType="String">
-    SELECT TO_CHAR(TRUNC(SYSDATE) - 1, 'YYYY-MM-DD') AS yesterday FROM DUAL
-</select>
-
+	<select id="yesterday" parameterType="String" resultType="String">
+	    SELECT TO_CHAR(TRUNC(SYSDATE) - 1, 'YYYY-MM-DD') AS yesterday FROM DUAL
+	</select>
+	
+	<!--관리자 메인페이지 이용현황 2일 전 -->
+	<select id="twodayAgo" parameterType="String" resultType="String">
+	    SELECT TO_CHAR(TRUNC(SYSDATE) - 2, 'YYYY-MM-DD') AS twodayago FROM DUAL
+	</select>
+	
+	<!--관리자 메인페이지 이용현황 3일 전 -->
+	<select id="threedayAgo" parameterType="String" resultType="String">
+	    SELECT TO_CHAR(TRUNC(SYSDATE) - 3, 'YYYY-MM-DD') AS threedayago FROM DUAL
+	</select>
+	
+	<!--관리자 메인페이지 이용현황 4일 전 -->
+	<select id="fourdayAgo" parameterType="String" resultType="String">
+	    SELECT TO_CHAR(TRUNC(SYSDATE) - 4, 'YYYY-MM-DD') AS fourdayago FROM DUAL
+	</select>
+	
+	<!--관리자 메인페이지 이용현황 5일 전 -->
+	<select id="fivedayAgo" parameterType="String" resultType="String">
+	    SELECT TO_CHAR(TRUNC(SYSDATE) - 5, 'YYYY-MM-DD') AS fivedayago FROM DUAL
+	</select>
+	
+	
 	<!-- 대여소 이용 가능 자전거 -->
 	<select id="canRentBike" resultType="com.myezen.myapp.domain.BikeJoinVo">
 	SELECT
@@ -32,6 +53,33 @@
 		GROUP BY
     	a.RENTALSHOPNAME	
 	</select>
+
+	<!--관리자 메인 페이지 요일 별 이용 현황 -->
+	 <select id="getRentalCountByDateRange" resultType="com.myezen.myapp.domain.BikeJoinVo">
+		SELECT
+				TO_CHAR(a.rentDay, 'YYYY-MM-DD') AS dayago, 
+		    CASE WHEN b.bikeType = '일반자전거' THEN COUNT(a.bkidx) ELSE 0 END AS rentNorCount,
+		    CASE WHEN b.bikeType = '전기자전거' THEN COUNT(a.bkidx) ELSE 0 END AS rentEleCount
+		FROM bike1234 b
+		LEFT JOIN RENT1234 a ON a.bkidx = b.BKIDX
+		    AND TRUNC(a.rentDay) >= TRUNC(SYSDATE) - 7
+		    AND TO_CHAR(a.rentDay, 'DAY') >= TO_CHAR(SYSDATE - 7, 'DAY')
+		WHERE TRUNC(a.rentDay) >= TRUNC(SYSDATE) - 7
+		GROUP BY TO_CHAR(a.rentDay, 'YYYY-MM-DD'), b.bikeType
+		ORDER BY TO_CHAR(a.rentDay, 'YYYY-MM-DD') desc
+    </select>
+
+
+		
+
+
+
+
+
+
+
+
+
 
 
 	

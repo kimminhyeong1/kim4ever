@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.myezen.myapp.util.DateUtils;
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.BoardVo;
 import com.myezen.myapp.domain.MemberVo;
@@ -54,17 +55,24 @@ public class AdminController {
         //자전거 대여소 별 대여 가능 자전거 수
         ArrayList<BikeJoinVo> rblist = as.canRentBike();
 
-		    for (BikeJoinVo bikeJoinVo : rblist) {
+			for (BikeJoinVo bikeJoinVo : rblist) {
 		    	
 		        String content = bikeJoinVo.getRentalshopName();
-		        content += bikeJoinVo.getBikeNorCnt()+'대';
+		        content += bikeJoinVo.getBikeNorCnt();
 		        content += bikeJoinVo.getBikeEleCnt();		       		       
 		   }		
 		model.addAttribute("rblist", rblist);		
-		//이용 현황 어제 요일 표시
-		String yesterday = as.yesterday();
-        model.addAttribute("yesterday", yesterday);
 		
+		//이용 현황 자전거 개수		
+		int daysAgo = 5; // 5를 넣으면 과거 이력이 5일 전 까지 나옴
+		String[] dateArray = DateUtils.createDateArray(daysAgo);
+		model.addAttribute("dateArray", dateArray);
+
+		ArrayList<BikeJoinVo> rbclist = as.getRentalCountByDateRange();
+		System.out.println(rbclist.get(0).getRentNorCount());
+		model.addAttribute("rbclist", rbclist);	
+	
+        
 		return "admin/adminPage";
 	}
         
