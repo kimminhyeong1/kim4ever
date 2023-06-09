@@ -150,7 +150,7 @@ header{width: 1250px;margin: 35px auto 70px;text-align: center;}
 		<c:if test="${not empty sessionScope.midx && empty sessionScope.ridx}"> 
 			<p onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentQR.do'">QR 대여하기 </p>
 		</c:if>
-		<p>세션 ridx값${sessionScope.ridx} bkidx값${sessionScope.bkidx}</p>
+		<!-- <p>세션 ridx값${sessionScope.ridx} bkidx값${sessionScope.bkidx}</p> -->
 		<p onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentInfo.do'">자전거 소개</p>
 		<p onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentLocation.do'">대여소 위치</p>
 		<p onclick="location.href='<%=request.getContextPath()%>/course/courseIntro.do'">코스 소개</p>

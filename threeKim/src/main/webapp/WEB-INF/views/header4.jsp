@@ -118,7 +118,7 @@ header{width: 1250px;margin: 35px auto 70px;text-align: center;}
 					</li>
 					
 					<li>
-						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/'">회원관리</span></a>
+						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/'">모임 관리</span></a>
 					</li>
 				</ul>
 				
