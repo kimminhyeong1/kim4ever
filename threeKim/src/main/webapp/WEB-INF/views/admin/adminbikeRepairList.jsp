@@ -112,12 +112,7 @@ li{list-style:none;}
 				</td>
 			</tr>
 		</table>
-	
-		
-	
-	
-	
-	
+
 	
 	</div>
 	

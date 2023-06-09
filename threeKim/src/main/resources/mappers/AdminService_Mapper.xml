@@ -55,7 +55,7 @@
 </sql>
 	
 	
-	
+	<!-- 신고 내역 리스트 -->
 <select id="searchBikeErrors" parameterType="com.myezen.myapp.domain.SearchCriteria"
   resultType="com.myezen.myapp.domain.BikeJoinVo">
 
@@ -92,7 +92,7 @@
 	
 	
 	
-	
+	<!--수리내역 갯수  -->
 	 <select id="searchBikeErrorsCount" resultType="int">
         SELECT COUNT(*)
 		  FROM rent1234 r
@@ -173,6 +173,10 @@
 
 	<!-- 수리 내역 리스트 -->
 	<select id="searchBikerepairList" parameterType="com.myezen.myapp.domain.SearchCriteria" resultType="com.myezen.myapp.domain.BikeJoinVo">
+	 SELECT *
+  		FROM (
+    SELECT ROWNUM AS rnum, A.*
+    	FROM (
 	SELECT
 		m.memberName,
 		m.memberPhone,
@@ -197,6 +201,7 @@
   <![CDATA[WHERE B.rnum >= (#{page} - 1) * #{perPageNum} + 1]]>
 	</select>
 	
+	<!-- 수리 내역 리스트 갯수 -->
 	<select id="searchBikerepairListCount" resultType="int">
        SELECT count(*) as cnt
 	FROM rent1234 r
