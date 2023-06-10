@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.myezen.myapp.domain.ScheduleVo;
 
@@ -28,6 +29,12 @@ public class GatheringController {
 	public String gCreate() {
 		
 		return "gathering/gCreate";
+	}
+	@RequestMapping(value="/gCreateAction.do")
+	public String gCreateAction(@RequestParam("GImg") MultipartFile[] GImg) {
+		System.out.println(GImg);
+		
+		return "gathering/gList";
 	}
 //모임간단소개페이지
 	@RequestMapping(value="/gSimpleInfo.do")
