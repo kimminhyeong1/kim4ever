@@ -1,6 +1,7 @@
 package com.myezen.myapp.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,8 +32,9 @@ public class GatheringController {
 		return "gathering/gCreate";
 	}
 	@RequestMapping(value="/gCreateAction.do")
-	public String gCreateAction(@RequestParam("GImg") MultipartFile[] GImg) {
-		System.out.println(GImg);
+	public String gCreateAction(@RequestParam("GImg") List<MultipartFile> GImg) {
+		System.out.println(GImg.get(0).getName());
+		System.out.println(GImg.get(1).getOriginalFilename());
 		
 		return "gathering/gList";
 	}
