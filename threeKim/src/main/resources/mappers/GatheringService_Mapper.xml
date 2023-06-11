@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 쿼리만드는곳 -->
+<mapper namespace="com.myezen.myapp.persistance.GatheringService_Mapper">
+
+<!-- 자전거 상세보기 : bikeVo와 bikeInfo를 조인하여 JoinVo에 매핑하는 select 문 -->
+<select id="AAAAAAA" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
+  SELECT
+	*
+  FROM
+    bike1234 b
+</select>
+
+
+	
+
+</mapper>
