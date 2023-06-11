@@ -30,6 +30,9 @@ footer {background-color:#eeeeee; height:150px; display:flex; justify-content:ce
 .footer_R h2{text-align:left;}
 @media (max-width: 1500px) {
   footer{width: 1500px;}}
+@media (max-width: 950px) {
+ footer{width: auto;}
+ 
 </style>
 
 
