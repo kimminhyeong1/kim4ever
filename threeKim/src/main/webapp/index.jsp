@@ -6,11 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 /*리셋코드*/
 *{margin:0;padding:0;}
 li{list-style:none;}
-
+body {width: 100vw;   height: 100vh; }
 #main{width:1440px; margin:35px auto; text-align:center; border:1px solid #white;      font-family: 'IM_Hyemin-Bold';
 }
 #main #content{width:1440px; height: auto !important;/*우선권*/}
@@ -61,16 +62,10 @@ opacity:1;padding:5px; border-radius:50px;font-size:50px;}
 #ww_73df1f3b67ed7 {border-radius: 20px;}
 
 /*메인2*/
-#main2{width:100%; height:500px; margin:0 auto; text-align:center; 
+#main2{width:auto; height:500px; margin:0 auto; text-align:center; 
 display:flex; justify-content:center; align-items: center; 
 background-image: url("resources/banner2/bg_network.jpg");
 background-size:cover; background-position: center; background-repeat:no-repeat; position:relative;}
-/*메인2 모바일대응추가*/
-@media (max-width: 1500px) {
-  #main2 {width: 1500px;}}
-/*메인2_h1*/
-#main2 h1 {position:absolute ;top:10%; left:50%; transform:translate(-50%,-50%); 
-margin: 0;   font-family: 'omyu_pretty';}
 
 
   
@@ -118,8 +113,102 @@ text-shadow: 3px 1px 1px #fec339, 2px 2px 1px #fec339, 4px 2px 1px #fec339,
   9px 7px 1px #000000;
   margin-bottom:50px;  font-family: 'omyu_pretty';}
 
-  
+/**************************모바일****************************************/
 
+
+
+
+/*메인2_h1*/
+#main2 h1 {position:absolute ;top:10%; left:50%; transform:translate(-50%,-50%); 
+margin: 0;   font-family: 'omyu_pretty';}
+
+/*****모바일 넓이***/
+@media (min-width: 300px) and (max-width: 940px)  {
+#main{width:auto; margin:0 auto;  border:1px solid #white; font-family: 'IM_Hyemin-Bold';}
+#main #content{width:auto; height: auto !important;/*우선권*/}
+#main #content img{width:auto; height:600px;}
+
+/* 메인베너 */
+body {width: 100vw !important;   height: 100vh; }
+
+body, ul, li, h1, h2 {margin:0; padding:0; list-style:none; width:auto;}
+a{color:inherit; text-decoration:none;}
+/* 슬라이더 1 시작 */
+.slider-1 {height:400px; width:auto; position:relative;}
+/* 슬라이더 1 - 페이지 버튼 */
+.slider-1 > .page-btns {text-align:center; position:absolute; bottom:20px; left:0; width:100%;}
+
+.slider-1 > .page-btns > div {width:50px; height:6px; background-color:rgb(255,255,255); border-radius:4px;   
+ display:inline-block; cursor:pointer; border: none;}
+.slider-1 > .page-btns > div.active {background-color:rgb(255, 160, 0); border: none;}
+/* 1 - 슬라이드 */
+.slider-1 > .slides > div {position:absolute; top:0; left:0; right:0; bottom:0; opacity:0; transition:opacity 1.5s;
+background-position:center; background-size:cover; background-repeat:no-repeat; border-radius:20px;  }
+.slider-1 > .slides > div.active {opacity:1;}
+/*  좌우 버튼 */
+.slider-1 > .side-btns > div {position:absolute; top:0; left:0; width:25%;
+height:100%; cursor:pointer; color:white;}
+.slider-1 > .side-btns > div:last-child {left:auto; right:0;}
+.slider-1 >.side-btns > div > span {position:absolute;top:50%;left:20px;transform:translatey(-10%);
+opacity:1;padding:5px; border-radius:50px;font-size:50px;}
+.slider-1 >.side-btns > div:last-child > span {left:auto;right:20px; }
+
+/*날씨*/
+#ww_73df1f3b67ed7 {border-radius: 20px; }
+
+
+/*메인2*/
+#main2{width:100%; height:300px; margin:0 auto; text-align:center; overflow: visible;
+display:flex; justify-content:center; align-items: center; 
+background-image: url("resources/banner2/bg_network.jpg");
+background-size:2000px; background-position: center; background-repeat:no-repeat; position:absolute;}
+
+
+  
+/*소형배너*/
+#banner, #banner2 {width:100px; height:auto;overflow:hidden; box-shadow:0px 0px 10px rgba(0, 0, 0, 0.8); 
+-radius: 20px;}
+#banner img, #banner2 img {width:100%; height:100%;}
+#banner, #banner2 {position:relative; margin-top:200px; border-radius:20px;}      
+#banner img, #banner2 img {position:absolute; top:0; left:0; opacity:0; transition:opacity 3s ease-in-out, transform 0.2s ease-in-out;
+border-radius:20px;  float:left; }
+#banner img.active, #banner2 img.active {opacity:1; transition:opacity 3s ease-in-out, transform 0.2s ease-in-out; border-radius:20px; }
+#banner:hover img, #banner2:hover img {transform:scale(1.05); border-radius:20px;}
+  
+  
+/*유튜브 아이프레임*//*크기는 아이프레임에서 직접지정*/
+#youtube {width:100px; height: auto; position:relative; float:right;margin-top:200px; margin-left:50px; margin-right:50px;  }
+#youtube iframe {border-radius: 20px; box-shadow:0 0 20px rgba(0, 0, 0, 0.8);}
+
+/*메인3*/
+#main3{width:auto; margin:180px auto; text-align:center;  justify-content: center;  
+}
+.container {margin-top:20px;display:flex; flex-wrap:wrap; justify-content:center;  opacity: 0; }
+.item {position:relative; width:calc(27% - 10px); margin-bottom: 20px; margin-right:20px; height:300px;   box-shadow: 4px 0px 4px 0px rgba(0, 0, 0, 0.5); border-radius: 5px;}
+.item img {width:100%; height:70%; transition:opacity 1s ease-in-out, transform 0.5s ease-in-out; border-bottom-left-radius: 50px;}
+.item img:hover{transform:scale(1.03); }
+
+.item .text {position:absolute; bottom: 0; left:0; width:89.5%; padding:10px; color:black; text-align: center;}
+.item .text h2 {font-size:16px; margin:0 0 5px;     font-family: 'omyu_pretty';}
+.item .text p {font-size:7px; margin:0;   font-family: 'omyu_pretty';}
+
+/*메인2 글자효과추가*/
+.main2-title{order: 2; color: white; font-weight: 900;  text-transform: uppercase; font-size: 50px; line-height: 0.75em; text-align: center;
+text-shadow: 3px 1px 1px #000000, 2px 2px 1px #fec339, 4px 2px 1px #ff7f00,
+  3px 3px 1px #fec339, 5px 3px 1px #ff7f00, 4px 4px 1px #fec339,
+  6px 4px 1px #ff7f00, 5px 5px 1px #fec339, 7px 5px 1px #ff7f00,
+  6px 6px 1px #fec339, 8px 6px 1px #ff7f00, 7px 7px 1px  #000000 ,
+  9px 7px 1px #ffff; } 
+  
+   /*메인3 중앙글씨추가*/
+  .main3-title  {order: 2; color: black; font-weight: 900;  text-transform: uppercase; font-size: 35px; line-height: 0.75em; text-align: center;
+text-shadow: 3px 1px 1px #fec339, 2px 2px 1px #fec339, 4px 2px 1px #fec339,
+  3px 3px 1px #fec339, 5px 3px 1px #fec339, 4px 4px 1px #fec339,
+  6px 4px 1px #fec339, 5px 5px 1px #fec339, 7px 5px 1px #fec339,
+  6px 6px 1px #fec339, 8px 6px 1px #fec339, 7px 7px 1px #fec339,
+  9px 7px 1px #000000;
+  margin-bottom:50px;  font-family: 'omyu_pretty';}
+}
   
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -247,7 +336,7 @@ setInterval(function(){ $('.slider-1 > .side-btns > div').eq(1).click();}, 3000)
    
       <!-- 미니 배너 -->
    </div>
-        </div>   
+        </div>  
         
    <div id= main2><!-- 메인2번째 구역 -->   
     <h1 class="main2-title">
@@ -376,11 +465,12 @@ var interval2 = setInterval(function() {
             <p>자전거로 산책 후 새로운 도시문화 트렌드로 이끌어가는,이색적이고 독특한 전주의 독서공간들을 찾아가 보자. 무거운 몸은 가벼워지고, 빈곤한 마음에는 포동포동 살이 오를 것이다.</p>
           	</div>
         	</div>
-        	</div>  
-        	<%@include file="WEB-INF/views/bottom.jsp" %>
+        	
+        	<!-- <%@include file="WEB-INF/views/bottom.jsp" %> -->
       </div>
 
+ 	</div>   
+ 	<%@include file="WEB-INF/views/footer.jsp" %>
  	
 </body>
-<%@include file="WEB-INF/views/footer.jsp" %>
 </html>

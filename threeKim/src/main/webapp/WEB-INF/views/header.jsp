@@ -44,10 +44,40 @@ header{width: 1250px;margin: 35px auto 70px;text-align: center;}
 /*메뉴*/
 #menu {width: 1250px;height: 100px; text-align:center; display:flex; justify-content:center; align-items:center; box-sizing:border-box;}
 #menu p {font-size: 21px; font-weight: bold; font-family: 'GangwonEdu_OTFBoldA'; margin: 20px 40px; margin-top:40px;}
-#menu p:hover {color:#ff9900; cursor:pointer;
+#menu p:hover {color:#ff9900; cursor:pointer;}
 
 #content{width:1250px; height:1200px;}
 #bottom{width:1250px; height:300px; }
+
+ 
+ 
+/****************************모바일**************************/
+
+@media (max-width: 950px) {
+header{width:auto;margin:0 auto;}
+/*사이드메뉴바, 로고, 로그인버튼*/
+#top_logo{width:auto; height:150px; text-align:center; position:relative;}
+#top_logo .logo{display:inline-block; text-align:center; position:absolute; transform:translate(-50%, -50%);}
+#top_logo .logo img{width:200px; height:240px; margin-left:140px; cursor:pointer;transition: all 0.3s ease-in-out;}
+#top_logo .login {display:flex;justify-content:flex-end;float:right;}
+#top_logo .login ul {display:flex;list-style:none;margin:0;padding:0;}
+#top_logo .login li {margin-left:20px; font-family: 'GangwonEdu_OTFBoldA'; font-size:21px;}
+#top_logo .login a {display:block;padding:6px 10px;background-color:#333;color:#fff;border-radius:20px;text-decoration:none;transition:background-color 0.3s ease;}
+#top_logo .login a:hover {background-color: #666;}
+
+
+
+
+/*메뉴*/
+#menu {width:auto;height: 100px; text-align:center; display:flex; justify-content:center; align-items:center; box-sizing:border-box;}
+#menu p {font-size: 21px; font-weight: bold; font-family: 'GangwonEdu_OTFBoldA'; margin: 20px 20px; margin-top:40px;}
+#menu p:hover {color:#ff9900; cursor:pointer;
+
+#content{width:auto; height:1200px;}
+#bottom{width:auto; height:300px; }
+ 
+}
+
 
 </style>
 <header>
