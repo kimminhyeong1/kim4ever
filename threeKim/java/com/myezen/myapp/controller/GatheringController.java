@@ -1,21 +1,27 @@
 package com.myezen.myapp.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.myezen.myapp.domain.GatheringJoinVo;
 import com.myezen.myapp.domain.ScheduleVo;
+import com.myezen.myapp.service.GatheringService;
 
 @Controller
 @RequestMapping(value="/gathering")
 public class GatheringController {
 	
-	
+	@Autowired
+	GatheringService gs; //업캐스팅 부모만 지정
 	
 	
 	
@@ -32,9 +38,12 @@ public class GatheringController {
 		return "gathering/gCreate";
 	}
 	@RequestMapping(value="/gCreateAction.do")
-	public String gCreateAction(@RequestParam("GImg") List<MultipartFile> GImg) {
-		System.out.println(GImg.get(0).getName());
-		System.out.println(GImg.get(1).getOriginalFilename());
+	public String gCreateAction(
+			@ModelAttribute GatheringJoinVo gjv,
+			@RequestParam("GTImg") MultipartFile GTImg,
+			@RequestParam("GImg") List<MultipartFile> GImg
+			) throws IOException, Exception {
+		int value = gs.gatheringCreate(gjv,GTImg,GImg);
 		
 		return "gathering/gList";
 	}

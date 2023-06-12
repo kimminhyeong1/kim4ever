@@ -45,7 +45,7 @@
 				<div>
 					<h3>모임 프로필 이미지</h3>
 					<div>										
-						<input id="image" type="file" onchange="previewImage(event)" />
+						<input id="image" type="file" name="GTImg" onchange="previewImage(event)" />
 						<img id="imagePreview" />
 					</div>
 					
