@@ -248,6 +248,19 @@ public class AdminController {
 		return "admin/adminbikeRepairList";
 	}
 	
+	//관리자 모임 리스트 페이지	
+		@RequestMapping(value="/admingatheringList.do")
+		public String admingatheringList() {
+				
+				return "admin/admingatheringList";
+			}	
+		
+	//관리자 모임 신고 내역 페이지	
+		@RequestMapping(value="/adminGReportList.do")
+		public String adminGReportList() {
+						
+						return "admin/adminGReportList";
+					}	
 	
 	
 	
@@ -322,5 +335,5 @@ public class AdminController {
 	  System.out.println("관리자게시판복구 오류"); } return path; }
 	 
 
-
+	  
 }
