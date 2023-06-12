@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -23,38 +24,18 @@
 				<h2>내 모임 보기</h2>
 			</div>
 			<div class="gContent" >
-				<div class="card" >
-					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-					<img class="cardWish" src="../resources/icon/heart.png">
-					<h3 class="cardTitle">바이크어썸</h3>
-					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
-					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">들어가기</button>
-				</div>
-				<div class="card" >
-					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-					<img class="cardWish" src="../resources/icon/heart.png">
-					<h3 class="cardTitle">바이크어썸</h3>
-					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
-					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">들어가기</button>
-				</div>
-				<div class="card" >
-					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-					<img class="cardWish" src="../resources/icon/heart.png">
-					<h3 class="cardTitle">바이크어썸</h3>
-					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
-					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">들어가기</button>
-				</div>
-				<div class="card" >
-					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-					<img class="cardWish" src="../resources/icon/heart.png">
-					<h3 class="cardTitle">바이크어썸</h3>
-					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
-					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">들어가기</button>
-				</div>			
+				<c:if test="${not empty midx}">
+					<c:forEach var="gjvmy" items="${gjvmylist}">
+						<div class="card" >
+							<img class="cardImg" src="../resources/GTImages/${gjvmy.imageName}">
+							<img class="cardWish" src="../resources/icon/heart.png">
+							<h3 class="cardTitle">${gjvmy.gInfoName}</h3>
+							<p class="cardInfo">${gjvmy.gInfoBriefIntroduction}</p>
+							<p>(참여멤버${gjvmy.gInfoParticipating}/${gjvmy.gInfoCapacity})</p>
+							<button class="gBtn" onclick="location.href='${pageContext.request.contextPath}/gathering/gContent.do?giidx=${gjvmy.giidx}'">들어가기</button>
+						</div>
+					</c:forEach>
+				</c:if>		
 			</div>
 			<div><button class="gBtn2" >더보기</button></div>
 			<div class="gContentTitle" ><h2>내 간단 소개</h2></div>

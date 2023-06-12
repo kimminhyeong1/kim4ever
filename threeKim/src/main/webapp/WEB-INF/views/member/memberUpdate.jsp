@@ -34,28 +34,17 @@ li{list-style:none;}
 }
 
 #main{width:1440px; margin:35px auto 70px; text-align:center;}
-#main #content{width:1440px; height:2400px;}
+#main #content{max-width: 800px;margin:40px auto;background-color:#fff;padding:30px;border-radius:5px;box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);}
 #main #bottom{width:1440px; height:300px;}
-h2{text-align: center; margin-top:20px;}
-#content table {width:60%; border-collapse:collapse; border:1px solid #ddd; margin: 60px auto 0; text-align:center;  line-height:100px; font-family:'omyu_pretty'; font-size:24px;}
-#content table th{width:150px; text-align:center; border:1px solid #ddd; padding:8px;}
-#content table td{border:1px solid #ddd;padding:8px;text-align:left;}
-#content table td:nth-child(1){width:120px;text-align:center;}
-#content table td:nth-child(2){width:400px; text-align:left;}
-#content table tr:last-child td input{display: inline-block; width:120px; height:50px;}
-input{
-  font-family: 'omyu_pretty';
-  font-size:24px;
-  box-sizing: border-box;
-  width: 100%;
-  padding: 10px;
-  margin: 2px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-#content table button{width:180px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
-#content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+h2{text-align:left; margin-top: 20px; padding-bottom:10px; border-bottom:2px solid #000;}
+#main #box{margin-top:30px;}
+#main #box img{width:30px; height:20px; float:left; margin: 0 auto; vertical-align:middle;}
+#main #box .section {margin-bottom:20px;padding:20px;background-color:#f9f9f9;border:1px solid #ccc;border-radius:5px;text-align:left;}
+#main #box .section-header {margin-bottom:10px;font-size:21px;font-weight:bold;} 
+#main #box .section-content {font-size:18px;margin-top:30px;}
+input{font-family:'omyu_pretty';font-size:24px;box-sizing:border-box;width:100%;padding:10px;margin:2px 0;border:1px solid #ccc;border-radius:4px;}
+#content button{width:150px; height:50px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+#content button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
 <script type="text/javascript">
 
@@ -76,53 +65,49 @@ function fnSubmit() {
 	<div id="content">
 		
 		<form action="memberUpdateAction.do" method="post" onsubmit="fnSubmit()">
-		<table>
-		 <tr>
-		    <th colspan="2"><h2>회원정보</h2></th>
-		  </tr>
-				<tr>
-					<th>아이디</th>
-					<td>${memberId}</td>
-				</tr>
-				
-				<tr>
-					<th>비밀번호</th>
-					<td><input type="password" id="memberPwd" name="memberPwd"></td>
-				</tr>
-				
-				<tr>
-					<th>이름</th>
-					<td><input type="text" id="memberName" name="memberName"></td>
-				</tr>
-				
-				<tr>
-					<th>나이</th>
-					<td><input type="number" id="memberAge" name="memberAge"></td>
-				</tr>
-				
-				<tr>
-					<th>휴대폰번호</th>
-					<td><input type="tel" id="memberPhone" name="memberPhone" maxlength="11"></td>
-				</tr>
-				
-				<tr>
-					<th>이메일</th>
-					<td><input type="text" id="memberEmail" name="memberEmail"></td>
-				</tr>
-				
-				<tr>
-					<td colspan="2">
-						<button type="submit">수정하기</button>
-						<button type="reset">초기화하기</button>
-						<button type="button">취소하기</button>
-					</td>
-					
-					
-				</tr>
-				
-		</table>
+		<h2>회원정보</h2>
+		<div id="box">
+	        <div class="section">
+	            <div class="section-header">아이디</div>
+	            <div class="section-content"> <img src="../resources/icon/check.png" alt="이미지">${memberId}</div>
+	        </div>
+	         <div class="section">
+	            <div class="section-header">비밀번호</div>
+	            <div class="section-content">
+	            	<input type="password" id="memberPwd" name="memberPwd">
+	            </div>
+	        </div>
+			 <div class="section">
+	            <div class="section-header">이름</div>
+	            <div class="section-content">
+					<input type="text" id="memberName" name="memberName">
+				</div>
+	        </div>	
+			 <div class="section">
+	            <div class="section-header">나이</div>
+	            <div class="section-content">
+	            	<input type="number" id="memberAge" name="memberAge">
+	            </div>
+	        </div>	
+			 <div class="section">
+	            <div class="section-header">휴대폰번호</div>
+	            <div class="section-content">
+	            	<input type="tel" id="memberPhone" name="memberPhone" maxlength="11">
+	            </div>
+	        </div>	
+			<div class="section">
+	            <div class="section-header">이메일</div>
+	            <div class="section-content">
+	            	<input type="text" id="memberEmail" name="memberEmail">
+	            </div>
+	        </div>	
+			<div>
+		        <button type="submit">수정하기</button>
+				<button type="reset">초기화하기</button>
+				<button type="button">취소하기</button>
+	        </div>	
+        </div>
 		</form>
-
 	</div>
 	
 	

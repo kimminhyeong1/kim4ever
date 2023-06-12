@@ -19,7 +19,7 @@
 		 	/*모임이름부분*/
 		 	#gIntro_gThumbnail{text-align:left;}
 			#gIntro{display: inline-block; width: 400px; height: 500px; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;}
-			#gIntro>div:nth-child(1){font-size: 40px; font-weight: bold; width: 150px; display: inline-block; margin: 20px 0px 20px 20px;}
+			#gIntro>div:nth-child(1){font-size: 40px; font-weight: bold; display: inline-block; margin: 20px 0px 20px 20px;}
 			#gIntro>div:nth-child(2){font-size: 20px; width: 150px; display: inline-block;}
 			#gIntro>div:nth-child(3){width: 90%; height: 50%; margin: 20px 20px 20px 20px; border: 1px solid #bbb;}
 			#gIntro>div:nth-child(3)>img{width: 100%; height: 100%;}
@@ -123,34 +123,26 @@
 		<section class="gContainer">
 			<div id="gIntro_gThumbnail">
 				<div id="gIntro">
-					<div>모임 이름</div>
-					<div>모임 지역</div>
+					<div>${gjvlist[0].gInfoName}</div>
+					<div>${gjvlist[0].gInfoArea}</div>
 					<div><img alt="모임장 프로필" src="../resources/bikeimg/mukbang2.gif"></div>
-					<div>모임장: 홍길동</div> 
-					<div>모임 소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글소개글 </div>
+					<div>모임장: ${gjvlist[0].memberName}</div> 
+					<div>${gjvlist[0].gInfoAreaIntroduction} </div>
 				</div>
 				<div id="gThumbnail">
 					<div>
 						<div>모임 소개 사진</div> 
 						<div class="slider-1">
 						    <div class="slides">
-						        <div class="active" style="background-image:url(../resources/mainbanner/cycleCourse1-3.jpg);"></div>
-						                <div style="background-image:url(../resources/mainbanner/cycleCourse2-3.jpg);"></div>
-						                <div style="background-image:url(../resources/mainbanner/cycleCourse3-3.jpg);"></div> 
-						                <div style="background-image:url(../resources/mainbanner/cycleCourse4-3.jpg);"></div>
-						                <div style="background-image:url(../resources/mainbanner/cycleCourse5-3.jpg);"></div>   
-						                <div style="background-image:url(../resources/mainbanner/cycleCourse6-3.jpg);"></div>  
-						                <div style="background-image:url(../resources/mainbanner/cycleCourse7-3.jpg);"></div> 
-						                <div style="background-image:url(../resources/mainbanner/cycleCourse8-3.jpg);"></div>              
+						    	<c:set var="GImages" value="${gjvlist}" />
+								<c:forEach var="gjv" items="${GImages}" varStatus="status">
+								    <div class="${status.index == 0 ? 'active' : ''}" style="background-image:url(../resources/GImages/${gjv.imageName});"></div>
+								</c:forEach>            
 						    	</div>
 							    <div class="page-btns">
-							        <div class="active"></div>
-							        <div></div>
-							        <div></div>
-							        <div></div>
-							        <div></div>
-							        <div></div>
-							        <div></div>     
+	    					    	<c:forEach var="gjv" items="${GImages}" varStatus="status">
+									    <div class="${status.index == 0 ? 'active' : ''}"></div>
+									</c:forEach>       
 							    </div>
 							    <div class="side-btns">
 							        <div>

@@ -36,27 +36,15 @@ li{list-style:none;}
 }
 
 #main{width:1440px; margin:35px auto 70px; text-align:center;}
-#main #content{width:1440px; height:2400px;}
+#main #content{max-width: 800px;margin:40px auto;background-color:#fff;padding:30px;border-radius:5px;box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);}
 #main #bottom{width:1440px; height:300px;}
-h2{text-align: center; margin-top:20px;}
-#content table {width:60%; border-collapse:collapse; border:1px solid #ddd; margin: 60px auto 0; text-align:center;  line-height:100px; font-family:'omyu_pretty'; font-size:24px;}
-#content table th{width:200px; text-align:center; border:1px solid #ddd; padding:8px;}
-#content table td{border:1px solid #ddd; padding:8px; text-align:left;}
-#content table td:nth-child(1){width:140px;text-align:center;}
-#content table td:nth-child(2){width:400px; text-align:left;}
-#content table tr:last-child td input{display: inline-block; width:120px; height:50px;}
-input{
-  font-family: 'omyu_pretty';
-  font-size:24px;
-  box-sizing: border-box;
-  width: 100%;
-  padding: 10px;
-  margin: 2px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-#content table button{width:160px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
-#content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+h2 {text-align:left; margin-top:20px; padding-bottom:10px; border-bottom:2px solid #000;}
+#main #box{margin-top:30px;}
+#main .section {margin-bottom:20px;padding:20px;background-color:#f9f9f9;border:1px solid #ccc;border-radius:5px;text-align:left;}
+#main .section-header {margin-bottom:10px;font-size:21px;font-weight:bold;} 
+#main .section-content {font-size:18px;margin-top:40px; border-bottom:1px solid #ddd;}
+#content button{width:150px; height:50px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+#content button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
 
 <script>
@@ -78,51 +66,37 @@ function confirmWithdrawal() {
 	<%@include file="../header.jsp" %>
 	
 	<div id="content">
-		
-	
-		<table>
-		 <tr>
-		    <th colspan="2"><h2>회원정보</h2></th>
-		  </tr>
-		  		
-				<tr>
-					<th>아이디</th>
-					<td>${memberId}</td>
-				</tr>
-				
-				<tr>
-					<th>비밀번호</th>
-					<td>${memberPwd}</td>
-				</tr>
-				
-				<tr>
-					<th>이름</th>
-					<td>${memberName}</td>
-				</tr>
-				
-				<tr>
-					<th>나이</th>
-					<td>${memberAge}</td>
-				</tr>
-				
-				<tr>
-					<th>휴대폰번호</th>
-					<td>${memberPhone}</td>
-				</tr>
-				
-				<tr>
-					<th>이메일</th>
-					<td>${memberEmail}</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<button type="button" onclick="location.href='<%=request.getContextPath()%>/member/memberUpdate.do'">회원정보 수정하기</button>
-						<button type="button" onclick="confirmWithdrawal();">회원 탈퇴하기</button>
-					</td>		
-				</tr>
-				
-
-		</table>
+		<h2>회원정보</h2>
+		<div id="box">
+	        <div class="section">
+	            <div class="section-header">아이디</div>
+	            <div class="section-content">${memberId}</div>
+	        </div>
+	        <div class="section">
+	            <div class="section-header">비밀번호</div>
+	            <div class="section-content">${memberPwd}</div>
+	        </div>
+	        <div class="section">
+	            <div class="section-header">이름</div>
+	              <div class="section-content">${memberName}</div>
+	        </div>
+	        <div class="section">
+	            <div class="section-header">나이</div>
+	            <div class="section-content">${memberAge}</div>
+	        </div>
+	        <div class="section">
+	            <div class="section-header">휴대폰번호</div>
+	            <div class="section-content">${memberPhone}</div>
+	        </div>
+	        <div class="section">
+	            <div class="section-header">이메일</div>
+	            <div class="section-content">${memberEmail}</div>
+	        </div>
+	        <div>
+	            <button type="button" onclick="location.href='<%=request.getContextPath()%>/member/memberCheckPwd.do'">회원정보 수정하기</button>
+	            <button type="button" onclick="confirmWithdrawal();">회원 탈퇴하기</button>
+	        </div>
+        </div>
 	</div>
 	
 	<div id="bottom">	

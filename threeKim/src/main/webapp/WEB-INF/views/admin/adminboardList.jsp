@@ -34,18 +34,14 @@ li{list-style:none;}
 }
 
 
-#main{width:1440px; margin:35px auto 70px; text-align:center;}
-#main #content{width:1440px; height:auto;}
-#main #content h2{text-align:left; margin-top:50px; margin-left:160px; font-family: 'GangwonEdu_OTFBoldA'; font-size:25px;}
+#main{width:1250px; margin:35px auto 70px; text-align:center;}
+#main #content{width:1250px; height:auto;}
+#main #content h2{text-align:left; margin-top:50px; margin-left:200px; font-family: 'GangwonEdu_OTFBoldA'; font-size:30px;}
 
-#main{width:1220px; margin:35px auto 70px; text-align:center;}
-#main #content{width:1440px; height:auto;}
-#main #content h2{text-align:left; margin-top:50px; margin-left:200px; font-family: 'GangwonEdu_OTFBoldA'; font-size:25px;}
-
-#main #bottom{width:1440px; height:300px;}
-#content table {width:80%; border-collapse:collapse; margin: 0 auto; line-height:40px; font-size:20px; font-family: 'omyu_pretty'; cursor:pointer;  white-space: nowrap; overflow: hidden;  text-overflow: ellipsis; }
+#main #bottom{width:1250px; height:300px;}
+#content table {width:70%; border-collapse:collapse; margin: 0 auto; line-height:50px; font-size:20px; font-family: 'omyu_pretty'; cursor:pointer;  white-space: nowrap; overflow: hidden;  text-overflow: ellipsis; }
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000; white-space: nowrap; overflow: hidden;  text-overflow: ellipsis; }
-#content table td{width:100px;padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC; white-space: nowrap; overflow: hidden;  text-overflow: ellipsis; }
+#content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC; white-space: nowrap; overflow: hidden;  text-overflow: ellipsis; }
 
 
 #content #btn{text-align:right; margin-top:20px; margin-right:144px; }
@@ -187,13 +183,13 @@ li{list-style:none;}
 							
 							</table>
 								</form>
-						<table border=0 style="width: 300px; width: 1100px;">
+						<table border=0 style="width: 300px; width: 900px;">
 		<tr>
 			<td style="text-align: right;"><c:if test="${ pm.prev == true }">
 					<a 	href="${pageContext.request.contextPath }/admin/adminboardList.do?page=${pm.startPage-1}&searchType=${ pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">◀</a>
 				</c:if>
 				</td>
-			<td style="text-align: center; width: 300px;"><c:forEach var="i"
+			<td style="text-align: center; width: 450px;"><c:forEach var="i"
 					begin="${pm.startPage}" end="${pm.endPage}" step="1">
 					<a 	href="${pageContext.request.contextPath }/admin/adminboardList.do?page=${ i }&searchType=${pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">${ i }</a>
 				</c:forEach>

@@ -404,7 +404,7 @@ public class MemberController {
 			) {
 		
 		MemberVo mv = ms.memberLogin(memberId);
-		String path="";
+		
 		
 		if(mv!=null && bcryptPasswordEncoder.matches(memerPwd, mv.getMemberPwd()) ) {
 			//rttr은 페이지를 벗어나면 사라짐, session으로 담아줘야 유지 됨
@@ -415,22 +415,20 @@ public class MemberController {
 			
 			
 			if(session.getAttribute("dest") == null) {
-				path = "redirect:/";	
+				return "redirect:/";	
 			}else {
-				String dest = (String)session.getAttribute("dest");
-				
-				path = "redirect:"+dest;
+				String dest = (String)session.getAttribute("dest");	
+				return "redirect:"+dest;
 			}
 			
 			
 			
 		}else {
 			rttr.addFlashAttribute("msg", "아이디와 비밀번호를 확인 해 주세요.");//일회성 메세지
-			path = "redirect:/member/memberLogin.do";
+			return "redirect:/member/memberLogin.do";
 			
 		}
 		
-		return path;	
 	}
 //!로그아웃 클릭
 	@RequestMapping(value="/memberLogOut.do")
@@ -587,10 +585,62 @@ public class MemberController {
 		@RequestMapping("/memberMyPost.do")
 		public String memberMyPost(Model model, HttpSession session) {
 			String memberName = (String) session.getAttribute("memberName");
-			ArrayList<BikeJoinVo> blist = ms.getMyPosts(memberName);
-			model.addAttribute("blist", blist);
+			System.out.println("멤버네임은??"+memberName);
+		    ArrayList<BikeJoinVo> blist = ms.getMyPosts(memberName);
+		    model.addAttribute("blist", blist);
 		    return "member/memberMyPost";
 		}
-	
+		
+		
+	//비밀번호 확인 페이지
+		@RequestMapping("/memberCheckPwd.do")
+		public String memberCheckPwd(@RequestParam(value = "error", defaultValue = "0") int error, Model model) {
+			 if (error == 1) {
+			        model.addAttribute("errorMsg", "비밀번호가 일치하지 않습니다. 다시 시도해주세요.");
+			    }
+			  return "member/memberCheckPwd";
+		}
+		
+		//비밀번호 확인 페이지
+		@RequestMapping("/memberCheckPwdAction.do")
+		public String memberCheckPwdAction(
+			@RequestParam("password") String enteredPwd,
+			HttpSession session,
+			RedirectAttributes rttr) {
+			
+			//로그인한 midx값으로 memberPwd받아오기
+			int midx = (Integer) session.getAttribute("midx");
+			MemberVo mv = ms.getMemberInfo(midx);
+			
+			//입력한 비밀번호와 memberVo에 담긴 memberPwd 일치 여부 확인
+			String loggedInPassword = mv.getMemberPwd();
+			
+			//memberCheckPwd에서 입력한 비밀번호도 암호화해서 대조해봐야함
+			BCryptPasswordEncoder bcryptPasswordEncoder = new BCryptPasswordEncoder();
+			 
+			System.out.println("입력한비번은?"+enteredPwd);
+		    System.out.println("멤버비번은?"+loggedInPassword);
+		    if (bcryptPasswordEncoder.matches(enteredPwd, loggedInPassword)) {
+		        // 비밀번호가 일치하면 memberUpdate.do로 리다이렉트
+		        return "redirect:/member/memberUpdate.do";
+		    } else {
+		    	// 비밀번호가 일치하지 않으면 에러 메시지를 모델에 담아서 memberCheckPwd.do로 이동
+		    	rttr.addFlashAttribute("error", "비밀번호가 일치하지 않습니다. 다시 시도해주세요.");
+		    	return "redirect:/member/memberCheckPwd.do?error=1";
+		    }
+		}
+
+		
+			
+			
+		
+		
+		
+		
+		
+		
+		
+		
+
 	
 }

@@ -12,6 +12,12 @@ public class Gathering_InfoVo {//모임정보
 	private String gInfoCreationDay;//모임 생성일
 	private String gInfoDelDay;//모임 삭제일
 	private String gInfoDelYN;//모임 삭제 여부
+	private String gInfoJoinType;//모임 승인타입
+	/*모임 승인 타입
+
+	모임 승인제 : '승인가입'
+	[기본값]모임 자유제: '자유가입'
+	*/
 	public int getGiidx() {
 		return giidx;
 	}
@@ -71,6 +77,12 @@ public class Gathering_InfoVo {//모임정보
 	}
 	public void setgInfoDelYN(String gInfoDelYN) {
 		this.gInfoDelYN = gInfoDelYN;
+	}
+	public String getgInfoJoinType() {
+		return gInfoJoinType;
+	}
+	public void setgInfoJoinType(String gInfoJoinType) {
+		this.gInfoJoinType = gInfoJoinType;
 	}
 	
 

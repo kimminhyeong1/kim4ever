@@ -19,7 +19,8 @@
 			#main section textarea {display: block; width: 500px;height: 200px;font-size: 23px;}
 			#main section button{text-align: center;}  
 			#main section img{width: 100px;height: 100px;}  
-
+			#main section .radio{display: inline-block;width: 4%; margin-top: 10px; } 
+			#main section span{font-size: 20px;} 
 		 </style>
 	</head>
 	<body>
@@ -77,6 +78,14 @@
 						<p>필수</p>
 					</div>
 					<input class="gInput" type="number" placeholder="예:5" name="gInfoCapacity">	
+				</div>
+				<div>
+					<div>
+						<h3>승인타입</h3>
+						<p>필수</p>
+					</div>
+					<input class="radio" type="radio" name="gInfoJoinType" value="자유가입" checked="checked"> <span>자유가입</span>
+					<input class="radio" type="radio" name="gInfoJoinType" value="승인가입"> <span>승인가입</span> 
 				</div>
 			</div>
 			<div>

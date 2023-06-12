@@ -90,7 +90,7 @@ public class BikeJoinVo {
 	private String boardType;
 	
 	private String writer;
-	private String bwriteday;
+	private String writeday;
 	private String subject;
 	private String content;
 	private String boardView;
@@ -123,11 +123,11 @@ public class BikeJoinVo {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public String getBwriteday() {
-		return bwriteday;
+	public String getwriteday() {
+		return writeday;
 	}
-	public void setBwriteday(String bwriteday) {
-		this.bwriteday = bwriteday;
+	public void setwriteday(String writeday) {
+		this.writeday = writeday;
 	}
 	public String getSubject() {
 		return subject;

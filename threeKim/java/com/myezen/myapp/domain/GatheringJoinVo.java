@@ -47,6 +47,12 @@ public class GatheringJoinVo {//모임조인
 	private String gInfoCreationDay;//모임 생성일
 	private String gInfoDelDay;//모임 삭제일
 	private String gInfoDelYN;//모임 삭제 여부
+	private String gInfoJoinType;//모임 승인타입
+	/*모임 승인 타입
+
+	모임 승인제 : '승인가입'
+	[기본값]모임 자유제: '자유가입'
+	*/
 
 	//모임게시판
 	//private int gbidx;//모임 게시판 번호
@@ -102,6 +108,20 @@ public class GatheringJoinVo {//모임조인
 	private int gsjidx;//모임 일정 참여 번호
 	//private int gsidx;//모임 일정 번호
 	//private int midx;//회원 번호
+	
+	//회원 정보
+	//private int midx; //회원번호
+	private String memberId; //회원 아이디
+	private String memberPwd; //회원 비밀번호
+	private String memberName; //회원 이름
+	private String memberAge; //회원 나이
+	private String memberPhone; //회원 핸드폰번호
+	private String memberEmail; //회원 이메일
+	private String memberAddr; //회원 주소
+	private String memberType;
+	private String writeDay;
+	
+	
 
 	public int getImidx() {
 		return imidx;
@@ -557,6 +577,86 @@ public class GatheringJoinVo {//모임조인
 
 	public void setGsjidx(int gsjidx) {
 		this.gsjidx = gsjidx;
+	}
+
+	public String getMemberId() {
+		return memberId;
+	}
+
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
+
+	public String getMemberPwd() {
+		return memberPwd;
+	}
+
+	public void setMemberPwd(String memberPwd) {
+		this.memberPwd = memberPwd;
+	}
+
+	public String getMemberName() {
+		return memberName;
+	}
+
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+
+	public String getMemberAge() {
+		return memberAge;
+	}
+
+	public void setMemberAge(String memberAge) {
+		this.memberAge = memberAge;
+	}
+
+	public String getMemberPhone() {
+		return memberPhone;
+	}
+
+	public void setMemberPhone(String memberPhone) {
+		this.memberPhone = memberPhone;
+	}
+
+	public String getMemberEmail() {
+		return memberEmail;
+	}
+
+	public void setMemberEmail(String memberEmail) {
+		this.memberEmail = memberEmail;
+	}
+
+	public String getMemberAddr() {
+		return memberAddr;
+	}
+
+	public void setMemberAddr(String memberAddr) {
+		this.memberAddr = memberAddr;
+	}
+
+	public String getMemberType() {
+		return memberType;
+	}
+
+	public void setMemberType(String memberType) {
+		this.memberType = memberType;
+	}
+
+	public String getWriteDay() {
+		return writeDay;
+	}
+
+	public void setWriteDay(String writeDay) {
+		this.writeDay = writeDay;
+	}
+
+	public String getgInfoJoinType() {
+		return gInfoJoinType;
+	}
+
+	public void setgInfoJoinType(String gInfoJoinType) {
+		this.gInfoJoinType = gInfoJoinType;
 	}
 	
 	

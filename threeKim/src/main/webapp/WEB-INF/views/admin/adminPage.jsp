@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>모임 메인화면</title>
+		<title>관리자 메인페이지</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_admin.css">  
@@ -34,7 +34,7 @@
 						<p class="pcontent">${bkidxCount}대</p>
 					</div>	
 					
-					<div class="abox"  onclick="location.href='${pageContext.request.contextPath}/admin/adminbikeList.do'">
+					<div class="abox" onclick="openPopup('${pageContext.request.contextPath}/admin/adminbikeList.do')">
 						<h3 class="cardTitle">대여 중인 자전거</h3>
 						<p class="pcontent">${ridxCount}대</p>
 					</div>	
@@ -50,6 +50,12 @@
 					</div>
 				
 				</div>		
+				
+				<script>
+				function openPopup(url) {
+					window.open(url, "_blank", "width=800,height=600"); // 팝업 창 열기					
+				}
+				</script>
 				
 				<div class="aContent2">	
 					<div class="abox2">

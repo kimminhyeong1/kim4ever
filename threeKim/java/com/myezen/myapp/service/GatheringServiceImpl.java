@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonFormat.Value;
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.ErrorVo;
 import com.myezen.myapp.domain.GatheringJoinVo;
+import com.myezen.myapp.domain.Gathering_InfoVo;
 import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.persistance.BikeRentService_Mapper;
 import com.myezen.myapp.persistance.GatheringService_Mapper;
@@ -50,8 +51,9 @@ public class GatheringServiceImpl implements GatheringService {
 
 
 	@Override
+	@Transactional
 	//모임생성하기
-	public int gatheringCreate(GatheringJoinVo gjv, MultipartFile GTImg, List<MultipartFile> GImg) throws IOException, Exception {
+	public int gatheringCreate(GatheringJoinVo gjv, MultipartFile GTImg, ArrayList<MultipartFile> GImg) throws IOException, Exception {
 		
 		int value=0;
 		
@@ -61,19 +63,94 @@ public class GatheringServiceImpl implements GatheringService {
 		String savedGTImgPath = "D://threekim//threeKim//src//main//webapp//resources/GTImages";//모임대표이미지
 		String savedGImgPath = "D://threekim//threeKim//src//main//webapp//resources/GImages";//모임이미지
 		
+		//모임 대표 이미지 
 		String uploadedGTImgName  = UploadFileUtiles.uploadFile(savedGTImgPath, GTImg.getOriginalFilename(), GTImg.getBytes());
-	    for (MultipartFile file : GImg) {
-	    	GImg.add(file);
-	    	System.out.println(file.getOriginalFilename());
-	    }
-	        // GatheringJoinVo에 업로드된 파일명 설정
-	        //gjv.setImageName(newFilename);
+		gjv.setImageName(uploadedGTImgName);
 
-	        // 데이터베이스에 자전거 정보 삽입
-	        //value = gsm.gatheringCreate(gjv,GTImg,GImg);
-	        
+			/*모임생성*/
+			//1.모임정보생성
+	        value = gsm.gatheringInfoCreate(gjv);
+	        //2.모임생성
+	        value = gsm.gatheringCreate(gjv);
+	        //3.모임 대표이미지 넣기
+	        value = gsm.gatheringGTInsert(gjv);
+	        //4. 모임 이미지들 넣기
+	        for (MultipartFile file : GImg) {
+	        	String uploadedGImgName = UploadFileUtiles.uploadFile(savedGImgPath, file.getOriginalFilename(), file.getBytes());
+	        	gjv.setImageName(uploadedGImgName);
+	        	value = gsm.gatheringGInsert(gjv);
+	        }
+
+		return value;
+	}
 
 
+
+	@Override
+	//모임 리스트 가져오기
+	public ArrayList<GatheringJoinVo> gatheringListSelect() {
+		
+		ArrayList<GatheringJoinVo> gjvlist = gsm.gatheringListSelect();
+		return gjvlist;
+	}
+
+
+
+	@Override
+	//나의 모임 리스트 가져오기
+	public ArrayList<GatheringJoinVo> gatheringMyListSelect(int midx) {
+		ArrayList<GatheringJoinVo> gjvmylist = gsm.gatheringMyListSelect(midx);
+		return gjvmylist;
+	}
+
+
+
+	@Override
+	//모임소개페이지 가져오기
+	public ArrayList<GatheringJoinVo> gatheringOneSimpleListSelect(int giidx) {
+		ArrayList<GatheringJoinVo> gjvlist = gsm.gatheringOneSimpleListSelect(giidx);
+		return gjvlist;
+	}
+
+
+
+	@Override
+	//사용자가 모임상세페이지를 들어갈수있는지 확인
+	public int gatheringMemberCheck(int giidx, int midx) {
+		int value = gsm.gatheringMemberCheck(giidx,midx);
+		return value;
+	}
+
+
+
+	@Override
+	//모임상세리스트 가져오기
+	public ArrayList<GatheringJoinVo> gatheringOneListSelect(int giidx) {
+		ArrayList<GatheringJoinVo> gjvlist = gsm.gatheringOneListSelect(giidx);
+		return gjvlist;
+	}
+
+
+
+	@Override
+	@Transactional
+	//모임 가입하기
+	public int gatheringJoin(int giidx, int midx) {
+		
+		int value = 0;
+		
+		//모임 가입타입 확인하기
+		Gathering_InfoVo giv = gsm.gatheringJoinTypeCheck(giidx);
+		String joinType = giv.getgInfoJoinType();
+		if (joinType.equals("자유가입")) {
+			value=gsm.gatheringJoinTypeAInsert(giidx,midx);
+			
+		}
+		if (joinType.equals("승인가입")) {
+			value=gsm.gatheringJoinTypeBInsert(giidx,midx);
+			
+		}
+			value=gsm.gatheringParticipatingUpdate(giidx);
 		return value;
 	}
 

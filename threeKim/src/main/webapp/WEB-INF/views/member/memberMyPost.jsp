@@ -75,7 +75,6 @@ li{list-style:none;}
 					                            <c:when test="${bjv.boardType == 0}">공지사항</c:when>
 					                            <c:when test="${bjv.boardType == 1}">문의게시판</c:when>
 					                            <c:when test="${bjv.boardType == 2}">자주묻는질문</c:when>
-					                            <c:otherwise>기타</c:otherwise>
 					                        </c:choose>
 					                    </td>
 					                    <td><a href="${pageContext.request.contextPath}/board/boardFaqContent.do?bidx=${bjv.bidx}">${bjv.subject}</a></td>
