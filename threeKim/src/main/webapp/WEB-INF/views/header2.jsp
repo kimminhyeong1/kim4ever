@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <style>
 /*리셋코드*/
 *{margin:0;padding:0;}
@@ -52,8 +53,8 @@ li{list-style:none;}
 		<a href="#" class="top-menu"><img src="${pageContext.request.contextPath}/resources/logo/menu.png"></a><!-- SHOP - 서브메뉴 생성 -->        
 			<div class="sub-menu">
 				<div class="top-login">
-					<a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a>
-					<a href="<%=request.getContextPath() %>/member/memberJoin.do">회원가입</a>
+					<a href="${pageContext.request.contextPath}/member/memberLogin.do">로그인</a>
+					<a href="${pageContext.request.contextPath}/member/memberJoin.do">회원가입</a>
 				</div>
 
 				<ul class ="sub-menu-list">
@@ -63,23 +64,23 @@ li{list-style:none;}
 					</li>
 					
 					<li>
-						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/member/memberMypage.do'">마이페이지</span></a>
+						<a href="#"><span class = "title" onclick="location.href='${pageContext.request.contextPath}/member/memberMypage.do'">마이페이지</span></a>
 					</li>
 					
 					<li>
-						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/rent/rentHistory.do'">대여내역</span></a>
+						<a href="#"><span class = "title" onclick="location.href='${pageContext.request.contextPath}/rent/rentHistory.do'">대여내역</span></a>
 					</li>
 					
 					<li>
-						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/member/memberList.do'">회원관리</span></a>
+						<a href="#"><span class = "title" onclick="location.href='${pageContext.request.contextPath}/member/memberList.do'">회원관리</span></a>
 					</li>
 					
 					<li>
-						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/rent/rentFaultList.do'">신고내역</span></a>
+						<a href="#"><span class = "title" onclick="location.href='${pageContext.request.contextPath}/rent/rentFaultList.do'">신고내역</span></a>
 					</li>
 					
 					<li>
-						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">공지사항</span></a>
+						<a href="#"><span class = "title" onclick="location.href='${pageContext.request.contextPath}/board/boardList.do'">공지사항</span></a>
 					</li>
 					
 					<li>
@@ -87,50 +88,54 @@ li{list-style:none;}
 					</li>
 					
 					<li>
-						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/gathering/gMyPage.do'">나의 소모임</span></a>
+						<a href="#"><span class = "title" onclick="location.href='${pageContext.request.contextPath}/gathering/gMyPage.do'">나의 소모임</span></a>
 					</li>
 					
 					<li>
-						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/gathering/gMyWish.do'">내가 찜한 소모임</span></a>
+						<a href="#"><span class = "title" onclick="location.href='${pageContext.request.contextPath}/gathering/gMyWish.do'">내가 찜한 소모임</span></a>
 					</li>
 					
 					<li>
-						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/gathering/gSearch.do'">소모임 검색</span></a>
+						<a href="#"><span class = "title" onclick="location.href='${pageContext.request.contextPath}/gathering/gSearch.do'">소모임 검색</span></a>
 					</li>
 					
 					<li>
-						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/gathering/gCreate.do'">모임 만들기</span></a>
+						<a href="#"><span class = "title" onclick="location.href='${pageContext.request.contextPath}/gathering/gCreate.do'">모임 만들기</span></a>
 					</li>
 					
 					<li>
-						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/'">회원관리</span></a>
+						<a href="#"><span class = "title" onclick="location.href='${pageContext.request.contextPath}/'">회원관리</span></a>
 					</li>
 				</ul>
 			</div>
 	</div>
 		<div class="logo" style="display:inline-block;">
-		<h1><img src="${pageContext.request.contextPath}/resources/logo/logo7.jpg" alt="타:바" onclick="location.href='<%=request.getContextPath()%>/index.jsp'"/></h1>
+		<h1><img src="${pageContext.request.contextPath}/resources/logo/logo7.jpg" alt="타:바" onclick="location.href='${pageContext.request.contextPath}/index.jsp'"/></h1>
 		</div>
 		<div class="login">
-			<ul>
-		      <% if(session.getAttribute("memberName") != null) { %>
-		            <li style="margin-top:10px;"><%= session.getAttribute("memberName") %>님</li>
-		            <li><a href="<%=request.getContextPath() %>/member/memberLogOut.do">로그아웃</a></li>
-   		            <li><a href="<%=request.getContextPath() %>/bikeRent/bikeRentUseList.do">이용중인내역</a></li>
-		            <li><a href="<%=request.getContextPath() %>/bikeRent/bikeRentReturn.do">반납하기</a></li> 
-		        <% } else { %>
-		            <li><a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a></li>
-		            <li><a href="<%=request.getContextPath() %>/member/memberJoin.do">회원가입</a></li>  
-		        <% } %> 
-		    </ul>
+	   		<ul>
+		   		<c:choose>
+		   			<c:when test="${not empty sessionScope.memberName}">
+		   				<li style="margin-top:10px;">${memberName}님</li>
+			            <li><a href="${pageContext.request.contextPath}/member/memberLogOut.do">로그아웃</a></li>
+	   		            <c:if test="${not empty sessionScope.midx && not empty sessionScope.ridx}"> 
+	   		            	<li><a href="${pageContext.request.contextPath}/bikeRent/bikeRentUseList.do">이용중인내역</a></li>			
+						</c:if>
+		   			</c:when>
+		   			<c:otherwise>
+		   				<li><a href="${pageContext.request.contextPath}/member/memberLogin.do">로그인</a></li>
+			            <li><a href="${pageContext.request.contextPath}/member/memberJoin.do">회원가입</a></li>  
+		   			</c:otherwise>
+		   		</c:choose>
+	   		</ul>
 		</div>
 	</div>
 
 	
 	<div id="menu">
-		<p onclick="location.href='<%=request.getContextPath()%>/gathering/gMyPage.do'">나의 소모임</p>
-		<p onclick="location.href='<%=request.getContextPath()%>/gathering/gMyWish.do'">내가 찜한 소모임</p>
-		<p onclick="location.href='<%=request.getContextPath()%>/gathering/gSearch.do'">소모임 검색</p>
-		<p onclick="location.href='<%=request.getContextPath()%>/gathering/gCreate.do'">모임 만들기</p>
+		<p onclick="location.href='${pageContext.request.contextPath}/gathering/gMyPage.do'">나의 소모임</p>
+		<p onclick="location.href='${pageContext.request.contextPath}/gathering/gMyWish.do'">내가 찜한 소모임</p>
+		<p onclick="location.href='${pageContext.request.contextPath}/gathering/gSearch.do'">소모임 검색</p>
+		<p onclick="location.href='${pageContext.request.contextPath}/gathering/gCreate.do'">모임 만들기</p>
 	</div>
 </header>
