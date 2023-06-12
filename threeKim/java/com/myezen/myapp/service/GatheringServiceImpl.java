@@ -50,8 +50,9 @@ public class GatheringServiceImpl implements GatheringService {
 
 
 	@Override
+	@Transactional
 	//모임생성하기
-	public int gatheringCreate(GatheringJoinVo gjv, MultipartFile GTImg, List<MultipartFile> GImg) throws IOException, Exception {
+	public int gatheringCreate(GatheringJoinVo gjv, MultipartFile GTImg, ArrayList<MultipartFile> GImg) throws IOException, Exception {
 		
 		int value=0;
 		
@@ -61,20 +62,44 @@ public class GatheringServiceImpl implements GatheringService {
 		String savedGTImgPath = "D://threekim//threeKim//src//main//webapp//resources/GTImages";//모임대표이미지
 		String savedGImgPath = "D://threekim//threeKim//src//main//webapp//resources/GImages";//모임이미지
 		
+		//모임 대표 이미지 
 		String uploadedGTImgName  = UploadFileUtiles.uploadFile(savedGTImgPath, GTImg.getOriginalFilename(), GTImg.getBytes());
-	    for (MultipartFile file : GImg) {
-	    	GImg.add(file);
-	    	System.out.println(file.getOriginalFilename());
-	    }
-	        // GatheringJoinVo에 업로드된 파일명 설정
-	        //gjv.setImageName(newFilename);
+		gjv.setImageName(uploadedGTImgName);
 
-	        // 데이터베이스에 자전거 정보 삽입
-	        //value = gsm.gatheringCreate(gjv,GTImg,GImg);
-	        
-
+			/*모임생성*/
+			//1.모임정보생성
+	        value = gsm.gatheringInfoCreate(gjv);
+	        //2.모임생성
+	        value = gsm.gatheringCreate(gjv);
+	        //3.모임 대표이미지 넣기
+	        value = gsm.gatheringGTInsert(gjv);
+	        //4. 모임 이미지들 넣기
+	        for (MultipartFile file : GImg) {
+	        	String uploadedGImgName = UploadFileUtiles.uploadFile(savedGImgPath, file.getOriginalFilename(), file.getBytes());
+	        	gjv.setImageName(uploadedGImgName);
+	        	value = gsm.gatheringGInsert(gjv);
+	        }
 
 		return value;
+	}
+
+
+
+	@Override
+	//모임 리스트 가져오기
+	public ArrayList<GatheringJoinVo> gatheringListSelect() {
+		
+		ArrayList<GatheringJoinVo> gjvlist =gsm.gatheringListSelect();
+		return gjvlist;
+	}
+
+
+
+	@Override
+	//나의 모임 리스트 가져오기
+	public ArrayList<GatheringJoinVo> gatheringMyListSelect(int midx) {
+		ArrayList<GatheringJoinVo> gjvmylist =gsm.gatheringListSelect();
+		return gjvmylist;
 	}
 
 

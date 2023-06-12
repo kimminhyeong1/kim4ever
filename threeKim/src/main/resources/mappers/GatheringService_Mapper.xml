@@ -3,16 +3,63 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 쿼리만드는곳 -->
 <mapper namespace="com.myezen.myapp.persistance.GatheringService_Mapper">
-
-<!-- 자전거 상세보기 : bikeVo와 bikeInfo를 조인하여 JoinVo에 매핑하는 select 문 -->
-<select id="AAAAAAA" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
-  SELECT
-	*
-  FROM
-    bike1234 b
-</select>
-
-
+	
+	<!-- 모임생성 1.모임정보생성 -->
+	<insert  id="gatheringInfoCreate" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
+	  	INSERT INTO GATHERING_INFO1234 (GIIDX,GINFONAME,GINFOAREA,GINFOBRIEFINTRODUCTION,GINFOAREAINTRODUCTION,GINFOCAPACITY,gInfoParticipating,GINFOCREATIONDAY)
+		VALUES(giidx_seq.NEXTVAL, #{gInfoName}, #{gInfoArea}, #{gInfoBriefIntroduction}, #{gInfoAreaIntroduction}, #{gInfoCapacity},'1', SYSDATE)
+	</insert>
+	<!-- 모임생성 2.모임생성-->
+	<insert  id="gatheringCreate" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
+		INSERT INTO GATHERING1234 (GIDX,GIIDX,MIDX,GATHERINGAPPROVALTYPE,GATHERINGMEMBERTYPE,GATHERINGJOININGDAY)
+		VALUES(GIDX_SEQ.NEXTVAL ,GIIDX_SEQ.CURRVAL , #{midx}, 'Y', 'TL', SYSDATE)
+	</insert>
+	<!-- 모임생성 3.모임대표 이미지 넣기-->
+	<insert  id="gatheringGTInsert" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
+		INSERT INTO IMAGE1234 (IMIDX,IMAGENAME,MIDX,GIIDX,IMGTYPE,IMGCREATIONDAY)
+		VALUES(IMIDX_SEQ.NEXTVAL,#{imageName},#{midx},GIIDX_SEQ.CURRVAL,'GT',SYSDATE)
+	</insert>
+	<!-- 모임생성 4.모임 이미지 넣기-->
+	<insert  id="gatheringGInsert" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
+		INSERT INTO IMAGE1234 (IMIDX,IMAGENAME,MIDX,GIIDX,IMGTYPE,IMGCREATIONDAY)
+		VALUES(IMIDX_SEQ.NEXTVAL,#{imageName},#{midx},GIIDX_SEQ.CURRVAL,'G',SYSDATE)
+	</insert>
+	
+	<select id="gatheringListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo">
+		SELECT * FROM GATHERING_INFO1234 a
+		JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
+		WHERE b.IMGTYPE = 'GT'
+	</select>
+	
+	<select id="gatheringMyListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int"> 
+		SELECT a.GIIDX,a.GINFONAME,a.GINFOBRIEFINTRODUCTION,a.GINFOCAPACITY,a.GINFOPARTICIPATING,b.IMAGENAME FROM GATHERING_INFO1234 a
+		JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
+		JOIN GATHERING1234 c ON c.GIIDX = a.GIIDX
+		WHERE b.IMGTYPE = 'GT' AND c.midx = #{0} AND a.GINFODELYN = 'N'
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 </mapper>

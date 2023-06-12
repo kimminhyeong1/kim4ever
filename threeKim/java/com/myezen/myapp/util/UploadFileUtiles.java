@@ -37,11 +37,13 @@ public class UploadFileUtiles {
 		String uploadedFileName = null;
 		
 		// 이미지 파일인 경우 썸네일 생성, 아니면 기본 아이콘 생성
+		/*
 		if (MediaUtils.getMediaType(formatName) != null) {
 			uploadedFileName = makeThumbnail(uploadPath, savedPath, savedName);
 		} else {
-			uploadedFileName = makeIcon(uploadPath, savedPath, savedName);
 		}
+		*/
+		uploadedFileName = makeIcon(uploadPath, savedPath, savedName);
 				
 		// 업로드된 파일명 반환 (예: 2023/06/12/s-dssddssf-2323423.jpg)
 		return uploadedFileName;
