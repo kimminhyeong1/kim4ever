@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.service.MemberService;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -581,5 +582,15 @@ public class MemberController {
 	    model.addAttribute("mv", mv);
 	    return "member/memberListProfile";
 	}
+	
+	//마이페이지 내가 쓴 글
+		@RequestMapping("/memberMyPost.do")
+		public String memberMyPost(Model model, HttpSession session) {
+			String memberName = (String) session.getAttribute("memberName");
+			ArrayList<BikeJoinVo> blist = ms.getMyPosts(memberName);
+			model.addAttribute("blist", blist);
+		    return "member/memberMyPost";
+		}
+	
 	
 }

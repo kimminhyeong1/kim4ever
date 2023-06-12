@@ -3,6 +3,7 @@ package com.myezen.myapp.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.MemberVo;
 
 public interface MemberService {
@@ -54,5 +55,6 @@ public interface MemberService {
 	//카카오유저정보
 	public HashMap<String, Object> getUserInfo(String access_Token) throws Throwable;
 	
+	public ArrayList<BikeJoinVo> getMyPosts(String memberName);
 
 }

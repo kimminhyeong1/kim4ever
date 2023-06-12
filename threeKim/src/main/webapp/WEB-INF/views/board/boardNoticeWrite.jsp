@@ -100,7 +100,14 @@ function fnWrite() {
 				<table>
 					<tr>
 						<th>작성자</th>
-						<td><%=session.getAttribute("memberName")%></td>
+						<td>
+							<c:if test="${memberType == '관리자'}">
+							    <p>관리자</p>
+							</c:if>
+							<c:if test="${memberType != '관리자'}">
+							    <p><%= session.getAttribute("memberName") %></p>
+							</c:if>
+						</td>
 
 					</tr>
 					<tr>

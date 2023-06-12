@@ -83,6 +83,109 @@ public class BikeJoinVo {
     private String verificationCode;
     private char verificationStatus;
     
+    
+    //BoardVo
+	private int bidx;	
+	private int rebidx;
+	private String boardType;
+	
+	private String writer;
+	private String bwriteday;
+	private String subject;
+	private String content;
+	private String boardView;
+	private String boarddelyn;
+	private String filename;
+	private int depth;
+	private int level_;
+	
+	public int getBidx() {
+		return bidx;
+	}
+	public void setBidx(int bidx) {
+		this.bidx = bidx;
+	}
+	public int getRebidx() {
+		return rebidx;
+	}
+	public void setRebidx(int rebidx) {
+		this.rebidx = rebidx;
+	}
+	public String getBoardType() {
+		return boardType;
+	}
+	public void setBoardType(String boardType) {
+		this.boardType = boardType;
+	}
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+	public String getBwriteday() {
+		return bwriteday;
+	}
+	public void setBwriteday(String bwriteday) {
+		this.bwriteday = bwriteday;
+	}
+	public String getSubject() {
+		return subject;
+	}
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public String getBoardView() {
+		return boardView;
+	}
+	public void setBoardView(String boardView) {
+		this.boardView = boardView;
+	}
+	public String getBoarddelyn() {
+		return boarddelyn;
+	}
+	public void setBoarddelyn(String boarddelyn) {
+		this.boarddelyn = boarddelyn;
+	}
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+	public int getDepth() {
+		return depth;
+	}
+	public void setDepth(int depth) {
+		this.depth = depth;
+	}
+	public int getLevel_() {
+		return level_;
+	}
+	public void setLevel_(int level_) {
+		this.level_ = level_;
+	}
+	public int getSortN() {
+		return sortN;
+	}
+	public void setSortN(int sortN) {
+		this.sortN = sortN;
+	}
+	public int getTest() {
+		return test;
+	}
+	public void setTest(int test) {
+		this.test = test;
+	}
+	private int sortN; //가상번호
+	private int test; //임시번호
+	
 	public String getMemberOutDay() {
 		return memberOutDay;
 	}

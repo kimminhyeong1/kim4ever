@@ -2,6 +2,7 @@ package com.myezen.myapp.persistance;
 
 import java.util.ArrayList;
 
+import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.MemberVo;
 
 public interface MemberService_Mapper {
@@ -51,6 +52,6 @@ public interface MemberService_Mapper {
 	//소셜 아이디있는지 확인
 	public int socialMemberCheck(String memberId);
 	
-	
+	public ArrayList<BikeJoinVo> getMyPosts(String memberName);
 	
 }

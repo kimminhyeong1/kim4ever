@@ -106,6 +106,13 @@
 		select count(*) from member1234 where MEMBERDELYN='N' and memberId=#{0}
 	</select>
 	
+	 <select id="getMyPosts" resultType="com.myezen.myapp.domain.BikeJoinVo">
+		SELECT * FROM board1234 WHERE writer = #{memberName} and boarddelyn = 'N' and boardType=0
+		UNION ALL
+		SELECT * FROM board1234 WHERE writer = #{memberName} and boarddelyn = 'N' and boardType=1
+		UNION ALL
+		SELECT * FROM board1234 WHERE writer = #{memberName} and boarddelyn = 'N' and boardType=2
+    </select>
 	
     
 </mapper>
