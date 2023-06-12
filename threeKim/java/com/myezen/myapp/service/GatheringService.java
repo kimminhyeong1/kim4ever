@@ -32,6 +32,10 @@ public interface GatheringService {
 	public ArrayList<GatheringJoinVo> gatheringMyListSelect(int midx);
 	//모임 소개페이지 리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringOneSimpleListSelect(int giidx);
+	//사용자가 모임상세페이지를 들어갈수있는지 확인
+	public int gatheringMemberCheck(int giidx, int midx);
+	//모임상세리스트 가져오기
+	public ArrayList<GatheringJoinVo> gatheringOneListSelect(int giidx);
 	
 	
 	

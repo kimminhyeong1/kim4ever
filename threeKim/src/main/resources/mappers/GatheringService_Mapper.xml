@@ -6,8 +6,8 @@
 	
 	<!-- 모임생성 1.모임정보생성 -->
 	<insert  id="gatheringInfoCreate" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
-	  	INSERT INTO GATHERING_INFO1234 (GIIDX,GINFONAME,GINFOAREA,GINFOBRIEFINTRODUCTION,GINFOAREAINTRODUCTION,GINFOCAPACITY,gInfoParticipating,GINFOCREATIONDAY)
-		VALUES(giidx_seq.NEXTVAL, #{gInfoName}, #{gInfoArea}, #{gInfoBriefIntroduction}, #{gInfoAreaIntroduction}, #{gInfoCapacity},'1', SYSDATE)
+	  	INSERT INTO GATHERING_INFO1234 (GIIDX,GINFONAME,GINFOAREA,GINFOBRIEFINTRODUCTION,GINFOAREAINTRODUCTION,GINFOCAPACITY,gInfoParticipating,GINFOCREATIONDAY,GINFOJOINTYPE)
+		VALUES(giidx_seq.NEXTVAL, #{gInfoName}, #{gInfoArea}, #{gInfoBriefIntroduction}, #{gInfoAreaIntroduction}, #{gInfoCapacity},'1', SYSDATE,#{gInfoJoinType})
 	</insert>
 	<!-- 모임생성 2.모임생성-->
 	<insert  id="gatheringCreate" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
@@ -44,7 +44,24 @@
 		WHERE b.IMGTYPE = 'G' AND a.GINFODELYN = 'N' AND a.GIIDX = #{0}
 	</select>
 	
-	
+	<!-- 사용자가 모임상세페이지를 들어갈수있는지 확인 -->
+	<select id="gatheringMemberCheck" resultType="int" parameterType="int"> 
+		SELECT COUNT(*) FROM GATHERING1234 a
+		WHERE midx = #{1} AND giidx = #{0} AND GATHERINGAPPROVALTYPE = 'Y'
+	</select>
+	<!-- 모임상세리스트 가져오기-->
+	<select id="gatheringOneListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int"> 
+		SELECT 
+		  a.GIIDX,GINFONAME,GINFOAREA,GINFOBRIEFINTRODUCTION,GINFOAREAINTRODUCTION,GINFOCAPACITY,GINFOPARTICIPATING
+		  ,IMAGENAME,IMGTYPE
+		  ,GATHERINGAPPROVALTYPE,GATHERINGMEMBERTYPE
+		  ,c.MIDX,MEMBERNAME
+		FROM GATHERING_INFO1234 a
+		JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
+		JOIN GATHERING1234 c ON a.GIIDX = c.giidx
+		JOIN member1234 d ON c.midx = d.midx
+		WHERE b.IMGTYPE = 'G' AND a.GINFODELYN = 'N' AND c.GATHERINGMEMBERTYPE = 'TL'  AND a.GIIDX = #{0}
+	</select>
 	
 	
 	
