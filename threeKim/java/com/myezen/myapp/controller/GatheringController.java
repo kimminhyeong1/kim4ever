@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,8 +30,18 @@ public class GatheringController {
 	
 //모임메인페이지
 	@RequestMapping(value="/gList.do")
-	public String gList() {
+	public String gList(
+			HttpServletRequest request,
+			Model md
+			) {
+		HttpSession session = request.getSession();
+	    int midx = (int) session.getAttribute("midx");
+		ArrayList<GatheringJoinVo> gjvmylist = gs.gatheringMyListSelect(midx);
+		ArrayList<GatheringJoinVo> gjvlist = gs.gatheringListSelect();
 		
+		md.addAttribute("gjvmylist", gjvmylist);
+		md.addAttribute("gjvlist", gjvlist);
+
 		return "gathering/gList";
 	}
 //모임만들기페이지	
@@ -41,11 +54,16 @@ public class GatheringController {
 	public String gCreateAction(
 			@ModelAttribute GatheringJoinVo gjv,
 			@RequestParam("GTImg") MultipartFile GTImg,
-			@RequestParam("GImg") List<MultipartFile> GImg
+			@RequestParam("GImg") ArrayList<MultipartFile> GImg,
+			HttpServletRequest request
 			) throws IOException, Exception {
+		HttpSession session = request.getSession();
+	    int midx = (int) session.getAttribute("midx");
+	    gjv.setMidx(midx);
+	    
 		int value = gs.gatheringCreate(gjv,GTImg,GImg);
 		
-		return "gathering/gList";
+		return "redirect:/gathering/gList";
 	}
 //모임간단소개페이지
 	@RequestMapping(value="/gSimpleInfo.do")

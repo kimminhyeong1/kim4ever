@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -32,108 +33,33 @@
 				<h2>내 모임</h2>
 			</div>
 			<div class="gContent" >
-				<div class="card" >
-					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-					<img class="cardWish" src="../resources/icon/heart.png">
-					<h3 class="cardTitle">바이크어썸</h3>
-					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
-					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">들어가기</button>
-				</div>
-				<div class="card" >
-					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-					<img class="cardWish" src="../resources/icon/heart.png">
-					<h3 class="cardTitle">바이크어썸</h3>
-					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
-					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">들어가기</button>
-				</div>
-				<div class="card" >
-					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-					<img class="cardWish" src="../resources/icon/heart.png">
-					<h3 class="cardTitle">바이크어썸</h3>
-					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
-					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">들어가기</button>
-				</div>
-				<div class="card" >
-					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-					<img class="cardWish" src="../resources/icon/heart.png">
-					<h3 class="cardTitle">바이크어썸</h3>
-					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
-					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">들어가기</button>
-				</div>			
+				<c:forEach var="gjv" items="${gjvmylist}">
+					<div class="card" >
+						<img class="cardImg" src="../resources/GTImages/${gjv.imageName}">
+						<img class="cardWish" src="../resources/icon/heart.png">
+						<h3 class="cardTitle">${gjv.gInfoName}</h3>
+						<p class="cardInfo">${gjv.gInfoBriefIntroduction}</p>
+						<p>(참여멤버${gjv.gInfoParticipating}/${gjv.gInfoCapacity})</p>
+						<button class="gBtn" onclick="location.href='${pageContext.request.contextPath}/gathering/gContent.do?giidx=${gjv.giidx}'">들어가기</button>
+					</div>
+				</c:forEach>
+		
 			</div>
 			<div><button class="gBtn2" >더보기</button></div>
 			<div class="gContentTitle" >
 				<h2>추천 모임</h2> 
 			</div>
 			<div class="gContent" >
-				<div class="card" >
-					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-					<img class="cardWish" src="../resources/icon/heart.png">
-					<h3 class="cardTitle">바이크어썸</h3>
-					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
-					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gSimpleInfo.do'">구경하기</button>
-				</div>
-				<div class="card" >
-					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-					<img class="cardWish" src="../resources/icon/heart.png">
-					<h3 class="cardTitle">바이크어썸</h3>
-					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
-					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gSimpleInfo.do'">구경하기</button>
-				</div>
-				<div class="card" >
-					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-					<img class="cardWish" src="../resources/icon/heart.png">
-					<h3 class="cardTitle">바이크어썸</h3>
-					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
-					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gSimpleInfo.do'">구경하기</button>
-				</div>
-				<div class="card" >
-					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-					<img class="cardWish" src="../resources/icon/heart.png">
-					<h3 class="cardTitle">바이크어썸</h3>
-					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
-					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gSimpleInfo.do'">구경하기</button>
-				</div>
-				<div class="card" >
-					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-					<img class="cardWish" src="../resources/icon/heart.png">
-					<h3 class="cardTitle">바이크어썸</h3>
-					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
-					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gSimpleInfo.do'">구경하기</button>
-				</div>
-				<div class="card" >
-					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-					<img class="cardWish" src="../resources/icon/heart.png">
-					<h3 class="cardTitle">바이크어썸</h3>
-					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
-					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gSimpleInfo.do'">구경하기</button>
-				</div>
-				<div class="card" >
-					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-					<img class="cardWish" src="../resources/icon/heart.png">
-					<h3 class="cardTitle">바이크어썸</h3>
-					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
-					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gSimpleInfo.do'">구경하기</button>
-				</div>
-				<div class="card" >
-					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-					<img class="cardWish" src="../resources/icon/heart.png">
-					<h3 class="cardTitle">바이크어썸</h3>
-					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
-					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gSimpleInfo.do'">구경하기</button>
-				</div>	 
+				<c:forEach var="gjv" items="${gjvlist}">
+					<div class="card" >
+						<img class="cardImg" src="../resources/GTImages/${gjv.imageName}">
+						<img class="cardWish" src="../resources/icon/heart.png">
+						<h3 class="cardTitle">${gjv.gInfoName}</h3>
+						<p class="cardInfo">${gjv.gInfoBriefIntroduction}</p>
+						<p>(참여멤버${gjv.gInfoParticipating}/${gjv.gInfoCapacity})</p> 
+						<button class="gBtn" onclick="location.href='${pageContext.request.contextPath}/gathering/gSimpleInfo.do?giidx=${gjv.giidx}'">구경하기</button>
+					</div>
+				 </c:forEach>
 			</div>
 			<div><button class="gBtn2" >더보기</button></div>
 		</section>
