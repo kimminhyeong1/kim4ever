@@ -36,6 +36,8 @@ public interface GatheringService {
 	public int gatheringMemberCheck(int giidx, int midx);
 	//모임상세리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringOneListSelect(int giidx);
+	//모임 가입하기
+	public int gatheringJoin(int giidx, int midx);
 	
 	
 	
