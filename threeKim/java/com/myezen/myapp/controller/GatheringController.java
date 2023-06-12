@@ -81,9 +81,28 @@ public class GatheringController {
 		
 		ArrayList<GatheringJoinVo> gjvlist = gs.gatheringOneSimpleListSelect(giidx);
 		md.addAttribute("gjvlist", gjvlist);
+		md.addAttribute("giidx", giidx);
 
 		return "gathering/gSimpleInfo";
 	}
+	//모임간단소개페이지에서 모임 가입하기
+		@RequestMapping(value="/gSimpleInfoAction.do")
+		public String gSimpleInfoAction(
+				@RequestParam("giidx") int giidx,
+				HttpServletRequest request
+				) {
+			HttpSession session = request.getSession();
+		    Object omidx = session.getAttribute("midx");
+		    if (omidx == null) {//midx가 없으면 진입불가
+		    	return "redirect:/gathering/gList.do";
+			}
+		    int midx = (int)omidx;
+		    
+		    //모임가입하기
+		    int value = gs.gatheringJoin(giidx,midx);
+
+			return "redirect:/gathering/gList.do";
+		}
 //모임상세보기페이지
 	@RequestMapping(value="/gContent.do")
 	public String gContent(

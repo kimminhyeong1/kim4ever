@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.ErrorVo;
 import com.myezen.myapp.domain.GatheringJoinVo;
+import com.myezen.myapp.domain.Gathering_InfoVo;
 import com.myezen.myapp.domain.MemberVo;
 
 public interface GatheringService_Mapper {
@@ -35,6 +36,15 @@ public interface GatheringService_Mapper {
 	public int gatheringMemberCheck(int giidx, int midx);
 	//모임상세리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringOneListSelect(int giidx);
+	
+	/*모임 가입*/
+	//1.모임 가입타입 확인하기
+	public Gathering_InfoVo gatheringJoinTypeCheck(int giidx);
+	//2.모임 가입타입 확인후 데이터넣기 A OR B
+	public int gatheringJoinTypeAInsert(int giidx, int midx);
+	public int gatheringJoinTypeBInsert(int giidx, int midx);
+	//3.모임 가입시 모임 참여멤버 수 1증가
+	public int gatheringParticipatingUpdate(int giidx);
 	
 	
 	
