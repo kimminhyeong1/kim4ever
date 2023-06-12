@@ -89,7 +89,7 @@ public class GatheringServiceImpl implements GatheringService {
 	//모임 리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringListSelect() {
 		
-		ArrayList<GatheringJoinVo> gjvlist =gsm.gatheringListSelect();
+		ArrayList<GatheringJoinVo> gjvlist = gsm.gatheringListSelect();
 		return gjvlist;
 	}
 
@@ -98,8 +98,16 @@ public class GatheringServiceImpl implements GatheringService {
 	@Override
 	//나의 모임 리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringMyListSelect(int midx) {
-		ArrayList<GatheringJoinVo> gjvmylist =gsm.gatheringMyListSelect(midx);
+		ArrayList<GatheringJoinVo> gjvmylist = gsm.gatheringMyListSelect(midx);
 		return gjvmylist;
+	}
+
+
+
+	@Override
+	public ArrayList<GatheringJoinVo> gatheringOneSimpleListSelect(int giidx) {
+		ArrayList<GatheringJoinVo> gjvlist = gsm.gatheringOneSimpleListSelect(giidx);
+		return gjvlist;
 	}
 
 
