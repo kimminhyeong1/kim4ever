@@ -78,50 +78,45 @@ function confirmWithdrawal() {
 	<%@include file="../header.jsp" %>
 	
 	<div id="content">
-		
-	
 		<table>
 		 <tr>
 		    <th colspan="2"><h2>회원정보</h2></th>
-		  </tr>
-		  		
-				<tr>
-					<th>아이디</th>
-					<td>${memberId}</td>
-				</tr>
-				
-				<tr>
-					<th>비밀번호</th>
-					<td>${memberPwd}</td>
-				</tr>
-				
-				<tr>
-					<th>이름</th>
-					<td>${memberName}</td>
-				</tr>
-				
-				<tr>
-					<th>나이</th>
-					<td>${memberAge}</td>
-				</tr>
-				
-				<tr>
-					<th>휴대폰번호</th>
-					<td>${memberPhone}</td>
-				</tr>
-				
-				<tr>
-					<th>이메일</th>
-					<td>${memberEmail}</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<button type="button" onclick="location.href='<%=request.getContextPath()%>/member/memberUpdate.do'">회원정보 수정하기</button>
-						<button type="button" onclick="confirmWithdrawal();">회원 탈퇴하기</button>
-					</td>		
-				</tr>
-				
-
+		  </tr>	
+			<tr>
+				<th>아이디</th>
+				<td>${memberId}</td>
+			</tr>
+			
+			<tr>
+				<th>비밀번호</th>
+				<td>${memberPwd}</td>
+			</tr>
+			
+			<tr>
+				<th>이름</th>
+				<td>${memberName}</td>
+			</tr>
+			
+			<tr>
+				<th>나이</th>
+				<td>${memberAge}</td>
+			</tr>
+			
+			<tr>
+				<th>휴대폰번호</th>
+				<td>${memberPhone}</td>
+			</tr>
+			
+			<tr>
+				<th>이메일</th>
+				<td>${memberEmail}</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<button type="button" onclick="location.href='<%=request.getContextPath()%>/member/memberCheckPwd.do'">회원정보 수정하기</button>
+					<button type="button" onclick="confirmWithdrawal();">회원 탈퇴하기</button>
+				</td>		
+			</tr>
 		</table>
 	</div>
 	

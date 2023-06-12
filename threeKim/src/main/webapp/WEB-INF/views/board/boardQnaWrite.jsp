@@ -78,13 +78,11 @@ li{list-style:none;}
 		<div id="content">
 			<h2>QnA 게시글 작성</h2>
 						<form name="frm">
-<input type="hidden" name="writer" value="	<%= session.getAttribute("memberName") %>"><!-- writer로 저장 -->
+				<input type="hidden" name="writer" value="<%=session.getAttribute("memberName")%>"><!-- writer로 저장 -->
 				<table>
 					<tr>
 						<th>작성자</th>
-
-						<td><%= session.getAttribute("memberName") %></td>
-						<td><%= session.getAttribute("memberName") %></td>
+						<td><%= session.getAttribute("memberName")%></td>
 					</tr>
 					
 					<tr>

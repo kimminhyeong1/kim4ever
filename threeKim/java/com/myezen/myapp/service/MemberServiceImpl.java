@@ -341,6 +341,11 @@ public class MemberServiceImpl implements MemberService {
 
 		 return msm.getMyPosts(memberName);
 	}
+	@Override
+	public MemberVo getMemberByMemberPwd(String memberPwd) {
+	
+		return msm.getMemberByMemberPwd(memberPwd);
+	}
 	
 
 }

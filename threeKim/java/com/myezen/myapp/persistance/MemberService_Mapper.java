@@ -43,6 +43,8 @@ public interface MemberService_Mapper {
 //회원리스트에서 회원들정보보기
 	public MemberVo getMemberByMemberId(String memberId);
 	
+	public MemberVo getMemberByMemberPwd(String memberPwd);
+	
 //소셜로그인
 
 	//구글로그인
