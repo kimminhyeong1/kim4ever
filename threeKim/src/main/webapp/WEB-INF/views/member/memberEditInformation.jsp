@@ -38,13 +38,13 @@ li{list-style:none;}
 #main{width:1440px; margin:35px auto 70px; text-align:center;}
 #main #content{max-width: 800px;margin:40px auto;background-color:#fff;padding:30px;border-radius:5px;box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);}
 #main #bottom{width:1440px; height:300px;}
-h2 {text-align:left; margin-top: 20px; border-bottom:2px solid #000;}
+h2 {text-align:left; margin-top:20px; padding-bottom:10px; border-bottom:2px solid #000;}
 #main #box{margin-top:30px;}
 #main .section {margin-bottom:20px;padding:20px;background-color:#f9f9f9;border:1px solid #ccc;border-radius:5px;text-align:left;}
 #main .section-header {margin-bottom:10px;font-size:21px;font-weight:bold;} 
 #main .section-content {font-size:18px;margin-top:40px; border-bottom:1px solid #ddd;}
-#content button {display:inline-block; padding:10px 20px;font-size:18px;font-weight:bold;text-align:center;text-decoration:none;background-color:#ff9933;color:#fff;border:none;border-radius:5px;cursor:pointer;}
-#content button:hover {background-color:#ffcc66;}
+#content button{width:150px; height:50px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+#content button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
 
 <script>
