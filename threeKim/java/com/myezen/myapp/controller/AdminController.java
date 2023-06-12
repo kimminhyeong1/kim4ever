@@ -265,11 +265,11 @@ public class AdminController {
 	@RequestMapping(value="/adminboardList.do")
 	public String adminboardList(SearchCriteria scri,  Model model) {		
 		
-		int totalCount = bs.boardTotal(scri);
+		int totalCount2 = bs.boardTotal2(scri);
 		pm.setScri(scri);
-		pm.setTotalCount(totalCount);
+		pm.setTotalCount(totalCount2);
 		
-		ArrayList<BoardVo> blist = bs.boardSelectAll(scri);
+		ArrayList<BoardVo> blist = bs.boardSelectAll2(scri);
 		
 		model.addAttribute("blist", blist);
 		model.addAttribute("pm", pm);

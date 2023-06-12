@@ -95,7 +95,7 @@ li{list-style:none;}
 					<h2>게시판관리</h2>
 					
 					<form name="frm"
-		action="${pageContext.request.contextPath }/admin/adminboardList.do"
+		action="${pageContext.request.contextPath}/admin/adminboardList.do"
 		method="post">
 		<table class="form-table" border=0 style="text-align: left; width: 400px;">
 			<tr>
@@ -122,7 +122,6 @@ li{list-style:none;}
 							<th>삭제여부</th>
 							<th>날짜</th>	
 							<th>조회수</th>
-							<th>수정</th>
 							<th>삭제/복구</th>							
 						</tr>
 										<c:forEach var="bv" items="${blist}" varStatus="status">
@@ -168,7 +167,6 @@ li{list-style:none;}
 									</td><td>${bv.writeday.substring(0, 10)}</td>
 										<td>${bv.boardView}</td>
 										
-										<td><button type="button" style="width: 80px; height: 30px;">수정</button></td>
 										  
 									<c:choose>
 									  <c:when test="${bv.boarddelyn == 'N'}">
