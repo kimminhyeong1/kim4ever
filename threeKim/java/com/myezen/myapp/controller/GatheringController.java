@@ -35,12 +35,16 @@ public class GatheringController {
 			Model md
 			) {
 		HttpSession session = request.getSession();
-	    int midx = (int) session.getAttribute("midx");
-		ArrayList<GatheringJoinVo> gjvmylist = gs.gatheringMyListSelect(midx);
-		ArrayList<GatheringJoinVo> gjvlist = gs.gatheringListSelect();
+	    Object omidx = session.getAttribute("midx");
+	    if (omidx != null) {
+	    int midx = (int)omidx;
+	    	ArrayList<GatheringJoinVo> gjvmylist = gs.gatheringMyListSelect(midx);
+	    	md.addAttribute("gjvmylist", gjvmylist);
+			
+		}
+	    ArrayList<GatheringJoinVo> gjvlist = gs.gatheringListSelect();
+	    md.addAttribute("gjvlist", gjvlist);
 		
-		md.addAttribute("gjvmylist", gjvmylist);
-		md.addAttribute("gjvlist", gjvlist);
 
 		return "gathering/gList";
 	}
@@ -63,7 +67,7 @@ public class GatheringController {
 	    
 		int value = gs.gatheringCreate(gjv,GTImg,GImg);
 		
-		return "redirect:/gathering/gList";
+		return "redirect:/gathering/gList.do";
 	}
 //모임간단소개페이지
 	@RequestMapping(value="/gSimpleInfo.do")

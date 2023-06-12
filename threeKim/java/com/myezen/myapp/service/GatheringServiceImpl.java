@@ -98,7 +98,7 @@ public class GatheringServiceImpl implements GatheringService {
 	@Override
 	//나의 모임 리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringMyListSelect(int midx) {
-		ArrayList<GatheringJoinVo> gjvmylist =gsm.gatheringListSelect();
+		ArrayList<GatheringJoinVo> gjvmylist =gsm.gatheringMyListSelect(midx);
 		return gjvmylist;
 	}
 

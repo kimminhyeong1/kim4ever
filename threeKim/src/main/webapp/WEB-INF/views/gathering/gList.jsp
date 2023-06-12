@@ -33,16 +33,18 @@
 				<h2>내 모임</h2>
 			</div>
 			<div class="gContent" >
-				<c:forEach var="gjv" items="${gjvmylist}">
-					<div class="card" >
-						<img class="cardImg" src="../resources/GTImages/${gjv.imageName}">
-						<img class="cardWish" src="../resources/icon/heart.png">
-						<h3 class="cardTitle">${gjv.gInfoName}</h3>
-						<p class="cardInfo">${gjv.gInfoBriefIntroduction}</p>
-						<p>(참여멤버${gjv.gInfoParticipating}/${gjv.gInfoCapacity})</p>
-						<button class="gBtn" onclick="location.href='${pageContext.request.contextPath}/gathering/gContent.do?giidx=${gjv.giidx}'">들어가기</button>
-					</div>
-				</c:forEach>
+				<c:if test="${not empty midx}">
+					<c:forEach var="gjvmy" items="${gjvmylist}">
+						<div class="card" >
+							<img class="cardImg" src="../resources/GTImages/${gjvmy.imageName}">
+							<img class="cardWish" src="../resources/icon/heart.png">
+							<h3 class="cardTitle">${gjvmy.gInfoName}</h3>
+							<p class="cardInfo">${gjvmy.gInfoBriefIntroduction}</p>
+							<p>(참여멤버${gjvmy.gInfoParticipating}/${gjvmy.gInfoCapacity})</p>
+							<button class="gBtn" onclick="location.href='${pageContext.request.contextPath}/gathering/gContent.do?giidx=${gjvmy.giidx}'">들어가기</button>
+						</div>
+					</c:forEach>
+				</c:if>
 		
 			</div>
 			<div><button class="gBtn2" >더보기</button></div>
