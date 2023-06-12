@@ -2,6 +2,7 @@ package com.myezen.myapp.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.myezen.myapp.domain.GatheringJoinVo;
@@ -240,5 +242,20 @@ public class GatheringController {
 	public String gSearchResult() {
 		
 		return "gathering/gSearchResult";
+	}
+//찜하기
+	@ResponseBody
+	@RequestMapping(value="/Wish.do")
+	public HashMap<String, Object> Wish(@RequestParam("giidx") int giidx,@RequestParam("midx") int midx ) {
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		System.out.println("찜체크");
+		//찜이 되어있는지 확인하기
+		
+		//찜하기
+		int value = gs.gatheringWish(giidx,midx);
+		//찜삭제하기
+		
+		hm.put("value",value);//0은 거짓 1은 참
+		return hm;
 	}
 }

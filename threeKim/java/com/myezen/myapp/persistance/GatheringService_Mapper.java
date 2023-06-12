@@ -46,6 +46,8 @@ public interface GatheringService_Mapper {
 	//3.모임 가입시 모임 참여멤버 수 1증가
 	public int gatheringParticipatingUpdate(int giidx);
 	
+	/*찜하기*/
+	public int gatheringWish(int giidx, int midx);
 	
 	
 	

@@ -155,6 +155,15 @@ public class GatheringServiceImpl implements GatheringService {
 	}
 
 
+
+	@Override
+	/*찜하기*/
+	public int gatheringWish(int giidx, int midx) {
+		int value = gsm.gatheringWish(giidx,midx);
+		return value;
+	}
+
+
 	
 	
 	

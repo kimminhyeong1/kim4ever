@@ -84,6 +84,11 @@
 	  WHERE GIIDX = #{0}
 	</update>
 	
+	<insert  id="gatheringWish" parameterType="int" >
+	 	INSERT INTO gathering_wish1234 (gwidx,GIIDX,MIDX)
+		VALUES(gwidx_seq.NEXTVAL, #{0},#{1}) 
+	</insert>
+	
 	
 	
 	
