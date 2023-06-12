@@ -99,7 +99,8 @@ $(document).ready(function() {
 					<tr>
 						<th>제목</th>
 						<td><%=bv.getSubject()%></td>
-
+						
+						
 						<th style="width: 100px; text-align: center; border-left: 1px solid #ddd;">조회수</th>
 						<td style="width: 200px; text-align: center;"><%=bv.getBoardView()%></td>
 
