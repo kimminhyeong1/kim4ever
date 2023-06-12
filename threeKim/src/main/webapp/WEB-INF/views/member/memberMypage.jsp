@@ -72,8 +72,8 @@ li{list-style:none;}
 			</tr>
 		
 			<tr>
-				<td>이용중인내역<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
 				<td onclick="window.location.href='<%=request.getContextPath() %>/bikeRent/bikeRentHistory.do'">대여내역<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
+				<td>뭐넣지?<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
 			</tr>
 		
 			<tr>

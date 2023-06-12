@@ -96,7 +96,7 @@ li{list-style:none;}
 							<th>작성일</th>
 							<th>조회수</th>
 						</tr>
-								<c:forEach var="bv" items="${blist}" varStatus="status">
+										<c:forEach var="bv" items="${blist}" varStatus="status">
 								<c:if test="${bv.boardType == 0 && bv.boarddelyn == 'N'}"><!-- 보드타입 0 delyn 이 n -->
 									<tr>
 										<td>${bv.sortN}</td>
