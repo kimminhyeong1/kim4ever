@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.persistance.MemberService_Mapper;
 import com.myezen.myapp.util.MailHandler;
@@ -334,6 +335,11 @@ public class MemberServiceImpl implements MemberService {
 	public int kakaoMemberInsert(String memberId, String memberPwd, String memberName) {
 		int value = msm.kakaoMemberInsert(memberId,memberPwd,memberName);
 		return value;
+	}
+	@Override
+	public ArrayList<BikeJoinVo> getMyPosts(String memberName) {
+
+		 return msm.getMyPosts(memberName);
 	}
 	
 

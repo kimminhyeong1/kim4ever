@@ -68,12 +68,12 @@ li{list-style:none;}
 			
 			<tr>
 				<td onclick="window.location.href='<%=request.getContextPath() %>/member/memberEditInformation.do'">회원정보수정<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
-				<td>내 게시글<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
+				<td onclick="window.location.href='<%=request.getContextPath() %>/member/memberMyPost.do'">내 게시글<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
 			</tr>
 		
 			<tr>
 				<td>이용중인내역<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
-				<td>대여내역<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
+				<td onclick="window.location.href='<%=request.getContextPath() %>/bikeRent/bikeRentHistory.do'">대여내역<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
 			</tr>
 		
 			<tr>
