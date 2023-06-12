@@ -38,7 +38,7 @@ li{list-style:none;}
 #main{width:1440px; margin:35px auto 70px; text-align:center;}
 #main #content{width:1440px; height:2400px;}
 #main #bottom{width:1440px; height:300px;}
-#content table h2{margin-top:40px;}
+#content table h2{margin-top:40px; font-size:40px; font-family: 'GangwonEdu_OTFBoldA'; }
 #content table {width:60%; height:20%; border-collapse:collapse; border:1px solid #ddd; margin: 60px auto 0; font-family:'omyu_pretty'; }
 #content table th{width:200px; text-align:center; border:1px solid #ddd; padding:8px;}
 #content table td {border:1px solid #ddd;padding:20px;text-align:left;vertical-align:middle;height:100px; font-size:30px;}
