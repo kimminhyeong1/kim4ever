@@ -66,18 +66,18 @@ ORDER BY rebidx DESC, level_ ASC, writeday ASC
 
 
 <insert id="boardInsert" parameterType="bv"><!-- 공지 -->
-  INSERT INTO board1234(bidx ,boardType, writer, writeday, subject, content, boardView ,depth,level_, midx,filename,rebidx)
+  INSERT INTO board1234(bidx ,boardType, writer, writeDay, subject, content, boardView ,depth,level_, midx,filename,rebidx)
   VALUES (bidx_seq.nextval, 0 , #{writer}, SYSDATE, #{subject}, #{content}, 0,0,0,#{midx},#{filename}, bidx_seq.currval)
 </insert>
 
 <insert id="boardInsert2" parameterType="bv"><!-- qna --><!-- rebidx와 bidx값 동일한값 넣어줌 -->
-  INSERT INTO board1234(bidx, boardType, writer, writeday, subject, content, boardView, depth, level_, midx, filename, rebidx)
+  INSERT INTO board1234(bidx, boardType, writer, writeDay, subject, content, boardView, depth, level_, midx, filename, rebidx)
   VALUES (bidx_seq.nextval, 1, #{writer}, SYSDATE, #{subject}, #{content}, 0, 0, 0, #{midx}, #{filename}, bidx_seq.currval)
 </insert>
 
 
 <insert id="boardInsert3" parameterType="bv"><!-- faq -->
-  INSERT INTO board1234(bidx ,boardType, writer, writeday, subject, content, boardView ,depth,level_, midx,filename,rebidx)
+  INSERT INTO board1234(bidx ,boardType, writer, writeDay, subject, content, boardView ,depth,level_, midx,filename,rebidx)
   VALUES (bidx_seq.nextval, 2 , #{writer}, SYSDATE, #{subject}, #{content}, 0,0,0,#{midx},#{filename}, bidx_seq.currval)
 </insert>
 

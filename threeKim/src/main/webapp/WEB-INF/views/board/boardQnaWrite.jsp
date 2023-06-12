@@ -80,15 +80,7 @@ li{list-style:none;}
 				<table>
 					<tr>
 						<th>작성자</th>
-						<td>
-						<c:if test="${memberType == '관리자'}">
-						    <p>관리자</p>
-						</c:if>
-						<c:if test="${memberType != '관리자'}">
-						    <p><%= session.getAttribute("memberName") %></p>
-						</c:if>
-						</td>
-							
+						<td><%= session.getAttribute("memberName") %></td>		
 					</tr>
 					
 					<tr>
