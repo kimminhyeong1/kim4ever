@@ -11,9 +11,11 @@ ArrayList<BikeJoinVo> bikeList = (ArrayList<BikeJoinVo>)request.getAttribute("bi
 	<head>
 		<meta charset="UTF-8">
 		<title>타다-자전거 소개</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">			
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent.css"> 
+		
 		<style type="text/css">
 		 	/*소개부분*/
 			#bikeIntro{margin:40px auto;width:70%; padding: 20px;background-color:#f1f1f1; border-radius:10px;} 
@@ -24,7 +26,21 @@ ArrayList<BikeJoinVo> bikeList = (ArrayList<BikeJoinVo>)request.getAttribute("bi
 			#bikeNotice p{margin-top:40px;}
 			#bcontent .deleteBtn {display:none; position: absolute;top:0;right:0;width:30px;height:30px;background-color:#ff0000;color:#fff;font-size:20px;border:none;border-radius:50%;cursor:pointer;}
 			#bcontent .card:hover .deleteBtn {display:block;}
+
+/**********************모바일****************/
+@media (min-width: 300px) and (max-width: 940px)  {
+/*소개부분*/
+			#bikeIntro{margin:0 auto; width:40%; padding: 10px;background-color:#f1f1f1; border-radius:10px;} 
+			#bikeIntro h2{font-family:'KCC-Ganpan'; text-align:center; font-size:20px; color:#333; margin-bottom: 20px;}
+			#bikeIntro p{font-family:'omyu_pretty'; text-align:left; margin-left:40px; font-size:14px; padding:15px 15px; letter-spacing:3px;}
+			#bikeNotice{text-align:center;}
+			#bikeNotice button{width:200px; height:50px; border-radius:10px; border:0px solid #ff9933; font-family:'omyu_pretty'; font-size:30px; background:#ff9933;}
+			#bikeNotice p{margin-top:40px;}
+			#bcontent .deleteBtn {display:none; position: absolute;top:0;right:0;width:30px;height:30px;background-color:#ff0000;color:#fff;font-size:20px;border:none;border-radius:50%;cursor:pointer;}
+			#bcontent .card:hover .deleteBtn {display:block;}
 }
+
+
 		 </style>
 	 <script>
 		function deleteBike(bikeType) {

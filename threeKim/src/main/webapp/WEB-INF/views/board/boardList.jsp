@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  <% BoardVo bv = (BoardVo)request.getAttribute("bv"); %>   
+  <% MemberVo mv = (MemberVo)request.getAttribute("mv"); %>   
  
 
 <!DOCTYPE html>
@@ -109,7 +110,7 @@ li{list-style:none;}
 										  </c:if>
 										  <c:if test="${memberType != '관리자'}">
 										    ${bv.writer}
-										  </c:if>
+										  </c:if>									
 										</td>
 										<td>${bv.writeday.substring(0, 10)}</td>
 										<td>${bv.boardView}</td>
@@ -169,6 +170,9 @@ li{list-style:none;}
 										  </c:if>
 										  <c:if test="${memberType != '관리자'}">
 										    ${bv.writer}
+										  </c:if>
+										   <c:if test="${memberdelyn == 'Y'}">
+										    ${bv.writer}(탈퇴)
 										  </c:if>
 										</td>
 
@@ -234,9 +238,13 @@ li{list-style:none;}
 										  <c:if test="${memberType != '관리자'}">
 										    ${bv.writer}
 										  </c:if>
+										   <c:if test="${memberdelyn == 'Y'}">
+										    ${bv.writer}(탈퇴)
+										  </c:if>
 										</td>
 										<td>${bv.writeday.substring(0, 10)}</td>
 										<td>${bv.boardView}</td>
+										
 									</tr>	
 								</c:if>
 							</c:forEach>			

@@ -9,6 +9,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
 /*리셋코드*/ 
 *{margin:0;padding:0;}
@@ -39,13 +41,41 @@ li{list-style:none;}
 #main #bottom{width:1440px; height:300px;}
 #content table {width:80%; border-collapse:collapse; margin:60px auto 0; font-size:24px; font-family: 'omyu_pretty'}
 #content table tr{border:1px solid #ddd;}
-#content table th {width:100px; padding:10px; text-align:center; border-right:1px solid #ddd;}
+#content table th {width:100px; padding:10px; text-align:left; border-right:1px solid #ddd;}
 #content table td {padding:10px; text-align:center; line-height:50px;}
 #content table tr th {width:120px; text-align:center;  }
 #content table td { white-space: pre-line;}
 #content #btn{text-align:right; margin-top:20px; margin-right:144px; }
 #content #btn button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content #btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+.maintext{height: 500px; width: 1800px; text-align:left;}
+
+/**************************모바일****************************************/
+
+
+
+
+
+/*****모바일 넓이***/
+@media (min-width: 300px) and (max-width: 940px)  {
+
+#main{width:auto; margin:0 auto; text-align:center;}
+#main #content{width:auto; height:auto;}
+#main #content h2{text-align:left; margin-top:10px; margin-left:10%; font-family: 'GangwonEdu_OTFBoldA'; font-size:13px;}
+#main #bottom{width:auto; height:100px;}
+#content table {width:80%; height:auto; border-collapse:collapse; margin: auto; font-size:10px; font-family: 'omyu_pretty'}
+#content table tr{border:1px solid #ddd;}
+#content table th {width:10px;  text-align:left; border-right:1px solid #ddd;}
+#content table td { text-align:left; line-height:2px;}
+#content table tr th {width:30px; text-align:center;  }
+#content table td { white-space: pre-line;}
+#content #btn{text-align:right; margin-top:20px; margin-right:10%; }
+#content #btn button{width:50px; height:25px; margin:0 auto; text-align:center; font-family: 'omyu_pretty'; font-size:14px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+#content #btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+.maintext{height: 200px; width: auto; text-align:left;}
+
+}
+
 </style>
 
 </head>
@@ -99,11 +129,13 @@ $(document).ready(function() {
 					<tr>
 						<th>제목</th>
 						<td><%=bv.getSubject()%></td>
-
-						<th style="width: 100px; text-align: center; border-left: 1px solid #ddd;">조회수</th>
-						<td style="width: 200px; text-align: center;"><%=bv.getBoardView()%></td>
-
 					</tr>
+					<tr>		
+						<th>조회수</th>
+						<td><%=bv.getBoardView()%></td>
+						</tr>
+				
+				
 
 					<tr>
 						<th>작성자</th>
@@ -112,7 +144,7 @@ $(document).ready(function() {
 
 					<tr>
 						<th>글 내용</th>
-							<td style="height: 500px; width: 1800px; text-align:left;"><%=bv.getContent()%></td>
+							<td class="maintext"><%=bv.getContent()%></td>
 
 					</tr>
 					
@@ -149,10 +181,9 @@ $(document).ready(function() {
 				</div>
 			</form>
 		</div>
-
-
+</div>
 		<div id="bottom"></div>
-	</div>
+
 </body>
 <%@include file="../footer.jsp" %>
 </html>

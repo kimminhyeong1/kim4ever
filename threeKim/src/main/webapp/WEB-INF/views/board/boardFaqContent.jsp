@@ -43,7 +43,7 @@ li{list-style:none;}
 #content table {width:80%; border-collapse:collapse; margin:60px auto 0; font-size:24px; font-family: 'omyu_pretty'}
 #content table tr{border:1px solid #ddd;}
 #content table th {width:100px; padding:10px; text-align:center; border-right:1px solid #ddd;}
-#content table td {padding:10px; text-align:center; line-height:50px; }
+#content table td {padding:10px; text-align:left; line-height:50px; }
 #content table tr th {width:120px; text-align:center;  }
 #content  table td { white-space: pre-line;}
 #content #btn{text-align:right; margin-top:20px; margin-right:144px; }
@@ -89,7 +89,9 @@ $(document).ready(function() {
 		var pattern = /jpg$|gif$|png$|jpeg$/i;
 		return fileName.match(pattern);
 	}
-	</script>
+
+
+		</script>
 <body>
 	<div id="main">
 		<%@include file="../header.jsp"%>
@@ -123,13 +125,15 @@ $(document).ready(function() {
 						<th>파일다운로드</th>
 						<td>
 							<div id="download"></div>
+							
 							</td>
 						<td>
 							<!-- 이미지일경우만 --> <% 	if (bv.getFilename() != null) {
 								String exp = bv.getFilename().substring(bv.getFilename().length() - 3, bv.getFilename().length());
  								if (exp.equals("jpg") || exp.equals("gif") || exp.equals("png")) { %>
  								 <img src="<%=request.getContextPath()%>/board/displayFile.do?fileName=<%=bv.getFilename()%>"
-								width="100px" height="100px" /> <%} } %>
+								width="100px" height="100px" /> <%} } %>		
+								
 						</td>				
 				</table>
 				

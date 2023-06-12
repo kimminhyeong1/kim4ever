@@ -41,7 +41,7 @@ li{list-style:none;}
 #main #bottom{width:1440px; height:300px;}
 #content table {width:80%; border-collapse:collapse; margin:60px auto 0; font-size:24px; font-family: 'omyu_pretty'}
 #content table tr{border:1px solid #ddd;}
-#content table th {width:100px; padding:10px; text-align:center; border-right:1px solid #ddd;}
+#content table th {width:100px; padding:10px; text-align:left; border-right:1px solid #ddd;}
 #content table td {padding:10px; text-align:center; line-height:50px;}
 #content table tr th {width:120px; text-align:center;  }
 #content  table td { white-space: pre-line;}

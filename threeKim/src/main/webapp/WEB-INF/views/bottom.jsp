@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 #main{width:1250px; margin:35px auto 70px; text-align:center;}
@@ -9,6 +10,17 @@
 #main #bottom table {width: 80%; border-collapse: collapse;  margin: 20px auto 0; font-family: 'omyu_pretty'; font-size:24px;}
 #main #bottom table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #main #bottom table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
+
+/**********************모바일****************/
+@media (min-width: 300px) and (max-width: 940px)  {
+#main{width:100%; margin:35px auto 70px; text-align:center;}
+#main #content{width:auto;}
+#main #bottom{width:auto; height:100px;justify-content:center; align-items:center;}
+#main #bottom h2{font-family: 'KCC-Ganpan'; font-size:15px;}
+#main #bottom table {width: 80%; border-collapse: collapse;  margin: 20px auto 0; font-family: 'omyu_pretty'; font-size:12px;}
+#main #bottom table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
+#main #bottom table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
+}
 
 </style>
 
