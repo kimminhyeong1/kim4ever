@@ -24,18 +24,24 @@
 		INSERT INTO IMAGE1234 (IMIDX,IMAGENAME,MIDX,GIIDX,IMGTYPE,IMGCREATIONDAY)
 		VALUES(IMIDX_SEQ.NEXTVAL,#{imageName},#{midx},GIIDX_SEQ.CURRVAL,'G',SYSDATE)
 	</insert>
-	
+	<!-- 모임 리스트 가져오기 -->
 	<select id="gatheringListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo">
 		SELECT * FROM GATHERING_INFO1234 a
 		JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
 		WHERE b.IMGTYPE = 'GT'
 	</select>
-	
+	<!--  모임 나의 리스트 가져오기 -->
 	<select id="gatheringMyListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int"> 
 		SELECT a.GIIDX,a.GINFONAME,a.GINFOBRIEFINTRODUCTION,a.GINFOCAPACITY,a.GINFOPARTICIPATING,b.IMAGENAME FROM GATHERING_INFO1234 a
 		JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
 		JOIN GATHERING1234 c ON c.GIIDX = a.GIIDX
 		WHERE b.IMGTYPE = 'GT' AND c.midx = #{0} AND a.GINFODELYN = 'N'
+	</select>
+	<!--  모임 소개페이지 리스트 가져오기 -->
+	<select id="gatheringOneSimpleListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int"> 
+		SELECT * FROM GATHERING_INFO1234 a
+		JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
+		WHERE b.IMGTYPE = 'G' AND a.GINFODELYN = 'N' AND a.GIIDX = #{0}
 	</select>
 	
 	

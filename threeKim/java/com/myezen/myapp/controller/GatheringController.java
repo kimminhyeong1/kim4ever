@@ -71,8 +71,14 @@ public class GatheringController {
 	}
 //모임간단소개페이지
 	@RequestMapping(value="/gSimpleInfo.do")
-	public String gSimpleInfo() {
+	public String gSimpleInfo(
+			@RequestParam("giidx") int giidx,
+			Model md
+			) {
 		
+		ArrayList<GatheringJoinVo> gjvlist = gs.gatheringOneSimpleListSelect(giidx);
+		md.addAttribute("gjvlist", gjvlist);
+
 		return "gathering/gSimpleInfo";
 	}
 //모임상세보기페이지
