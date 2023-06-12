@@ -63,6 +63,26 @@
 		WHERE b.IMGTYPE = 'G' AND a.GINFODELYN = 'N' AND c.GATHERINGMEMBERTYPE = 'TL'  AND a.GIIDX = #{0}
 	</select>
 	
+	<!-- 모임 가입타입 확인하기-->
+	<select id="gatheringJoinTypeCheck" resultType="com.myezen.myapp.domain.Gathering_InfoVo" parameterType="int"> 
+		SELECT ginfojointype FROM GATHERING_INFO1234 a WHERE a.GIIDX = #{0} AND GINFODELYN = 'N'
+	</select>
+	<!-- 가입타입 확인후 데이터넣기 자유가입-->
+	<insert  id="gatheringJoinTypeAInsert" parameterType="int" >
+	 	INSERT INTO gathering1234 (GIDX,GIIDX,MIDX,GATHERINGAPPROVALTYPE,GATHERINGMEMBERTYPE,GATHERINGJOININGDAY)
+		VALUES(gidx_seq.NEXTVAL, #{0},#{1},'Y','TM',SYSDATE)
+	</insert>
+	<!-- 가입타입 확인후 데이터넣기 승인가입-->
+	<insert  id="gatheringJoinTypeBInsert" parameterType="int" >
+	 	INSERT INTO gathering1234 (GIDX,GIIDX,MIDX,GATHERINGAPPROVALTYPE,GATHERINGMEMBERTYPE,GATHERINGJOININGDAY)
+		VALUES(gidx_seq.NEXTVAL, #{0},#{1},'W','TM',SYSDATE) 
+	</insert>
+	<!-- 모임 가입 참여멤버 수 1++업데이트 -->
+	<update id="gatheringParticipatingUpdate" parameterType="int">
+	  UPDATE GATHERING_INFO1234
+	  SET gInfoParticipating = gInfoParticipating + 1
+	  WHERE GIIDX = #{0}
+	</update>
 	
 	
 	

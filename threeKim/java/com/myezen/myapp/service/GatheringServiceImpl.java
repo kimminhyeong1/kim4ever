@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonFormat.Value;
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.ErrorVo;
 import com.myezen.myapp.domain.GatheringJoinVo;
+import com.myezen.myapp.domain.Gathering_InfoVo;
 import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.persistance.BikeRentService_Mapper;
 import com.myezen.myapp.persistance.GatheringService_Mapper;
@@ -127,6 +128,30 @@ public class GatheringServiceImpl implements GatheringService {
 	public ArrayList<GatheringJoinVo> gatheringOneListSelect(int giidx) {
 		ArrayList<GatheringJoinVo> gjvlist = gsm.gatheringOneListSelect(giidx);
 		return gjvlist;
+	}
+
+
+
+	@Override
+	@Transactional
+	//모임 가입하기
+	public int gatheringJoin(int giidx, int midx) {
+		
+		int value = 0;
+		
+		//모임 가입타입 확인하기
+		Gathering_InfoVo giv = gsm.gatheringJoinTypeCheck(giidx);
+		String joinType = giv.getgInfoJoinType();
+		if (joinType.equals("자유가입")) {
+			value=gsm.gatheringJoinTypeAInsert(giidx,midx);
+			
+		}
+		if (joinType.equals("승인가입")) {
+			value=gsm.gatheringJoinTypeBInsert(giidx,midx);
+			
+		}
+			value=gsm.gatheringParticipatingUpdate(giidx);
+		return value;
 	}
 
 

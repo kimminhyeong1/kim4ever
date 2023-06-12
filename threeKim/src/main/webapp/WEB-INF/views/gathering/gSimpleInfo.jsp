@@ -79,7 +79,7 @@
 				<div id="gatherCon">
 					<h1>${gjvlist[0].gInfoName}</h1> 
 					<p>${gjvlist[0].gInfoAreaIntroduction}</p>
-					<button>가입하기</button>
+					<button onclick="location.href='${pageContext.request.contextPath}/gathering/gSimpleInfoAction.do?giidx=${giidx}'">가입하기</button>
 					<button onclick="location.href='${pageContext.request.contextPath}/gathering/gatheringList.do'">돌아가기</button>
 				</div>
 			</div>
