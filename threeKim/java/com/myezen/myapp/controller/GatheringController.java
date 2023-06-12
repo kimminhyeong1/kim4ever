@@ -64,6 +64,9 @@ public class GatheringController {
 		HttpSession session = request.getSession();
 	    int midx = (int) session.getAttribute("midx");
 	    gjv.setMidx(midx);
+	    System.out.println(gjv.getgInfoJoinType());
+	   
+	    
 	    
 		int value = gs.gatheringCreate(gjv,GTImg,GImg);
 		
@@ -84,22 +87,43 @@ public class GatheringController {
 //모임상세보기페이지
 	@RequestMapping(value="/gContent.do")
 	public String gContent(
+			@RequestParam("giidx") int giidx,
+			HttpServletRequest request,
 			Model md
 			) {
-		//ArrayListList<Event> events = calendarService.getAllEvents(); //일정 가져오기
-		//md.addAttribute("events", events);
-		ScheduleVo event = new ScheduleVo();
-		event.setTitle("제목");
-		event.setStart("2023-06-01T10:00:00");
-		event.setEnd("2023-06-02T12:00:00");
-		
-		ArrayList<ScheduleVo> events = new ArrayList<ScheduleVo>();
-		events.add(event);
-		System.out.println(events.get(0));
+		HttpSession session = request.getSession();
+	    Object omidx = session.getAttribute("midx");
+	    if (omidx == null) {//midx가 없으면 진입불가
+	    	return "redirect:/gathering/gList.do";
+		}
+	    int midx = (int)omidx;
+	    //사용자가 모임상세페이지를 들어갈수있는지 확인
+	    int value = gs.gatheringMemberCheck(giidx,midx);
+	    if (value == 1) {
+	    	//모임상세리스트 가져오기
+	    	ArrayList<GatheringJoinVo> gjvlist = gs.gatheringOneListSelect(giidx);
+	    	md.addAttribute("gjvlist", gjvlist);
+	    	//모임 멤버들 데이터 가져오기 
+	    	
+	    	//모임일정 데이터 가져오기
+	    	//ArrayListList<Event> events = calendarService.getAllEvents(); //일정 가져오기
+	    	//md.addAttribute("events", events);
+	    	ScheduleVo event = new ScheduleVo();
+	    	event.setTitle("제목");
+	    	event.setStart("2023-06-01T10:00:00");
+	    	event.setEnd("2023-06-02T12:00:00");
+	    	
+	    	ArrayList<ScheduleVo> events = new ArrayList<ScheduleVo>();
+	    	events.add(event);
+	    	System.out.println(events.get(0));
+	    	md.addAttribute("events", events);
+	    	
+	    	//공지사항 데이터 가져오기
+			
+		}
 		
 
 
-		md.addAttribute("events", events);
 		return "gathering/gContent";
 	}
 //모임상세보기에서 일정 만들기 페이지
@@ -165,8 +189,19 @@ public class GatheringController {
 	}	
 //내 모임 정보
 	@RequestMapping(value="/gMyPage.do")
-	public String gMyPage() {
+	public String gMyPage(
+		HttpServletRequest request,
+		Model md
+		) {
+	HttpSession session = request.getSession();
+    Object omidx = session.getAttribute("midx");
+    if (omidx != null) {
+    int midx = (int)omidx;
+    	ArrayList<GatheringJoinVo> gjvmylist = gs.gatheringMyListSelect(midx);
+    	md.addAttribute("gjvmylist", gjvmylist);
 		
+	}
+
 		return "gathering/gMyPage";
 	}
 //찜한 모임 정보

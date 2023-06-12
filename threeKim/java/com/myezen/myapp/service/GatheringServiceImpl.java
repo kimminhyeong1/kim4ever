@@ -105,8 +105,27 @@ public class GatheringServiceImpl implements GatheringService {
 
 
 	@Override
+	//모임소개페이지 가져오기
 	public ArrayList<GatheringJoinVo> gatheringOneSimpleListSelect(int giidx) {
 		ArrayList<GatheringJoinVo> gjvlist = gsm.gatheringOneSimpleListSelect(giidx);
+		return gjvlist;
+	}
+
+
+
+	@Override
+	//사용자가 모임상세페이지를 들어갈수있는지 확인
+	public int gatheringMemberCheck(int giidx, int midx) {
+		int value = gsm.gatheringMemberCheck(giidx,midx);
+		return value;
+	}
+
+
+
+	@Override
+	//모임상세리스트 가져오기
+	public ArrayList<GatheringJoinVo> gatheringOneListSelect(int giidx) {
+		ArrayList<GatheringJoinVo> gjvlist = gsm.gatheringOneListSelect(giidx);
 		return gjvlist;
 	}
 
