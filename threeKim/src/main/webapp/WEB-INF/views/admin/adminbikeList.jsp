@@ -43,7 +43,7 @@ li{list-style:none;}
 #main #bottom{width:1250px; height:300px; }
 #main #content h2{text-align:left; margin-top:50px; margin-left:200px;font-family: 'GangwonEdu_OTFBoldA'; font-size:25px;}
 #content p{text-align:right; margin-right:200px;}
-#content table {width:70%; border-collapse:collapse; margin:60px auto 0; line-height:60px; font-size:20px;font-family:'omyu_pretty'; font-size:24px;}
+#content table {width:70%; border-collapse:collapse; margin:60px auto 0; line-height:40px; font-size:20px;font-family:'omyu_pretty'; font-size:24px;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
 #content table tr th:nth-child(1){width:50px;}
