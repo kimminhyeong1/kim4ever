@@ -154,16 +154,10 @@ opacity:1;padding:5px; border-radius:50px;font-size:50px;}
 .slider-1 >.side-btns > div:last-child > span {left:auto;right:20px; }
 
 /*날씨*/
-#ww_73df1f3b67ed7 {border-radius: 20px; }
-
+#ww_73df1f3b67ed7 {border-radius: 20px; width:100px;}
 
 /*메인2*/
-#main2{width:100%; height:300px; margin:0 auto; text-align:center; overflow: visible;
-display:flex; justify-content:center; align-items: center; 
-background-image: url("resources/banner2/bg_network.jpg");
-background-size:2000px; background-position: center; background-repeat:no-repeat; position:absolute;}
-
-
+#main2{display:none}
   
 /*소형배너*/
 #banner, #banner2 {width:100px; height:auto;overflow:hidden; box-shadow:0px 0px 10px rgba(0, 0, 0, 0.8); 

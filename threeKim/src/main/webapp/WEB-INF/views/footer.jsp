@@ -30,8 +30,14 @@ footer {background-color:#eeeeee; height:150px; display:flex; justify-content:ce
 .footer_R h2{text-align:left;}
 @media (max-width: 1500px) {
   footer{width: 1500px;}}
-@media (max-width: 950px) {
- footer{width: auto;}
+@media (min-width: 300px) and (max-width: 940px)  {
+ footer {background-color:#eeeeee; height:150px; display:flex; justify-content:center; align-items:center; width: auto;}
+.foot {display: flex; align-items: center;}
+.footer_L{font-family:'GangwonEdu_OTFBoldA'; font-size: 5px;  font-weight:bold; margin-right:20px; margin-left:20px;}
+.footer_R{font-family:'GangwonEdu_OTFBoldA'; font-size: 3px;  font-weight:bold; margin-right:20px; margin-left:20px;}
+.footer_L h1{font-size: 5px;font-family: 'KCC-Ganpan'; }
+.footer_R h2{text-align:left; }
+}
  
 </style>
 
