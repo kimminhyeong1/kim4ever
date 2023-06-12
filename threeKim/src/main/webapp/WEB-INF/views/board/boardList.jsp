@@ -103,7 +103,14 @@ li{list-style:none;}
 										<td><a
 											href="${pageContext.request.contextPath}/board/boardNoticeContent.do?bidx=${bv.bidx}">
 												${bv.subject}</a></td>
-										<td>${bv.writer}</td>
+											<td>
+										  <c:if test="${memberType == '관리자'}">
+										    관리자 ${bv.writer}
+										  </c:if>
+										  <c:if test="${memberType != '관리자'}">
+										    ${bv.writer}
+										  </c:if>
+										</td>
 										<td>${bv.writeday.substring(0, 10)}</td>
 										<td>${bv.boardView}</td>
 									</tr>	
@@ -155,7 +162,16 @@ li{list-style:none;}
 						        
 										<a 	href="${pageContext.request.contextPath}/board/boardQnaContent.do?bidx=${bv.bidx}">
 												${bv.subject} </a></td>
-										<td>${bv.writer}</td>
+												
+										<td>
+										  <c:if test="${memberType == '관리자'}">
+										    관리자 ${bv.writer}
+										  </c:if>
+										  <c:if test="${memberType != '관리자'}">
+										    ${bv.writer}
+										  </c:if>
+										</td>
+
 										<td>${bv.writeday.substring(0, 10)}</td>
 										<td>${bv.boardView}</td>
 									</tr>	
@@ -211,7 +227,14 @@ li{list-style:none;}
 										<td><a
 											href="${pageContext.request.contextPath}/board/boardFaqContent.do?bidx=${bv.bidx}">
 												${bv.subject} </a></td>
-										<td>${bv.writer}</td>
+											<td>
+										  <c:if test="${memberType == '관리자'}">
+										    관리자 ${bv.writer}
+										  </c:if>
+										  <c:if test="${memberType != '관리자'}">
+										    ${bv.writer}
+										  </c:if>
+										</td>
 										<td>${bv.writeday.substring(0, 10)}</td>
 										<td>${bv.boardView}</td>
 									</tr>	
