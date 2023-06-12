@@ -11,7 +11,7 @@ ArrayList<BikeJoinVo> alist = (ArrayList<BikeJoinVo>)request.getAttribute("alist
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>모임 신고 내역 리스트</title>
 <style>
 /*리셋코드*/
 
@@ -45,10 +45,10 @@ li{list-style:none;}
 #content table {width:70%; border-collapse:collapse; margin:0 auto; line-height:50px; font-size:20px;font-family:'omyu_pretty'; font-size:24px;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
-#content table tr th:nth-child(1){width:20px;}
-#content table tr th:nth-child(2){width:100px;}
+#content table tr th:nth-child(1){width:60px;}
+#content table tr th:nth-child(2){width:70px;}
 #content table tr th:nth-child(3){width:95px;}
-#content table tr th:nth-child(4){width:80px;}
+#content table tr th:nth-child(4){width:110px;}
 #content table tr th:nth-child(5){width:40px;}
 #content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
@@ -56,15 +56,15 @@ li{list-style:none;}
 #content .search select {width:120px;height:30px;font-size:14px;padding:5px;}
 #content .search input[type="text"] {width:200px;height:17px;font-size:14px;padding:5px;}
 #content .search button {width:80px;height:30px;font-size:14px;padding:5px;}
-#content #memberList{color: #ff7700; margin-right:10px;} 
-#content #memberOutList{color: #000;} 
+#content #gatheringList{color: #000; margin-right:10px;} 
+#content #GReportList{color: #ff7700;} 
 .form-table input[type="submit"] {width:100px; height:30px; text-align:center; font-family: 'omyu_pretty'; font-size:15px; border-radius:10px; border:0px solid black; background:#ff9933;}
 .form-table select,.form-table input[type="text"] { width:100px; height:30px; text-align:center; font-family: 'omyu_pretty'; font-size:15px; border-radius:10px; }
 
 </style>
 <script type="text/javascript">
 	function fnDelete(memberId) {
-		if(confirm("정말 삭제하시겠습니까?")) {
+		if(confirm("정말 모임을 삭제하시겠습니까?")) {
 			location.href='<%=request.getContextPath()%>/admin/adminmemberDelete.do?memberId='+memberId;
 		}
 	}
@@ -77,15 +77,15 @@ li{list-style:none;}
 	<%@include file="../header4.jsp"%>
 	
 	<div id="content">
-	<h2><a id="memberList" href="${pageContext.request.contextPath}/admin/adminmemberList.do" >회원 리스트</a><a id="memberOutList" href="${pageContext.request.contextPath}/admin/adminmemberOutList.do">탈퇴 회원 리스트</a></h2>
-	<form action="${pageContext.request.contextPath}/admin/adminmemberList.do" method="get">
+	<h2><a id="gatheringList" href="${pageContext.request.contextPath}/admin/admingatheringList.do" >모임 리스트</a><a id="GReportList" href="${pageContext.request.contextPath}/admin/adminGReportList.do">모임 신고 내역</a></h2>
+	<form action="${pageContext.request.contextPath}/admin/admingatherList.do" method="get">
 		<table class="form-table" border=0 style="text-align: left; width: 400px;">
 			<tr>
 				<td>
 				<select id="searchType" name="searchType">
-					<option value="memberId">아이디</option> 
-					<option value="memberName">이름</option>
-					<option value="memberType">등급</option>
+					<option value="memberId">모임명</option> 
+					<option value="memberName">모임장</option>
+					<option value="memberType">신고 내용</option>
 				</select>
 				</td>		
 				<td><input type="text" id="keyword" name="keyword"></td>
@@ -93,48 +93,24 @@ li{list-style:none;}
 			</tr>
 		</table>
 		
-		
-		
-		
-		<!--  
-		<div class="search">
-			<select id="searchType" name="searchType">
-				<option value="memberId">아이디</option> 
-				<option value="memberName">이름</option>
-				<option value="memberType">등급</option>
-			</select>
-			<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요"/>
-			<button type="submit" id="searchBtn">검색</button>
-		</div> -->
 	</form>
 		
 		<table>
 				<tr>
-					<th>아이디</th>
-					<th>이름</th>
-					<th>가입일</th>
-					<th>등급</th>
-					<th>삭제</th>
+					<th>모임명</th>
+					<th>모임장</th>
+					<th>모임 생성일</th>
+					<th>신고 내용</th>
 				</tr>
 				
-				<c:forEach var="bjv" items="${alist}">
+		
 					<tr>
-						<td><a href="adminmemberListProfile.do?memberId=${bjv.memberId}">${bjv.memberId}</a></td>
-						<td>${bjv.memberName}</td>
-						<td>${bjv.writeDay.substring(0, 10)}</td>
-						<td>${bjv.memberType}</td>
-						<td>
-							<c:choose>
-								<c:when test="${bjv.memberType eq '관리자'}">  
-									삭제금지
-								</c:when>
-								<c:otherwise> 
-									<button type="button" onclick="fnDelete('${bjv.memberId}');">삭제</button>
-								</c:otherwise>
-							</c:choose>
-						</td>
+						<td>자전거싫어</td>
+						<td>다싫어</td>
+						<td>2023-05-05</td>
+						<td>부적절한 모임명</td>						
 					</tr>
-				</c:forEach>
+			
 		</table>
 		<table>
 			<tr>

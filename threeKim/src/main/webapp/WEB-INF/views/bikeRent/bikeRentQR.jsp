@@ -29,13 +29,13 @@
                         </div>
                          <div class="QRcard">
                             <a href="${pageContext.request.contextPath}/bikeRent/bikeRentDetail/${ebkidx2}/view.do"><img class="QRImg" src="data:image/png;base64,${QRCode2}" alt=""></a>
-                            <p>ELE1</p>
+                            <p>NOR2</p>
                         </div>
                          <div class="QRcard">
                             <a href="${pageContext.request.contextPath}/bikeRent/bikeRentDetail/${ebkidx3}/view.do"><img class="QRImg" src="data:image/png;base64,${QRCode3}" alt=""></a>
-                            <p>ELE2</p>
+                            <p>NOR3</p>
                         </div>  
-					</div>
+					</div>					
 				</div>
 			</section>
 		</main>

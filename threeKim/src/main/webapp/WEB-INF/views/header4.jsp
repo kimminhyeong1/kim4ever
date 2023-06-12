@@ -152,7 +152,7 @@ header{width: 1250px;margin: 35px auto 70px;text-align: center;}
 		<p onclick="location.href='<%=request.getContextPath()%>/admin/adminbikeList.do'">자전거 관리</p>
 		<p onclick="location.href='<%=request.getContextPath()%>/admin/adminrentalshopList.do'">대여소 관리</p>
 		<p onclick="location.href='<%=request.getContextPath()%>/admin/adminbikeError.do'">신고내역</p>
-		<p onclick="location.href='<%=request.getContextPath()%>/admin/gSearch.do'">모임 관리</p>
+		<p onclick="location.href='<%=request.getContextPath()%>/admin/admingatheringList.do'">모임 관리</p>
 	</div>
 </header>
 	
