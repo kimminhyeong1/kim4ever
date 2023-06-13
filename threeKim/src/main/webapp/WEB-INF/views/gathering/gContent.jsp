@@ -170,7 +170,7 @@
 					<div><span>...</span></div>						
 				</div>
 				<div><button class="gBtn">초대하기</button></div>
-				<div><button class="gBtn">더보기</button></div>			
+				<div><button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gMemberList.do'">더보기</button></div>			
 			</div>
 			<div id="gSchedule">
 				<div>모임 일정</div>
