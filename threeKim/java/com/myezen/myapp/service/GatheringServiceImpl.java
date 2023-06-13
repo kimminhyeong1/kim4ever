@@ -29,6 +29,7 @@ import com.myezen.myapp.domain.ErrorVo;
 import com.myezen.myapp.domain.GatheringJoinVo;
 import com.myezen.myapp.domain.Gathering_InfoVo;
 import com.myezen.myapp.domain.MemberVo;
+import com.myezen.myapp.domain.SearchCriteria;
 import com.myezen.myapp.persistance.BikeRentService_Mapper;
 import com.myezen.myapp.persistance.GatheringService_Mapper;
 import com.myezen.myapp.util.AESUtil;
@@ -161,6 +162,16 @@ public class GatheringServiceImpl implements GatheringService {
 	public int gatheringWish(int giidx, int midx) {
 		int value = gsm.gatheringWish(giidx,midx);
 		return value;
+	}
+	//모임 검색하기
+	@Override
+	public ArrayList<GatheringJoinVo> searchGatherings(SearchCriteria scri) {
+		if (scri.getKeyword() == null) {
+	        scri.setKeyword(""); // null인 경우 빈 문자열로 설정
+	    }
+		ArrayList<GatheringJoinVo> gjvmylist = gsm.searchGatherings(scri);
+		
+		return gjvmylist;
 	}
 
 

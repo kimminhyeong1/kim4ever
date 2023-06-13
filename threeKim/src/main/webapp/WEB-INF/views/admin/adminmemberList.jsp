@@ -52,14 +52,12 @@ li{list-style:none;}
 #content table tr th:nth-child(5){width:40px;}
 #content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
-#content .search {text-align:right; margin-right:150px;}
+#content .search {text-align:right; margin-right:185px; margin-bottom:40px;}
 #content .search select {width:120px;height:30px;font-size:14px;padding:5px;}
 #content .search input[type="text"] {width:200px;height:17px;font-size:14px;padding:5px;}
 #content .search button {width:80px;height:30px;font-size:14px;padding:5px;}
 #content #memberList{color: #ff7700; margin-right:10px;} 
 #content #memberOutList{color: #000;} 
-.form-table input[type="submit"] {width:100px; height:30px; text-align:center; font-family: 'omyu_pretty'; font-size:15px; border-radius:10px; border:0px solid black; background:#ff9933;}
-.form-table select,.form-table input[type="text"] { width:100px; height:30px; text-align:center; font-family: 'omyu_pretty'; font-size:15px; border-radius:10px; }
 
 </style>
 <script type="text/javascript">
@@ -79,24 +77,6 @@ li{list-style:none;}
 	<div id="content">
 	<h2><a id="memberList" href="${pageContext.request.contextPath}/admin/adminmemberList.do" >회원 리스트</a><a id="memberOutList" href="${pageContext.request.contextPath}/admin/adminmemberOutList.do">탈퇴 회원 리스트</a></h2>
 	<form action="${pageContext.request.contextPath}/admin/adminmemberList.do" method="get">
-		<table class="form-table" border=0 style="text-align: left; width: 400px;">
-			<tr>
-				<td>
-				<select id="searchType" name="searchType">
-					<option value="memberId">아이디</option> 
-					<option value="memberName">이름</option>
-					<option value="memberType">등급</option>
-				</select>
-				</td>		
-				<td><input type="text" id="keyword" name="keyword"></td>
-				<td><input type="submit" id="searchBtn" value="검색"></td> 
-			</tr>
-		</table>
-		
-		
-		
-		
-		<!--  
 		<div class="search">
 			<select id="searchType" name="searchType">
 				<option value="memberId">아이디</option> 
@@ -105,7 +85,7 @@ li{list-style:none;}
 			</select>
 			<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요"/>
 			<button type="submit" id="searchBtn">검색</button>
-		</div> -->
+		</div>
 	</form>
 		
 		<table>
