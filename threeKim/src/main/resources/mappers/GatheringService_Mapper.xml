@@ -26,15 +26,19 @@
 	</insert>
 	<!-- 모임 리스트 가져오기 -->
 	<select id="gatheringListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo">
-		SELECT * FROM GATHERING_INFO1234 a
+		SELECT a.*, b.*, COALESCE(c.gwidx, 0) AS gwidx
+		FROM GATHERING_INFO1234 a
 		JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
+		LEFT JOIN gathering_wish1234 c ON c.GIIDX = a.GIIDX
 		WHERE b.IMGTYPE = 'GT'
 	</select>
 	<!--  모임 나의 리스트 가져오기 -->
 	<select id="gatheringMyListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int"> 
-		SELECT a.GIIDX,a.GINFONAME,a.GINFOBRIEFINTRODUCTION,a.GINFOCAPACITY,a.GINFOPARTICIPATING,b.IMAGENAME FROM GATHERING_INFO1234 a
+		SELECT a.GIIDX,a.GINFONAME,a.GINFOBRIEFINTRODUCTION,a.GINFOCAPACITY,a.GINFOPARTICIPATING,b.IMAGENAME, COALESCE(c.gwidx, 0) AS gwidx 
+		FROM GATHERING_INFO1234 a
 		JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
 		JOIN GATHERING1234 c ON c.GIIDX = a.GIIDX
+		LEFT JOIN gathering_wish1234 c ON c.GIIDX = a.GIIDX
 		WHERE b.IMGTYPE = 'GT' AND c.midx = #{0} AND a.GINFODELYN = 'N'
 	</select>
 	<!--  모임 소개페이지 리스트 가져오기 -->
@@ -83,13 +87,16 @@
 	  SET gInfoParticipating = gInfoParticipating + 1
 	  WHERE GIIDX = #{0}
 	</update>
-	
+	<!-- 찜하기 -->
 	<insert  id="gatheringWish" parameterType="int" >
 	 	INSERT INTO gathering_wish1234 (gwidx,GIIDX,MIDX)
 		VALUES(gwidx_seq.NEXTVAL, #{0},#{1}) 
 	</insert>
-	
-	
+	<!-- 찜삭제 -->
+	<delete id="gatheringWishDel" parameterType="int">
+	  DELETE FROM gathering_wish1234
+	  WHERE giidx = #{0} and midx = #{1}
+	</delete>
 	
 	
 	

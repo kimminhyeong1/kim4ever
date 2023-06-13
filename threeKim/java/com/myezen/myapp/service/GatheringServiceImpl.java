@@ -164,6 +164,14 @@ public class GatheringServiceImpl implements GatheringService {
 	}
 
 
+
+	@Override
+	public int gatheringWishDel(int giidx, int midx) {
+		int value = gsm.gatheringWishDel(giidx,midx);
+		return value;
+	}
+
+
 	
 	
 	

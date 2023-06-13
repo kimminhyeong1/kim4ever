@@ -258,4 +258,19 @@ public class GatheringController {
 		hm.put("value",value);//0은 거짓 1은 참
 		return hm;
 	}
+//찜삭제
+	@ResponseBody
+	@RequestMapping(value="/WishDel.do")
+	public HashMap<String, Object> WishDel(@RequestParam("giidx") int giidx,@RequestParam("midx") int midx ) {
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		System.out.println("찜체크");
+		//찜이 되어있는지 확인하기
+		
+		//찜하기
+		int value = gs.gatheringWishDel(giidx,midx);
+		//찜삭제하기
+		
+		hm.put("value",value);//0은 거짓 1은 참
+		return hm;
+	}
 }

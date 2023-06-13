@@ -38,8 +38,11 @@ public interface GatheringService {
 	public ArrayList<GatheringJoinVo> gatheringOneListSelect(int giidx);
 	//모임 가입하기
 	public int gatheringJoin(int giidx, int midx);
-	/*찜하기*/
+	/*찜*/
+	//1.찜하기
 	public int gatheringWish(int giidx, int midx);
+	//2.찜삭제
+	public int gatheringWishDel(int giidx, int midx);
 	
 	
 	

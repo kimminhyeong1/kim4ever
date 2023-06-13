@@ -121,7 +121,8 @@ public class GatheringJoinVo {//모임조인
 	private String memberType;
 	private String writeDay;
 	
-	
+	//모임 찜
+	private int gwidx;//모임 찜 번호
 
 	public int getImidx() {
 		return imidx;
@@ -657,6 +658,14 @@ public class GatheringJoinVo {//모임조인
 
 	public void setgInfoJoinType(String gInfoJoinType) {
 		this.gInfoJoinType = gInfoJoinType;
+	}
+
+	public int getGwidx() {
+		return gwidx;
+	}
+
+	public void setGwidx(int gwidx) {
+		this.gwidx = gwidx;
 	}
 	
 	
