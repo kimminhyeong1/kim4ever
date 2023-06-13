@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert </title>
+<title>타:바 </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 /*리셋코드*/
@@ -125,7 +125,7 @@ margin: 0;   font-family: 'omyu_pretty';}
 
 /*****모바일 넓이***/
 @media (min-width: 300px) and (max-width: 940px)  {
-#main{width:auto; margin:0 auto;  border:1px solid #white; font-family: 'IM_Hyemin-Bold';}
+#main{width:auto; heigh:50vh; margin:0 auto;  border:1px solid #white; font-family: 'IM_Hyemin-Bold';}
 #main #content{width:auto; height: auto !important;/*우선권*/}
 #main #content img{width:auto; height:600px;}
 
@@ -135,7 +135,7 @@ body {width: 100vw !important;   height: 100vh; }
 body, ul, li, h1, h2 {margin:0; padding:0; list-style:none; width:auto;}
 a{color:inherit; text-decoration:none;}
 /* 슬라이더 1 시작 */
-.slider-1 {height:170px; width:100%; position:relative; float:left;}
+.slider-1 {height:30vh; width:100%; position:relative; float:left;}
 /* 슬라이더 1 - 페이지 버튼 */
 .slider-1 > .page-btns {text-align:center; position:absolute; bottom:10px; left:0; width:100%;}
 

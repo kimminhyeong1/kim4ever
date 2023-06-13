@@ -55,17 +55,27 @@
 	</select>
 	<!-- 모임상세리스트 가져오기-->
 	<select id="gatheringOneListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int"> 
-		SELECT 
+ 		SELECT 
 		  a.GIIDX,GINFONAME,GINFOAREA,GINFOBRIEFINTRODUCTION,GINFOAREAINTRODUCTION,GINFOCAPACITY,GINFOPARTICIPATING
 		  ,IMAGENAME,IMGTYPE
 		  ,GATHERINGAPPROVALTYPE,GATHERINGMEMBERTYPE
-		  ,c.MIDX,MEMBERNAME
+		  ,c.MIDX
+		  ,d.MEMBERNAME,d.MEMBERPROFILE
 		FROM GATHERING_INFO1234 a
 		JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
 		JOIN GATHERING1234 c ON a.GIIDX = c.giidx
 		JOIN member1234 d ON c.midx = d.midx
 		WHERE b.IMGTYPE = 'G' AND a.GINFODELYN = 'N' AND c.GATHERINGMEMBERTYPE = 'TL'  AND a.GIIDX = #{0}
 	</select>
+	<!-- 모임멤버 리스트 가져오기 -->
+	<select id="gatheringMemberListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int"> 
+		SELECT a.*,b.MEMBERPROFILE
+		FROM GATHERING1234 a
+		JOIN MEMBER1234 b ON b.midx = a.midx
+		WHERE a.GIIDX = 62 AND b.MEMBERDELYN = 'N' AND a.GATHERINGMEMBERDELYN = 'N'
+	</select>
+	
+	
 	
 	<!-- 모임 가입타입 확인하기-->
 	<select id="gatheringJoinTypeCheck" resultType="com.myezen.myapp.domain.Gathering_InfoVo" parameterType="int"> 

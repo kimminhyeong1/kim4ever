@@ -83,8 +83,7 @@ li{list-style:none;}
 					<tr>
 						<th>작성자</th>
 
-						<td><%= session.getAttribute("memberName") %></td>
-					
+						<td><%= session.getAttribute("memberName") %></td>					
 					</tr>
 					
 					<tr>

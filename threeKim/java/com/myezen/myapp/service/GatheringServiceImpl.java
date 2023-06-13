@@ -215,9 +215,19 @@ public class GatheringServiceImpl implements GatheringService {
 
 
 	@Override
+	//모임 일정 상세 보기
 	public Gathering_ScheduleVO gatheringScheduleView(int gsidx, int giidx) {
 		Gathering_ScheduleVO gsv = gsm.gatheringScheduleView(gsidx,giidx);
 		return gsv;
+	}
+
+
+
+	@Override
+	//모임멤버 리스트 가져오기
+	public ArrayList<GatheringJoinVo> gatheringMemberListSelect(int giidx) {
+		ArrayList<GatheringJoinVo> gjvmlist = gsm.gatheringMemberListSelect(giidx);
+		return gjvmlist;
 	}
 
 

@@ -120,6 +120,8 @@ public class GatheringJoinVo {//모임조인
 	private String memberAddr; //회원 주소
 	private String memberType;
 	private String writeDay;
+	private String memberProfile; //회원 프로필
+	private String memberIntro; //회원 간단소개
 	
 	//모임 찜
 	private int gwidx;//모임 찜 번호
@@ -666,6 +668,22 @@ public class GatheringJoinVo {//모임조인
 
 	public void setGwidx(int gwidx) {
 		this.gwidx = gwidx;
+	}
+
+	public String getMemberProfile() {
+		return memberProfile;
+	}
+
+	public void setMemberProfile(String memberProfile) {
+		this.memberProfile = memberProfile;
+	}
+
+	public String getMemberIntro() {
+		return memberIntro;
+	}
+
+	public void setMemberIntro(String memberIntro) {
+		this.memberIntro = memberIntro;
 	}
 	
 	

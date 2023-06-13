@@ -123,7 +123,7 @@
 				<div id="gIntro">
 					<div>${gjvlist[0].gInfoName}</div>
 					<div>${gjvlist[0].gInfoArea}</div>
-					<div><img alt="모임장 프로필" src="../resources/bikeimg/mukbang2.gif"></div>
+					<div><img alt="모임장 프로필" src="../resources/MemberProfile/${gjvlist[0].memberProfile}"></div>
 					<div>모임장: ${gjvlist[0].memberName}</div> 
 					<div>${gjvlist[0].gInfoAreaIntroduction} </div>
 				</div>
@@ -157,16 +157,9 @@
 			<div id="gMembers">
 				<div>모임 멤버(${gjvlist[0].gInfoParticipating}명/${gjvlist[0].gInfoCapacity}명)<span> 5+[승인대기]</span></div>
 				<div>
-					<div><img alt="" src="../resources/bikeimg/mukbang1.jpg"></div>
-					<div><img alt="" src="../resources/bikeimg/mukbang1.jpg"></div>
-					<div><img alt="" src="../resources/bikeimg/mukbang1.jpg"></div>
-					<div><img alt="" src="../resources/bikeimg/mukbang1.jpg"></div>
-					<div><img alt="" src="../resources/bikeimg/mukbang1.jpg"></div>
-					<div><img alt="" src="../resources/bikeimg/mukbang1.jpg"></div>
-					<div><img alt="" src="../resources/bikeimg/mukbang1.jpg"></div>
-					<div><img alt="" src="../resources/bikeimg/mukbang1.jpg"></div>
-					<div><img alt="" src="../resources/bikeimg/mukbang1.jpg"></div>
-					<div><img alt="" src="../resources/bikeimg/mukbang1.jpg"></div>
+					<c:forEach var="gjvm" items="${gjvmlist}">
+					    <div><img alt="" src="../resources/MemberProfile/${gjvm.memberProfile}"></div>
+					</c:forEach> 
 					<div><span>...</span></div>						
 				</div>
 				<div><button class="gBtn">초대하기</button></div>
