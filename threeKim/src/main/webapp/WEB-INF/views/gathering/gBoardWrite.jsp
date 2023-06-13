@@ -25,14 +25,14 @@
 		<%@include file="../header2.jsp" %>
 		<%@include file="header3.jsp" %>
 		<main id="main">
-			<form action="${pageContext.request.contextPath}/calendar/create" method="POST">
+			<form action="${pageContext.request.contextPath}/gathering/gBoardWriteAction.do" method="POST">
 				<section class="gContainer gSetContainer">
 					<div>
 						<div> 
 							<div>
 								<h3>게시글 카테고리</h3>
 							</div>
-							<select>
+							<select name="gBoardCategory">
 								<option>공지사항</option>	
 								<option>취미</option>	
 								<option>일상</option>	
@@ -44,11 +44,11 @@
 							<div>
 								<h3>게시글 제목</h3>
 							</div>
-							<input class="gInput" type="text" placeholder="내용을 입력해주세요">											
+							<input class="gInput" type="text" name="gBoardTitle" placeholder="내용을 입력해주세요">											
 						</div>
 						<div>
 							<h3>게시글 내용</h3>
-							<textarea rows="5" cols="5" placeholder="글자제한:500자이내"></textarea>		
+							<textarea rows="5" cols="5" name="gBoardContents" placeholder="글자제한:500자이내"></textarea>		
 						</div>
 					</div><!-- 끝-->
 					<div>

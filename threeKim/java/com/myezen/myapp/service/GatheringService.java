@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.ErrorVo;
 import com.myezen.myapp.domain.GatheringJoinVo;
+import com.myezen.myapp.domain.Gathering_BoardVO;
 import com.myezen.myapp.domain.Gathering_ScheduleVO;
 import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.domain.SearchCriteria;
@@ -63,8 +64,11 @@ public interface GatheringService {
 	//모임일정 상세보기 가져오기
 	public Gathering_ScheduleVO gatheringScheduleView(int gsidx,int giidx);
 	
-
-	
+	/*모임 게시판*/
+	//모임 게시글 쓰기
+	public int gatheringBoardWrite(Gathering_BoardVO gbv);
+	//모임 게시글 리스트 가져오기
+	public ArrayList<GatheringJoinVo> gatheringBoardListSelect(int giidx);
 
 
 

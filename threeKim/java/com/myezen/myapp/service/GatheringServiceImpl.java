@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonFormat.Value;
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.ErrorVo;
 import com.myezen.myapp.domain.GatheringJoinVo;
+import com.myezen.myapp.domain.Gathering_BoardVO;
 import com.myezen.myapp.domain.Gathering_InfoVo;
 import com.myezen.myapp.domain.Gathering_ScheduleVO;
 import com.myezen.myapp.domain.MemberVo;
@@ -228,6 +229,24 @@ public class GatheringServiceImpl implements GatheringService {
 	public ArrayList<GatheringJoinVo> gatheringMemberListSelect(int giidx) {
 		ArrayList<GatheringJoinVo> gjvmlist = gsm.gatheringMemberListSelect(giidx);
 		return gjvmlist;
+	}
+
+
+
+	@Override
+	//모임 게시글 쓰기
+	public int gatheringBoardWrite(Gathering_BoardVO gbv) {
+		int value = gsm.gatheringBoardWrite(gbv);
+		return value;
+	}
+
+
+
+	@Override
+	//모임 게시글 리스트 가져오기
+	public ArrayList<GatheringJoinVo> gatheringBoardListSelect(int giidx) {
+		ArrayList<GatheringJoinVo> gjvblist = gsm.gatheringBoardListSelect(giidx);
+		return gjvblist;
 	}
 
 

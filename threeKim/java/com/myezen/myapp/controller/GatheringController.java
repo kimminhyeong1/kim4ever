@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.annotation.JsonFormat.Value;
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.GatheringJoinVo;
+import com.myezen.myapp.domain.Gathering_BoardVO;
 import com.myezen.myapp.domain.Gathering_ScheduleVO;
 import com.myezen.myapp.domain.ScheduleVo;
 import com.myezen.myapp.domain.SearchCriteria;
@@ -210,16 +212,58 @@ public class GatheringController {
 	
 	//모임 게시판
 	@RequestMapping(value="/gBoardList.do")
-	public String gBoardList() {
+	public String gBoardList(
+			HttpServletRequest request,
+			Model md
+			) {
+		HttpSession session = request.getSession();
+	    Object Ogiidx = session.getAttribute("giidx");
+
+
+	    int giidx=(int)Ogiidx;
+	    ArrayList<GatheringJoinVo> gjvblist = gs.gatheringBoardListSelect(giidx);
+    	md.addAttribute("gjvblist", gjvblist);
+		
+		
+		
+		
 		
 		return "gathering/gBoardList";
 	}
 	//모임 게시판 작성
 	@RequestMapping(value="/gBoardWrite.do")
-	public String gBoardWrite() {
+	public String gBoardWrite(
+			) {
 		
 		return "gathering/gBoardWrite";
-	}	
+	}
+	//모임 게시판 작성하기 버튼 클릭시
+	@RequestMapping(value="/gBoardWriteAction.do")
+	public String gBoardWriteAction(
+			@ModelAttribute Gathering_BoardVO gbv,
+			HttpServletRequest request
+			) {
+		HttpSession session = request.getSession();
+	    Object Omidx = session.getAttribute("midx");
+	    Object Ogiidx = session.getAttribute("giidx");
+	    if (Omidx == null) {//midx가 없으면 진입불가
+	    	return "redirect:/gathering/gList.do";
+		}
+	    gbv.setMidx((int)Omidx);
+	    gbv.setGiidx((int)Ogiidx);
+	    
+		System.out.println(gbv.getgBoardCategory());
+		System.out.println(gbv.getgBoardTitle());
+		System.out.println(gbv.getgBoardContents());
+		
+		int value = gs.gatheringBoardWrite(gbv);
+		
+		
+		
+		return "redirect:/gathering/gBoardList.do";
+	}
+	
+	
 	//모임 게시판 수정
 	@RequestMapping(value="/gBoardModify.do")
 	public String gBoardModify() {
