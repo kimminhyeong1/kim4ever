@@ -56,7 +56,10 @@ public interface MemberService {
 	public String getAccessToken(String authorize_code) throws Throwable;
 	//카카오유저정보
 	public HashMap<String, Object> getUserInfo(String access_Token) throws Throwable;
-	
+	//내가 쓴 게시글
 	public ArrayList<BikeJoinVo> getMyPosts(String memberName);
 
+	public void memberUpdateIntro(MemberVo mv);
+
+	
 }

@@ -195,6 +195,7 @@ public class GatheringServiceImpl implements GatheringService {
 
 
 
+
 	@Override
 	//모임 일정 만들기
 	public int gatheringScheduleMake(Gathering_ScheduleVO gsv) {
@@ -220,7 +221,6 @@ public class GatheringServiceImpl implements GatheringService {
 	}
 
 
-	
 	
 	
 

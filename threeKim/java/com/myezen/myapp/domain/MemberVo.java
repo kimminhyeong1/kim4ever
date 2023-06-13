@@ -12,6 +12,9 @@ public class MemberVo {//회원 테이블
 	private String memberAddr; //회원 주소
 	private String memberType;
 	private String writeDay;
+	private String memberProfile;
+	private String memberIntro;
+	
 	
 	public int getMidx() {
 		return midx;
@@ -74,6 +77,17 @@ public class MemberVo {//회원 테이블
 		this.writeDay = writeDay;
 	}
 
-	
+	public String getMemberProfile() {
+		return memberProfile;
+	}
+	public void setMemberProfile(String memberProfile) {
+		this.memberProfile = memberProfile;
+	}
+	public String getMemberIntro() {
+		return memberIntro;
+	}
+	public void setMemberIntro(String memberIntro) {
+		this.memberIntro = memberIntro;
+	}
 	
 }

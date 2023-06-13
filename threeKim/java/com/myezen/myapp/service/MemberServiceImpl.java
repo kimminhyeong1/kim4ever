@@ -336,16 +336,24 @@ public class MemberServiceImpl implements MemberService {
 		int value = msm.kakaoMemberInsert(memberId,memberPwd,memberName);
 		return value;
 	}
+	//내가 쓴 게시글
 	@Override
 	public ArrayList<BikeJoinVo> getMyPosts(String memberName) {
 
 		 return msm.getMyPosts(memberName);
 	}
+	//회원정보 수정 하기 전에 비밀번호 확인
 	@Override
 	public MemberVo getMemberByMemberPwd(String memberPwd) {
 	
 		return msm.getMemberByMemberPwd(memberPwd);
 	}
+	@Override
+	public void memberUpdateIntro(MemberVo mv) {
+		msm.memberUpdateIntro(mv);
+		
+	}
+	
 	
 
 }

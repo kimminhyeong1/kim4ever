@@ -53,7 +53,6 @@
 							</div>
 						</c:forEach>
 					</c:if>
-			
 				</div>
 				<div><button class="gBtn2" >더보기</button></div>
 				<div class="gContentTitle" >

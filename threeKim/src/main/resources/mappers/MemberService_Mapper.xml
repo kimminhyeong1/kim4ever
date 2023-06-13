@@ -111,10 +111,13 @@
 	<select id="socialMemberCheck" parameterType="String" resultType="int">
 		select count(*) from member1234 where MEMBERDELYN='N' and memberId=#{0}
 	</select>
-	
+	<!-- 내가 쓴 게시글 -->
 	 <select id="getMyPosts" resultType="com.myezen.myapp.domain.BikeJoinVo" parameterType="String">
 		SELECT * FROM board1234 WHERE writer = #{memberName} and boarddelyn = 'N' 
     </select>
 	
+	 <update id="memberUpdateIntro" parameterType="mv">
+        UPDATE member1234 SET memberIntro = #{memberIntro} WHERE midx = #{midx}
+    </update>
     
 </mapper>

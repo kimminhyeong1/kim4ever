@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">  
+		 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>   
 		 <style type="text/css">
 		 	/*검색부분*/
 			#SearchPart{margin: 30px 0 30px 0; position: relative;}
@@ -29,29 +30,45 @@
 			</form>
 			
 			<div id="keywordMark">
-			<p>키워드 : <%= request.getParameter("keyword") %></p>
+			<%
+			  String keyword = request.getParameter("keyword");
+			  if (keyword != null && !keyword.isEmpty()) {
+			%>
+			  <p>키워드 : <%= keyword %></p>
+			<%
+			  }
+			%>
 			</div>
 			
 			<div class="gContentTitle" >
 				<h2>전주 모임 보기</h2>
 			</div>
 			<div class="gContent" >
-			 <c:forEach var="gjvmy" items="${gjvmylist}">
-				<div class="card" >
-					<img class="cardImg" src="../resources/GTImages/${gjvmy.imageName}">
-					<img class="cardWish" src="../resources/icon/heart.png" onclick="handleHeartClick(${gjvmy.giidx}, ${midx}, this)">
-					<h3 class="cardTitle">${gjvmy.gInfoName}</h3>
-					<p class="cardInfo">${gjvmy.gInfoBriefIntroduction}</p>
-					<p>(참여멤버${gjvmy.gInfoParticipating}/${gjvmy.gInfoCapacity})</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">구경하기</button>
-				</div>
-			</c:forEach>
+			 <c:if test="${not empty midx}">
+						<c:forEach var="gjvmy" items="${gjvmylist}">
+							<div class="card" >
+								<img class="cardImg" src="../resources/GTImages/${gjvmy.imageName}">
+								<c:choose>
+									<c:when test="${gjvmy.gwidx != 0}">
+										<img class="cardWish" src="../resources/icon/fullheart.png" onclick="handleHeartClick(${gjvmy.giidx}, ${midx}, this)">
+									</c:when>
+									<c:otherwise>
+										<img class="cardWish" src="../resources/icon/heart.png" onclick="handleHeartClick(${gjvmy.giidx}, ${midx}, this)">
+									</c:otherwise>
+								</c:choose>
+								<h3 class="cardTitle">${gjvmy.gInfoName}</h3>
+								<p class="cardInfo">${gjvmy.gInfoBriefIntroduction}</p>
+								<p>(참여멤버${gjvmy.gInfoParticipating}/${gjvmy.gInfoCapacity})</p>
+								<button class="gBtn" onclick="location.href='${pageContext.request.contextPath}/gathering/gContent.do?giidx=${gjvmy.giidx}'">들어가기</button>
+							</div>
+						</c:forEach>
+			</c:if>
 			</div>
 				
 			<div><button class="gBtn2" >더보기</button></div>
 			
 			<div class="gContentTitle" >
-				<h2>근처 모임 보기</h2>
+			<h2>근처 모임 보기</h2>
 			</div>
 			<div class="gContent" >
 				<div class="card" >
@@ -91,5 +108,68 @@
 		</section>
 	</main>
 	<%@include file="../footer.jsp" %>
+	<script>
+			function handleHeartClick(giidx, midx ,element) {
+				 
+				var imageSrc = element.src;
+				
+				 if (imageSrc.includes('fullheart.png')) {
+					
+					// AJAX 요청 전송
+					$.ajax({
+						url: '${pageContext.request.contextPath}/gathering/WishDel.do',
+						type: 'POST',
+						data: {
+							giidx: giidx,
+							midx: midx
+						},
+						success: function(data) {
+							
+							if (data.value == 1) {
+								alert("찜 삭제");
+								// src 속성을 업데이트하여 이미지를 변경합니다.
+								$(element).attr('src', '../resources/icon/heart.png');
+								return;
+							} else {
+								alert("찜 실패");
+								return false;
+							}
+						},
+						error: function(xhr, status, error) {
+							// AJAX 오류 처리
+							console.log('오류: ' + error);
+						}
+					});
+				 }
+				 else if (imageSrc.includes('heart.png')) { 
+					// AJAX 요청 전송
+					$.ajax({
+						url: '${pageContext.request.contextPath}/gathering/Wish.do',
+						type: 'POST',
+						data: {
+							giidx: giidx,
+							midx: midx
+						},
+						success: function(data) {
+							
+							if (data.value == 1) {
+								alert("찜 성공");
+								// src 속성을 업데이트하여 이미지를 변경합니다.
+								$(element).attr('src', '../resources/icon/fullheart.png');
+								return;
+							} else {
+								alert("찜 실패");
+								return false;
+							}
+						},
+						error: function(xhr, status, error) {
+							// AJAX 오류 처리
+							console.log('오류: ' + error);
+						}
+					});
+					
+				}
+			}
+		</script>
 	</body>
 </html>

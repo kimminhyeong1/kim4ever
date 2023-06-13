@@ -71,13 +71,13 @@ public class GatheringController {
 	    int midx = (int) session.getAttribute("midx");
 	    gjv.setMidx(midx);
 	    System.out.println(gjv.getgInfoJoinType());
-	   
-	    
 	    
 		int value = gs.gatheringCreate(gjv,GTImg,GImg);
 		
 		return "redirect:/gathering/gList.do";
 	}
+	
+
 //모임간단소개페이지
 	@RequestMapping(value="/gSimpleInfo.do")
 	public String gSimpleInfo(
@@ -281,8 +281,7 @@ public class GatheringController {
 //모임 검색
 	@RequestMapping(value="/gSearch.do")
 	public String gSearch(SearchCriteria scri, Model model) {
-		System.out.println("서치컨트롤러들어옴");
-		 scri.setSearchType("GINFONAME"); // 검색 유형 설정
+		scri.setSearchType("GINFONAME"); // 검색 유형 설정
 	    ArrayList<GatheringJoinVo> gjvmylist = gs.searchGatherings(scri);
 	    model.addAttribute("gjvmylist", gjvmylist);
 	    return "gathering/gSearch";
