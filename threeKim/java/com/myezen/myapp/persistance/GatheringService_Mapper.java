@@ -55,7 +55,7 @@ public interface GatheringService_Mapper {
 	public ArrayList<GatheringJoinVo> gatheringMyWishListSelect(int midx);		
 	//모임 검색하기
 	public ArrayList<GatheringJoinVo> searchGatherings(SearchCriteria scri);
-
+	public void uploadImage(byte[] imageData);
 	
 	
 	

@@ -49,7 +49,7 @@ public interface GatheringService {
 	//모임검색
 	public ArrayList<GatheringJoinVo> searchGatherings(SearchCriteria scri);
 
-	
+
 	
 	
 }

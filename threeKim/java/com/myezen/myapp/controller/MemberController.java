@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.myezen.myapp.domain.BikeJoinVo;
@@ -39,6 +40,7 @@ import com.google.api.client.json.JsonFactory;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
@@ -630,8 +632,32 @@ public class MemberController {
 		    }
 		}
 
-		
+		@PostMapping("/memberUpdateIntro.do")
+	    @ResponseBody
+	    public void memberUpdateIntro(
+	    		HttpSession session, 
+	    		@RequestParam("memberIntro") String memberIntro){
+			System.out.println("간단소개 컨트롤러 들어옴");
+			int midx = (Integer) session.getAttribute("midx");
+			 
+			MemberVo mv = new MemberVo();
+			mv.setMidx(midx);
+			mv.setMemberIntro(memberIntro);
 			
+			// 데이터베이스에 memberIntro 업데이트
+		    ms.memberUpdateIntro(mv);
+		    
+		 // 데이터베이스에서 업데이트된 memberIntro 값을 가져와 세션에 저장
+		 
+		
+	    }
+		
+		/////////////////////////////////////////////////////////////////
+		
+		
+		
+		//memberProfile
+		
 			
 		
 		
