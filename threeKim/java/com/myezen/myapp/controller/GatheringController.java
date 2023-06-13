@@ -217,7 +217,7 @@ public class GatheringController {
 	HttpSession session = request.getSession();
     Object omidx = session.getAttribute("midx");
     if (omidx != null) {
-    int midx = (int)omidx;
+    	int midx = (int)omidx;
     	ArrayList<GatheringJoinVo> gjvmylist = gs.gatheringMyListSelect(midx);
     	md.addAttribute("gjvmylist", gjvmylist);
 		
@@ -227,7 +227,19 @@ public class GatheringController {
 	}
 //찜한 모임 정보
 	@RequestMapping(value="/gMyWish.do")
-	public String gMyWish() {
+	public String gMyWish(
+			HttpServletRequest request,
+			Model md
+			) {
+		HttpSession session = request.getSession();
+	    Object omidx = session.getAttribute("midx");
+	    if (omidx != null) {
+	    	int midx = (int)omidx;
+	    	
+	    	ArrayList<GatheringJoinVo> gjvmywishlist = gs.gatheringMyWishListSelect(midx);
+	    	md.addAttribute("gjvmywishlist", gjvmywishlist);
+	    
+	    }
 		
 		return "gathering/gMyWish";
 	}

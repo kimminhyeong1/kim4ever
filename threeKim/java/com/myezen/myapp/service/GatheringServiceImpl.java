@@ -157,7 +157,7 @@ public class GatheringServiceImpl implements GatheringService {
 
 
 	@Override
-	/*찜하기*/
+	//찜하기
 	public int gatheringWish(int giidx, int midx) {
 		int value = gsm.gatheringWish(giidx,midx);
 		return value;
@@ -166,9 +166,19 @@ public class GatheringServiceImpl implements GatheringService {
 
 
 	@Override
+	//찜삭제
 	public int gatheringWishDel(int giidx, int midx) {
 		int value = gsm.gatheringWishDel(giidx,midx);
 		return value;
+	}
+
+
+
+	@Override
+	//모임 나의 찜 리스트 가져오기
+	public ArrayList<GatheringJoinVo> gatheringMyWishListSelect(int midx) {
+		ArrayList<GatheringJoinVo> gjvmywishlist = gsm.gatheringMyWishListSelect(midx);
+		return gjvmywishlist;
 	}
 
 

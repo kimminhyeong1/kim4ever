@@ -97,7 +97,15 @@
 	  DELETE FROM gathering_wish1234
 	  WHERE giidx = #{0} and midx = #{1}
 	</delete>
-	
+	<!--  모임 나의 찜 리스트 가져오기 -->
+	<select id="gatheringMyWishListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int"> 
+		SELECT a.GIIDX,a.GINFONAME,a.GINFOBRIEFINTRODUCTION,a.GINFOCAPACITY,a.GINFOPARTICIPATING,b.IMAGENAME, COALESCE(c.gwidx, 0) AS gwidx 
+		FROM GATHERING_INFO1234 a
+		JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
+		JOIN GATHERING1234 c ON c.GIIDX = a.GIIDX
+		JOIN gathering_wish1234 c ON c.GIIDX = a.GIIDX
+		WHERE b.IMGTYPE = 'GT' AND c.midx = #{0} AND a.GINFODELYN = 'N'
+	</select>	
 	
 	
 	

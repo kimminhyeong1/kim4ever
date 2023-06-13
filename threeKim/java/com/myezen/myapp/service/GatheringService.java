@@ -43,7 +43,8 @@ public interface GatheringService {
 	public int gatheringWish(int giidx, int midx);
 	//2.찜삭제
 	public int gatheringWishDel(int giidx, int midx);
-	
+	//모임 나의찜리스트 가져오기
+	public ArrayList<GatheringJoinVo> gatheringMyWishListSelect(int midx);	
 	
 	
 	
