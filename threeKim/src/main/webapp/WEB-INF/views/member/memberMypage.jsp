@@ -151,17 +151,18 @@ function previewImage(event) {
                     <div class="intro-container">
 					<h3>내 간단 소개</h3>
 					<c:choose>
-		                <c:when test="${empty mv.memberIntro}">
+		                <c:when test="${empty sessionScope.memberIntro}">
 		                    <input type="text" id="introInput" placeholder="멤버보기에 있는 소개입니다." value="">
 		                </c:when>
 		                <c:otherwise>
-		                    <span id="introText">${mv.memberIntro}</span>
+		                    <span id="introText">${sessionScope.memberIntro}</span>
 		                </c:otherwise>
 		            </c:choose>
 		            <div class="button-container2">
 		                <button onclick="writeIntro()">작성</button>
 		                <button onclick="editIntro()">수정</button>
 		                <button onclick="saveIntro()">확인</button>
+		                  
 		            </div>
 					</div>
 					
@@ -197,11 +198,6 @@ function previewImage(event) {
 	
 		
 	</div>
-	
-	<div id="bottom">	
-	
-	</div>
-
 
 
 

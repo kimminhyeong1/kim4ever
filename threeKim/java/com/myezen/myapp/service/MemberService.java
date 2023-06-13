@@ -60,6 +60,6 @@ public interface MemberService {
 	public ArrayList<BikeJoinVo> getMyPosts(String memberName);
 
 	public void memberUpdateIntro(MemberVo mv);
-
+	public String getMemberIntro(int midx);
 	
 }

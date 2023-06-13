@@ -120,4 +120,10 @@
         UPDATE member1234 SET memberIntro = #{memberIntro} WHERE midx = #{midx}
     </update>
     
+    <select id="getMemberIntro"  resultType="int">
+	    SELECT memberIntro
+	    FROM member1234
+	    WHERE midx = #{midx}
+	</select>
+    
 </mapper>

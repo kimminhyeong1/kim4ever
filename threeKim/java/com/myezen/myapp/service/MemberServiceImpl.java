@@ -353,6 +353,11 @@ public class MemberServiceImpl implements MemberService {
 		msm.memberUpdateIntro(mv);
 		
 	}
+	@Override
+	public String getMemberIntro(int midx) {
+		return msm.getMemberIntro(midx);
+		
+	}
 	
 	
 
