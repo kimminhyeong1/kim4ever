@@ -23,20 +23,22 @@ ArrayList<BikeJoinVo> bikeList = (ArrayList<BikeJoinVo>)request.getAttribute("bi
 			#bikeIntro p{font-family:'omyu_pretty'; text-align:left; margin-left:40px; font-size:24px; padding:15px 15px; letter-spacing:3px;}
 			#bikeNotice{text-align:center;}
 			#bikeNotice button{width:400px; height:50px; border-radius:10px; border:0px solid #ff9933; font-family:'omyu_pretty'; font-size:30px; background:#ff9933;}
-			#bikeNotice p{margin-top:40px;}
+			#bikeNotice p{margin-top:40px; font-size:30px;}
 			#bcontent .deleteBtn {display:none; position: absolute;top:0;right:0;width:30px;height:30px;background-color:#ff0000;color:#fff;font-size:20px;border:none;border-radius:50%;cursor:pointer;}
 			#bcontent .card:hover .deleteBtn {display:block;}
+
 
 /**********************모바일****************/
 @media (min-width: 300px) and (max-width: 940px)  {
 /*소개부분*/
-			#bikeIntro{margin:0 auto; width:40%; padding: 10px;background-color:#f1f1f1; border-radius:10px;} 
-			#bikeIntro h2{font-family:'KCC-Ganpan'; text-align:center; font-size:20px; color:#333; margin-bottom: 20px;}
-			#bikeIntro p{font-family:'omyu_pretty'; text-align:left; margin-left:40px; font-size:14px; padding:15px 15px; letter-spacing:3px;}
+			#bikeIntro{margin:0 auto; width:320px; background-color:#f1f1f1; border-radius:10px; padding:10px; margin-bottom:30px;} 
+			#bikeIntro h2{font-family:'KCC-Ganpan'; text-align:center; font-size:15px; color:#333; margin-bottom: 20px;}
+			#bikeIntro p{font-family:'omyu_pretty'; text-align:left; margin-left:10px; font-size:10px; padding:5px 5px; letter-spacing:3px;}
 			#bikeNotice{text-align:center;}
-			#bikeNotice button{width:200px; height:50px; border-radius:10px; border:0px solid #ff9933; font-family:'omyu_pretty'; font-size:30px; background:#ff9933;}
-			#bikeNotice p{margin-top:40px;}
-			#bcontent .deleteBtn {display:none; position: absolute;top:0;right:0;width:30px;height:30px;background-color:#ff0000;color:#fff;font-size:20px;border:none;border-radius:50%;cursor:pointer;}
+			#bikeNotice button{width:200px; height:30px; border-radius:10px; border:0px solid #ff9933; font-family:'omyu_pretty'; font-size:14px; background:#ff9933; margin-top:10px;}
+			#bikeNotice p{margin-top:40px; font-size:10px; }
+			.cardInfo {height:33px; }			
+			#bcontent .deleteBtn {display:none; position: absolute;top:0;right:0;width:30px;height:20px;background-color:#ff0000;color:#fff;font-size:20px;border:none;border-radius:50%;cursor:pointer;}
 			#bcontent .card:hover .deleteBtn {display:block;}
 }
 
@@ -52,7 +54,7 @@ ArrayList<BikeJoinVo> bikeList = (ArrayList<BikeJoinVo>)request.getAttribute("bi
 	</head>
 	<body>
 		<% if ("관리자".equals((String) session.getAttribute("memberType"))) { %>
-		    <%@include file="../header4.jsp" %>
+		    <%@include file="../header.jsp" %>
 		<% } else { %>
 		    <%@include file="../header.jsp" %>
 		<% } %>
@@ -62,7 +64,7 @@ ArrayList<BikeJoinVo> bikeList = (ArrayList<BikeJoinVo>)request.getAttribute("bi
 			 <h2>자전거 이용 수칙</h2>
 	           <p>1. 자전거 이용시간은 오전9시부터 오후10시까지입니다.</p>
 	           <p>2. 자전거 이용 시 안전수칙을 준수하시고 음주 시 이용이 불가합니다. </p>
-	           <p>3. 대여는 5개의 대여소에서 가능하며, 반납은 빌린곳과 무관하게 <br>&nbsp;&nbsp;&nbsp;어느 대여소에서든 가능합니다.</p>
+	           <p>3. 대여는 5개의 대여소에서 가능하며, 반납은 빌린곳과 무관하게 <br>어느 대여소에서든 가능합니다.</p>
 	           <p>4. 자전거 고장/신고 문의는 대여내역에서 신고 접수 부탁드립니다! </p>
 			</div>
 			<div id="bcontent">
@@ -84,7 +86,7 @@ ArrayList<BikeJoinVo> bikeList = (ArrayList<BikeJoinVo>)request.getAttribute("bi
 			<c:if test="${sessionScope.memberType eq '관리자'}">
 				<button class="createBtn" onclick="location.href='${pageContext.request.contextPath}/bikeRent/bikeRentWrite.do'">등록</button>
 			</c:if>
-			<p style="font-size:30px;">- 자전거의 종류는 추가적으로 추후에 추가예정입니다 -</p>
+			<p>- 자전거의 종류는 추가적으로 추후에 추가예정입니다 -</p>
 			</div>
 			
 			<div id="bottom">

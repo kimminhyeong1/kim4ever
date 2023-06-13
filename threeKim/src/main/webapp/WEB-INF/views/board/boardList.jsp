@@ -10,6 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 /*리셋코드*/ 
@@ -67,6 +68,35 @@ li{list-style:none;}
 .tab__list__item.active {background-color:#333;color:#fff;border:1px solid #333;}
 
  a {color: inherit; text-decoration: none;}
+  .reply{color: red;}
+ 
+ 
+	/*****************************************모바일***************************************************************/
+		
+	@media (min-width: 300px) and (max-width: 940px)  {	
+	#main{width:auto; margin:0 auto; text-align:center;}
+#main #content{width:auto; height:auto;}
+#main #content h2{text-align:left; margin-top:50px; margin-left:16px; margin-left:10%;font-family: 'GangwonEdu_OTFBoldA'; font-size:15px; }
+#main #bottom{width:auto; height:10px;}
+#content table {width:80vw; border-collapse:collapse; margin:10px auto 0; line-height:13px; font-size:12px; font-family: 'omyu_pretty'; cursor:pointer; }
+#content table th{padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
+#content table td{padding: 5px; text-align:center;border-bottom:1px solid #CCCCCC; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#content #btn{text-align:right; margin-top:20px; margin-right:5%; }
+#content #btn button{width:50px; height:20px; text-align:center; font-family: 'omyu_pretty'; font-size:12px; font-weight:bold; border-radius:7px; border:0px solid #ff9933; background:#ff9933;  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);}
+#content #btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+.cell-content {width: 25vw; overflow: hidden; text-overflow: ellipsis;}
+
+
+
+/*메뉴바 테이블*/
+.tab__contents {display:none;}
+.show {display: block;}
+.tab__list{margin-top:5%;}
+.tab__list li{ display: inline-block; border: none; background-color: #f8f8f8; padding: 3px 7px; cursor: pointer; margin-top:10px; font-family: 'omyu_pretty'; font-size:12px; border-radius:5px; margin-top:10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);}
+.tab__list__item.active {background-color:#ff9933;;color:#fff;border:none ;}
+
+ a {color: inherit; text-decoration: none;}
+ }
 
 </style>
 </head>
@@ -101,16 +131,10 @@ li{list-style:none;}
 								<c:if test="${bv.boardType == 0 && bv.boarddelyn == 'N'}"><!-- 보드타입 0 delyn 이 n -->
 									<tr>
 										<td>${bv.sortN}</td>
-										<td><a
-											href="${pageContext.request.contextPath}/board/boardNoticeContent.do?bidx=${bv.bidx}">
-												${bv.subject}</a></td>
-											<td>
-										  <c:if test="${memberType == '관리자'}">
-										    관리자 ${bv.writer}
-										  </c:if>
-										  <c:if test="${memberType != '관리자'}">
+										<td><div class="cell-content"><a	 href="${pageContext.request.contextPath}/board/boardNoticeContent.do?bidx=${bv.bidx}">
+												${bv.subject}</a></div></td>
+											<td> 
 										    ${bv.writer}
-										  </c:if>									
 										</td>
 										<td>${bv.writeday.substring(0, 10)}</td>
 										<td>${bv.boardView}</td>
@@ -156,24 +180,17 @@ li{list-style:none;}
 											</c:otherwise>
 										</c:choose>
 										<td>
+										<div class="cell-content">
+										
 										<c:forEach begin="1" end="${bv.level_}" var="i">
 						          
-						          <c:if test="${i == bv.level_}">&nbsp;&nbsp; ㄴ </c:if>
+						          <c:if test="${i == bv.level_}"> <span class="reply">&nbsp;&nbsp; re: </span></c:if>
 						        </c:forEach>
-						        
 										<a 	href="${pageContext.request.contextPath}/board/boardQnaContent.do?bidx=${bv.bidx}">
-												${bv.subject} </a></td>
+												${bv.subject} </a></div></td>
 												
 										<td>
-										  <c:if test="${memberType == '관리자'}">
-										    관리자 ${bv.writer}
-										  </c:if>
-										  <c:if test="${memberType != '관리자'}">
 										    ${bv.writer}
-										  </c:if>
-										   <c:if test="${memberdelyn == 'Y'}">
-										    ${bv.writer}(탈퇴)
-										  </c:if>
 										</td>
 
 										<td>${bv.writeday.substring(0, 10)}</td>
@@ -228,19 +245,11 @@ li{list-style:none;}
 								<c:if test="${bv.boardType == 2 && bv.boarddelyn == 'N'}"><!-- 보드타입 2 delyn 이 n -->
 									<tr>
 										<td>${bv.sortN}</td>
-										<td><a
+										<td><div class="cell-content"><a
 											href="${pageContext.request.contextPath}/board/boardFaqContent.do?bidx=${bv.bidx}">
-												${bv.subject} </a></td>
+												${bv.subject} </a></div></td>
 											<td>
-										  <c:if test="${memberType == '관리자'}">
-										    관리자 ${bv.writer}
-										  </c:if>
-										  <c:if test="${memberType != '관리자'}">
 										    ${bv.writer}
-										  </c:if>
-										   <c:if test="${memberdelyn == 'Y'}">
-										    ${bv.writer}(탈퇴)
-										  </c:if>
 										</td>
 										<td>${bv.writeday.substring(0, 10)}</td>
 										<td>${bv.boardView}</td>
