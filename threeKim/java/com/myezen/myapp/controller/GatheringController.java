@@ -13,12 +13,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.GatheringJoinVo;
+import com.myezen.myapp.domain.Gathering_ScheduleVO;
 import com.myezen.myapp.domain.ScheduleVo;
 import com.myezen.myapp.domain.SearchCriteria;
 import com.myezen.myapp.service.GatheringService;
@@ -107,25 +109,41 @@ public class GatheringController {
 
 			return "redirect:/gathering/gList.do";
 		}
-//모임상세보기페이지
-	@RequestMapping(value="/gContent.do")
-	public String gContent(
+//모임상세보기체크
+	@RequestMapping(value="/gContentCheck.do")
+	public String gContentCheck(
 			@RequestParam("giidx") int giidx,
 			HttpServletRequest request,
 			Model md
 			) {
 		HttpSession session = request.getSession();
-	    Object omidx = session.getAttribute("midx");
-	    if (omidx == null) {//midx가 없으면 진입불가
+		session.setAttribute("giidx", giidx);//giidx세션에 담기
+		System.out.println("모임상세보기체크 세션담기");
+
+
+		return "redirect:/gathering/gContent.do";
+	}
+//모임상세보기페이지
+	@RequestMapping(value="/gContent.do")
+	public String gContent(
+			HttpServletRequest request,
+			Model md
+			) {
+		HttpSession session = request.getSession();
+		Object Ogiidx = session.getAttribute("giidx");
+	    Object Omidx = session.getAttribute("midx");
+	    if (Omidx == null) {//midx가 없으면 진입불가
 	    	return "redirect:/gathering/gList.do";
 		}
-	    int midx = (int)omidx;
+	    int midx = (int)Omidx;
+	    int giidx = (int)Ogiidx;
 	    //사용자가 모임상세페이지를 들어갈수있는지 확인
 	    int value = gs.gatheringMemberCheck(giidx,midx);
 	    if (value == 1) {
 	    	//모임상세리스트 가져오기
 	    	ArrayList<GatheringJoinVo> gjvlist = gs.gatheringOneListSelect(giidx);
 	    	md.addAttribute("gjvlist", gjvlist);
+	    	md.addAttribute("giidx", giidx);//모임 정보 번호
 	    	//모임 멤버들 데이터 가져오기 
 	    	
 	    	//모임일정 데이터 가져오기
@@ -156,12 +174,28 @@ public class GatheringController {
 		return "gathering/gScheduleMake";
 	}
 	//일정 만들기 페이지에서 일정 만들기 버튼 클릭
-		@RequestMapping(value="/gScheduleMakeAction.do")
+		@RequestMapping(value="/gScheduleMakeAction.do", method = RequestMethod.POST)
 		public String gScheduleMakeAction(
-				@RequestParam("title") String title, @RequestParam("start") String start, @RequestParam("end") String end
+				@ModelAttribute Gathering_ScheduleVO gsv,
+				HttpServletRequest request
 				) {
+			HttpSession session = request.getSession();
+		    Object Omidx = session.getAttribute("midx");
+		    Object Ogiidx = session.getAttribute("giidx");
+		    if (Omidx == null) {//midx가 없으면 진입불가
+		    	return "redirect:/gathering/gList.do";
+			}
+		    gsv.setMidx((int)Omidx);
+		    gsv.setGiidx((int)Ogiidx);
+		    System.out.println(gsv.getGiidx()+""+gsv.getMidx());
+		    //int value = gs.gatheringScheduleMake(gsv);
+			
 			//calendarService.createEvent(title, start, end);
 			
+			//파라미터 값 받기 gsidx//모임 일정 번호 iidx//모임 정보 번호 midx//회원 번호
+			
+			//일정생성하기 테이블에 넣기
+
 			return "gathering/gContent";
 		}
 //모임상세보기에서 일정 보기 페이지

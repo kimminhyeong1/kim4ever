@@ -157,7 +157,7 @@
 				</div>
 			</div>
 			<div id="gMembers">
-				<div>모임 멤버(0명/30명)<span> 5+[승인대기]</span></div>
+				<div>모임 멤버(${gjvlist[0].gInfoParticipating}명/${gjvlist[0].gInfoCapacity}명)<span> 5+[승인대기]</span></div>
 				<div>
 					<div><img alt="" src="../resources/bikeimg/mukbang1.jpg"></div>
 					<div><img alt="" src="../resources/bikeimg/mukbang1.jpg"></div>
@@ -177,7 +177,7 @@
 			<div id="gSchedule">
 				<div>모임 일정</div>
 				<div id='calendar'></div>
-				<div><button class="gBtn2" onclick="location.href='<%=request.getContextPath()%>/gathering/gScheduleMake.do'">일정 만들기</button></div>
+				<div><button class="gBtn2" onclick="location.href='<%=request.getContextPath()%>/gathering/gScheduleMake.do?giidx=${giidx}'">일정 만들기</button></div>
 			</div>
 			<div id="gNotice">
 				<div class="gNotice">

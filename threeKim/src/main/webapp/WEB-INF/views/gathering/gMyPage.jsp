@@ -32,7 +32,7 @@
 							<h3 class="cardTitle">${gjvmy.gInfoName}</h3>
 							<p class="cardInfo">${gjvmy.gInfoBriefIntroduction}</p>
 							<p>(참여멤버${gjvmy.gInfoParticipating}/${gjvmy.gInfoCapacity})</p>
-							<button class="gBtn" onclick="location.href='${pageContext.request.contextPath}/gathering/gContent.do?giidx=${gjvmy.giidx}'">들어가기</button>
+							<button class="gBtn" onclick="location.href='${pageContext.request.contextPath}/gathering/gContentCheck.do?giidx=${gjvmy.giidx}'">들어가기</button>
 						</div>
 					</c:forEach>
 				</c:if>		
