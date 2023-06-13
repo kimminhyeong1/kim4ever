@@ -282,12 +282,18 @@ public class BikeRentServiceImpl implements BikeRentService {
         String ebkidx1 = AESUtil.encrypt("1");
         String ebkidx2 = AESUtil.encrypt("2");
         String ebkidx3 = AESUtil.encrypt("3");
-		
-		
+        String ebkidx71 = AESUtil.encrypt("71");
+        String ebkidx81 = AESUtil.encrypt("81");
+        String ebkidx91 = AESUtil.encrypt("91");
+        
 		// QR 코드 설정
 		String url1 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail/"+ebkidx1+"/view.do"; // QR 코드에 포함될 URL
 		String url2 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail/"+ebkidx2+"/view.do"; // QR 코드에 포함될 URL
 		String url3 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail/"+ebkidx3+"/view.do"; // QR 코드에 포함될 URL
+		String url71 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail/"+ebkidx71+"/view.do"; // QR 코드에 포함될 URL
+		String url81 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail/"+ebkidx81+"/view.do"; // QR 코드에 포함될 URL
+		String url91 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail/"+ebkidx91+"/view.do"; // QR 코드에 포함될 URL
+		
 		int width = 300; // 원하는 가로 크기
 		int height = 300; // 원하는 세로 크기
 		
@@ -298,12 +304,21 @@ public class BikeRentServiceImpl implements BikeRentService {
 		String qrCode2 = qrCodeUtil2.generateQRCode(url2, width, height);
 		QRCodeUtil qrCodeUtil3 = new QRCodeUtil();
 		String qrCode3 = qrCodeUtil3.generateQRCode(url3, width, height);
+		QRCodeUtil qrCodeUtil71 = new QRCodeUtil();
+		String qrCode71 = qrCodeUtil71.generateQRCode(url71, width, height);
+		QRCodeUtil qrCodeUtil81 = new QRCodeUtil();
+		String qrCode81 = qrCodeUtil81.generateQRCode(url81, width, height);
+		QRCodeUtil qrCodeUtil91 = new QRCodeUtil();
+		String qrCode91 = qrCodeUtil91.generateQRCode(url91, width, height);
 		
 		// QR 코드 담기
 		ArrayList<String> QRList = new ArrayList<>();
 		QRList.add(qrCode1);
 		QRList.add(qrCode2);
 		QRList.add(qrCode3);
+		QRList.add(qrCode71);
+		QRList.add(qrCode81);
+		QRList.add(qrCode91);
 		
 		return QRList;
 	}
