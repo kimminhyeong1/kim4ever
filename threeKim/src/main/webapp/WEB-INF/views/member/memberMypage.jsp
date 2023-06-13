@@ -49,8 +49,8 @@ li{list-style:none;}
 #content table .image-container {position:absolute; top:10px; left:0; width:220px;height:260px;}
 #content table #imagePreview { position:absolute; top:0;left:0; width:100%; height:70%;border:1px solid #000;border-radius:100px;object-fit:cover;}
 #content table .button-container { position:absolute;bottom:0;left:0; text-align:left; margin-top:10px;}
-#content table .intro-container {width:550px;height:auto; margin-bottom:100px;float:right;border:1px solid #000;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:20px;}
-#content table .intro-container h3 {font-size:24px;margin-bottom:10px;border-bottom:1px solid #ddd;}
+#content table .intro-container {width:550px;height:auto; margin-bottom:100px;float:right;border:1px solid #ddd; border-radius:50px; display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:20px;}
+#content table .intro-container h3 {font-size:24px;margin-bottom:10px;border-bottom:1px solid #000;}
 #content table input[type="text"] {font-family:'omyu_pretty';font-size:24px;box-sizing:border-box;width:100%;padding:10px;margin-bottom:10px;border:1px solid #ccc;border-radius:4px;}
 #content table .intro-container .button-container2 {display:flex;justify-content:flex-end;gap:10px;margin-top:10px;margin-left:480px;}
 </style>
@@ -58,56 +58,47 @@ li{list-style:none;}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 
-function writeIntro() {
-    $('.intro-container').html('<h3>내 간단 소개</h3>' +
-        '<input type="text" id="introInput" placeholder="멤버보기에 있는 소개입니다." value="">' +
-        '<div class="button-container2">' +
-        '<button onclick="saveIntro()">확인</button>' +
-        '</div>');
-}
-
 function editIntro() {
     var introText = $('#introText').text();
-    $('.intro-container').html('<h3>내 간단 소개</h3>' +
-        '<input type="text" id="introInput" placeholder="멤버보기에 있는 소개입니다." value="' + introText + '">' +
-        '<div class="button-container2">' +
-        '<button onclick="saveIntro()">확인</button>' +
-        '</div>');
-}
-
-function saveIntro() {
-    var intro = $('#introInput').val();
-    var midx = '<%= session.getAttribute("midx") %>'; // 로그인한 사용자의 midx 값을 세션에서 받아옵니다.
+    var introContainer = $('.intro-container');
     
-    $.ajax({
-        url: "${pageContext.request.contextPath}/member/memberUpdateIntro.do?midx=" + midx,
-        type: 'POST',
-        data: {
-            midx: midx,
-            memberIntro: intro
-        },
-        success: function(response) {
-            alert('소개가 수정되었습니다.');
-            if (intro !== "") {
-                $('.intro-container').html('<h3>내 간단 소개</h3>' +
+    if (introContainer.find('input').length === 0) {
+        
+        introContainer.html(
+            '<h3>내 간단 소개</h3>' +
+            '<input type="text" id="introInput" placeholder="멤버보기에 있는 소개입니다." value="' + introText + '">' +
+            '<div class="button-container2">' +
+            '<button onclick="editIntro()">편집하기</button>' +
+            '</div>'
+        );
+    } else {
+        // Save the edited intro and display the result
+        var intro = $('#introInput').val();
+        var midx = '<%= session.getAttribute("midx") %>';
+        
+        $.ajax({
+            url: "${pageContext.request.contextPath}/member/memberUpdateIntro.do?midx=" + midx,
+            type: 'POST',
+            data: {
+                midx: midx,
+                memberIntro: intro
+            },
+            success: function(response) {
+                alert('소개가 수정되었습니다.');
+                introContainer.html(
+                    '<h3>내 간단 소개</h3>' +
                     '<span id="introText">' + intro + '</span>' +
                     '<div class="button-container2">' +
-                    '<button onclick="editIntro()">수정</button>' +
-                    '</div>');
-            } else {
-                $('.intro-container').html('<h3>내 간단 소개</h3>' +
-                    '<div class="button-container2">' +
-                    '<button onclick="writeIntro()">작성</button>' +
-                    '</div>');
+                    '<button onclick="editIntro()">편집하기</button>' +
+                    '</div>'
+                );
+            },
+            error: function(xhr, status, error) {
+                alert('소개 수정에 실패했습니다: ' + error);
             }
-        },
-        error: function(xhr, status, error) {
-            alert('소개 수정에 실패했습니다: ' + error);
-        }
-    });
+        });
+    }
 }
-
-
 //////////////////////////////////////////////////////////
 //이미지업로드
 
@@ -151,17 +142,18 @@ function previewImage(event) {
                     <div class="intro-container">
 					<h3>내 간단 소개</h3>
 					<c:choose>
-		                <c:when test="${empty mv.memberIntro}">
-		                    <input type="text" id="introInput" placeholder="멤버보기에 있는 소개입니다." value="">
+		                <c:when test="${empty sessionScope.memberIntro}">
+		                    <input type="text" id="introInput" placeholder="멤버보기에 있는 소개입니다." value="멤버보기에 있는 소개입니다.">
 		                </c:when>
 		                <c:otherwise>
-		                    <span id="introText">${mv.memberIntro}</span>
+		                    <span id="introText">${sessionScope.memberIntro}</span>
 		                </c:otherwise>
 		            </c:choose>
 		            <div class="button-container2">
-		                <button onclick="writeIntro()">작성</button>
-		                <button onclick="editIntro()">수정</button>
-		                <button onclick="saveIntro()">확인</button>
+		              
+		                <button onclick="editIntro()">편집하기</button>
+		                
+		                  
 		            </div>
 					</div>
 					
@@ -197,11 +189,6 @@ function previewImage(event) {
 	
 		
 	</div>
-	
-	<div id="bottom">	
-	
-	</div>
-
 
 
 

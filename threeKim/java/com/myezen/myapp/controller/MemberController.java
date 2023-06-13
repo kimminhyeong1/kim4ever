@@ -414,6 +414,8 @@ public class MemberController {
 			session.setAttribute("memberId", mv.getMemberId());
 			session.setAttribute("memberName", mv.getMemberName());
 			session.setAttribute("memberType", mv.getMemberType());
+			session.setAttribute("memberIntro", mv.getMemberIntro());
+			session.setAttribute("memberProfile", mv.getMemberProfile());
 			
 			
 			if(session.getAttribute("dest") == null) {
@@ -633,24 +635,31 @@ public class MemberController {
 		}
 
 		@PostMapping("/memberUpdateIntro.do")
-	    @ResponseBody
-	    public void memberUpdateIntro(
-	    		HttpSession session, 
-	    		@RequestParam("memberIntro") String memberIntro){
-			System.out.println("간단소개 컨트롤러 들어옴");
-			int midx = (Integer) session.getAttribute("midx");
-			 
-			MemberVo mv = new MemberVo();
-			mv.setMidx(midx);
-			mv.setMemberIntro(memberIntro);
-			
-			// 데이터베이스에 memberIntro 업데이트
+		@ResponseBody
+		public void memberUpdateIntro(
+				HttpSession session,
+				@RequestParam("memberIntro") String memberIntro) {
+		    System.out.println("간단소개 컨트롤러 들어옴");
+		    int midx = (Integer) session.getAttribute("midx");
+		   
+		    
+		    MemberVo mv = new MemberVo();
+		    mv.setMidx(midx);
+		    mv.setMemberIntro(memberIntro);
+		    
+		    // 데이터베이스에 memberIntro 업데이트
 		    ms.memberUpdateIntro(mv);
-		    System.out.println("멤버소개"+mv.getMemberIntro());
-		 // 데이터베이스에서 업데이트된 memberIntro 값을 가져와 세션에 저장
-		 
-		
-	    }
+		    System.out.println("멤버소개: " + mv.getMemberIntro());
+
+		    // 업데이트된 memberIntro 값을 데이터베이스에서 조회하여 세션에 저장
+		    
+		    String updatedIntro = ms.getMemberIntro(midx);
+		    session.setAttribute("memberIntro", updatedIntro);
+		    
+		    
+		    session.setAttribute("memberIntro", updatedIntro);
+		   
+		}
 		
 		/////////////////////////////////////////////////////////////////
 		

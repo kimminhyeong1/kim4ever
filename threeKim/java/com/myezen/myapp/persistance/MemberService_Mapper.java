@@ -56,12 +56,16 @@ public interface MemberService_Mapper {
 	public int kakaoMemberInsert(String memberId,String memberPwd,String memberName);
 	//소셜 아이디있는지 확인
 	public int socialMemberCheck(String memberId);
-	
+	//내가 쓴 게시글 조회
 	public ArrayList<BikeJoinVo> getMyPosts(String memberName);
 	
 	public void memberUpdateIntro(MemberVo mv);
+	public String getMemberIntro(int midx);
 	
 	//회원 프로필 업데이트 /*김건우*/
 	public int memberUpdateMemberProfile(MemberVo mv);
 	
+
+	
+
 }
