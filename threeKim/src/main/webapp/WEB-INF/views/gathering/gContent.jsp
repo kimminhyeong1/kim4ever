@@ -123,7 +123,7 @@
 				<div id="gIntro">
 					<div>${gjvlist[0].gInfoName}</div>
 					<div>${gjvlist[0].gInfoArea}</div>
-					<div><img alt="모임장 프로필" src="../resources/bikeimg/mukbang2.gif"></div>
+					<div><img alt="모임장 프로필" src="../resources/MemberProfile/${gjvlist[0].memberProfile}"></div>
 					<div>모임장: ${gjvlist[0].memberName}</div> 
 					<div>${gjvlist[0].gInfoAreaIntroduction} </div>
 				</div>
