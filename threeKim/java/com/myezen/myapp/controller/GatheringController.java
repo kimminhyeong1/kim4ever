@@ -146,7 +146,8 @@ public class GatheringController {
 	    	md.addAttribute("gjvlist", gjvlist);
 	    	
 	    	/*모임 멤버들 데이터 가져오기*/
-	    	
+	    	ArrayList<GatheringJoinVo> gjvmlist = gs.gatheringMemberListSelect(giidx);
+	    	md.addAttribute("gjvmlist", gjvmlist);
 	    	
 	    	/*모임일정 데이터 가져오기*/
 	    	ArrayList<Gathering_ScheduleVO> gsvlist = gs.gatheringScheduleListSelect(giidx);

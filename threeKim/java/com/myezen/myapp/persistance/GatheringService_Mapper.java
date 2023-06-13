@@ -34,10 +34,14 @@ public interface GatheringService_Mapper {
 	public ArrayList<GatheringJoinVo> gatheringMyListSelect(int midx);
 	//모임 소개페이지 리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringOneSimpleListSelect(int giidx);
+	
 	//사용자가 모임상세페이지를 들어갈수있는지 확인
 	public int gatheringMemberCheck(int giidx, int midx);
 	//모임상세리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringOneListSelect(int giidx);
+	//모임멤버 리스트 가져오기
+	public ArrayList<GatheringJoinVo> gatheringMemberListSelect(int giidx);
+	
 	
 	/*모임 가입*/
 	//1.모임 가입타입 확인하기

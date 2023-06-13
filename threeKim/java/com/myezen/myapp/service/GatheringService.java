@@ -34,10 +34,16 @@ public interface GatheringService {
 	public ArrayList<GatheringJoinVo> gatheringMyListSelect(int midx);
 	//모임 소개페이지 리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringOneSimpleListSelect(int giidx);
+	
+	
 	//사용자가 모임상세페이지를 들어갈수있는지 확인
 	public int gatheringMemberCheck(int giidx, int midx);
 	//모임상세리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringOneListSelect(int giidx);
+	//모임멤버 리스트 가져오기
+	public ArrayList<GatheringJoinVo> gatheringMemberListSelect(int giidx);
+	
+	
 	//모임 가입하기
 	public int gatheringJoin(int giidx, int midx);
 	/*찜*/
@@ -56,6 +62,8 @@ public interface GatheringService {
 	public ArrayList<Gathering_ScheduleVO> gatheringScheduleListSelect(int giidx);
 	//모임일정 상세보기 가져오기
 	public Gathering_ScheduleVO gatheringScheduleView(int gsidx,int giidx);
+	
+
 	
 
 
