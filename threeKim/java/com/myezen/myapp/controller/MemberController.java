@@ -656,8 +656,25 @@ public class MemberController {
 		
 		
 		
-		//memberProfile
-		
+		//회원 프로필 업데이트 /*김건우*/
+		@RequestMapping(value = "/MypageProfile.do", method = RequestMethod.POST)
+	    public String gMypageProfile(
+	    		HttpServletRequest request, 
+	    		@RequestParam("memberProfile") MultipartFile memberProfile
+	    		) throws IOException, Exception{
+			System.out.println("회원 프로필 업데이트 들어옴");
+			HttpSession session = request.getSession();
+			Object omidx = session.getAttribute("midx");
+		    if (omidx == null) {//midx가 없으면 진입불가
+		    	return "redirect:/";
+			}
+		    int midx = (int)omidx;
+		    
+		    //회원 프로필 업데이트
+		    int value = ms.memberUpdateMemberProfile(midx,memberProfile);
+		 
+		    return "redirect:/member/memberMypage.do";
+	    }
 			
 		
 		

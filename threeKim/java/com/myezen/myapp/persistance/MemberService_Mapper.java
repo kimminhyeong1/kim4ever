@@ -1,6 +1,9 @@
 package com.myezen.myapp.persistance;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.MemberVo;
@@ -57,5 +60,8 @@ public interface MemberService_Mapper {
 	public ArrayList<BikeJoinVo> getMyPosts(String memberName);
 	
 	public void memberUpdateIntro(MemberVo mv);
+	
+	//회원 프로필 업데이트 /*김건우*/
+	public int memberUpdateMemberProfile(MemberVo mv);
 	
 }
