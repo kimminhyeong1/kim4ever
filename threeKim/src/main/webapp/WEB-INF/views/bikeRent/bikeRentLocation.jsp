@@ -32,20 +32,20 @@
 			
 			
 				/*****************************************모바일***************************************************************/
-	
-	
+		html{height:100%;}
 	@media (min-width: 300px) and (max-width: 940px)  {	
 			#main{width:auto; margin:35px auto 70px; text-align:center;}
 			#main #content{width:auto; height:auto;text-align:center;}
-			#main #bottom{width:auto; height:300px;}
-			#main #content #map{margin-top:50px; width:80%; height:700px; margin-left:130px;}
-			#main #content table {border-collapse: collapse; margin:50px auto; width:80%; background-color:white; box-shadow:0px 0px 10px rgba(0, 0, 0, 0.1); line-height:40px; font-size:24px;  font-family: 'omyu_pretty';}
-			#main #content table th {padding: 10px;text-align:center; border-bottom: 1px solid #ddd;background-color: #f2f2f2;}
-			#main #content table td:nth-child(1){padding: 10px; text-align:center; border-bottom:1px solid #ddd;}
-			#main #content table td:nth-child(2){padding: 10px; text-align:left; border-bottom:1px solid #ddd;}
-			#main #content h1 {font-size:15px; text-align:center; color:#333; margin-top:40px; margin-bottom:20px; font-family:'KCC-Ganpan'; font-weight:bold; letter-spacing:-1px; text-shadow:1px 1px #fff; background-color:#fff; border:none;padding-bottom:10px;}
-			#main #content h2{margin-top:20px; font-family: 'KCC-Ganpan';}
+			#main #bottom{width:auto; height:10px;}
+			#main #content #map{margin-top:50px; width:200px; height:200px; margin-right:50px;}
+			#main #content table {border-collapse: collapse; margin:20px auto; width:90%; background-color:white; box-shadow:0px 0px 10px rgba(0, 0, 0, 0.1); line-height:11px; font-size:11px;  font-family: 'omyu_pretty'; }
+			#main #content table th {padding: 3px;text-align:center; border-bottom: 1px solid #ddd;background-color: #f2f2f2; width:45px; line-height:12px;}
+			#main #content table td:nth-child(1){padding: 5px; text-align:center; border-bottom:1px solid #ddd;}
+			#main #content table td:nth-child(2){padding: 5px; text-align:left; border-bottom:1px solid #ddd;}
 			
+			#main #content h1 {font-size:15px; text-align:center; color:#333; margin-top:10px; margin-bottom:20px; font-family:'KCC-Ganpan'; font-weight:bold; letter-spacing:-1px; text-shadow:1px 1px #fff; background-color:#fff; border:none;padding-bottom:10px;}
+			#main #content h2{font-size:15px; margin-top:20px; font-family: 'KCC-Ganpan';}
+			#map {width: 80%;  height: 80%;}
 			/*마커 폰트 변경*/
 			/*마커 글씨 크기 변경*/
 			.rs1{font-size:15px; margin-left:30px; font-family:'omyu_pretty';}
@@ -59,7 +59,7 @@
 	<div id="main">
 		<div id="content">
 			<h1>타:바 공영자전거 대여소</h1>
-			<div id="map"></div>
+			<div id="map" ></div>
 			<h2>대여소 위치 안내</h2>
 			<table>
 		        <tr>
@@ -114,6 +114,10 @@
 	    };
 	
 	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	
+	
+	
+
 	/*
 	// 마커를 표시할 위치와 title 객체 배열입니다 
 	var positions = [
@@ -189,8 +193,7 @@
 	};
 	}
 	*/
-	
-	
+
 	
 	</script>
 </body>
