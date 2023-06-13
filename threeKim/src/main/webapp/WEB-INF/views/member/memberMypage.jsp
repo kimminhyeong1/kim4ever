@@ -53,6 +53,7 @@ li{list-style:none;}
 #content table .intro-container h3 {font-size:24px;margin-bottom:10px;border-bottom:1px solid #000;}
 #content table input[type="text"] {font-family:'omyu_pretty';font-size:24px;box-sizing:border-box;width:100%;padding:10px;margin-bottom:10px;border:1px solid #ccc;border-radius:4px;}
 #content table .intro-container .button-container2 {display:flex;justify-content:flex-end;gap:10px;margin-top:10px;margin-left:480px;}
+#content table .button-container2 button{border:1px solid #000; border-radius:50px; width:70px; }
 </style>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -140,21 +141,18 @@ function previewImage(event) {
                    <!-- 소개 란  -->
           
                     <div class="intro-container">
-					<h3>내 간단 소개</h3>
-					<c:choose>
-		                <c:when test="${empty sessionScope.memberIntro}">
-		                    <input type="text" id="introInput" placeholder="멤버보기에 있는 소개입니다." value="멤버보기에 있는 소개입니다.">
-		                </c:when>
-		                <c:otherwise>
-		                    <span id="introText">${sessionScope.memberIntro}</span>
-		                </c:otherwise>
-		            </c:choose>
-		            <div class="button-container2">
-		              
-		                <button onclick="editIntro()">편집하기</button>
-		                
-		                  
-		            </div>
+						<h3>내 간단 소개</h3>
+						<c:choose>
+			                <c:when test="${empty sessionScope.memberIntro}">
+			                    <input type="text" id="introInput" placeholder="멤버보기에 있는 소개입니다." value="멤버보기에 있는 소개입니다.">
+			                </c:when>
+			                <c:otherwise>
+			                    <span id="introText">${sessionScope.memberIntro}</span>
+			                </c:otherwise>
+			            </c:choose>
+			            <div class="button-container2">
+			              	<button onclick="editIntro()">편집하기</button>    
+			            </div>
 					</div>
 					
                 </td>
