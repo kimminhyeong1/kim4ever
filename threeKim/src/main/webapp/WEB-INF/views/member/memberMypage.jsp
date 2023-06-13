@@ -136,15 +136,15 @@ function previewImage(event) {
 			<tr>
 				<td colspan="2" >
 				  <!-- 이미지업로드 란  -->
-					 <form method="post" action="${pageContext.request.contextPath}/gathering/gMypageProfile.do" enctype="multipart/form-data">
-					<div class="image-container">
-					  <img id="imagePreview" />
-					  <div class="button-container">
-		            <input id="image" type="file" name="GTImg" onchange="previewImage(event)" />
-					<button>업로드</button>
-                    </div>
-					</div>	
-                     </form>
+					<form method="post" action="${pageContext.request.contextPath}/member/MypageProfile.do" enctype="multipart/form-data">
+						<div class="image-container">
+							<img id="imagePreview" />
+							<div class="button-container">
+								<input id="image" type="file" name="memberProfile" onchange="previewImage(event)" />
+								<button>업로드</button>
+							</div>
+						</div>	
+					</form>
                    
                    <!-- 소개 란  -->
           

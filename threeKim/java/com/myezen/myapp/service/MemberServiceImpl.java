@@ -17,6 +17,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer.MvcMatchersAuthorizedUrl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,6 +26,7 @@ import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.persistance.MemberService_Mapper;
 import com.myezen.myapp.util.MailHandler;
 import com.myezen.myapp.util.TempKey;
+import com.myezen.myapp.util.UploadFileUtiles;
 
 @Service("MemberServiceImpl")
 public class MemberServiceImpl implements MemberService {
@@ -352,6 +354,28 @@ public class MemberServiceImpl implements MemberService {
 	public void memberUpdateIntro(MemberVo mv) {
 		msm.memberUpdateIntro(mv);
 		
+	}
+	
+	
+	
+	
+	
+	
+	
+	@Override
+	//회원 프로필 업데이트 /*김건우*/
+	public int memberUpdateMemberProfile(int midx, MultipartFile memberProfile) throws IOException, Exception {
+		int value=0;
+		//배포했을때
+        //String savedMemberProfileImgPath = request.getSession().getServletContext().getRealPath("/resources/MemberProfile");
+		String savedMemberProfileImgPath = "D://threekim//threeKim//src//main//webapp//resources/MemberProfile";//회원 프로필 이미지
+		//회원 프로필 이미지
+		String uploadedMemberProfileImgName  = UploadFileUtiles.uploadFile(savedMemberProfileImgPath, memberProfile.getOriginalFilename(), memberProfile.getBytes());
+		MemberVo mv = new MemberVo();
+		mv.setMidx(midx);
+		mv.setMemberProfile(uploadedMemberProfileImgName);
+		value = msm.memberUpdateMemberProfile(mv);
+		return value;
 	}
 	
 	
