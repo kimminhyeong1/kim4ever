@@ -646,7 +646,7 @@ public class MemberController {
 			
 			// 데이터베이스에 memberIntro 업데이트
 		    ms.memberUpdateIntro(mv);
-		    
+		    System.out.println("멤버소개"+mv.getMemberIntro());
 		 // 데이터베이스에서 업데이트된 memberIntro 값을 가져와 세션에 저장
 		 
 		
