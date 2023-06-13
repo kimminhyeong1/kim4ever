@@ -20,7 +20,7 @@
 		<%@include file="../header.jsp" %>
 		<main id="main">
 			<section id="content">
-			<h2 class="QRTitle">자전거QR</h2>
+			<h2 class="QRTitle">일반 자전거QR</h2>
 				<div class="container">
 					<div class="containerFlex">
                         <div class="QRcard">
@@ -34,9 +34,23 @@
                          <div class="QRcard">
                             <a href="${pageContext.request.contextPath}/bikeRent/bikeRentDetail/${ebkidx3}/view.do"><img class="QRImg" src="data:image/png;base64,${QRCode3}" alt=""></a>
                             <p>NOR3</p>
-                        </div>  
-					</div>					
-				</div>
+                        </div>                         
+					</div>
+			<h2 class="QRTitle" style="margin-top: 35px;">전기 자전거QR</h2>		
+					<div class="containerFlex">
+                        <div class="QRcard">
+                            <a href="${pageContext.request.contextPath}/bikeRent/bikeRentDetail/${ebkidx71}/view.do"><img class="QRImg" src="data:image/png;base64,${QRCode71}" alt=""></a>
+                            <p>ELE21</p>
+                        </div>
+                        <div class="QRcard">
+                            <a href="${pageContext.request.contextPath}/bikeRent/bikeRentDetail/${ebkidx81}/view.do"><img class="QRImg" src="data:image/png;base64,${QRCode81}" alt=""></a>
+                            <p>ELE31</p>
+                        </div>
+                        <div class="QRcard">
+                            <a href="${pageContext.request.contextPath}/bikeRent/bikeRentDetail/${ebkidx91}/view.do"><img class="QRImg" src="data:image/png;base64,${QRCode91}" alt=""></a>
+                            <p>ELE41</p>
+                        </div>					
+				</div>				
 			</section>
 		</main>
 		<%@include file="../footer.jsp" %>

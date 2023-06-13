@@ -148,8 +148,9 @@ function requestPay() {
 			
 				<table id="bikeDetail">
 				<tr>
-					<td rowspan="10"><img src="${pageContext.request.contextPath}/resources/bikeimg/일반자전거.jpg" alt="일반자전거"></td>
-					<td colspan="3"><h2>일반 자전거</h2></td>
+					
+					<td rowspan="10"><img src="${pageContext.request.contextPath}/resources/bikeimg/${bjv.bikeType eq '전기자전거' ? '전기자전거.jpg' : '일반자전거.jpg'}" alt="${bjv.bikeType}"></td>
+					<td colspan="3"><h2>${bjv.bikeType}</h2></td>
 				</tr>
 			
 				<tr>

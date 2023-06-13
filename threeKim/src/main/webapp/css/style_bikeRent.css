@@ -47,10 +47,10 @@
 	/*QR이미지*/
 	.QRImg{width:265px; height:250px; margin:20px; padding:0px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:10px;}
 	/*QR제목타이틀*/
-	.QRTitle{font-size:35px; text-align:center;}	
+	.QRTitle{font-size:35px; text-align:center; }	
 	
 /*제목부분*/
-	.QRTitle{font-size:21px; text-align:center;}
+	.QRTitle{font-size:21px; text-align:center; }
 	
 
 	/*****************************************모바일***************************************************************/

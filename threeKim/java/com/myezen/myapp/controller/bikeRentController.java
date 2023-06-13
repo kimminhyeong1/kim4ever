@@ -146,11 +146,17 @@ public class bikeRentController {
         String ebkidx1 = AESUtil.encrypt("1");
         String ebkidx2 = AESUtil.encrypt("2");
         String ebkidx3 = AESUtil.encrypt("3");
+        String ebkidx71 = AESUtil.encrypt("71");
+        String ebkidx81 = AESUtil.encrypt("81");
+        String ebkidx91 = AESUtil.encrypt("91");
+        
         // 모델로 전달
         md.addAttribute("ebkidx1", ebkidx1);
         md.addAttribute("ebkidx2", ebkidx2); 
         md.addAttribute("ebkidx3", ebkidx3);
-        
+        md.addAttribute("ebkidx71", ebkidx71);
+        md.addAttribute("ebkidx81", ebkidx81);
+        md.addAttribute("ebkidx91", ebkidx91);
         
         /*QR생성부분*/
         /*QR생성부분 서비스부분에서 실행*/
@@ -160,6 +166,9 @@ public class bikeRentController {
         md.addAttribute("QRCode1", QRList.get(0));
         md.addAttribute("QRCode2", QRList.get(1));
         md.addAttribute("QRCode3", QRList.get(2));
+        md.addAttribute("QRCode71", QRList.get(3));
+        md.addAttribute("QRCode81", QRList.get(4));
+        md.addAttribute("QRCode91", QRList.get(5));
         
 	    return "bikeRent/bikeRentQR";
 	}
@@ -254,11 +263,12 @@ public class bikeRentController {
         String ersidx1 = AESUtil.encrypt("1");
         String ersidx2 = AESUtil.encrypt("2");
         String ersidx3 = AESUtil.encrypt("3");
+        
         // 모델로 전달
         md.addAttribute("ersidx1", ersidx1);
         md.addAttribute("ersidx2", ersidx2); 
         md.addAttribute("ersidx3", ersidx3);
-		
+       
 		
 		
 		
@@ -271,7 +281,8 @@ public class bikeRentController {
         md.addAttribute("QRCode1", QRList.get(0));
         md.addAttribute("QRCode2", QRList.get(1));
         md.addAttribute("QRCode3", QRList.get(2));
-	  
+       
+        
         md.addAttribute("ridx", ridx);
         
 	    return "bikeRent/bikeReturnQR";
