@@ -5,8 +5,8 @@
 <mapper namespace="com.myezen.myapp.persistance.MemberService_Mapper">
 	<!-- 회원가입 -->
 	<insert id="memberInsert" parameterType="mv">
-		INSERT INTO member1234(midx,memberId,memberPwd,memberName,memberAge,memberPhone,memberEmail,memberAddr)
-		VALUES(midx_seq.nextval,#{memberId},#{memberPwd},#{memberName},#{memberAge},#{memberPhone},#{memberEmail},#{memberAddr})
+		INSERT INTO member1234(midx,memberId,memberPwd,memberName,memberAge,memberPhone,memberEmail,memberAddr,memberProfile,memberIntro)
+		VALUES(midx_seq.nextval,#{memberId},#{memberPwd},#{memberName},#{memberAge},#{memberPhone},#{memberEmail},#{memberAddr},'/images/profile.jpg','안녕하세요.')
 	</insert>
 	<!-- 회원가입 아이디중복체크 -->
 	<select id="memberIdCheck" parameterType="String" resultType="int">
