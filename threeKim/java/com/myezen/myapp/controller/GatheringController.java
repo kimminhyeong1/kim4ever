@@ -140,26 +140,19 @@ public class GatheringController {
 	    //사용자가 모임상세페이지를 들어갈수있는지 확인
 	    int value = gs.gatheringMemberCheck(giidx,midx);
 	    if (value == 1) {
-	    	//모임상세리스트 가져오기
+	    	
+	    	/*모임상세리스트 가져오기*/
 	    	ArrayList<GatheringJoinVo> gjvlist = gs.gatheringOneListSelect(giidx);
 	    	md.addAttribute("gjvlist", gjvlist);
-	    	md.addAttribute("giidx", giidx);//모임 정보 번호
-	    	//모임 멤버들 데이터 가져오기 
 	    	
-	    	//모임일정 데이터 가져오기
-	    	//ArrayListList<Event> events = calendarService.getAllEvents(); //일정 가져오기
-	    	//md.addAttribute("events", events);
-	    	ScheduleVo event = new ScheduleVo();
-	    	event.setTitle("제목");
-	    	event.setStart("2023-06-01T10:00:00");
-	    	event.setEnd("2023-06-02T12:00:00");
+	    	/*모임 멤버들 데이터 가져오기*/
 	    	
-	    	ArrayList<ScheduleVo> events = new ArrayList<ScheduleVo>();
-	    	events.add(event);
-	    	System.out.println(events.get(0));
-	    	md.addAttribute("events", events);
 	    	
-	    	//공지사항 데이터 가져오기
+	    	/*모임일정 데이터 가져오기*/
+	    	ArrayList<Gathering_ScheduleVO> gsvlist = gs.gatheringScheduleListSelect(giidx);
+	    	md.addAttribute("gsvlist", gsvlist);
+	    	
+	    	/*공지사항 데이터 가져오기*/
 			
 		}
 		
@@ -188,19 +181,25 @@ public class GatheringController {
 		    gsv.setMidx((int)Omidx);
 		    gsv.setGiidx((int)Ogiidx);
 		    System.out.println(gsv.getGiidx()+""+gsv.getMidx());
-		    //int value = gs.gatheringScheduleMake(gsv);
-			
-			//calendarService.createEvent(title, start, end);
-			
-			//파라미터 값 받기 gsidx//모임 일정 번호 iidx//모임 정보 번호 midx//회원 번호
-			
-			//일정생성하기 테이블에 넣기
+		    int value = gs.gatheringScheduleMake(gsv);
 
-			return "gathering/gContent";
+			return "redirect:/gathering/gContent.do";
 		}
 //모임상세보기에서 일정 보기 페이지
 	@RequestMapping(value="/gScheduleDetails.do")
-	public String gScheduleDetails() {
+	public String gScheduleDetails(
+			@RequestParam("gsidx") int gsidx,
+			HttpServletRequest request,
+			Model md
+			) {
+		HttpSession session = request.getSession();
+	    Object Ogiidx = session.getAttribute("giidx");
+	    int giidx = (int)Ogiidx;
+		//일정가져오기 
+	    Gathering_ScheduleVO gsv = gs.gatheringScheduleView(gsidx,giidx);
+		//일정모델에담기
+	    md.addAttribute("gsv", gsv);
+		
 		
 		return "gathering/gScheduleDetails";
 	}

@@ -119,8 +119,19 @@
 	    </if>
 	</select>
 	
-
-	
+	<!-- 모임 일정 만들기 -->
+	<insert  id="gatheringScheduleMake" parameterType="com.myezen.myapp.domain.Gathering_ScheduleVO" >
+	 	INSERT INTO gathering_schedule1234 (GSIDX,GIIDX,MIDX,GSCHEDULETITLE,GSCHEDULESTARTDAY,GSCHEDULEENDDAY,GSCHEDULELOCATION,GSCHEDULELATITUDE,GSCHEDULELONGITUDE,GSCHEDULEARRANGEMENTS,GSCHEDULECAPACITY,GSCHEDULEFEE,GSCHEDULEWRITEDAY,gScheduleDelYN)
+		VALUES(gsidx_seq.NEXTVAL, #{giidx},#{midx},#{gScheduleTitle},#{gScheduleStartDay},#{gScheduleEndDay},#{gScheduleLocation},#{gScheduleLatitude},#{gScheduleLongitude},#{gScheduleArrangements},#{gScheduleCapacity},#{gScheduleFee}, SYSDATE,'N')
+	</insert>
+	<!--  모임 일정 리스트 가져오기 -->
+	<select id="gatheringScheduleListSelect" resultType="com.myezen.myapp.domain.Gathering_ScheduleVO" parameterType="int"> 
+		SELECT * FROM gathering_schedule1234 WHERE  GSCHEDULEDELYN = 'N' AND GIIDX = #{0}
+	</select>
+	<!--  모임 일정 상세보기 가져오기 -->
+	<select id="gatheringScheduleView" resultType="com.myezen.myapp.domain.Gathering_ScheduleVO" parameterType="int"> 
+		SELECT * FROM gathering_schedule1234 WHERE  GSCHEDULEDELYN = 'N' AND GSIDX = #{0} AND GIIDX = #{1}
+	</select>
 	
 	
 	

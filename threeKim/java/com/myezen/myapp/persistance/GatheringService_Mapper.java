@@ -14,6 +14,7 @@ import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.ErrorVo;
 import com.myezen.myapp.domain.GatheringJoinVo;
 import com.myezen.myapp.domain.Gathering_InfoVo;
+import com.myezen.myapp.domain.Gathering_ScheduleVO;
 import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.domain.SearchCriteria;
 
@@ -55,9 +56,12 @@ public interface GatheringService_Mapper {
 	public ArrayList<GatheringJoinVo> gatheringMyWishListSelect(int midx);		
 	//모임 검색하기
 	public ArrayList<GatheringJoinVo> searchGatherings(SearchCriteria scri);
-
-	
-	
+	//모임일정만들기
+	public int gatheringScheduleMake(Gathering_ScheduleVO gsv);
+	//모임일정 리스트 가져오기
+	public ArrayList<Gathering_ScheduleVO> gatheringScheduleListSelect(int giidx);	
+	//모임일정 상세보기 가져오기
+	public Gathering_ScheduleVO gatheringScheduleView(int gsidx,int giidx);
 	
 	
 	

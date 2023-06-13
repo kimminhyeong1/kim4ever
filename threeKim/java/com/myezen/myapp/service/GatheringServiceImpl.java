@@ -28,6 +28,7 @@ import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.ErrorVo;
 import com.myezen.myapp.domain.GatheringJoinVo;
 import com.myezen.myapp.domain.Gathering_InfoVo;
+import com.myezen.myapp.domain.Gathering_ScheduleVO;
 import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.domain.SearchCriteria;
 import com.myezen.myapp.persistance.BikeRentService_Mapper;
@@ -190,6 +191,32 @@ public class GatheringServiceImpl implements GatheringService {
 	public ArrayList<GatheringJoinVo> gatheringMyWishListSelect(int midx) {
 		ArrayList<GatheringJoinVo> gjvmywishlist = gsm.gatheringMyWishListSelect(midx);
 		return gjvmywishlist;
+	}
+
+
+
+	@Override
+	//모임 일정 만들기
+	public int gatheringScheduleMake(Gathering_ScheduleVO gsv) {
+		int value = gsm.gatheringScheduleMake(gsv);
+		return value;
+	}
+
+
+
+	@Override
+	//모임 일정 리스트 가져오기
+	public ArrayList<Gathering_ScheduleVO> gatheringScheduleListSelect(int giidx) {
+		ArrayList<Gathering_ScheduleVO> gsvlist = gsm.gatheringScheduleListSelect(giidx);
+		return gsvlist;
+	}
+
+
+
+	@Override
+	public Gathering_ScheduleVO gatheringScheduleView(int gsidx, int giidx) {
+		Gathering_ScheduleVO gsv = gsm.gatheringScheduleView(gsidx,giidx);
+		return gsv;
 	}
 
 

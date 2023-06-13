@@ -85,27 +85,25 @@
         	events: [
                 // JSP에서 서버로부터 받은 일정 데이터를 여기에 반영
                 // 예시: 서버에서 events라는 이름으로 일정 데이터를 넘겨준다고 가정
-                <c:forEach var="event" items="${events}">
+                <c:forEach var="gsvlist" items="${gsvlist}">
                     {
-                        title: '${event.title}',
-                        start: '${event.start}',
-                        end: '${event.end}'
+                        title: '${gsvlist.gScheduleTitle}',
+                        start: '${gsvlist.gScheduleStartDay}',
+                        end: '${gsvlist.gScheduleEndDay}',
+                        display: 'block',//eventDisplay
+                        gsidx: '${gsvlist.gsidx}'
                     },
                 </c:forEach>
                     
             ],
+           
             eventClick: function(info) {
                 // 클릭한 일정의 정보를 가져옴
-                var eventId = info.event.id; // 일정의 고유 ID
-                var eventTitle = info.event.title; // 일정 제목
-                var eventStart = info.event.start; // 일정 시작일
-                var eventEnd = info.event.end; // 일정 종료일
+                var eventgsidx = info.event.extendedProps.gsidx; // 일정의 고유 ID
 
                 // 클릭한 일정의 정보를 페이지로 전달하여 이동
-                window.location.href = '${pageContext.request.contextPath}/gathering/gScheduleDetails.do?id=' + eventId +
-                                        '&title=' + encodeURIComponent(eventTitle) +
-                                        '&start=' + eventStart.toISOString() +
-                                        '&end=' + eventEnd.toISOString();
+                window.location.href = '${pageContext.request.contextPath}/gathering/gScheduleDetails.do?gsidx='+eventgsidx;
+
               }
         	
         });
@@ -177,7 +175,7 @@
 			<div id="gSchedule">
 				<div>모임 일정</div>
 				<div id='calendar'></div>
-				<div><button class="gBtn2" onclick="location.href='<%=request.getContextPath()%>/gathering/gScheduleMake.do?giidx=${giidx}'">일정 만들기</button></div>
+				<div><button class="gBtn2" onclick="location.href='${pageContext.request.contextPath}/gathering/gScheduleMake.do'">일정 만들기</button></div>
 			</div>
 			<div id="gNotice">
 				<div class="gNotice">
