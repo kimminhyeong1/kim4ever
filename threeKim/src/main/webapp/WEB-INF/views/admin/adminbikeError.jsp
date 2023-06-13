@@ -54,12 +54,10 @@ li{list-style:none;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 #content #bikeError{color: #ff7700; margin-right:10px;} 
 #content #bikeRepair{color: #000;} 
-#content .search {text-align:right; margin-right:150px;}
+#content .search {text-align:right; margin-right:185px; margin-bottom:40px;}
 #content .search select {width:120px;height:30px;font-size:14px;padding:5px;}
 #content .search input[type="text"] {width:200px;height:17px;font-size:14px;padding:5px;}
 #content .search button {width:80px;height:30px;font-size:14px;padding:5px;}
- .form-table input[type="submit"] {width:100px; height:30px; text-align:center; font-family: 'omyu_pretty'; font-size:15px; border-radius:10px; border:0px solid black; background:#ff9933;}
- .form-table select,.form-table input[type="text"] { width:100px; height:30px; text-align:center; font-family: 'omyu_pretty'; font-size:15px; border-radius:10px; }
 
 </style>
 </head>
@@ -69,22 +67,7 @@ li{list-style:none;}
 	<div id="content">
 		<h2><a id="bikeError" href="${pageContext.request.contextPath}/admin/adminbikeError.do">신고 내역</a> <a id="bikeRepair" href="${pageContext.request.contextPath}/admin/adminbikeRepairList.do">수리 내역</a></h2>
 		<form action="${pageContext.request.contextPath }/admin/adminbikeError.do" method="get">
-			
-		<table class="form-table" border=0 style="text-align: left; width: 400px;">
-			<tr>
-				<td>
-				<select name="searchType">
-					<option value="memberName">고객명</option> 
-					<option value="memberPhone">연락처</option>
-					<option value="rentPlace">대여소</option>
-					<option value="errorContent">내용</option>
-				</select>
-				</td>		
-				<td><input type="text" id="keyword" name="keyword"/></td>
-				<td><input type="submit" id="searchBtn" value="검색"></td> 
-			</tr>
-		</table>
-		<!--  <div class="search">
+		<div class="search">
 			<select id="searchType" name="searchType">
 				<option value="memberName">고객명</option> 
 				<option value="memberPhone">연락처</option>
@@ -93,7 +76,7 @@ li{list-style:none;}
 			</select>
 			<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요"/>
 			<button type="submit" id="searchBtn">검색</button>
-		</div>-->
+		</div>
 		</form>
 		<table>
 				<tr>

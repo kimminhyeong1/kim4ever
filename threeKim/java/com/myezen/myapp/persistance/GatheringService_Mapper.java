@@ -15,6 +15,7 @@ import com.myezen.myapp.domain.ErrorVo;
 import com.myezen.myapp.domain.GatheringJoinVo;
 import com.myezen.myapp.domain.Gathering_InfoVo;
 import com.myezen.myapp.domain.MemberVo;
+import com.myezen.myapp.domain.SearchCriteria;
 
 public interface GatheringService_Mapper {
 	/*모임 생성*/
@@ -45,7 +46,6 @@ public interface GatheringService_Mapper {
 	public int gatheringJoinTypeBInsert(int giidx, int midx);
 	//3.모임 가입시 모임 참여멤버 수 1증가
 	public int gatheringParticipatingUpdate(int giidx);
-	
 	/*찜*/
 	//1.찜하기
 	public int gatheringWish(int giidx, int midx);
@@ -53,7 +53,9 @@ public interface GatheringService_Mapper {
 	public int gatheringWishDel(int giidx, int midx);
 	//모임 나의찜리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringMyWishListSelect(int midx);		
-	
+	//모임 검색하기
+	public ArrayList<GatheringJoinVo> searchGatherings(SearchCriteria scri);
+
 	
 	
 	

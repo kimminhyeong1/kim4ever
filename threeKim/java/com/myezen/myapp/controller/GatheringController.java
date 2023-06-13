@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.GatheringJoinVo;
 import com.myezen.myapp.domain.ScheduleVo;
+import com.myezen.myapp.domain.SearchCriteria;
 import com.myezen.myapp.service.GatheringService;
 
 @Controller
@@ -245,9 +247,12 @@ public class GatheringController {
 	}
 //모임 검색
 	@RequestMapping(value="/gSearch.do")
-	public String gSearch() {
-		
-		return "gathering/gSearch";
+	public String gSearch(SearchCriteria scri, Model model) {
+		System.out.println("서치컨트롤러들어옴");
+		 scri.setSearchType("GINFONAME"); // 검색 유형 설정
+	    ArrayList<GatheringJoinVo> gjvmylist = gs.searchGatherings(scri);
+	    model.addAttribute("gjvmylist", gjvmylist);
+	    return "gathering/gSearch";
 	}
 //모임 검색 결과
 	@RequestMapping(value="/gSearchResult.do")

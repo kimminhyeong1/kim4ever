@@ -20,6 +20,7 @@ import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.ErrorVo;
 import com.myezen.myapp.domain.GatheringJoinVo;
 import com.myezen.myapp.domain.MemberVo;
+import com.myezen.myapp.domain.SearchCriteria;
 import com.myezen.myapp.util.QRCodeUtil;
 
 public interface GatheringService {
@@ -45,6 +46,9 @@ public interface GatheringService {
 	public int gatheringWishDel(int giidx, int midx);
 	//모임 나의찜리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringMyWishListSelect(int midx);	
+	//모임검색
+	public ArrayList<GatheringJoinVo> searchGatherings(SearchCriteria scri);
+
 	
 	
 	
