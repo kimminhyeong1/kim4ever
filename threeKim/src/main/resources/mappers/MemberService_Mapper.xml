@@ -120,4 +120,11 @@
         UPDATE member1234 SET memberIntro = #{memberIntro} WHERE midx = #{midx}
     </update>
     
+   	<!-- 회원 프로필 업데이트 /*김건우*/ -->
+	<update id="memberUpdateMemberProfile" parameterType="mv">
+	     update member1234 set memberProfile = #{memberProfile} where midx = #{midx} and MEMBERDELYN='N'
+	</update>
+    
+    
+    
 </mapper>

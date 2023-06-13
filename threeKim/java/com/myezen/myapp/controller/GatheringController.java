@@ -322,4 +322,26 @@ public class GatheringController {
 		hm.put("value",value);//0은 거짓 1은 참
 		return hm;
 	}
+	
+//모임 멤버 리스트 보기	
+	@RequestMapping(value="/gMemberList.do")
+	public String gMemberList() {
+		
+		return "gathering/gMemberList";
+	}
+
+//모임 멤버 리스트 보기	
+		@RequestMapping(value="/gMemberJoinWaitList.do")
+		public String gMemberJoinWaitList() {
+			
+			return "gathering/gMemberJoinWaitList";
+		}
+		
+//모임 권한위임 페이지 보기	
+		@RequestMapping(value="/gPowerEntrustList.do")
+		public String gPowerEntrustList() {
+					
+			return "gathering/gPowerEntrustList";
+				}			
+	
 }
