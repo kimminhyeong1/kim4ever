@@ -73,7 +73,10 @@ public interface GatheringService {
 	public int gatheringBoardTotal(int giidx,SearchCriteria scri);
 	//2. 게시글 리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringBoardListSelect(int giidx,SearchCriteria scri);
-	
+	//모임 게시글 보기
+	//1.게시물하나가져오기
+	public GatheringJoinVo gatheringBoardOneSelect(int giidx,int gbidx);
+
 
 
 

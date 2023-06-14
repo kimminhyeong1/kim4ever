@@ -282,6 +282,15 @@ public class GatheringServiceImpl implements GatheringService {
 
 
 
+	@Override
+	//1.게시물하나가져오기
+	public GatheringJoinVo gatheringBoardOneSelect(int giidx, int gbidx) {
+		GatheringJoinVo gjv = gsm.gatheringBoardOneSelect(giidx,gbidx);
+		return gjv;
+	}
+
+
+
 
 
 
