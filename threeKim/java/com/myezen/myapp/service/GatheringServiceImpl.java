@@ -275,8 +275,16 @@ public class GatheringServiceImpl implements GatheringService {
 		return gjvsmlist;
 	}
 
+	@Override
+	//모임 더 보기 멤버 추방
+	public int updateMemberDELYN(int midx, int giidx) {		
+		int value= gsm.updateMemberDELYN(midx,giidx);
+		
+		return value; 
+	}
 
 
+	
 
 	@Override
 	//모임 총게시글 가져오기
@@ -287,6 +295,9 @@ public class GatheringServiceImpl implements GatheringService {
 		int totalCount = gsm.gatheringBoardTotal(hm); //총 게시물 갯수 꺼내오기
 		return totalCount;
 	}
+
+
+
 
 
 

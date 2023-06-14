@@ -397,13 +397,31 @@ public class GatheringController {
     	
 		return "gathering/gMemberList";
 	}
-
+	
+//모임 더 보기 멤버 추방				
+		@RequestMapping(value="/gMemberDelete.do")
+		public String updateMemberDELYN(
+				@RequestParam("midx") int midx, 
+				HttpServletRequest request
+				){
+			HttpSession session = request.getSession();	
+			Object Ogiidx = session.getAttribute("giidx");
+			int giidx = (int)Ogiidx;
+			gs.updateMemberDELYN(giidx, midx);
+			return "redirect:/gathering/gMemberList.do"; 
+		}	
+	
+	
+	
 //모임 더 보기 가입 대기 리스트 보기	
 		@RequestMapping(value="/gMemberJoinWaitList.do")
 		public String gMemberJoinWaitList() {
 			
 			return "gathering/gMemberJoinWaitList";
 		}
+
+
+		
 		
 //모임 권한위임 페이지 보기	
 		@RequestMapping(value="/gPowerEntrustList.do")
@@ -412,7 +430,7 @@ public class GatheringController {
 			return "gathering/gPowerEntrustList";
 				}			
 	
-		
+
 		
 		
 		

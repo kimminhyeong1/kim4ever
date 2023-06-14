@@ -85,8 +85,8 @@ public interface GatheringService {
 	public GatheringVo gatheringMemberType(int giidx,int midx);
 	//모임 더보기 멤버 리스트
 	public ArrayList<GatheringJoinVo> gatheringSeeMoreMemberList(int giidx);
-	
-	
+	//모임 더보기 멤버 추방
+	public int updateMemberDELYN(int midx,int giidx);
 	
 	
 }
