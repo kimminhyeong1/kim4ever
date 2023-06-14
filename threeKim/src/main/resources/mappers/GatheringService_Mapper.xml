@@ -213,60 +213,6 @@
 	</insert>
 	
 	
-	
-	
-	
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -303,8 +249,5 @@
 	    UPDATE GATHERING1234 SET GATHERINGMEMBERDELYN = 'Y' WHERE giidx = #{0} and midx = #{1}
 	    
 		</update>
-
-=======
->>>>>>> 고장신고
 
 </mapper>
