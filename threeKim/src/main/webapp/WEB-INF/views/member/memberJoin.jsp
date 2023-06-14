@@ -5,6 +5,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>회원가입</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
 		<style>
 		/*리셋코드*/
 		
@@ -67,6 +69,47 @@
 		#main #findbutton{width:100%; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 		#main #findbutton:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 		
+		
+		
+	/*****************************************모바일***************************************************************/
+		
+	@media (min-width: 300px) and (max-width: 940px)  {		
+	
+		#main{width:auto; margin:35px auto 70px; text-align:center;}
+		#main #content{width:auto; height:auto;}
+		#main #bottom{width:auto; height:10px; }
+		/*로그인 외각선*/
+		#login_out{border: 1px solid #bbb;margin: 20px auto;width: 260px; ;padding: 20px;background-color: #f1f1f1;border-radius: 10px;}
+		/*알림*/
+		.alarm{color: #f00;text-align: left;line-height: 0px;padding-left: 5px;padding-top: 15px; font-size:10px;} 
+		
+		h2{text-align: center; margin-top:0px;margin-bottom: 20px; font-size:15px;}   
+		#content table {width:250px;border-collapse:collapse;  margin:10px auto 0; text-align:center;  line-height:0px; font-family:'omyu_pretty'; font-size:21px;}
+		#content table th{width:230px; text-align:center;  padding:2px;   box-sizing: border-box; font-size:15px;}    
+		#content table td{width:230px; padding:2px;text-align:left;   box-sizing: border-box;   font-size:15px;}
+
+		#content table th{width:150px;text-align:center;}
+		#content table #memberIdCheck {padding:5px 10px; font-size:21px; width:120px; height:50px; }
+		#content table 
+		input{
+		  font-family: 'omyu_pretty';
+		  font-size:14px;
+		  box-sizing: border-box;
+		  width: 230px;
+		  padding: 10px;
+		  margin: 2px 0;
+		  border: 1px solid #ccc;
+		  border-radius: 4px;
+		}
+		
+		#content table button{width:230px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:18px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+		#content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+		
+		#main #findbutton{width:230px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+		#main #findbutton:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+		
+	
+	}
 		</style>
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 		<script type="text/javascript">

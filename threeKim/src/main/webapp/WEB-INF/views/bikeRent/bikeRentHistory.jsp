@@ -11,6 +11,8 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent.css">
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
 		<style>
 		#main{width:1440px; margin:35px auto 70px; text-align:center;}
 		#main #content{width:1440px; height:2400px; text-align:center;}
@@ -19,9 +21,26 @@
 		#content table {width:90%; border-collapse:collapse; margin:60px auto 0; line-height:60px; font-size:20px;font-family:'omyu_pretty'; font-size:24px;}
 		#content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 		#content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
+		#content table tr{font-size:10px;}
 		#content table tr th:nth-child(2){width: 130px;}
 		#content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 		#content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+		
+		
+								/****************************모바일**************************/
+@media (min-width: 300px) and (max-width: 940px)  {
+	#main{width:auto; margin:35px auto 70px; text-align:center;}
+		#main #content{width:auto; height:auto; text-align:center;}
+		#main #bottom{width:auto; height:10px; }
+		#main #content h2{text-align:left; margin-top:10px; margin-left:5% ;font-family: 'GangwonEdu_OTFBoldA'; font-size:17px;}
+		#content table {width:90%; border-collapse:collapse; margin:0 auto; line-height:10px; font-family:'omyu_pretty'; font-size:10px;}
+		#content table th{width:100px;padding: 1px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
+		#content table td{padding: 1px; text-align:center;border-bottom:1px solid #CCCCCC;}
+		#content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+		#content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+		.hide{display:none;}
+}    
+		}
 		</style>
 		<script type="text/javascript">
 			function fnReturn() {
@@ -43,20 +62,20 @@
 					<c:otherwise>
 						<table>
 							<tr>
-								<th>고객명</th>
-								<th>연락처</th>	
-								<th>자전거종류</th>
+								<th  class="hide">고객명</th>
+								<th  class="hide">연락처</th>	
+								<th>종류</th>
 								<th>대여장소</th>
 								<th>반납장소</th>
 								<th>대여날짜</th>
 								<th>대여시간</th>
 								<th>반납시간</th>
-								<th>가격</th> 
+								<th  class="hide">가격</th> 
 							</tr>
 							<c:forEach var="bjv" items="${bjvlist}">
 								<tr>
-									<td>${bjv.memberName}</td>
-									<td>${bjv.memberPhone}</td>
+									<td  class="hide">${bjv.memberName}</td>
+									<td  class="hide">${bjv.memberPhone}</td>
 									<td>${bjv.bikeType}</td>
 									<td>${bjv.rentPlace}</td>
 									<td>${bjv.returnPlace}</td>
@@ -75,7 +94,7 @@
 			            				<fmt:formatDate value="${parsedRentDay3}" pattern="HH:mm" var="formattedRentDay3" /><!-- 시간 설정 변경 -->
 				           	 			${formattedRentDay3}						
 									</td>
-									<td>${bjv.rentPrice}원</td>
+									<td  class="hide">${bjv.rentPrice}원</td>
 								</tr>
 							</c:forEach>
 						</table>

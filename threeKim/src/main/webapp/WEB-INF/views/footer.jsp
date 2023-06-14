@@ -23,7 +23,8 @@
     font-style: normal;
 }
 
-footer {width:100%;background-color:#eeeeee; height:150px; display:flex; justify-content:center; align-items:center; 	font: inherit;}
+footer {width:100%;background-color:#eeeeee; height:150px; display:flex; justify-content:center; align-items:center; 	font: inherit;   flex-shrink: 0;
+}
 .foot {display: flex; align-items: center;}
 .footer_L, .footer_R{font-family:'GangwonEdu_OTFBoldA'; font-size: 11px;  font-weight:bold; margin-right:50px; margin-left:50px;}
 .footer_L h1{font-size: 40px;font-family: 'KCC-Ganpan';}
@@ -39,6 +40,7 @@ footer {width:100%;background-color:#eeeeee; height:150px; display:flex; justify
 .footer_R h2{text-align:left; }
 .hide{display:none;}
 }    
+
 </style>
 
 
@@ -53,9 +55,9 @@ footer {width:100%;background-color:#eeeeee; height:150px; display:flex; justify
 	</div>
   
 	<div class="footer_R"> 
-		<h2>-타:바 소개</h2>      
+		<h2 class="hide">-타:바 소개</h2>      
 		<p>타:바는 공영자전거 대여 서비스를 제공하는 플랫폼입니다.</p>
-		<p>타:바는 "타다 바이크"와 "이거 한번 타봐"라는 의미를 가졌습니다.</p>
+		<p class="hide">타:바는 "타다 바이크"와 "이거 한번 타봐"라는 의미를 가졌습니다.</p>
 		<p>타:바를 통해 쉽고 편리하게 공영 자전거를 대여하고 타보세요!</p><br/>
 		<h2  class="hide">-타:바 이용안내</h2>
 		<p class="hide">자전거는 여러종류로 운용중이며 대여료는 일반자전거 기준 1회 대여 시 1,000원입니다.</p>   

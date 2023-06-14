@@ -6,6 +6,7 @@
 <head>
 		<meta charset="UTF-8">
 		<title>타다-자전거 소개</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">				
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent.css">
@@ -18,7 +19,7 @@
 <script type="text/javascript">
 
 var IMP = window.IMP;
-IMP.init("imp67011510");
+IMP.init("imp01337483");
 
 var today = new Date();
 var hours = today.getHours(); // 시
@@ -199,12 +200,14 @@ function requestPay() {
 				    <span id="phoneChk2" class="doubleChk" >인증확인</span><br/>
 				    <span class="point successPhoneChk"></span>
 					<input type="hidden" id="phoneDoubleChk"/>
+					
 				  </td>
 				</tr>
 				  
 				<tr>
 				  <td colspan="3">
-		 <button id="rentButton"  type="button" onclick="requestPay()" style="width:100%; height:50px;" disabled>대여하기</button>
+					<button id="rentButton" class="rentButton" type="button" onclick="requestPay()" disabled>대여하기</button>
+					<button onclick="requestPay()">결제하기</button>
 					
 			
 				  </td>

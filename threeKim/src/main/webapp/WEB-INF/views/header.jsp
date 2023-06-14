@@ -63,15 +63,15 @@ header{width:auto;margin:0 auto;}
 #top_logo .logo{display:inline-block; text-align:center; position:absolute; transform:translate(-50%, -50%);}
 #top_logo .logo img{width:75px; height:80px; margin-left:45%; cursor:pointer;transition: all 0.3s ease-in-out;}
 #top_logo .login {display:flex;justify-content:flex-end;float:right; margin-right:3%}
-#top_logo .login ul {display:flex;list-style:none;margin:0;padding:0;}
+#top_logo .login ul {display:flex;list-style:none;margin-top:5px; padding:0;   flex-direction: column; margin-bottom:5px;}
 #top_logo .login li {margin-left:5px; font-family: 'GangwonEdu_OTFBoldA'; font-size:10px;}
-#top_logo .login a {display:block;padding:3px 5px;background-color:white;color:black;border-radius:20px;text-decoration:none;transition:background-color 0.3s ease; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); }
+#top_logo .login a {display:block;padding:3px 5px;margin-top:5px;background-color:white;color:black;border-radius:20px;text-decoration:none;transition:background-color 0.3s ease; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); }
 #top_logo .login a:hover {background-color: #666;}
 
 /*사이드바*/
 .top-menu img {width: 30px; height:auto; float:left; margin-left:3%}
 .sub-menu{position: fixed; z-index: 9999; width: 50px; height: 150px; transition:0.5s; border-top-right-radius:20px; border-bottom-right-radius:20px;}
-.sub-menu ul {list-style: none; padding:0; margin-top: px; text-align:left;}
+.sub-menu ul {list-style: none; padding:0;  text-align:left;}
 .sub-menu{width: 0; height: 200px; overflow:hidden; background:white ;transition-duration: 0.5s;}
 .main-nav-left:hover > .sub-menu{height: 100%;/*사이드바 높이*/width: 70%;/* background: #F7F7F7; */  border:1px solid #999; border-left: 0; overflow: hidden}
 
@@ -104,6 +104,8 @@ header{width:auto;margin:0 auto;}
 #bottom{width:auto; height:300px; }
 /* 이미지*/
  .hidden_img {display: block; width:25px; height :25px; margin:0 auto; border-radius: 10px; padding:5px;   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
+ 
+ 
  }
 
 

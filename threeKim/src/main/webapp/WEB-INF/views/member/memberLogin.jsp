@@ -12,7 +12,7 @@ msg = (String)request.getAttribute("msg");
 		<title>로그인</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_rent.css"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">		
 		<style>
 			#main{width:1250px; margin:35px auto 70px; text-align:center;}
 			#main #content{width:1250px; height:200px;}
@@ -22,7 +22,7 @@ msg = (String)request.getAttribute("msg");
 			#content table td{padding:8px;text-align:left;}
 			#content table td:nth-child(1){width:240px;text-align:center;}
 			/*로그인 외각선*/
-			#login_out{border: 1px solid #bbb;margin: 40px auto;width: 55%;padding: 20px;background-color: #f1f1f1;border-radius: 10px;}
+			#login_out{border: 1px solid #bbb; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); margin: 40px auto;width: 55%;padding: 20px;background-color: #f1f1f1;border-radius: 10px;}
 			/*경고문*/
 			#content table tr:nth-child(3) td{padding: 0px;}
 			#content table tr:nth-child(3) td div{width: 240px;text-align: left; padding-left: 10px; color: #f00;}
@@ -53,6 +53,48 @@ msg = (String)request.getAttribute("msg");
 			#content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 			/*구글로그인부분*/
 			.g_id_signin{display: inline-block; margin-top: 20px;}
+			
+			
+			/**************************모바일****************************************/
+/*****모바일 넓이***/
+
+@media (min-width: 300px) and (max-width: 940px)  {
+	#main{width:auto; margin:0 auto; text-align:center;}
+			#main #content{width:auto; height:350px;}
+			#main #bottom{width:auto; height:20px;}
+			#content table{width:30%;border-collapse:collapse;  margin: 0 auto; text-align:center;  line-height:30px; font-family:'omyu_pretty'; font-size:21px;}
+			#content table th{width:240px; text-align:center; border:1px solid #fff; padding:8px;}
+			#content table td{padding:8px;text-align:left;}
+			#content table td:nth-child(1){width:10%;text-align:center;}
+			/*로그인 외각선*/
+			#login_out{ border: none; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); margin: 40px auto;width: 270px; height:200px;padding: 20px;background-color: #f1f1f1;border-radius: 10px;}
+			/*경고문*/
+			#content table tr:nth-child(3) td{padding: 0px;}
+			#content table tr:nth-child(3) td div{width: 240px;text-align: left; padding-left: 10px; color: #f00;}
+			/*아이디저장 부분*/
+			#content table tr:nth-child(4) td{text-align: left; font-size:12px; }
+			#content table tr:nth-child(4) td input{display: inline-block; width: 10%; height: 10px;vertical-align: middle;}
+			#content table tr:nth-child(4) td span{display: inline-block;}
+			/*아이찾기.비밀번호재설정.회원가입부분*/
+			#Login_submenu p{display: inline-block;}
+			#Login_submenu p a{text-decoration-line: none; color: #5e5e5e;}
+			 
+			#content table tr:last-child td input{display: inline-block; width:120px; height:40px;}
+			
+			h2{text-align: center; margin-top:20px;}
+			/*인풋부분*/
+			#content table input{font-family: 'omyu_pretty'; font-size:15px; box-sizing: border-box; width: 80%;
+			  padding: 5px; margin: 2px 0; border: 1px solid #ccc; border-radius: 4px;}
+			/*버튼부분*/
+			#content table button{width:170px; height:30px; text-align:center; font-family: 'omyu_pretty'; font-size:20px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+			#content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+			/*구글로그인부분*/
+			.g_id_signin{display: inline-block; margin-top: 20px;  data-width: 130; }
+			
+}
+
+
+
 			
 		</style>
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -164,8 +206,7 @@ msg = (String)request.getAttribute("msg");
         		}
         		return unescape(cookieValue);
         	}
-     
-                	
+    
     </script>
 	</head>
 	<body>
@@ -223,7 +264,7 @@ msg = (String)request.getAttribute("msg");
 							     data-text="signin_with"
 							     data-size="large"
 							     data-logo_alignment="left"
-							     data-width="430">
+							     >
 							</div>
 						</div>
 					
