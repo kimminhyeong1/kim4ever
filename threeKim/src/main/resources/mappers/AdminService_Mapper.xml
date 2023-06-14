@@ -394,5 +394,29 @@
 		</if>
 	</sql>
 	
+	
+	
+	
+	
+	
+	
+	<!-- 모임 리스트 -->
+	<select id="gatheringList" parameterType="int" resultType="com.myezen.myapp.domain.GatheringJoinVo">
+	SELECT 
+		i.ginfoName,
+		m.memberName,
+		i.gInfoCreationDay,
+		i.gInfoParticipating
+		FROM GATHERING1234 g
+		JOIN member1234 m ON m.midx = g.midx
+		JOIN gathering_info1234 i ON i.giidx = g.giidx
+		WHERE
+		gatheringmembertype = 'TL'
+	</select>
+	
+	
+	
+	
+	
 </mapper>
 

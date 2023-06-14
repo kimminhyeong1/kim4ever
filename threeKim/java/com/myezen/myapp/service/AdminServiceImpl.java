@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.myezen.myapp.domain.BikeJoinVo;
+import com.myezen.myapp.domain.GatheringJoinVo;
 import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.domain.SearchCriteria;
 import com.myezen.myapp.persistance.AdminService_Mapper;
@@ -201,6 +202,14 @@ public class AdminServiceImpl implements AdminService {
 		System.out.println("rentalshopName"+rentalshopName);
 		asm.deleteRentalshop(rentalshopName);
 		
+	}
+	
+	//모임 리스트
+	@Override
+	public ArrayList<GatheringJoinVo> gatheringList() {
+		
+		ArrayList<GatheringJoinVo> gjlist = asm.gatheringList();
+		return gjlist;
 	}
 
 
