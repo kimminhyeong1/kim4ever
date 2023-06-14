@@ -33,7 +33,7 @@
 	  FROM member1234
 	  WHERE memberDelYN = 'N'
 	   <include refid="search3" />
-	  ORDER BY memberType ASC
+	  ORDER BY memberType ASC, writeDay DESC
 	   ) A
        <![CDATA[WHERE ROWNUM <= #{page} * #{perPageNum}]]>
   	) B
@@ -47,7 +47,7 @@
 	  FROM member1234
 	  WHERE memberDelYN = 'N'
 	   <include refid="search3" />
-	  ORDER BY memberType ASC
+	  ORDER BY memberType ASC, writeDay DESC
 </select>
 
 
