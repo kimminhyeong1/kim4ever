@@ -46,10 +46,10 @@ li{list-style:none;}
 #content table td a {display:flex;  color:#333;}
 #content table td a.logout-btn {display:inline-block;padding:10px 20px;background-color:#ff9800;color:#fff;text-decoration:none;border-radius:5px;transition:background-color 0.3s ease;}
 #content table td a.logout-btn:hover {background-color: #FF6600;}
-#content table .image-container {position:absolute; top:10px; left:0; width:220px;height:260px;}
-#content table #imagePreview { position:absolute; top:0;left:0; width:100%; height:70%;border:1px solid #000;border-radius:100px;object-fit:cover;}
-#content table .button-container { position:absolute;bottom:0;left:0; text-align:left; margin-top:10px;}
-#content table .intro-container {width:550px;height:auto; margin-bottom:100px;float:right;border:1px solid #ddd; border-radius:50px; display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:20px;}
+#content table .image-container {position:relative; width:180px;height:180px;}
+#content table #imagePreview {position:absolute; top:0;left:0; width:100%; height:100%;border:1px solid #000;border-radius:100px;object-fit:cover;}
+#content table .button-container {width:200px; margin-left:20px; position:absolute; bottom:680px; left:0; align-items:center; }
+#content table .intro-container {width:550px;height:auto; float:right;border:1px solid #ddd; border-radius:50px; display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:20px;}
 #content table .intro-container h3 {font-size:24px;margin-bottom:10px;border-bottom:1px solid #000;}
 #content table input[type="text"] {font-family:'omyu_pretty';font-size:24px;box-sizing:border-box;width:100%;padding:10px;margin-bottom:10px;border:1px solid #ccc;border-radius:4px;}
 #content table .intro-container .button-container2 {display:flex;justify-content:flex-end;gap:10px;margin-top:10px;margin-left:480px;}
@@ -130,12 +130,12 @@ function previewImage(event) {
 				  <!-- 이미지업로드 란  -->
 					<form method="post" action="${pageContext.request.contextPath}/member/MypageProfile.do" enctype="multipart/form-data">
 						<div class="image-container">
-							<img id="imagePreview" />
-							<div class="button-container">
-								<input id="image" type="file" name="memberProfile" onchange="previewImage(event)" />
-								<button>업로드</button>
-							</div>
-						</div>	
+							<img id="imagePreview" />		
+						</div>
+						<div class="button-container">
+							<input id="image" type="file" name="memberProfile" onchange="previewImage(event)" />
+							<button>업로드</button>
+						</div>
 					</form>
                    
                    <!-- 소개 란  -->
