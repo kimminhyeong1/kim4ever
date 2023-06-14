@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -29,7 +30,7 @@
   align-items: flex-start;
   text-align: left;
   font-size: 20px;
-  margin: 40px 40px;
+  margin: 40px 20px;
 }
 
 .gMemberList > div {
@@ -77,73 +78,82 @@
 }
 	
 .gmemberAddr {
-  width: 200px;
+  width: 250px;
 }	
 	
 .gmemberType {
   width: 80px;
 }	
 
-.DeleteBtn button {width:70px; height:40px; margin-top:-10px; margin-left:5px; text-align:center; font-family:'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}	
-.DeleteBtn button:active{background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}	
+.DeleteBtn {width:70px; height:40px; margin-top:-10px; margin-left:5px; text-align:center; font-family:'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}	
+.DeleteBtn:active{background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}	
 	</style>  
 	</head>
 	<body>
 		<%@include file="../header2.jsp" %>
 		<main id="main">
 			<h2 class="menu">
-				<a id="gMemberListLink" href="${pageContext.request.contextPath}/gathering/gMemberList.do">멤버 리스트</a>
-				<a id="gMemberJoinWaitListLink" href="${pageContext.request.contextPath}/gathering/gMemberJoinWaitList.do">가입 대기</a>
-				<a id="gPowerEntrustListLink" href="${pageContext.request.contextPath}/gathering/gPowerEntrustList.do">권한 위임</a>
-			</h2>
+    <script>
+        if ("${smv.gatheringMemberType}" === "TL" || "${smv.gatheringMemberType}" === "TLM") {
+            document.write('<a id="gMemberListLink" href="${pageContext.request.contextPath}/gathering/gMemberList.do">멤버 리스트</a>');
+            document.write('<a id="gMemberJoinWaitListLink" href="${pageContext.request.contextPath}/gathering/gMemberJoinWaitList.do">가입 대기</a>');
+            document.write('<a id="gPowerEntrustListLink" href="${pageContext.request.contextPath}/gathering/gPowerEntrustList.do">권한 위임</a>');
+        } else {
+            document.write('<a id="gMemberListLink" href="${pageContext.request.contextPath}/gathering/gMemberList.do">멤버 리스트</a>');
+        }
+    </script>
+</h2>
+			
 			<section class="gContainer gSetContainer">
 				<h2>멤버 인원 수</h2>
 				<div> 					
 					<div class="gMemberList">
-						<div>
-							<div class="gProfileimage"><img alt="프로필사진" src="../resources/images/profile.jpg"></div>
+						<c:forEach var="smv" items="${gjvsmlist}">
+							<div>
+								<div class="gProfileimage">
+									<img src="../resources/MemberProfile/${smv.memberProfile}">	
+								</div>
 								<div>
-									<div class="gmemberType">모임장</div>
-									<div class="gmemberName">김가네</div>
-									<div class="gmemberInfo">타사모 모임장 김가네입니다</div>
-									<div class="gmemberAddr">전주시 덕진구 인후동</div>	
-									<div class="DeleteBtn"><button>금지</button></div>
+									<div class="gmemberType">
+									<c:choose>
+										<c:when test="${smv.gatheringMemberType eq 'TL'}">  
+											<span style="color: red;">모임장</span>
+										</c:when>
+										<c:when test="${smv.gatheringMemberType eq 'TLD'}">  
+											부모임장
+										</c:when>
+										<c:otherwise> 
+											모임원
+										</c:otherwise>
+									</c:choose>									
+									</div>
+									<div class="gmemberName">${smv.memberName}</div>
+									<div class="gmemberInfo">${smv.memberIntro}</div>
+									<div class="gmemberAddr">${smv.memberAddr}</div>	
+									<c:choose>
+    <c:when test="${smv.gatheringMemberType eq 'TL'}">
+        <!-- 모임장인 경우 추방 불가 텍스트를 표시합니다. -->
+        추방 불가
+    </c:when>
+    <c:when test="${smv.gatheringMemberType eq 'TLM'}">
+        <!-- 부모임장인 경우 추방 버튼을 표시합니다. -->
+        <button type="button" class="DeleteBtn">추방</button>
+    </c:when>
+    <c:when test="${smv.gatheringMemberType eq 'TM'}">
+        <button type="button" class="DeleteBtn" onclick="showAlert()">추방</button>
+    </c:when>
+</c:choose>
+
+
+
+
 								</div>													
-						</div>																		
+							</div>																		
+						</c:forEach>
 					</div>
 				</div>
-				<div> 					
-					<div class="gMemberList">
-						<div>
-							<div class="gProfileimage"><img alt="프로필사진" src="../resources/images/profile.jpg"></div>
-								<div>
-									<div class="gmemberType">부모임장</div>
-									<div class="gmemberName">김김김</div>
-									<div class="gmemberInfo">반갑습니다</div>
-									<div class="gmemberAddr">전주시 완산구 평화동</div>	
-									<div class="DeleteBtn"><button>추방</button></div>
-								</div>													
-						</div>																		
-					</div>					
-				</div>
-				<div> 					
-					<div class="gMemberList">
-						<div>
-							<div class="gProfileimage"><img alt="프로필사진" src="../resources/images/profile.jpg"></div>
-								<div>
-									<div class="gmemberType">일반멤버</div>
-									<div class="gmemberName">김회원</div>
-									<div class="gmemberInfo">주말에 자전거를 즐겨탑니다</div>
-									<div class="gmemberAddr">전주시 덕진구 금암동</div>	
-									<div class="DeleteBtn"><button>추방</button></div>
-								</div>													
-						</div>																		
-					</div>
-				</div>
-				
-				
-				
-				
+							
+							
 				<div>				
 					<button class="gBtn2">돌아가기</button>			 	 
 				</div>
