@@ -37,7 +37,9 @@
 			/*버튼 부분*/
 			#writeBtn{text-align: right;}	
 			/*페이징 부분*/
-			.gPaging{font-size: 25px;}		
+			.gPaging{font-size: 25px;}
+			/*a태그*/
+			a{text-decoration: none; color: #000;}		
 		</style>
 	</head>
 	<body>
@@ -64,9 +66,9 @@
 							<div class="gNotice">
 								<div>
 									<div>공지사항</div>
-									<div>${gjvb.gBoardTitle}</div>
+									<div><a href="${pageContext.request.contextPath}/gathering/gBoardContent.do?gbidx=${gjvb.gbidx}">${gjvb.gBoardTitle}</a></div>
 								</div>
-								<div>${gjvb.gBoardContents}</div>
+								<div><a href="${pageContext.request.contextPath}/gathering/gBoardContent.do?gbidx=${gjvb.gbidx}">${gjvb.gBoardContents}</a></div>
 							</div>
 						</c:if>	
 					</c:forEach>	

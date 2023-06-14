@@ -75,47 +75,39 @@
 			#gReportExit>button{color: rgb(149, 165, 166);margin-top: 30px;margin-left: 10px;margin-right: 20px;width: 132px;height: 40px;font-size: 25px;border: 1px solid #0000;}
 			#gReportExit>button:active{color: #000;} 
 		 </style>
-		     <script>
 
-      document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-        	initialView: 'dayGridMonth',
-        	locale: 'ko', // 한국어로 설정
-        	events: [
-                // JSP에서 서버로부터 받은 일정 데이터를 여기에 반영
-                // 예시: 서버에서 events라는 이름으로 일정 데이터를 넘겨준다고 가정
-                <c:forEach var="gsvlist" items="${gsvlist}">
-                    {
-                        title: '${gsvlist.gScheduleTitle}',
-                        start: '${gsvlist.gScheduleStartDay}',
-                        end: '${gsvlist.gScheduleEndDay}',
-                        display: 'block',//eventDisplay
-                        gsidx: '${gsvlist.gsidx}'
-                    },
-                </c:forEach>
-                    
-            ],
-           
-            eventClick: function(info) {
-                // 클릭한 일정의 정보를 가져옴
-                var eventgsidx = info.event.extendedProps.gsidx; // 일정의 고유 ID
-
-                // 클릭한 일정의 정보를 페이지로 전달하여 이동
-                window.location.href = '${pageContext.request.contextPath}/gathering/gScheduleDetails.do?gsidx='+eventgsidx;
-
-              }
-        	
-        });
-        
-        calendarEl.style.width = '1210px;'; // 원하는 너비로 설정
-        calendar.render();
-      });
-      
-   
-    	  }
-
-    </script>
+		<script>
+		  document.addEventListener('DOMContentLoaded', function() {
+		    var calendarEl = document.getElementById('calendar');
+		    var calendar = new FullCalendar.Calendar(calendarEl, {
+		      initialView: 'dayGridMonth',
+		      locale: 'ko', // 한국어로 설정
+		      events: [
+		        // 서버에서 받은 스케줄 데이터를 여기에 반영
+		        // 예를 들어, 서버에서 스케줄 데이터를 events 받음
+		        <c:forEach var="gsvlist" items="${gsvlist}">
+		          {
+		            title: '${gsvlist.gScheduleTitle}',
+		            start: '${gsvlist.gScheduleStartDay}',
+		            end: '${gsvlist.gScheduleEndDay}',
+		            display: 'block', // 이벤트 표시 방식 설정
+		            gsidx: '${gsvlist.gsidx}'
+		          },
+		        </c:forEach>
+		      ],
+		      eventClick: function(info) {
+		        // 클릭한 이벤트의 정보를 가져옴
+		        var eventgsidx = info.event.extendedProps.gsidx; // 이벤트의 고유 ID
+		
+		        // 클릭한 스케줄의 정보를 페이지로 전달하고 이동
+		        window.location.href = '${pageContext.request.contextPath}/gathering/gScheduleDetails.do?gsidx=' + eventgsidx;
+		      }
+		    });
+		
+		    calendarEl.style.width = '1210px;'; // 원하는 너비로 설정
+		    calendar.render();
+		  });
+		</script>
 	</head> 
 	<body>  
 	<%@include file="../header2.jsp" %>
