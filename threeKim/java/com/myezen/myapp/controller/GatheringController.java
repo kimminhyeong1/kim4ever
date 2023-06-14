@@ -368,14 +368,19 @@ public class GatheringController {
 		return hm;
 	}
 	
-//모임 멤버 리스트 보기	
+//모임 더 보기 멤버 리스트 보기	
 	@RequestMapping(value="/gMemberList.do")
-	public String gMemberList() {
-		
+	public String gMemberList(HttpServletRequest request,
+			Model md) {
+		HttpSession session = request.getSession();
+		Object Ogiidx = session.getAttribute("giidx");
+		int giidx = (int)Ogiidx;
+		ArrayList<GatheringJoinVo> gjvsmlist = gs.gatheringSeeMoreMemberList(giidx);
+    	md.addAttribute("gjvsmlist", gjvsmlist);
 		return "gathering/gMemberList";
 	}
 
-//모임 멤버 리스트 보기	
+//모임 더 보기 가입 대기 리스트 보기	
 		@RequestMapping(value="/gMemberJoinWaitList.do")
 		public String gMemberJoinWaitList() {
 			

@@ -250,6 +250,15 @@ public class GatheringServiceImpl implements GatheringService {
 	}
 
 
+
+	@Override
+	//모임 더 보기 멤버 리스트
+	public ArrayList<GatheringJoinVo> gatheringSeeMoreMemberList(int giidx) {
+		ArrayList<GatheringJoinVo> gjvsmlist = gsm.gatheringSeeMoreMemberList(giidx);
+		return gjvsmlist;
+	}
+
+
 	
 	
 

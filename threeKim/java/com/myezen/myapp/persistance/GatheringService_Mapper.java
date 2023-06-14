@@ -85,8 +85,8 @@ public interface GatheringService_Mapper {
 	
 	
 	
-	
-	
-	
+	/*모임 더보기 */
+	//모임 더보기 멤버 리스트
+	public ArrayList<GatheringJoinVo> gatheringSeeMoreMemberList(int giidx);
 	
 }
