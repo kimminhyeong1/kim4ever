@@ -166,7 +166,13 @@ function fnDelete(midx, giidx) {
 							
 							
 				<div>				
-					<button class="gBtn2">돌아가기</button>			 	 
+					<button class="gBtn2" onclick="goBack()">돌아가기</button>
+				
+					<script>
+					  function goBack() {
+					    window.history.back();
+					  }
+					</script>			 	 
 				</div>
 			</section>
 		</main>

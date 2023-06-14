@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.apache.ibatis.annotations.Param;
 
 import com.myezen.myapp.domain.BikeJoinVo;
+import com.myezen.myapp.domain.GatheringJoinVo;
 import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.domain.SearchCriteria;
 
@@ -54,5 +55,7 @@ public interface AdminService {
 		public void deleteRentalshop(String rentalshopName);
 	//회원 상세정보
 		public BikeJoinVo getMemberByMemberId(String memberId);
+	//모임 리스트
+		public ArrayList<GatheringJoinVo> gatheringList();	
 		
 }

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.BoardVo;
+import com.myezen.myapp.domain.GatheringJoinVo;
 import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.domain.PageMaker;
 import com.myezen.myapp.domain.SearchCriteria;
@@ -250,8 +251,11 @@ public class AdminController {
 	
 	//관리자 모임 리스트 페이지	
 		@RequestMapping(value="/admingatheringList.do")
-		public String admingatheringList() {
-				
+		public String admingatheringList(Model model) {
+			ArrayList<GatheringJoinVo> gjlist = as.gatheringList();
+					
+			model.addAttribute("gjlist", gjlist);	
+			
 				return "admin/admingatheringList";
 			}	
 		

@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import = "com.myezen.myapp.domain.BikeJoinVo" %>
+<%@page import = "com.myezen.myapp.domain.GatheringJoinVo" %>
 <%@page import = "java.util.*" %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-ArrayList<BikeJoinVo> alist = (ArrayList<BikeJoinVo>)request.getAttribute("alist");
+ArrayList<GatheringJoinVo> gjlist = (ArrayList<GatheringJoinVo>)request.getAttribute("gjlist");
 %>
 
 <!DOCTYPE html>
@@ -78,72 +79,29 @@ li{list-style:none;}
 	
 	<div id="content">
 	<h2><a id="gatheringList" href="${pageContext.request.contextPath}/admin/admingatheringList.do" >모임 리스트</a><a id="GReportList" href="${pageContext.request.contextPath}/admin/adminGReportList.do">모임 신고 내역</a></h2>
-	<form action="${pageContext.request.contextPath}/admin/admingatherList.do" method="get">
-		<table class="form-table" border=0 style="text-align: left; width: 400px;">
-			<tr>
-				<td>
-				<select id="searchType" name="searchType">
-					<option value="memberId">모임명</option> 
-					<option value="memberName">모임장</option>
-					<option value="memberType">모임 생성일</option>
-				</select>
-				</td>		
-				<td><input type="text" id="keyword" name="keyword"></td>
-				<td><input type="submit" id="searchBtn" value="검색"></td> 
-			</tr>
-		</table>
-		
-	</form>
-		
+	
 		<table>
-				<tr>
-					<th>모임명</th>
-					<th>모임장</th>
-					<th>모임 생성일</th>
-					<th>모임 인원</th>
-				</tr>
-				
-		
-					<tr>
-						<td><a class="gBtn" href="${pageContext.request.contextPath}/admin/adminGReportList.do">자전거 좋아</a>
-						</td>
-						<td>김가네</td>
-						<td>2023-06-05</td>
-						<td>25명</td>						
-					</tr>
-					<tr>
-						<td>효자바이크</td>
-						<td>테스트</td>
-						<td>2023-06-05</td>
-						<td>100명</td>						
-					</tr>				
+		  <tr>
+		    <th>모임명</th>
+		    <th>모임장</th>
+		    <th>생성일</th>
+		    <th>모임 인원</th>
+		  </tr>
+		  
+		 <c:forEach var="gjv" items="${gjlist}">
+		  <tr>
+		    <td>${gjv.gInfoName}</td>
+		    <td>${gjv.memberName}</td>
+		    <td>${gjv.gInfoCreationDay}</td>
+		    <td>${gjv.gInfoParticipating}</td>
+		  </tr>		  
 		</table>
-		<table>
-			<tr>
-				<td>
-					<c:if test="${ pm.prev == true }">
-					<a href="${pageContext.request.contextPath }/admin/adminmemberList.do?page=${pm.startPage-1}&searchType=${ pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } "> ◀</a>
-					</c:if>
-				</td>
-				<td>
-					<c:forEach var="i"  begin="${pm.startPage}" end="${pm.endPage}"  step="1" >
-						<a href="${pageContext.request.contextPath }/admin/adminmemberList.do?page=${ i }&searchType=${pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">${ i }</a>
-					</c:forEach>	
-				</td>
-					<td>
-					<c:if test="${pm.next&&pm.endPage >0 }">
-					<a href="${pageContext.request.contextPath }/admin/adminmemberList.do?page=${pm.endPage+1}&searchType=${pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">▶</a>
-					</c:if>
-				</td>
-			</tr>
-		</table>
-		
+		</c:forEach>	
 	</div>
 	
 	
-	
-	
-	</div>
+		
+</div>
 	
 	<div id="bottom">
 	</div>
