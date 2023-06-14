@@ -79,7 +79,6 @@
 		SELECT *
 		FROM GATHERING_BOARD1234 a
 		WHERE a.GIIDX = 62 AND gBoardDelYN = 'N' AND gBoardCategory ='공지사항'
-		ORDER BY GBOARDWRITEDAY DESC
 	</select>
 	
 	
@@ -157,144 +156,25 @@
 		INSERT INTO gathering_board1234 (gbidx,giidx,midx,gBoardTitle,gBoardCategory,gBoardContents,gBoardWriteDay,gBoardDelYN)
 		VALUES(gbidx_seq.NEXTVAL, #{giidx},#{midx},#{gBoardTitle},#{gBoardCategory},#{gBoardContents},SYSDATE,'N')
 	</insert>
-	<sql id="search">
-		<if test="searchType != null and searchType.equals('gBoardTitle')"><!-- 동적 SQL  -->
-			and gBoardTitle like '%'|| #{scri.keyword} ||'%'
-		</if>
-		<if test="searchType != null and searchType.equals('gBoardContents')">
-			and gBoardContents like '%'|| #{scri.keyword} ||'%'
-		</if>
-	</sql>
-	<!--  모임 총게시글 가져오기 -->
-	<select id="gatheringBoardTotal" resultType="int" parameterType="java.util.HashMap"> 
-        SELECT count(*) as cnt
-        FROM GATHERING_BOARD1234 a
-        JOIN member1234 b ON b.midx = a.midx
-        JOIN GATHERING1234 c ON c.giidx = a.giidx AND c.midx = a.midx
-        WHERE gBoardDelYN = 'N' AND memberdelyn = 'N' AND gatheringMemberDelYN = 'N' AND a.GIIDX = #{giidx}
-		<include refid="search"></include>
-	</select>
 	<!--  모임 게시글 리스트 가져오기 -->
-	<select id="gatheringBoardListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="java.util.HashMap"> 
-		SELECT *
-		FROM (
-		    SELECT ROWNUM AS rnum, A.*
-		    FROM (
-		        SELECT a.*, b.memberName, b.memberProfile, c.gatheringMemberType
-		        FROM GATHERING_BOARD1234 a
-		        JOIN member1234 b ON b.midx = a.midx
-		        JOIN GATHERING1234 c ON c.giidx = a.giidx AND c.midx = a.midx
-		        WHERE gBoardDelYN = 'N' AND memberdelyn = 'N' AND gatheringMemberDelYN = 'N' AND a.GIIDX = #{giidx} <include refid="search"></include>
-		        ORDER BY CASE WHEN GBOARDCATEGORY = '공지사항' THEN 0 ELSE 1 END, GBOARDWRITEDAY DESC
-		    ) A
-		)
-		WHERE rnum BETWEEN (#{scri.page}-1)*#{scri.perPageNum}+1 AND #{scri.page}*#{scri.perPageNum} 
-	</select>
-	<!--  모임 게시글 보기 -->
-	<select id="gatheringBoardOneSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int"> 
-	   SELECT a.*, b.memberName, b.memberProfile, c.gatheringMemberType
-	   FROM GATHERING_BOARD1234 a
-	   JOIN member1234 b ON b.midx = a.midx
-	   JOIN GATHERING1234 c ON c.giidx = a.giidx AND c.midx = a.midx
-	   WHERE gBoardDelYN = 'N' AND memberdelyn = 'N' AND gatheringMemberDelYN = 'N' AND a.GIIDX = #{0} AND a.GBIDX = #{1}
+	<select id="gatheringBoardListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int"> 
+		SELECT a.*,b.memberName,b.memberProfile,c.gatheringMemberType
+		FROM GATHERING_BOARD1234 a
+		JOIN member1234 b ON b.midx = a.midx
+		JOIN GATHERING1234 c ON c.giidx = a.giidx AND c.midx = a.midx
+		WHERE gBoardDelYN = 'N' AND memberdelyn = 'N' AND gatheringMemberDelYN = 'N' AND a.GIIDX =#{0}
 	</select>
 	
 	
-	
-<!-- 모임 신고-->
+	<!-- 모임 신고-->
 	<insert id="insertDeclaration" parameterType="com.myezen.myapp.domain.GatheringJoinVo">
-  INSERT INTO gathering_declaration1234 (GDIX, GIIDX, GATHERINGREPORTCONTENT, GATHERINGDECLARATIONDAY)
-  SELECT GDIX_seq.nextval, gi.GIIDX, '${gatheringReportContent}', SYSDATE
-  FROM gathering_info1234 gi
-  WHERE gi.giidx = #{giidx}
-</insert>
-	
-
+	INSERT INTO gathering_declaration1234(gdix, giidx, midx, gatheringReportContent, gatheringDeclarationDay)
+	values(gdix_seq.NEXTVAL, #{giidx}, #{midx}, #{gatheringReportContent},sysdate)
+	</insert>
 	
 	
 	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 모임 더보기 멤버 리스트 , 추방 , 권한 위임 -->
-
-<!--  모임 더보기 현재 사용자 멤버타입 가져오기  -->
-	<select id="gatheringMemberType" resultType="com.myezen.myapp.domain.GatheringVo" parameterType="int"> 
-		SELECT GATHERINGMEMBERTYPE
-		FROM GATHERING1234 a
-		JOIN MEMBER1234 b ON b.midx = a.midx
-		WHERE a.GIIDX = #{0} AND b.MEMBERDELYN = 'N' AND a.GATHERINGMEMBERDELYN = 'N' AND b.midx = #{1}
-	</select>
-<!--  모임 더보기 멤버 리스트 -->
-	<select id="gatheringSeeMoreMemberList" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int"> 
-		SELECT a.*,
-			b.memberProfile,
-			b.memberName,
-			b.memberIntro,
-			b.memberAddr
-		FROM GATHERING1234 a
-		JOIN MEMBER1234 b ON b.midx = a.midx
-		WHERE a.GIIDX = #{GIIDX}
-			AND b.MEMBERDELYN = 'N'
-			AND a.GATHERINGMEMBERDELYN = 'N'
-		ORDER BY CASE WHEN a.GATHERINGMEMBERTYPE = 'TL' THEN 1
-		              WHEN a.GATHERINGMEMBERTYPE = 'TLM' THEN 2
-		              WHEN a.GATHERINGMEMBERTYPE = 'TM' THEN 3
-		              ELSE 4
-		END
-	</select>
-
-
-
+	
+	
 
 </mapper>

@@ -88,8 +88,7 @@ public class GatheringServiceImpl implements GatheringService {
 
 		return value;
 	}
-
-
+	
 
 	@Override
 	//모임 리스트 가져오기
@@ -299,30 +298,18 @@ public class GatheringServiceImpl implements GatheringService {
 	}
 
 
-
-
-
-
-
-
+	//신고하기 수정중..
 	@Override
+	@Transactional
 	public void insertDeclaration(GatheringJoinVo gjv) {
-		
-	        
-		gsm.insertDeclaration(gjv);
-	}
 
-
-	
+	        gsm.insertDeclaration(gjv);
+	    }
 	
 
 
 
 
-	
-	
-	
-	
 	
 	
 

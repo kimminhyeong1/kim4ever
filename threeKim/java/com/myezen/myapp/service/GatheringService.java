@@ -77,12 +77,12 @@ public interface GatheringService {
 	public ArrayList<GatheringJoinVo> gatheringBoardListSelect(int giidx,SearchCriteria scri);
 
 	
-	public void insertDeclaration(GatheringJoinVo gjv);
-
+	public void  insertDeclaration(GatheringJoinVo gjv);
+	
 	//모임 게시글 보기
 	//1.게시물하나가져오기
 	public GatheringJoinVo gatheringBoardOneSelect(int giidx,int gbidx);
-
+	
 
 
 
