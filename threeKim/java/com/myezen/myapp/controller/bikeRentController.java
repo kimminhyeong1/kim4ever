@@ -110,10 +110,10 @@ public class bikeRentController {
 	public String bikeRentLocation(Model md) {
 		ArrayList<BikeJoinVo> bjvlist = bs.availableStations();
 		ArrayList<HashMap<String, Object>> positions = new ArrayList<>();
-
+		
 		    for (BikeJoinVo bikeJoinVo : bjvlist) {
 		    	HashMap<String, Object> position = new HashMap<>();
-		        String content = "<div id=\"marker" + bikeJoinVo.getRsidx() + "\">";
+		        String content = "<div id=\"marker"+bikeJoinVo.getRsidx()+"\" class=\"infowindow\">";
 		        content += "<span class=\"rs1\">" + bikeJoinVo.getRentalshopName() + "대여소</span></br>";
 		        content += "<span class=\"rs2\">남은 갯수: " + bikeJoinVo.getRentalshopCnt() + "</span></div>";
 		        

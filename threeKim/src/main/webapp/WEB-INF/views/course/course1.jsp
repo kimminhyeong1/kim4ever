@@ -179,6 +179,7 @@ if (window.matchMedia("(min-width: 300px) and (max-width: 940px)").matches) {
 	var rectangleBounds = new kakao.maps.LatLngBounds(sw, ne);
 } 
 
+/************************************* 데스크탑**************************/
 else {
 
 

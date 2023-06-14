@@ -22,19 +22,20 @@
 			#main #content table th {padding: 10px;text-align:center; border-bottom: 1px solid #ddd;background-color: #f2f2f2;}
 			#main #content table td:nth-child(1){padding: 10px; text-align:center; border-bottom:1px solid #ddd;}
 			#main #content table td:nth-child(2){padding: 10px; text-align:left; border-bottom:1px solid #ddd;}
-			#main #content h1 {font-size:35px; text-align:center; color:#333; margin-top:40px; margin-bottom:20px; font-family:'KCC-Ganpan'; font-weight:bold; letter-spacing:-1px; text-shadow:1px 1px #fff; background-color:#fff; border:none;padding-bottom:10px;}
+			#main #content h1 {font-size:35px; padding-top:10px;  text-align:center; color:#333; margin-top:40px; margin-bottom:20px; font-family:'KCC-Ganpan'; font-weight:bold; letter-spacing:-1px; text-shadow:1px 1px #fff; background-color:#fff; border:none;padding-bottom:10px;}
 			#main #content h2{margin-top:20px; font-family: 'KCC-Ganpan';}
 			
 			/*마커 폰트 변경*/
 			/*마커 글씨 크기 변경*/
-			.rs1{font-size:21px; margin-left:30px; font-family:'omyu_pretty';}
-			.rs2{font-size:15px; margin-left:25px; font-family:'omyu_pretty';}
+			.rs1{font-size:25px; font-family:'omyu_pretty';}
+			.rs2{font-size:19px; font-family:'omyu_pretty';}
+			.infowindow {display: block;  background:#238CFA;  color: #fff;  text-align: center;  width: 120px; height: 50px;  line-height:22px;  border-radius:4px; margin:0; line-height:14px; padding-top:10px;}
 			
 			
 				/*****************************************모바일***************************************************************/
 		html{height:100%;}
 	@media (min-width: 300px) and (max-width: 940px)  {	
-			#main{width:auto; margin:35px auto 70px; text-align:center;}
+			#main{width:auto; margin:0 auto; text-align:center;}
 			#main #content{width:auto; height:auto;text-align:center;}
 			#main #bottom{width:auto; height:10px;}
 			#main #content #map{margin-top:50px; width:200px; height:200px; margin-right:50px;}
@@ -45,11 +46,12 @@
 			
 			#main #content h1 {font-size:15px; text-align:center; color:#333; margin-top:10px; margin-bottom:20px; font-family:'KCC-Ganpan'; font-weight:bold; letter-spacing:-1px; text-shadow:1px 1px #fff; background-color:#fff; border:none;padding-bottom:10px;}
 			#main #content h2{font-size:15px; margin-top:20px; font-family: 'KCC-Ganpan';}
-			#map {width: 80%;  height: 80%;}
+#main #content #map{width:80%;height:40vh; margin-left:10%;}
 			/*마커 폰트 변경*/
 			/*마커 글씨 크기 변경*/
-			.rs1{font-size:15px; margin-left:30px; font-family:'omyu_pretty';}
-			.rs2{font-size:8px; margin-left:25px; font-family:'omyu_pretty';}
+			.rs1{font-size:13px; margin-left:3px; font-family:'omyu_pretty'; padding-top:2px;}
+			.rs2{font-size:13px; margin-left:2px; font-family:'omyu_pretty';}
+.infowindow {display: block;  background:#238CFA;  color: #fff;  text-align: center;  width: 70px; height: 30px;  line-height:22px;  border-radius:4px; margin:0; line-height:10px;}
 
 }
 		</style>
@@ -107,6 +109,94 @@
 	<%@include file="../footer.jsp" %>
 </div>
 <script>
+
+/* 모바일스크립트*/
+
+
+
+
+
+if (window.matchMedia("(min-width: 300px) and (max-width: 940px)").matches) {
+
+
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+    mapOption = { 
+        center: new kakao.maps.LatLng(35.82991972478962, 127.13179953776518), // 지도의 중심좌표
+        level: 8 // 지도의 확대 레벨
+    };
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+
+
+
+/*
+// 마커를 표시할 위치와 title 객체 배열입니다 
+var positions = [
+    {
+    	content: '<div id="marker1"><span class="rs1">오목 대여소</span></br><span class="rs2">남은 갯수:</span></div>', 
+        latlng: new kakao.maps.LatLng(35.81459776759758, 127.15492513917111)
+    },
+    {
+    	content: '<div id="marker2"><span class="rs1">평화 대여소</span></br><span class="rs2">남은 갯수:</div>', 
+        latlng: new kakao.maps.LatLng(35.79594860552455 , 127.1321029429742)
+    },
+    {
+    	content: '<div id="marker3"><span class="rs1">덕진 대여소</span></br><span class="rs2">남은 갯수:</div>', 
+        latlng: new kakao.maps.LatLng(35.84934062155616, 127.1605636201495)
+    },
+    {
+    	content: '<div id="marker4"><span class="rs1">송천 대여소</span></br><span class="rs2">남은 갯수:</div>',
+        latlng: new kakao.maps.LatLng(35.854855187999924, 127.11659646840083)
+    },
+    {
+    	content: '<div id="marker5"><span class="rs1">효자 대여소</span></br><span class="rs2">남은 갯수:</div>',
+        latlng: new kakao.maps.LatLng(35.819267333182594, 127.11125221813597)
+    }
+];
+*/
+//마커를 표시할 위치 정보 배열 
+var positions = [
+    <c:forEach var="position" items="${positions}">
+        {
+            content: '${position.content}',
+            latlng: new kakao.maps.LatLng('${position.latitude}', '${position.longitude}')
+        },
+    </c:forEach>
+];
+	// 지도에 마커 추가
+for (var i = 0; i < positions.length; i++) {
+    var marker = new kakao.maps.Marker({
+        map: map,
+        position: positions[i].latlng
+    });
+    
+var infowindow = new kakao.maps.InfoWindow({
+    content: positions[i].content // 인포윈도우에 표시할 내용
+});
+	//인포윈도우를 열어줍니다
+	infowindow.open(map, marker);
+	
+	var infowindow = document.querySelectorAll('.infowindow');
+	infowindow.forEach(function(e) {
+	    var w = e.offsetWidth + 10;
+	    var ml = w/2;
+	    e.parentElement.style.top = "35px";
+	    e.parentElement.style.left = "50%";
+	    e.parentElement.style.marginLeft = -ml+"px";
+	    e.parentElement.style.width = "70px";
+	    e.parentElement.previousSibling.style.display = "none";
+	    e.parentElement.parentElement.style.border = "0px";
+	    e.parentElement.parentElement.style.background = "unset";
+	});
+
+
+}
+	
+}
+/* ********************************************데탑*******************************************/
+else{
+
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
 	    mapOption = { 
 	        center: new kakao.maps.LatLng(35.82379981948935, 127.14761432056453), // 지도의 중심좌표
@@ -148,8 +238,8 @@
         <c:forEach var="position" items="${positions}">
             {
                 content: '${position.content}',
-                latlng: new kakao.maps.LatLng(${position.latitude}, ${position.longitude})
-            },
+                latlng: new kakao.maps.LatLng('${position.latitude}', '${position.longitude}')
+            },  
         </c:forEach>
     ];
  	// 지도에 마커 추가
@@ -165,9 +255,22 @@
 	
 	//인포윈도우를 열어줍니다
 	infowindow.open(map, marker);
+
+	var infowindow = document.querySelectorAll('.infowindow');
+	infowindow.forEach(function(e) {
+	    var w = e.offsetWidth + 10;
+	    var ml = w/2;
+	    e.parentElement.style.top = "35px";
+	    e.parentElement.style.left = "50%";
+	    e.parentElement.style.marginLeft = -ml+"px";
+	    e.parentElement.style.width = "70px";
+	    e.parentElement.previousSibling.style.display = "none";
+	    e.parentElement.parentElement.style.border = "0px";
+	    e.parentElement.parentElement.style.background = "unset";
+	});
 	
 	}
-	
+
 	/* 전에했던거 마우스를 가져가면 이벤트 발생
 	// 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
 	// 이벤트 리스너로는 클로저를 만들어 등록합니다 
@@ -194,7 +297,7 @@
 	}
 	*/
 
-	
+	}
 	</script>
 </body>
 

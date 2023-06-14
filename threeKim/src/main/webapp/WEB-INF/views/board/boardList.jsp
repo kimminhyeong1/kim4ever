@@ -78,11 +78,11 @@ li{list-style:none;}
 #main #content{width:auto; height:auto;}
 #main #content h2{text-align:left; margin-top:50px; margin-left:16px; margin-left:10%;font-family: 'GangwonEdu_OTFBoldA'; font-size:15px; }
 #main #bottom{width:auto; height:10px;}
-#content table {width:80vw; border-collapse:collapse; margin:10px auto 0; line-height:13px; font-size:12px; font-family: 'omyu_pretty'; cursor:pointer; }
+#content table {width:80vw; border-collapse:collapse; margin:10px auto 0; line-height:13px; font-size:13px; font-family: 'omyu_pretty'; cursor:pointer; }
 #content table th{padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 5px; text-align:center;border-bottom:1px solid #CCCCCC; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 #content #btn{text-align:right; margin-top:20px; margin-right:5%; }
-#content #btn button{width:50px; height:20px; text-align:center; font-family: 'omyu_pretty'; font-size:12px; font-weight:bold; border-radius:7px; border:0px solid #ff9933; background:#ff9933;  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);}
+#content #btn button{width:50px; height:25px; text-align:center; font-family: 'omyu_pretty'; font-size:12px;  border-radius:7px; border:0px solid #ff9933; background:#ff9933;  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
 #content #btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 .cell-content {width: 25vw; overflow: hidden; text-overflow: ellipsis;}
 
@@ -92,8 +92,8 @@ li{list-style:none;}
 .tab__contents {display:none;}
 .show {display: block;}
 .tab__list{margin-top:5%;}
-.tab__list li{ display: inline-block; border: none; background-color: #f8f8f8; padding: 3px 7px; cursor: pointer; margin-top:10px; font-family: 'omyu_pretty'; font-size:12px; border-radius:5px; margin-top:10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);}
-.tab__list__item.active {background-color:#ff9933;;color:#fff;border:none ;}
+.tab__list li{ display: inline-block; border: none; background-color: #f8f8f8; padding: 5px 7px; cursor: pointer;  font-family: 'omyu_pretty'; font-size:12px; border-radius:5px; margin-top:10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);}
+.tab__list__item.active {background-color:#ff9933; color:#fff; border:none ;}
 
  a {color: inherit; text-decoration: none;}
  }

@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-     <%@ page import="com.myezen.myapp.domain.BoardVo" %>   
- 
- <% BoardVo bv   = (BoardVo)request.getAttribute("bv"); %>   
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+     <%@ page import="com.myezen.myapp.domain.BoardVo" %>    
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공지사항</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 /*리셋코드*/ 
 *{margin:0;padding:0;}
@@ -49,6 +49,34 @@ li{list-style:none;}
 #content #btn{text-align:right; margin-top:20px; margin-right:144px; }
 #content #btn button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content #btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+
+
+
+/**************************모바일****************************************/
+
+
+
+
+
+/*****모바일 넓이***/
+@media (min-width: 300px) and (max-width: 940px)  {
+
+#main{width:auto; margin:0 auto; text-align:center;}
+#main #content{width:auto; height:auto;}
+#main #content h2{text-align:left; margin-top:10px; margin-left:10%; font-family: 'GangwonEdu_OTFBoldA'; font-size:13px;}
+#main #bottom{width:auto; height:10px;}
+#content table {width:80%; height:auto; border-collapse:collapse; margin: auto; font-size:10px; font-family: 'omyu_pretty' ; border-radius:10px;}
+#content table tr{border:1px solid #ddd;}
+#content table th {width:10px;  text-align:left; border-right:0px solid #ddd;}
+#content table td { text-align:left; line-height:2px;}
+#content table tr th {width:30px; text-align:center;  }
+#content table td { white-space: pre-line;}
+#content #btn{text-align:right; margin-top:20px; margin-right:10%; }
+#content #btn button{width:50px; height:25px; margin:0 auto; text-align:center; font-family: 'omyu_pretty'; font-size:14px; border-radius:10px; border:0px solid #ff9933; background:#ff9933; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
+#content #btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+.maintext{height: 200px; width: auto; text-align:left;}
+
+}
 </style>
 
 </head>
@@ -56,13 +84,19 @@ li{list-style:none;}
 <script type="text/javascript">
 
 $(document).ready(function() {
-    var originalFileName = "<%=bv.getFilename()%>";
-    var downloadLink = '<%=request.getContextPath()%>/board/displayFile.do?fileName=' + originalFileName + '&down=1';
+
+	var originalFileName = "${bv.filename}";
+    var downloadLink = '${pageContext.request.contextPath}/board/displayFile.do?fileName=' + originalFileName + '&down=1';
     var downloadElement = $("<a>")
+ 	
+
+		
       .attr("href", downloadLink)
       .attr("download", originalFileName)
       .text(originalFileName);
-    $("#download").append(downloadElement);
+    	$("#download").append(downloadElement);
+		
+	
   });
 	  
 	function getOriginalFileName(fileName){	
@@ -88,7 +122,9 @@ $(document).ready(function() {
 		var pattern = /jpg$|gif$|png$|jpeg$/i;
 		return fileName.match(pattern);
 	}
-	</script>
+	
+
+		</script>
 <body>
 	<div id="main">
 		<%@include file="../header.jsp"%>
@@ -99,51 +135,54 @@ $(document).ready(function() {
 				<table>
 
 					<tr>
-					<!-- 제목 -->
 						<th>제목</th>
-						<td><%=bv.getSubject()%></td>
-						
-					<!-- 조회수 -->
-						<th style="width: 100px; text-align: center; border-left: 1px solid #ddd;">조회수</th>
-						<td style="width: 200px; text-align: center;"><%=bv.getBoardView()%></td>
-
+						<td>${bv.subject}</td>
 					</tr>
+					<tr>		
+						<th>조회수</th>
+						<td>${bv.boardView}</td>
+						</tr>				
 
 					<tr>
 						<th>작성자</th>
-						<td><%=bv.getWriter()%></td>	
+						<td>${bv.writer}</td>
 					</tr>
 
-					<tr>
+					<tr class="maintext">
 						<th>글 내용</th>
-						<td style="height: 500px; width: 1800px; text-align:left;" ><%=bv.getContent()%></td>
+							<td class="maintext-cell" >${bv.content}</td>
 
 					</tr>
-
+					
 					<tr>
 						<th>파일다운로드</th>
 						<td>
 							<div id="download"></div>
-						</td>
-						<td>
-							<!-- 이미지일경우만 --> <% 	if (bv.getFilename() != null) {
-								String exp = bv.getFilename().substring(bv.getFilename().length() - 3, bv.getFilename().length());
- 								if (exp.equals("jpg") || exp.equals("gif") || exp.equals("png")) { %>
- 								 <img src="<%=request.getContextPath()%>/board/displayFile.do?fileName=<%=bv.getFilename()%>"
-								width="100px" height="100px" /> <%} } %>
-						</td>
+
+							<c:if test="${not empty bv.filename}">
+							    <c:set var="exp" value="${fn:substring(bv.filename, fn:length(bv.filename) - 3, fn:length(bv.filename))}" />
+							    <c:choose>
+							        <c:when test="${exp eq 'jpg' or exp eq 'gif' or exp eq 'png'}">
+							            <img src="${pageContext.request.contextPath}/board/displayFile.do?fileName=${bv.filename}"
+							                width="100px" height="100px" />
+							        </c:when>
+							    </c:choose>
+							</c:if>
+						</td>				
 				</table>
 				<div id="btn">
 					<c:choose>
 					  <c:when test="${midx == bv.getMidx() || membertype == '관리자'}">
-					    <!-- midx가 동일하거나 membertype가 '관리자'일 때 출력 -->
-					    <button type="button" onclick="location.href='${pageContext.request.contextPath}/board/boardModify.do?bidx=${bv.getBidx()}'">수정</button>
-					    <button type="button" onclick="location.href='${pageContext.request.contextPath}/board/boardDelete.do?bidx=${bv.getBidx()}'">삭제</button>
-					  </c:when>
+					   <!-- midx가 동일하거나 membertype가 '관리자'일 때 출력 -->
+							<button type="button"
+							onclick="location.href='${pageContext.request.contextPath}/board/boardModify.do?bidx=${bv.bidx}'">수정</button>
+						<button type="button"
+							onclick="location.href='${pageContext.request.contextPath}/board/boardDelete.do?bidx=${bv.bidx}'">삭제</button>
+					 	 </c:when>
 					</c:choose>
 
 					<button type="button"
-						onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">목록</button>
+						onclick="location.href='${pageContext.request.contextPath}/board/boardList.do'">목록</button>				
 				</div>
 			</form>
 		</div>

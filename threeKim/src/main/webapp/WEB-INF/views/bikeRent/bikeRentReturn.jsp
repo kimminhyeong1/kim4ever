@@ -22,6 +22,7 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent.css">
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
 		<style type="text/css">
 			/*헤더영역 메뉴*/
@@ -42,6 +43,31 @@
 			/*이용내역 내용 버튼*/
 			#useListBtn{text-align:center;}
 			
+			
+			
+			
+			
+			
+						/****************************모바일**************************/
+@media (min-width: 300px) and (max-width: 940px)  {
+		header #menu{display: none;}
+			/*틀부분*/
+			.container{border: 1px solid #bbb;margin: 0 px;width: 90%;padding: 5px ;background-color: #f1f1f1;border-radius: 10px;}
+			.container>div{padding: 5px; text-align: left;}
+			.container>div>p{display: inline-block; } 
+			.container>div>p:nth-child(1){width: 40%; margin-left: 20px;} 
+			.container>div>p:nth-child(2){width: 5%;} 
+			.container{font-size: 14px;}
+			.container h1{font-size: 20px; text-align: center;}
+			.container h2{font-size: 20px; text-align: center;}
+			.container button{display:inline-block; width:40%; height:40px; margin-top:0px;text-align:center; font-family:'omyu_pretty'; font-size:15px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+			.container button:active{background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+			/*이용내역 내용*/
+			#useInfo{width:80%; font-size:12px; line-height:15px;}
+			/*이용내역 내용 버튼*/
+			#useListBtn{text-align:center;}
+			
+}
 			  
 		</style>
 		<script type="text/javascript">
@@ -77,19 +103,19 @@
 							4. 안전수칙을 준수하시고 음주 시 이용이 불가합니다.<br>
 						</p></div>
 						<div><h2>현재 <span style="color:red">${bjv.bikeType}</span>를 반납중입니다.</h2></div>
-						<div><p>대여한 자전거 대여소 위치</p><p>:</p><p>${bjv.bikeLocation} 대여소</p></div>
-						<div><p>반납할 자전거 대여소 위치</p><p>:</p><p>${bjv.rentalshopName} 대여소</p></div>
+						<div><p>대여  위치</p><p>:</p><p>${bjv.bikeLocation} 대여소</p></div>
+						<div><p>반납  위치</p><p>:</p><p>${bjv.rentalshopName} 대여소</p></div>
 						<div><p>사용자 이름</p><p>:</p><p>${bjv.memberName}</p></div>
 						<div><p>자전거 고유번호</p><p>:</p><p>${bjv.bikeCode}</p></div>
 						<div>
-							<p>대여한 자전거 시간</p><p>:</p><p>
+							<p>대여 시작 시간</p><p>:</p><p>
 								<fmt:parseDate value="${bjv.rentDay}" pattern="yyyy-MM-dd HH:mm:ss.S" var="parsedRentDay" />
 								<fmt:formatDate value="${parsedRentDay}" pattern="yyyy-MM-dd HH:mm:ss" var="formattedRentDay" />
 								${formattedRentDay}
 							</p>
 						</div>
-						<div><p>반납할 자전거 시간</p><p>:</p><p>${currentTime}</p></div>
-						<div><p>대여한 자전거 이용 요금</p><p>:</p><p>${bjv.rentPrice}원</p></div>
+						<div><p>반납 시간</p><p>:</p><p>${currentTime}</p></div>
+						<div><p>이용 요금</p><p>:</p><p>${bjv.rentPrice}원</p></div>
 						<div id="useListBtn">
 							<button type="button" id="btn1">최종 반납하기</button>			 		
 						</div>
