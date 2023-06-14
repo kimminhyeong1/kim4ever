@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonFormat.Value;
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.ErrorVo;
 import com.myezen.myapp.domain.GatheringJoinVo;
+import com.myezen.myapp.domain.GatheringVo;
 import com.myezen.myapp.domain.Gathering_BoardVO;
 import com.myezen.myapp.domain.Gathering_InfoVo;
 import com.myezen.myapp.domain.Gathering_ScheduleVO;
@@ -262,11 +263,18 @@ public class GatheringServiceImpl implements GatheringService {
 	}
 	
 	@Override
+	////모임 더보기 현재 사용자 멤버타입 가져오기 
+	public GatheringVo gatheringMemberType(int giidx, int midx) {
+		GatheringVo gmt = gsm.gatheringMemberType(giidx,midx);
+		return gmt;
+	}
+	@Override
 	//모임 더 보기 멤버 리스트
 	public ArrayList<GatheringJoinVo> gatheringSeeMoreMemberList(int giidx) {
 		ArrayList<GatheringJoinVo> gjvsmlist = gsm.gatheringSeeMoreMemberList(giidx);
 		return gjvsmlist;
 	}
+
 
 
 
@@ -279,6 +287,7 @@ public class GatheringServiceImpl implements GatheringService {
 		int totalCount = gsm.gatheringBoardTotal(hm); //총 게시물 갯수 꺼내오기
 		return totalCount;
 	}
+
 
 
 
