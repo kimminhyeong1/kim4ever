@@ -244,8 +244,11 @@ public class GatheringServiceImpl implements GatheringService {
 
 	@Override
 	//모임 게시글 리스트 가져오기
-	public ArrayList<GatheringJoinVo> gatheringBoardListSelect(int giidx) {
-		ArrayList<GatheringJoinVo> gjvblist = gsm.gatheringBoardListSelect(giidx);
+	public ArrayList<GatheringJoinVo> gatheringBoardListSelect(int giidx,SearchCriteria scri) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("giidx", giidx);
+		hm.put("scri", scri);
+		ArrayList<GatheringJoinVo> gjvblist = gsm.gatheringBoardListSelect(hm);
 		return gjvblist;
 	}
 
@@ -264,6 +267,22 @@ public class GatheringServiceImpl implements GatheringService {
 		ArrayList<GatheringJoinVo> gjvsmlist = gsm.gatheringSeeMoreMemberList(giidx);
 		return gjvsmlist;
 	}
+
+
+
+	@Override
+	//모임 총게시글 가져오기
+	public int gatheringBoardTotal(int giidx, SearchCriteria scri) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("giidx", giidx);
+		hm.put("scri", scri);
+		int totalCount = gsm.gatheringBoardTotal(hm); //총 게시물 갯수 꺼내오기
+		return totalCount;
+	}
+
+
+
+
 
 
 	

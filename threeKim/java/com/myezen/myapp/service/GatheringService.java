@@ -69,8 +69,10 @@ public interface GatheringService {
 	/*모임 게시판*/
 	//모임 게시글 쓰기
 	public int gatheringBoardWrite(Gathering_BoardVO gbv);
-	//모임 게시글 리스트 가져오기
-	public ArrayList<GatheringJoinVo> gatheringBoardListSelect(int giidx);
+	//1. 총게시글 가져오기
+	public int gatheringBoardTotal(int giidx,SearchCriteria scri);
+	//2. 게시글 리스트 가져오기
+	public ArrayList<GatheringJoinVo> gatheringBoardListSelect(int giidx,SearchCriteria scri);
 	
 
 

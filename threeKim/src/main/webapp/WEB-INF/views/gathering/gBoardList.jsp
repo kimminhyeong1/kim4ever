@@ -103,7 +103,17 @@
 							</div>
 						</c:if>	
 					</c:forEach>	
-					<div class="gPaging">1-2-3</div><!-- 페이징 -->
+					<div class="gPaging">
+						<c:if test="${pm.prev == true}">
+							<a href="${pageContext.request.contextPath}/gathering/gBoardList.do?page=${pm.startPage-1}&serchType=${pm.scri.searchType}&keyword=${pm.encoding(pm.scri.keyword)}">◀</a>
+						</c:if><!--if문-end-->
+						<c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}" step="1">
+						<a href="${pageContext.request.contextPath}/gathering/gBoardList.do?page=${i}&serchType=${pm.scri.searchType}&keyword=${pm.encoding(pm.scri.keyword)}">${i}</a>
+						</c:forEach><!--for문-end-->
+						<c:if test="${pm.next && pm.endPage > 0}">
+							<a href="${pageContext.request.contextPath}/gathering/gBoardList.do?page=${pm.endPage+1}&serchType=${pm.scri.searchType}&keyword=${pm.encoding(pm.scri.keyword)}">▶</a>
+						</c:if><!--if문-end-->
+					</div><!-- 페이징 -->
 				</div><!-- gBoardList 끝 -->
 				<div id="writeBtn">
 					<button class="gBtn2" onclick="location.href='${pageContext.request.contextPath}/gathering/gBoardWrite.do'">글쓰기</button>

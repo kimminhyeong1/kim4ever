@@ -23,6 +23,7 @@ import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.GatheringJoinVo;
 import com.myezen.myapp.domain.Gathering_BoardVO;
 import com.myezen.myapp.domain.Gathering_ScheduleVO;
+import com.myezen.myapp.domain.PageMaker;
 import com.myezen.myapp.domain.ScheduleVo;
 import com.myezen.myapp.domain.SearchCriteria;
 import com.myezen.myapp.service.GatheringService;
@@ -215,17 +216,25 @@ public class GatheringController {
 	//모임 게시판
 	@RequestMapping(value="/gBoardList.do")
 	public String gBoardList(
+			PageMaker pm,
+			SearchCriteria scri,
 			HttpServletRequest request,
 			Model md
 			) {
 		HttpSession session = request.getSession();
 	    Object Ogiidx = session.getAttribute("giidx");
-
-
 	    int giidx=(int)Ogiidx;
-	    ArrayList<GatheringJoinVo> gjvblist = gs.gatheringBoardListSelect(giidx);
-    	md.addAttribute("gjvblist", gjvblist);
+	    
+	    scri.setPerPageNum(5);//게시물갯수
+	    
+	    int totalCount = gs.gatheringBoardTotal(giidx,scri); //총 게시물 갯수 꺼내오기
+		pm.setScri(scri);
+		pm.setTotalCount(totalCount);
 		
+	    
+	    ArrayList<GatheringJoinVo> gjvblist = gs.gatheringBoardListSelect(giidx,scri);
+    	md.addAttribute("gjvblist", gjvblist);
+    	md.addAttribute("pm", pm);
 		
 		
 		
