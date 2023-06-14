@@ -70,7 +70,7 @@ li{list-style:none;}
 #courseList a:focus,
 #courseList a:active {background-color: #333; color: #fff; border: 1px solid #333; outline: none;}
 
-#course{width: 100%; height:140vh; margin-top:20px;border: none;}
+#course{width: 100%; height:700px ; margin-top:20px;border: none;}
 #main #content h1{margin-top:30px; text-align:center;}
 	}
 </style>
