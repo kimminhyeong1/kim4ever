@@ -168,9 +168,15 @@
 	
 	
 	
+<!-- 모임 신고-->
+	<insert id="insertDeclaration" parameterType="com.myezen.myapp.domain.GatheringJoinVo">
+  INSERT INTO gathering_declaration1234 (GDIX, GIIDX, GATHERINGREPORTCONTENT, GATHERINGDECLARATIONDAY)
+  SELECT GDIX_seq.nextval, gi.GIIDX, '${gatheringReportContent}', SYSDATE
+  FROM gathering_info1234 gi
+  WHERE gi.giidx = #{giidx}
+</insert>
 	
-	
-	
+
 	
 	
 	

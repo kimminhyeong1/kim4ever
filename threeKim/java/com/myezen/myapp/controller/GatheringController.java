@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonFormat.Value;
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.GatheringJoinVo;
 import com.myezen.myapp.domain.Gathering_BoardVO;
+import com.myezen.myapp.domain.Gathering_DeclarationVO;
 import com.myezen.myapp.domain.Gathering_ScheduleVO;
 import com.myezen.myapp.domain.ScheduleVo;
 import com.myezen.myapp.domain.SearchCriteria;
@@ -72,10 +74,13 @@ public class GatheringController {
 		HttpSession session = request.getSession();
 	    int midx = (int) session.getAttribute("midx");
 	    gjv.setMidx(midx);
+	   
 	    System.out.println(gjv.getgInfoJoinType());
 	    
 		int value = gs.gatheringCreate(gjv,GTImg,GImg);
 		
+		request.setAttribute("gidx", gjv.getGidx());
+		 
 		return "redirect:/gathering/gList.do";
 	}
 	
@@ -425,17 +430,49 @@ public class GatheringController {
 		
 		
 		///////////////////
-//모임 권한위임 페이지 보기	
+//모임 신고	
 	@RequestMapping(value="/gDeclaration.do")
-	public String gDeclaration() {
-				
+	public String gDeclaration(
+			HttpServletRequest request,
+			Model md) {
+		HttpSession session = request.getSession();
+		Object Ogiidx = session.getAttribute("giidx");
+	    Object Omidx = session.getAttribute("midx");
+	    if (Omidx == null) {//midx가 없으면 진입불가
+	    	return "redirect:/gathering/gList.do";
+		}
+	    int midx = (int)Omidx;
+	    int giidx = (int)Ogiidx;
+	    //사용자가 모임상세페이지를 들어갈수있는지 확인
+	    int value = gs.gatheringMemberCheck(giidx,midx);
+	    if (value == 1) {
+	    	
+	    	/*모임상세리스트 가져오기*/
+	    	ArrayList<GatheringJoinVo> gjvlist = gs.gatheringOneListSelect(giidx);
+	    	md.addAttribute("gjvlist", gjvlist);
+	    	
+	    	md.addAttribute("gidx", gjvlist.get(0).getGidx());
+	    	
+	    }
 		return "gathering/gDeclaration";
 	}	
-	
-	@RequestMapping(value="/gDeclarationAction.do")
-	public String gDeclarationAction() {
-		System.out.println("컨트롤러들어옴 모임신고");
-		return "gathering/gDeclarationAction";
+//모임 신고	2
+	@RequestMapping(value="/gDeclarationAction.do", method=RequestMethod.POST)
+	public String gDeclarationAction(HttpServletRequest request,
+	        @RequestParam("gatheringReportContent") String gatheringReportContent,
+	        @RequestParam("giidx") int giidx) {
+		System.out.println("신고하기 버튼 클릭");
+		
+		GatheringJoinVo gjv = new GatheringJoinVo();
+	    gjv.setGatheringReportContent(gatheringReportContent);
+	    gjv.setGiidx(giidx); 
+
+	    // Service의 insertDeclaration 메서드 호출
+	    gs.insertDeclaration(gjv);
+		
+		  
+		
+		return "gathering/gList";
 	}	
 			
 }

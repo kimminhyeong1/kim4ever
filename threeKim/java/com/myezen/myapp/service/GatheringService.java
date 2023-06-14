@@ -20,6 +20,7 @@ import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.ErrorVo;
 import com.myezen.myapp.domain.GatheringJoinVo;
 import com.myezen.myapp.domain.Gathering_BoardVO;
+import com.myezen.myapp.domain.Gathering_DeclarationVO;
 import com.myezen.myapp.domain.Gathering_ScheduleVO;
 import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.domain.SearchCriteria;
@@ -72,7 +73,7 @@ public interface GatheringService {
 	//모임 게시글 리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringBoardListSelect(int giidx);
 	
-
+	public void insertDeclaration(GatheringJoinVo gjv);
 
 
 	

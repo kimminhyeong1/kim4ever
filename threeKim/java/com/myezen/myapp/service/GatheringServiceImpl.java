@@ -28,6 +28,7 @@ import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.ErrorVo;
 import com.myezen.myapp.domain.GatheringJoinVo;
 import com.myezen.myapp.domain.Gathering_BoardVO;
+import com.myezen.myapp.domain.Gathering_DeclarationVO;
 import com.myezen.myapp.domain.Gathering_InfoVo;
 import com.myezen.myapp.domain.Gathering_ScheduleVO;
 import com.myezen.myapp.domain.MemberVo;
@@ -256,6 +257,15 @@ public class GatheringServiceImpl implements GatheringService {
 	public ArrayList<Gathering_BoardVO> gatheringNoticeListSelect(int giidx) {
 		ArrayList<Gathering_BoardVO> gbvlist = gsm.gatheringNoticeListSelect(giidx);
 		return gbvlist;
+	}
+
+
+
+	@Override
+	public void insertDeclaration(GatheringJoinVo gjv) {
+		
+	        
+		gsm.insertDeclaration(gjv);
 	}
 
 

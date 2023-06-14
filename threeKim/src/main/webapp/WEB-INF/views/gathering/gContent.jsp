@@ -111,6 +111,9 @@
         calendarEl.style.width = '1210px;'; // 원하는 너비로 설정
         calendar.render();
       });
+      
+   
+    	  }
 
     </script>
 	</head> 
@@ -182,8 +185,8 @@
 				</c:forEach>
 			</div>
 			<div id="gReportExit">
-				<button onclick="location.href='${pageContext.request.contextPath}/gathering/gDeclaration.do'">모임 신고하기</button> 
-				<button>모임 나가기</button>
+				<button onclick="location.href='${pageContext.request.contextPath}/gathering/gDeclaration.do?giidx=${giidx }'">모임 신고하기</button> 
+				<button onclick="exit();">모임 나가기</button>
 			</div>
 			
 		</section>

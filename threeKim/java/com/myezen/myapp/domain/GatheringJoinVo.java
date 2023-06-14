@@ -125,6 +125,39 @@ public class GatheringJoinVo {//모임조인
 	
 	//모임 찜
 	private int gwidx;//모임 찜 번호
+	
+	
+	
+	//모임 신고
+	private int gdix; //모임 신고 번호
+	private String gatheringReportContent; //신고 내용
+	private String gatheringDeclarationDay; //신고 날짜
+	
+	public int getGdix() {
+		return gdix;
+	}
+
+	public void setGdix(int gdix) {
+		this.gdix = gdix;
+	}
+
+	public String getGatheringReportContent() {
+		return gatheringReportContent;
+	}
+
+	public void setGatheringReportContent(String gatheringReportContent) {
+		this.gatheringReportContent = gatheringReportContent;
+	}
+
+	public String getGatheringDeclarationDay() {
+		return gatheringDeclarationDay;
+	}
+
+	public void setGatheringDeclarationDay(String gatheringDeclarationDay) {
+		this.gatheringDeclarationDay = gatheringDeclarationDay;
+	}
+
+	
 
 	public int getImidx() {
 		return imidx;
