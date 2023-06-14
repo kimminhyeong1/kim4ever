@@ -93,17 +93,17 @@
 		<%@include file="../header2.jsp" %>
 		<main id="main">
 			<h2 class="menu">
-    <script>
-        if ("${smv.gatheringMemberType}" === "TL" || "${smv.gatheringMemberType}" === "TLM") {
-            document.write('<a id="gMemberListLink" href="${pageContext.request.contextPath}/gathering/gMemberList.do">멤버 리스트</a>');
-            document.write('<a id="gMemberJoinWaitListLink" href="${pageContext.request.contextPath}/gathering/gMemberJoinWaitList.do">가입 대기</a>');
-            document.write('<a id="gPowerEntrustListLink" href="${pageContext.request.contextPath}/gathering/gPowerEntrustList.do">권한 위임</a>');
-        } else {
-            document.write('<a id="gMemberListLink" href="${pageContext.request.contextPath}/gathering/gMemberList.do">멤버 리스트</a>');
-        }
-    </script>
-</h2>
-			
+			    <c:choose>
+        <c:when test="${gmt.gatheringMemberType eq 'TL' || gmt.gatheringMemberType eq 'TLD'}">
+            <a id="gMemberListLink" href="${pageContext.request.contextPath}/gathering/gMemberList.do">멤버 리스트</a>
+            <a id="gMemberJoinWaitListLink" href="${pageContext.request.contextPath}/gathering/gMemberJoinWaitList.do">가입 대기</a>
+            <a id="gPowerEntrustListLink" href="${pageContext.request.contextPath}/gathering/gPowerEntrustList.do">권한 위임</a>			            
+        </c:when>
+        <c:otherwise> 
+            <a id="gMemberListLink" href="${pageContext.request.contextPath}/gathering/gMemberList.do">멤버 리스트</a>
+        </c:otherwise>
+    </c:choose>
+			</h2>
 			<section class="gContainer gSetContainer">
 				<h2>멤버 인원 수</h2>
 				<div> 					
@@ -129,20 +129,22 @@
 									</div>
 									<div class="gmemberName">${smv.memberName}</div>
 									<div class="gmemberInfo">${smv.memberIntro}</div>
-									<div class="gmemberAddr">${smv.memberAddr}</div>	
-									<c:choose>
-    <c:when test="${smv.gatheringMemberType eq 'TL'}">
-        <!-- 모임장인 경우 추방 불가 텍스트를 표시합니다. -->
-        추방 불가
-    </c:when>
-    <c:when test="${smv.gatheringMemberType eq 'TLM'}">
-        <!-- 부모임장인 경우 추방 버튼을 표시합니다. -->
-        <button type="button" class="DeleteBtn">추방</button>
-    </c:when>
-    <c:when test="${smv.gatheringMemberType eq 'TM'}">
-        <button type="button" class="DeleteBtn" onclick="showAlert()">추방</button>
-    </c:when>
-</c:choose>
+									<div class="gmemberAddr">${smv.memberAddr}</div>
+									<c:if test="${gmt.gatheringMemberType eq 'TL' || gmt.gatheringMemberType eq 'TLD'}">
+										<c:choose>
+										    <c:when test="${smv.gatheringMemberType eq 'TL'}">
+										        <!-- 모임장인 경우 추방 불가 텍스트를 표시합니다. -->
+										        추방 불가
+										    </c:when>
+										    <c:when test="${smv.gatheringMemberType eq 'TLM'}">
+										        <!-- 부모임장인 경우 추방 버튼을 표시합니다. -->
+										        <button type="button" class="DeleteBtn">추방</button>
+										    </c:when>
+										    <c:when test="${smv.gatheringMemberType eq 'TM'}">
+										        <button type="button" class="DeleteBtn" onclick="showAlert()">추방</button>
+										    </c:when>
+										</c:choose>
+									</c:if>	
 
 
 

@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.annotation.JsonFormat.Value;
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.GatheringJoinVo;
+import com.myezen.myapp.domain.GatheringVo;
 import com.myezen.myapp.domain.Gathering_BoardVO;
 import com.myezen.myapp.domain.Gathering_ScheduleVO;
 import com.myezen.myapp.domain.ScheduleVo;
@@ -376,9 +377,15 @@ public class GatheringController {
 			Model md) {
 		HttpSession session = request.getSession();
 		Object Ogiidx = session.getAttribute("giidx");
+		Object Omidx = session.getAttribute("midx");
 		int giidx = (int)Ogiidx;
+		int midx = (int)Omidx;
+		
+		GatheringVo gmt = gs.gatheringMemberType(giidx,midx);
 		ArrayList<GatheringJoinVo> gjvsmlist = gs.gatheringSeeMoreMemberList(giidx);
+    	md.addAttribute("gmt", gmt);
     	md.addAttribute("gjvsmlist", gjvsmlist);
+    	
 		return "gathering/gMemberList";
 	}
 
