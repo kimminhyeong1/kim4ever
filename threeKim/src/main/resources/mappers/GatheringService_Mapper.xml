@@ -198,6 +198,46 @@
 	   JOIN GATHERING1234 c ON c.giidx = a.giidx AND c.midx = a.midx
 	   WHERE gBoardDelYN = 'N' AND memberdelyn = 'N' AND gatheringMemberDelYN = 'N' AND a.GIIDX = #{0} AND a.GBIDX = #{1}
 	</select>
+	<!--  모임 게시글에서 댓글 작성하기 -->
+	<insert id="gatheringBoardCommentAdd"  parameterType="com.myezen.myapp.domain.Gathering_CommentVO"> 
+		INSERT INTO gathering_comment1234 (gcidx,gbidx,midx,gCommentContents,gCommentWriteDay,gCommentDelYN)
+		VALUES(gcidx_seq.NEXTVAL, #{gbidx},#{midx},#{gCommentContents},SYSDATE,'N')
+	</insert>
+	<sql id="searchComment">
+		<if test="searchType != null and searchType.equals('gBoardTitle')"><!-- 동적 SQL  -->
+			and gBoardTitle like '%'|| #{scri.keyword} ||'%'
+		</if>
+		<if test="searchType != null and searchType.equals('gBoardContents')">
+			and gBoardContents like '%'|| #{scri.keyword} ||'%'
+		</if>
+	</sql>
+	<!--  모임 총댓글 가져오기 -->
+	<select id="gatheringBoardCommentTotal" resultType="int" parameterType="java.util.HashMap"> 
+        SELECT count(*) as cnt
+        FROM Gathering_Comment1234 a
+        JOIN GATHERING_BOARD1234 b ON b.GBIDX = a.GBIDX 
+        JOIN member1234 c ON c.midx = a.midx
+        JOIN GATHERING1234 d ON  d.midx = a.midx AND d.giidx = b.giidx
+        WHERE  memberdelyn = 'N' AND gatheringMemberDelYN = 'N' AND gCommentDelYN = 'N'  AND a.gbidx = #{gbidx}
+		<include refid="searchComment"></include>
+	</select>
+	<!--  모임 댓글 리스트 가져오기 -->
+	<select id="gatheringBoardCommentListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="java.util.HashMap"> 
+		SELECT *
+		FROM (
+		    SELECT ROWNUM AS rnum, A.*
+		    FROM (
+		        SELECT a.*, c.memberName, c.memberProfile, d.gatheringMemberType
+		        FROM Gathering_Comment1234 a
+		        JOIN GATHERING_BOARD1234 b ON  b.GBIDX = a.GBIDX
+		        JOIN member1234 c ON c.midx = a.midx
+		        JOIN GATHERING1234 d ON d.giidx = b.giidx AND d.midx = a.midx
+		        WHERE gBoardDelYN = 'N' AND memberdelyn = 'N' AND gatheringMemberDelYN = 'N' AND a.gbidx = #{gbidx}
+		        ORDER BY  gCommentWriteDay DESC
+		    ) A
+		)
+		WHERE rnum BETWEEN (#{scri.page}-1)*#{scri.perPageNum}+1 AND #{scri.page}*#{scri.perPageNum}
+	</select>
 	
 	
 	

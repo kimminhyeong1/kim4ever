@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">  
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<style type="text/css">
 			.gContainer{border: 1px solid #0000;}
 			/*게시글 틀*/ 
@@ -31,6 +32,38 @@
 			/*페이징 부분*/
 			.gPaging{font-size: 25px;}		
 		</style>
+	    <script>
+	        $(document).ready(function() {
+	            // AJAX를 사용하여 댓글 양식 제출
+	            $("#commentForm").submit(function(event) {
+	                event.preventDefault(); // 폼 제출 방지
+	                var gCommentContents = $("#gCommentContents").val();
+	                var gbidx = $("#gbidx").val();
+	                
+	                $.ajax({
+	                    type: "POST",
+	                    url: "${pageContext.request.contextPath}/gathering/gBoardComment.do",
+	                    data: { gCommentContents: gCommentContents, gbidx: gbidx },
+	                    success: function(data) {
+	                    	if (data.value == 1) {
+	                    		alert("댓글성공");
+		                        // 제출 성공 시 댓글 새로고침
+		                        location.reload();
+		                        //$("#commentList").load("${pageContext.request.contextPath}/gathering/gBoardContent.do?gbidx=${gbidx}");
+		                        //$("#gCommentContents").val(""); // 댓글 입력 필드 초기화
+								
+								return true;
+							} else {
+								return false;
+							}
+	                    },
+	                    error: function(xhr, status, error) {
+	                        console.error("댓글 제출 에러: " + error);
+	                    }
+	                });
+	            });
+	        });
+	    </script>
 	</head>
 	<body>
 		<%@include file="../header2.jsp" %>
@@ -76,8 +109,15 @@
 						 좋아요수
 					</div>
 					<div class="gBoardCommentWrite">
-						<textarea rows="" cols=""></textarea>
-						<button type="button">댓글달기</button>
+					    <form id="commentForm">
+					    	<input id="gbidx" type="hidden" name="gbidx" value="${gbidx}">
+							<textarea id="gCommentContents" rows="5" cols="100" name="gCommentContents"></textarea>
+							<button>댓글달기</button>
+				    	</form>
+			    	    <div id="commentList">
+					        <!-- 댓글이 여기에 동적으로 로드됩니다 -->
+					        <img src="/loading.gif" alt="댓글 로딩 중..." />
+					    </div>
 					</div>
 					<div>댓글(댓글갯수)</div>
 					<div class="gBoardMember">
@@ -106,6 +146,36 @@
 							<div>게시글내용${gjvb.gBoardContents}</div>					
 						</div>
 					</div>
+			    	<c:forEach var="gjvc" items="${gjvclist}">
+						<div class="gBoardMember">
+							<div>
+								<div class="gProfileimage"><img alt="프로필사진" src="../resources/MemberProfile/${gjvc.memberProfile}"></div>
+								<div>
+									<c:set var="gatheringMemberType" value="${gjvc.gatheringMemberType}" />
+									<c:choose>
+									    <c:when test="${gatheringMemberType eq 'TL'}">
+									        <div>모임장</div>
+									    </c:when>
+									    <c:when test="${gatheringMemberType eq 'TLD'}">
+									        <div>[부]모임장</div>
+									    </c:when>
+									    <c:otherwise>
+									        <div>모임원</div>
+									    </c:otherwise>
+									</c:choose>
+									<div>${gjvc.memberName}</div>
+								</div>
+								<div>
+									<div>
+										<fmt:parseDate value="${gjvc.gCommentWriteDay}" pattern="yyyy-MM-dd HH:mm:ss.S" var="parsedRentDay" />
+										<fmt:formatDate value="${parsedRentDay}" pattern="yyyy-MM-dd HH:mm" var="formattedRentDay" />
+										${formattedRentDay}
+									</div>
+								</div>					
+							</div>
+							<div>${gjvc.gCommentContents}</div>
+						</div>
+					</c:forEach>	
 					<div class="gPaging">
 						<c:if test="${pm.prev == true}">
 							<a href="${pageContext.request.contextPath}/gathering/gBoardContent.do?gbidx=${gjv.gbidx}&page=${pm.startPage-1}">◀</a>
