@@ -29,6 +29,7 @@ import com.myezen.myapp.domain.ErrorVo;
 import com.myezen.myapp.domain.GatheringJoinVo;
 import com.myezen.myapp.domain.GatheringVo;
 import com.myezen.myapp.domain.Gathering_BoardVO;
+import com.myezen.myapp.domain.Gathering_CommentVO;
 import com.myezen.myapp.domain.Gathering_DeclarationVO;
 import com.myezen.myapp.domain.Gathering_InfoVo;
 import com.myezen.myapp.domain.Gathering_ScheduleVO;
@@ -305,7 +306,30 @@ public class GatheringServiceImpl implements GatheringService {
 		GatheringJoinVo gjv = gsm.gatheringBoardOneSelect(giidx,gbidx);
 		return gjv;
 	}
-
+	@Override
+	//2.게시물에 댓글쓰기
+	public int gatheringBoardCommentAdd(Gathering_CommentVO gcv) {
+		int value = gsm.gatheringBoardCommentAdd(gcv);
+		return value;
+	}
+	@Override
+	//3. 총댓글 가져오기
+	public int gatheringBoardCommentTotal(int gbidx, SearchCriteria scri) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("gbidx", gbidx);
+		hm.put("scri", scri);
+		int totalCount = gsm.gatheringBoardCommentTotal(hm); //총 게시물 갯수 꺼내오기
+		return totalCount;
+	}
+	@Override
+	//4. 댓글 리스트 가져오기
+	public ArrayList<GatheringJoinVo> gatheringBoardCommentListSelect(int gbidx, SearchCriteria scri) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("gbidx", gbidx);
+		hm.put("scri", scri);
+		ArrayList<GatheringJoinVo> gjvblist = gsm.gatheringBoardCommentListSelect(hm);
+		return gjvblist;
+	}
 
 
 
@@ -320,6 +344,7 @@ public class GatheringServiceImpl implements GatheringService {
 	        
 		gsm.insertDeclaration(gjv);
 	}
+
 
 
 

@@ -24,6 +24,7 @@ import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.GatheringJoinVo;
 import com.myezen.myapp.domain.GatheringVo;
 import com.myezen.myapp.domain.Gathering_BoardVO;
+import com.myezen.myapp.domain.Gathering_CommentVO;
 import com.myezen.myapp.domain.Gathering_DeclarationVO;
 import com.myezen.myapp.domain.Gathering_ScheduleVO;
 import com.myezen.myapp.domain.PageMaker;
@@ -306,21 +307,56 @@ public class GatheringController {
 	    
 	    
 	    
-	    //scri.setPerPageNum(5);//게시물갯수 !댓글부분
-	    
-	    //int totalCount = gs.gatheringBoardTotal(giidx,scri); //총 게시물 갯수 꺼내오기 !댓글부분
-		
-	   // ArrayList<GatheringJoinVo> gjvblist = gs.gatheringBoardListSelect(giidx,scri); !댓글 다 가져오기 
-    	//md.addAttribute("gjvblist", gjvblist);
+	    scri.setPerPageNum(5);//게시물갯수 !댓글부분
+	    int totalCount = gs.gatheringBoardCommentTotal(gbidx,scri); //총 게시물 갯수 꺼내오기 !댓글부분
+	    ArrayList<GatheringJoinVo> gjvclist = gs.gatheringBoardCommentListSelect(gbidx,scri); //!댓글 다 가져오기 
+    	md.addAttribute("gjvclist", gjvclist);
     	
-    	//pm.setScri(scri);
-    	//pm.setTotalCount(totalCount);
-    	//md.addAttribute("pm", pm);
+    	pm.setScri(scri);
+    	pm.setTotalCount(totalCount);
+    	md.addAttribute("pm", pm);
     	
-    	
+	    md.addAttribute("gbidx", gbidx);
     	
 		return "gathering/gBoardContent";
-	}	
+	}
+	//모임 게시글 ajax로 댓글쓰기
+	@RequestMapping(value="/gBoardComment.do")
+	@ResponseBody
+	public HashMap<String, Object> addComment(
+			@ModelAttribute Gathering_CommentVO gcv,
+			HttpServletRequest request
+			) {
+		System.out.println("댓글달기 컨트롤러진입");
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		HttpSession session = request.getSession();
+	    Object Omidx = session.getAttribute("midx");
+	    gcv.setMidx((int)Omidx);
+		
+		// 서비스를 사용하여 댓글을 저장합니다
+	    int value = gs.gatheringBoardCommentAdd(gcv);
+	    hm.put("value",value); //0은 거짓 1은 참
+		return hm;
+	}
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//모임 사진첩
 	@RequestMapping(value="/gPhotoAlbum.do")
 	public String gPhotoAlbum() {
