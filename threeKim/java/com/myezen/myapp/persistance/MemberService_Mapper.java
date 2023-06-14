@@ -58,10 +58,10 @@ public interface MemberService_Mapper {
 	public int socialMemberCheck(String memberId);
 	//내가 쓴 게시글 조회
 	public ArrayList<BikeJoinVo> getMyPosts(String memberName);
-	
+	//회원프로필(내 간단소개)/*김병수*/
 	public void memberUpdateIntro(MemberVo mv);
+	//회원프로필(내 간단소개)/*김병수*/
 	public String getMemberIntro(int midx);
-	
 	//회원 프로필 업데이트 /*김건우*/
 	public int memberUpdateMemberProfile(MemberVo mv);
 	

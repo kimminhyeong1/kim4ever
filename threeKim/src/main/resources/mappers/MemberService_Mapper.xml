@@ -115,11 +115,16 @@
 	 <select id="getMyPosts" resultType="com.myezen.myapp.domain.BikeJoinVo" parameterType="String">
 		SELECT * FROM board1234 WHERE writer = #{memberName} and boarddelyn = 'N' 
     </select>
-	
+	<!-- 회원프로필(내 간단소개) -->
 	 <update id="memberUpdateIntro" parameterType="mv">
         UPDATE member1234 SET memberIntro = #{memberIntro} WHERE midx = #{midx}
     </update>
-    
+    <!-- 회원프로필(내 간단소개)  -->
+    <select id="getMemberIntro"  resultType="String">
+	    SELECT memberIntro
+	    FROM member1234
+	    WHERE midx = #{midx}
+	</select>
 
    	<!-- 회원 프로필 업데이트 /*김건우*/ -->
 	<update id="memberUpdateMemberProfile" parameterType="mv">
@@ -128,11 +133,7 @@
     
     
 
-    <select id="getMemberIntro"  resultType="String">
-	    SELECT memberIntro
-	    FROM member1234
-	    WHERE midx = #{midx}
-	</select>
+    
 
     
 </mapper>

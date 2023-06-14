@@ -61,11 +61,11 @@ public interface MemberService {
 	public HashMap<String, Object> getUserInfo(String access_Token) throws Throwable;
 	//내가 쓴 게시글
 	public ArrayList<BikeJoinVo> getMyPosts(String memberName);
-
+	
+	//회원프로필(내 간단소개)/*김병수*/
 	public void memberUpdateIntro(MemberVo mv);
+	//회원프로필(내 간단소개)/*김병수*/
 	public String getMemberIntro(int midx);
-	
-	
 	
 	//회원 프로필 업데이트 /*김건우*/
 	public int memberUpdateMemberProfile(int midx , MultipartFile memberProfile)throws IOException, Exception;

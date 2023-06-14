@@ -194,7 +194,7 @@
 				</div>
 			</div>
 			<div id="gReportExit">
-				<button>모임 신고하기</button> 
+				<button onclick="location.href='${pageContext.request.contextPath}/gathering/gDeclaration.do'">모임 신고하기</button> 
 				<button>모임 나가기</button>
 			</div>
 			
