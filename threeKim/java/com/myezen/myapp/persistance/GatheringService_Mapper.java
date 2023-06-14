@@ -92,7 +92,12 @@ public interface GatheringService_Mapper {
 	//2. 게시글 리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringBoardListSelect(HashMap<String, Object> hm);
 
-	
+
+
+	//모임 게시글 보기
+	//1.게시물하나가져오기
+	public GatheringJoinVo gatheringBoardOneSelect(int giidx,int gbidx);
+
 	
 	
 	

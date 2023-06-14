@@ -289,8 +289,36 @@ public class GatheringController {
 	}
 	//모임 게시글 보기
 	@RequestMapping(value="/gBoardContent.do")
-	public String gBoardContent() {
+	public String gBoardContent(
+			@RequestParam("gbidx") int gbidx,//게시글 번호
+			PageMaker pm,
+			SearchCriteria scri,
+			HttpServletRequest request,
+			Model md
+			) {
+		HttpSession session = request.getSession();
+	    Object Ogiidx = session.getAttribute("giidx");
+	    int giidx=(int)Ogiidx;
+	    
+	    //게시물하나가져오기 
+	    GatheringJoinVo gjv = gs.gatheringBoardOneSelect(giidx,gbidx);
+	    md.addAttribute("gjv", gjv);//게시물 모델에 담기
+	    
+	    
+	    
+	    //scri.setPerPageNum(5);//게시물갯수 !댓글부분
+	    
+	    //int totalCount = gs.gatheringBoardTotal(giidx,scri); //총 게시물 갯수 꺼내오기 !댓글부분
 		
+	   // ArrayList<GatheringJoinVo> gjvblist = gs.gatheringBoardListSelect(giidx,scri); !댓글 다 가져오기 
+    	//md.addAttribute("gjvblist", gjvblist);
+    	
+    	//pm.setScri(scri);
+    	//pm.setTotalCount(totalCount);
+    	//md.addAttribute("pm", pm);
+    	
+    	
+    	
 		return "gathering/gBoardContent";
 	}	
 	//모임 사진첩

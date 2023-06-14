@@ -98,8 +98,8 @@
 										</div>
 									</div>					
 								</div>
-								<div>${gjvb.gBoardTitle} <span>${gjvb.gBoardCategory}</span> </div>
-								<div>${gjvb.gBoardContents}</div>
+									<div><a href="${pageContext.request.contextPath}/gathering/gBoardContent.do?gbidx=${gjvb.gbidx}">${gjvb.gBoardTitle}</a><span>${gjvb.gBoardCategory}</span> </div>
+									<div><a href="${pageContext.request.contextPath}/gathering/gBoardContent.do?gbidx=${gjvb.gbidx}">${gjvb.gBoardContents}</a></div>
 							</div>
 						</c:if>	
 					</c:forEach>	
