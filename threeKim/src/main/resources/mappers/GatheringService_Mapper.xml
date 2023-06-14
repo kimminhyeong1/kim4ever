@@ -79,6 +79,7 @@
 		SELECT *
 		FROM GATHERING_BOARD1234 a
 		WHERE a.GIIDX = 62 AND gBoardDelYN = 'N' AND gBoardCategory ='공지사항'
+		ORDER BY GBOARDWRITEDAY DESC
 	</select>
 	
 	

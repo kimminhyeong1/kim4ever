@@ -228,12 +228,12 @@ public class GatheringController {
 	    scri.setPerPageNum(5);//게시물갯수
 	    
 	    int totalCount = gs.gatheringBoardTotal(giidx,scri); //총 게시물 갯수 꺼내오기
-		pm.setScri(scri);
-		pm.setTotalCount(totalCount);
 		
-	    
 	    ArrayList<GatheringJoinVo> gjvblist = gs.gatheringBoardListSelect(giidx,scri);
     	md.addAttribute("gjvblist", gjvblist);
+    	
+    	pm.setScri(scri);
+    	pm.setTotalCount(totalCount);
     	md.addAttribute("pm", pm);
 		
 		
