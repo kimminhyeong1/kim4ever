@@ -74,6 +74,12 @@
 		JOIN MEMBER1234 b ON b.midx = a.midx
 		WHERE a.GIIDX = 62 AND b.MEMBERDELYN = 'N' AND a.GATHERINGMEMBERDELYN = 'N'
 	</select>
+	<!-- 모임공지사항 리스트 가져오기 -->
+	<select id="gatheringNoticeListSelect" resultType="com.myezen.myapp.domain.Gathering_BoardVO" parameterType="int"> 
+		SELECT *
+		FROM GATHERING_BOARD1234 a
+		WHERE a.GIIDX = 62 AND gBoardDelYN = 'N' AND gBoardCategory ='공지사항'
+	</select>
 	
 	
 	
@@ -155,7 +161,7 @@
 		SELECT a.*,b.memberName,b.memberProfile,c.gatheringMemberType
 		FROM GATHERING_BOARD1234 a
 		JOIN member1234 b ON b.midx = a.midx
-		JOIN GATHERING1234 c ON c.giidx =a.giidx
+		JOIN GATHERING1234 c ON c.giidx = a.giidx AND c.midx = a.midx
 		WHERE gBoardDelYN = 'N' AND memberdelyn = 'N' AND gatheringMemberDelYN = 'N' AND a.GIIDX =#{0}
 	</select>
 	

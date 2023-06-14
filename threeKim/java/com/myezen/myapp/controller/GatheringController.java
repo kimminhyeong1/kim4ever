@@ -156,7 +156,9 @@ public class GatheringController {
 	    	md.addAttribute("gsvlist", gsvlist);
 	    	
 	    	/*공지사항 데이터 가져오기*/
-			
+	    	ArrayList<Gathering_BoardVO> gbvlist = gs.gatheringNoticeListSelect(giidx);
+	    	md.addAttribute("gbvlist", gbvlist);
+	    	
 		}
 		
 

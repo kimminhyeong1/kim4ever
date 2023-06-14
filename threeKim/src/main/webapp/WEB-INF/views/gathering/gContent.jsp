@@ -171,27 +171,15 @@
 				<div><button class="gBtn2" onclick="location.href='${pageContext.request.contextPath}/gathering/gScheduleMake.do'">일정 만들기</button></div>
 			</div>
 			<div id="gNotice">
-				<div class="gNotice">
-					<div>
-						<div>공지사항</div>
-						<div>공지사항 제목</div>
+				<c:forEach var="gbv" items="${gbvlist}">
+					<div class="gNotice">
+						<div>
+							<div>공지사항</div>
+							<div>${gbv.gBoardTitle}</div>
+						</div>
+						<div>${gbv.gBoardContents}</div>
 					</div>
-					<div>일정이 취소되었습니다</div>
-				</div>
-				<div class="gNotice">
-					<div>
-						<div>공지사항</div>
-						<div>공지사항 제목</div>
-					</div>
-					<div>일정이 취소되었습니다</div>
-				</div>
-				<div class="gNotice">
-					<div>
-						<div>공지사항</div>
-						<div>공지사항 제목</div>
-					</div>
-					<div>일정이 취소되었습니다</div>
-				</div>
+				</c:forEach>
 			</div>
 			<div id="gReportExit">
 				<button>모임 신고하기</button> 

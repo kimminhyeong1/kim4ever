@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -58,75 +59,50 @@
 						<div><input type="text" placeholder="내용을 입력해주세요."></div>
 						<div> <button class="gBtn2">검색하기</button> </div>
 					</div>
-					<div class="gNotice">
-						<div>
-							<div>공지사항</div>
-							<div>공지사항 제목</div>
-						</div>
-						<div>일정이 취소되었습니다</div>
-					</div>
-					<div class="gNotice">
-						<div>
-							<div>공지사항</div>
-							<div>필독사항</div>
-						</div>
-						<div>1. 규칙을 지키자 2. 일정을 잘 맞추자</div>
-					</div>
-					<div class="gBoard">
-						<div>
-							<div class="gProfileimage"><img alt="프로필사진" src="../resources/images/profile.jpg"></div>
-							<div>
-								<div>모임장</div>
-								<div>이름</div>
-							</div>
-							<div>
-								<div>2023-05-30 12:00</div>
-							</div>					
-						</div>
-						<div>게시글제목 <span>카테고리이름</span> </div>
-						<div>게시글내용게시글내용게시글내용게시글내용게시글내용게시글내용게시글내용게시글내용</div>
-					</div>
-			    	<c:forEach var="gjvb" items="${gjvblist}">
-						<div class="gBoard">
-							<div>
-								<div class="gProfileimage"><img alt="프로필사진" src="../resources/MemberProfile/${gjvb.memberProfile}"></div>
+					<c:forEach var="gjvb" items="${gjvblist}">
+			    		<c:if test="${gjvb.gBoardCategory.equals('공지사항')}">
+							<div class="gNotice">
 								<div>
-									<c:set var="gatheringMemberType" value="${gjvb.gatheringMemberType}" />
-									<c:choose>
-									    <c:when test="${gatheringMemberType eq 'TL'}">
-									        <div>모임장</div>
-									    </c:when>
-									    <c:when test="${gatheringMemberType eq 'TLD'}">
-									        <div>[부]모임장</div>
-									    </c:when>
-									    <c:otherwise>
-									        <div>모임원</div>
-									    </c:otherwise>
-									</c:choose>
-									<div>${gjvb.memberName}</div>
+									<div>공지사항</div>
+									<div>${gjvb.gBoardTitle}</div>
 								</div>
-								<div>
-									<div>${gjvb.gBoardWriteDay}</div>
-								</div>					
+								<div>${gjvb.gBoardContents}</div>
 							</div>
-							<div>${gjvb.gBoardTitle} <span>${gjvb.gBoardCategory}</span> </div>
-							<div>${gjvb.gBoardContents}</div>
-						</div>	
+						</c:if>	
 					</c:forEach>	
-					<div class="gBoard">
-						<div>
-							<div class="gProfileimage"><img alt="프로필사진" src="../resources/images/profile.jpg"></div>
-							<div>
-								<div>모임장</div>
-								<div>이름</div>
+			    	<c:forEach var="gjvb" items="${gjvblist}">
+			    		<c:if test="${!gjvb.gBoardCategory.equals('공지사항')}">
+							<div class="gBoard">
+								<div>
+									<div class="gProfileimage"><img alt="프로필사진" src="../resources/MemberProfile/${gjvb.memberProfile}"></div>
+									<div>
+										<c:set var="gatheringMemberType" value="${gjvb.gatheringMemberType}" />
+										<c:choose>
+										    <c:when test="${gatheringMemberType eq 'TL'}">
+										        <div>모임장</div>
+										    </c:when>
+										    <c:when test="${gatheringMemberType eq 'TLD'}">
+										        <div>[부]모임장</div>
+										    </c:when>
+										    <c:otherwise>
+										        <div>모임원</div>
+										    </c:otherwise>
+										</c:choose>
+										<div>${gjvb.memberName}</div>
+									</div>
+									<div>
+										<div>
+											<fmt:parseDate value="${gjvb.gBoardWriteDay}" pattern="yyyy-MM-dd HH:mm:ss.S" var="parsedRentDay" />
+											<fmt:formatDate value="${parsedRentDay}" pattern="yyyy-MM-dd HH:mm" var="formattedRentDay" />
+											${formattedRentDay}
+										</div>
+									</div>					
+								</div>
+								<div>${gjvb.gBoardTitle} <span>${gjvb.gBoardCategory}</span> </div>
+								<div>${gjvb.gBoardContents}</div>
 							</div>
-							<div>
-								<div>2023-05-30 12:00</div>
-							</div>					
-						</div>
-						<div>게시글제목 <span>카테고리이름</span> </div>
-						<div>게시글내용게시글내용게시글내용게시글내용게시글내용게시글내용게시글내용게시글내용</div>
-					</div>
+						</c:if>	
+					</c:forEach>	
 					<div class="gPaging">1-2-3</div><!-- 페이징 -->
 				</div><!-- gBoardList 끝 -->
 				<div id="writeBtn">

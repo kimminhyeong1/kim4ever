@@ -250,6 +250,15 @@ public class GatheringServiceImpl implements GatheringService {
 	}
 
 
+
+	@Override
+	//모임 공지사항 리스트 가져오기
+	public ArrayList<Gathering_BoardVO> gatheringNoticeListSelect(int giidx) {
+		ArrayList<Gathering_BoardVO> gbvlist = gsm.gatheringNoticeListSelect(giidx);
+		return gbvlist;
+	}
+
+
 	
 	
 
