@@ -391,4 +391,51 @@ public class GatheringController {
 			return "gathering/gPowerEntrustList";
 				}			
 	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		///////////////////
+//모임 권한위임 페이지 보기	
+	@RequestMapping(value="/gDeclaration.do")
+	public String gDeclaration() {
+				
+		return "gathering/gDeclaration";
+	}	
+	
+	@RequestMapping(value="/gDeclarationAction.do")
+	public String gDeclarationAction() {
+		System.out.println("컨트롤러들어옴 모임신고");
+		return "gathering/gDeclarationAction";
+	}	
+			
 }

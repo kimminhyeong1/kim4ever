@@ -633,7 +633,8 @@ public class MemberController {
 		    	return "redirect:/member/memberCheckPwd.do?error=1";
 		    }
 		}
-
+		
+		//회원프로필(내 간단소개)/*김병수*/
 		@PostMapping("/memberUpdateIntro.do")
 		@ResponseBody
 		public void memberUpdateIntro(
@@ -646,7 +647,6 @@ public class MemberController {
 		    MemberVo mv = new MemberVo();
 		    mv.setMidx(midx);
 		    mv.setMemberIntro(memberIntro);
-		    
 		    // 데이터베이스에 memberIntro 업데이트
 		    ms.memberUpdateIntro(mv);
 		    System.out.println("멤버소개: " + mv.getMemberIntro());
@@ -660,10 +660,7 @@ public class MemberController {
 		    session.setAttribute("memberIntro", updatedIntro);
 		   
 		}
-		
-		/////////////////////////////////////////////////////////////////
-		
-		
+
 		
 		//회원 프로필 업데이트 /*김건우*/
 		@RequestMapping(value = "/MypageProfile.do", method = RequestMethod.POST)

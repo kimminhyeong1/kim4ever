@@ -350,11 +350,13 @@ public class MemberServiceImpl implements MemberService {
 	
 		return msm.getMemberByMemberPwd(memberPwd);
 	}
+	//회원프로필(내 간단소개)/*김병수*/
 	@Override
 	public void memberUpdateIntro(MemberVo mv) {
 		msm.memberUpdateIntro(mv);
 		
 	}
+	//회원프로필(내 간단소개)/*김병수*/
 	@Override
 	public String getMemberIntro(int midx) {
 		

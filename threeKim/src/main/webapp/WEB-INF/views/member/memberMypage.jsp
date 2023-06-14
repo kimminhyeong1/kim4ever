@@ -47,7 +47,7 @@ li{list-style:none;}
 #content table td a.logout-btn {display:inline-block;padding:10px 20px;background-color:#ff9800;color:#fff;text-decoration:none;border-radius:5px;transition:background-color 0.3s ease;}
 #content table td a.logout-btn:hover {background-color: #FF6600;}
 #content table .image-container {position:relative; width:180px;height:180px;}
-#content table #imagePreview {position:absolute; top:0;left:0; width:100%; height:100%;border:1px solid #000;border-radius:100px;object-fit:cover;}
+#content table #imagePreview {position:absolute; width:100%; height:100%; border:1px solid #000; border-radius:100px;object-fit:cover;}
 #content table .button-container {width:200px; margin-left:20px; position:absolute; bottom:680px; left:0; align-items:center; }
 #content table .intro-container {width:550px;height:auto; float:right;border:1px solid #ddd; border-radius:50px; display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:20px;}
 #content table .intro-container h3 {font-size:24px;margin-bottom:10px;border-bottom:1px solid #000;}
