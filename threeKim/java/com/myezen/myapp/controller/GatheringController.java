@@ -22,9 +22,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.annotation.JsonFormat.Value;
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.GatheringJoinVo;
+import com.myezen.myapp.domain.GatheringVo;
 import com.myezen.myapp.domain.Gathering_BoardVO;
 import com.myezen.myapp.domain.Gathering_DeclarationVO;
 import com.myezen.myapp.domain.Gathering_ScheduleVO;
+import com.myezen.myapp.domain.PageMaker;
 import com.myezen.myapp.domain.ScheduleVo;
 import com.myezen.myapp.domain.SearchCriteria;
 import com.myezen.myapp.service.GatheringService;
@@ -220,17 +222,25 @@ public class GatheringController {
 	//모임 게시판
 	@RequestMapping(value="/gBoardList.do")
 	public String gBoardList(
+			PageMaker pm,
+			SearchCriteria scri,
 			HttpServletRequest request,
 			Model md
 			) {
 		HttpSession session = request.getSession();
 	    Object Ogiidx = session.getAttribute("giidx");
-
-
 	    int giidx=(int)Ogiidx;
-	    ArrayList<GatheringJoinVo> gjvblist = gs.gatheringBoardListSelect(giidx);
-    	md.addAttribute("gjvblist", gjvblist);
+	    
+	    scri.setPerPageNum(5);//게시물갯수
+	    
+	    int totalCount = gs.gatheringBoardTotal(giidx,scri); //총 게시물 갯수 꺼내오기
 		
+	    ArrayList<GatheringJoinVo> gjvblist = gs.gatheringBoardListSelect(giidx,scri);
+    	md.addAttribute("gjvblist", gjvblist);
+    	
+    	pm.setScri(scri);
+    	pm.setTotalCount(totalCount);
+    	md.addAttribute("pm", pm);
 		
 		
 		
@@ -375,14 +385,25 @@ public class GatheringController {
 		return hm;
 	}
 	
-//모임 멤버 리스트 보기	
+//모임 더 보기 멤버 리스트 보기	
 	@RequestMapping(value="/gMemberList.do")
-	public String gMemberList() {
+	public String gMemberList(HttpServletRequest request,
+			Model md) {
+		HttpSession session = request.getSession();
+		Object Ogiidx = session.getAttribute("giidx");
+		Object Omidx = session.getAttribute("midx");
+		int giidx = (int)Ogiidx;
+		int midx = (int)Omidx;
 		
+		GatheringVo gmt = gs.gatheringMemberType(giidx,midx);
+		ArrayList<GatheringJoinVo> gjvsmlist = gs.gatheringSeeMoreMemberList(giidx);
+    	md.addAttribute("gmt", gmt);
+    	md.addAttribute("gjvsmlist", gjvsmlist);
+    	
 		return "gathering/gMemberList";
 	}
 
-//모임 멤버 리스트 보기	
+//모임 더 보기 가입 대기 리스트 보기	
 		@RequestMapping(value="/gMemberJoinWaitList.do")
 		public String gMemberJoinWaitList() {
 			

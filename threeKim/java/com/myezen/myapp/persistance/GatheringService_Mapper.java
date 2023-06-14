@@ -6,6 +6,7 @@ package com.myezen.myapp.persistance;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -13,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.ErrorVo;
 import com.myezen.myapp.domain.GatheringJoinVo;
+import com.myezen.myapp.domain.GatheringVo;
 import com.myezen.myapp.domain.Gathering_BoardVO;
 import com.myezen.myapp.domain.Gathering_DeclarationVO;
 import com.myezen.myapp.domain.Gathering_InfoVo;
@@ -77,12 +79,19 @@ public interface GatheringService_Mapper {
 	/*모임 게시판*/
 	//모임 게시글 쓰기
 	public int gatheringBoardWrite(Gathering_BoardVO gbv);
+
 	//모임 게시글 리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringBoardListSelect(int giidx);
 	
 	
 	public void insertDeclaration(GatheringJoinVo gjv);
 	
+
+	//1. 총게시글 가져오기
+	public int gatheringBoardTotal(HashMap<String, Object> hm);
+	//2. 게시글 리스트 가져오기
+	public ArrayList<GatheringJoinVo> gatheringBoardListSelect(HashMap<String, Object> hm);
+
 	
 	
 	
@@ -92,5 +101,10 @@ public interface GatheringService_Mapper {
 	
 	
 	
+	/*모임 더보기 */
+	//모임 더보기 현재 사용자 멤버타입 가져오기 
+	public GatheringVo gatheringMemberType(int giidx,int midx);
+	//모임 더보기 멤버 리스트
+	public ArrayList<GatheringJoinVo> gatheringSeeMoreMemberList(int giidx);
 	
 }
