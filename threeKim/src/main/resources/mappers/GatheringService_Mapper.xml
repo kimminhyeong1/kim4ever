@@ -266,35 +266,39 @@
 
 
 
-<!-- 모임 더보기 멤버 리스트 , 추방 , 권한 위임 -->
+	<!-- 모임 더보기 멤버 리스트 , 추방 , 권한 위임 -->
 
-<!--  모임 더보기 현재 사용자 멤버타입 가져오기  -->
-	<select id="gatheringMemberType" resultType="com.myezen.myapp.domain.GatheringVo" parameterType="int"> 
-		SELECT GATHERINGMEMBERTYPE
-		FROM GATHERING1234 a
-		JOIN MEMBER1234 b ON b.midx = a.midx
-		WHERE a.GIIDX = #{0} AND b.MEMBERDELYN = 'N' AND a.GATHERINGMEMBERDELYN = 'N' AND b.midx = #{1}
-	</select>
-<!--  모임 더보기 멤버 리스트 -->
-	<select id="gatheringSeeMoreMemberList" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int"> 
-		SELECT a.*,
-			b.memberProfile,
-			b.memberName,
-			b.memberIntro,
-			b.memberAddr
-		FROM GATHERING1234 a
-		JOIN MEMBER1234 b ON b.midx = a.midx
-		WHERE a.GIIDX = #{GIIDX}
-			AND b.MEMBERDELYN = 'N'
-			AND a.GATHERINGMEMBERDELYN = 'N'
-		ORDER BY CASE WHEN a.GATHERINGMEMBERTYPE = 'TL' THEN 1
-		              WHEN a.GATHERINGMEMBERTYPE = 'TLM' THEN 2
-		              WHEN a.GATHERINGMEMBERTYPE = 'TM' THEN 3
-		              ELSE 4
-		END
-	</select>
+	<!--  모임 더보기 현재 사용자 멤버타입 가져오기  -->
+		<select id="gatheringMemberType" resultType="com.myezen.myapp.domain.GatheringVo" parameterType="int"> 
+			SELECT GATHERINGMEMBERTYPE
+			FROM GATHERING1234 a
+			JOIN MEMBER1234 b ON b.midx = a.midx
+			WHERE a.GIIDX = #{0} AND b.MEMBERDELYN = 'N' AND a.GATHERINGMEMBERDELYN = 'N' AND b.midx = #{1}
+		</select>
+	<!--  모임 더보기 멤버 리스트 -->
+		<select id="gatheringSeeMoreMemberList" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int"> 
+			SELECT a.*,
+				b.memberProfile,
+				b.memberName,
+				b.memberIntro,
+				b.memberAddr
+			FROM GATHERING1234 a
+			JOIN MEMBER1234 b ON b.midx = a.midx
+			WHERE a.GIIDX = #{GIIDX}
+				AND b.MEMBERDELYN = 'N'
+				AND a.GATHERINGMEMBERDELYN = 'N'
+			ORDER BY CASE WHEN a.GATHERINGMEMBERTYPE = 'TL' THEN 1
+			              WHEN a.GATHERINGMEMBERTYPE = 'TLM' THEN 2
+			              WHEN a.GATHERINGMEMBERTYPE = 'TM' THEN 3
+			              ELSE 4
+			END
+		</select>
 
-
+	<!--  모임 더보기 모임원 추방으로 변경 -->
+		<update id="updateMemberDELYN" parameterType="int">
+	    UPDATE GATHERING1234 SET GATHERINGMEMBERDELYN = 'Y' WHERE giidx = #{0} and midx = #{1}
+	    
+		</update>
 
 
 </mapper>

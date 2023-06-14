@@ -88,6 +88,15 @@
 .DeleteBtn {width:70px; height:40px; margin-top:-10px; margin-left:5px; text-align:center; font-family:'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}	
 .DeleteBtn:active{background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}	
 	</style>  
+<script type="text/javascript">
+function fnDelete(midx, giidx) {
+	if (confirm("정말 추방하시겠습니까?")) {
+	location.href = '<%=request.getContextPath()%>/gathering/gMemberDelete.do?gatheringMemberDelYN=N&midx=' + midx + '&giidx=' + giidx;
+
+	}
+}
+</script>
+	
 	</head>
 	<body>
 		<%@include file="../header2.jsp" %>
@@ -138,10 +147,10 @@
 										    </c:when>
 										    <c:when test="${smv.gatheringMemberType eq 'TLM'}">
 										        <!-- 부모임장인 경우 추방 버튼을 표시합니다. -->
-										        <button type="button" class="DeleteBtn">추방</button>
+										        <button type="button" class="DeleteBtn" onclick="fnDelete(${smv.midx}, ${smv.giidx});">추방</button>
 										    </c:when>
 										    <c:when test="${smv.gatheringMemberType eq 'TM'}">
-										        <button type="button" class="DeleteBtn" onclick="showAlert()">추방</button>
+										        <button type="button" class="DeleteBtn" onclick="fnDelete(${smv.midx}, ${smv.giidx});">추방</button>
 										    </c:when>
 										</c:choose>
 									</c:if>	
