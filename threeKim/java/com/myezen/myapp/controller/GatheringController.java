@@ -499,40 +499,6 @@ public class GatheringController {
 			return "gathering/gPowerEntrustList";
 				}			
 	
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		///////////////////
 //모임 신고	
 	@RequestMapping(value="/gDeclaration.do")
 	public String gDeclaration(
@@ -553,26 +519,31 @@ public class GatheringController {
 	    	/*모임상세리스트 가져오기*/
 	    	ArrayList<GatheringJoinVo> gjvlist = gs.gatheringOneListSelect(giidx);
 	    	md.addAttribute("gjvlist", gjvlist);
-	    	
+	    	md.addAttribute("midx", midx);
 	    	md.addAttribute("gidx", gjvlist.get(0).getGidx());
 	    	
 	    }
 		return "gathering/gDeclaration";
 	}	
-//모임 신고	2
+//모임 신고	
 	@RequestMapping(value="/gDeclarationAction.do", method=RequestMethod.POST)
 	public String gDeclarationAction(HttpServletRequest request,
-	        @RequestParam("gatheringReportContent") String gatheringReportContent,
-	        @RequestParam("giidx") int giidx) {
-		System.out.println("신고하기 버튼 클릭");
+			 @RequestParam("gatheringReportContent") String gatheringReportContent) {
+			System.out.println("신고하기 컨트롤러 들어옴");
 		
+			HttpSession session = request.getSession();
+		    int giidx = (int) session.getAttribute("giidx");
+		    int midx = (int)session.getAttribute("midx");
+		    
 		GatheringJoinVo gjv = new GatheringJoinVo();
 	    gjv.setGatheringReportContent(gatheringReportContent);
 	    gjv.setGiidx(giidx); 
-
+	    gjv.setMidx(midx);
+	    System.out.println("giidx는?"+giidx);
+	    System.out.println("midx는?"+midx);
 	    // Service의 insertDeclaration 메서드 호출
 	    gs.insertDeclaration(gjv);
-		
+		System.out.println("gjv는??"+gjv);
 		  
 		
 		return "gathering/gList";

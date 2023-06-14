@@ -85,7 +85,7 @@ public interface GatheringService_Mapper {
 	public ArrayList<GatheringJoinVo> gatheringBoardListSelect(int giidx);
 	
 	
-	public void insertDeclaration(GatheringJoinVo gjv);
+	public int insertDeclaration(GatheringJoinVo gjv);
 	
 
 	//1. 총게시글 가져오기
