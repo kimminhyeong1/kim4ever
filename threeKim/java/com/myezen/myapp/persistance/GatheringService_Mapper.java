@@ -98,8 +98,16 @@ public interface GatheringService_Mapper {
 	//모임 게시글 보기
 	//1.게시물하나가져오기
 	public GatheringJoinVo gatheringBoardOneSelect(int giidx,int gbidx);
-	//2.게시물에 댓글쓰기
+	//2.1게시물에 댓글쓰기
 	public int gatheringBoardCommentAdd(Gathering_CommentVO gcv);
+	//2.2게시물에 댓글삭제
+	public int gatheringBoardCommentDelete(Gathering_CommentVO gcv);
+	//2.3.1 게시물에 댓글수정검증하기
+	public int gatheringBoardCommentMemberCheck(Gathering_CommentVO gcv);
+	//2.3.2 게시물에 댓글수정댓글가져오기
+	public String gatheringBoardCommentModify(Gathering_CommentVO gcv);
+	//2.3.3 게시물에 댓글수정하기
+	public int gatheringBoardCommentUpdate(Gathering_CommentVO gcv);
 	//3. 총댓글 가져오기
 	public int gatheringBoardCommentTotal(HashMap<String, Object> hm);
 	//4. 댓글 리스트 가져오기

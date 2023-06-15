@@ -127,6 +127,13 @@ public class GatheringController {
 			Model md
 			) {
 		HttpSession session = request.getSession();
+	    Object Omidx = session.getAttribute("midx");
+	    if (Omidx == null) {//midx가 없으면 진입불가
+	    	return "redirect:/gathering/gList.do";
+		}
+	    int midx = (int)Omidx;
+	    GatheringVo gmt = gs.gatheringMemberType(giidx,midx);
+	    session.setAttribute("MGatheringMemberType", gmt.getGatheringMemberType());//회원타입세션에 담기
 		session.setAttribute("giidx", giidx);//giidx세션에 담기
 		System.out.println("모임상세보기체크 세션담기");
 
@@ -316,6 +323,7 @@ public class GatheringController {
     	pm.setTotalCount(totalCount);
     	md.addAttribute("pm", pm);
     	
+    	md.addAttribute("commentTotal", totalCount);//댓글총갯수
 	    md.addAttribute("gbidx", gbidx);
     	
 		return "gathering/gBoardContent";
@@ -323,7 +331,7 @@ public class GatheringController {
 	//모임 게시글 ajax로 댓글쓰기
 	@RequestMapping(value="/gBoardComment.do")
 	@ResponseBody
-	public HashMap<String, Object> addComment(
+	public HashMap<String, Object> gBoardComment(
 			@ModelAttribute Gathering_CommentVO gcv,
 			HttpServletRequest request
 			) {
@@ -333,13 +341,72 @@ public class GatheringController {
 	    Object Omidx = session.getAttribute("midx");
 	    gcv.setMidx((int)Omidx);
 		
-		// 서비스를 사용하여 댓글을 저장합니다
+		//댓글 저장메소드
 	    int value = gs.gatheringBoardCommentAdd(gcv);
 	    hm.put("value",value); //0은 거짓 1은 참
 		return hm;
 	}
+	
+	//모임 게시글 ajax로 댓글삭제
+	@RequestMapping(value="/gBoardDeleteComment.do")
+	@ResponseBody
+	public HashMap<String, Object> gBoardDeleteComment(
+			@ModelAttribute Gathering_CommentVO gcv,
+			HttpServletRequest request
+			) {
+		System.out.println("댓글삭제 컨트롤러진입");
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		HttpSession session = request.getSession();
+	    Object Omidx = session.getAttribute("midx");
+	    gcv.setMidx((int)Omidx);
+		
+		//댓글 삭제메소드
+	    int value = gs.gatheringBoardCommentDelete(gcv);
+	    hm.put("value",value); //0은 거짓 1은 참
+		return hm;
+	}
+	//모임 게시글 ajax로 댓글수정
+	@RequestMapping(value="/gBoardModifyComment.do")
+	@ResponseBody
+	public HashMap<String, Object> gBoardModifyComment(
+			@ModelAttribute Gathering_CommentVO gcv,
+			HttpServletRequest request
+			) {
+		System.out.println("댓글수정 확인 컨트롤러진입");
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		HttpSession session = request.getSession();
+	    Object Omidx = session.getAttribute("midx");
+	    gcv.setMidx((int)Omidx);
+	    
+	    //회원검증
+	    int value = gs.gatheringBoardCommentMemberCheck(gcv);
+		if (value == 1) {
+			//댓글 쓴글가져오기메소드
+			String gCommentContents = gs.gatheringBoardCommentModify(gcv);
+			hm.put("gCommentContents",gCommentContents); //0은 거짓 1은 참
+			
+		}
+	    hm.put("value",value); //0은 거짓 1은 참
+		return hm;
+	}
+	//모임 게시글 ajax로 댓글수정
+	@RequestMapping(value="/gBoardUpdateComment.do")
+	@ResponseBody
+	public HashMap<String, Object> gBoardUpdateComment(
+			@ModelAttribute Gathering_CommentVO gcv,
+			HttpServletRequest request
+			) {
+		System.out.println("댓글수정하기 컨트롤러진입");
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		HttpSession session = request.getSession();
+	    Object Omidx = session.getAttribute("midx");
+	    gcv.setMidx((int)Omidx);
 
-
+		//댓글 수정메소드
+	    int value = gs.gatheringBoardCommentUpdate(gcv);
+	    hm.put("value",value); //0은 거짓 1은 참
+		return hm;
+	}
 	
 	
 	

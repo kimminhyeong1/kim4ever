@@ -203,6 +203,35 @@
 		INSERT INTO gathering_comment1234 (gcidx,gbidx,midx,gCommentContents,gCommentWriteDay,gCommentDelYN)
 		VALUES(gcidx_seq.NEXTVAL, #{gbidx},#{midx},#{gCommentContents},SYSDATE,'N')
 	</insert>
+	<!-- 모임 게시글에서 댓글 삭제하기 -->
+	<update id="gatheringBoardCommentDelete" parameterType="com.myezen.myapp.domain.Gathering_CommentVO">
+	  UPDATE gathering_comment1234
+	  SET gCommentDelYN = 'Y'
+	  WHERE gcidx = #{gcidx} AND gbidx = #{gbidx} AND midx = #{midx}
+	</update>
+	<!-- 모임 게시물에서 댓글수정 검증하기 -->
+	<select id="gatheringBoardCommentMemberCheck" resultType="int" parameterType="com.myezen.myapp.domain.Gathering_CommentVO"> 
+		SELECT COUNT(*)
+		FROM gathering_comment1234
+		WHERE gcidx = #{gcidx} AND gbidx = #{gbidx} AND midx = #{midx} AND gCommentDelYN = 'N'
+	</select>
+	<!-- 모임 게시글에서 수정댓글가져오기 -->
+	<select id="gatheringBoardCommentModify" resultType="String" parameterType="com.myezen.myapp.domain.Gathering_CommentVO"> 
+		SELECT gCommentContents
+		FROM gathering_comment1234
+		WHERE gcidx = #{gcidx} AND gbidx = #{gbidx} AND midx = #{midx} AND gCommentDelYN = 'N'
+	</select>
+	<!-- 모임 게시글에서 댓글 수정하기 -->
+	<update id="gatheringBoardCommentUpdate" parameterType="com.myezen.myapp.domain.Gathering_CommentVO">
+	  UPDATE gathering_comment1234
+	  SET gCommentContents = #{gCommentContents}
+	  WHERE gcidx = #{gcidx} AND gbidx = #{gbidx} AND midx = #{midx}
+	</update>
+	
+	
+	
+	
+	
 	<sql id="searchComment">
 		<if test="searchType != null and searchType.equals('gBoardTitle')"><!-- 동적 SQL  -->
 			and gBoardTitle like '%'|| #{scri.keyword} ||'%'
@@ -232,7 +261,7 @@
 		        JOIN GATHERING_BOARD1234 b ON  b.GBIDX = a.GBIDX
 		        JOIN member1234 c ON c.midx = a.midx
 		        JOIN GATHERING1234 d ON d.giidx = b.giidx AND d.midx = a.midx
-		        WHERE gBoardDelYN = 'N' AND memberdelyn = 'N' AND gatheringMemberDelYN = 'N' AND a.gbidx = #{gbidx}
+		        WHERE gBoardDelYN = 'N' AND memberdelyn = 'N' AND gatheringMemberDelYN = 'N' AND gCommentDelYN = 'N'  AND a.gbidx = #{gbidx}
 		        ORDER BY  gCommentWriteDay DESC
 		    ) A
 		)

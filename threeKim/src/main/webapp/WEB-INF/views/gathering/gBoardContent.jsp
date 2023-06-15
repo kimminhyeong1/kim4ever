@@ -29,7 +29,12 @@
 			.gBoardView>div:nth-child(2){font-size: 18px; margin-top: 100px; border-bottom: 2px solid #bbb; padding-bottom: 100px;}/*게시글 내용*/
 			/*버튼 부분*/
 			.writeBtn{width: 10%; height: 50px;margin-top: 14px;text-align: center;font-family: 'omyu_pretty';font-size: 21px;border-radius: 10px;border: 0px solid #99CC99;background: #99CC99; vertical-align: top;}
-			.hidden {display: none;}
+			.writeBtn:active {background: #339933;box-shadow: 0 2px 2px rgba(0,0,0,0.1);transform: translateY(2px);}
+			.modifyBtn{width: 10%; height: 50px;margin-top: 14px;text-align: center;font-family: 'omyu_pretty';font-size: 21px;border-radius: 10px;border: 0px solid #99CC99;background: #99CC99; vertical-align: top;}
+			.modifyBtn:active {background: #339933;box-shadow: 0 2px 2px rgba(0,0,0,0.1);transform: translateY(2px);}
+			.replyBtn{width: 8%; height: 35px; position: absolute;right: 35px;top: 50px;margin-top: 14px;text-align: center;font-family: 'omyu_pretty';font-size: 21px;border-radius: 10px;border: 0px solid #99CC99;background: #99CC99; vertical-align: top;}
+			.replyBtn:active {background: #339933;box-shadow: 0 2px 2px rgba(0,0,0,0.1);transform: translateY(2px);}
+			.hidden {display: none; }
 		    .fade-in {
 		      animation: fadeIn 0.2s ease-in;
 		    }
@@ -49,46 +54,57 @@
 			/*좋아요 부분*/
 			.gBoardLike div{margin-bottom: 20px;margin-top: 10px;}
 			/*설정 부분*/
-			.gBoardSettingBtn{position: absolute; right: 0px;top: 0px; width: 100px;}	
+			.gBoardSettingBtn{position: absolute; right: 0px;top: 0px; width: 100px; z-index: 5;}	
 			.gBoardSettingBtn img{width: 35px;}
 			.gBoardSettingBtn ul{background: #d5d5d5;border-radius: 5px;width: 110px;padding: 20px;}
-			.gBoardSettingBtn li{margin: 5px; border-bottom: 1px solid #bbb;}
+			.gBoardSettingBtn li{margin: 5px; border-bottom: 1px solid #bbb; cursor: pointer;}
 			/*댓글 쓰는 부분*/
 			.gBoardCommentWrite textarea{resize: none;padding: 20px;font-size: 18px; width: 580px; height: 40px;}
-			
+			.modifycommentForm textarea{resize: none;padding: 20px;font-size: 18px; width: 580px; height: 40px;margin-right: 5px;}
 		</style>
-	    <script>
-	        $(document).ready(function() {
-	            // AJAX를 사용하여 댓글 양식 제출
-	            $("#commentForm").submit(function(event) {
-	                event.preventDefault(); // 폼 제출 방지
-	                var gCommentContents = $("#gCommentContents").val();
-	                var gbidx = $("#gbidx").val();
-	                
-	                $.ajax({
-	                    type: "POST",
-	                    url: "${pageContext.request.contextPath}/gathering/gBoardComment.do",
-	                    data: { gCommentContents: gCommentContents, gbidx: gbidx },
-	                    success: function(data) {
-	                    	if (data.value == 1) {
-	                    		alert("댓글성공");
-		                        // 제출 성공 시 댓글 새로고침
-		                        location.reload();
-		                        //$("#commentList").load("${pageContext.request.contextPath}/gathering/gBoardContent.do?gbidx=${gbidx}");
-		                        //$("#gCommentContents").val(""); // 댓글 입력 필드 초기화
-								
-								return true;
-							} else {
-								return false;
-							}
-	                    },
-	                    error: function(xhr, status, error) {
-	                        console.error("댓글 제출 에러: " + error);
-	                    }
-	                });
-	            });
-	        });
-	    </script>
+		<script>
+			$(document).ready(function() {
+				
+			    function submitComment() {
+			    	
+			        var gCommentContents = $("#gCommentContents").val();
+			        var gbidx = $("#gbidx").val();
+			        
+			     	// 현재 스크롤 위치 저장
+			        var scrollPosition = $(window).scrollTop();
+			
+			        $.ajax({
+			            type: "POST",
+			            url: "${pageContext.request.contextPath}/gathering/gBoardComment.do",
+			            data: { gCommentContents: gCommentContents, gbidx: gbidx },
+			            success: function(data) {
+			                if (data.value == 1) {
+			                    alert("댓글이 성공적으로 등록되었습니다.");
+			                    // 등록 성공 시 댓글 새로고침
+			                    location.reload();
+			                    // 페이지 새로고침 후 스크롤 위치 복원
+			                    $(window).scrollTop(scrollPosition);
+			                } else {
+			                    alert("댓글 등록에 실패했습니다.");
+			                }
+			            },
+			            error: function(xhr, status, error) {
+			                console.error("댓글 제출 중 오류 발생: " + error);
+			            }
+			        });
+			    }
+			
+			    // "댓글" 버튼을 클릭할 때 폼 제출
+			    $(".writeBtn").click(function(event) {
+			        event.preventDefault(); // 버튼 클릭 동작 방지
+			        if ($("#gCommentContents").val().trim() !== "") { // 텍스트영역이 비어 있지 않거나 공백 문자만 포함되지 않았는지 확인
+			        	submitComment();
+			        }
+			    });
+
+
+			});
+		</script>
 	</head>
 	<body>
 		<%@include file="../header2.jsp" %>
@@ -146,7 +162,7 @@
 							<button class="writeBtn">댓글달기</button>
 				    	</form>
 					</div>
-					<div class="gBoardCommentTitle">댓글(댓글갯수)</div>
+					<div class="gBoardCommentTitle">댓글(${commentTotal})</div>
 			    	<c:forEach var="gjvc" items="${gjvclist}">
 						<div class="gBoardMember">
 							<div>
@@ -173,13 +189,20 @@
 										${formattedRentDay}
 									</div>
 								</div>					
-								<div>${gjvc.gCommentContents}</div>
-								<div class="gBoardSettingBtn SettingBtn2">
-									<img alt="설정리스트" src="../resources/btn/settingBtn.png">
-						            <ul class="hidden fade-in">
-						                <li><a href="#">댓글 수정</a></li> 
-						                <li><a href="#">댓글 삭제</a></li>
-						            </ul>
+								<div class="PgCommentContents" data-gbidx="${gjvc.gbidx}" data-gcidx="${gjvc.gcidx}">					
+									${gjvc.gCommentContents}
+								</div>
+								<c:if test="${gjvc.midx eq midx}">
+									<div class="gBoardSettingBtn SettingBtn2">
+										<img alt="설정리스트" src="../resources/btn/settingBtn.png">
+							            <ul class="hidden fade-in">
+							                <li onclick="modifyComment(${gjvc.gbidx}, ${gjvc.gcidx})">댓글 수정</li>
+											<li onclick="deleteComment(${gjvc.gbidx}, ${gjvc.gcidx})">댓글 삭제</li>
+							            </ul>
+									</div>
+								</c:if>
+								<div>
+									<button class="replyBtn">답장하기</button>
 								</div>
 							</div>
 						</div>
@@ -225,6 +248,132 @@
 		            list.classList.toggle('hidden');
 		        });
 		    });
+		</script>
+		<script type="text/javascript">
+		    function deleteComment(Pgbidx, Pgcidx) {
+		     	// 현재 스크롤 위치 저장
+		        var scrollPosition = $(window).scrollTop();
+	
+		        $.ajax({
+		            type: "POST",
+		            url: "${pageContext.request.contextPath}/gathering/gBoardDeleteComment.do",
+		            data: { gbidx: Pgbidx, gcidx: Pgcidx },
+		            success: function(data) {
+		            	if (data.value == 1) {
+		                    alert("댓글이 성공적으로 삭제되었습니다.");
+		                    // 등록 성공 시 댓글 새로고침
+		                    location.reload();
+		                    // 페이지 새로고침 후 스크롤 위치 복원
+		                    $(window).scrollTop(scrollPosition);
+		                } else {
+		                    alert("댓글 삭제에 실패했습니다.");
+		                }
+		            },
+		            error: function(xhr, status, error) {
+	
+		            }
+		        });
+		    }
+		    
+		    function modifyComment(Pgbidx, Pgcidx) {
+		        var scrollPosition = window.scrollY; // 현재 스크롤 위치를 저장합니다.
+
+		        $.ajax({
+		            type: "POST",
+		            url: "${pageContext.request.contextPath}/gathering/gBoardModifyComment.do",
+		            data: { gbidx: Pgbidx, gcidx: Pgcidx },
+		            success: function(data) {
+		                if (data.value == 1) {
+
+		                    /* 코드 생성 */
+		                    var commentDiv = document.createElement('div');
+		                    commentDiv.classList.add('PgCommentContents');
+
+
+		                    var modifyCommentForm = document.createElement('form');
+		                    modifyCommentForm.classList.add('modifycommentForm');
+
+		                    var gbidxInput = document.createElement('input');
+		                    gbidxInput.type = 'hidden';
+		                    gbidxInput.name = 'gbidx';
+		                    gbidxInput.value = Pgbidx;
+		                    
+		                    var gcidxInput = document.createElement('input');
+		                    gcidxInput.type = 'hidden';
+		                    gcidxInput.name = 'gcidx';
+		                    gcidxInput.value = Pgcidx;
+
+		                    var gCommentContentsTextarea = document.createElement('textarea');
+		                    gCommentContentsTextarea.id = 'gCommentContentsModify';
+		                    gCommentContentsTextarea.rows = '5';
+		                    gCommentContentsTextarea.cols = '100';
+		                    gCommentContentsTextarea.name = 'gCommentContents';
+		                    gCommentContentsTextarea.textContent = data.gCommentContents;
+
+		                    var modifyBtn = document.createElement('button');
+		                    modifyBtn.classList.add('modifyBtn');
+		                    modifyBtn.textContent = '댓글 수정';
+		                    
+		                    modifyCommentForm.appendChild(gbidxInput);
+		                    modifyCommentForm.appendChild(gcidxInput);
+		                    modifyCommentForm.appendChild(gCommentContentsTextarea);
+		                    modifyCommentForm.appendChild(modifyBtn);
+		                    
+		                    // 생성한 코드를 적절한 위치에 삽입합니다.
+		                    var parentDiv = document.querySelector("[data-gbidx=\""+Pgbidx+"\"][data-gcidx=\""+Pgcidx+"\"]");
+			                    parentDiv.innerHTML = ''; // 작성한글없애기
+		                        parentDiv.appendChild(commentDiv);
+		                        parentDiv.appendChild(modifyCommentForm);
+									
+
+		                        $(".modifyBtn").on('click', function() {
+		                            submitUpdatedComment(Pgbidx, Pgcidx, gCommentContentsTextarea.value);
+		                        });
+		                        
+
+		                    alert("코드 생성이 완료되었습니다.");
+		                } else {
+		                    alert("댓글을 가져오지 못했습니다.");
+		                }
+		            },
+		            error: function(xhr, status, error) {
+		                // 에러 응답을 처리하거나 에러 메시지를 표시합니다.
+
+		                // 동작 수행 후 스크롤 위치를 복원합니다.
+		                window.scrollTo(0, scrollPosition);
+		            }
+		        });
+		    }
+
+	    function submitUpdatedComment(gbidx, gcidx, gCommentContents) {
+
+	    	  // AJAX를 사용하여 업데이트된 댓글을 제출합니다
+	    	  $.ajax({
+	    	    type: "POST",
+	    	    url: "${pageContext.request.contextPath}/gathering/gBoardUpdateComment.do",
+	    	    data: { gbidx: gbidx, gcidx: gcidx, gCommentContents: gCommentContents },
+	    	    success: function(data) {
+	    	      if (data.value == 1) {
+	    	        alert("댓글이 성공적으로 업데이트되었습니다.");
+	    	        location.reload(); // 댓글 새로고침
+	    	      } else {
+	    	        alert("댓글 업데이트에 실패했습니다.");
+	    	      }
+	    	    },
+	    	    error: function(xhr, status, error) {
+	    	      console.error("댓글을 업데이트하는 중 오류 발생: " + error);
+	    	    }
+	    	  });
+	    	}
+		    $(".modifyBtn").on('click', function() {
+		        var parentDiv = $(this).closest('.modifycommentForm');
+		        var gbidx = parentDiv.find('input[name="gbidx"]').val();
+		        var gcidx = parentDiv.find('input[name="gcidx"]').val();
+		        var gCommentContents = parentDiv.find('textarea[name="gCommentContents"]').val();
+	
+		        submitUpdatedComment(gbidx, gcidx, gCommentContents);
+		    });
+
 		</script>
 	</body>
 </html>

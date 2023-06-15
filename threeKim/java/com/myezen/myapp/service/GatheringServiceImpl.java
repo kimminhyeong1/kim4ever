@@ -306,9 +306,33 @@ public class GatheringServiceImpl implements GatheringService {
 		return gjv;
 	}
 	@Override
-	//2.게시물에 댓글쓰기
+	//2.1게시물에 댓글쓰기
 	public int gatheringBoardCommentAdd(Gathering_CommentVO gcv) {
 		int value = gsm.gatheringBoardCommentAdd(gcv);
+		return value;
+	}
+	@Override
+	//2.2게시물에 댓글삭제
+	public int gatheringBoardCommentDelete(Gathering_CommentVO gcv) {
+		int value = gsm.gatheringBoardCommentDelete(gcv);
+		return value;
+	}
+	@Override
+	//2.3.1 게시물에 댓글수정검증하기
+	public int gatheringBoardCommentMemberCheck(Gathering_CommentVO gcv) {
+		 int value = gsm.gatheringBoardCommentMemberCheck(gcv);
+		return value;
+	}
+	@Override
+	//2.3.2 게시물에 댓글수정댓글가져오기
+	public String gatheringBoardCommentModify(Gathering_CommentVO gcv) {
+		String gCommentContents = gsm.gatheringBoardCommentModify(gcv);
+		return gCommentContents;
+	}
+	@Override
+	//2.3.3 게시물에 댓글수정하기
+	public int gatheringBoardCommentUpdate(Gathering_CommentVO gcv) {
+		int value = gsm.gatheringBoardCommentUpdate(gcv);
 		return value;
 	}
 	@Override
@@ -339,6 +363,12 @@ public class GatheringServiceImpl implements GatheringService {
 
 	        gsm.insertDeclaration(gjv);
 	    }
+
+
+
+
+
+
 
 	
 
