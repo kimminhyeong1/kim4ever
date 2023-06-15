@@ -139,9 +139,12 @@ public class GatheringController {
 	    session.setAttribute("MGatheringMemberType", gmt.getGatheringMemberType());//회원타입세션에 담기
 		session.setAttribute("giidx", giidx);//giidx세션에 담기
 		System.out.println("모임상세보기체크 세션담기");
+		
+		 if ("관리자".equals(gmt.getGatheringMemberType())) {
+		        return "redirect:/gathering/adminGContent.do?giidx=" + giidx;
+		    }
 
-
-		return "redirect:/gathering/gContent.do";
+		    return "redirect:/gathering/gContent.do?giidx=" + giidx;
 	}
 //모임상세보기페이지
 	@RequestMapping(value="/gContent.do")
