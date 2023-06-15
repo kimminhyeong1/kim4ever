@@ -16,6 +16,8 @@
 
 *{margin:0;padding:0;}
 li{list-style:none;}
+a{color:inherit; text-decoration:none;}
+
 @font-face {
     font-family: 'GangwonEdu_OTFBoldA';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
@@ -54,10 +56,11 @@ li{list-style:none;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 #content #bikeError{color: #ff7700; margin-right:10px;} 
 #content #bikeRepair{color: #000;} 
-#content .search {text-align:right; margin-right:185px; margin-bottom:40px;}
-#content .search select {width:120px;height:30px;font-size:14px;padding:5px;}
-#content .search input[type="text"] {width:200px;height:17px;font-size:14px;padding:5px;}
-#content .search button {width:80px;height:30px;font-size:14px;padding:5px;}
+#content .search {text-align:right; margin-right:200px; margin-top:20px; margin-bottom:10px;}
+#content .search select {width:120px;height:30px;font-size:14px;padding:5px; border-radius:10px; text-align:center; font-family: 'omyu_pretty';}
+#content .search input[type="text"] { width:120px; height:30px; text-align:center; font-family: 'omyu_pretty'; font-size:15px; border-radius:10px; margin-left:10px; margin-right:10px;}
+#content .search button { width:120px; height:30px; text-align:center; font-family: 'omyu_pretty'; font-size:15px; border-radius:10px; padding:5px;}
+#content button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 
 </style>
 </head>

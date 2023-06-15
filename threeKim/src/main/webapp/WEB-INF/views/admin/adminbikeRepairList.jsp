@@ -14,6 +14,8 @@
 
 *{margin:0;padding:0;}
 li{list-style:none;}
+a{color:inherit; text-decoration:none;}
+
 
 @font-face {
     font-family: 'GangwonEdu_OTFBoldA';
@@ -35,12 +37,12 @@ li{list-style:none;}
 }
 
 #main{width:1250px; margin:35px auto 70px; text-align:center;}
-#main #content{width:1250px; height:2400px; text-align:center;}
+#main #content{width:1250px; height:2400px; text-align:center; margin: 0 auto;}
 #main #bottom{width:1250px; height:300px; }
 #main #content h2{text-align:left; margin-top:50px; margin-left:200px;font-family: 'GangwonEdu_OTFBoldA'; font-size:30px;}
 #content table {width:70%; border-collapse:collapse; margin:0 auto; line-height:50px;font-family:'omyu_pretty'; font-size:24px;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
-#content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
+#content table td{padding: 7px; text-align:center;border-bottom:1px solid #CCCCCC;}
 #content table tr th:nth-child(1){width:70px;}
 #content table tr th:nth-child(2){width:180px;}
 #content table tr th:nth-child(3){width:70px;}
@@ -49,12 +51,11 @@ li{list-style:none;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 #content #bikeError{color: #000; margin-right:10px;} 
 #content #bikeRepair{color: #ff7700;} 
-#content .search {text-align:right; margin-right:150px;}
-#content .search select {width:120px;height:30px;font-size:14px;padding:5px;}
-#content .search input[type="text"] {width:200px;height:17px;font-size:14px;padding:5px;}
-#content .search button {width:80px;height:30px;font-size:14px;padding:5px;}
-.form-table input[type="submit"] {width:100px; height:30px; text-align:center; font-family: 'omyu_pretty'; font-size:15px; border-radius:10px; border:0px solid black; background:#ff9933;}
-.form-table select,.form-table input[type="text"] { width:100px; height:30px; text-align:center; font-family: 'omyu_pretty'; font-size:15px; border-radius:10px; }
+#content .search {text-align:right; margin-right:205px; margin-bottom:15px;}
+#content .search select {width:120px;height:30px;font-size:14px;padding:5px; border-radius:10px; text-align:center; font-family: 'omyu_pretty';}
+#content .search input[type="text"] {width:120px;height:17px;font-size:14px;padding:5px; border-radius:10px; text-align:center; font-family: 'omyu_pretty';}
+#content .search #searchBtn{width:120px;height:30px;font-size:14px;padding:5px;text-align:center; font-family:'omyu_pretty'; font-size:15px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+#content .search #searchBtn:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px}
 
 </style>
 </head>
@@ -64,23 +65,9 @@ li{list-style:none;}
 	<div id="content">	
 	<h2><a id="bikeError" href="${pageContext.request.contextPath}/admin/adminbikeError.do">신고 내역</a>  <a id="bikeRepair" href="${pageContext.request.contextPath}/admin/adminbikeRepairList.do">수리 내역</a></h2>
 		<form action="${pageContext.request.contextPath }/admin/adminbikeRepairList.do" method="get">
-		<table class="form-table" border=0 style="text-align: left; width: 400px;">
-			<tr>
-				<td>
-				<select name="searchType">			
-					<option value="bikeType">자전거종류</option> 
-					<option value="bikeCode">자전거번호</option>
-					<option value="errorContent">내용</option>
-					<option value="bikeState">상태</option>
-				</select>
-				</td>		
-				<td><input type="text" id="keyword" name="keyword"/></td>
-				<td><input type="submit" id="searchBtn" value="검색"></td> 
-			</tr>
-		</table>
 		
 		
-		<!--  <div class="search">
+		  <div class="search">
 			<select id="searchType" name="searchType">
 				<option value="">검색조건</option>
 				<option value="bikeType">자전거종류</option> 
@@ -90,7 +77,7 @@ li{list-style:none;}
 			</select>
 			<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요"/>
 			<button type="submit" id="searchBtn">검색</button>
-		</div>	-->
+		</div>	
 		</form>
 		<table>
 				<tr>
