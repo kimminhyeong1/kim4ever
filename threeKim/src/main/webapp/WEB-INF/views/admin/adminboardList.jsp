@@ -13,7 +13,6 @@
 /*리셋코드*/ 
 *{margin:0;padding:0;}
 li{list-style:none;}
-a{color:inherit; text-decoration:none;}
 
 @font-face {
     font-family:'GangwonEdu_OTFBoldA';
@@ -48,12 +47,8 @@ a{color:inherit; text-decoration:none;}
 #content #btn{text-align:right; margin-top:20px; margin-right:144px; }
 #content button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
- #content .search {text-align:right; margin-right:185px; margin-bottom:40px;}
-#content .search select {width:120px;height:30px;font-size:14px;padding:5px;}
-#content .search input[type="text"] {width:200px;height:17px;font-size:14px;padding:5px;}
-#content .search #searchBtn{width:80px;height:30px;font-size:14px;padding:5px;text-align:center; font-family:'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
-#content .search #searchBtn:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px}
- 
+ .form-table input[type="submit"] {width:100px; height:30px; text-align:center; font-family: 'omyu_pretty'; font-size:15px;  border-radius:10px; border:0px solid black; background:#ff9933;}
+ 	.form-table select,.form-table input[type="text"] { width:100px; height:30px; text-align:center; font-family: 'omyu_pretty'; font-size:15px;  }
 /*메뉴바 테이블*/
 .tab__contents {display:none;}
 .show {display: block;}
@@ -97,14 +92,18 @@ a{color:inherit; text-decoration:none;}
 					
 			<form name="frm" action="${pageContext.request.contextPath}/admin/adminboardList.do"
 method="post">
-		<div class="search">
+		<table class="form-table" border=0 style="text-align: left; width: 400px;">
+			<tr>
+				<td>
 				<select name="searchType">
 						<option value="subject">제목</option>
 						<option value="writer">작성자</option>
 				</select>
-				<input type="text" name="keyword" size="10">
-				<input type="submit" name="submit" value="검색">
-		</div>
+				</td>		
+				<td><input type="text" name="keyword" size="10"></td>
+				<td><input type="submit" name="submit" value="검색"></td> 
+			</tr>
+		</table>
 	</form>
 				<form name="frm2">
 				

@@ -52,8 +52,8 @@ a{color:inherit; text-decoration:none;}
 #content #bikeError{color: #000; margin-right:10px;} 
 #content #bikeRepair{color: #ff7700;} 
 #content .search {text-align:right; margin-right:205px; margin-bottom:15px;}
-#content .search select {width:120px;height:30px;font-size:14px;padding:5px; border-radius:10px; text-align:center; font-family: 'omyu_pretty';}
-#content .search input[type="text"] {width:120px;height:17px;font-size:14px;padding:5px; border-radius:10px; text-align:center; font-family: 'omyu_pretty';}
+#content .search select {width:120px;height:30px;font-size:14px;padding:5px;  text-align:center; font-family: 'omyu_pretty';}
+#content .search input[type="text"] {width:120px;height:17px;font-size:14px;padding:5px;  text-align:center; font-family: 'omyu_pretty';}
 #content .search #searchBtn{width:120px;height:30px;font-size:14px;padding:5px;text-align:center; font-family:'omyu_pretty'; font-size:15px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content .search #searchBtn:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px}
 
