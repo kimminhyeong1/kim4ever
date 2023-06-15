@@ -231,7 +231,7 @@
 				b.memberProfile,
 				b.memberName,
 				b.memberIntro,
-				b.memberAddr
+				b.memberAddrs
 			FROM GATHERING1234 a
 			JOIN MEMBER1234 b ON b.midx = a.midx
 			WHERE a.GIIDX = #{GIIDX}
@@ -247,7 +247,13 @@
 	<!--  모임 더보기 모임원 추방으로 변경 -->
 		<update id="updateMemberDELYN" parameterType="int">
 	    UPDATE GATHERING1234 SET GATHERINGMEMBERDELYN = 'Y' WHERE giidx = #{0} and midx = #{1}
-	    
 		</update>
+		
+	
+		
+	  <delete id="exitGathering" parameterType="int">
+	   DELETE FROM gathering1234 WHERE midx = #{0} AND giidx = #{1} AND GATHERINGMEMBERTYPE IN ('TM', 'TMD')
+	  </delete>
+	
 
 </mapper>
