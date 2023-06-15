@@ -134,6 +134,7 @@
 	    <if test="keyword != null">
 	        AND a.GINFONAME LIKE '%'||#{keyword}||'%'
 	    </if>
+	    
 	</select>
 	
 
