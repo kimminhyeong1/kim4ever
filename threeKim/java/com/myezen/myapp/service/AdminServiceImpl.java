@@ -221,11 +221,13 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public ArrayList<GatheringJoinVo> DeclarationDetail(int gdix) {
+	public GatheringJoinVo DeclarationDetail(int gdix) {
 		
-		ArrayList<GatheringJoinVo> gdtlist = asm.DeclarationDetail(gdix);
-		return gdtlist;
+	
+		return asm.DeclarationDetail(gdix);
 	}
+
+	
 
 	
 

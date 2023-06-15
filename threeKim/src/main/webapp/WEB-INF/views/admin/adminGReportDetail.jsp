@@ -77,16 +77,16 @@ input{
 		  		
 				<tr>
 					<th>모임명</th>
-					<td>${gmd.gInfoName}</td>
+					<td>${gdtv.gInfoName}</td>
 				</tr>
 				
 				<tr>
 					<th>모임장</th>
-					<td>${gmd.TL}</td>
+					<td>${gdtv.TL}</td>
 				</tr>
 				<tr>
 					<th>신고자</th>
-					<td>${gmd.reporterName}</td>
+					<td>${gdtv.reporterName}</td>
 				</tr>			
 				<tr>
 					<td colspan="2">
@@ -98,8 +98,11 @@ input{
 		</table>
 	
 
+	</div>
 </div>
-</div>
+
+
+
 </body>
 <%@include file="../footer.jsp" %>
 </html>

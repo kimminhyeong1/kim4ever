@@ -276,10 +276,9 @@ public class AdminController {
 	//관리자 모임 신고 상세 내역 페이지
 		@RequestMapping(value="/adminGReportDetail.do")
 		public String adminGReportDetail(Model model, int gdix) {
-			ArrayList<GatheringJoinVo> gdtlist = as.DeclarationDetail(gdix);
-			model.addAttribute("gmdlist", gdtlist);
-			
-			return "admin/adminGReportList";
+			GatheringJoinVo gdtv = as.DeclarationDetail(gdix);			
+		    model.addAttribute("gdtv", gdtv);
+			return "admin/adminGReportDetail";
 		}
 	
 ////////////////	 		게시글 관리			///////////////// 	
