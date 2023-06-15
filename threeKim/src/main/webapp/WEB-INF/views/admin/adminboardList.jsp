@@ -41,15 +41,13 @@ li{list-style:none;}
 #content table {width:70%; border-collapse:collapse; margin:0 auto; line-height:50px;font-family:'omyu_pretty'; font-size:24px;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000; white-space: nowrap; overflow: hidden;  text-overflow: ellipsis; }
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC; white-space: nowrap; overflow: hidden;  text-overflow: ellipsis; }
-#content #btn{text-align:right; margin-top:20px; margin-right:144px; }
-#content button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
-#content button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 #content .search {text-align:right; margin-right:185px; margin-bottom:40px;}
 #content .search select {width:120px;height:30px;font-size:14px;padding:5px;}
 #content .search input[type="text"] {width:200px;height:17px;font-size:14px;padding:5px;}
-#content .search #searchBtn{width:80px;height:30px;font-size:14px;padding:5px;text-align:center; font-family:'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
-#content .search #searchBtn:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px}
-#content table tr th:nth-child(5){width:120px;}
+#content #searchBtn{width:80px;height:30px;font-size:14px;padding:5px;text-align:center; font-family:'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+#content #searchBtn:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px}
+#content table .cell-content {width:200px;height: 40px; overflow: hidden; text-overflow: ellipsis;}
+
 /*메뉴바 테이블*/
 .tab__contents {display:none;}
 .show {display: block;}
@@ -67,18 +65,13 @@ li{list-style:none;}
 .tab__list__item.active {background-color:#333;color:#fff;border:1px solid #333;}
 
  a {color: inherit; text-decoration: none;}
-.cell-content {width: 150px;height: 40px; overflow: hidden; text-overflow: ellipsis;}
 
 </style>
 <script>
 //삭제된글 알림
     function showAlert(message) {
         alert(message);
-    }
-    
-    
-    
-    
+    } 
 </script>
 </head>
 <body>
@@ -87,7 +80,7 @@ li{list-style:none;}
 		<%@include file="../header4.jsp"%>
 
 		<div id="content">			
-<!-- 공지사항 -->			
+		<!-- 공지사항 -->			
 
 		<h2>게시판관리</h2>
 					
@@ -162,11 +155,12 @@ li{list-style:none;}
 									<c:choose>
 									  <c:when test="${bv.boarddelyn == 'N'}">
 									    <td>							<!-- 버튼에 고유한식별자 값을 주고 bidx값을 id로 할당 -->									    
-									      <button type="button" onclick="check();" id="deleteButton_${bv.bidx}" style="width: 80px; height: 30px;">삭제</button>
+									    	<button type="button" id="searchBtn" onclick="check();" id="deleteButton_${bv.bidx}">삭제</button>
 									    </td>
 									  </c:when>
 									  <c:otherwise>
-									    <td><button type="button" onclick="check2();" id="deleteButton_${bv.bidx}" style="width: 80px; height: 30px;">복구</button>
+									    <td>
+									    	<button type="button" id="searchBtn" onclick="check2();" id="deleteButton_${bv.bidx}">복구</button>
 									    </td> 
 									  </c:otherwise>
 									</c:choose>
@@ -177,26 +171,29 @@ li{list-style:none;}
 							</c:forEach>
 							
 							</table>
-								</form>
-						<table border=0 style="width: 300px; width: 900px;">
-		<tr>
-			<td style="text-align: right;"><c:if test="${ pm.prev == true }">
-					<a 	href="${pageContext.request.contextPath }/admin/adminboardList.do?page=${pm.startPage-1}&searchType=${ pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">◀</a>
+				</form>
+				
+			<table border=0 style="width: 300px; width: 900px;">
+				<tr>
+				<td style="text-align: right;"><c:if test="${ pm.prev == true }">
+				<a 	href="${pageContext.request.contextPath }/admin/adminboardList.do?page=${pm.startPage-1}&searchType=${ pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">◀</a>
 				</c:if>
 				</td>
-			<td style="text-align: center; width: 450px;"><c:forEach var="i"
-					begin="${pm.startPage}" end="${pm.endPage}" step="1">
-					<a 	href="${pageContext.request.contextPath }/admin/adminboardList.do?page=${ i }&searchType=${pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">${ i }</a>
+				
+				<td style="text-align: center; width: 450px;"><c:forEach var="i"
+				begin="${pm.startPage}" end="${pm.endPage}" step="1">
+				<a 	href="${pageContext.request.contextPath }/admin/adminboardList.do?page=${ i }&searchType=${pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">${ i }</a>
 				</c:forEach>
 				</td>
-			<td style="width: 200px; text-align: left;"><c:if
-					test="${pm.next&&pm.endPage >0 }">
-					<a 	href="${pageContext.request.contextPath }/admin/adminboardList.do?page=${pm.endPage+1}&searchType=${pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">▶</a>
+				
+				<td style="width: 200px; text-align: left;"><c:if
+				test="${pm.next&&pm.endPage >0 }">
+				<a 	href="${pageContext.request.contextPath }/admin/adminboardList.do?page=${pm.endPage+1}&searchType=${pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">▶</a>
 				</c:if>
 				</td>
-		</tr>
+				</tr>
 		
-	</table>
+			</table>
 
 		
 		
