@@ -87,6 +87,14 @@ input{
 				<tr>
 					<th>신고자</th>
 					<td>${gdtv.reporterName}</td>
+				</tr>
+				<tr>
+					<th>신고 날짜</th>
+					<td>${gdtv.gatheringDeclarationDay}</td>
+				</tr>
+				<tr>
+					<th>신고 내용</th>
+					<td>${gdtv.gatheringReportContent}</td>
 				</tr>			
 				<tr>
 					<td colspan="2">
