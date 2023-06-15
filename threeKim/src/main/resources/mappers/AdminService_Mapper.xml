@@ -423,7 +423,8 @@
 	       m.memberName AS reporterName,
 	       gi.gInfoCreationDay,
 	       gi.gInfoParticipating,
-	       gd.gdix, gd.gatheringReportContent,
+	       gd.gdix,
+	       gd.gatheringReportContent,
 	       gd.gatheringDeclarationDay,
 	       ml.memberName AS TL
 		FROM GATHERING_DECLARATION1234 gd
@@ -434,6 +435,16 @@
 		WHERE  g.gatheringMemberType = 'TL'
    </select>
 	
+	<!-- 모임 신고 내역 상세 보기 -->
+	<select id="DeclarationDetail" parameterType="int" resultType="com.myezen.myapp.domain.GatheringJoinVo">
+	SELECT gi.giidx, gi.GINFONAME, m.memberName AS reporterName, gi.gInfoCreationDay, gi.gInfoParticipating, gd.gdix, gd.gatheringReportContent, gd.gatheringDeclarationDay, ml.memberName AS TL
+		FROM GATHERING_DECLARATION1234 gd
+		JOIN GATHERING_info1234 gi ON gi.giidx = gd.giidx
+		JOIN member1234 m ON m.midx = gd.midx -- 신고자 정보를 가져오기 위한 조인
+		JOIN GATHERING1234 g ON g.giidx = gd.giidx -- 모임 정보를 가져오기 위한 조인
+		JOIN member1234 ml ON ml.midx = g.midx -- 모임장 정보를 가져오기 위한 조인
+		WHERE  g.gatheringMemberType = 'TL'
+	</select>
 	
 </mapper>
 

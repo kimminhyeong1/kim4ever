@@ -83,8 +83,7 @@ li{list-style:none;}
 			<button type="submit" id="searchBtn">검색</button>
 		</div>
 	</form>
-		
-	</form>
+	
 		
 		<table>
 				<tr>
@@ -101,7 +100,7 @@ li{list-style:none;}
 						<td>${gdv.TL}</td>
 						<td>${gdv.gatheringDeclarationDay.substring(0, 10)}</td>
 						<td>${gdv.reporterName}</td>
-						<td>${gdv.gatheringReportContent}</td>						
+						<td><a href="adminGReportDetail.do?gdix=${gdv.gdix}">${gdv.gatheringReportContent}</a></td>						
 					</tr>
 			</c:forEach> 
 		</table>

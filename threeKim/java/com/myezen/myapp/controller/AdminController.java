@@ -263,20 +263,24 @@ public class AdminController {
 			
 				return "admin/admingatheringList";
 			}	
-		
-
-		
+				
 	//관리자 모임 신고 내역 페이지	
 		@RequestMapping(value="/adminGReportList.do")
 		public String adminGReportList(Model model) {
-			ArrayList<GatheringJoinVo> gdlist = as.gatheringDeclaration();			
-				
+			ArrayList<GatheringJoinVo> gdlist = as.gatheringDeclaration();					
 			model.addAttribute("gdlist", gdlist);
 			
 				return "admin/adminGReportList";
 					}	
 	
-	
+	//관리자 모임 신고 상세 내역 페이지
+		@RequestMapping(value="/adminGReportDetail.do")
+		public String adminGReportDetail(Model model, int gdix) {
+			ArrayList<GatheringJoinVo> gdtlist = as.DeclarationDetail(gdix);
+			model.addAttribute("gmdlist", gdtlist);
+			
+			return "admin/adminGReportList";
+		}
 	
 ////////////////	 		게시글 관리			///////////////// 	
 	
