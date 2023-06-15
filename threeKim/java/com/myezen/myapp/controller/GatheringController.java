@@ -460,8 +460,27 @@ public class GatheringController {
 	    hm.put("value",value); //0은 거짓 1은 참
 		return hm;
 	}
+	//모임 게시글 ajax로 답글달기
+	@RequestMapping(value="/gBoardReplyComment.do")
+	@ResponseBody
+	public HashMap<String, Object> gBoardReplyComment(
+			@ModelAttribute Gathering_CommentVO gcv,
+			HttpServletRequest request
+			) {
+		System.out.println("답글달기하기 컨트롤러진입");
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		HttpSession session = request.getSession();
+	    Object Omidx = session.getAttribute("midx");
+	    gcv.setMidx((int)Omidx);
+
+		//답글 달기 메소드
+	    //int value = gs.gatheringBoardReplyComment(gcv);
+	    int value = 1;
+	    hm.put("value",value); //0은 거짓 1은 참
+		return hm;
+	}
 	
-	
+
 	
 	
 	
