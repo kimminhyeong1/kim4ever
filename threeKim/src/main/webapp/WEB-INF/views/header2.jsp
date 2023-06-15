@@ -142,11 +142,7 @@ header{width:auto;margin:0 auto;}
 					</li>
 					
 					<li>
-						<a href="#"><span class = "title" onclick="location.href='${pageContext.request.contextPath}/rent/rentHistory.do'">대여내역</span></a>
-					</li>
-					
-					<li>
-						<a href="#"><span class = "title" onclick="location.href='${pageContext.request.contextPath}/member/memberList.do'">회원관리</span></a>
+						<a href="#"><span class = "title" onclick="location.href='${pageContext.request.contextPath}/bikerent/bikeRentHistory.do'">대여내역</span></a>
 					</li>
 					
 					<li>
