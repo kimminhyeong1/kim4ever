@@ -88,7 +88,8 @@ public interface GatheringService_Mapper {
 	public int insertDeclaration(GatheringJoinVo gjv);
 	//모임나가기
 	public void exitGathering(int midx, int giidx);
-	
+	//모임 가입시 모임 참여멤버 수 1마이너스
+	public int gatheringParticipatingUpdate1(int giidx);
 	
 	//1. 총게시글 가져오기
 	public int gatheringBoardTotal(HashMap<String, Object> hm);

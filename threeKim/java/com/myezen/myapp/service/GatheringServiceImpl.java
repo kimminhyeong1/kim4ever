@@ -356,6 +356,7 @@ public class GatheringServiceImpl implements GatheringService {
 			        return false; // 실패 시 false 반환
 			    } else {
 			        gsm.exitGathering(midx, giidx);
+			        gsm.gatheringParticipatingUpdate1(giidx);
 			        System.out.println("모임에서 나가셨습니다.");
 			        return true; // 성공 시 true 반환
 			    }
