@@ -84,6 +84,16 @@ public interface GatheringService_Mapper {
 	//모임 게시글 리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringBoardListSelect(int giidx);
 	
+	/*모임 게시판 수정*/
+	
+	//모임 게시글 수정하는 게시물 가져오기
+	public Gathering_BoardVO gatheringBoardModify(int gbidx, int midx);
+	//모임 수정게시글 업데이트
+	public int gatheringBoardModifyUpdate(Gathering_BoardVO gbv);
+	
+	//모임 게시글 삭제
+	public int gatheringBoardDelete(int gbidx, int midx);
+	
 	//모임신고하기
 	public int insertDeclaration(GatheringJoinVo gjv);
 	//모임나가기

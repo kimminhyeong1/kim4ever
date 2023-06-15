@@ -64,45 +64,6 @@
 		</style>
 		<script>
 			$(document).ready(function() {
-				
-			    function submitComment() {
-			    	
-			        var gCommentContents = $("#gCommentContents").val();
-			        var gbidx = $("#gbidx").val();
-			        
-			     	// 현재 스크롤 위치 저장
-			        var scrollPosition = $(window).scrollTop();
-			
-			        $.ajax({
-			            type: "POST",
-			            url: "${pageContext.request.contextPath}/gathering/gBoardComment.do",
-			            data: { gCommentContents: gCommentContents, gbidx: gbidx },
-			            success: function(data) {
-			                if (data.value == 1) {
-			                    alert("댓글이 성공적으로 등록되었습니다.");
-			                    // 등록 성공 시 댓글 새로고침
-			                    location.reload();
-			                    // 페이지 새로고침 후 스크롤 위치 복원
-			                    $(window).scrollTop(scrollPosition);
-			                } else {
-			                    alert("댓글 등록에 실패했습니다.");
-			                }
-			            },
-			            error: function(xhr, status, error) {
-			                console.error("댓글 제출 중 오류 발생: " + error);
-			            }
-			        });
-			    }
-			
-			    // "댓글" 버튼을 클릭할 때 폼 제출
-			    $(".writeBtn").click(function(event) {
-			        event.preventDefault(); // 버튼 클릭 동작 방지
-			        if ($("#gCommentContents").val().trim() !== "") { // 텍스트영역이 비어 있지 않거나 공백 문자만 포함되지 않았는지 확인
-			        	submitComment();
-			        }
-			    });
-
-
 			});
 		</script>
 	</head>
@@ -142,8 +103,8 @@
 						<div class="gBoardSettingBtn" id="settingBtn">
 							<img alt="설정리스트" src="../resources/btn/settingBtn.png">
 							<ul id="list" class="hidden fade-in">
-							  <li><a href="#">게시글 수정</a></li> 
-							  <li><a href="#">게시글 삭제</a></li>
+							  <li><a href="${pageContext.request.contextPath}/gathering/gBoardModify.do?gbidx=${gjv.gbidx}">게시글 수정</a></li> 
+							  <li><a href="${pageContext.request.contextPath}/gathering/gBoardDelete.do?gbidx=${gjv.gbidx}">게시글 삭제</a></li>
 							</ul>
 						</div>		
 					</div>
@@ -250,6 +211,42 @@
 		    });
 		</script>
 		<script type="text/javascript">
+		    function submitComment() {
+		    	
+		        var gCommentContents = $("#gCommentContents").val();
+		        var gbidx = $("#gbidx").val();
+		        
+		     	// 현재 스크롤 위치 저장
+		        var scrollPosition = $(window).scrollTop();
+		
+		        $.ajax({
+		            type: "POST",
+		            url: "${pageContext.request.contextPath}/gathering/gBoardComment.do",
+		            data: { gCommentContents: gCommentContents, gbidx: gbidx },
+		            success: function(data) {
+		                if (data.value == 1) {
+		                    alert("댓글이 성공적으로 등록되었습니다.");
+		                    // 등록 성공 시 댓글 새로고침
+		                    location.reload();
+		                    // 페이지 새로고침 후 스크롤 위치 복원
+		                    $(window).scrollTop(scrollPosition);
+		                } else {
+		                    alert("댓글 등록에 실패했습니다.");
+		                }
+		            },
+		            error: function(xhr, status, error) {
+		                console.error("댓글 제출 중 오류 발생: " + error);
+		            }
+		        });
+		    }
+		
+		    // "댓글" 버튼을 클릭할 때 폼 제출
+		    $(".writeBtn").click(function(event) {
+		        event.preventDefault(); // 버튼 클릭 동작 방지
+		        if ($("#gCommentContents").val().trim() !== "") { // 텍스트영역이 비어 있지 않거나 공백 문자만 포함되지 않았는지 확인
+		        	submitComment();
+		        }
+		    });
 		    function deleteComment(Pgbidx, Pgcidx) {
 		     	// 현재 스크롤 위치 저장
 		        var scrollPosition = $(window).scrollTop();

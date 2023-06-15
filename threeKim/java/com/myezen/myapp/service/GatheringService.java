@@ -70,13 +70,24 @@ public interface GatheringService {
 	public Gathering_ScheduleVO gatheringScheduleView(int gsidx,int giidx);
 	
 	/*모임 게시판*/
+	
 	//모임 게시글 쓰기
 	public int gatheringBoardWrite(Gathering_BoardVO gbv);
 	//1. 총게시글 가져오기
 	public int gatheringBoardTotal(int giidx,SearchCriteria scri);
 	//2. 게시글 리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringBoardListSelect(int giidx,SearchCriteria scri);
-
+	
+	/*모임 게시판 수정*/
+	
+	//모임 게시글 수정하는 게시물 가져오기
+	public Gathering_BoardVO gatheringBoardModify(int gbidx, int midx);
+	//모임 수정게시글 업데이트
+	public int gatheringBoardModifyUpdate(Gathering_BoardVO gbv);
+	
+	//모임 게시글 삭제
+	public int gatheringBoardDelete(int gbidx, int midx);
+	
 	//모임신고하기
 	public void insertDeclaration(GatheringJoinVo gjv);
 	//모임나가기
