@@ -51,14 +51,13 @@ li{list-style:none;}
 #content table tr th:nth-child(8){width:180px;}
 #content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
-#content #bikeError{color: #ff7700; margin-right:10px;} 
-#content #bikeRepair{color: #000;} 
 #content .search {text-align:right; margin-right:185px; margin-bottom:40px;}
 #content .search select {width:120px;height:30px;font-size:14px;padding:5px;}
 #content .search input[type="text"] {width:200px;height:17px;font-size:14px;padding:5px;}
 #content .search #searchBtn{width:80px;height:30px;font-size:14px;padding:5px;text-align:center; font-family:'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content .search #searchBtn:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px}
-
+#content #bikeError{color: #000; margin-right:10px;} 
+#content #bikeRepair{color: #ff7700;} 
 </style>
 </head>
 <body>
