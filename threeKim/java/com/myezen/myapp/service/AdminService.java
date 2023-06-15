@@ -60,5 +60,5 @@ public interface AdminService {
 	//모임 신고 내역 리스트
 		public ArrayList<GatheringJoinVo> gatheringDeclaration();
 	//모임 신고 내역 상세 보기	
-		public ArrayList<GatheringJoinVo> DeclarationDetail(int gdix);
+		public GatheringJoinVo DeclarationDetail(int gdix);
 }
