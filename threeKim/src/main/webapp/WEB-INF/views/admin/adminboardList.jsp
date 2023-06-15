@@ -88,11 +88,10 @@ li{list-style:none;}
 		<div id="content">			
 <!-- 공지사항 -->			
 
-					<h2>게시판관리</h2>
+		<h2>게시판관리</h2>
 					
-					<form name="frm"
-		action="${pageContext.request.contextPath}/admin/adminboardList.do"
-		method="post">
+			<form name="frm" action="${pageContext.request.contextPath}/admin/adminboardList.do"
+method="post">
 		<table class="form-table" border=0 style="text-align: left; width: 400px;">
 			<tr>
 				<td>
