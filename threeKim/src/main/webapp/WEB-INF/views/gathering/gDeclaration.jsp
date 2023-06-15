@@ -13,15 +13,15 @@
 		 	/*헤더영역 메뉴*/
 			header #menu{display: none;}
 		 	/*수정하기 부분*/
-			#main section h1{display: inline-block;font-size: 37px; margin-bottom:20px; }
-			#main section h3{display: inline-block;font-size: 27px; margin-top:10px; }
-			#main section p{display: inline-block; font-size: 21px; }
+			#main section h1{display:inline-block;font-size: 37px; margin-bottom:20px; }
+			#main section h3{display:inline-block; font-weight:bold; font-size: 27px; margin-top:20px; }
+			#main section p{font-family: 'omyu_pretty'; display:inline-block; font-size:21px; }
 			#main section>div:nth-child(1){margin: 20px 0px 20px 100px;}
 			#main section>div:nth-child(2){text-align: center;}
 			#main section>div>div{margin: 20px 0px 20px 0px;}
 			#main section input {display: block;}
-			#main section textarea {display: block; width: 500px;height: 200px;font-size: 23px;}
-			#main section button{text-align: center;}  
+			#main section textarea {display: block; width:500px ;height:200px; font-size:23px; margin-top:20px; }
+			#main section button{text-align: center; margin-top:20px; }  
 			#main section img{width: 100px;height: 100px;}  
 		 </style>
 	</head>

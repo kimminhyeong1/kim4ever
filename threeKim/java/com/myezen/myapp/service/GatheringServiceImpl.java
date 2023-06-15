@@ -333,19 +333,51 @@ public class GatheringServiceImpl implements GatheringService {
 
 	//신고하기 수정중..
 	@Override
-	@Transactional
 	public void insertDeclaration(GatheringJoinVo gjv) {
 
 
 	        gsm.insertDeclaration(gjv);
 	    }
 
-	
-
-
 
 
 	
-	
+	@Override
+	@Transactional
+	public boolean exitGathering(int midx, int giidx) {
+			//GatheringMemberType 문자열비교
+			System.out.println("서비스단에서 midx는?"+midx);
+			System.out.println("서비스단에서 giidx는?"+giidx);
+			GatheringVo gmt = gsm.gatheringMemberType(giidx, midx);
+			System.out.println("멤버타입은?"+gmt.getGatheringMemberType());
+			
+			 if (gmt.getGatheringMemberType().equals("TL")) {
+			        System.out.println("모임장은 나가실 수 없습니다. 권한을 넘겨주세요.");
+			        return false; // 실패 시 false 반환
+			    } else {
+			        gsm.exitGathering(midx, giidx);
+			        System.out.println("모임에서 나가셨습니다.");
+			        return true; // 성공 시 true 반환
+			    }
+	}
 
+
+
+
+
+
+
+	
+	
+	
+	
 }
+
+	
+
+
+
+
+	
+	
+

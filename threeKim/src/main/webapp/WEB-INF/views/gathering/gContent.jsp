@@ -107,6 +107,37 @@
 		    calendarEl.style.width = '1210px;'; // 원하는 너비로 설정
 		    calendar.render();
 		  });
+		  
+		  
+		  function exitGathering(midx, giidx) {
+			    var confirmExit = confirm("모임을 나가시겠습니까?");
+			    if (confirmExit) { 
+			    	$.ajax({
+			            url: "${pageContext.request.contextPath}/gathering/exitGathering.do?midx=" + midx,
+			            method: "POST",
+			            data: {
+			                midx: midx,
+			                giidx: giidx
+			            },
+			            success: function(response) {
+			                
+			                if (response === false) {
+			                	alert("모임장은 나가실 수 없습니다. 권한을 넘겨주세요.");
+			                } else {
+			                	alert("모임에서 나갔습니다."); 
+			                	 window.location.href = "${pageContext.request.contextPath}/gathering/gList.do";
+			                }
+			            },
+			            error: function() {
+			                // 요청 실패 시 동작
+			                alert("모임 나가기 요청에 실패했습니다.");
+			            }
+			        });
+			    }
+			}
+		  
+		  
+		  
 		</script>
 	</head> 
 	<body>  
@@ -178,7 +209,7 @@
 			</div>
 			<div id="gReportExit">
 				<button onclick="location.href='${pageContext.request.contextPath}/gathering/gDeclaration.do?giidx=${giidx }'">모임 신고하기</button> 
-				<button onclick="exit();">모임 나가기</button>
+				<button type="button" onclick="exitGathering(${midx}, ${giidx})">모임 나가기</button>
 			</div>
 			
 		</section>
