@@ -402,20 +402,37 @@
 	
 	<!-- 모임 리스트 -->
 	<select id="gatheringList" parameterType="int" resultType="com.myezen.myapp.domain.GatheringJoinVo">
-	SELECT 
-		i.ginfoName,
-		m.memberName,
-		i.gInfoCreationDay,
-		i.gInfoParticipating
-		FROM GATHERING1234 g
-		JOIN member1234 m ON m.midx = g.midx
-		JOIN gathering_info1234 i ON i.giidx = g.giidx
-		WHERE
-		gatheringmembertype = 'TL'
+		SELECT
+			g.giidx, 
+			i.ginfoName,
+			m.memberName,
+			i.gInfoCreationDay,
+			i.gInfoParticipating
+			FROM GATHERING1234 g
+			JOIN member1234 m ON m.midx = g.midx
+			JOIN gathering_info1234 i ON i.giidx = g.giidx
+			WHERE
+			gatheringmembertype = 'TL'
 	</select>
 	
-	
-	
+	<!-- 모임 신고 내역 리스트 -->
+	<select id="gatheringDeclaration" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="com.myezen.myapp.domain.GatheringJoinVo"> 
+       SELECT gi.giidx,
+	       gi.GINFONAME,
+	       gi.ginfoarea,
+	       m.memberName AS reporterName,
+	       gi.gInfoCreationDay,
+	       gi.gInfoParticipating,
+	       gd.gdix, gd.gatheringReportContent,
+	       gd.gatheringDeclarationDay,
+	       ml.memberName AS TL
+		FROM GATHERING_DECLARATION1234 gd
+		JOIN GATHERING_info1234 gi ON gi.giidx = gd.giidx
+		JOIN member1234 m ON m.midx = gd.midx -- 신고자 정보를 가져오기 위한 조인
+		JOIN GATHERING1234 g ON g.giidx = gd.giidx -- 모임 정보를 가져오기 위한 조인
+		JOIN member1234 ml ON ml.midx = g.midx -- 모임장 정보를 가져오기 위한 조인
+		WHERE  g.gatheringMemberType = 'TL'
+   </select>
 	
 	
 </mapper>

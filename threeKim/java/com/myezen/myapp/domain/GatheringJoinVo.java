@@ -132,7 +132,25 @@ public class GatheringJoinVo {//모임조인
 	private int gdix; //모임 신고 번호
 	private String gatheringReportContent; //신고 내용
 	private String gatheringDeclarationDay; //신고 날짜
+	private String reporterName; // 신고자
+	private String TL; // 모임장
 	
+	public String getReporterName() {
+		return reporterName;
+	}
+
+	public void setReporterName(String reporterName) {
+		this.reporterName = reporterName;
+	}
+
+	public String getTL() {
+		return TL;
+	}
+
+	public void setTL(String tL) {
+		TL = tL;
+	}
+
 	public int getGdix() {
 		return gdix;
 	}

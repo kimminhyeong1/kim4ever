@@ -212,6 +212,14 @@ public class AdminServiceImpl implements AdminService {
 		return gjlist;
 	}
 
+	//모임 신고 내역 리스트
+	@Override
+	public ArrayList<GatheringJoinVo> gatheringDeclaration() {
+		
+		ArrayList<GatheringJoinVo> gdlist = asm.gatheringDeclaration();
+		return gdlist;
+	}
+
 
 
 

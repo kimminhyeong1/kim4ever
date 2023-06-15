@@ -20,11 +20,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.BoardVo;
 import com.myezen.myapp.domain.GatheringJoinVo;
+import com.myezen.myapp.domain.Gathering_BoardVO;
+import com.myezen.myapp.domain.Gathering_ScheduleVO;
 import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.domain.PageMaker;
 import com.myezen.myapp.domain.SearchCriteria;
 import com.myezen.myapp.service.AdminService;
 import com.myezen.myapp.service.BoardService;
+import com.myezen.myapp.service.GatheringService;
 import com.myezen.myapp.service.MemberService;
 
 @Controller
@@ -34,6 +37,8 @@ public class AdminController {
 	AdminService as;
 	@Autowired
 	MemberService ms;
+	@Autowired
+	GatheringService gs;
 	@Autowired(required=false)	
 	PageMaker pm;
 	
@@ -259,11 +264,16 @@ public class AdminController {
 				return "admin/admingatheringList";
 			}	
 		
+
+		
 	//관리자 모임 신고 내역 페이지	
 		@RequestMapping(value="/adminGReportList.do")
-		public String adminGReportList() {
-						
-						return "admin/adminGReportList";
+		public String adminGReportList(Model model) {
+			ArrayList<GatheringJoinVo> gdlist = as.gatheringDeclaration();			
+				
+			model.addAttribute("gdlist", gdlist);
+			
+				return "admin/adminGReportList";
 					}	
 	
 	
