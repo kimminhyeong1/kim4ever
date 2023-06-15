@@ -17,7 +17,7 @@
 			/*게시글 멤버 부분*/
 			.gBoardMember{text-align: left; font-size: 20px; margin: 40px 60px; position: relative;} 
 			.gBoardMember>div>div:nth-child(1){width: 50px; height: 50px; float: left;}/*프로필*/ 
-			.gBoardMember img{width: 50px;  object-fit: cover; border-radius: 50%;}/*프로필이미지*/
+			.gProfileimage img{width: 50px; height: 50px;  object-fit: cover; border-radius: 50%;}/*프로필이미지*/
 			.gBoardMember>div>div:nth-child(2){height: 25px; margin-left: 70px;}/*모임장,이름*/ 
 			.gBoardMember>div>div:nth-child(2)>div{display: inline-block; margin-top: 5px;} 
 			.gBoardMember>div>div:nth-child(3)>div{height: 25px; margin-left: 70px; font-size: 15px; margin-top: 5px;}/*날짜*/
