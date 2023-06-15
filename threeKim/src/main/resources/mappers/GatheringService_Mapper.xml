@@ -160,6 +160,25 @@
 		INSERT INTO gathering_board1234 (gbidx,giidx,midx,gBoardTitle,gBoardCategory,gBoardContents,gBoardWriteDay,gBoardDelYN)
 		VALUES(gbidx_seq.NEXTVAL, #{giidx},#{midx},#{gBoardTitle},#{gBoardCategory},#{gBoardContents},SYSDATE,'N')
 	</insert>
+	<!--  모임 게시글 수정하는 게시물 가져오기 -->
+	<select id="gatheringBoardModify" resultType="com.myezen.myapp.domain.Gathering_BoardVO" parameterType="int">
+		SELECT *
+		FROM GATHERING_BOARD1234 
+		WHERE gBoardDelYN = 'N' AND gbidx = #{0}  AND  midx = #{1}
+	</select>
+	<!--  모임 수정게시글 업데이트 -->
+	<update id="gatheringBoardModifyUpdate" parameterType="com.myezen.myapp.domain.Gathering_BoardVO">
+		UPDATE GATHERING_BOARD1234
+		SET gBoardTitle = #{gBoardTitle}, gBoardCategory = #{gBoardCategory}, gBoardContents = #{gBoardContents}
+		WHERE gbidx = #{gbidx} AND midx = #{midx}
+	</update>
+	<!--  모임 게시글 삭제 -->
+	<update id="gatheringBoardDelete" parameterType="int">
+		  UPDATE GATHERING_BOARD1234
+		  SET gBoardDelYN = 'Y'
+		  WHERE gbidx = #{0} AND  midx = #{1}
+	</update>
+	
 	    <sql id="search">
         <if test="searchType != null and searchType.equals('gBoardTitle')"><!-- 동적 SQL  -->
             and gBoardTitle like '%'|| #{scri.keyword} ||'%'

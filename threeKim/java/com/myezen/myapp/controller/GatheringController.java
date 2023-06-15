@@ -298,9 +298,55 @@ public class GatheringController {
 	
 	//모임 게시판 수정
 	@RequestMapping(value="/gBoardModify.do")
-	public String gBoardModify() {
-		
+	public String gBoardModify(
+			@RequestParam("gbidx") int gbidx,//게시글 번호
+			HttpServletRequest request,
+			Model md
+			) {
+		HttpSession session = request.getSession();
+	    Object Omidx = session.getAttribute("midx");
+	    if (Omidx == null) {//midx가 없으면 진입불가
+	    	return "redirect:/gathering/gList.do";
+		}
+	    int midx =(int)Omidx;
+		//게시글 번호에 해당하는 게시물 가져오기
+		Gathering_BoardVO gbv = gs.gatheringBoardModify(gbidx,midx);
+		//담기 
+		md.addAttribute("gbv", gbv);
 		return "gathering/gBoardModify";
+	}
+	//모임 게시판 수정하기 버튼 클릭시
+	@RequestMapping(value="/gBoardModifyAction.do")
+	public String gBoardModifyAction(
+			@ModelAttribute Gathering_BoardVO gbv,
+			HttpServletRequest request
+			) {
+		HttpSession session = request.getSession();
+	    Object Omidx = session.getAttribute("midx");
+	    if (Omidx == null) {//midx가 없으면 진입불가
+	    	return "redirect:/gathering/gList.do";
+		}
+	    gbv.setMidx((int)Omidx);
+	    //게시글 번호에 해당하는 게시물 업데이트 하기
+	    int value = gs.gatheringBoardModifyUpdate(gbv);
+		return "redirect:/gathering/gBoardList.do";
+	}
+	//모임 게시판 삭제
+	@RequestMapping(value="/gBoardDelete.do")
+	public String gBoardDelete(
+			@RequestParam("gbidx") int gbidx,//게시글 번호
+			HttpServletRequest request
+			) {
+		HttpSession session = request.getSession();
+	    Object Omidx = session.getAttribute("midx");
+	    if (Omidx == null) {//midx가 없으면 진입불가
+	    	return "redirect:/gathering/gList.do";
+		}
+	    int midx =(int)Omidx;
+	    
+	    int value = gs.gatheringBoardDelete(gbidx,midx);
+	    
+		return "redirect:/gathering/gBoardList.do";
 	}
 	//모임 게시글 보기
 	@RequestMapping(value="/gBoardContent.do")
@@ -372,7 +418,7 @@ public class GatheringController {
 	    hm.put("value",value); //0은 거짓 1은 참
 		return hm;
 	}
-	//모임 게시글 ajax로 댓글수정
+	//모임 게시글 ajax로 댓글확인
 	@RequestMapping(value="/gBoardModifyComment.do")
 	@ResponseBody
 	public HashMap<String, Object> gBoardModifyComment(
