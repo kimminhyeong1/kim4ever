@@ -50,6 +50,9 @@
                             <a href="${pageContext.request.contextPath}/bikeRent/bikeRentDetail/${ebkidx91}/view.do"><img class="QRImg" src="data:image/png;base64,${QRCode91}" alt=""></a>
                             <p>ELE41</p>
                         </div>					
+                        
+                        
+                        
 				</div>				
 			</section>
 		</main>

@@ -34,21 +34,21 @@ li{list-style:none;}
     font-style: normal;
 }
 
-
 #main{width:1440px; margin:35px auto 70px; text-align:center;}
 #main #content{width:1440px; height:auto;}
 #main #content h2{text-align:left; margin-top:50px; margin-left:160px; font-family: 'GangwonEdu_OTFBoldA'; font-size:25px;}
-#main #bottom{width:1440px; height:300px;}
-#content table {width:80%; border-collapse:collapse; margin:60px auto 0; font-size:24px; font-family: 'omyu_pretty'}
-#content table tr{border:1px solid #ddd;}
-#content table th {width:100px; padding:10px; text-align:left; border-right:1px solid #ddd;}
-#content table td {padding:10px; text-align:center; line-height:50px;}
+#main #bottom{width:1440px; height:100px;}
+#content table {width:80%; border-collapse:collapse; margin:60px auto 0; font-size:24px; font-family: 'omyu_pretty'; border: 1px solid #ddd;}
+#content table tr{border:none;}
+#content table th {width:100px; padding:10px; text-align:left;  border: 1px solid #ddd;}
+#content table td {padding:10px; text-align:left; line-height:40px;  border: 1px solid #ddd;}
 #content table tr th {width:120px; text-align:center;  }
-#content  table td { white-space: pre-line;}
-
+#content table td { white-space: pre-line;}
+#content table th:nth-child(4) {border: 1px solid #ddd; }/* 4번째 셀에 외곽선*/
 #content #btn{text-align:right; margin-top:20px; margin-right:144px; }
 #content #btn button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content #btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+.maintext{height: auto;  min-height: 200px; width: 1800px; text-align:left; clear:both;  border: 1px solid #ddd;}
 
 
 
@@ -63,17 +63,17 @@ li{list-style:none;}
 
 #main{width:auto; margin:0 auto; text-align:center;}
 #main #content{width:auto; height:auto;}
-#main #content h2{text-align:left; margin-top:10px; margin-left:10%; font-family: 'GangwonEdu_OTFBoldA'; font-size:13px;}
+#main #content h2{text-align:left; margin-top:10px; margin-left:10%; font-family: 'GangwonEdu_OTFBoldA'; font-size:18px; margin-bottom:10px;}
 #main #bottom{width:auto; height:10px;}
-#content table {width:80%; height:auto; border-collapse:collapse; margin: auto; font-size:10px; font-family: 'omyu_pretty' ; border-radius:10px;}
+#content table {width:80%; height:auto; border-collapse:collapse; margin: auto; font-size:14px; font-family: 'omyu_pretty' ; border-radius:10px;}
 #content table tr{border:1px solid #ddd;}
-#content table th {width:10px;  text-align:left; border-right:0px solid #ddd;}
-#content table td { text-align:left; line-height:2px;}
-#content table tr th {width:30px; text-align:center;  }
+#content table th {width:30px; padding:2px; text-align:left; border-right:0px solid #ddd;}
+#content table td {padding:4px;  text-align:left; line-height:12px; }
+#content table tr th {width:50px; text-align:center;  }
 #content table td { white-space: pre-line;}
 #content #btn{text-align:right; margin-top:20px; margin-right:10%; }
 #content #btn button{width:50px; height:25px; margin:0 auto; text-align:center; font-family: 'omyu_pretty'; font-size:14px; border-radius:10px; border:0px solid #ff9933; background:#ff9933; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
-#content #btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+#content #btn button:active {background:#f fcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 .maintext{height: 200px; width: auto; text-align:left;}
 
 }
@@ -150,24 +150,24 @@ $(document).ready(function() {
 
 					<tr class="maintext">
 						<th>글 내용</th>
-							<td class="maintext-cell" >${bv.content}</td>
-
-					</tr>
-					
-					<tr>
-						<th>파일다운로드</th>
-						<td>
-							<div id="download"></div>
-
+							<td class="maintext-cell" >${bv.content}
 							<c:if test="${not empty bv.filename}">
 							    <c:set var="exp" value="${fn:substring(bv.filename, fn:length(bv.filename) - 3, fn:length(bv.filename))}" />
 							    <c:choose>
 							        <c:when test="${exp eq 'jpg' or exp eq 'gif' or exp eq 'png'}">
 							            <img src="${pageContext.request.contextPath}/board/displayFile.do?fileName=${bv.filename}"
-							                width="100px" height="100px" />
+							                width="100%" height="100%" />
 							        </c:when>
 							    </c:choose>
 							</c:if>
+							</td>
+
+					</tr>
+					
+					<tr>
+						<th>다운로드</th>
+						<td>
+							<div id="download"></div>						
 						</td>				
 				</table>
 				<div id="btn">
@@ -184,9 +184,26 @@ $(document).ready(function() {
 					<button type="button"
 						onclick="location.href='${pageContext.request.contextPath}/board/boardList.do'">목록</button>				
 				</div>
+				
 			</form>
 		</div>
+	
+	
+	
+	
+	 <video id="video-preview"></video>
 
+  <script>
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(function(stream) {
+        const videoElement = document.getElementById('video-preview');
+        videoElement.srcObject = stream;
+        videoElement.play();
+      })
+      .catch(function(error) {
+        console.error('비디오 액세스 에러:', error);
+      });
+  </script>
 
 
 
@@ -194,5 +211,5 @@ $(document).ready(function() {
 		<div id="bottom"></div>
 	</div>
 </body>
-<%@include file="../footer.jsp" %>
+<!-- <%@include file="../footer.jsp" %> -->
 </html>

@@ -13,6 +13,7 @@
 /*리셋코드*/ 
 *{margin:0;padding:0;}
 li{list-style:none;}
+a{color:inherit; text-decoration:none;}
 
 @font-face {
     font-family:'GangwonEdu_OTFBoldA';

@@ -81,7 +81,7 @@
 		/*로그인 외각선*/
 		#login_out{border: 1px solid #bbb;margin: 20px auto;width: 260px; ;padding: 20px;background-color: #f1f1f1;border-radius: 10px;}
 		/*알림*/
-		.alarm{color: #f00;text-align: left;line-height: 0px;padding-left: 5px;padding-top: 15px; font-size:10px;} 
+		.alarm{color: #f00;text-align: left;line-height: 0px;padding-left: 5px;padding: 10px; font-size:10px;} 
 		
 		h2{text-align: center; margin-top:0px;margin-bottom: 20px; font-size:15px;}   
 		#content table {width:250px;border-collapse:collapse;  margin:10px auto 0; text-align:center;  line-height:0px; font-family:'omyu_pretty'; font-size:21px;}
