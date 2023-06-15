@@ -122,8 +122,13 @@ header{width:auto;margin:0 auto;}
 		<a href="#" class="top-menu"><img src="${pageContext.request.contextPath}/resources/logo/menu.png"></a><!-- SHOP - 서브메뉴 생성 -->        
 			<div class="sub-menu">
 				<div class="top-login">
-					<a href="${pageContext.request.contextPath}/member/memberLogin.do">로그인</a>
-					<a href="${pageContext.request.contextPath}/member/memberJoin.do">회원가입</a>
+					<% if(session.getAttribute("memberName") != null) { %>
+	                <a href="<%=request.getContextPath()%>/member/memberMypage.do"><%= session.getAttribute("memberName") %>님</a>
+	                <a href="<%=request.getContextPath() %>/member/memberLogOut.do">로그아웃</a>
+	             <% } else { %>
+	                <a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a>
+	                <a href="<%=request.getContextPath() %>/member/memberJoin.do">회원가입</a>
+	             <% } %> 
 				</div>
 
 				<ul class ="sub-menu-list">
