@@ -84,10 +84,13 @@ public interface GatheringService_Mapper {
 	//모임 게시글 리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringBoardListSelect(int giidx);
 	
-	
+	//모임신고하기
 	public int insertDeclaration(GatheringJoinVo gjv);
+	//모임나가기
+	public void exitGathering(int midx, int giidx);
+	//모임 가입시 모임 참여멤버 수 1마이너스
+	public int gatheringParticipatingUpdate1(int giidx);
 	
-
 	//1. 총게시글 가져오기
 	public int gatheringBoardTotal(HashMap<String, Object> hm);
 	//2. 게시글 리스트 가져오기

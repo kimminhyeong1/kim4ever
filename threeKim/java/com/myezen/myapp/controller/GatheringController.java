@@ -8,9 +8,12 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -615,5 +618,25 @@ public class GatheringController {
 		
 		return "gathering/gList";
 	}	
-			
+	
+	
+//모임나가기
+	@RequestMapping(value="/exitGathering.do", method=RequestMethod.POST)
+	 public @ResponseBody boolean exitGathering(HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+	    int giidx = (int) session.getAttribute("giidx");
+	    int midx = (int)session.getAttribute("midx");
+	    System.out.println("giidx는?"+giidx);
+	    System.out.println("midx는?"+midx);
+	    
+	    GatheringVo gmt = gs.gatheringMemberType(giidx,midx);
+	    session.setAttribute("midx", midx);
+	    session.setAttribute("giidx", giidx);
+	  
+		System.out.println("컨트롤러 들어옴 exit");
+
+		boolean success = gs.exitGathering(midx, giidx);
+		return success;
+	}
 }

@@ -66,6 +66,7 @@
 		JOIN GATHERING1234 c ON a.GIIDX = c.giidx
 		JOIN member1234 d ON c.midx = d.midx
 		WHERE b.IMGTYPE = 'G' AND a.GINFODELYN = 'N' AND c.GATHERINGMEMBERTYPE = 'TL'  AND a.GIIDX = #{0}
+		
 	</select>
 	<!-- 모임멤버 리스트 가져오기 -->
 	<select id="gatheringMemberListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int"> 
@@ -125,15 +126,17 @@
 	</select>	
 	<!-- 모임 검색기능 -->
 	<select id="searchGatherings" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="com.myezen.myapp.domain.SearchCriteria">
-	    SELECT a.GIIDX, a.GINFONAME, a.GINFOBRIEFINTRODUCTION, a.GINFOCAPACITY, a.GINFOPARTICIPATING, b.IMAGENAME,COALESCE(d.gwidx, 0) AS gwidx
+	   	    SELECT a.GIIDX, a.GINFONAME, a.GINFOBRIEFINTRODUCTION, a.GINFOCAPACITY, a.GINFOPARTICIPATING, b.IMAGENAME,COALESCE(d.gwidx, 0) AS gwidx
 	    FROM GATHERING_INFO1234 a
 	    JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
 	    JOIN GATHERING1234 c ON c.GIIDX = a.GIIDX
 	    LEFT JOIN gathering_wish1234 d ON d.GIIDX = a.GIIDX
-	    WHERE b.IMGTYPE = 'GT' AND a.GINFODELYN = 'N'
-	    <if test="keyword != null">
-	        AND a.GINFONAME LIKE '%'||#{keyword}||'%'
+	    JOIN MEMBER1234 e ON e.midx = c.midx
+	    WHERE b.IMGTYPE = 'GT' AND a.GINFODELYN = 'N' AND e.memberdelyn='N' 
+	     <if test="keyword != null">
+	     AND a.GINFONAME LIKE '%'||#{keyword}||'%'
 	    </if>
+	     GROUP BY a.GIIDX, a.GINFONAME, a.GINFOBRIEFINTRODUCTION, a.GINFOCAPACITY, a.GINFOPARTICIPATING, b.IMAGENAME, COALESCE(d.gwidx, 0)
 	</select>
 	
 
@@ -275,9 +278,6 @@
 	values(gdix_seq.NEXTVAL, #{giidx}, #{midx}, #{gatheringReportContent},sysdate)
 	</insert>
 	
-	
-
-
 
 	<!-- 모임 더보기 멤버 리스트 , 추방 , 권한 위임 -->
 
@@ -294,7 +294,7 @@
 				b.memberProfile,
 				b.memberName,
 				b.memberIntro,
-				b.memberAddr
+				b.memberAddrs
 			FROM GATHERING1234 a
 			JOIN MEMBER1234 b ON b.midx = a.midx
 			WHERE a.GIIDX = #{GIIDX}
@@ -310,7 +310,19 @@
 	<!--  모임 더보기 모임원 추방으로 변경 -->
 		<update id="updateMemberDELYN" parameterType="int">
 	    UPDATE GATHERING1234 SET GATHERINGMEMBERDELYN = 'Y' WHERE giidx = #{0} and midx = #{1}
-	    
 		</update>
+		
+	
+	<!-- 모임 나가기 (midx,giidx에 해당하는 값 삭제)-->
+	  <delete id="exitGathering" parameterType="int">
+	   DELETE FROM gathering1234 WHERE midx = #{0} AND giidx = #{1} AND GATHERINGMEMBERTYPE IN ('TM', 'TMD')
+	  </delete>
+	
+	<!-- 모임 가입 참여멤버 수(-)업데이트 -->
+	<update id="gatheringParticipatingUpdate1" parameterType="int">
+	  UPDATE GATHERING_INFO1234
+	  SET gInfoParticipating = gInfoParticipating - 1
+	  WHERE GIIDX = #{0}
+	</update>
 
 </mapper>

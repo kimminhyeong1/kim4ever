@@ -79,6 +79,8 @@ li{list-style:none;}
 	
 	<div id="content">
 	<h2><a id="gatheringList" href="${pageContext.request.contextPath}/admin/admingatheringList.do" >모임 리스트</a><a id="GReportList" href="${pageContext.request.contextPath}/admin/adminGReportList.do">모임 신고 내역</a></h2>
+		
+	
 	
 		<table>
 		  <tr>
@@ -90,13 +92,14 @@ li{list-style:none;}
 		  
 		 <c:forEach var="gjv" items="${gjlist}">
 		  <tr>
-		    <td>${gjv.gInfoName}</td>
+		    <td><a href="${pageContext.request.contextPath}/gathering/gContentCheck.do?giidx=${gjv.giidx}">${gjv.gInfoName}</a></td>
 		    <td>${gjv.memberName}</td>
 		    <td>${gjv.gInfoCreationDay}</td>
 		    <td>${gjv.gInfoParticipating}</td>
-		  </tr>		  
+		  </tr>	
+		 </c:forEach> 	  
 		</table>
-		</c:forEach>	
+			
 	</div>
 	
 	

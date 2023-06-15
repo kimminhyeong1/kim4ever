@@ -47,9 +47,9 @@ li{list-style:none;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
 #content table tr th:nth-child(1){width:60px;}
 #content table tr th:nth-child(2){width:70px;}
-#content table tr th:nth-child(3){width:95px;}
-#content table tr th:nth-child(4){width:110px;}
-#content table tr th:nth-child(5){width:40px;}
+#content table tr th:nth-child(3){width:80px;}
+#content table tr th:nth-child(4){width:70px;}
+#content table tr th:nth-child(5){width:130px;}
 #content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 #content .search {text-align:right; margin-right:150px;}
@@ -62,13 +62,7 @@ li{list-style:none;}
 .form-table select,.form-table input[type="text"] { width:100px; height:30px; text-align:center; font-family: 'omyu_pretty'; font-size:15px; border-radius:10px; }
 
 </style>
-<script type="text/javascript">
-	function fnDelete(memberId) {
-		if(confirm("정말 모임을 삭제하시겠습니까?")) {
-			location.href='<%=request.getContextPath()%>/admin/adminmemberDelete.do?memberId='+memberId;
-		}
-	}
-</script>
+
 </head>
 
 <body>
@@ -78,39 +72,37 @@ li{list-style:none;}
 	
 	<div id="content">
 	<h2><a id="gatheringList" href="${pageContext.request.contextPath}/admin/admingatheringList.do" >모임 리스트</a><a id="GReportList" href="${pageContext.request.contextPath}/admin/adminGReportList.do">모임 신고 내역</a></h2>
-	<form action="${pageContext.request.contextPath}/admin/admingatherList.do" method="get">
-		<table class="form-table" border=0 style="text-align: left; width: 400px;">
-			<tr>
-				<td>
-				<select id="searchType" name="searchType">
-					<option value="memberId">모임명</option> 
-					<option value="memberName">모임장</option>
-					<option value="memberType">신고 내용</option>
-				</select>
-				</td>		
-				<td><input type="text" id="keyword" name="keyword"></td>
-				<td><input type="submit" id="searchBtn" value="검색"></td> 
-			</tr>
-		</table>
-		
+	<form action="${pageContext.request.contextPath}/admin/adminGReportList.do" method="get">
+		<div class="search">
+			<select id="searchType" name="searchType">
+				<option value="gInfoName">모임명</option> 
+				<option value="memberName">모임장</option>
+				<option value="gatheringReportContent">내용</option>
+			</select>
+			<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요"/>
+			<button type="submit" id="searchBtn">검색</button>
+		</div>
 	</form>
+	
 		
 		<table>
 				<tr>
 					<th>모임명</th>
 					<th>모임장</th>
-					<th>모임 생성일</th>
+					<th>신고 요일</th>
+					<th>신고자</th>
 					<th>신고 내용</th>
 				</tr>
 				
-		
+			<c:forEach var="gdv" items="${gdlist}">
 					<tr>
-						<td>자전거싫어</td>
-						<td>다싫어</td>
-						<td>2023-05-05</td>
-						<td>부적절한 모임명</td>						
+						<td>${gdv.gInfoName}</td>
+						<td>${gdv.TL}</td>
+						<td>${gdv.gatheringDeclarationDay.substring(0, 10)}</td>
+						<td>${gdv.reporterName}</td>
+						<td><a href="adminGReportDetail.do?gdix=${gdv.gdix}">${gdv.gatheringReportContent}</a></td>						
 					</tr>
-			
+			</c:forEach> 
 		</table>
 		<table>
 			<tr>
