@@ -178,11 +178,12 @@ public class GatheringController {
 	    	md.addAttribute("gbvlist", gbvlist);
 	    	
 		}
-		
-
 
 		return "gathering/gContent";
 	}
+	
+	
+	
 //모임상세보기에서 일정 만들기 페이지
 	@RequestMapping(value="/gScheduleMake.do")
 	public String gScheduleMake() {

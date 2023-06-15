@@ -90,7 +90,7 @@ input{
 				</tr>
 				<tr>
 					<th>신고 날짜</th>
-					<td>${gdtv.gatheringDeclarationDay}</td>
+					<td>${gdtv.gatheringDeclarationDay.substring(0, 16)}</td>
 				</tr>
 				<tr>
 					<th>신고 내용</th>
