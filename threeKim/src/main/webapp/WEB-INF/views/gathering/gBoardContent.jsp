@@ -127,12 +127,31 @@
 						 <div>좋아요수</div>
 					</div>
 					<div class="gBoardCommentWrite">
-					    <form id="commentForm">
-					    	<input id="gbidx" type="hidden" name="gbidx" value="${gbidx}">
-							<textarea id="gCommentContents" rows="5" cols="100" name="gCommentContents"></textarea>
-							<button class="writeBtn">댓글달기</button>
-				    	</form>
-					</div>
+  <form id="commentForm">
+    <input id="gbidx" type="hidden" name="gbidx" value="${gbidx}">
+    <textarea id="gCommentContents" rows="5" cols="100" maxlength="200" name="gCommentContents" oninput="updateCharacterCount()"></textarea>
+    <span id="characterCount">0/200</span>
+    <button class="writeBtn">댓글달기</button>
+  </form>
+  <script>
+    function updateCharacterCount() {
+      var textarea = document.getElementById("gCommentContents");
+      var characterCount = document.getElementById("characterCount");
+
+      var text = textarea.value;
+      var currentLength = text.length;
+      var maxLength = 200;
+
+      characterCount.textContent = currentLength + "/" + maxLength;
+
+      if (currentLength > maxLength) {
+        characterCount.style.color = "red";
+      } else {
+        characterCount.style.color = "black";
+      }
+    }
+  </script>
+</div>
 					<div class="gBoardCommentTitle">댓글(${commentTotal})</div>
 			    	<c:forEach var="gjvc" items="${gjvclist}">
 						<div class="gBoardMember">
