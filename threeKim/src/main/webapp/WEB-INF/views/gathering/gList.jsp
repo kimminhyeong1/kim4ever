@@ -164,7 +164,7 @@
 			}
 		</script>
     	<script>
-	            var offset = 10;
+	            var offset = 8;
 	            
 	            $("#moreButton").click(function() {
 	                $.ajax({
@@ -185,8 +185,8 @@
                                     + "</div>";
                                 $(".gContentB").append(card);
 	                        });
-	                        
-	                        offset += 10;
+	                        alert(offset);
+	                        offset += 8;
 	                    },
 	                    error: function() {
 	                        alert("더 보기 요청에 실패했습니다.");
