@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">  
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">		
 		<style type="text/css">
 			a{text-decoration: none; color: #000;}	
 			.gContainer{border: 1px solid #0000;}

@@ -8,7 +8,8 @@
 		<title>모임 신고하기</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">  
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">		
 		 <style type="text/css">
 		 	/*헤더영역 메뉴*/
 			header #menu{display: none;}
