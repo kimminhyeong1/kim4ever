@@ -87,7 +87,7 @@
 									<img class="cardWish" src="../resources/icon/fullheart.png" onclick="handleHeartClick(${gjv.giidx}, ${midx}, this)">
 								</c:when>
 								<c:otherwise>
-									<img class="cardWish" src="../resources/icon/heart.png" onclick="handleHeartClick(${gjv.giidx}, ${midx}, this)">
+									<button class="gBtn" ><img class="cardWish" src="../resources/icon/heart.png" onclick="handleHeartClick(${gjv.giidx}, ${midx}, this)"></button>
 								</c:otherwise>
 							</c:choose>
 						
