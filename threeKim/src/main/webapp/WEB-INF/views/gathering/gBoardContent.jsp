@@ -34,6 +34,8 @@
 			.modifyBtn:active {background: #339933;box-shadow: 0 2px 2px rgba(0,0,0,0.1);transform: translateY(2px);}
 			.replyBtn{width: 8%; height: 35px; position: absolute;right: 35px;top: 50px;margin-top: 14px;text-align: center;font-family: 'omyu_pretty';font-size: 21px;border-radius: 10px;border: 0px solid #99CC99;background: #99CC99; vertical-align: top;}
 			.replyBtn:active {background: #339933;box-shadow: 0 2px 2px rgba(0,0,0,0.1);transform: translateY(2px);}
+			.replyCommentBtn{width: 10%; height: 50px;margin-top: 14px;text-align: center;font-family: 'omyu_pretty';font-size: 21px;border-radius: 10px;border: 0px solid #99CC99;background: #99CC99; vertical-align: top;}
+			.replyCommentBtn:active {background: #339933;box-shadow: 0 2px 2px rgba(0,0,0,0.1);transform: translateY(2px);}
 			.hidden {display: none; }
 		    .fade-in {
 		      animation: fadeIn 0.2s ease-in;
@@ -61,48 +63,11 @@
 			/*댓글 쓰는 부분*/
 			.gBoardCommentWrite textarea{resize: none;padding: 20px;font-size: 18px; width: 580px; height: 40px;}
 			.modifycommentForm textarea{resize: none;padding: 20px;font-size: 18px; width: 580px; height: 40px;margin-right: 5px;}
+			.ReplyCommentForm{text-align: center;}
+			.ReplyCommentForm textarea{resize: none;padding: 20px;font-size: 18px; width: 580px; height: 40px;margin-right: 5px;}
 		</style>
 		<script>
 			$(document).ready(function() {
-				
-			    function submitComment() {
-			    	
-			        var gCommentContents = $("#gCommentContents").val();
-			        var gbidx = $("#gbidx").val();
-			        
-			     	// 현재 스크롤 위치 저장
-			        var scrollPosition = $(window).scrollTop();
-			
-			        $.ajax({
-			            type: "POST",
-			            url: "${pageContext.request.contextPath}/gathering/gBoardComment.do",
-			            data: { gCommentContents: gCommentContents, gbidx: gbidx },
-			            success: function(data) {
-			                if (data.value == 1) {
-			                    alert("댓글이 성공적으로 등록되었습니다.");
-			                    // 등록 성공 시 댓글 새로고침
-			                    location.reload();
-			                    // 페이지 새로고침 후 스크롤 위치 복원
-			                    $(window).scrollTop(scrollPosition);
-			                } else {
-			                    alert("댓글 등록에 실패했습니다.");
-			                }
-			            },
-			            error: function(xhr, status, error) {
-			                console.error("댓글 제출 중 오류 발생: " + error);
-			            }
-			        });
-			    }
-			
-			    // "댓글" 버튼을 클릭할 때 폼 제출
-			    $(".writeBtn").click(function(event) {
-			        event.preventDefault(); // 버튼 클릭 동작 방지
-			        if ($("#gCommentContents").val().trim() !== "") { // 텍스트영역이 비어 있지 않거나 공백 문자만 포함되지 않았는지 확인
-			        	submitComment();
-			        }
-			    });
-
-
 			});
 		</script>
 	</head>
@@ -142,8 +107,8 @@
 						<div class="gBoardSettingBtn" id="settingBtn">
 							<img alt="설정리스트" src="../resources/btn/settingBtn.png">
 							<ul id="list" class="hidden fade-in">
-							  <li><a href="#">게시글 수정</a></li> 
-							  <li><a href="#">게시글 삭제</a></li>
+							  <li><a href="${pageContext.request.contextPath}/gathering/gBoardModify.do?gbidx=${gjv.gbidx}">게시글 수정</a></li> 
+							  <li><a href="${pageContext.request.contextPath}/gathering/gBoardDelete.do?gbidx=${gjv.gbidx}">게시글 삭제</a></li>
 							</ul>
 						</div>		
 					</div>
@@ -202,7 +167,7 @@
 									</div>
 								</c:if>
 								<div>
-									<button class="replyBtn">답장하기</button>
+									<button type="button" class="replyBtn" onclick="replyComment(${gjvc.gbidx}, ${gjvc.gcidx},this)">답장하기</button>
 								</div>
 							</div>
 						</div>
@@ -223,33 +188,68 @@
 		</main>
 		<%@include file="../footer.jsp" %>
 		<script>
-		  // ID를 사용하여 요소를 가져옵니다.
+		  //게시판 설정리스트
 		  const settingBtn = document.getElementById('settingBtn');
 		  const list = document.getElementById('list');
 		
-		  // settingBtn에 클릭 이벤트 리스너를 추가합니다.
+		  // settingBtn에 클릭 이벤트 리스너를 추가
 		  settingBtn.addEventListener('click', function() {
-		    // list의 'hidden' 클래스를 토글합니다.
+		    // list의 'hidden' 클래스를 토글
 		    list.classList.toggle('hidden');
 		  });
 		</script>
 		<script>
-		    // 모든 gBoardSettingBtn 요소를 가져옵니다.
+		    // 댓글 설정리스트
 		    const settingBtns = document.querySelectorAll('.SettingBtn2');
 		
-		    // 각 gBoardSettingBtn 요소에 대해 반복합니다.
+		    // 각 gBoardSettingBtn 요소 반복
 		    settingBtns.forEach(function(settingBtn) {
-		        // 해당 settingBtn에 대한 목록을 가져옵니다.
+
 		        const list = settingBtn.querySelector('ul');
 		
-		        // 각 settingBtn에 클릭 이벤트 리스너를 추가합니다.
 		        settingBtn.addEventListener('click', function() {
-		            // 목록의 가시성을 토글합니다.
+
 		            list.classList.toggle('hidden');
 		        });
 		    });
 		</script>
 		<script type="text/javascript">
+		    function submitComment() {
+		    	
+		        var gCommentContents = $("#gCommentContents").val();
+		        var gbidx = $("#gbidx").val();
+		        
+		     	// 현재 스크롤 위치 저장
+		        var scrollPosition = $(window).scrollTop();
+		
+		        $.ajax({
+		            type: "POST",
+		            url: "${pageContext.request.contextPath}/gathering/gBoardComment.do",
+		            data: { gCommentContents: gCommentContents, gbidx: gbidx },
+		            success: function(data) {
+		                if (data.value == 1) {
+		                    alert("댓글이 성공적으로 등록되었습니다.");
+		                    // 등록 성공 시 댓글 새로고침
+		                    location.reload();
+		                    // 페이지 새로고침 후 스크롤 위치 복원
+		                    $(window).scrollTop(scrollPosition);
+		                } else {
+		                    alert("댓글 등록에 실패했습니다.");
+		                }
+		            },
+		            error: function(xhr, status, error) {
+		                console.error("댓글 제출 중 오류 발생: " + error);
+		            }
+		        });
+		    }
+		
+		    // "댓글" 버튼을 클릭할 때 폼 제출
+		    $(".writeBtn").click(function(event) {
+		        event.preventDefault(); // 버튼 클릭 동작 방지
+		        if ($("#gCommentContents").val().trim() !== "") { // 텍스트영역이 비어 있지 않거나 공백 문자만 포함되지 않았는지 확인
+		        	submitComment();
+		        }
+		    });
 		    function deleteComment(Pgbidx, Pgcidx) {
 		     	// 현재 스크롤 위치 저장
 		        var scrollPosition = $(window).scrollTop();
@@ -373,6 +373,120 @@
 	
 		        submitUpdatedComment(gbidx, gcidx, gCommentContents);
 		    });
+		    
+		    //답장하기
+		    function replyComment(Pgbidx, Pgcidx ,event) {
+		        var scrollPosition = window.scrollY; // 현재 스크롤 위치를 저장합니다.
+		        $.ajax({
+		            type: "POST",
+		            url: "${pageContext.request.contextPath}/gathering/gBoardModifyComment.do",
+		            data: { gbidx: Pgbidx, gcidx: Pgcidx },
+		            success: function(data) {
+		                if (data.value == 1) {
+
+		                    /* 코드 생성 */
+		                    var commentDiv = document.createElement('div');
+		                    commentDiv.classList.add('PgCommentContents');
+
+
+		                    var ReplyCommentForm = document.createElement('form');
+		                    ReplyCommentForm.classList.add('ReplyCommentForm');
+
+		                    var gbidxInput = document.createElement('input');
+		                    gbidxInput.type = 'hidden';
+		                    gbidxInput.name = 'gbidx';
+		                    gbidxInput.value = Pgbidx;
+		                    
+		                    var gcidxInput = document.createElement('input');
+		                    gcidxInput.type = 'hidden';
+		                    gcidxInput.name = 'gcidx';
+		                    gcidxInput.value = Pgcidx;
+
+		                    var gCommentContentsTextarea = document.createElement('textarea');
+		                    gCommentContentsTextarea.id = 'gCommentContentsReply';
+		                    gCommentContentsTextarea.rows = '5';
+		                    gCommentContentsTextarea.cols = '100';
+		                    gCommentContentsTextarea.name = 'gCommentContents';
+		                    gCommentContentsTextarea.textContent = '';
+
+		                    var replyCommentBtn = document.createElement('button');
+		                    replyCommentBtn.classList.add('replyCommentBtn');
+		                    replyCommentBtn.textContent = '답글하기';
+		                    
+		                    // 클릭한 버튼 숨기기
+							event.style.display = 'none';
+
+
+		                    
+							ReplyCommentForm.appendChild(gbidxInput);
+							ReplyCommentForm.appendChild(gcidxInput);
+							ReplyCommentForm.appendChild(gCommentContentsTextarea);
+							ReplyCommentForm.appendChild(replyCommentBtn);
+		                    
+		                    // 생성한 코드를 적절한 위치에 삽입합니다.
+		                    var parentDiv = document.querySelector("[data-gbidx=\""+Pgbidx+"\"][data-gcidx=\""+Pgcidx+"\"]");
+			                     
+		                        parentDiv.appendChild(commentDiv);
+		                        parentDiv.appendChild(ReplyCommentForm);
+									
+
+		                        $(".replyCommentBtn").on('click', function() {
+		                            submitReplyComment(Pgbidx, Pgcidx, gCommentContentsTextarea.value);
+		                        });
+		                        
+
+		                    alert("코드 생성이 완료되었습니다.");
+		                } else {
+		                    alert("댓글을 가져오지 못했습니다.");
+		                }
+		            },
+		            error: function(xhr, status, error) {
+		                // 에러 응답을 처리하거나 에러 메시지를 표시합니다.
+
+		                // 동작 수행 후 스크롤 위치를 복원합니다.
+		                window.scrollTo(0, scrollPosition);
+		            }
+		        });
+		    }
+		    document.addEventListener('click', function(event) {
+		    	  // 클릭된 요소를 가져옵니다.
+		    	  var targetElement = event.target;
+
+		    	  // 가져온 요소가 버튼인지 확인합니다.
+		    	  if (targetElement.classList.contains('replyBtn')) {
+		    	    // 버튼인 경우에만 숨깁니다.
+		    	    replyComment(targetElement);
+		    	  }
+		    	});
+		    
+		    function submitReplyComment(gbidx, gcidx, gCommentContents) {
+
+		    	  // AJAX를 사용하여 업데이트된 댓글을 제출합니다
+		    	  $.ajax({
+		    	    type: "POST",
+		    	    url: "${pageContext.request.contextPath}/gathering/gBoardReplyComment.do",
+		    	    data: { gbidx: gbidx, gcidx: gcidx, gCommentContents: gCommentContents },
+		    	    success: function(data) {
+		    	      if (data.value == 1) {
+		    	        alert("답글이 성공했습니다.");
+		    	        location.reload(); // 댓글 새로고침
+		    	      } else {
+		    	        alert("답글이 실패했습니다.");
+		    	      }
+		    	    },
+		    	    error: function(xhr, status, error) {
+		    	      console.error("답글 오류 발생: " + error);
+		    	    }
+		    	  });
+		    	}
+			    $(".replyCommentBtn").on('click', function() {
+			        var parentDiv = $(this).closest('.ReplyCommentForm');
+			        var gbidx = parentDiv.find('input[name="gbidx"]').val();
+			        var gcidx = parentDiv.find('input[name="gcidx"]').val();
+			        var gCommentContents = parentDiv.find('textarea[name="gCommentContents"]').val();
+		
+			        submitReplyComment(gbidx, gcidx, gCommentContents);
+			    });
 
 		</script>
 	</body>

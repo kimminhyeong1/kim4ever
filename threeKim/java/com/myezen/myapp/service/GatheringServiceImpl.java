@@ -232,13 +232,37 @@ public class GatheringServiceImpl implements GatheringService {
 		ArrayList<GatheringJoinVo> gjvmlist = gsm.gatheringMemberListSelect(giidx);
 		return gjvmlist;
 	}
-
+	
 
 
 	@Override
 	//모임 게시글 쓰기
 	public int gatheringBoardWrite(Gathering_BoardVO gbv) {
 		int value = gsm.gatheringBoardWrite(gbv);
+		return value;
+	}
+	@Override
+	//모임 게시글 수정하는 게시물 가져오기
+	public Gathering_BoardVO gatheringBoardModify(int gbidx, int midx) {
+		Gathering_BoardVO gbv = gsm.gatheringBoardModify(gbidx,midx);
+		return gbv;
+	}
+	
+	
+	
+	@Override
+	//모임 수정게시글 업데이트
+	public int gatheringBoardModifyUpdate(Gathering_BoardVO gbv) {
+		int value = gsm.gatheringBoardModifyUpdate(gbv);
+		return value;
+	}
+	
+	
+	
+	@Override
+	//모임 게시글 삭제
+	public int gatheringBoardDelete(int gbidx, int midx) {
+		int value = gsm.gatheringBoardDelete(gbidx,midx);
 		return value;
 	}
 
@@ -386,6 +410,10 @@ public class GatheringServiceImpl implements GatheringService {
 			        return true; // 성공 시 true 반환
 			    }
 	}
+
+
+
+
 
 
 

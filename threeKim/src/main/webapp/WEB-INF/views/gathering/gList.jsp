@@ -9,14 +9,32 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering_mo.css">		
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/media.css">
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		 <style type="text/css">
 		 	/*소개부분*/
 			#gatheringIntro{width:100%; height:350px; background-color:#F8F8F8;} 
 			#gatheringIntro h2{text-align:center; margin-top:20px; font-family: 'GangwonEdu_OTFBoldA'; font-size:27px; padding:20px; text-shadow: 2px 2px 0 #99CC99, -2px -2px 0 #99CC99, 2px -2px 0 #99CC99, -2px 2px 0 #99CC99;}
 			#gatheringIntro p{text-align:center; padding:5px; font-family:'GangwonEdu_OTFBoldA'; font-size:20px; margin-top:20px;}
 			#gatheringList{width:100%; display:flex; flex-wrap:wrap;justify-content:center; align-items:center;}
-			#gatheringList h2{text-align:center;; font-family: 'GangwonEdu_OTFBoldA'; font-size:33px; padding:20px;}
+			#gatheringList h2{text-align:center; font-family: 'GangwonEdu_OTFBoldA'; font-size:33px; padding:20px;}
+			
+			/*************************모바일****************************************/
+				/*****모바일 넓이***/
+				@media (min-width: 300px) and (max-width: 940px)  {
+								/*소개부분*/
+		 	 .gContainer {width: auto; margin: 0 auto; text-align: center; border: none;}					/* 전체틀 auto*/		
+			#gatheringIntro{width:100%; height:auto; background-color:#F8F8F8;  border-radius:10px;  }  
+			#gatheringIntro h2{text-align:center; margin-top:20px;  font-family: 'GangwonEdu_OTFBoldA';  font-size:16px; padding:10px;
+			 text-shadow: 3px 1px 1px #99CC99, 1px 1px 1px #669966, 2px 2px 1px #99CC99, 2px 2px 1px;}
+			#gatheringIntro p{text-align:center; padding:5px; font-family:'GangwonEdu_OTFBoldA'; font-size:11px; margin-top:1px;  overflow: hidden;}
+			#gatheringList{width:100%; display:flex; flex-wrap:wrap;justify-content:center; align-items:center;}
+ 			#gatheringList h2 {text-align:center; font-family: 'GangwonEdu_OTFBoldA'; font-size: 14px;  padding:10px;}
+ 			  
+			}
 		 </style>
 	</head>
 	<body>

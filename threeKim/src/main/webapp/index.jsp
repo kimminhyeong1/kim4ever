@@ -190,6 +190,7 @@ text-shadow: 3px 1px 1px #fec339, 2px 2px 1px #fec339, 4px 2px 1px #fec339,
 }
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
 
 <script>/*메인3 스크립트*/	/*나타나는효과*/
 var $j = jQuery.noConflict();
@@ -446,10 +447,15 @@ var interval2 = setInterval(function() {
             <h2>책의 도시</h2>
             <p>자전거로 산책 후 새로운 도시문화 트렌드로 이끌어가는,이색적이고 독특한 전주의 독서공간들을 찾아가 보자. 무거운 몸은 가벼워지고, 빈곤한 마음에는 포동포동 살이 오를 것이다.</p>
           	</div>
-          
-          	
         	</div>
-        	
+
+
+
+
+
+
+
+
         	<%@include file="WEB-INF/views/bottom.jsp" %> 
       </div>
 

@@ -74,11 +74,11 @@ li{list-style:none;}
 	/*****************************************모바일***************************************************************/
 		
 	@media (min-width: 300px) and (max-width: 940px)  {	
-	#main{width:auto; margin:0 auto; text-align:center;}
+	#main{width:auto; min-height:760px; margin:0 auto; text-align:center;}
 #main #content{width:auto; height:auto;}
 #main #content h2{text-align:left; margin-top:50px; margin-left:16px; margin-left:10%;font-family: 'GangwonEdu_OTFBoldA'; font-size:15px; }
 #main #bottom{width:auto; height:10px;}
-#content table {width:80vw; border-collapse:collapse; margin:10px auto 0; line-height:13px; font-size:13px; font-family: 'omyu_pretty'; cursor:pointer; }
+#content table {width:80vw; border-collapse:collapse; margin:10px auto 0; line-height:13px; font-size:14px; font-family: 'omyu_pretty'; cursor:pointer; }
 #content table th{padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 5px; text-align:center;border-bottom:1px solid #CCCCCC; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 #content #btn{text-align:right; margin-top:20px; margin-right:5%; }
