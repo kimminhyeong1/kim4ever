@@ -9,9 +9,11 @@ public class Gathering_BoardVO {//모임게시판
 	private String gBoardCategory;//모임 게시글 카테고리
 	private String gBoardContents;//모임 게시글 내용
 	private int gBoardLikeCNT;//모임 게시글 좋아요 수
+	private int gBoardViewsCNT;//모임 게시글 조회수
 	private String gBoardWriteDay;//모임 게시글 작성일
 	private String gBoardDelDay;//모임 게시글 삭제일
 	private String gBoardDelYN;//모임 게시글 삭제 여부
+	
 	public int getGbidx() {
 		return gbidx;
 	}
@@ -71,6 +73,12 @@ public class Gathering_BoardVO {//모임게시판
 	}
 	public void setgBoardDelYN(String gBoardDelYN) {
 		this.gBoardDelYN = gBoardDelYN;
+	}
+	public int getgBoardViewsCNT() {
+		return gBoardViewsCNT;
+	}
+	public void setgBoardViewsCNT(int gBoardViewsCNT) {
+		this.gBoardViewsCNT = gBoardViewsCNT;
 	}
 	
 	
