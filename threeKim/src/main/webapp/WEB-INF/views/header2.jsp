@@ -195,15 +195,15 @@ header{width:auto;margin:0 auto;}
 			<img src="${pageContext.request.contextPath}/resources/mobile/friendship.png" alt="소모임" class="hidden_img">
 			<p>나의 소모임</p>
 		</div>
-		<div class="topmenu"  onclick="location.href='<%=request.getContextPath()%>/gathering/gMyWish.do''">
+		<div class="topmenu"  onclick="location.href='<%=request.getContextPath()%>/gathering/gMyWish.do'">
 			 <img src="${pageContext.request.contextPath}/resources/mobile/heart2.png" alt="찜" class="hidden_img">
 			<p>내가 찜한 소모임</p>
 		</div>
-		<div class="topmenu"  onclick="location.href='<%=request.getContextPath()%>/gathering/gSearch.do''">
+		<div class="topmenu"  onclick="location.href='<%=request.getContextPath()%>/gathering/gSearch.do'">
 			<img src="${pageContext.request.contextPath}/resources/mobile/search.png" alt="소모임검색" class="hidden_img">
 			<p>소모임 검색</p>
 		</div>
-		<div class="topmenu"  onclick="location.href='<%=request.getContextPath()%>/gathering/gCreate.do''">
+		<div class="topmenu"  onclick="location.href='<%=request.getContextPath()%>/gathering/gCreate.do'">
 			 <img src=" ${pageContext.request.contextPath}/resources/mobile/reunion.png" alt="모임만들기" class="hidden_img">
 			 <p>모임 만들기</p>	
 		 </div>
