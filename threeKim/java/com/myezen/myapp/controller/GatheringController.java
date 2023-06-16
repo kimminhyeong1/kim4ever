@@ -618,7 +618,18 @@ public class GatheringController {
 			return "redirect:/gathering/gMemberList.do"; 
 		}	
 	
-	
+//모임 더 보기 부모임장으로 위임
+		@RequestMapping(value="/gMemberEntrust.do")
+		public String updateTLD(
+				@RequestParam("midx") int midx, 
+				HttpServletRequest request
+				){
+			HttpSession session = request.getSession();	
+			Object Ogiidx = session.getAttribute("giidx");
+			int giidx = (int)Ogiidx;
+			gs.updateTLD(midx, giidx);
+			return "redirect:/gathering/gMemberJoinWaitList.do"; 
+		}	
 	
 //모임 더 보기 가입 대기 리스트 보기	
 		@RequestMapping(value="/gMemberJoinWaitList.do")

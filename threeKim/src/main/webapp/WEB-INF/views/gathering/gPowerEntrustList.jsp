@@ -93,7 +93,7 @@
 <script type="text/javascript">
 function fnEntrust(gatheringMemberType) {
 	if (confirm("정말 위임하시겠습니까?")) {
-	location.href = '<%=request.getContextPath()%>/gathering/gMemberDelete.do?gatheringMemberDelYN=N&midx=' + midx + '&giidx=' + giidx;
+	location.href = '<%=request.getContextPath()%>/gathering/gMemberEntrust.do?gatheringMemberType=TM&midx=' + midx + '&giidx=' + giidx;
 
 	}
 }
@@ -143,7 +143,7 @@ function fnEntrust(gatheringMemberType) {
 										    </c:when>
 										    <c:when test="${smv.gatheringMemberType eq 'TLM'}">
 										        <!-- 부모임장인 경우 해제을 표시합니다. -->
-										        <button type="button" class="EntrustBtn" onclick="fnEntrust(${smv.gatheringMemberType});">해제</button>
+										        <button type="button" class="EntrustBtn" onclick="fnCancle(${smv.gatheringMemberType});">해제</button>
 										    </c:when>
 										    <c:when test="${smv.gatheringMemberType eq 'TM'}">
 										        <button type="button" class="EntrustBtn" onclick="fnEntrust(${smv.gatheringMemberType});">위임</button>
