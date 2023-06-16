@@ -30,8 +30,20 @@
 		FROM GATHERING_INFO1234 a
 		JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
 		LEFT JOIN gathering_wish1234 c ON c.GIIDX = a.GIIDX
-		WHERE b.IMGTYPE = 'GT'
+		WHERE b.IMGTYPE = 'GT' AND ROWNUM <![CDATA[<]]>= 8 
 	</select>
+	<!-- 모임 리스트  더 가져오기 -->
+    <select id="getMoreGatheringList" resultType="com.myezen.myapp.domain.GatheringJoinVo">
+
+            SELECT a.*, b.*, COALESCE(c.gwidx, 0) AS gwidx
+            FROM GATHERING_INFO1234 a
+            JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
+            LEFT JOIN gathering_wish1234 c ON c.GIIDX = a.GIIDX
+            WHERE b.IMGTYPE = 'GT'
+            ORDER BY a.GIIDX
+            OFFSET #{offset} ROWS FETCH NEXT 8 ROWS ONLY
+
+    </select>
 	<!--  모임 나의 리스트 가져오기 -->
 	<select id="gatheringMyListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int"> 
 		SELECT a.GIIDX,a.GINFONAME,a.GINFOBRIEFINTRODUCTION,a.GINFOCAPACITY,a.GINFOPARTICIPATING,b.IMAGENAME, COALESCE(c.gwidx, 0) AS gwidx 

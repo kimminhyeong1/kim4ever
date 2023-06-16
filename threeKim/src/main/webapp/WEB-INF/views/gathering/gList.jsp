@@ -77,7 +77,7 @@
 				<div class="gContentTitle" >
 					<h2>추천 모임</h2> 
 				</div>
-				<div class="gContent" >
+				<div class="gContent gContentB" >
 					<c:forEach var="gjv" items="${gjvlist}">
 						<div class="card" >
 							<img class="cardImg" src="../resources/GTImages/${gjv.imageName}">
@@ -96,7 +96,7 @@
 						</div>
 					 </c:forEach>
 				</div>
-				<div><button class="gBtn2" >더보기</button></div>
+				<div><button id="moreButton" class="gBtn2" >더보기</button></div>
 			</section>
 		</main>
 		<%@include file="../footer.jsp" %>
@@ -163,5 +163,36 @@
 				}
 			}
 		</script>
+    	<script>
+	            var offset = 10;
+	            
+	            $("#moreButton").click(function() {
+	                $.ajax({
+	                    url: "${pageContext.request.contextPath}/gathering/more.do",
+	                    type: "GET",
+	                    dataType: "json",
+	                    data: {offset: offset},
+	                    success: function(data) {
+	                        // 가져온 데이터를 gContent에 추가
+	                        $.each(data, function(index, gjv) {
+                                var card = "<div class='card'>"
+                                    + "<img class='cardImg' src='../resources/GTImages/" + gjv.imageName + "'>"
+                                    + "<img class='cardWish' src='../resources/icon/" + (gjv.gwidx != 0 ? "fullheart.png" : "heart.png") + "' onclick='handleHeartClick(" + gjv.giidx + ", " + ${midx} + ", this)'>"
+                                    + "<h3 class='cardTitle'>" + gjv.gInfoName + "</h3>"
+                                    + "<p class='cardInfo'>" + gjv.gInfoBriefIntroduction + "</p>"
+                                    + "<p class='attend'>(참여멤버 " + gjv.gInfoParticipating + "/" + gjv.gInfoCapacity + ")</p>"
+                                    + "<button class='gBtn' onclick=\"location.href='" + "/myapp/" + "gathering/gSimpleInfo.do?giidx=" + gjv.giidx + "'>구경하기</button>"
+                                    + "</div>";
+                                $(".gContentB").append(card);
+	                        });
+	                        
+	                        offset += 10;
+	                    },
+	                    error: function() {
+	                        alert("더 보기 요청에 실패했습니다.");
+	                    }
+	                });
+	            });
+    </script>
 	</body>
 </html>

@@ -102,6 +102,13 @@ public class GatheringServiceImpl implements GatheringService {
 		return gjvlist;
 	}
 
+	@Override
+	//모임 리스트 더보기 
+	public ArrayList<GatheringJoinVo> getMoreGjvList(int offset) {
+		ArrayList<GatheringJoinVo> moreGjvList = gsm.getMoreGatheringList(offset);
+		return moreGjvList;
+	}
+
 
 
 	@Override
@@ -458,6 +465,9 @@ public class GatheringServiceImpl implements GatheringService {
 		int value = gsm.gatheringPhotoAlbumWrite(gjv);
 		return value;
 	}
+
+
+
 
 
 

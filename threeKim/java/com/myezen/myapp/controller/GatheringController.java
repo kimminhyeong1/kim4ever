@@ -69,6 +69,14 @@ public class GatheringController {
 
 		return "gathering/gList";
 	}
+//모임 추천리스트 더보기 
+    @RequestMapping("/more.do")
+    @ResponseBody
+    public ArrayList<GatheringJoinVo> getMoreGjvList(@RequestParam("offset") int offset) {
+    	System.out.println("더보기");
+    	ArrayList<GatheringJoinVo> moreGjvList = gs.getMoreGjvList(offset);
+        return moreGjvList;
+    }
 //모임만들기페이지	
 	@RequestMapping(value="/gCreate.do")
 	public String gCreate() {
