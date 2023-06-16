@@ -43,6 +43,8 @@ a{color:inherit; text-decoration:none;}
 #main #content{width:1250px; height:2400px;text-align:center;}
 #main #bottom{width:1250px; height:300px; }
 #main #content h2{text-align:left; margin-top:50px; margin-left:200px;font-family: 'GangwonEdu_OTFBoldA'; font-size:30px; }
+#content #memberList{color: #ff7700; margin-right:10px;} 
+#content #memberOutList{color:#000;}
 #content table {width:70%; border-collapse:collapse; margin:0 auto; line-height:50px; font-size:20px;font-family:'omyu_pretty'; font-size:24px;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
@@ -58,8 +60,7 @@ a{color:inherit; text-decoration:none;}
 #content .search input[type="text"] {width:200px;height:17px;font-size:14px;padding:5px;}
 #content .search #searchBtn{width:80px;height:30px;font-size:14px;padding:5px;text-align:center; font-family:'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content .search #searchBtn:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px}
-#content #memberList{color: #ff7700; margin-right:10px;} 
-#content #memberOutList{color:#000;}
+
  
 
 </style>
