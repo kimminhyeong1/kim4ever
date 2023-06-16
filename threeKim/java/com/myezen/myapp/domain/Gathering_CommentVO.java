@@ -10,6 +10,7 @@ public class Gathering_CommentVO {//모임 게시판 댓글
 	private String gCommentDelDay;//모임 댓글 삭제일
 	private String gCommentDelYN;//모임 댓글 삭제 여부
 	private int gCommentDepth; //모임 답글 깊이
+	private int regcidx; //모임 답글 위치번호
 	
 	
 	public int getgCommentDepth() {
@@ -59,6 +60,12 @@ public class Gathering_CommentVO {//모임 게시판 댓글
 	}
 	public void setgCommentDelYN(String gCommentDelYN) {
 		this.gCommentDelYN = gCommentDelYN;
+	}
+	public int getRegcidx() {
+		return regcidx;
+	}
+	public void setRegcidx(int regcidx) {
+		this.regcidx = regcidx;
 	}
 
 	

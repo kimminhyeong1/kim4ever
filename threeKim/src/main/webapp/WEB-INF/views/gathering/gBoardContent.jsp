@@ -16,12 +16,13 @@
 			.gBoardList { width: 100%; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;position: relative;}
 			/*게시글 멤버 부분*/
 			.gBoardMember{text-align: left; font-size: 20px; margin: 40px 60px; position: relative;} 
+			.gBoardMember .gBoardMember_box{display: inline-block;} 
 			.gBoardMember>div>div:nth-child(1){width: 50px; height: 50px; float: left;}/*프로필*/ 
-			.gProfileimage img{width: 50px; height: 50px;  object-fit: cover; border-radius: 50%;}/*프로필이미지*/
+			.gProfileimage img{width: 50px; height: 50px;  object-fit: cover; border-radius: 50%;border: 1px solid #bbb;}/*프로필이미지*/
 			.gBoardMember>div>div:nth-child(2){height: 25px; margin-left: 70px;}/*모임장,이름*/ 
 			.gBoardMember>div>div:nth-child(2)>div{display: inline-block; margin-top: 5px;} 
 			.gBoardMember>div>div:nth-child(3)>div{height: 25px; margin-left: 70px; font-size: 15px; margin-top: 5px;}/*날짜*/
-			.gBoardMember>div>div:nth-child(4){font-size: 18px; margin-top: 20px; border-bottom: 2px solid #bbb; padding-bottom: 20px;}/*게시글 내용*/
+			.gBoardMember>div>div:nth-child(4){font-size: 18px; margin-top: 20px;  padding-bottom: 20px;}/*게시글 내용*/
 			/*게시글 글 부분*/
 			.gBoardView{text-align: left; font-size: 20px; margin: 40px 60px;} 
 			.gBoardView>div:nth-child(1){font-size: 30px; clear: both;margin-top: 10px; font-weight: bold;}/*게시글제목*/
@@ -62,9 +63,14 @@
 			.gBoardSettingBtn li{margin: 5px; border-bottom: 1px solid #bbb; cursor: pointer;}
 			/*댓글 쓰는 부분*/
 			.gBoardCommentWrite textarea{resize: none;padding: 20px;font-size: 18px; width: 580px; height: 40px;}
+			.modifycommentForm{text-align: center;width: 1120px;}
 			.modifycommentForm textarea{resize: none;padding: 20px;font-size: 18px; width: 580px; height: 40px;margin-right: 5px;}
-			.ReplyCommentForm{text-align: center;}
+			.ReplyCommentForm{text-align: center;width: 1120px;}
 			.ReplyCommentForm textarea{resize: none;padding: 20px;font-size: 18px; width: 580px; height: 40px;margin-right: 5px;}
+			/*답장부분*/
+			.reply_ba{display: inline-block;vertical-align: top;}
+			.reply_ba img{width: 40px;}
+			.under_ba{border-bottom: 2px solid #bbb;}
 		</style>
 		<script>
 			$(document).ready(function() {
@@ -130,7 +136,10 @@
 					<div class="gBoardCommentTitle">댓글(${commentTotal})</div>
 			    	<c:forEach var="gjvc" items="${gjvclist}">
 						<div class="gBoardMember">
-							<div>
+					    	<c:if test="${gjvc.gCommentDepth eq 1}">
+			    			<div class="reply_ba"><img alt="답장하기" src="../resources/icon/reply.png"></div>
+					    	</c:if>
+							<div class="gBoardMember_box">
 								<div class="gProfileimage"><img alt="프로필사진" src="../resources/MemberProfile/${gjvc.memberProfile}"></div>
 								<div>
 									<c:set var="gatheringMemberType" value="${gjvc.gatheringMemberType}" />
@@ -165,11 +174,14 @@
 											<li onclick="deleteComment(${gjvc.gbidx}, ${gjvc.gcidx})">댓글 삭제</li>
 							            </ul>
 									</div>
-								</c:if>
+								</c:if> 
 								<div>
-									<button type="button" class="replyBtn" onclick="replyComment(${gjvc.gbidx}, ${gjvc.gcidx},this)">답장하기</button>
+							    	<c:if test="${gjvc.gCommentDepth eq 0}">
+					    				<button type="button" class="replyBtn" onclick="replyComment(${gjvc.gbidx}, ${gjvc.gcidx},this)">답장하기</button>
+							    	</c:if>
 								</div>
 							</div>
+								<div class="under_ba"></div>
 						</div>
 					</c:forEach>	
 					<div class="gPaging">
