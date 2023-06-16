@@ -8,7 +8,9 @@
 		<title>소모임 검색</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">  
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering_mo.css">  
+		  
 		 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		 <meta name="viewport" content="width=device-width, initial-scale=1">
 		   
@@ -18,6 +20,14 @@
 			#SearchPart button{position: absolute;width: 50px; height: 50px;border: 0px;background: 0px; top: 3px; right: 380px;}
 			#SearchPart img{width: 40px; height: 40px;}
 			#keywordMark p{font-size:21px;}
+				/*************************모바일****************************************/
+				/*****모바일 넓이***/
+			@media (min-width: 300px) and (max-width: 940px)  {
+			.gContainer{width: 100%; text-align: center;border:none;  margin: 10px auto;padding: 0px;background-color: #f1f1f1;border-radius: 10px;}
+			#SearchPart button{position: absolute;width: 50px; height: 30px;border: 0px;background: 0px; top: 3px; right: 380px;}
+			#SearchPart img{width: 40px; height: 40px;}
+			#keywordMark p{font-size:21px;}
+				}
 		 </style>
 	</head>
 	<body>
@@ -60,8 +70,9 @@
 								</c:choose>
 								<h3 class="cardTitle">${gjvmy.gInfoName}</h3>
 								<p class="cardInfo">${gjvmy.gInfoBriefIntroduction}</p>
-								<p>(참여멤버${gjvmy.gInfoParticipating}/${gjvmy.gInfoCapacity})</p>
-								<button class="gBtn" onclick="location.href='${pageContext.request.contextPath}/gathering/gContent.do?giidx=${gjvmy.giidx}'">들어가기</button>
+								<p class="attend">(참여멤버${gjvmy.gInfoParticipating}/${gjvmy.gInfoCapacity})</p>
+								<button class="gBtn" onclick="delayedRedirect('${pageContext.request.contextPath}/gathering/gContent.do?giidx=${gjvmy.giidx}, 700)">구경하기</button><!-- 버튼딜레이 -->						
+								
 							</div>
 						</c:forEach>
 			</c:if>
@@ -78,7 +89,17 @@
 					<img class="cardWish" src="../resources/icon/heart.png">
 					<h3 class="cardTitle">바이크어썸</h3>
 					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
-					<p>참여멤버(5/10))</p>
+					<p class="attend">참여멤버(5/10))</p>
+					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">구경하기</button>
+					<button class="gBtn" onclick="delayedRedirect('${pageContext.request.contextPath}/gathering/gContent.do?giidx=${gjvmy.giidx}, 700)">들어가기</button><!-- 버튼딜레이 -->						
+					
+				</div>
+				<div class="card" >
+					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
+					<img class="cardWish" src="../resources/icon/heart.png">
+					<h3 class="cardTitle">바이크어썸</h3>
+					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
+					<p class="attend">참여멤버(5/10))</p>
 					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">구경하기</button>
 				</div>
 				<div class="card" >
@@ -86,7 +107,7 @@
 					<img class="cardWish" src="../resources/icon/heart.png">
 					<h3 class="cardTitle">바이크어썸</h3>
 					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
-					<p>참여멤버(5/10))</p>
+					<p class="attend">참여멤버(5/10))</p>
 					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">구경하기</button>
 				</div>
 				<div class="card" >
@@ -94,15 +115,7 @@
 					<img class="cardWish" src="../resources/icon/heart.png">
 					<h3 class="cardTitle">바이크어썸</h3>
 					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
-					<p>참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">구경하기</button>
-				</div>
-				<div class="card" >
-					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-					<img class="cardWish" src="../resources/icon/heart.png">
-					<h3 class="cardTitle">바이크어썸</h3>
-					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
-					<p>참여멤버(5/10))</p>
+					<p class="attend">참여멤버(5/10))</p>
 					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">구경하기</button>
 				</div>			
 			</div>
@@ -172,6 +185,32 @@
 					
 				}
 			}
+			
+			//버튼 이펙트 스크립트
+			var animateButton = function(e) {
+				  e.preventDefault();
+				  // Reset animation
+				  e.target.classList.remove('animate');
+				  
+				  e.target.classList.add('animate');
+				  setTimeout(function(){
+				    e.target.classList.remove('animate');
+				  }, 700);
+				};
+
+				var gBtns = document.getElementsByClassName("gBtn");
+
+				for (var i = 0; i < gBtns.length; i++) {
+				  gBtns[i].addEventListener('click', animateButton, false);
+				}
+
+				/* 버튼 딜레이*/
+				  function delayedRedirect(url, delay) {
+					    setTimeout(function() {
+					      window.location.href = url;
+					    }, delay);
+					  }
+				
 		</script>
 	</body>
 </html>
