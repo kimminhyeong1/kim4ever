@@ -317,7 +317,7 @@
 				b.memberProfile,
 				b.memberName,
 				b.memberIntro,
-				b.memberAddrs
+				b.memberAddr
 			FROM GATHERING1234 a
 			JOIN MEMBER1234 b ON b.midx = a.midx
 			WHERE a.GIIDX = #{GIIDX}
