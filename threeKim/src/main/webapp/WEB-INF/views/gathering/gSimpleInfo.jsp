@@ -11,6 +11,8 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css"> 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">  
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
 		<style>
 			#main{width:1440px; margin:35px auto 70px; text-align:center;}
 			#main #content{width:1440px; height:2400px;}

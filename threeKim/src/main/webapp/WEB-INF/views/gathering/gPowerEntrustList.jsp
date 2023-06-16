@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">		
 	<style type="text/css">
 .menu {
   width: 500px;

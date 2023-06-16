@@ -30,7 +30,7 @@
 			.gProfileimage img{width: 50px; height: 50px; object-fit: cover; border-radius: 50%;}/*프로필이미지*/
 			.gBoard>div>div:nth-child(2){height: 25px; margin-left: 70px;}/*모임장,이름*/ 
 			.gBoard>div>div:nth-child(2)>div{display: inline-block; margin-top: 5px;} 
-			.gBoard>div>div:nth-child(3)>div{height: 25px; margin-left: 70px; font-size: 15px; margin-top: 5px;}/*날짜*/ 
+			.gBoard>div>div:nth-child(3)>div:nth-child(1){height: 25px; margin-left: 70px; font-size: 15px; margin-top: 5px;}/*날짜 카테고리*/ 
 			.gBoard>div:nth-child(2){clear: both;margin-top: 10px; font-weight: bold;}/*게시글제목*/
 			.gBoard>div:nth-child(2)>span{font-size: 18px;}/*게시글 카테고리*/
 			.gBoard>div:nth-child(3){font-size: 18px; margin-top: 10px; border-bottom: 2px solid #bbb; padding-bottom: 10px; margin-top: 10px;}/*게시글 내용*/
@@ -97,10 +97,11 @@
 											<fmt:parseDate value="${gjvb.gBoardWriteDay}" pattern="yyyy-MM-dd HH:mm:ss.S" var="parsedRentDay" />
 											<fmt:formatDate value="${parsedRentDay}" pattern="yyyy-MM-dd HH:mm" var="formattedRentDay" />
 											${formattedRentDay}
+											<span>${gjvb.gBoardCategory}</span><span>&nbsp;&nbsp;&nbsp;조회수[1000회]&nbsp;&nbsp;좋아요[100개] </span>
 										</div>
 									</div>					
 								</div>
-									<div><a href="${pageContext.request.contextPath}/gathering/gBoardContent.do?gbidx=${gjvb.gbidx}">${gjvb.gBoardTitle}</a><span>${gjvb.gBoardCategory}</span> </div>
+									<div><a href="${pageContext.request.contextPath}/gathering/gBoardContent.do?gbidx=${gjvb.gbidx}">${gjvb.gBoardTitle}</a></div>
 									<div><a href="${pageContext.request.contextPath}/gathering/gBoardContent.do?gbidx=${gjvb.gbidx}">${gjvb.gBoardContents}</a></div>
 							</div>
 						</c:if>	

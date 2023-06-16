@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">  
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">		
 		<style type="text/css">
 			a{text-decoration: none; color: #000;}	
 			.gContainer{border: 1px solid #0000;}
@@ -22,7 +23,7 @@
 			.gBoardMember>div>div:nth-child(2){height: 25px; margin-left: 70px;}/*모임장,이름*/ 
 			.gBoardMember>div>div:nth-child(2)>div{display: inline-block; margin-top: 5px;} 
 			.gBoardMember>div>div:nth-child(3)>div{height: 25px; margin-left: 70px; font-size: 15px; margin-top: 5px;}/*날짜*/
-			.gBoardMember>div>div:nth-child(4){font-size: 18px; margin-top: 20px;  padding-bottom: 20px;width: 950px;}/*게시글 내용*/
+			.gBoardMember>div>div:nth-child(4){font-size: 18px; margin-top: 20px;  padding-bottom: 20px;width: 950px;word-wrap: break-word;}/*게시글 내용*/
 			/*게시글 글 부분*/
 			.gBoardView{text-align: left; font-size: 20px; margin: 40px 60px;} 
 			.gBoardView>div:nth-child(1){font-size: 30px; clear: both;margin-top: 10px; font-weight: bold;}/*게시글제목*/
@@ -106,20 +107,22 @@
 									<fmt:parseDate value="${gjv.gBoardWriteDay}" pattern="yyyy-MM-dd HH:mm:ss.S" var="parsedRentDay" />
 									<fmt:formatDate value="${parsedRentDay}" pattern="yyyy-MM-dd HH:mm" var="formattedRentDay" />
 									${formattedRentDay}
-									조회수[1000회] 
+									<span>${gjv.gBoardCategory}</span><span>&nbsp;&nbsp;&nbsp;조회수[1000회]</span>
 								</div>
 							</div>		
 						</div>
-						<div class="gBoardSettingBtn" id="settingBtn">
-							<img alt="설정리스트" src="../resources/btn/settingBtn.png">
-							<ul id="list" class="hidden fade-in">
-							  <li><a href="${pageContext.request.contextPath}/gathering/gBoardModify.do?gbidx=${gjv.gbidx}">게시글 수정</a></li> 
-							  <li><a href="${pageContext.request.contextPath}/gathering/gBoardDelete.do?gbidx=${gjv.gbidx}">게시글 삭제</a></li>
-							</ul>
-						</div>		
+						<c:if test="${gjv.midx eq midx}">
+							<div class="gBoardSettingBtn" id="settingBtn">
+								<img alt="설정리스트" src="../resources/btn/settingBtn.png">
+								<ul id="list" class="hidden fade-in">
+								  <li><a href="${pageContext.request.contextPath}/gathering/gBoardModify.do?gbidx=${gjv.gbidx}">게시글 수정</a></li> 
+								  <li><a href="${pageContext.request.contextPath}/gathering/gBoardDelete.do?gbidx=${gjv.gbidx}">게시글 삭제</a></li>
+								</ul>
+							</div>
+						</c:if>		
 					</div>
 					<div class="gBoardView">
-						<div>${gjv.gBoardTitle}<span>${gjv.gBoardCategory}</span> </div>
+						<div>${gjv.gBoardTitle}</div>
 						<div>${gjv.gBoardContents}</div>
 					</div>
 					<div class="gBoardLike">
