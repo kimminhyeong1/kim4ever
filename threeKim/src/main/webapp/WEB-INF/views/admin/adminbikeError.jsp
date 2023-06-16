@@ -39,6 +39,8 @@ li{list-style:none;}
 #main #content{width:1250px; height:2400px;text-align:center;}
 #main #bottom{width:1250px; height:300px; }
 #main #content h2{text-align:left; margin-top:50px; margin-left:200px;font-family: 'GangwonEdu_OTFBoldA'; font-size:30px; }
+#content #bikeError{color: #ff7700; margin-right:10px;} 
+#content #bikeRepair{color: #000;} 
 #content table {width:70%; border-collapse:collapse; margin:0 auto; line-height:50px; font-size:20px;font-family:'omyu_pretty'; font-size:24px;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
@@ -52,8 +54,6 @@ li{list-style:none;}
 #content table tr th:nth-child(8){width:180px;}
 #content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
-#content #bikeError{color: #ff7700; margin-right:10px;} 
-#content #bikeRepair{color: #000;} 
 #content .search {text-align:right; margin-right:185px; margin-bottom:40px;}
 #content .search select {width:120px;height:30px;font-size:14px;padding:5px;}
 #content .search input[type="text"] {width:200px;height:17px;font-size:14px;padding:5px;}
@@ -66,7 +66,7 @@ li{list-style:none;}
 <%@include file="../header4.jsp" %>
 <div id="main">
 	<div id="content">
-		<h2><a id="bikeError" href="${pageContext.request.contextPath}/admin/adminbikeError.do">신고 내역</a> <a id="bikeRepair" href="${pageContext.request.contextPath}/admin/adminbikeRepairList.do">수리 내역</a></h2>
+		<h2><a id="bikeError" href="${pageContext.request.contextPath}/admin/adminbikeError.do">신고 내역</a>  <a id="bikeRepair" href="${pageContext.request.contextPath}/admin/adminbikeRepairList.do">수리 내역</a></h2>
 		<form action="${pageContext.request.contextPath }/admin/adminbikeError.do" method="get">
 		<div class="search">
 			<select id="searchType" name="searchType">
@@ -137,14 +137,6 @@ li{list-style:none;}
 				</td>
 			</tr>
 		</table>
-		
-	
-		
-	
-	
-	
-	
-	
 	</div>
 	
 	<div id="bottom">

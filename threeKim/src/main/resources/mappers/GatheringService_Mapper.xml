@@ -295,7 +295,7 @@
 	</select>
 	
 	
-	<!-- 모임 신고-->
+	<!--모임 신고-->
 	<insert id="insertDeclaration" parameterType="com.myezen.myapp.domain.GatheringJoinVo">
 	INSERT INTO gathering_declaration1234(gdix, giidx, midx, gatheringReportContent, gatheringDeclarationDay)
 	values(gdix_seq.NEXTVAL, #{giidx}, #{midx}, #{gatheringReportContent},sysdate)
@@ -353,5 +353,13 @@
 	  SET gInfoParticipating = gInfoParticipating - 1
 	  WHERE GIIDX = #{0}
 	</update>
+	
+	
+	<insert  id="gatheringPhotoAlbumWrite" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
+		INSERT INTO gathering_photoalbum1234 (gpaidx,giidx,midx,gPhotoAlbumTitle,gPhotoAlbumLikeCNT,gPhotoAlbumContents,gPhotoAlbumWriteDay,gPhotoAlbumDelYN)
+		VALUES(gpaidx_seq.NEXTVAL, #{giidx},#{midx},#{gPhotoAlbumTitle},#{gPhotoAlbumLikeCNT},#{gPhotoAlbumContents},SYSDATE,'N')
+	</insert>
+	
+	
 
 </mapper>
