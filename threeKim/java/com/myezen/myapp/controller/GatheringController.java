@@ -250,8 +250,8 @@ public class GatheringController {
 		HttpSession session = request.getSession();
 	    Object Ogiidx = session.getAttribute("giidx");
 	    int giidx=(int)Ogiidx;
-	    
-	    scri.setPerPageNum(5);//게시물갯수
+	    System.out.println("보드리스트진입");
+	    scri.setPerPageNum(10);//게시물갯수
 	    
 	    int totalCount = gs.gatheringBoardTotal(giidx,scri); //총 게시물 갯수 꺼내오기
 		

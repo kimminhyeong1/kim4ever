@@ -16,8 +16,8 @@
 			/*검색하기 부분*/
 			#searchCategory{text-align: right; font-size: 20px; margin: 40px 60px; height: 30px; font-family: 'omyu_pretty';} 
 			#searchCategory>div{display: inline-block; vertical-align: top;} 
-			#searchCategory>div>select{width: 80px; height: 30px; font-size: 18px; font-family: 'omyu_pretty';} 
-			#searchCategory>div>input{width: 300px; height: 26px; font-size: 18px;} 
+			#searchCategory>div>select{width: 80px; height: 30px; font-size: 18px; font-family: 'omyu_pretty';vertical-align: top;} 
+			#searchCategory>div>input{width: 300px; height: 26px; font-size: 18px;vertical-align: top;} 
 			#searchCategory>div>button{width: 100px; height: 30px; margin-top: 0px;margin-bottom: 0px;} 
 			/*공지사항부분*/
 			.gNotice{text-align: left; font-size: 20px; margin: 40px 60px;}
@@ -48,19 +48,19 @@
 		<main id="main">
 			<section class="gContainer">
 				<div class="gBoardList">
-					<div id="searchCategory">
-						<div> 
-							<select>
-								<option>공지사항</option>	
-								<option>취미</option>	
-								<option>일상</option>	
-								<option>정모</option>	
-								<option>가입인사</option>	
-							</select> 
+					<form id="searchCategory" name="frm" action="${pageContext.request.contextPath}/gathering/gBoardList.do" method="post">
+						<div class="search">
+							<select name="searchType">
+									<option value="daily">일상</option>	
+									<option value="hobby">취미</option>	
+									<option value="regularMeeting">정모</option>	
+									<option value="greet">가입인사</option>	
+									<option value="notice">공지사항</option>	
+							</select>
+							<input type="text" name="keyword" size="10">
+							<button type="submit" id="searchBtn" class="gBtn2">검색</button>
 						</div>
-						<div><input type="text" placeholder="내용을 입력해주세요."></div>
-						<div> <button class="gBtn2">검색하기</button> </div>
-					</div>
+					</form>
 					<c:forEach var="gjvb" items="${gjvblist}">
 			    		<c:if test="${gjvb.gBoardCategory.equals('공지사항')}">
 							<div class="gNotice">
@@ -81,10 +81,10 @@
 										<c:set var="gatheringMemberType" value="${gjvb.gatheringMemberType}" />
 										<c:choose>
 										    <c:when test="${gatheringMemberType eq 'TL'}">
-										        <div>모임장</div>
+										        <div style="color: #fd0000c7;">모임장</div>
 										    </c:when>
 										    <c:when test="${gatheringMemberType eq 'TLD'}">
-										        <div>[부]모임장</div>
+										        <div style="color: #ff8400d6;">[부]모임장</div>
 										    </c:when>
 										    <c:otherwise>
 										        <div>모임원</div>

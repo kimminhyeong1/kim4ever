@@ -179,13 +179,23 @@
 		  WHERE gbidx = #{0} AND  midx = #{1}
 	</update>
 	
-	    <sql id="search">
-        <if test="searchType != null and searchType.equals('gBoardTitle')"><!-- 동적 SQL  -->
-            and gBoardTitle like '%'|| #{scri.keyword} ||'%'
+    <sql id="search">
+        <if test="scri.searchType != null and scri.searchType.equals('daily')"><!-- 일상  -->
+            and gBoardCategory ='일상' and (gBoardTitle like '%'|| #{scri.keyword} ||'%' OR gBoardContents like '%'|| #{scri.keyword} ||'%')
         </if>
-        <if test="searchType != null and searchType.equals('gBoardContents')">
-            and gBoardContents like '%'|| #{scri.keyword} ||'%'
+        <if test="scri.searchType != null and scri.searchType.equals('hobby')"><!-- 취미  -->
+            and gBoardCategory ='취미' and (gBoardTitle like '%'|| #{scri.keyword} ||'%' OR gBoardContents like '%'|| #{scri.keyword} ||'%')
         </if>
+        <if test="scri.searchType != null and scri.searchType.equals('regularMeeting')"><!-- 정모  -->
+            and gBoardCategory ='정모' and (gBoardTitle like '%'|| #{scri.keyword} ||'%' OR gBoardContents like '%'|| #{scri.keyword} ||'%')
+        </if>
+        <if test="scri.searchType != null and scri.searchType.equals('greet ')"><!-- 가입인사  -->
+            and gBoardCategory ='가입인사' (and gBoardTitle like '%'|| #{scri.keyword} ||'%' OR gBoardContents like '%'|| #{scri.keyword} ||'%')
+        </if>
+        <if test="scri.searchType != null and scri.searchType.equals('notice')"><!-- 공지사항  -->
+            and gBoardCategory ='공지사항' (and gBoardTitle like '%'|| #{scri.keyword} ||'%' OR gBoardContents like '%'|| #{scri.keyword} ||'%')
+        </if>
+
     </sql>
     <!--  모임 총게시글 가져오기 -->
     <select id="gatheringBoardTotal" resultType="int" parameterType="java.util.HashMap"> 
@@ -263,10 +273,10 @@
 	
 	
 	<sql id="searchComment">
-		<if test="searchType != null and searchType.equals('gBoardTitle')"><!-- 동적 SQL  -->
+		<if test="scri.searchType != null and scri.searchType.equals('subject')"><!-- 동적 SQL  -->
 			and gBoardTitle like '%'|| #{scri.keyword} ||'%'
 		</if>
-		<if test="searchType != null and searchType.equals('gBoardContents')">
+		<if test="scri.searchType != null and scri.searchType.equals('writer')">
 			and gBoardContents like '%'|| #{scri.keyword} ||'%'
 		</if>
 	</sql>

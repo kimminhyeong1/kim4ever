@@ -14,6 +14,7 @@
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">
 		<meta name="viewport" content="width=device-width, initial-scale=1">		
 		 <style type="text/css">
+		 	a{text-decoration: none; color: #000;}	
 		 	/*부분*/
 		 	/* *{outline: 1px solid #f00;} */
 		 	.gContainer{border: 1px solid #0000;}
@@ -202,14 +203,14 @@
 					<div class="gNotice">
 						<div>
 							<div>공지사항</div>
-							<div>${gbv.gBoardTitle}</div>
+							<div><a href="${pageContext.request.contextPath}/gathering/gBoard/${gbv.gbidx}/Content.do">${gbv.gBoardTitle}</a></div>
 						</div>
-						<div>${gbv.gBoardContents}</div>
+						<div><a href="${pageContext.request.contextPath}/gathering/gBoard/${gbv.gbidx}/Content.do">${gbv.gBoardContents}</a></div>
 					</div>
 				</c:forEach>
 			</div>
 			<div id="gReportExit">
-				<button onclick="location.href='${pageContext.request.contextPath}/gathering/gDeclaration.do?giidx=${giidx }'">모임 신고하기</button> 
+				<button onclick="location.href='${pageContext.request.contextPath}/gathering/gDeclaration.do?giidx=${giidx}'">모임 신고하기</button> 
 				<button type="button" onclick="exitGathering(${midx}, ${giidx})">모임 나가기</button>
 			</div>
 			

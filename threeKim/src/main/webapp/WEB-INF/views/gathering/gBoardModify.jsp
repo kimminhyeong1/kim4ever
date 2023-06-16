@@ -35,7 +35,9 @@
 								<h3>게시글 카테고리</h3>
 							</div>
 							<select name="gBoardCategory">
-								<option>공지사항</option>	
+								<c:if test="${MGatheringMemberType eq 'TL' or MGatheringMemberType eq 'TLD'}">
+									<option>공지사항</option>									
+								</c:if>	
 								<option>취미</option>	
 								<option>일상</option>	
 								<option>정모</option>	

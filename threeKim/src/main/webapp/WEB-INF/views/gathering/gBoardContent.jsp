@@ -149,10 +149,10 @@
 									<c:set var="gatheringMemberType" value="${gjvc.gatheringMemberType}" />
 									<c:choose>
 									    <c:when test="${gatheringMemberType eq 'TL'}">
-									        <div>모임장</div>
+									        <div style="color: #f00;">모임장</div>
 									    </c:when>
 									    <c:when test="${gatheringMemberType eq 'TLD'}">
-									        <div>[부]모임장</div>
+									        <div style="color: #ff8400d6;">[부]모임장</div>
 									    </c:when>
 									    <c:otherwise>
 									        <div>모임원</div>
