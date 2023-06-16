@@ -136,24 +136,6 @@
     <span id="characterCount">0/200</span>
     <button class="writeBtn">댓글달기</button>
   </form>
-  <script>
-    function updateCharacterCount() {
-      var textarea = document.getElementById("gCommentContents");
-      var characterCount = document.getElementById("characterCount");
-
-      var text = textarea.value;
-      var currentLength = text.length;
-      var maxLength = 200;
-
-      characterCount.textContent = currentLength + "/" + maxLength;
-
-      if (currentLength > maxLength) {
-        characterCount.style.color = "red";
-      } else {
-        characterCount.style.color = "black";
-      }
-    }
-  </script>
 </div>
 					<div class="gBoardCommentTitle">댓글(${commentTotal})</div>
 			    	<c:forEach var="gjvc" items="${gjvclist}">
@@ -344,6 +326,10 @@
 		                    gCommentContentsTextarea.name = 'gCommentContents';
 		                    gCommentContentsTextarea.textContent = data.gCommentContents;
 
+		                 	// 글자 수를 표시할 요소 생성
+		                    var characterCount = document.createElement('span');
+		                    characterCount.textContent = gCommentContentsTextarea.value.length + '/100';
+		                    
 		                    var modifyBtn = document.createElement('button');
 		                    modifyBtn.classList.add('modifyBtn');
 		                    modifyBtn.textContent = '댓글 수정';
@@ -351,6 +337,7 @@
 		                    modifyCommentForm.appendChild(gbidxInput);
 		                    modifyCommentForm.appendChild(gcidxInput);
 		                    modifyCommentForm.appendChild(gCommentContentsTextarea);
+		                    modifyCommentForm.appendChild(characterCount); // 글자 수 요소 추가
 		                    modifyCommentForm.appendChild(modifyBtn);
 		                    
 		                    // 생성한 코드를 적절한 위치에 삽입합니다.
@@ -358,7 +345,13 @@
 			                    parentDiv.innerHTML = ''; // 작성한글없애기
 		                        parentDiv.appendChild(commentDiv);
 		                        parentDiv.appendChild(modifyCommentForm);
-									
+							
+		                     // 입력 내용이 변경될 때마다 글자 수 업데이트
+		                        gCommentContentsTextarea.addEventListener('input', function() {
+		                            var inputLength = gCommentContentsTextarea.value.length;
+		                            characterCount.textContent = inputLength + '/100';
+		                        });    
+		                        
 
 		                        $(".modifyBtn").on('click', function() {
 		                            submitUpdatedComment(Pgbidx, Pgcidx, gCommentContentsTextarea.value);
@@ -434,8 +427,16 @@
 		                    gCommentContentsTextarea.rows = '5';
 		                    gCommentContentsTextarea.cols = '100';
 		                    gCommentContentsTextarea.name = 'gCommentContents';
+		                    gCommentContentsTextarea.maxLength = '100';
 		                    gCommentContentsTextarea.textContent = '';
-
+		                    gCommentContentsTextarea.addEventListener('input', function() {
+		                        updateReplyCharacterCount(gCommentContentsTextarea);
+		                      });
+		                   
+		                    var characterCount = document.createElement('span');
+		                    characterCount.id = 'replyCharacterCount';
+		                    characterCount.textContent = '0/100';
+		                    
 		                    var replyCommentBtn = document.createElement('button');
 		                    replyCommentBtn.classList.add('replyCommentBtn');
 		                    replyCommentBtn.textContent = '답글하기';
@@ -448,6 +449,7 @@
 							ReplyCommentForm.appendChild(gbidxInput);
 							ReplyCommentForm.appendChild(gcidxInput);
 							ReplyCommentForm.appendChild(gCommentContentsTextarea);
+							ReplyCommentForm.appendChild(characterCount);
 							ReplyCommentForm.appendChild(replyCommentBtn);
 		                    
 		                    // 생성한 코드를 적절한 위치에 삽입합니다.
@@ -465,6 +467,24 @@
 		                    alert("코드 생성이 완료되었습니다.");
 
 		    }
+		    
+		    function updateReplyCharacterCount(textarea) {
+		    	
+		    	//답글 글자 수 세기
+		    	  var characterCount = textarea.nextElementSibling;
+		    	  var currentLength = textarea.value.length;
+		    	  var maxLength = 100;
+
+		    	  characterCount.textContent = currentLength + "/" + maxLength;
+
+		    	  if (currentLength > maxLength) {
+		    	    characterCount.style.color = "red";
+		    	  } else {
+		    	    characterCount.style.color = "black";
+		    	  }
+		    	}
+		    
+		    
 		    document.addEventListener('click', function(event) {
 		    	  // 클릭된 요소를 가져옵니다.
 		    	  var targetElement = event.target;
@@ -506,5 +526,26 @@
 			    });
 
 		</script>
+		
+		
+		<script>
+		//답글 글자수 표시
+		    function updateCharacterCount() {
+		      var textarea = document.getElementById("gCommentContents");
+		      var characterCount = document.getElementById("characterCount");
+		
+		      var text = textarea.value;
+		      var currentLength = text.length;
+		      var maxLength = 200;
+		
+		      characterCount.textContent = currentLength + "/" + maxLength;
+		
+		      if (currentLength > maxLength) {
+		        characterCount.style.color = "red";
+		      } else {
+		        characterCount.style.color = "black";
+		      }
+		    }
+	  	</script>
 	</body>
 </html>
