@@ -20,42 +20,18 @@
 			/*페이징 부분*/
 			.gPaging{font-size: 25px;}	
 			
-			/* 사진첩 틀 */ 
 			/* 사진첩 날짜와 제목 */
-			.albumHeader {
-				margin-bottom:20px;
-				text-align:left; 
-				
-			}
-
+			.albumHeader {margin-bottom:20px;text-align:left; 	}
 			/* 사진첩 내용 */
-			.albumContent {
-				width:1000px;
-				height:auto;
-				font-size: 24px;
-				line-height: 2;
-				border:1px solid #000;
-			}
-
-			.albumContent img {
-				max-width: 100%;
-				height: auto;
-				margin-bottom: 10px;
-				border-radius: 5px;
-			}
+			.albumContent {width:1000px;height:auto;font-size:24px;line-height:2;border:1px solid #000;}
+			.albumContent img {max-width:100%;height:auto;margin-bottom:10px;border-radius:5px;}
 			/* 글 작성 테이블 */
 			.gContent table {width:100%; border-collapse:collapse; margin: 60px auto 0; line-height:100px; font-size:24px; font-family: 'omyu_pretty';}
 			.gContent table th{width:140px;padding: 10px;text-align: center;}
-			.gContent table td{padding: 10px; text-align:left; border-left:1px solid #ddd;}
+			.gContent table td{padding:10px; text-align:left; border-left:1px solid #ddd;}
 			.gContent table tr{border:1px solid #ddd;}
-			.gContent table input[type="text"],textarea{
-			  box-sizing: border-box;
-			  width: 100%;
-			  padding: 10px;
-			  margin: 2px 0;
-			  border: 1px solid #ccc;
-			  border-radius: 4px;
-			}
+			.gContent table input[type="text"],textarea{box-sizing:border-box;width:100%;padding:10px;margin:2px 0;border:1px solid #ccc;border-radius:4px;}
+			  #imagePreview {max-width:300px;max-height:300px;}
 		
 		</style>
 		
@@ -66,7 +42,7 @@
 		<%@include file="../header2.jsp" %>
 		<%@include file="header3.jsp" %>
 		<main id="main">
-		<form action="${pageContext.request.contextPath}/gathering/gPhotoAlbumWriteAction.do" method="POST">
+		<form action="${pageContext.request.contextPath}/gathering/gPhotoAlbumWriteAction.do" method="POST" enctype="multipart/form-data">
 			<section class="gContainer">
 				<div class="gContent" >
 				
@@ -87,8 +63,17 @@
 						</tr>
 						
 						<tr>
+							<th>대표 이미지</th>
+							<td><input type="file" id="image" name="GTImg" onchange="previewImage(event)" />
+							<img id="imagePreview" />
+							</td>
+						</tr>
+						
+							<tr>
 							<th>첨부파일</th>
-							<td><input type="file" id="imageInput"><button id="uploadButton">이미지 업로드</button></td>
+							<td><input type="file" id="image" name="GImg" onchange="uploadImage(event)"/>
+							
+							</td>
 						</tr>
 						
 						<tr>
@@ -108,5 +93,73 @@
 			</form>
 		</main>
 		<%@include file="../footer.jsp" %>
+		
+		
+<script type="text/javascript">
+	function previewImage(event) {
+		  var input = event.target;
+		  var reader = new FileReader();
+
+		  reader.onload = function() {
+		    var preview = document.getElementById('imagePreview');
+		    preview.src = reader.result;
+		  };
+
+		  if (input.files && input.files[0]) {
+		    reader.readAsDataURL(input.files[0]);
+		  }
+		}
+	var totalUploads = 0;
+
+	function uploadImage(event) {
+	  var input = event.target;
+	  var imageUploadContainer = document.getElementById('imageUploadContainer');
+	  var thumbnail = document.getElementById('thumbnail');
+	  var previewContainer = document.getElementById('previewContainer');
+
+	  if (totalUploads < 5) {
+	    var files = input.files;
+	    for (var i = 0; i < files.length; i++) {
+	      var file = files[i];
+	      var reader = new FileReader();
+
+	      reader.onload = function (e) {
+	        var image = document.createElement('img');
+	        image.src = e.target.result;
+	        previewContainer.appendChild(image);
+	      };
+
+	      reader.readAsDataURL(file);
+	      totalUploads++;
+	    }
+
+	    if (totalUploads < 5) {
+	      var newImageInput = document.createElement('input');
+	      newImageInput.id = 'image';
+	      newImageInput.type = 'file';
+	      newImageInput.name = 'GImg';
+	      newImageInput.onchange = uploadImage;
+	      imageUploadContainer.appendChild(newImageInput);
+	    }
+	  }
+
+	  // Update the thumbnail with the first selected image
+	  if (input.files && input.files[0]) {
+	    var reader = new FileReader();
+	    reader.onload = function (e) {
+	      thumbnail.src = e.target.result;
+	      thumbnail.style.display = 'block';
+	    };
+	    reader.readAsDataURL(input.files[0]);
+	  } else {
+	    thumbnail.src = '#';
+	    thumbnail.style.display = 'none';
+	  }
+	}
+
+
+</script>
+	
+	
 	</body>
 </html>

@@ -129,12 +129,12 @@ public interface GatheringService {
 	//모임 더보기 부모임장으로 위임
 	public int updateTLD(int midx,int giidx);
 
+	//모임사진첩작성
+	public int gatheringPhotoAlbumWrite(GatheringJoinVo gjv,MultipartFile GTImg, ArrayList<MultipartFile> GImg)throws IOException, Exception;
+	//모임사진첩조회
+	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelect();
+	
 
-	
-	
-
-	public int gatheringPhotoAlbumWrite(GatheringJoinVo gjv);
-	
 
 	
 }

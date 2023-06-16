@@ -146,8 +146,14 @@ public interface GatheringService_Mapper {
 	public int updateTLD(int midx,int giidx);
 
 	
-	
+	//모임사진첩작성
 	public int gatheringPhotoAlbumWrite(GatheringJoinVo gjv);
+	//모임사진첩대표이미지
+	public int gatheringPhotoGTInsert(GatheringJoinVo gjv);
+	//모임사진첩이미지
+	public int gatheringPhotoGInsert(GatheringJoinVo gjv);
+	//모임사진첩조회
+	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelect();
 	
 	
 

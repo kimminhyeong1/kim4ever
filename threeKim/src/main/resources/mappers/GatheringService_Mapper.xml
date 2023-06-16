@@ -354,11 +354,32 @@
 	  WHERE GIIDX = #{0}
 	</update>
 	
-	
+	<!-- 사진첩 작성 -->
 	<insert  id="gatheringPhotoAlbumWrite" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
 		INSERT INTO gathering_photoalbum1234 (gpaidx,giidx,midx,gPhotoAlbumTitle,gPhotoAlbumLikeCNT,gPhotoAlbumContents,gPhotoAlbumWriteDay,gPhotoAlbumDelYN)
 		VALUES(gpaidx_seq.NEXTVAL, #{giidx},#{midx},#{gPhotoAlbumTitle},#{gPhotoAlbumLikeCNT},#{gPhotoAlbumContents},SYSDATE,'N')
 	</insert>
+	
+	<!-- 사진첩 모임대표 이미지 넣기-->
+	<insert  id="gatheringPhotoGTInsert" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
+		INSERT INTO IMAGE1234 (IMIDX,IMAGENAME,MIDX,GIIDX,GPAIDX,IMGTYPE,IMGCREATIONDAY)
+		VALUES(IMIDX_SEQ.NEXTVAL,#{imageName},#{midx},#{giidx},GPAIDX_SEQ.CURRVAL,'GAT',SYSDATE)
+	</insert>
+	<!-- 사진첩 모임 이미지 넣기-->
+	<insert  id="gatheringPhotoGInsert" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
+		INSERT INTO IMAGE1234 (IMIDX,IMAGENAME,MIDX,GIIDX,GPAIDX,IMGTYPE,IMGCREATIONDAY)
+		VALUES(IMIDX_SEQ.NEXTVAL,#{imageName},#{midx},#{giidx},GPAIDX_SEQ.CURRVAL,'GA',SYSDATE)
+	</insert>
+	
+	<!-- 사진첩 리스트 조회 -->
+	<select id="gatheringPhotoAlbumListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo">
+		SELECT a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, b.imgtype, b.imageName
+		FROM gathering_photoalbum1234 a
+		JOIN image1234 b ON a.giidx = b.GIIDX AND a.gpaidx = b.gpaidx
+		WHERE b.imgtype='GAT'
+	</select>
+	
+	
 	
 	
 
