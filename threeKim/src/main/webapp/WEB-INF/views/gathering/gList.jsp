@@ -50,31 +50,7 @@
 			  		<p>우리는 자전거를 타고 다닐 때 느낄 수 있는 자유로움과 즐거움을 함께 느낄 수 있으며, 더불어 건강한 습관도 함께 만들어 갈 수 있습니다</p>
 			  		<p>타:바와 함께라면 누구나 쉽게 자전거 여행을 즐길 수 있습니다. 우리와 함께 멋진 추억을 만들어보세요!</p>
 				</div>
-				<div class="gContentTitle" >
-					<h2>내 모임</h2>
-				</div>
-				<div class="gContent" >
-					<c:if test="${not empty midx}">
-						<c:forEach var="gjvmy" items="${gjvmylist}">
-							<div class="card" >
-								<img class="cardImg" src="../resources/GTImages/${gjvmy.imageName}">
-								<c:choose>
-									<c:when test="${gjvmy.gwidx != 0}">
-										<img class="cardWish" src="../resources/icon/fullheart.png" onclick="handleHeartClick(${gjvmy.giidx}, ${midx}, this)">
-									</c:when>
-									<c:otherwise>
-										<img class="cardWish" src="../resources/icon/heart.png" onclick="handleHeartClick(${gjvmy.giidx}, ${midx}, this)">
-									</c:otherwise>
-								</c:choose>
-								<h3 class="cardTitle">${gjvmy.gInfoName}</h3>
-								<p class="cardInfo">${gjvmy.gInfoBriefIntroduction}</p>
-								<p class="attend">(참여멤버${gjvmy.gInfoParticipating}/${gjvmy.gInfoCapacity})</p>
-								<button class="gBtn" onclick="location.href='${pageContext.request.contextPath}/gathering/gContentCheck.do?giidx=${gjvmy.giidx}'">들어가기</button>
-							</div>
-						</c:forEach>
-					</c:if>
-				</div>
-				<div><button class="gBtn2" >더보기</button></div>
+				
 				<div class="gContentTitle" >
 					<h2>추천 모임</h2> 
 				</div>
@@ -191,7 +167,7 @@
 
 		</script>
     	<script>
-	            var offset = 10;
+	            var offset = 8;
 	            
 	            $("#moreButton").click(function() {
 	                $.ajax({
@@ -212,8 +188,8 @@
                                     + "</div>";
                                 $(".gContentB").append(card);
 	                        });
-	                        
-	                        offset += 10;
+	                        //alert(offset);
+	                        offset += 8;
 	                    },
 	                    error: function() {
 	                        alert("더 보기 요청에 실패했습니다.");

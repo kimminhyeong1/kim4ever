@@ -496,6 +496,16 @@ public class GatheringServiceImpl implements GatheringService {
 
 
 
+	@Override
+	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelectOne() {
+		
+		ArrayList<GatheringJoinVo> gPhotoList = gsm.gatheringPhotoAlbumListSelectOne();
+		
+		return gPhotoList;
+	}
+
+
+
 	
 
 

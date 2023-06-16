@@ -158,7 +158,7 @@ public interface GatheringService_Mapper {
 	public int gatheringPhotoGInsert(GatheringJoinVo gjv);
 	//모임사진첩조회
 	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelect();
-	
+	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelectOne();
 	
 
 }

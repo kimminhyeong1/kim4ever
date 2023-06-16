@@ -533,8 +533,17 @@ public class GatheringController {
 	
 	//모임 사진첩내용
 		@RequestMapping(value="/gPhotoAlbumContent.do")
-		public String gPhotoAlbumContent() {
+		public String gPhotoAlbumContent(
+				HttpServletRequest request,
+				Model md) {
+			HttpSession session = request.getSession();
+			int midx = (int) session.getAttribute("midx");
+			int giidx = (int) session.getAttribute("giidx");
 			
+			/*모임상세리스트 가져오기*/
+	    	ArrayList<GatheringJoinVo> gPhotoList = gs.gatheringPhotoAlbumListSelectOne();
+	    	md.addAttribute("gPhotoList", gPhotoList);
+	    	
 			return "gathering/gPhotoAlbumContent";
 		}
 
