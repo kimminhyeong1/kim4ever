@@ -22,7 +22,7 @@
 			.gBoardMember>div>div:nth-child(2){height: 25px; margin-left: 70px;}/*모임장,이름*/ 
 			.gBoardMember>div>div:nth-child(2)>div{display: inline-block; margin-top: 5px;} 
 			.gBoardMember>div>div:nth-child(3)>div{height: 25px; margin-left: 70px; font-size: 15px; margin-top: 5px;}/*날짜*/
-			.gBoardMember>div>div:nth-child(4){font-size: 18px; margin-top: 20px;  padding-bottom: 20px;}/*게시글 내용*/
+			.gBoardMember>div>div:nth-child(4){font-size: 18px; margin-top: 20px;  padding-bottom: 20px;width: 950px;}/*게시글 내용*/
 			/*게시글 글 부분*/
 			.gBoardView{text-align: left; font-size: 20px; margin: 40px 60px;} 
 			.gBoardView>div:nth-child(1){font-size: 30px; clear: both;margin-top: 10px; font-weight: bold;}/*게시글제목*/
@@ -389,13 +389,6 @@
 		    //답장하기
 		    function replyComment(Pgbidx, Pgcidx ,event) {
 		        var scrollPosition = window.scrollY; // 현재 스크롤 위치를 저장합니다.
-		        $.ajax({
-		            type: "POST",
-		            url: "${pageContext.request.contextPath}/gathering/gBoardModifyComment.do",
-		            data: { gbidx: Pgbidx, gcidx: Pgcidx },
-		            success: function(data) {
-		                if (data.value == 1) {
-
 		                    /* 코드 생성 */
 		                    var commentDiv = document.createElement('div');
 		                    commentDiv.classList.add('PgCommentContents');
@@ -448,17 +441,7 @@
 		                        
 
 		                    alert("코드 생성이 완료되었습니다.");
-		                } else {
-		                    alert("댓글을 가져오지 못했습니다.");
-		                }
-		            },
-		            error: function(xhr, status, error) {
-		                // 에러 응답을 처리하거나 에러 메시지를 표시합니다.
 
-		                // 동작 수행 후 스크롤 위치를 복원합니다.
-		                window.scrollTo(0, scrollPosition);
-		            }
-		        });
 		    }
 		    document.addEventListener('click', function(event) {
 		    	  // 클릭된 요소를 가져옵니다.
