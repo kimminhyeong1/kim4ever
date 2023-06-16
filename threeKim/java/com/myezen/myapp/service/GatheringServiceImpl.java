@@ -366,6 +366,12 @@ public class GatheringServiceImpl implements GatheringService {
 		return value;
 	}
 	@Override
+	//2.3.4 게시물에 답글달기
+	public int gatheringBoardReplyComment(Gathering_CommentVO gcv) {
+		int value = gsm.gatheringBoardReplyComment(gcv);
+		return value;
+	}
+	@Override
 	//3. 총댓글 가져오기
 	public int gatheringBoardCommentTotal(int gbidx, SearchCriteria scri) {
 		HashMap<String, Object> hm = new HashMap<>();
@@ -416,6 +422,9 @@ public class GatheringServiceImpl implements GatheringService {
 			        return true; // 성공 시 true 반환
 			    }
 	}
+
+
+
 
 
 

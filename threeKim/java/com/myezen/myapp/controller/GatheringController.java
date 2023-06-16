@@ -474,8 +474,7 @@ public class GatheringController {
 	    gcv.setMidx((int)Omidx);
 
 		//답글 달기 메소드
-	    //int value = gs.gatheringBoardReplyComment(gcv);
-	    int value = 1;
+	    int value = gs.gatheringBoardReplyComment(gcv);
 	    hm.put("value",value); //0은 거짓 1은 참
 		return hm;
 	}
