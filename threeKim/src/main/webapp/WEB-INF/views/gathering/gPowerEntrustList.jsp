@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -30,7 +31,7 @@
   align-items: flex-start;
   text-align: left;
   font-size: 20px;
-  margin: 40px 40px;
+  margin: 40px 20px;
 }
 
 .gMemberList > div {
@@ -78,18 +79,22 @@
 }
 	
 .gmemberAddr {
-  width: 200px;
+  width: 250px;
 }	
 	
 .gmemberType {
   width: 80px;
 }	
 	
-.EntrustBtn button {width:70px; height:40px; margin-top:-10px; margin-left:5px; text-align:center; font-family:'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}	
-.EntrustBtn button:active{background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}	
+.EntrustBtn {width:70px; height:40px; margin-top:-10px; margin-left:5px; text-align:center; font-family:'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}	
+.EntrustBtn:active{background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}	
 	
+	</style> 
+
+
+
 	
-	</style>  
+	 
 	</head>
 	<body>
 		<%@include file="../header2.jsp" %>
@@ -101,57 +106,73 @@
 			</h2>
 			<section class="gContainer gSetContainer">
 				<h2>멤버 목록</h2>
-				<div> 					
+			 					
+					<div> 					
 					<div class="gMemberList">
-						<div>
-							<div class="gProfileimage"><img alt="프로필사진" src="../resources/images/profile.jpg"></div>
+						<c:forEach var="smv" items="${gjvsmlist}">
+							<div>
+								<div class="gProfileimage">
+									<img src="../resources/MemberProfile/${smv.memberProfile}">	
+								</div>
 								<div>
-									<div class="gmemberType">모임장</div>
-									<div class="gmemberName">김가네</div>
-									<div class="gmemberInfo">타사모 모임장 김가네입니다</div>
-									<div class="gmemberAddr">전주시 덕진구 인후동</div>	
-									<div class="EntrustBtn"><button>금지</button></div>
+									<div class="gmemberType">
+									<c:choose>
+										<c:when test="${smv.gatheringMemberType eq 'TL'}">  
+											<span style="color: red;">모임장</span>
+										</c:when>
+										<c:when test="${smv.gatheringMemberType eq 'TLD'}">  
+											부모임장
+										</c:when>
+										<c:otherwise> 
+											모임원
+										</c:otherwise>
+									</c:choose>									
+									</div>
+									<div class="gmemberName">${smv.memberName}</div>
+									<div class="gmemberInfo">${smv.memberIntro}</div>
+									<div class="gmemberAddr">${smv.memberAddr}</div>
+									<c:if test="${gmt.gatheringMemberType eq 'TL' || gmt.gatheringMemberType eq 'TLD'}">
+										<c:choose>
+										    <c:when test="${smv.gatheringMemberType eq 'TL'}">
+										        <!-- 모임장인 경우 추방 불가 텍스트를 표시합니다. -->
+										              
+										    </c:when>
+										    <c:when test="${smv.gatheringMemberType eq 'TLM'}">
+										        <!-- 부모임장인 경우 해제을 표시합니다. -->
+										        <button type="button" class="EntrustBtn" onclick="fnCancle(${smv.gatheringMemberType});">해제</button>
+										        <button type="button" class="EntrustBtn" onclick="fnCancle(${smv.gatheringMemberType});">모임장 위임</button>
+										    </c:when>
+										    <c:when test="${smv.gatheringMemberType eq 'TM'}">
+										        <button type="button" class="EntrustBtn" onclick="fnEntrust('${smv.gatheringMemberType}', ${smv.midx}, ${smv.giidx});">위임</button>
+										    </c:when>
+										</c:choose>
+									</c:if>	
+
+
+
+
 								</div>													
-						</div>																		
+							</div>																		
+						</c:forEach>
 					</div>
 				</div>
-				<div> 					
-					<div class="gMemberList">
-						<div>
-							<div class="gProfileimage"><img alt="프로필사진" src="../resources/images/profile.jpg"></div>
-								<div>
-									<div class="gmemberType">부모임장</div>
-									<div class="gmemberName">김김김</div>
-									<div class="gmemberInfo">반갑습니다</div>
-									<div class="gmemberAddr">전주시 완산구 평화동</div>	
-									<div class="EntrustBtn"><button>금지</button></div>
-								</div>													
-						</div>																		
-					</div>					
-				</div>
-				<div> 					
-					<div class="gMemberList">
-						<div>
-							<div class="gProfileimage"><img alt="프로필사진" src="../resources/images/profile.jpg"></div>
-								<div>
-									<div class="gmemberType">일반멤버</div>
-									<div class="gmemberName">김회원</div>
-									<div class="gmemberInfo">주말에 자전거를 즐겨탑니다</div>
-									<div class="gmemberAddr">전주시 덕진구 금암동</div>	
-									<div class="EntrustBtn"><button>위임</button></div>
-								</div>													
-						</div>																		
-					</div>
-				</div>
 				
 				
 				
 				
+							
 				<div>				
 					<button class="gBtn2">돌아가기</button>			 	 
 				</div>
 			</section>
 		</main>
 		<%@include file="../footer.jsp" %>
+		<script type="text/javascript">
+			function fnEntrust(gatheringMemberType, bmidx, bgiidx) {
+			    if (confirm("정말 위임하시겠습니까?")) {
+			        location.href = "<%=request.getContextPath()%>/gathering/gMemberEntrust.do?gatheringMemberType=${gatheringMemberType}&midx="+bmidx+"&giidx="+bgiidx+"";
+			    }
+			}
+		</script>
 	</body>
 </html>

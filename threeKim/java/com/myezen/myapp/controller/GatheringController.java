@@ -32,6 +32,7 @@ import com.myezen.myapp.domain.GatheringVo;
 import com.myezen.myapp.domain.Gathering_BoardVO;
 import com.myezen.myapp.domain.Gathering_CommentVO;
 import com.myezen.myapp.domain.Gathering_DeclarationVO;
+import com.myezen.myapp.domain.Gathering_PhotoAlbumVO;
 import com.myezen.myapp.domain.Gathering_ScheduleVO;
 import com.myezen.myapp.domain.PageMaker;
 import com.myezen.myapp.domain.ScheduleVo;
@@ -524,8 +525,69 @@ public class GatheringController {
 	@RequestMapping(value="/gPhotoAlbum.do")
 	public String gPhotoAlbum() {
 		
+		
+		
 		return "gathering/gPhotoAlbum";
+	}
+	
+	//모임 사진첩내용
+		@RequestMapping(value="/gPhotoAlbumContent.do")
+		public String gPhotoAlbumContent() {
+			
+			return "gathering/gPhotoAlbumContent";
+		}
+
+	//모임 사진첩작성
+			@RequestMapping(value="/gPhotoAlbumWrite.do")
+			public String gPhotoAlbumWrite() {
+				
+				return "gathering/gPhotoAlbumWrite";
+			}
+			
+			//모임 사진첩작성
+			
+			@RequestMapping(value="/gPhotoAlbumWriteAction.do", method=RequestMethod.POST)
+			public String gPhotoAlbumWriteAction(
+					@ModelAttribute GatheringJoinVo gjv,
+					HttpServletRequest request) {
+				
+				HttpSession session = request.getSession();
+				Object Omidx = session.getAttribute("midx");
+			    Object Ogiidx = session.getAttribute("giidx");
+			    if (Omidx == null) {//midx가 없으면 진입불가
+			    	return "redirect:/gathering/gList.do";
+				}
+			    gjv.setMidx((int)Omidx);
+			    gjv.setGiidx((int)Ogiidx);
+			    System.out.println(gjv.getgBoardCategory());
+				System.out.println(gjv.getgBoardTitle());
+				System.out.println(gjv.getgBoardContents());
+			    
+				int value = gs.gatheringPhotoAlbumWrite(gjv);
+				
+				return "redirect:/gathering/gPhotoAlbum.do";
+			}	
+				
+			
+		
+			
+			
+			
+			
+	//모임 사진첩수정
+	@RequestMapping(value="/gPhotoAlbumModifiy.do")
+	public String gPhotoAlbumModifiy() {
+		
+		return "gathering/gPhotoAlbumModifiy";
 	}	
+	
+	
+	
+	
+	
+	
+	
+	
 	//모임 수정
 	@RequestMapping(value="/gModify.do")
 	public String gModify() {
@@ -643,7 +705,20 @@ public class GatheringController {
 			return "redirect:/gathering/gMemberList.do"; 
 		}	
 	
-	
+//모임 더 보기 부모임장으로 위임
+		@RequestMapping(value="/gMemberEntrust.do")
+		public String updateTLD(
+				@RequestParam("midx") int midx, 
+				HttpServletRequest request
+				){
+			HttpSession session = request.getSession();	
+			Object Ogiidx = session.getAttribute("giidx");
+			int giidx = (int)Ogiidx;
+			System.out.println("권한주기"+midx);
+			int value = gs.updateTLD(midx, giidx);
+			System.out.println("권한메소드");
+			return "redirect:/gathering/gPowerEntrustList.do"; 
+		}	
 	
 //모임 더 보기 가입 대기 리스트 보기	
 		@RequestMapping(value="/gMemberJoinWaitList.do")
@@ -657,10 +732,21 @@ public class GatheringController {
 		
 //모임 권한위임 페이지 보기	
 		@RequestMapping(value="/gPowerEntrustList.do")
-		public String gPowerEntrustList() {
-					
-			return "gathering/gPowerEntrustList";
-				}			
+		public String gPowerEntrustList(HttpServletRequest request,
+				Model md) {
+			HttpSession session = request.getSession();
+			Object Ogiidx = session.getAttribute("giidx");
+			Object Omidx = session.getAttribute("midx");
+			int giidx = (int)Ogiidx;
+			int midx = (int)Omidx;
+			
+			GatheringVo gmt = gs.gatheringMemberType(giidx,midx);
+			ArrayList<GatheringJoinVo> gjvsmlist = gs.gatheringSeeMoreMemberList(giidx);
+	    	md.addAttribute("gmt", gmt);
+	    	md.addAttribute("gjvsmlist", gjvsmlist);
+	    	return "gathering/gPowerEntrustList"; 
+		}	
+	
 	
 //모임 신고	
 	@RequestMapping(value="/gDeclaration.do")

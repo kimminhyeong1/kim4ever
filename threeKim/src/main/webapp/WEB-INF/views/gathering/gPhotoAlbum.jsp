@@ -28,70 +28,18 @@
 		<main id="main">
 			<section class="gContainer">
 				<div class="gContent" >
+				 <c:forEach var="gpv" items="${gPhotoList}">
 					<div class="card" >
-						<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-						<h3 class="cardTitle">2023-05-31</h3>
-						<h3 class="cardTitle">떙떙땡 정모</h3>
+						<img class="cardImg" onclick="location.href='${pageContext.request.contextPath}/gathering/gPhotoAlbumContent.do'" src="../resources/bikeimg/bike.jpg">
+						<h3 class="cardTitle">gpv.gPhotoAlbumDate</h3>
+						<h3 class="cardTitle">gpv.gPhotoAlbumTitle</h3>
 					</div>
-					<div class="card" >
-						<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-						<h3 class="cardTitle">2023-05-31</h3>
-						<h3 class="cardTitle">떙떙땡 정모</h3>
-					</div>
-					<div class="card" >
-						<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-						<h3 class="cardTitle">2023-05-31</h3>
-						<h3 class="cardTitle">떙떙땡 정모</h3>
-					</div>
-					<div class="card" >
-						<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-						<h3 class="cardTitle">2023-05-31</h3>
-						<h3 class="cardTitle">떙떙땡 정모</h3>
-					</div>
-					<div class="card" >
-						<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-						<h3 class="cardTitle">2023-05-31</h3>
-						<h3 class="cardTitle">떙떙땡 정모</h3>
-					</div>
-					<div class="card" >
-						<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-						<h3 class="cardTitle">2023-05-31</h3>
-						<h3 class="cardTitle">떙떙땡 정모</h3>
-					</div>
-					<div class="card" >
-						<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-						<h3 class="cardTitle">2023-05-31</h3>
-						<h3 class="cardTitle">떙떙땡 정모</h3>
-					</div>
-					<div class="card" >
-						<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-						<h3 class="cardTitle">2023-05-31</h3>
-						<h3 class="cardTitle">떙떙땡 정모</h3>
-					</div>
-					<div class="card" >
-						<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-						<h3 class="cardTitle">2023-05-31</h3>
-						<h3 class="cardTitle">떙떙땡 정모</h3>
-					</div>
-					<div class="card" >
-						<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-						<h3 class="cardTitle">2023-05-31</h3>
-						<h3 class="cardTitle">떙떙땡 정모</h3>
-					</div>
-					<div class="card" >
-						<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-						<h3 class="cardTitle">2023-05-31</h3>
-						<h3 class="cardTitle">떙떙땡 정모</h3>
-					</div>
-					<div class="card" >
-						<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-						<h3 class="cardTitle">2023-05-31</h3>
-						<h3 class="cardTitle">떙떙땡 정모</h3>
-					</div>
+				</c:forEach>
+					
 					<div class="gPaging">  1-2-3 </div><!-- 페이징 -->
 				</div>
 				<div id="createBtn">
-					<button class="gBtn2">사진첩 만들기</button>
+					<button class="gBtn2" onclick="location.href='${pageContext.request.contextPath}/gathering/gPhotoAlbumWrite.do'">사진첩 만들기</button>
 				</div>
 				
 			</section>

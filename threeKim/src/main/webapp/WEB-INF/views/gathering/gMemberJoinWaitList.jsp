@@ -127,10 +127,7 @@ display: flex; justify-content: flex-end;}
         });
     });
 </script>
-			    
-			    
-			    
-				<div> 					
+			    					
 					<div class="gMemberList">
 						<div>
 							<div class="gProfileimage"><img alt="프로필사진" src="../resources/images/profile.jpg"></div>
@@ -142,33 +139,8 @@ display: flex; justify-content: flex-end;}
 								</div>													
 						</div>																		
 					</div>
-				</div>
-				<div> 					
-					<div class="gMemberList">
-						<div>
-							<div class="gProfileimage"><img alt="프로필사진" src="../resources/images/profile.jpg"></div>
-								<div>
-									<div class="gmemberName">김김김</div>
-									<div class="gmemberInfo">반갑습니다</div>
-									<div class="gmemberAddr">전주시 완산구 평화동</div>	
-									<input type="checkbox" id="checkbox2">
-								</div>													
-							</div>																		
-						</div>					
-				</div>
-				<div> 					
-					<div class="gMemberList">
-						<div>
-							<div class="gProfileimage"><img alt="프로필사진" src="../resources/images/profile.jpg"></div>
-								<div>
-									<div class="gmemberName">김회원</div>
-									<div class="gmemberInfo">주말에 자전거를 즐겨탑니다</div>
-									<div class="gmemberAddr">전주시 덕진구 금암동</div>	
-									<input type="checkbox" id="checkbox3">
-								</div>													
-						</div>																		
-					</div>
-				</div>
+
+
 				
 				
 				

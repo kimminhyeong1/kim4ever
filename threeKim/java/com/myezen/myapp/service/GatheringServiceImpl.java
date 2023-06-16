@@ -34,6 +34,7 @@ import com.myezen.myapp.domain.Gathering_BoardVO;
 import com.myezen.myapp.domain.Gathering_CommentVO;
 import com.myezen.myapp.domain.Gathering_DeclarationVO;
 import com.myezen.myapp.domain.Gathering_InfoVo;
+import com.myezen.myapp.domain.Gathering_PhotoAlbumVO;
 import com.myezen.myapp.domain.Gathering_ScheduleVO;
 import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.domain.SearchCriteria;
@@ -310,7 +311,14 @@ public class GatheringServiceImpl implements GatheringService {
 		return value; 
 	}
 
-
+	@Override
+	//모임 더 보기 부모임장(TLD)로 변경
+	public int updateTLD(int midx, int giidx) {
+		System.out.println("서비스 권한주기");
+		int value= gsm.updateTLD(midx, giidx);
+		
+		return value;
+	}
 	
 
 	@Override
@@ -442,6 +450,21 @@ public class GatheringServiceImpl implements GatheringService {
 			        return true; // 성공 시 true 반환
 			    }
 	}
+
+
+
+	@Override
+	public int gatheringPhotoAlbumWrite(GatheringJoinVo gjv) {
+		int value = gsm.gatheringPhotoAlbumWrite(gjv);
+		return value;
+	}
+
+
+
+
+
+
+
 
 
 
