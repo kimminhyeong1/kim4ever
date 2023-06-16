@@ -7,7 +7,8 @@
 		<title>모임 수정하기</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">  
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">		
 		 <style type="text/css">
 		 	/*수정하기 부분*/
 			#main section h3{display: inline-block;font-size: 27px;}

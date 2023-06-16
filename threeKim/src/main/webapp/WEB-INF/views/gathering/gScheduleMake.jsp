@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20f538f14cf29a1eb30d2f9dbaa4e1fb&libraries=services,clusterer,drawing"></script> <!-- 카카오지도APIkey -->  
+		<meta name="viewport" content="width=device-width, initial-scale=1">		
 		<style type="text/css">
 		 	/*일정만들기 부분*/
 			#main section h3{display: inline-block;font-size: 27px;}

@@ -30,7 +30,7 @@
 			#gatheringIntro{width:100%; height:auto; background-color:#F8F8F8;  border-radius:10px;  }  
 			#gatheringIntro h2{text-align:center; margin-top:20px;  font-family: 'GangwonEdu_OTFBoldA';  font-size:16px; padding:10px;
 			 text-shadow: 3px 1px 1px #99CC99, 1px 1px 1px #669966, 2px 2px 1px #99CC99, 2px 2px 1px;}
-			#gatheringIntro p{text-align:center; padding:5px; font-family:'GangwonEdu_OTFBoldA'; font-size:11px; margin-top:1px;  overflow: hidden;}
+			#gatheringIntro p{text-align:center; padding:5px; font-family:'GangwonEdu_OTFBoldA'; font-size:10px; margin-top:1px;  overflow: hidden;}
 			#gatheringList{width:100%; display:flex; flex-wrap:wrap;justify-content:center; align-items:center;}
  			#gatheringList h2 {text-align:center; font-family: 'GangwonEdu_OTFBoldA'; font-size: 14px;  padding:10px;}
  			  
@@ -67,7 +67,7 @@
 								</c:choose>
 								<h3 class="cardTitle">${gjvmy.gInfoName}</h3>
 								<p class="cardInfo">${gjvmy.gInfoBriefIntroduction}</p>
-								<p>(참여멤버${gjvmy.gInfoParticipating}/${gjvmy.gInfoCapacity})</p>
+								<p class="cardJoinMem">(참여멤버${gjvmy.gInfoParticipating}/${gjvmy.gInfoCapacity})</p>
 								<button class="gBtn" onclick="location.href='${pageContext.request.contextPath}/gathering/gContentCheck.do?giidx=${gjvmy.giidx}'">들어가기</button>
 							</div>
 						</c:forEach>
@@ -91,7 +91,7 @@
 							</c:choose>
 							<h3 class="cardTitle">${gjv.gInfoName}</h3>
 							<p class="cardInfo">${gjv.gInfoBriefIntroduction}</p>
-							<p>(참여멤버${gjv.gInfoParticipating}/${gjv.gInfoCapacity})</p> 
+							<p class="attend">(참여멤버${gjv.gInfoParticipating}/${gjv.gInfoCapacity})</p> 
 							<button class="gBtn" onclick="location.href='${pageContext.request.contextPath}/gathering/gSimpleInfo.do?giidx=${gjv.giidx}'">구경하기</button>
 						</div>
 					 </c:forEach>
