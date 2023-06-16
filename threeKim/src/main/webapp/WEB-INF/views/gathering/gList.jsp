@@ -26,7 +26,7 @@
 				/*****모바일 넓이***/
 				@media (min-width: 300px) and (max-width: 940px)  {
 								/*소개부분*/
-		 	 .gContainer {width: auto; margin: 0 auto; text-align: center; border: none;}					/* 전체틀 auto*/		
+			
 			#gatheringIntro{width:100%; height:auto; background-color:#F8F8F8;  border-radius:10px;  }  
 			#gatheringIntro h2{text-align:center; margin-top:20px;  font-family: 'GangwonEdu_OTFBoldA';  font-size:16px; padding:10px;
 			 text-shadow: 3px 1px 1px #99CC99, 1px 1px 1px #669966, 2px 2px 1px #99CC99, 2px 2px 1px;}
@@ -36,6 +36,7 @@
  			  
 			}
 		 </style>
+	
 	
 	</head>
 	<body>
@@ -67,7 +68,7 @@
 								</c:choose>
 								<h3 class="cardTitle">${gjvmy.gInfoName}</h3>
 								<p class="cardInfo">${gjvmy.gInfoBriefIntroduction}</p>
-								<p class="cardJoinMem">(참여멤버${gjvmy.gInfoParticipating}/${gjvmy.gInfoCapacity})</p>
+								<p class="attend">(참여멤버${gjvmy.gInfoParticipating}/${gjvmy.gInfoCapacity})</p>
 								<button class="gBtn" onclick="location.href='${pageContext.request.contextPath}/gathering/gContentCheck.do?giidx=${gjvmy.giidx}'">들어가기</button>
 							</div>
 						</c:forEach>
@@ -89,10 +90,11 @@
 									<img class="cardWish" src="../resources/icon/heart.png" onclick="handleHeartClick(${gjv.giidx}, ${midx}, this)">
 								</c:otherwise>
 							</c:choose>
+						
 							<h3 class="cardTitle">${gjv.gInfoName}</h3>
-							<p class="cardInfo">${gjv.gInfoBriefIntroduction}</p>
+							<p class="cardInfo" id="textContainer">${gjv.gInfoBriefIntroduction}</p>
 							<p class="attend">(참여멤버${gjv.gInfoParticipating}/${gjv.gInfoCapacity})</p> 
-							<button class="gBtn" onclick="location.href='${pageContext.request.contextPath}/gathering/gSimpleInfo.do?giidx=${gjv.giidx}'">구경하기</button>
+							<button class="gBtn" onclick="delayedRedirect('${pageContext.request.contextPath}/gathering/gSimpleInfo.do?giidx=${gjv.giidx}', 700)">구경하기</button><!-- 버튼딜레이 -->						
 						</div>
 					 </c:forEach>
 				</div>
@@ -162,6 +164,31 @@
 					
 				}
 			}
+			//버튼 이펙트 스크립트
+			var animateButton = function(e) {
+				  e.preventDefault();
+				  // Reset animation
+				  e.target.classList.remove('animate');
+				  
+				  e.target.classList.add('animate');
+				  setTimeout(function(){
+				    e.target.classList.remove('animate');
+				  }, 700);
+				};
+
+				var gBtns = document.getElementsByClassName("gBtn");
+
+				for (var i = 0; i < gBtns.length; i++) {
+				  gBtns[i].addEventListener('click', animateButton, false);
+				}
+
+				/* 버튼 딜레이*/
+				  function delayedRedirect(url, delay) {
+					    setTimeout(function() {
+					      window.location.href = url;
+					    }, delay);
+					  }
+
 		</script>
 	</body>
 </html>
