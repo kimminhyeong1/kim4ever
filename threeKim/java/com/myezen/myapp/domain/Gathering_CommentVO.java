@@ -9,6 +9,15 @@ public class Gathering_CommentVO {//모임 게시판 댓글
 	private String gCommentWriteDay;//모임 댓글 작성일
 	private String gCommentDelDay;//모임 댓글 삭제일
 	private String gCommentDelYN;//모임 댓글 삭제 여부
+	private int gCommentDepth; //모임 답글 깊이
+	
+	
+	public int getgCommentDepth() {
+		return gCommentDepth;
+	}
+	public void setgCommentDepth(int gCommentDepth) {
+		this.gCommentDepth = gCommentDepth;
+	}
 	public int getGcidx() {
 		return gcidx;
 	}

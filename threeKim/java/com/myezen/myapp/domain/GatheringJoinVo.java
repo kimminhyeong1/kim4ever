@@ -74,6 +74,7 @@ public class GatheringJoinVo {//모임조인
 	private String gCommentWriteDay;//모임 댓글 작성일
 	private String gCommentDelDay;//모임 댓글 삭제일
 	private String gCommentDelYN;//모임 댓글 삭제 여부
+	private int gCommentDepth; //모임 답글 깊이
 	
 	//모임사진첩
 	//private int gpaidx;//모임 사진첩 번호
@@ -735,6 +736,14 @@ public class GatheringJoinVo {//모임조인
 
 	public void setMemberIntro(String memberIntro) {
 		this.memberIntro = memberIntro;
+	}
+
+	public int getgCommentDepth() {
+		return gCommentDepth;
+	}
+
+	public void setgCommentDepth(int gCommentDepth) {
+		this.gCommentDepth = gCommentDepth;
 	}
 	
 	

@@ -249,7 +249,11 @@
 	  SET gCommentContents = #{gCommentContents}
 	  WHERE gcidx = #{gcidx} AND gbidx = #{gbidx} AND midx = #{midx}
 	</update>
-	
+	<!-- 모임 게시글에서 답글 달기-->
+	<insert  id="gatheringBoardReplyComment" parameterType="com.myezen.myapp.domain.Gathering_CommentVO" >
+		INSERT INTO gathering_comment1234 (gcidx,gbidx,midx,gCommentContents,gCommentWriteDay,gCommentDelYN,gCommentDepth)
+		VALUES(gcidx_SEQ.NEXTVAL,#{gbidx},#{midx},#{gCommentContents},SYSDATE,'N',1)
+	</insert>
 	
 	
 	
