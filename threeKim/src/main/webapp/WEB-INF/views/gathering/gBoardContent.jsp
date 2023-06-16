@@ -107,7 +107,7 @@
 									<fmt:parseDate value="${gjv.gBoardWriteDay}" pattern="yyyy-MM-dd HH:mm:ss.S" var="parsedRentDay" />
 									<fmt:formatDate value="${parsedRentDay}" pattern="yyyy-MM-dd HH:mm" var="formattedRentDay" />
 									${formattedRentDay}
-									조회수[1000회] 
+									<span>${gjv.gBoardCategory}</span><span>&nbsp;&nbsp;&nbsp;조회수[1000회]</span>
 								</div>
 							</div>		
 						</div>
@@ -120,7 +120,7 @@
 						</div>		
 					</div>
 					<div class="gBoardView">
-						<div>${gjv.gBoardTitle}<span>${gjv.gBoardCategory}</span> </div>
+						<div>${gjv.gBoardTitle}</div>
 						<div>${gjv.gBoardContents}</div>
 					</div>
 					<div class="gBoardLike">
