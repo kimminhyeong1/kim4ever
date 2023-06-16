@@ -97,7 +97,7 @@
 											<fmt:parseDate value="${gjvb.gBoardWriteDay}" pattern="yyyy-MM-dd HH:mm:ss.S" var="parsedRentDay" />
 											<fmt:formatDate value="${parsedRentDay}" pattern="yyyy-MM-dd HH:mm" var="formattedRentDay" />
 											${formattedRentDay}
-											<span>${gjvb.gBoardCategory}</span><span>&nbsp;&nbsp;&nbsp;조회수[1000회]&nbsp;&nbsp;좋아요[100개] </span>
+											<span>${gjvb.gBoardCategory}</span><span>&nbsp;&nbsp;&nbsp;조회수[${gjvb.gBoardViewsCNT}회]&nbsp;&nbsp;좋아요[${gjvb.gBoardLikeCNT}개] </span>
 										</div>
 									</div>					
 								</div>
