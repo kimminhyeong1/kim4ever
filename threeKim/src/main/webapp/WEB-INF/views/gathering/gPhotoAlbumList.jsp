@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,7 +15,8 @@
 			/*사진첩 틀*/ 
 			.gContent{ width: 100%; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;}
 			/*사진첩 부분*/
-			.card{height: 320px; background-color: #d2dfcc;}
+			.card{height:320px; background-color: #d2dfcc;}
+			.cardTitle{font-size:23px; }
 			.cardImg{height: 80%;}
 
 			/*버튼 부분*/
@@ -28,13 +31,19 @@
 		<main id="main">
 			<section class="gContainer">
 				<div class="gContent" >
-				 <c:forEach var="gpv" items="${gPhotoList}">
-					<div class="card" >
-						<img class="cardImg" onclick="location.href='${pageContext.request.contextPath}/gathering/gPhotoAlbumContent.do'" src="../resources/bikeimg/bike.jpg">
-						<h3 class="cardTitle">gpv.gPhotoAlbumDate</h3>
-						<h3 class="cardTitle">gpv.gPhotoAlbumTitle</h3>
-					</div>
-				</c:forEach>
+				<c:if test="${not empty midx}">
+					<c:forEach var="gpv" items="${gPhotoList}">
+						<div class="card" >
+							<img class="cardImg" src="../resources/GATImages/${gpv.imageName}">
+							<h3 class="cardTitle"> 
+							<c:set var="dateString" value="${gpv.gPhotoAlbumWriteDay}" />
+							<fmt:parseDate var="date" value="${dateString}" pattern="yyyy-MM-dd HH:mm:ss.S" />
+							<fmt:formatDate value="${date}" pattern="yyyy년 MM월 dd일" />
+							</h3>
+							<h3 class="cardTitle">${gpv.gPhotoAlbumTitle }</h3>
+						</div>
+					</c:forEach>
+				</c:if>
 					
 					<div class="gPaging">  1-2-3 </div><!-- 페이징 -->
 				</div>

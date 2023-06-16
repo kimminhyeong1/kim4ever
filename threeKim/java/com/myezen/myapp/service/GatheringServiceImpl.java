@@ -428,9 +428,7 @@ public class GatheringServiceImpl implements GatheringService {
 	    }
 
 
-
-
-	
+	//모임나가기
 	@Override
 	@Transactional
 	public boolean exitGathering(int midx, int giidx) {
@@ -450,28 +448,48 @@ public class GatheringServiceImpl implements GatheringService {
 			        return true; // 성공 시 true 반환
 			    }
 	}
-
-
-
+	
+	//모임사진첩 조회
 	@Override
-	public int gatheringPhotoAlbumWrite(GatheringJoinVo gjv) {
-		int value = gsm.gatheringPhotoAlbumWrite(gjv);
+	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelect() {
+		
+		ArrayList<GatheringJoinVo> gPhotoList = gsm.gatheringPhotoAlbumListSelect();
+		
+		return gPhotoList;
+	}
+
+	
+	//모임사진첩작성
+	@Override
+	@Transactional
+	public int gatheringPhotoAlbumWrite(GatheringJoinVo gjv, MultipartFile GTImg, ArrayList<MultipartFile> GImg) throws IOException, Exception {
+		
+		int value = 0;
+		
+		String savedGTImgPath = "D://threekim//threeKim//src//main//webapp//resources/GATImages";//사진첩 대표이미지
+		String savedGImgPath = "D://threekim//threeKim//src//main//webapp//resources/GAImages";//사진첩 이미지
+		
+		//모임 대표 이미지 
+		String uploadedGTImgName  = UploadFileUtiles.uploadFile(savedGTImgPath, GTImg.getOriginalFilename(), GTImg.getBytes());
+		gjv.setImageName(uploadedGTImgName);
+				
+		//1.사진첩 생성		
+		value = gsm.gatheringPhotoAlbumWrite(gjv);
+		//2.모임 대표이미지 넣기
+        value = gsm.gatheringPhotoGTInsert(gjv);
+        //3. 모임 이미지들 넣기
+        for (MultipartFile file : GImg) {
+        	String uploadedGImgName = UploadFileUtiles.uploadFile(savedGImgPath, file.getOriginalFilename(), file.getBytes());
+        	gjv.setImageName(uploadedGImgName);
+        	value = gsm.gatheringPhotoGInsert(gjv);
+        }
+
 		return value;
 	}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+	
 
 
 
