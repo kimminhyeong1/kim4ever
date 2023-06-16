@@ -106,6 +106,8 @@ public interface GatheringService {
 	public String gatheringBoardCommentModify(Gathering_CommentVO gcv);
 	//2.3.3 게시물에 댓글수정하기
 	public int gatheringBoardCommentUpdate(Gathering_CommentVO gcv);
+	//2.3.4 게시물에 답글달기
+	public int gatheringBoardReplyComment(Gathering_CommentVO gcv);
 	//3. 총댓글 가져오기
 	public int gatheringBoardCommentTotal(int gbidx,SearchCriteria scri);
 	//4. 댓글 리스트 가져오기
