@@ -111,13 +111,15 @@
 								</div>
 							</div>		
 						</div>
-						<div class="gBoardSettingBtn" id="settingBtn">
-							<img alt="설정리스트" src="../resources/btn/settingBtn.png">
-							<ul id="list" class="hidden fade-in">
-							  <li><a href="${pageContext.request.contextPath}/gathering/gBoardModify.do?gbidx=${gjv.gbidx}">게시글 수정</a></li> 
-							  <li><a href="${pageContext.request.contextPath}/gathering/gBoardDelete.do?gbidx=${gjv.gbidx}">게시글 삭제</a></li>
-							</ul>
-						</div>		
+						<c:if test="${gjv.midx eq midx}">
+							<div class="gBoardSettingBtn" id="settingBtn">
+								<img alt="설정리스트" src="../resources/btn/settingBtn.png">
+								<ul id="list" class="hidden fade-in">
+								  <li><a href="${pageContext.request.contextPath}/gathering/gBoardModify.do?gbidx=${gjv.gbidx}">게시글 수정</a></li> 
+								  <li><a href="${pageContext.request.contextPath}/gathering/gBoardDelete.do?gbidx=${gjv.gbidx}">게시글 삭제</a></li>
+								</ul>
+							</div>
+						</c:if>		
 					</div>
 					<div class="gBoardView">
 						<div>${gjv.gBoardTitle}</div>
