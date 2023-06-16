@@ -19,6 +19,7 @@ import com.myezen.myapp.domain.Gathering_BoardVO;
 import com.myezen.myapp.domain.Gathering_CommentVO;
 import com.myezen.myapp.domain.Gathering_DeclarationVO;
 import com.myezen.myapp.domain.Gathering_InfoVo;
+import com.myezen.myapp.domain.Gathering_PhotoAlbumVO;
 import com.myezen.myapp.domain.Gathering_ScheduleVO;
 import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.domain.SearchCriteria;
@@ -139,4 +140,9 @@ public interface GatheringService_Mapper {
 	public ArrayList<GatheringJoinVo> gatheringSeeMoreMemberList(int giidx);
 	//모임 더보기 멤버 추방
 	public int updateMemberDELYN(int midx,int giidx);
+	
+	
+	public int gatheringPhotoAlbumWrite(GatheringJoinVo gjv);
+	
+	
 }
