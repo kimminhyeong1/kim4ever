@@ -633,10 +633,21 @@ public class GatheringController {
 		
 //모임 권한위임 페이지 보기	
 		@RequestMapping(value="/gPowerEntrustList.do")
-		public String gPowerEntrustList() {
-					
-			return "gathering/gPowerEntrustList";
-				}			
+		public String gPowerEntrustList(HttpServletRequest request,
+				Model md) {
+			HttpSession session = request.getSession();
+			Object Ogiidx = session.getAttribute("giidx");
+			Object Omidx = session.getAttribute("midx");
+			int giidx = (int)Ogiidx;
+			int midx = (int)Omidx;
+			
+			GatheringVo gmt = gs.gatheringMemberType(giidx,midx);
+			ArrayList<GatheringJoinVo> gjvsmlist = gs.gatheringSeeMoreMemberList(giidx);
+	    	md.addAttribute("gmt", gmt);
+	    	md.addAttribute("gjvsmlist", gjvsmlist);
+	    	return "gathering/gPowerEntrustList"; 
+		}	
+	
 	
 //모임 신고	
 	@RequestMapping(value="/gDeclaration.do")

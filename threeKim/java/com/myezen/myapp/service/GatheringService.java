@@ -122,6 +122,7 @@ public interface GatheringService {
 	public ArrayList<GatheringJoinVo> gatheringSeeMoreMemberList(int giidx);
 	//모임 더보기 멤버 추방
 	public int updateMemberDELYN(int midx,int giidx);
-	
+	//모임 더보기 부모임장으로 위임
+	public int updateTLD(int midx,int giidx);
 	
 }

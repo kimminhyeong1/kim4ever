@@ -308,7 +308,13 @@ public class GatheringServiceImpl implements GatheringService {
 		return value; 
 	}
 
-
+	@Override
+	//모임 더 보기 부모임장(TLD)로 변경
+	public int updateTLD(int midx, int giidx) {
+		int value= gsm.updateTLD(midx, giidx);
+		
+		return value;
+	}
 	
 
 	@Override
