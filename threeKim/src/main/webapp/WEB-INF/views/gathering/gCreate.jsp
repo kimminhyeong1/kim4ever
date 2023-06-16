@@ -20,7 +20,7 @@
 			#main section input {display: block;}
 			#main section textarea {display: block; width: 80%; height: 200px;font-size: 23px;}
 			#main section button{text-align: center;}  
-			#main section img{width: 100px;height: 100px;}  
+			#main section img{width: 100px;height: 100px;}   
 			#main section .radio{display: inline-block;width: 4%; margin-top: 10px; } 
 			#main section span{font-size: 20px;} 
 			
@@ -67,8 +67,10 @@
 				<div>
 					<h3>모임 프로필 이미지</h3>
 					<div>										
-						<input id="image" type="file" name="GTImg" onchange="previewImage(event)" />
-						<img id="imagePreview" />
+						<input id="image" type="file" name="GTImg" onchange="previewImage(event)" style="display: none;"/>
+						<label for="image">
+						  <img id="imagePreview" src="${pageContext.request.contextPath}/resources/icon/photoFrame.png" />
+						</label>
 					</div>
 					
 				</div>
@@ -77,10 +79,12 @@
 					<div>
 
 					<div id="imageUploadContainer">
-					  <input id="image" type="file" name="GImg" onchange="uploadImage(event)" />
+					  <input id="imageInfo" type="file" name="GImg" onchange="uploadImage(event)" style="display: none;"/>
 					</div>
-					<div id="previewContainer"></div>
-
+					<div id="previewContainer" style="display: inline-block;"></div>
+					<label for="imageInfo">
+						<img id="imagePreviewInfo" src="${pageContext.request.contextPath}/resources/icon/photoFrame.png" />
+					</label>
 	
 					</div>
 	
@@ -132,51 +136,54 @@
 		}
 	var totalUploads = 0;
 
-	function uploadImage(event) {
-	  var input = event.target;
-	  var imageUploadContainer = document.getElementById('imageUploadContainer');
-	  var thumbnail = document.getElementById('thumbnail');
-	  var previewContainer = document.getElementById('previewContainer');
-
-	  if (totalUploads < 5) {
-	    var files = input.files;
-	    for (var i = 0; i < files.length; i++) {
-	      var file = files[i];
-	      var reader = new FileReader();
-
-	      reader.onload = function (e) {
-	        var image = document.createElement('img');
-	        image.src = e.target.result;
-	        previewContainer.appendChild(image);
-	      };
-
-	      reader.readAsDataURL(file);
-	      totalUploads++;
-	    }
-
+	  function uploadImage(event) {
+	    var input = event.target;
+	    var imageUploadContainer = document.getElementById('imageUploadContainer');
+	    var previewContainer = document.getElementById('previewContainer');
+	    var imageLabel = document.getElementById('imageLabel');
+		var imagePreviewInfo = document.getElementById('imagePreviewInfo');
 	    if (totalUploads < 5) {
-	      var newImageInput = document.createElement('input');
-	      newImageInput.id = 'image';
-	      newImageInput.type = 'file';
-	      newImageInput.name = 'GImg';
-	      newImageInput.onchange = uploadImage;
-	      imageUploadContainer.appendChild(newImageInput);
+	      var files = input.files;
+	      for (var i = 0; i < files.length; i++) {
+	        var file = files[i];
+	        var reader = new FileReader();
+
+	        reader.onload = function(e) {
+	          var image = document.createElement('img');
+	          image.src = e.target.result;
+	          previewContainer.appendChild(image);
+	        };
+
+	        reader.readAsDataURL(file);
+	        totalUploads++;
+	      }
+
+	      if (totalUploads < 5) {
+	        var newImageInput = document.createElement('input');
+	        newImageInput.id = 'image';
+	        newImageInput.type = 'file';
+	        newImageInput.name = 'GImg';
+	        newImageInput.onchange = uploadImage;
+	        newImageInput.style.display = 'none';
+	        imageUploadContainer.appendChild(newImageInput);
+	      } else {
+	        // 사진이 5개 이상이면 추가 이미지 업로드 숨기기
+	        imagePreviewInfo.style.display = 'none';
+	      }
+	    }
+
+	    // 썸네일 업데이트 
+	    var thumbnail = document.getElementById('imagePreview2');
+	    if (input.files && input.files[0]) {
+	      var reader = new FileReader();
+	      reader.onload = function(e) {
+	        thumbnail.src = e.target.result;
+	      };
+	      reader.readAsDataURL(input.files[0]);
+	    } else {
+	      thumbnail.src = '${pageContext.request.contextPath}/resources/icon/photoFrame.png';
 	    }
 	  }
-
-	  // Update the thumbnail with the first selected image
-	  if (input.files && input.files[0]) {
-	    var reader = new FileReader();
-	    reader.onload = function (e) {
-	      thumbnail.src = e.target.result;
-	      thumbnail.style.display = 'block';
-	    };
-	    reader.readAsDataURL(input.files[0]);
-	  } else {
-	    thumbnail.src = '#';
-	    thumbnail.style.display = 'none';
-	  }
-	}
 
 
 	</script>
