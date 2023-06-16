@@ -514,29 +514,22 @@ public class GatheringController {
 	}
 	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	//모임 사진첩
-	@RequestMapping(value="/gPhotoAlbum.do")
-	public String gPhotoAlbum() {
-		
-		
-		
-		return "gathering/gPhotoAlbum";
-	}
+		@RequestMapping(value="/gPhotoAlbumList.do")
+		public String gPhotoAlbumList(
+				HttpServletRequest request,
+				Model md) {
+			HttpSession session = request.getSession();
+			int midx = (int) session.getAttribute("midx");
+			int giidx = (int) session.getAttribute("giidx");
+			
+			ArrayList<GatheringJoinVo> gPhotoList = gs.gatheringPhotoAlbumListSelect();
+			md.addAttribute("gPhotoList", gPhotoList);
+					
+			return "gathering/gPhotoAlbumList";
+		}
+	
+	
 	
 	//모임 사진첩내용
 		@RequestMapping(value="/gPhotoAlbumContent.do")
@@ -552,47 +545,47 @@ public class GatheringController {
 				return "gathering/gPhotoAlbumWrite";
 			}
 			
-			//모임 사진첩작성
-			
+	//모임 사진첩작성동작기능
 			@RequestMapping(value="/gPhotoAlbumWriteAction.do", method=RequestMethod.POST)
 			public String gPhotoAlbumWriteAction(
 					@ModelAttribute GatheringJoinVo gjv,
-					HttpServletRequest request) {
+					@RequestParam("GTImg") MultipartFile GTImg,
+					@RequestParam("GImg") ArrayList<MultipartFile> GImg,
+					HttpServletRequest request
+					) throws IOException, Exception {
 				
 				HttpSession session = request.getSession();
-				Object Omidx = session.getAttribute("midx");
-			    Object Ogiidx = session.getAttribute("giidx");
-			    if (Omidx == null) {//midx가 없으면 진입불가
-			    	return "redirect:/gathering/gList.do";
-				}
-			    gjv.setMidx((int)Omidx);
-			    gjv.setGiidx((int)Ogiidx);
-			    System.out.println(gjv.getgBoardCategory());
-				System.out.println(gjv.getgBoardTitle());
-				System.out.println(gjv.getgBoardContents());
-			    
-				int value = gs.gatheringPhotoAlbumWrite(gjv);
+				int midx = (int) session.getAttribute("midx");
+				int giidx = (int) session.getAttribute("giidx");
 				
-				return "redirect:/gathering/gPhotoAlbum.do";
+				gjv.setMidx(midx);
+				gjv.setGiidx(giidx);
+				
+				System.out.println("midx는?"+midx);
+				System.out.println("giidx는?"+giidx);
+				System.out.println(gjv.getgPhotoAlbumTitle());
+				System.out.println(gjv.getgPhotoAlbumContents());
+			    
+				int value = gs.gatheringPhotoAlbumWrite(gjv,GTImg,GImg);
+				
+				return "redirect:/gathering/gPhotoAlbumList.do";
 			}	
 				
-			
-		
-			
-			
-			
+					
 			
 	//모임 사진첩수정
 	@RequestMapping(value="/gPhotoAlbumModifiy.do")
 	public String gPhotoAlbumModifiy() {
 		
 		return "gathering/gPhotoAlbumModifiy";
+	}
+	
+	//모임 사진첩삭제
+	@RequestMapping(value="/gPhotoAlbumDelete.do")
+	public String gPhotoAlbumDelete() {
+		
+		return "gathering/gPhotoAlbumDelete";
 	}	
-	
-	
-	
-	
-	
 	
 	
 	
