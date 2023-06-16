@@ -58,16 +58,6 @@
 				</c:if>
 			</div>
 			<div><button class="gBtn2" >더보기</button></div>
-			<div class="gContentTitle" ><h2>내 간단 소개</h2></div>
-			<div>
-				<input class="gInput" type="text" placeholder="멤버보기에 있는 소개입니다.">
-			</div>
-				<button class="gBtn2">변경하기</button>
-			<div class="gContentTitle" ><h2>내 프로필 설정</h2></div>
-			<div>
-				<img id="myImg" alt="" src="">
-			</div>
-				<button class="gBtn2">변경하기</button>
 
 		</section>
 	</main>
