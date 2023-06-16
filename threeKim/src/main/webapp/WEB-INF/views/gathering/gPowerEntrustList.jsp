@@ -91,14 +91,9 @@
 	
 	</style> 
 
-<script type="text/javascript">
-function fnEntrust(gatheringMemberType) {
-	if (confirm("정말 위임하시겠습니까?")) {
-	location.href = '<%=request.getContextPath()%>/gathering/gMemberEntrust.do?gatheringMemberType=TM&midx=' + midx + '&giidx=' + giidx;
 
-	}
-}
-</script>	
+
+	
 	 
 	</head>
 	<body>
@@ -145,9 +140,10 @@ function fnEntrust(gatheringMemberType) {
 										    <c:when test="${smv.gatheringMemberType eq 'TLM'}">
 										        <!-- 부모임장인 경우 해제을 표시합니다. -->
 										        <button type="button" class="EntrustBtn" onclick="fnCancle(${smv.gatheringMemberType});">해제</button>
+										        <button type="button" class="EntrustBtn" onclick="fnCancle(${smv.gatheringMemberType});">모임장 위임</button>
 										    </c:when>
 										    <c:when test="${smv.gatheringMemberType eq 'TM'}">
-										        <button type="button" class="EntrustBtn" onclick="fnEntrust(${smv.gatheringMemberType});">위임</button>
+										        <button type="button" class="EntrustBtn" onclick="fnEntrust('${smv.gatheringMemberType}', ${smv.midx}, ${smv.giidx});">위임</button>
 										    </c:when>
 										</c:choose>
 									</c:if>	
@@ -171,5 +167,12 @@ function fnEntrust(gatheringMemberType) {
 			</section>
 		</main>
 		<%@include file="../footer.jsp" %>
+		<script type="text/javascript">
+			function fnEntrust(gatheringMemberType, bmidx, bgiidx) {
+			    if (confirm("정말 위임하시겠습니까?")) {
+			        location.href = "<%=request.getContextPath()%>/gathering/gMemberEntrust.do?gatheringMemberType=${gatheringMemberType}&midx="+bmidx+"&giidx="+bgiidx+"";
+			    }
+			}
+		</script>
 	</body>
 </html>

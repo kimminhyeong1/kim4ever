@@ -627,8 +627,10 @@ public class GatheringController {
 			HttpSession session = request.getSession();	
 			Object Ogiidx = session.getAttribute("giidx");
 			int giidx = (int)Ogiidx;
-			gs.updateTLD(midx, giidx);
-			return "redirect:/gathering/gMemberJoinWaitList.do"; 
+			System.out.println("권한주기"+midx);
+			int value = gs.updateTLD(midx, giidx);
+			System.out.println("권한메소드");
+			return "redirect:/gathering/gPowerEntrustList.do"; 
 		}	
 	
 //모임 더 보기 가입 대기 리스트 보기	

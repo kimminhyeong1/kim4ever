@@ -332,7 +332,7 @@
 	
 	<!--  모임 더 보기 모임원 > 부모임장으로 권한 위임 (승격) -->	
 		<update id="updateTLD" parameterType="int"> 
-		UPDATE GATHERING1234 SET GATHERINGMEMBERTYPE = 'TLD' WHERE giidx = #{0} and midx = #{1}
+		UPDATE GATHERING1234 SET GATHERINGMEMBERTYPE = 'TLD' WHERE giidx = #{1} and midx = #{0}
 		</update>
 
 
