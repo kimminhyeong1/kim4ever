@@ -50,7 +50,7 @@
 			  		<p>우리는 자전거를 타고 다닐 때 느낄 수 있는 자유로움과 즐거움을 함께 느낄 수 있으며, 더불어 건강한 습관도 함께 만들어 갈 수 있습니다</p>
 			  		<p>타:바와 함께라면 누구나 쉽게 자전거 여행을 즐길 수 있습니다. 우리와 함께 멋진 추억을 만들어보세요!</p>
 				</div>
-				
+
 				<div class="gContentTitle" >
 					<h2>추천 모임</h2> 
 				</div>
@@ -60,7 +60,7 @@
 							<img class="cardImg" src="../resources/GTImages/${gjv.imageName}">
 							<c:choose>
 								<c:when test="${gjv.gwidx != 0}">
-									<img class="cardWish" src="../resources/icon/fullheart.png" onclick="handleHeartClick(${gjv.giidx}, ${midx}, this)">
+								<img class="cardWish" src="../resources/icon/fullheart.png" onclick="handleHeartClick(${gjv.giidx}, ${midx}, this)">
 								</c:when>
 								<c:otherwise>
 									<button class="gBtn" ><img class="cardWish" src="../resources/icon/heart.png" onclick="handleHeartClick(${gjv.giidx}, ${midx}, this)"></button>
@@ -167,7 +167,9 @@
 
 		</script>
     	<script>
+
 	            var offset = 8;
+
 	            
 	            $("#moreButton").click(function() {
 	                $.ajax({
@@ -188,6 +190,7 @@
                                     + "</div>";
                                 $(".gContentB").append(card);
 	                        });
+
 	                        //alert(offset);
 	                        offset += 8;
 	                    },
