@@ -14,7 +14,9 @@ ArrayList<BikeJoinVo> bikeList = (ArrayList<BikeJoinVo>)request.getAttribute("bi
 		<meta name="viewport" content="width=device-width, initial-scale=1">			
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent.css"> 
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent_mo.css?수정중"> 
+		
 		
 		<style type="text/css">
 		 	/*소개부분*/

@@ -8,20 +8,40 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering_mo.css">		
 		<meta name="viewport" content="width=device-width, initial-scale=1">		
 		 <style type="text/css">
 		 	/*만들기 부분*/
+			#main section h3{display: inline-block;font-size: 18px;}
+			#main section p{display: inline-block; color: #f14242; padding-left: 10px;}
+			#main section>div:nth-child(1){margin: 20px 0px 20px 100px;}
+			#main section>div:nth-child(2){text-align: center;}
+			#main section>div>div{margin: 20px 0px 20px 0px;}
+			#main section input {display: block;}
+			#main section textarea {display: block; width: 80%; height: 200px;font-size: 23px;}
+			#main section button{text-align: center;}  
+			#main section img{width: 100px;height: 100px;}  
+			#main section .radio{display: inline-block;width: 4%; margin-top: 10px; } 
+			#main section span{font-size: 20px;} 
+			
+			/*************************모바일****************************************/
+				/*****모바일 넓이***/
+				@media (min-width: 300px) and (max-width: 940px)  {
+					/*만들기 부분*/
+		   #gatheringIntro{width:100%; height:auto; background-color:#F8F8F8;  border-radius:10px;  }  
+					
 			#main section h3{display: inline-block;font-size: 27px;}
 			#main section p{display: inline-block; color: #f14242; padding-left: 10px;}
 			#main section>div:nth-child(1){margin: 20px 0px 20px 100px;}
 			#main section>div:nth-child(2){text-align: center;}
 			#main section>div>div{margin: 20px 0px 20px 0px;}
 			#main section input {display: block;}
-			#main section textarea {display: block; width: 500px;height: 200px;font-size: 23px;}
+			#main section textarea {display: block; width: 80%; height: 200px;font-size: 23px;}
 			#main section button{text-align: center;}  
 			#main section img{width: 100px;height: 100px;}  
 			#main section .radio{display: inline-block;width: 4%; margin-top: 10px; } 
 			#main section span{font-size: 20px;} 
+				}
 		 </style>
 	</head>
 	<body>

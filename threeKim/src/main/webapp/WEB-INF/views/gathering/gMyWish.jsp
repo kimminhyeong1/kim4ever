@@ -8,11 +8,19 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering_mo.css">
+		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1">		
 		 <style type="text/css">
 		 	/*틀부분*/
 		 	.gContainer{width: 1250px;text-align: center;border: 1px solid #bbb;margin: 40px auto;padding: 20px;background-color: #f1f1f1;border-radius: 10px;}
+		 	/*************************모바일****************************************/
+				/*****모바일 넓이***/
+				@media (min-width: 300px) and (max-width: 940px)  {
+			.gContainer{width: 100%; text-align: center;border:none;  margin: 10px auto;padding: 0px;background-color: #f1f1f1;border-radius: 10px;}
+				
+				}
 		 </style>
 	</head>
 	<body>
@@ -38,7 +46,7 @@
 							</c:choose>
 							<h3 class="cardTitle">${gjvmy.gInfoName}</h3>
 							<p class="cardInfo">${gjvmy.gInfoBriefIntroduction}</p>
-							<p>(참여멤버${gjvmy.gInfoParticipating}/${gjvmy.gInfoCapacity})</p>
+							<p class="attend">(참여멤버${gjvmy.gInfoParticipating}/${gjvmy.gInfoCapacity})</p>
 							<button class="gBtn" onclick="location.href='${pageContext.request.contextPath}/gathering/gContentCheck.do?giidx=${gjvmy.giidx}'">들어가기</button>
 						</div>
 					</c:forEach>
@@ -110,6 +118,11 @@
 					
 				}
 			}
+			
+			
+			
+			
+			
 		</script>
 	</body>
 </html>

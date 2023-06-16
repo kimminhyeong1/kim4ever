@@ -23,7 +23,7 @@
     font-style: normal;
 }
 
-footer {width:100%;background-color:#eeeeee; height:150px; display:flex; justify-content:center; align-items:center; 	font: inherit;   flex-shrink: 0;
+footer {width:100%;background-color:#eeeeee; height:180px; display:flex; justify-content:center; align-items:center; 	font: inherit;   flex-shrink: 0;
 }
 .foot {display: flex; align-items: center;}
 .footer_L, .footer_R{font-family:'GangwonEdu_OTFBoldA'; font-size: 15px;  font-weight:bold; margin-right:50px; margin-left:50px;}

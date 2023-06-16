@@ -32,43 +32,151 @@ header{width:auto; margin:0 auto; text-align:center;}
 /*공통 부분*/
 /*틀부분*/
     /*박스전체틀*/
-    .gContainer{width:auto; margin:0 auto; text-align:center;}
+    .gContainer{width:auto; margin:0 auto; text-align:center; border:none;}
     /*박스작은틀*/
     .gContent{width:auto; display:flex; flex-wrap:wrap;justify-content:center; align-items:center;}
     /*박스제목*/
     .gContentTitle h2{width:auto; text-align:center; font-size:20px; margin-top:20px; margin-bottom:20px;}
 /*카드부분*/
     /*모임카드박스*/ 
-    .card{position:relative; width:30%; height: 56vmin; min-height:320px; margin:5px; padding:5px; box-sizing:border-box; border:none ; text-align:center; border-radius:10px;   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);} 
+    .card{position:relative; width:170px; height:170px;  background-color: #ffffff;
+     margin:5px; padding:5px; box-sizing:border-box; border:none ; text-align:center; border-radius:10px;
+       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); overflow:hidden; } 
     /*모임프로필이미지*/
-    .cardImg{width:100%;height:50%; min-height:155px; object-fit:cover; margin-bottom:10px; border-radius:10px; }
+    .cardImg{width:40%;height:40%; object-fit:cover; margin-bottom:10px; border-radius:10px; }
     /*찜이미지*/
-    .cardWish{position: absolute; width: 20%; bottom: 50%; right: 5%;   z-index: 100;}
+    .cardWish{position: absolute; width: 20%; bottom: 50%; right: 5%;   z-index: 100;} 
+    
+    
     /*모임제목*/
     .cardTitle{margin-top:0;}
     /*모임설명*/
-    .cardInfo{font-size: 14px; width: 118px; height: 35px; margin-top: 20px; margin-bottom: 10px; overflow: hidden; display: -webkit-box;
-  -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-height: 1.2;  text-overflow: ellipsis;}
-    /*참여멤버*/
-    .attend{white-space: nowrap;  overflow:hidden;}
+    .cardInfo{font-size: 14px; width: auto; height: 20px; margin-top: 10px; margin-bottom: 10px; overflow: hidden; float:right; 
+  }
+  	/* 움직이는 텍스트 */
+.cardInfo {  overflow: hidden; position: relative;  -webkit-line-clamp: 1; top: 6px;}
+.cardInfo {display: block;   position: relative; overflow: hidden; animation: marquee 5s linear infinite;}
+.cardInfo p {float: right; width: 50%;   white-space: nowrap;  text-align: right; font-size:10px;}
+@keyframes marquee {0% { left: 0; } 100% { left: -100%; }}	}
+
+  
+      /*참여멤버*/
+    .attend{white-space: nowrap;  width:auto; margin-bottom:5px;   position: absolute; left: 50%; transform: translateX(-50%); font-size:13px; padding-bottom:5px; }
+     .cardJoinMem{white-space: nowrap;  text-align: center; margin-right:: 10px;}
     /*수정하거나 설정부분에 틀*/
-    .gSetContainer{text-align:left; border: 1px solid #bbb;margin: 40px auto;width: 50%;padding: 20px;background-color: #f1f1f1;border-radius: 10px;}
+    .gSetContainer{text-align:left; border:none; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);margin: 0 auto;width: 100%;padding: 2px;background-color: #f1f1f1;border-radius: 10px;}
 /*메뉴부분*/
 	#gMenu{width: auto;text-align: center;margin: 0px auto 0px;}
 	#gMenu #menu{height:0px;}
-	#gMenu #menu p{margin: 0px 40px;}
+	#gMenu #menu p{margin: 0px 40px; }
 /*버튼부분*/
     /*모임기본버튼양식*/
-    .gBtn{width:100%; height:30px; margin-top:0px;text-align:center; font-family:'omyu_pretty'; font-size:18px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;  bottom : 0;}
+    .gBtn{position: absolute;  left: 18px; width:80%; height:25px; margin-top:0px;text-align:center; font-family:'omyu_pretty'; font-size:15px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;  bottom : 8px;  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); z-index:100;}
     .gBtn:active{background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 	/*모임 더보기버튼양식*/
-	.gBtn2{width:18%; height:30px; margin-top:10px; margin-bottom:3px; text-align:center; font-family:'omyu_pretty'; font-size:18px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}
+	.gBtn2{width:18%; height:30px; margin-top:12px; margin-bottom:3px; text-align:center; font-family:'omyu_pretty'; font-size:18px; border-radius:10px; border:0px solid #99CC99; background:#99CC99; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);}
 	.gBtn2:active{background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 /*인풋부분*/
-	.gInput{font-family: 'omyu_pretty';font-size: 24px;box-sizing: border-box;width: 40%;padding: 10px;margin: 2px 0;border: 1px solid #ccc;border-radius: 4px;}	
+	.gInput{font-family: 'omyu_pretty';font-size: 18px;box-sizing: border-box;width: 70%;padding: 5px;margin: 2px 0;border: 1px solid #ccc;border-radius: 4px;}	
 /*보기부분*/
 	/*보기부분에 인풋박스처럼 박스부분*/
 	.boxContent{background: #fff;font-family: 'omyu_pretty';font-size: 24px;box-sizing: border-box;width: 40%;padding: 10px;margin: 2px 0;border: 1px solid #ccc;border-radius: 4px;}	 
 	
-	}
+	
+	
+	
+	
+	/* 버튼이펙트*/	
+
+.gBtn:focus {
+  outline: 0;
+}
+
+.gBtn:before,
+.gBtn:after {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 180%;
+  height: 140%;
+  left: -20%;
+  z-index: -1000;
+  transition: all ease-in-out 0.5s;
+  background-repeat: no-repeat;
+}
+
+.gBtn:before {
+  display: none;
+  top: -75%;
+  background-image: radial-gradient(circle, #ff0081 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, #ff0081 20%, transparent 30%),
+    radial-gradient(circle, #99CC99 20%, transparent 20%),
+    radial-gradient(circle, #ff0081 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #ff0081 15%, transparent 20%),
+    radial-gradient(circle, #99CC99 20%, transparent 20%),
+    radial-gradient(circle, #ff0081 20%, transparent 20%),
+    radial-gradient(circle, #99CC99 20%, transparent 20%),
+    radial-gradient(circle, #ff0081 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+}
+
+.gBtn:after {
+  display: none;
+  bottom: -75%;
+  background-image: radial-gradient(circle, #ff0081 20%, transparent 20%),
+    radial-gradient(circle, #ff0081 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #ff0081 15%, transparent 20%),
+    radial-gradient(circle, #99CC99 20%, transparent 20%),
+    radial-gradient(circle, #ff0081 20%, transparent 20%),
+    radial-gradient(circle, #99CC99 20%, transparent 20%),
+    radial-gradient(circle, #99CC99 20%, transparent 20%);
+  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+}
+
+.gBtn:active {
+  transform: scale(0.9);
+ 
+}
+
+.gBtn.animate:before {
+  display: block;
+  animation: topBubbles ease-in-out 0.5s forwards;
+}
+
+.gBtn.animate:after {
+  display: block;
+  animation: bottomBubbles ease-in-out 0.5s forwards;
+}
+
+@keyframes topBubbles {
+  0% {
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+  }
+  50% {
+    background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;
+  }
+  100% {
+    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+
+@keyframes bottomBubbles {
+  0% {
+    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
+  }
+  50% {
+    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;
+  }
+  100% {
+    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+	
+	
+	
+	
+}
+
 	
