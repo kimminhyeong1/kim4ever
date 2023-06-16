@@ -33,7 +33,7 @@
 				<div class="gContent" >
 				<c:if test="${not empty midx}">
 					<c:forEach var="gpv" items="${gPhotoList}">
-						<div class="card" >
+						<div class="card" onclick="window.location.href='<%=request.getContextPath() %>/gathering/gPhotoAlbumContent.do?gpaidx=${gpv.gpaidx }'" >					
 							<img class="cardImg" src="../resources/GATImages/${gpv.imageName}">
 							<h3 class="cardTitle"> 
 							<c:set var="dateString" value="${gpv.gPhotoAlbumWriteDay}" />
