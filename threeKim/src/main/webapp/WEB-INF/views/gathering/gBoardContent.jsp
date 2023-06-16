@@ -86,7 +86,7 @@
 				<div class="gBoardList">
 					<div class="gBoardMember">
 						<div>
-							<div class="gProfileimage"><img alt="프로필사진" src="../resources/MemberProfile/${gjv.memberProfile}"></div>
+							<div class="gProfileimage"><img alt="프로필사진" src="${pageContext.request.contextPath}/resources/MemberProfile/${gjv.memberProfile}"></div>
 							<div>
 								<c:set var="gatheringMemberType" value="${gjv.gatheringMemberType}" />
 								<c:choose>
@@ -113,7 +113,7 @@
 						</div>
 						<c:if test="${gjv.midx eq midx}">
 							<div class="gBoardSettingBtn" id="settingBtn">
-								<img alt="설정리스트" src="../resources/btn/settingBtn.png">
+								<img alt="설정리스트" src="${pageContext.request.contextPath}/resources/btn/settingBtn.png">
 								<ul id="list" class="hidden fade-in">
 								  <li><a href="${pageContext.request.contextPath}/gathering/gBoardModify.do?gbidx=${gjv.gbidx}">게시글 수정</a></li> 
 								  <li><a href="${pageContext.request.contextPath}/gathering/gBoardDelete.do?gbidx=${gjv.gbidx}">게시글 삭제</a></li>
@@ -126,7 +126,7 @@
 						<div>${gjv.gBoardContents}</div>
 					</div>
 					<div class="gBoardLike">
-						<img alt="좋아요" src="../resources/icon/like.png" style="width: 50px;">
+						<img alt="좋아요" src="${pageContext.request.contextPath}/resources/icon/like.png" style="width: 50px;">
 						 <div>${gjv.gBoardLikeCNT}</div>
 					</div>
 					<div class="gBoardCommentWrite">
@@ -140,10 +140,10 @@
 			    	<c:forEach var="gjvc" items="${gjvclist}">
 						<div class="gBoardMember">
 					    	<c:if test="${gjvc.gCommentDepth eq 1}">
-			    			<div class="reply_ba"><img alt="답장하기" src="../resources/icon/reply.png"></div>
+			    			<div class="reply_ba"><img alt="답장하기" src="${pageContext.request.contextPath}/resources/icon/reply.png"></div>
 					    	</c:if>
 							<div class="gBoardMember_box">
-								<div class="gProfileimage"><img alt="프로필사진" src="../resources/MemberProfile/${gjvc.memberProfile}"></div>
+								<div class="gProfileimage"><img alt="프로필사진" src="${pageContext.request.contextPath}/resources/MemberProfile/${gjvc.memberProfile}"></div>
 								<div>
 									<c:set var="gatheringMemberType" value="${gjvc.gatheringMemberType}" />
 									<c:choose>
@@ -171,7 +171,7 @@
 								</div>
 								<c:if test="${gjvc.midx eq midx}">
 									<div class="gBoardSettingBtn SettingBtn2">
-										<img alt="설정리스트" src="../resources/btn/settingBtn.png">
+										<img alt="설정리스트" src="${pageContext.request.contextPath}/resources/btn/settingBtn.png">
 							            <ul class="hidden fade-in">
 							                <li onclick="modifyComment(${gjvc.gbidx}, ${gjvc.gcidx})">댓글 수정</li>
 											<li onclick="deleteComment(${gjvc.gbidx}, ${gjvc.gcidx})">댓글 삭제</li>

@@ -157,8 +157,8 @@
 	<!-- 모임 게시판 -->
 	<!--  모임 게시글 쓰기 -->
 	<insert  id="gatheringBoardWrite" parameterType="com.myezen.myapp.domain.Gathering_BoardVO" >
-		INSERT INTO gathering_board1234 (gbidx,giidx,midx,gBoardTitle,gBoardCategory,gBoardContents,gBoardWriteDay,gBoardDelYN)
-		VALUES(gbidx_seq.NEXTVAL, #{giidx},#{midx},#{gBoardTitle},#{gBoardCategory},#{gBoardContents},SYSDATE,'N')
+		INSERT INTO gathering_board1234 (gbidx,giidx,midx,gBoardTitle,gBoardCategory,gBoardContents,gBoardWriteDay,gBoardDelYN,gBoardViewsCNT)
+		VALUES(gbidx_seq.NEXTVAL, #{giidx},#{midx},#{gBoardTitle},#{gBoardCategory},#{gBoardContents},SYSDATE,'N',0)
 	</insert>
 	<!--  모임 게시글 수정하는 게시물 가져오기 -->
 	<select id="gatheringBoardModify" resultType="com.myezen.myapp.domain.Gathering_BoardVO" parameterType="int">
@@ -220,6 +220,10 @@
        JOIN GATHERING1234 c ON c.giidx = a.giidx AND c.midx = a.midx
        WHERE gBoardDelYN = 'N' AND memberdelyn = 'N' AND gatheringMemberDelYN = 'N' AND a.GIIDX = #{0} AND a.GBIDX = #{1}
     </select>
+    <!--  모임 조회수 증가 -->
+    <update id="increaseViewCount" parameterType="int">
+    	UPDATE GATHERING_BOARD1234 SET gBoardViewsCNT = gBoardViewsCNT + 1 where gbidx= #{gbidx}
+	</update>
 	<!--  모임 게시글에서 댓글 작성하기 -->
 	<insert id="gatheringBoardCommentAdd"  parameterType="com.myezen.myapp.domain.Gathering_CommentVO"> 
 		INSERT INTO gathering_comment1234 (gcidx,gbidx,midx,gCommentContents,gCommentWriteDay,gCommentDelYN,gCommentDepth,regcidx)

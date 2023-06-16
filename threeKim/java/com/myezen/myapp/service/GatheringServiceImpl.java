@@ -10,8 +10,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FilenameUtils;
@@ -324,10 +326,34 @@ public class GatheringServiceImpl implements GatheringService {
 
 
 	@Override
-	//1.게시물하나가져오기
+	//1.1게시물하나가져오기
 	public GatheringJoinVo gatheringBoardOneSelect(int giidx, int gbidx) {
 		GatheringJoinVo gjv = gsm.gatheringBoardOneSelect(giidx,gbidx);
 		return gjv;
+	}
+	@Override
+	//1.2 중복된 사용자인지 확인
+	public boolean isDuplicated( Cookie[] cookies,String cookieName, int midx) {
+		if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals(cookieName)) {
+                    String[] viewedPosts = cookie.getValue().split(",");
+                    for (String viewedPost : viewedPosts) {
+                        if (viewedPost.equals(String.valueOf(midx))) {
+                            return true; // 중복된 사용자
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+        return false; // 중복된 사용자가 아님
+
+	}
+	@Override
+	//1.3 조회수 증가
+	public void increaseViewCount(int gbidx) {
+		gsm.increaseViewCount(gbidx);
 	}
 	@Override
 	//2.1게시물에 댓글쓰기
@@ -416,6 +442,10 @@ public class GatheringServiceImpl implements GatheringService {
 			        return true; // 성공 시 true 반환
 			    }
 	}
+
+
+
+
 
 
 

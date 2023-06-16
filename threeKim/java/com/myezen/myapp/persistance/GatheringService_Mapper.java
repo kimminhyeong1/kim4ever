@@ -109,8 +109,10 @@ public interface GatheringService_Mapper {
 
 
 	//모임 게시글 보기
-	//1.게시물하나가져오기
+	//1.1 게시물하나가져오기
 	public GatheringJoinVo gatheringBoardOneSelect(int giidx,int gbidx);
+	//1.2 조회수 증가
+	public void increaseViewCount(int gbidx);
 	//2.1게시물에 댓글쓰기
 	public int gatheringBoardCommentAdd(Gathering_CommentVO gcv);
 	//2.2게시물에 댓글삭제

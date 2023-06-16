@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -94,8 +95,12 @@ public interface GatheringService {
 	public boolean exitGathering(int midx, int giidx);
 	
 	//모임 게시글 보기
-	//1.게시물하나가져오기
+	//1.1 게시물하나가져오기
 	public GatheringJoinVo gatheringBoardOneSelect(int giidx,int gbidx);
+	//1.2 중복된 아이피인지 확인
+	public boolean isDuplicated( Cookie[] cookies,String cookieName, int midx);
+	//1.3 조회수 증가
+	public void increaseViewCount(int gbidx);
 	//2.1 게시물에 댓글쓰기 
 	public int gatheringBoardCommentAdd(Gathering_CommentVO gcv);
 	//2.2 게시물에 댓글삭제

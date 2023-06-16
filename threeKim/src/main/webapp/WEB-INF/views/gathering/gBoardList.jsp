@@ -66,9 +66,9 @@
 							<div class="gNotice">
 								<div>
 									<div>공지사항</div>
-									<div><a href="${pageContext.request.contextPath}/gathering/gBoardContent.do?gbidx=${gjvb.gbidx}">${gjvb.gBoardTitle}</a></div>
+									<div><a href="${pageContext.request.contextPath}/gathering/gBoard/${gjvb.gbidx}/Content.do">${gjvb.gBoardTitle}</a></div>
 								</div>
-								<div><a href="${pageContext.request.contextPath}/gathering/gBoardContent.do?gbidx=${gjvb.gbidx}">${gjvb.gBoardContents}</a></div>
+								<div><a href="${pageContext.request.contextPath}/gathering/gBoard/${gjvb.gbidx}/Content.do">${gjvb.gBoardContents}</a></div>
 							</div>
 						</c:if>	
 					</c:forEach>	
@@ -101,8 +101,8 @@
 										</div>
 									</div>					
 								</div>
-									<div><a href="${pageContext.request.contextPath}/gathering/gBoardContent.do?gbidx=${gjvb.gbidx}">${gjvb.gBoardTitle}</a></div>
-									<div><a href="${pageContext.request.contextPath}/gathering/gBoardContent.do?gbidx=${gjvb.gbidx}">${gjvb.gBoardContents}</a></div>
+									<div><a href="${pageContext.request.contextPath}/gathering/gBoard/${gjvb.gbidx}/Content.do">${gjvb.gBoardTitle}</a></div>
+									<div><a href="${pageContext.request.contextPath}/gathering/gBoard/${gjvb.gbidx}/Content.do">${gjvb.gBoardContents}</a></div>
 							</div>
 						</c:if>	
 					</c:forEach>	

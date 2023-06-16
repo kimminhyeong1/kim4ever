@@ -38,6 +38,10 @@
 	
 	<beans:bean id="encryptInterceptor" class="com.myezen.myapp.interceptor.EncryptInterceptor"></beans:bean>
 	
+	<beans:bean id="ipLimitInterceptor" class="com.myezen.myapp.interceptor.IpLimitInterceptor">
+	    <beans:property name="ipLimitInterval" value="60" /><!-- 똑같은 아이피 중복불가 --> 
+	</beans:bean>
+
 	
 	<interceptors>
 		<interceptor><!-- 인증필요한 페이지 --> 
@@ -57,6 +61,10 @@
 		<interceptor><!-- 암호화/복호화 -->
 			<mapping path="/bikeRent/bikeRentQR.dodd"/> <!-- 자전거 QR 페이지 --><!-- 바뀔수있음 -->
 			<beans:ref bean="encryptInterceptor"/>
+		</interceptor>
+		<interceptor><!-- 아이피 중복 -->
+			<mapping path="/gathering/gBoardContent.do"/>
+			<beans:ref bean="ipLimitInterceptor"/>
 		</interceptor>
 
 	</interceptors>

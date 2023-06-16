@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.http.HttpStatus;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,6 +37,7 @@ import com.myezen.myapp.domain.PageMaker;
 import com.myezen.myapp.domain.ScheduleVo;
 import com.myezen.myapp.domain.SearchCriteria;
 import com.myezen.myapp.service.GatheringService;
+import com.myezen.myapp.util.IPUtil;
 
 @Controller
 @RequestMapping(value="/gathering")
@@ -349,17 +353,38 @@ public class GatheringController {
 		return "redirect:/gathering/gBoardList.do";
 	}
 	//모임 게시글 보기
-	@RequestMapping(value="/gBoardContent.do")
+	@RequestMapping(value="/gBoard/{gbidx}/Content.do")
 	public String gBoardContent(
-			@RequestParam("gbidx") int gbidx,//게시글 번호
+			@PathVariable("gbidx") int gbidx,//게시글 번호
 			PageMaker pm,
 			SearchCriteria scri,
 			HttpServletRequest request,
+			HttpServletResponse response,
 			Model md
 			) {
 		HttpSession session = request.getSession();
 	    Object Ogiidx = session.getAttribute("giidx");
+	    Object Omidx = session.getAttribute("midx");
 	    int giidx=(int)Ogiidx;
+	    int midx=(int)Omidx;
+	    // 게시물 조회 전 쿠키 확인
+	    String cookieName = "viewedPosts"+ gbidx;
+	    Cookie[] cookies = request.getCookies();
+	    //조회수 증가부분
+        System.out.println(cookies);
+        
+        
+        if (!gs.isDuplicated(cookies,cookieName, midx)) {
+            // 중복된 사용자가 아닌 경우 조회수를 증가시킴
+            gs.increaseViewCount(gbidx);
+            // 중복 조회 방지를 위해 쿠키를 생성하고 응답에 추가
+            Cookie viewedPostsCookie = new Cookie(cookieName, String.valueOf(midx));
+            viewedPostsCookie.setMaxAge(1 * 60 * 60); // 쿠키의 유효 기간 설정 (예: 24시간)
+            viewedPostsCookie.setPath("/"); // 쿠키의 경로 설정
+            response.addCookie(viewedPostsCookie);
+        }
+	    
+	    
 	    
 	    //게시물하나가져오기 
 	    GatheringJoinVo gjv = gs.gatheringBoardOneSelect(giidx,gbidx);
