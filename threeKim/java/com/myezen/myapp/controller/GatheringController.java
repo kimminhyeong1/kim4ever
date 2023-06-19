@@ -582,10 +582,12 @@ public class GatheringController {
 			HttpSession session = request.getSession();
 			int midx = (int) session.getAttribute("midx");
 			int giidx = (int) session.getAttribute("giidx");
-			
+			int gpaidx = Integer.parseInt(request.getParameter("gpaidx"));
+			  
 			/*모임상세리스트 가져오기*/
-	    	ArrayList<GatheringJoinVo> gPhotoList = gs.gatheringPhotoAlbumListSelectOne();
-	    	md.addAttribute("gPhotoList", gPhotoList);
+			GatheringJoinVo gjv = gs.gatheringPhotoAlbumListSelectOne(gpaidx);
+			    
+		    md.addAttribute("gjv", gjv);
 	    	
 			return "gathering/gPhotoAlbumContent";
 		}
@@ -614,14 +616,15 @@ public class GatheringController {
 				gjv.setMidx(midx);
 				gjv.setGiidx(giidx);
 				
+				
+				
 				System.out.println("midx는?"+midx);
 				System.out.println("giidx는?"+giidx);
 				System.out.println(gjv.getgPhotoAlbumTitle());
 				System.out.println(gjv.getgPhotoAlbumContents());
 			    
 				int value = gs.gatheringPhotoAlbumWrite(gjv,GATImg,GAImg);
-				md.addAttribute("gpaidx", gjv.getGpaidx());
-				System.out.println("gpaidx는?"+gjv.getGpaidx());
+			
 				
 				
 				return "redirect:/gathering/gPhotoAlbumList.do";
@@ -631,9 +634,49 @@ public class GatheringController {
 			
 	//모임 사진첩수정
 	@RequestMapping(value="/gPhotoAlbumModifiy.do")
-	public String gPhotoAlbumModifiy() {
+	public String gPhotoAlbumModifiy(
+			@RequestParam("gpaidx") int gpaidx,//게시글 번호
+			HttpServletRequest request,
+			Model md) {
 		
+		HttpSession session = request.getSession();
+		
+		  Object Omidx = session.getAttribute("midx");
+		    if (Omidx == null) {//midx가 없으면 진입불가
+		    	return "redirect:/gathering/gList.do";
+			}
+		    int midx =(int)Omidx;
+		    GatheringJoinVo gjv = gs.gatheringPhotoAlbumModify(gpaidx);
+			//담기 
+			md.addAttribute("gjv", gjv);
+			
 		return "gathering/gPhotoAlbumModifiy";
+	}
+	
+	//모임 사진첩수정
+	@RequestMapping(value="/gPhotoAlbumModifiyAction.do")
+	public String gPhotoAlbumModifiyAction(
+			@RequestParam("gpaidx") int gpaidx,
+			@ModelAttribute GatheringJoinVo gjv,
+			HttpServletRequest request
+			) {
+		HttpSession session = request.getSession();
+	    Object Omidx = session.getAttribute("midx");
+	    if (Omidx == null) {//midx가 없으면 진입불가
+	    	return "redirect:/gathering/gList.do";
+		}
+	    gjv.setMidx((int)Omidx);
+	    //게시글 번호에 해당하는 게시물 업데이트 하기
+	    int value = gs.gatheringPhotoAlbumModifyUpdate(gjv);
+	    
+	    if (value > 0) {
+	        return "redirect:/gathering/gPhotoAlbumList.do";
+	    } else {
+	        // 수정 실패 처리
+	        return "errorPage";
+	    }
+	    
+		
 	}
 	
 	//모임 사진첩삭제
