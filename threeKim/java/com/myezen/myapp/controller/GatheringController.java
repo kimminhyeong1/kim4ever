@@ -558,8 +558,9 @@ public class GatheringController {
 			@RequestMapping(value="/gPhotoAlbumWriteAction.do", method=RequestMethod.POST)
 			public String gPhotoAlbumWriteAction(
 					@ModelAttribute GatheringJoinVo gjv,
-					@RequestParam("GTImg") MultipartFile GTImg,
-					@RequestParam("GImg") ArrayList<MultipartFile> GImg,
+					@RequestParam("GATImg") MultipartFile GATImg,
+					@RequestParam("GAImg") ArrayList<MultipartFile> GAImg,
+					Model md,
 					HttpServletRequest request
 					) throws IOException, Exception {
 				
@@ -575,7 +576,10 @@ public class GatheringController {
 				System.out.println(gjv.getgPhotoAlbumTitle());
 				System.out.println(gjv.getgPhotoAlbumContents());
 			    
-				int value = gs.gatheringPhotoAlbumWrite(gjv,GTImg,GImg);
+				int value = gs.gatheringPhotoAlbumWrite(gjv,GATImg,GAImg);
+				md.addAttribute("gpaidx", gjv.getGpaidx());
+				System.out.println("gpaidx는?"+gjv.getGpaidx());
+				
 				
 				return "redirect:/gathering/gPhotoAlbumList.do";
 			}	
