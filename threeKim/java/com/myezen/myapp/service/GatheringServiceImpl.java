@@ -134,6 +134,12 @@ public class GatheringServiceImpl implements GatheringService {
 		ArrayList<GatheringJoinVo> gjvlist = gsm.gatheringOneSimpleListSelect(giidx);
 		return gjvlist;
 	}
+	@Override
+	//모임소개페이지 체크
+	public String gatheringOneSimpleListCheck(int giidx, int midx) {
+		String gatheringApprovalType = gsm.gatheringOneSimpleListCheck(giidx,midx);
+		return gatheringApprovalType;
+	}
 
 
 
@@ -552,6 +558,10 @@ public class GatheringServiceImpl implements GatheringService {
 		
 		return gPhotoList;
 	}
+
+
+
+
 
 
 

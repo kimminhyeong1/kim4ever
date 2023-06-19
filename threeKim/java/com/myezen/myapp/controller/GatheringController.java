@@ -118,10 +118,18 @@ public class GatheringController {
 	@RequestMapping(value="/gSimpleInfo.do")
 	public String gSimpleInfo(
 			@RequestParam("giidx") int giidx,
+			HttpServletRequest request,
 			Model md
 			) {
-		
+		HttpSession session = request.getSession();
+	    Object omidx = session.getAttribute("midx");
+	    if (omidx == null) {//midx가 없으면 진입불가
+	    	return "redirect:/gathering/gList.do";
+		}
+	    int midx = (int)omidx;
+	    String gatheringApprovalType = gs.gatheringOneSimpleListCheck(giidx,midx); // 사용자의 모임 승인 값 
 		ArrayList<GatheringJoinVo> gjvlist = gs.gatheringOneSimpleListSelect(giidx);
+		md.addAttribute("gatheringApprovalType", gatheringApprovalType);
 		md.addAttribute("gjvlist", gjvlist);
 		md.addAttribute("giidx", giidx);
 

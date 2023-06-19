@@ -63,6 +63,13 @@
 		JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
 		WHERE b.IMGTYPE = 'G' AND a.GINFODELYN = 'N' AND a.GIIDX = #{0}
 	</select>
+	<!-- 모임 소개페이지 체크-->
+	<select id="gatheringOneSimpleListCheck" parameterType="int" resultType="String">
+		SELECT c.gatheringApprovalType
+		FROM GATHERING_INFO1234 a
+		JOIN GATHERING1234 c ON c.GIIDX = a.GIIDX
+		WHERE a.giidx = #{0} AND c.midx = #{1}
+	</select>
 	
 	<!-- 사용자가 모임상세페이지를 들어갈수있는지 확인 -->
 	<select id="gatheringMemberCheck" resultType="int" parameterType="int"> 

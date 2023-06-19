@@ -59,7 +59,6 @@
 									<button class="gBtn">승인대기중</button><!-- 버튼딜레이 -->						
 								</c:otherwise>
 							</c:choose>							
-							
 						</div>
 					</c:forEach>
 				</c:if>

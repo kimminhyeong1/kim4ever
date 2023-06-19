@@ -44,6 +44,8 @@ public interface GatheringService {
 	public ArrayList<GatheringJoinVo> gatheringMyListSelect(int midx);
 	//모임 소개페이지 리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringOneSimpleListSelect(int giidx);
+	//모임 소개페이지 체크 
+	public String gatheringOneSimpleListCheck(int giidx, int midx);
 	
 	/*모임상세보기*/
 	//사용자가 모임상세페이지를 들어갈수있는지 확인

@@ -125,7 +125,16 @@
 				<div id="gatherCon">
 					<h1>${gjvlist[0].gInfoName}</h1> 
 					<p>${gjvlist[0].gInfoAreaIntroduction}</p>
-					<button onclick="location.href='${pageContext.request.contextPath}/gathering/gSimpleInfoAction.do?giidx=${giidx}'">가입하기</button>
+					<c:choose>
+						<c:when test="${gatheringApprovalType eq 'Y'}">
+						</c:when>
+						<c:when test="${gatheringApprovalType eq 'W'}">
+							<button>승인대기중</button>
+						</c:when>
+						<c:otherwise>
+							<button onclick="location.href='${pageContext.request.contextPath}/gathering/gSimpleInfoAction.do?giidx=${giidx}'">가입하기</button>
+						</c:otherwise>
+					</c:choose>			
 					<button onclick="location.href='${pageContext.request.contextPath}/gathering/gatheringList.do'">돌아가기</button>
 				</div>
 			</div>
@@ -183,6 +192,16 @@
 		$post.click();});
 		
 		setInterval(function(){ $('.slider-1 > .side-btns > div').eq(1).click();}, 3000);
+	</script>
+	<script type="text/javascript">
+	var scrollToMiddle = function() {
+		  var windowHeight = window.innerHeight || document.documentElement.clientHeight;
+		  var scrollTo = Math.floor(windowHeight / 2);
+		  window.scrollTo(0, scrollTo);
+		};
+
+		// 페이지 로드 후 스크롤 중간으로 이동
+		window.addEventListener('load', scrollToMiddle);
 	</script>
 	</body>
 </html>
