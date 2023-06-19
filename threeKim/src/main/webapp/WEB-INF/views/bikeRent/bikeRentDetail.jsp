@@ -42,7 +42,7 @@ function requestPay() {
         buyer_addr: '${bjv.bikeLocation}',
         buyer_postcode: ' ${bjv.bikeCode}',
         popup: true,
-        m_redirect_url: "http://localhost:8080/myapp/index.jsp";
+        m_redirect_url: "http://localhost:8080/myapp/index.jsp"
     }, function(rsp) {
         console.log(rsp);
         if (rsp.success) {
@@ -63,7 +63,7 @@ function requestPay() {
         alert(msg);
     });
 }
-
+/* 
   $(document).ready(function() {
 
       //휴대폰 번호 인증
@@ -131,7 +131,7 @@ function requestPay() {
                   
       
   })
-  
+   */
 
   
 
@@ -280,7 +280,7 @@ function requestPay() {
 				  
 				<tr>
 				  <td colspan="3">
-					<button id="rentButton" class="rentButton" type="button" onclick="requestPay()" disabled>대여하기</button>
+					<button id="rentButton" class="rentButton" type="button" onclick="requestPay()" >대여하기</button>
 					<button onclick="requestPay()">결제하기</button>
 					
 			
