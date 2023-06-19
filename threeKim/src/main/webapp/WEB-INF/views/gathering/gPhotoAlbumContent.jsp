@@ -7,7 +7,9 @@
 		<title>타다-모임-사진첩</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">  
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">
+		<link rel="stylesheet" media="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_gathering_mo.css">
+		  
 		<style type="text/css">
 			.gContainer{border: 1px solid #0000;}
 			/*사진첩 틀*/ 
