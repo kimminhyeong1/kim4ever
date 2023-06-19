@@ -156,9 +156,11 @@ public interface GatheringService {
 	//모임사진첩작성
 	public int gatheringPhotoAlbumWrite(GatheringJoinVo gjv,MultipartFile GTImg, ArrayList<MultipartFile> GImg)throws IOException, Exception;
 	//모임사진첩조회
+
 	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelect();
-	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelectOne();
-	
+	public GatheringJoinVo gatheringPhotoAlbumListSelectOne(int gpaidx);
+	public GatheringJoinVo gatheringPhotoAlbumModify(int gpaidx);
+	public int gatheringPhotoAlbumModifyUpdate(GatheringJoinVo gjv);
 
 
 	

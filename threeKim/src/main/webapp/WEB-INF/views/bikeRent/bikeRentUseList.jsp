@@ -10,6 +10,8 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent.css">
+		<link rel="stylesheet" media="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_bikeRent_mo.css">		
+		
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<style type="text/css">
 			/*헤더영역 메뉴*/
@@ -29,9 +31,10 @@
 			#useInfo{width:80%; font-size:22px; line-height:35px;}
 			/*이용내역 내용 버튼*/
 			#useListBtn{text-align:center;}
-			
-			
-			
+			.stateimg {display: flex; justify-content: center; align-items: center;}			
+			.stateimg img{width:100px; height:100px; background:white;  border-radius: 10px; padding:5px;   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);}
+			.using img{border:5px solid #90EE90;}
+			.dot img{width:50px; height:50px; background:none;  box-shadow: none;}
 			/****************************모바일**************************/
 @media (min-width: 300px) and (max-width: 940px)  {
 		header #menu{display: none;}
@@ -45,15 +48,20 @@
 			.container h1{font-size: 20px; text-align: center;}
 			.container h2{font-size: 20px; text-align: center;}
 			.container button{display:inline-block; width:40%; height:40px; margin-top:0px;text-align:center; font-family:'omyu_pretty'; font-size:15px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
-			.container button:active{background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+			.container button:active{backgrbound:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 			/*이용내역 내용*/
 			#useInfo{width:80%; font-size:12px; line-height:15px;}
 			/*이용내역 내용 버튼*/
 			#useListBtn{text-align:center;}
+			.stateimg {display: flex; justify-content: center; align-items: center;}			
+			.stateimg img{width:40px; height:40px; background:white;  border-radius: 10px; padding:5px;   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);}
+			.using img{border:3px solid #90EE90;}
+			.dot img{width:20px; height:20px; background:none;  box-shadow: none;}
 			
 }
 			  
 		</style>  
+
 	</head>
 	<body>
 		<%@include file="../header.jsp" %>
@@ -61,7 +69,15 @@
 			<section id="content">
 				<div class="container">
 					<div><h1>이용내역</h1></div>
-					<div><p id="useInfo">
+					<div class="stateimg"> 
+					<img src="../resources/mobile/qr_stop.png" alt="qr">
+					<div class="dot"><img src="../resources/mobile/dot.gif" alt="dot"></div>					
+					<div class="using"><img src="../resources/mobile/bike_move.gif" alt="자전거"></div>
+					<div class="dot"><img src="../resources/mobile/dot.gif" alt="dot"></div>					
+					<img src="../resources/mobile/rent_stop.png" alt="자전거대여소">
+					</div>
+					<div>
+					<p id="useInfo">
 						1. 자전거 이용시간은 오전9시부터 오후10시까지입니다.<br>
 						2. 반납은 대여한 장소와 무관하게 어느 대여소에서든 가능합니다.<br>
 						3. 자전거에 문제가 생겼을 경우 고장/신고 접수 부탁드립니다.<br>
@@ -86,6 +102,5 @@
 				</div>
 			</section>
 		</main>
-		<%@include file="../footer.jsp" %>
 	</body>
 </html>

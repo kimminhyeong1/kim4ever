@@ -92,9 +92,9 @@ li{list-style:none;}
 		  
 		 <c:forEach var="gjv" items="${gjlist}">
 		  <tr>
-		    <td><a href="${pageContext.request.contextPath}/gathering/gContentCheck.do?giidx=${gjv.giidx}">${gjv.gInfoName}</a></td>
+		    <td><a href="${pageContext.request.contextPath}/admin/admingatheringDetail.do?giidx=${gjv.giidx}">${gjv.gInfoName}</a></td>
 		    <td>${gjv.memberName}</td>
-		    <td>${gjv.gInfoCreationDay}</td>
+		    <td>${gjv.gInfoCreationDay.substring(0, 16)}</td>
 		    <td>${gjv.gInfoParticipating}</td>
 		  </tr>	
 		 </c:forEach> 	  
