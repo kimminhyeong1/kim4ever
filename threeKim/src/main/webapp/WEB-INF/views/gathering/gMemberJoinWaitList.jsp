@@ -8,10 +8,8 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">
 		<link rel="stylesheet" media="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_gathering_mo.css">
-		
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-	<style type="text/css">
+		<style type="text/css">
 .menu {
   width: 500px;
   text-align: left;
@@ -94,6 +92,7 @@ display: flex; justify-content: flex-end;}
 .buttonContainer button {width:10%; height:40px; margin-top:10px; margin-left:5px; text-align:center; font-family:'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}	
 .buttonContainer button:active{background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 	</style>  
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	</head>
 	<body>
 		<%@include file="../header2.jsp" %>
@@ -106,52 +105,94 @@ display: flex; justify-content: flex-end;}
 			<section class="gContainer gSetContainer">
 				<h2>멤버 승인 대기</h2>
 				<div class="buttonContainer">
-    <button class="selectAll">전체 선택</button>
-    <button class="cancelAll">전체 취소</button>
-    <button class="JoinAccess">가입 승인</button>
-    <button class="JoinRefuse">승인 거절</button>
-</div>
-
-<script type="text/javascript">
-    // "전체 선택" 버튼을 클릭했을 때 모든 체크박스를 선택
-    document.querySelector('.selectAll').addEventListener('click', function() {
-        var checkboxes = document.querySelectorAll('.gMemberList input[type="checkbox"]');
-        checkboxes.forEach(function(checkbox) {
-            checkbox.checked = true;
-        });
-    });
-
-    // "전체 취소" 버튼을 클릭했을 때 모든 체크박스를 해제
-    document.querySelector('.cancelAll').addEventListener('click', function() {
-        var checkboxes = document.querySelectorAll('.gMemberList input[type="checkbox"]');
-        checkboxes.forEach(function(checkbox) {
-            checkbox.checked = false;
-        });
-    });
-</script>
-			    					
-					<div class="gMemberList">
-						<div>
-							<div class="gProfileimage"><img alt="프로필사진" src="../resources/images/profile.jpg"></div>
+				    <button class="selectAll">전체 선택</button>
+				    <button class="cancelAll">전체 취소</button>
+				    <button class="JoinAccess">가입 승인</button>
+				    <button class="JoinRefuse">승인 거절</button>
+				</div>			
+				<div class="gMemberList">
+					<c:forEach var="smv" items="${gjvsmlist}">
+						<c:choose>
+							<c:when test="${smv.gatheringApprovalType eq 'W'}">
 								<div>
-									<div class="gmemberName">김타바</div>
-									<div class="gmemberInfo">자전거 취미 경력 15년</div>
-									<div class="gmemberAddr">전주시 덕진구 인후동</div>	
-									<input type="checkbox" id="checkbox1">
-								</div>													
-						</div>																		
-					</div>
-
-
-				
-				
-				
-				
+									<div class="gProfileimage">
+										<img src="${pageContext.request.contextPath}/resources/MemberProfile/${smv.memberProfile}">	
+									</div>
+									<div>							
+										<div class="gmemberName">${smv.memberName}</div>
+										<div class="gmemberInfo">${smv.memberIntro}</div>
+										<div class="gmemberAddr">${smv.memberAddr}</div>
+										<input type="checkbox" id="checkbox" name="selectedMembers" value="${smv.midx}">
+									</div>													
+								</div>																			
+							</c:when>
+							<c:otherwise>
+								<div>승인 대기중인 사용자가 없습니다.</div>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+				</div>
 				<div>				
 					<button class="gBtn2">돌아가기</button>			 	 
 				</div>
 			</section>
 		</main>
 		<%@include file="../footer.jsp" %>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				// "전체 선택" 버튼을 클릭했을 때 모든 체크박스를 선택
+				$('.selectAll').click(function() {
+					$('.gMemberList input[type="checkbox"]').prop('checked', true);
+				});
+			
+				// "전체 취소" 버튼을 클릭했을 때 모든 체크박스를 해제
+				$('.cancelAll').click(function() {
+					$('.gMemberList input[type="checkbox"]').prop('checked', false);
+				});
+			
+				// "가입 승인" 버튼을 클릭했을 때 AJAX를 사용하여 선택된 멤버 정보를 컨트롤러로 전달
+				$('.JoinAccess').click(function() {
+					var selectedMembers = [];
+					$('.gMemberList input[type="checkbox"]:checked').each(function() {
+						selectedMembers.push($(this).val());
+					});
+			
+					$.ajax({
+						url: '${pageContext.request.contextPath}/gathering/processJoinAccess.do',
+						type: 'POST',
+						contentType: 'application/json',
+						data: JSON.stringify({ selectedMembers: selectedMembers }),
+						success: function(response) {
+							alert('가입 승인이 완료되었습니다.');
+							location.reload();
+						},
+						error: function(xhr, status, error) {
+							alert('가입 승인 처리 중 오류가 발생했습니다.');
+						}
+					});
+				});
+				// "승인 거절" 버튼을 클릭했을 때 선택된 멤버를 서버로 전송
+				$('.JoinRefuse').click(function() {
+					var selectedMembers = [];
+					$('.gMemberList input[type="checkbox"]:checked').each(function() {
+						selectedMembers.push($(this).val());
+					});
+	
+					$.ajax({
+						url: '${pageContext.request.contextPath}/gathering/processJoinRefuse.do',
+						type: 'POST',
+						contentType: 'application/json',
+						data: JSON.stringify({ selectedMembers: selectedMembers }),
+						success: function(response) {
+							alert('가입 거절이 완료되었습니다.');
+							location.reload();
+						},
+						error: function(xhr, status, error) {
+							alert('가입 거절 처리 중 오류가 발생했습니다.');
+						}
+					});
+				});
+			});
+		</script>
 	</body>
 </html>

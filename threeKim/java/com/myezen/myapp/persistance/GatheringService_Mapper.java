@@ -157,6 +157,10 @@ public interface GatheringService_Mapper {
 	public GatheringVo gatheringMemberType(int giidx,int midx);
 	//모임 더보기 멤버 리스트
 	public ArrayList<GatheringJoinVo> gatheringSeeMoreMemberList(int giidx);
+	//모임 더보기 승인 대기 승낙
+	public int gatheringApproveMembers(int giidx,int midx);
+	//모임 더보기 승인 대기 거절
+	public int gatheringRefuseMembers(int giidx,int midx);
 	//모임 더보기 멤버 추방
 	public int updateMemberDELYN(int midx,int giidx);
 	//모임 더보기 모임원 > 부모임장으로 위임

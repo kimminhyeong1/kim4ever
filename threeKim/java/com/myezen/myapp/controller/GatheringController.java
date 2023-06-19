@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -819,9 +820,74 @@ public class GatheringController {
 		
 //모임 더 보기 가입 대기 리스트 보기	
 		@RequestMapping(value="/gMemberJoinWaitList.do")
-		public String gMemberJoinWaitList() {
+		public String gMemberJoinWaitList(
+				HttpServletRequest request,
+				Model md
+				) {
+			HttpSession session = request.getSession();
+			Object Ogiidx = session.getAttribute("giidx");
+			Object Omidx = session.getAttribute("midx");
+			int giidx = (int)Ogiidx;
+			int midx = (int)Omidx;
 			
+			GatheringVo gmt = gs.gatheringMemberType(giidx,midx);
+			ArrayList<GatheringJoinVo> gjvsmlist = gs.gatheringSeeMoreMemberList(giidx);
+	    	md.addAttribute("gmt", gmt);
+	    	md.addAttribute("gjvsmlist", gjvsmlist);
+	    	
 			return "gathering/gMemberJoinWaitList";
+		}
+		//모임 더 보기 가입 대기 승낙	
+		@RequestMapping(value="/processJoinAccess.do")
+		@ResponseBody
+		public String processJoinAccess(
+				@RequestBody HashMap<String, ArrayList<Integer>> requestMidx,
+				HttpServletRequest request
+				) {
+			try {
+				HttpSession session = request.getSession();
+			    Object Ogiidx = session.getAttribute("giidx");
+			    int giidx = (int)Ogiidx;
+				ArrayList<Integer> selectedMembers = requestMidx.get("selectedMembers");
+		        // 선택된 멤버의 가입 승인 처리
+		        if (selectedMembers != null && !selectedMembers.isEmpty()) {
+		        	System.out.println("배열로 들어옴"+selectedMembers);
+		        	int value = gs.gatheringApproveMembers(selectedMembers,giidx); 
+
+		        }
+				
+				// 성공 응답 반환
+				return "Success";
+			} catch (Exception e) {
+				// 실패 응답 반환
+				return "Error";
+			}
+		}
+		//모임 더 보기 가입 대기 거절
+		@RequestMapping(value="/processJoinRefuse.do")
+		@ResponseBody
+		public String processJoinRefuse(
+				@RequestBody HashMap<String, ArrayList<Integer>> requestMidx,
+				HttpServletRequest request
+				) {
+			try {
+				HttpSession session = request.getSession();
+			    Object Ogiidx = session.getAttribute("giidx");
+			    int giidx = (int)Ogiidx;
+				ArrayList<Integer> selectedMembers = requestMidx.get("selectedMembers");
+		        // 선택된 멤버의 가입 승인 처리
+		        if (selectedMembers != null && !selectedMembers.isEmpty()) {
+		        	System.out.println("배열로 들어옴"+selectedMembers);
+		        	int value = gs.gatheringRefuseMembers(selectedMembers,giidx); 
+
+		        }
+				
+				// 성공 응답 반환
+				return "Success";
+			} catch (Exception e) {
+				// 실패 응답 반환
+				return "Error";
+			}
 		}
 
 

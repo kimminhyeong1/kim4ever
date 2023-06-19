@@ -330,7 +330,30 @@ public class GatheringServiceImpl implements GatheringService {
 		ArrayList<GatheringJoinVo> gjvsmlist = gsm.gatheringSeeMoreMemberList(giidx);
 		return gjvsmlist;
 	}
-
+	@Override
+	//모임 멤버 승낙 하기
+	public int gatheringApproveMembers(ArrayList<Integer> selectedMembers,int giidx) {
+		int value = 0;
+		 for (int midx : selectedMembers) {
+	            // midx를 사용하여 매퍼로 전달하여 처리하는 로직을 구현
+			 System.out.println(midx);
+			 value = gsm.gatheringApproveMembers(giidx,midx);
+	         
+	        }
+		return value;
+	}
+	@Override
+	//모임 멤버 거절 하기
+	public int gatheringRefuseMembers(ArrayList<Integer> selectedMembers,int giidx) {
+		int value = 0;
+		 for (int midx : selectedMembers) {
+	            // midx를 사용하여 매퍼로 전달하여 처리하는 로직을 구현
+			 System.out.println(midx);
+			 value = gsm.gatheringRefuseMembers(giidx,midx); 
+	         
+	        }
+		return value;
+	}
 	@Override
 	//모임 더 보기 멤버 추방
 	public int updateMemberDELYN(int midx, int giidx) {		
@@ -564,6 +587,10 @@ public class GatheringServiceImpl implements GatheringService {
 		
 		return gPhotoList;
 	}
+
+
+
+
 
 
 

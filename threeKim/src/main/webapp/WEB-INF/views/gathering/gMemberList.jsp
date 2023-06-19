@@ -124,48 +124,46 @@ function fnDelete(midx, giidx) {
 				<div> 					
 					<div class="gMemberList">
 						<c:forEach var="smv" items="${gjvsmlist}">
-							<div>
-								<div class="gProfileimage">
-									<img src="../resources/MemberProfile/${smv.memberProfile}">	
-								</div>
+							<c:if test="${smv.gatheringApprovalType eq 'Y'}">
 								<div>
-									<div class="gmemberType">
-									<c:choose>
-										<c:when test="${smv.gatheringMemberType eq 'TL'}">  
-											<span style="color: red;">모임장</span>
-										</c:when>
-										<c:when test="${smv.gatheringMemberType eq 'TLD'}">  
-											부모임장
-										</c:when>
-										<c:otherwise> 
-											모임원
-										</c:otherwise>
-									</c:choose>									
+									<div class="gProfileimage">
+										<img src="../resources/MemberProfile/${smv.memberProfile}">	
 									</div>
-									<div class="gmemberName">${smv.memberName}</div>
-									<div class="gmemberInfo">${smv.memberIntro}</div>
-									<div class="gmemberAddr">${smv.memberAddr}</div>
-									<c:if test="${gmt.gatheringMemberType eq 'TL' || gmt.gatheringMemberType eq 'TLD'}">
+									<div>
+										<div class="gmemberType">
 										<c:choose>
-										    <c:when test="${smv.gatheringMemberType eq 'TL'}">
-										        <!-- 모임장인 경우 추방 불가 텍스트를 표시합니다. -->
-										        추방 불가
-										    </c:when>
-										    <c:when test="${smv.gatheringMemberType eq 'TLM'}">
-										        <!-- 부모임장인 경우 추방 버튼을 표시합니다. -->
-										        <button type="button" class="DeleteBtn" onclick="fnDelete(${smv.midx}, ${smv.giidx});">추방</button>
-										    </c:when>
-										    <c:when test="${smv.gatheringMemberType eq 'TM'}">
-										        <button type="button" class="DeleteBtn" onclick="fnDelete(${smv.midx}, ${smv.giidx});">추방</button>
-										    </c:when>
-										</c:choose>
-									</c:if>	
-
-
-
-
-								</div>													
-							</div>																		
+											<c:when test="${smv.gatheringMemberType eq 'TL'}">  
+												<span style="color: red;">모임장</span>
+											</c:when>
+											<c:when test="${smv.gatheringMemberType eq 'TLD'}">  
+												부모임장
+											</c:when>
+											<c:otherwise> 
+												모임원
+											</c:otherwise>
+										</c:choose>									
+										</div>
+										<div class="gmemberName">${smv.memberName}</div>
+										<div class="gmemberInfo">${smv.memberIntro}</div>
+										<div class="gmemberAddr">${smv.memberAddr}</div>
+										<c:if test="${gmt.gatheringMemberType eq 'TL' || gmt.gatheringMemberType eq 'TLD'}">
+											<c:choose>
+											    <c:when test="${smv.gatheringMemberType eq 'TL'}">
+											        <!-- 모임장인 경우 추방 불가 텍스트를 표시합니다. -->
+											        추방 불가
+											    </c:when>
+											    <c:when test="${smv.gatheringMemberType eq 'TLM'}">
+											        <!-- 부모임장인 경우 추방 버튼을 표시합니다. -->
+											        <button type="button" class="DeleteBtn" onclick="fnDelete(${smv.midx}, ${smv.giidx});">추방</button>
+											    </c:when>
+											    <c:when test="${smv.gatheringMemberType eq 'TM'}">
+											        <button type="button" class="DeleteBtn" onclick="fnDelete(${smv.midx}, ${smv.giidx});">추방</button>
+											    </c:when>
+											</c:choose>
+										</c:if>	
+									</div>													
+								</div>
+							</c:if>																		
 						</c:forEach>
 					</div>
 				</div>
