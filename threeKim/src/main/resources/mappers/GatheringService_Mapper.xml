@@ -46,7 +46,7 @@
     </select>
 	<!--  모임 나의 리스트 가져오기 -->
 	<select id="gatheringMyListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int"> 
-		SELECT a.GIIDX,a.GINFONAME,a.GINFOBRIEFINTRODUCTION,a.GINFOCAPACITY,a.GINFOPARTICIPATING,b.IMAGENAME, COALESCE(c.gwidx, 0) AS gwidx 
+		SELECT a.GIIDX,a.GINFONAME,a.GINFOBRIEFINTRODUCTION,a.GINFOCAPACITY,a.GINFOPARTICIPATING,b.IMAGENAME, COALESCE(c.gwidx, 0) AS gwidx, c.GATHERINGAPPROVALTYPE 
 		FROM GATHERING_INFO1234 a
 		JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
 		JOIN GATHERING1234 c ON c.GIIDX = a.GIIDX
@@ -129,7 +129,7 @@
 	</delete>
 	<!--  모임 나의 찜 리스트 가져오기 -->
 	<select id="gatheringMyWishListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int"> 
-		SELECT a.GIIDX,a.GINFONAME,a.GINFOBRIEFINTRODUCTION,a.GINFOCAPACITY,a.GINFOPARTICIPATING,b.IMAGENAME, COALESCE(c.gwidx, 0) AS gwidx 
+		SELECT a.GIIDX,a.GINFONAME,a.GINFOBRIEFINTRODUCTION,a.GINFOCAPACITY,a.GINFOPARTICIPATING,b.IMAGENAME, COALESCE(c.gwidx, 0) AS gwidx , c.GATHERINGAPPROVALTYPE 
 		FROM GATHERING_INFO1234 a
 		JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
 		JOIN GATHERING1234 c ON c.GIIDX = a.GIIDX
@@ -138,7 +138,7 @@
 	</select>	
 	<!-- 모임 검색기능 -->
 	<select id="searchGatherings" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="com.myezen.myapp.domain.SearchCriteria">
-	   	    SELECT a.GIIDX, a.GINFONAME, a.GINFOBRIEFINTRODUCTION, a.GINFOCAPACITY, a.GINFOPARTICIPATING, b.IMAGENAME,COALESCE(d.gwidx, 0) AS gwidx
+	   	SELECT a.GIIDX, a.GINFONAME, a.GINFOBRIEFINTRODUCTION, a.GINFOCAPACITY, a.GINFOPARTICIPATING, b.IMAGENAME,COALESCE(d.gwidx, 0) AS gwidx 
 	    FROM GATHERING_INFO1234 a
 	    JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
 	    JOIN GATHERING1234 c ON c.GIIDX = a.GIIDX

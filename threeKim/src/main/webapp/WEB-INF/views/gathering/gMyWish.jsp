@@ -40,8 +40,14 @@
 							<h3 class="cardTitle">${gjvmy.gInfoName}</h3>
 							<p class="cardInfo">${gjvmy.gInfoBriefIntroduction}</p>
 							<p class="attend">(참여멤버${gjvmy.gInfoParticipating}/${gjvmy.gInfoCapacity})</p>
-							<button class="gBtn" onclick="delayedRedirect('${pageContext.request.contextPath}/gathering/gContentCheck.do?giidx=${gjvmy.giidx}', 700)">들어가기</button><!-- 버튼딜레이 -->						
-							
+							<c:choose>
+								<c:when test="${gjvmy.gatheringApprovalType eq 'Y'}">
+									<button class="gBtn" onclick="delayedRedirect('${pageContext.request.contextPath}/gathering/gContentCheck.do?giidx=${gjvmy.giidx}', 700)">들어가기</button><!-- 버튼딜레이 -->						
+								</c:when>
+								<c:otherwise>
+									<button class="gBtn">승인대기중</button><!-- 버튼딜레이 -->						
+								</c:otherwise>
+							</c:choose>		
 						</div>
 					</c:forEach>
 				</c:if>
