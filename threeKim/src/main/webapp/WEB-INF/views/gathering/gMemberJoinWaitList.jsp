@@ -127,8 +127,10 @@ display: flex; justify-content: flex-end;}
 									</div>													
 								</div>																			
 							</c:when>
-							<c:otherwise>
+							<c:when test="${smv.gatheringApprovalType ne 'W' or 'Y'}">
 								<div>승인 대기중인 사용자가 없습니다.</div>
+							</c:when>
+							<c:otherwise>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
