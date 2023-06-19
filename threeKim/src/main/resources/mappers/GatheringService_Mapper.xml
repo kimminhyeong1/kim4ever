@@ -361,6 +361,23 @@
 		UPDATE GATHERING1234 SET GATHERINGMEMBERTYPE = 'TLD' WHERE giidx = #{1} and midx = #{0}
 		</update>
 
+	<!--  모임 더 보기 부모임장 > 모임원으로 위임 (강등) -->	
+		<update id="updateTM" parameterType="int"> 
+		UPDATE GATHERING1234 SET GATHERINGMEMBERTYPE = 'TM' WHERE giidx = #{1} and midx = #{0}
+		</update>
+	
+	<!--  모임 더 보기 모임장 >부모임장, 선택 된 부모임장 > 모임장으로 변경 -->
+	
+		<!-- 모임장 > 부모임장 -->	
+		<update id="updateDownTLD" parameterType="int"> 
+		UPDATE GATHERING1234 SET GATHERINGMEMBERTYPE = 'TLD' WHERE giidx = #{1} AND GATHERINGMEMBERTYPE = 'TL'
+		</update>
+
+		<!-- 부모임장 > 모임장 -->	
+		<update id="updateTL" parameterType="int"> 
+		UPDATE GATHERING1234 SET GATHERINGMEMBERTYPE = 'TL' WHERE giidx = #{1} AND midx = #{0}
+		</update>
+
 
 	<!--  모임 더보기 모임원 추방으로 변경 -->
 		<update id="updateMemberDELYN" parameterType="int">
