@@ -2,9 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@page import = "com.myezen.myapp.domain.*" %>
 <%@page import = "java.util.*" %>  
-<%
-ArrayList<GatheringJoinVo> gjlist = (ArrayList<GatheringJoinVo>)request.getAttribute("gjlist");
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -21,17 +20,22 @@ ArrayList<GatheringJoinVo> gjlist = (ArrayList<GatheringJoinVo>)request.getAttri
 
  <style type="text/css">
 		 	/*만들기 부분*/
-			#main section h3{display: inline-block;font-size: 18px;}
-			#main section p{display: inline-block; color: #f14242; padding-left: 10px;}
+			#main section h3{display: inline-block;font-size: 45px;}
+			#main section p{display: inline-block; color: #f14242; padding-left: 10px; }
 			#main section>div:nth-child(1){margin: 20px 0px 20px 100px;}
 			#main section>div:nth-child(2){text-align: center;}
 			#main section>div>div{margin: 20px 0px 20px 0px;}
 			#main section input {display: block;}
-			#main section textarea {display: block; width: 80%; height: 200px;font-size: 23px;}
 			#main section button{text-align: center;}  
 			#main section img{width: 100px;height: 100px;}   
 			#main section .radio{display: inline-block;width: 4%; margin-top: 10px; } 
 			#main section span{font-size: 20px;} 
+			#main section .gInfoName{font-size: 25px;}
+			#main section .gatheringMemberType{font-size: 25px;}	
+			#main section .gInfoCapacity{font-size: 25px;}
+			#main section .gInfoCreationDay{font-size: 25px;}
+			#main section .gInfoAreaIntroduction{font-size: 25px;}
+			#main section .ReportCount{font-size: 25px; color:red;}
 			
 			/*************************모바일****************************************/
 				/*****모바일 넓이***/
@@ -65,28 +69,33 @@ ArrayList<GatheringJoinVo> gjlist = (ArrayList<GatheringJoinVo>)request.getAttri
 					<div>	
 						<h3>모임 이름</h3>
 					</div>
-					<div class="gInfoName">${gInfoName}11</div>
+					<div class="gInfoName">${gtrdv.gInfoName}</div>
 				</div>
 				<div>
 					<div>
 						<h3>모임장</h3>
 					</div>
-					<div class="gatheringMemberType"></div>							
+					<div class="gatheringMemberType">${gtrdv.memberName}</div>							
 				</div>
 				<div>
-					<h3>모임 프로필 이미지</h3>
-					<div class="imageUpload"></div>				
+					<h3>모임 인원</h3>
+					<div class="gInfoCapacity">${gtrdv.gInfoCapacity}명</div>				
 				</div>
 				<div>
-					<h3>모임 정원</h3>
-					<div class="gatheringMemberType"></div>
-	
+					<h3>모임 생성일</h3>
+					<div class="gInfoCreationDay">${gtrdv.gInfoCreationDay.substring(0, 16)}</div>	
 				</div>
 				<div>
-					<h3>모임 간단 소개글</h3>
-					<input class="gInput" type="text" placeholder="맨 앞에 노출되는 간단 소개글입니다." name="gInfoBriefIntroduction">		
+					<h3>모임 소개글</h3>
+					<div class="gInfoAreaIntroduction">${gtrdv.gInfoAreaIntroduction}</div>	
 				</div>
-				
+				 <div>
+	                <h3>모임 신고 접수</h3>
+	                <div class="ReportCount">
+						${gtrdv.REPORTCNT}번
+	                </div>
+	            </div>
+	        </div>
 			<div>
 				<button class="gBtn2">돌아가기</button>				 
 			</div>

@@ -56,7 +56,9 @@ public interface AdminService {
 	//회원 상세정보
 		public BikeJoinVo getMemberByMemberId(String memberId);
 	//모임 리스트
-		public ArrayList<GatheringJoinVo> gatheringList();	
+		public ArrayList<GatheringJoinVo> gatheringList();
+	//모임 리스트 상세 보기
+		public GatheringJoinVo gatheringDetail(int giidx);
 	//모임 신고 내역 리스트
 		public ArrayList<GatheringJoinVo> gatheringDeclaration();
 	//모임 신고 내역 상세 보기	

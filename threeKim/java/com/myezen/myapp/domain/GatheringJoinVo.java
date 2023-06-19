@@ -138,6 +138,8 @@ public class GatheringJoinVo {//모임조인
 	private String gatheringDeclarationDay; //신고 날짜
 	private String reporterName; // 신고자
 	private String TL; // 모임장
+	private int REPORTCNT; // 신고횟수 //가상컬럼
+
 	
 	public String getReporterName() {
 		return reporterName;
@@ -772,7 +774,21 @@ public class GatheringJoinVo {//모임조인
 	public void setGlidx(int glidx) {
 		this.glidx = glidx;
 	}
+
+	public int getREPORTCNT() {
+		return REPORTCNT;
+	}
+
+	public void setREPORTCNT(int rEPORTCNT) {
+		REPORTCNT = rEPORTCNT;
+	}
+
+
+
 	
+
+	
+
 	
 	
 	

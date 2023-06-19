@@ -44,14 +44,14 @@
 		<%@include file="../header2.jsp" %>
 		<%@include file="header3.jsp" %>
 		<main id="main">
-		<form action="${pageContext.request.contextPath}/gathering/gPhotoAlbumModifyAction.do" method="POST" enctype="multipart/form-data">
+			<form action="${pageContext.request.contextPath}/gathering/gPhotoAlbumModifyAction.do?gpaidx=${gjv.gpaidx}" method="POST" enctype="multipart/form-data">
 			<section class="gContainer">
 				<div class="gContent" >
 				
 					<table>	
 						<tr>
 							<th>제목</th>
-							<td><input style="font-size:26px;"type="text" id="gPhotoAlbumTitle" name="gPhotoAlbumTitle" value="${gjv.gPhotoAlbumTitle }" ></td>
+							<td><input style="font-size:26px;"type="text" id="gPhotoAlbumTitle" name="gPhotoAlbumTitle" value="${gjv.gPhotoAlbumTitle }"></td>
 						</tr>
 							
 						<tr>
@@ -70,17 +70,16 @@
 						
 						<tr>
 							<th>내용</th>
-							<td><textarea id="gPhotoAlbumContents" name="gPhotoAlbumContents" cols="97" rows="43" style="font-size: 26px;">${gjv.gPhotoAlbumContents }</textarea></td>
+							<td><textarea id="gPhotoAlbumContents" name="gPhotoAlbumContents" cols="97" rows="43" style="font-size: 26px;">${gjv.gPhotoAlbumContents}</textarea></td>
 						</tr>
 					
 					</table>
-					
+				
 				</div>
 				<div id="createBtn">
 					<button type="submit" class="gBtn2">작성하기</button>
 					<button class="gBtn2">취소하기</button>
 				</div>
-				
 			</section>
 			</form>
 		</main>
