@@ -2,6 +2,7 @@ package com.myezen.myapp.util;
 
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 
 import javax.activation.DataSource;
 import javax.mail.MessagingException;
@@ -38,7 +39,7 @@ public class MailHandler {//메일 전송 라이브러리의 setter이다. 아�
     public void addInline(String contentId, DataSource dataSource) throws MessagingException {
         messageHelper.addInline(contentId, dataSource);
     }
-
+    @Async
     public void send() {//보내기
         mailSender.send(message);
     }

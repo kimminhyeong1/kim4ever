@@ -63,11 +63,15 @@
 			.gBoardSettingBtn ul{background: #d5d5d5;border-radius: 5px;width: 110px;padding: 20px;}
 			.gBoardSettingBtn li{margin: 5px; border-bottom: 1px solid #bbb; cursor: pointer;}
 			/*댓글 쓰는 부분*/
+			.gBoardCommentWrite{position: relative;}
 			.gBoardCommentWrite textarea{resize: none;padding: 20px;font-size: 18px; width: 580px; height: 40px;}
-			.modifycommentForm{text-align: center;width: 1120px;}
+			.modifycommentForm{position: relative; text-align: center;width: 1120px;}
 			.modifycommentForm textarea{resize: none;padding: 20px;font-size: 18px; width: 580px; height: 40px;margin-right: 5px;}
-			.ReplyCommentForm{text-align: center;width: 1120px;}
+			.ReplyCommentForm{position: relative; text-align: center;width: 1120px;}
 			.ReplyCommentForm textarea{resize: none;padding: 20px;font-size: 18px; width: 580px; height: 40px;margin-right: 5px;}
+			#characterCount{position: absolute;top: 60px;right: 390px;} /*댓글카운터*/
+			#replyCharacterCount{position: absolute;top: 60px;right: 320px;}
+			.modifycommentForm span{position: absolute;top: 60px;right: 320px;}
 			/*답장부분*/
 			.reply_ba{display: inline-block;vertical-align: top;}
 			.reply_ba img{width: 40px;}
@@ -324,11 +328,12 @@
 		                    gCommentContentsTextarea.rows = '5';
 		                    gCommentContentsTextarea.cols = '100';
 		                    gCommentContentsTextarea.name = 'gCommentContents';
+		                    gCommentContentsTextarea.maxLength = '200';
 		                    gCommentContentsTextarea.textContent = data.gCommentContents;
 
 		                 	// 글자 수를 표시할 요소 생성
 		                    var characterCount = document.createElement('span');
-		                    characterCount.textContent = gCommentContentsTextarea.value.length + '/100';
+		                    characterCount.textContent = gCommentContentsTextarea.value.length + '/200';
 		                    
 		                    var modifyBtn = document.createElement('button');
 		                    modifyBtn.classList.add('modifyBtn');
@@ -349,7 +354,7 @@
 		                     // 입력 내용이 변경될 때마다 글자 수 업데이트
 		                        gCommentContentsTextarea.addEventListener('input', function() {
 		                            var inputLength = gCommentContentsTextarea.value.length;
-		                            characterCount.textContent = inputLength + '/100';
+		                            characterCount.textContent = inputLength + '/200';
 		                        });    
 		                        
 
@@ -427,7 +432,7 @@
 		                    gCommentContentsTextarea.rows = '5';
 		                    gCommentContentsTextarea.cols = '100';
 		                    gCommentContentsTextarea.name = 'gCommentContents';
-		                    gCommentContentsTextarea.maxLength = '100';
+		                    gCommentContentsTextarea.maxLength = '200';
 		                    gCommentContentsTextarea.textContent = '';
 		                    gCommentContentsTextarea.addEventListener('input', function() {
 		                        updateReplyCharacterCount(gCommentContentsTextarea);
@@ -435,7 +440,7 @@
 		                   
 		                    var characterCount = document.createElement('span');
 		                    characterCount.id = 'replyCharacterCount';
-		                    characterCount.textContent = '0/100';
+		                    characterCount.textContent = '0/200';
 		                    
 		                    var replyCommentBtn = document.createElement('button');
 		                    replyCommentBtn.classList.add('replyCommentBtn');
@@ -473,7 +478,7 @@
 		    	//답글 글자 수 세기
 		    	  var characterCount = textarea.nextElementSibling;
 		    	  var currentLength = textarea.value.length;
-		    	  var maxLength = 100;
+		    	  var maxLength = 200;
 
 		    	  characterCount.textContent = currentLength + "/" + maxLength;
 
