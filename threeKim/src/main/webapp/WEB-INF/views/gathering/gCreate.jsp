@@ -49,7 +49,7 @@
 	<body>
 	<%@include file="../header2.jsp" %>
 	<main id="main">
-		<form method="post" action="${pageContext.request.contextPath}/gathering/gCreateAction.do" enctype="multipart/form-data">
+		<form method="post" action="${pageContext.request.contextPath}/gathering/gCreateAction.do" enctype="multipart/form-data" onsubmit="return validateForm();">
 		<section class="gContainer gSetContainer">
 			<div>
 				<div> 
@@ -65,7 +65,8 @@
 						<h3>모임 지역</h3>
 						<p>필수</p>
 					</div>
-					<input class="gInput" type="text" placeholder="내용을 입력해주세요" name="gInfoArea">										
+					<input class="gInput" type="text" placeholder="내용을 입력해주세요" name="gInfoArea">
+					<p id="areaMsg" class="ability_chk" style="display:none;">입력.</p>										
 				</div>
 				<div>
 					<h3>모임 프로필 이미지</h3>
@@ -143,7 +144,7 @@
 					oMsg.style.padding = "15px 0px 0px 5px";
 					oMsg.style.textAlign = "left"; 
 					oMsg.className = "ability_chk";
-					oMsg.innerHTML = "필수 정보입니다.";
+					oMsg.innerHTML = "모임 이름을 입력해주세요.";
 					return false;
 				}
 				
@@ -265,5 +266,26 @@
 
 
 	</script>
+	
+	<script>
+    function validateForm() {
+        var gInfoName = document.getElementById("gInfoName").value;
+        var gInfoArea = document.getElementsByName("gInfoArea")[0].value;
+
+        if (gInfoName === "") {
+            alert("모임 이름을 입력해주세요.");
+            return false; // 양식 제출을 중지합니다.
+        }
+
+        if (gInfoArea === "") {
+            alert("모임 지역을 입력해주세요.");
+            return false; // 양식 제출을 중지합니다.
+        }
+
+        return true; // 양식을 제출합니다.
+    }
+</script>
+	
+	
 	</body>
 </html>
