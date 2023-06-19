@@ -193,6 +193,8 @@ public class GatheringController {
 	    	ArrayList<Gathering_BoardVO> gbvlist = gs.gatheringNoticeListSelect(giidx);
 	    	md.addAttribute("gbvlist", gbvlist);
 	    	
+		}else {
+			return "redirect:/gathering/gList.do";
 		}
 
 		return "gathering/gContent";

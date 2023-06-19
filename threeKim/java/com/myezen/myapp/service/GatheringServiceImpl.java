@@ -152,21 +152,22 @@ public class GatheringServiceImpl implements GatheringService {
 	//모임 가입하기
 	public int gatheringJoin(int giidx, int midx) {
 		
-		int value = 0;
-		
 		//모임 가입타입 확인하기
 		Gathering_InfoVo giv = gsm.gatheringJoinTypeCheck(giidx);
 		String joinType = giv.getgInfoJoinType();
 		if (joinType.equals("자유가입")) {
-			value=gsm.gatheringJoinTypeAInsert(giidx,midx);
+			int type1=gsm.gatheringJoinTypeAInsert(giidx,midx);
+			gsm.gatheringParticipatingUpdate(giidx);
+			return type1;
 			
 		}
 		if (joinType.equals("승인가입")) {
-			value=gsm.gatheringJoinTypeBInsert(giidx,midx);
-			
+			int type2=gsm.gatheringJoinTypeBInsert(giidx,midx);
+			if (type2 == 1) {
+				return type2;
+			}
 		}
-			value=gsm.gatheringParticipatingUpdate(giidx);
-		return value;
+		return 0;
 	}
 
 
