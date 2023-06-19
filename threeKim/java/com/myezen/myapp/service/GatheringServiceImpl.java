@@ -319,7 +319,7 @@ public class GatheringServiceImpl implements GatheringService {
 	}
 
 	@Override
-	//모임 더 보기 부모임장(TLD)로 변경
+	//모임 더 보기 모임원 > 부모임장으로 변경
 	public int updateTLD(int midx, int giidx) {
 		System.out.println("서비스 권한주기");
 		int value= gsm.updateTLD(midx, giidx);
@@ -327,7 +327,33 @@ public class GatheringServiceImpl implements GatheringService {
 		return value;
 	}
 	
+	@Override
+	//모임 더 보기 부모임장 > 모임원으로 변경
+	public int updateTM(int midx, int giidx) {
+		System.out.println("부모임장 > 모임원 테스트");
+		int value = gsm.updateTM(midx, giidx);
+		
+		return value;
+	}
+	
+	//모임 더 보기 모임장 > 부모임장으로 강등
+	@Override
+	public int updateDownTLD(int midx, int giidx) {
+		System.out.println("모임장 > 부모임장 테스트");
+		int value= gsm.updateDownTLD(midx, giidx);
+		return value;
+	}
 
+	//모임 더 보기 부모임장 > 모임장으로 위임
+	@Override
+	public int updateTL(int midx, int giidx) {
+		System.out.println("부모임장 > 모임장 테스트");
+		int value= gsm.updateTL(midx, giidx);
+		return value;
+	}
+
+	
+	
 	@Override
 	//모임 총게시글 가져오기
 	public int gatheringBoardTotal(int giidx, SearchCriteria scri) {
@@ -424,6 +450,19 @@ public class GatheringServiceImpl implements GatheringService {
 		ArrayList<GatheringJoinVo> gjvblist = gsm.gatheringBoardCommentListSelect(hm);
 		return gjvblist;
 	}
+	@Override
+	@Transactional
+	//모임 게시글 좋아요
+	public int gatheringBoardLike(Gathering_BoardVO gbv) {
+		
+		int value1 = gsm.gatheringBoardLikeCheck(gbv);
+		if (value1 == 0) { 
+			int value2 = gsm.gatheringBoardLikeInsert(gbv);
+			int value3 = gsm.gatheringBoardLike(gbv);	
+			
+		}
+		return value1;
+	}
 
 
 	//신고하기 수정중..
@@ -507,7 +546,10 @@ public class GatheringServiceImpl implements GatheringService {
 
 
 
-	
+
+
+
+
 
 
 

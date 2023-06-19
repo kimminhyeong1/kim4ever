@@ -132,6 +132,13 @@ public interface GatheringService_Mapper {
 	public int gatheringBoardCommentTotal(HashMap<String, Object> hm);
 	//4. 댓글 리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringBoardCommentListSelect(HashMap<String, Object> hm);
+	//댓글 좋아요
+	//좋아요 확인 midx
+	public int gatheringBoardLikeCheck(Gathering_BoardVO gbv);
+	//좋아요 테이블에 넣기
+	public int gatheringBoardLikeInsert(Gathering_BoardVO gbv);
+	//좋아요 업데이트
+	public int gatheringBoardLike(Gathering_BoardVO gbv);
 	
 	
 	
@@ -146,9 +153,15 @@ public interface GatheringService_Mapper {
 	public ArrayList<GatheringJoinVo> gatheringSeeMoreMemberList(int giidx);
 	//모임 더보기 멤버 추방
 	public int updateMemberDELYN(int midx,int giidx);
-	//모임 더보기 부모임장으로 위임
+	//모임 더보기 모임원 > 부모임장으로 위임
 	public int updateTLD(int midx,int giidx);
-
+	//모임 더보기 부모임장 > 모임원으로 강등
+	public int updateTM(int midx,int giidx);
+	//모임 더보기 모임장 > 부모임장으로 강등
+	public int updateDownTLD(int midx,int giidx);
+	//모임 더보기 부모임장 > 모임장으로 위임
+	public int updateTL(int midx,int giidx);
+	
 	
 	//모임사진첩작성
 	public int gatheringPhotoAlbumWrite(GatheringJoinVo gjv);

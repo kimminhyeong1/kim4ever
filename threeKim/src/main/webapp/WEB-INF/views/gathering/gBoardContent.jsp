@@ -7,7 +7,9 @@
 		<title>모임 메인화면</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">  
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">
+		<link rel="stylesheet" media="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_gathering_mo.css">		
+ 
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1">		
 		<style type="text/css">
@@ -63,11 +65,15 @@
 			.gBoardSettingBtn ul{background: #d5d5d5;border-radius: 5px;width: 110px;padding: 20px;}
 			.gBoardSettingBtn li{margin: 5px; border-bottom: 1px solid #bbb; cursor: pointer;}
 			/*댓글 쓰는 부분*/
+			.gBoardCommentWrite{position: relative;}
 			.gBoardCommentWrite textarea{resize: none;padding: 20px;font-size: 18px; width: 580px; height: 40px;}
-			.modifycommentForm{text-align: center;width: 1120px;}
+			.modifycommentForm{position: relative; text-align: center;width: 1120px;}
 			.modifycommentForm textarea{resize: none;padding: 20px;font-size: 18px; width: 580px; height: 40px;margin-right: 5px;}
-			.ReplyCommentForm{text-align: center;width: 1120px;}
+			.ReplyCommentForm{position: relative; text-align: center;width: 1120px;}
 			.ReplyCommentForm textarea{resize: none;padding: 20px;font-size: 18px; width: 580px; height: 40px;margin-right: 5px;}
+			#characterCount{position: absolute;top: 60px;right: 390px;} /*댓글카운터*/
+			#replyCharacterCount{position: absolute;top: 60px;right: 320px;}
+			.modifycommentForm span{position: absolute;top: 60px;right: 320px;}
 			/*답장부분*/
 			.reply_ba{display: inline-block;vertical-align: top;}
 			.reply_ba img{width: 40px;}
@@ -126,17 +132,17 @@
 						<div>${gjv.gBoardContents}</div>
 					</div>
 					<div class="gBoardLike">
-						<img alt="좋아요" src="${pageContext.request.contextPath}/resources/icon/like.png" style="width: 50px;">
+						 <img alt="좋아요" src="${pageContext.request.contextPath}/resources/icon/like.png" style="width: 50px;">
 						 <div>${gjv.gBoardLikeCNT}</div>
 					</div>
 					<div class="gBoardCommentWrite">
-  <form id="commentForm">
-    <input id="gbidx" type="hidden" name="gbidx" value="${gbidx}">
-    <textarea id="gCommentContents" rows="5" cols="100" maxlength="200" name="gCommentContents" oninput="updateCharacterCount()"></textarea>
-    <span id="characterCount">0/200</span>
-    <button class="writeBtn">댓글달기</button>
-  </form>
-</div>
+					  <form id="commentForm">
+					    <input id="gbidx" type="hidden" name="gbidx" value="${gbidx}">
+					    <textarea id="gCommentContents" rows="5" cols="100" maxlength="200" name="gCommentContents" oninput="updateCharacterCount()"></textarea>
+					    <span id="characterCount">0/200</span>
+					    <button class="writeBtn">댓글달기</button>
+					  </form>
+					</div>
 					<div class="gBoardCommentTitle">댓글(${commentTotal})</div>
 			    	<c:forEach var="gjvc" items="${gjvclist}">
 						<div class="gBoardMember">
@@ -185,7 +191,7 @@
 							    	</c:if>
 								</div>
 							</div>
-								<div class="under_ba"></div>
+							<div class="under_ba"></div>
 						</div>
 					</c:forEach>	
 					<div class="gPaging">
@@ -324,11 +330,12 @@
 		                    gCommentContentsTextarea.rows = '5';
 		                    gCommentContentsTextarea.cols = '100';
 		                    gCommentContentsTextarea.name = 'gCommentContents';
+		                    gCommentContentsTextarea.maxLength = '200';
 		                    gCommentContentsTextarea.textContent = data.gCommentContents;
 
 		                 	// 글자 수를 표시할 요소 생성
 		                    var characterCount = document.createElement('span');
-		                    characterCount.textContent = gCommentContentsTextarea.value.length + '/100';
+		                    characterCount.textContent = gCommentContentsTextarea.value.length + '/200';
 		                    
 		                    var modifyBtn = document.createElement('button');
 		                    modifyBtn.classList.add('modifyBtn');
@@ -349,7 +356,7 @@
 		                     // 입력 내용이 변경될 때마다 글자 수 업데이트
 		                        gCommentContentsTextarea.addEventListener('input', function() {
 		                            var inputLength = gCommentContentsTextarea.value.length;
-		                            characterCount.textContent = inputLength + '/100';
+		                            characterCount.textContent = inputLength + '/200';
 		                        });    
 		                        
 
@@ -427,7 +434,7 @@
 		                    gCommentContentsTextarea.rows = '5';
 		                    gCommentContentsTextarea.cols = '100';
 		                    gCommentContentsTextarea.name = 'gCommentContents';
-		                    gCommentContentsTextarea.maxLength = '100';
+		                    gCommentContentsTextarea.maxLength = '200';
 		                    gCommentContentsTextarea.textContent = '';
 		                    gCommentContentsTextarea.addEventListener('input', function() {
 		                        updateReplyCharacterCount(gCommentContentsTextarea);
@@ -435,7 +442,7 @@
 		                   
 		                    var characterCount = document.createElement('span');
 		                    characterCount.id = 'replyCharacterCount';
-		                    characterCount.textContent = '0/100';
+		                    characterCount.textContent = '0/200';
 		                    
 		                    var replyCommentBtn = document.createElement('button');
 		                    replyCommentBtn.classList.add('replyCommentBtn');
@@ -473,7 +480,7 @@
 		    	//답글 글자 수 세기
 		    	  var characterCount = textarea.nextElementSibling;
 		    	  var currentLength = textarea.value.length;
-		    	  var maxLength = 100;
+		    	  var maxLength = 200;
 
 		    	  characterCount.textContent = currentLength + "/" + maxLength;
 
@@ -524,6 +531,28 @@
 		
 			        submitReplyComment(gbidx, gcidx, gCommentContents);
 			    });
+			    //좋아요
+			    $(".gBoardLike").on("click", function() {
+			    	// 현재 스크롤 위치 저장
+			        var scrollPosition = $(window).scrollTop();
+			        // Ajax
+			        $.ajax({
+			          url: "${pageContext.request.contextPath}/gathering/gBoardLike.do",
+			          data: { gbidx: '${gbidx}'}, 
+			          method: "POST", 
+			          success: function(data) {
+			        	  if (data.value == 0) {
+				    	        alert("좋아요 성공했습니다.");
+				    	        location.reload(); // 댓글 새로고침
+				    	      } else {
+				    	        alert("좋아요  실패했습니다.");
+				    	      }
+			          },
+			          error: function(xhr, status, error) {
+			        	  console.error("좋아요 오류 발생: " + error);
+			          }
+			        });
+			      });
 
 		</script>
 		

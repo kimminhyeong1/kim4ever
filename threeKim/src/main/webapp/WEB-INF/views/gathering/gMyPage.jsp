@@ -15,15 +15,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">		
 		 <style type="text/css">
 		 	/*틀부분*/
-		 	.gContainer{width: 1250px;text-align: center;border: 1px solid #bbb;margin: 40px auto;padding: 20px;background-color: #f1f1f1;border-radius: 10px;}
 			#myImg{width: 100px;height: 100px;}
 			
 			/**************************모바일****************************************/
 
 			/*****모바일 넓이***/
 			@media (min-width: 300px) and (max-width: 940px)  {
-			.gContainer{width: 100%; text-align: center;border:none;  margin: 10px auto;padding: 0px;background-color: #f1f1f1;border-radius: 10px;}
 			#myImg{width: 100px;height: 100px;}
+			 footer{margin-top: 0px !important;}
+			
 			}
 		 </style>
 	</head>

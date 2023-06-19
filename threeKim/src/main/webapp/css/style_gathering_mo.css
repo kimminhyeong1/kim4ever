@@ -32,7 +32,7 @@ header{width:auto; margin:0 auto; text-align:center;}
 /*공통 부분*/
 /*틀부분*/
     /*박스전체틀*/
-    .gContainer{width:auto; margin:0 auto; text-align:center; border:none;}
+    .gContainer{width:auto; margin:0 auto; text-align:center; border:none;  background-color: #fafafa;  min-height:610px;}
     /*박스작은틀*/
     .gContent{width:auto; display:flex; flex-wrap:wrap;justify-content:center; align-items:center;}
     /*박스제목*/
@@ -64,17 +64,17 @@ header{width:auto; margin:0 auto; text-align:center;}
     .attend{white-space: nowrap;  width:auto; margin-bottom:5px;   position: absolute; left: 50%; transform: translateX(-50%); font-size:13px; padding-bottom:5px; }
      .cardJoinMem{white-space: nowrap;  text-align: center; margin-right:: 10px;}
     /*수정하거나 설정부분에 틀*/
-    .gSetContainer{text-align:left; border:none; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);margin: 0 auto;width: 100%;padding: 2px;background-color: #f1f1f1;border-radius: 10px;}
+    .gSetContainer{text-align:left; border:none; margin: 0 auto;width: 100%;padding: 2px;background-color: #fafafa;}
 /*메뉴부분*/
 	#gMenu{width: auto;text-align: center;margin: 0px auto 0px;}
 	#gMenu #menu{height:0px;}
 	#gMenu #menu p{margin: 0px 40px; }
 /*버튼부분*/
     /*모임기본버튼양식*/
-    .gBtn{position: absolute;  left: 18px; width:80%; height:25px; margin-top:0px;text-align:center; font-family:'omyu_pretty'; font-size:15px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;  bottom : 8px;  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); z-index:100;}
+    .gBtn{position: absolute;  left: 18px; width:80%; height:25px; margin-top:0px;text-align:center; font-family:'omyu_pretty'; font-size:15px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;  bottom : 8px;   z-index:100;}
     .gBtn:active{background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 	/*모임 더보기버튼양식*/
-	.gBtn2{width:18%; height:30px; margin-top:12px; margin-bottom:3px; text-align:center; font-family:'omyu_pretty'; font-size:18px; border-radius:10px; border:0px solid #99CC99; background:#99CC99; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);}
+	.gBtn2{width:18%; height:30px; margin-top:12px; margin-bottom:20px; text-align:center; font-family:'omyu_pretty'; font-size:18px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}
 	.gBtn2:active{background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 /*인풋부분*/
 	.gInput{font-family: 'omyu_pretty';font-size: 18px;box-sizing: border-box;width: 70%;padding: 5px;margin: 2px 0;border: 1px solid #ccc;border-radius: 4px;}	
@@ -82,6 +82,7 @@ header{width:auto; margin:0 auto; text-align:center;}
 	/*보기부분에 인풋박스처럼 박스부분*/
 	.boxContent{background: #fff;font-family: 'omyu_pretty';font-size: 24px;box-sizing: border-box;width: 40%;padding: 10px;margin: 2px 0;border: 1px solid #ccc;border-radius: 4px;}	 
 	
+	 footer{margin-top: 0px !important;}
 	
 	
 	
@@ -172,6 +173,7 @@ header{width:auto; margin:0 auto; text-align:center;}
     background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
     background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
   }
+
 
 	
 }

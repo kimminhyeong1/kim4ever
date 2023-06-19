@@ -8,7 +8,8 @@
 		<title>모임 소개</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css"> 
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">
+		<link rel="stylesheet" media="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_gathering_mo.css">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">  
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,6 +49,49 @@
 			.slider-1 >.side-btns > div > span {position:absolute;top:50%;left:20px;transform:translatey(-10%);
 			opacity:1;padding:5px; border-radius:50px;font-size:50px;}
 			.slider-1 >.side-btns > div:last-child > span {left:auto;right:20px; }
+			
+			
+			
+				/*************************모바일****************************************/
+				/*****모바일 넓이***/
+				@media (min-width: 300px) and (max-width: 940px)  {
+		#main{width:auto; margin:35px auto 70px; text-align:center;}
+			#main #content{width:auto; height:auto;}
+			#main #bottom{width:auto; height:auto; }
+
+			#main #content h2{text-align: center; margin-top:20px;}
+			#content #gather{width:90%; height:auto; border-collapse:collapse; border:1px solid #ddd; margin: 10px auto 0; text-align:center;  line-height:100px;}
+			#content #gather label{font-family:'omyu_pretty'; font-size:20px; margin-left:10px;}
+			#content #gather input{box-sizing: border-box; width:100%;padding:20px; border:1px solid #ccc; border-radius:4px;}
+			#content button{width:20%; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}
+			#content button:active {background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+			#content img{width:80%; height:50%;}
+			#content #gatherCon p{font-family:'omyu_pretty'; font-size:27px;}
+			#content #gatherCon{width:90%; height:400px; border-collapse:collapse; border:1px solid #ddd; margin:10px auto 0; text-align:center;  line-height:100px;}
+			/*모임슬라이더부분*/
+			#gather{vertical-align: top;margin-left:42px; display: inline-block; width: 800px; height: 500px; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;}
+			#gatherCon{vertical-align: top;margin-left:42px; display: inline-block; width: 800px; height: 500px; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;}
+			/* 슬라이더 1 시작 */
+		/* 슬라이더 1 시작 */
+		.slider-1 {height:30vh; width:100%; position:relative; float:left;}
+		/* 슬라이더 1 - 페이지 버튼 */
+		.slider-1 > .page-btns {text-align:center; position:absolute; bottom:10px; left:0; width:100%;}
+		
+		.slider-1 > .page-btns > div {width:10px; height:3px; background-color:rgb(255,255,255); border-radius:4px;   
+		 display:inline-block; cursor:pointer; border: none; top:1}
+		.slider-1 > .page-btns > div.active {background-color:rgb(255, 160, 0); border: none;}
+		/* 1 - 슬라이드 */
+		.slider-1 > .slides > div {position:absolute; top:0; left:0; right:0; bottom:0; opacity:0; transition:opacity 1.5s;
+		background-position:center; background-size:cover; background-repeat:no-repeat; border-radius:20px;  }
+		.slider-1 > .slides > div.active {opacity:1;}
+		/*  좌우 버튼 */
+		.slider-1 > .side-btns > div {position:absolute; top:0; left:0; width:25%;
+		height:100%; cursor:pointer; color:white;}
+		.slider-1 > .side-btns > div:last-child {left:auto; right:0;}
+		.slider-1 >.side-btns > div > span {position:absolute;top:30%;left:20px;transform:translatey(-10%);
+		opacity:1;padding:5px; border-radius:50px;font-size:20px;}
+		.slider-1 >.side-btns > div:last-child > span {left:auto;right:30px; }
+				}
 		</style>
 	</head>
 	<body>

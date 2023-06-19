@@ -120,6 +120,8 @@ public interface GatheringService {
 	public int gatheringBoardCommentTotal(int gbidx,SearchCriteria scri);
 	//4. 댓글 리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringBoardCommentListSelect(int gbidx,SearchCriteria scri);
+	//댓글 좋아요 누르기
+	public int gatheringBoardLike(Gathering_BoardVO gbv);
 	
 
 
@@ -135,6 +137,12 @@ public interface GatheringService {
 
 	//모임 더보기 부모임장으로 위임
 	public int updateTLD(int midx,int giidx);
+	//모임 더보기 부모임장 > 모임원으로 강등
+	public int updateTM(int midx,int giidx);
+	//모임 더보기 모임장 > 부모임장으로 강등
+	public int updateDownTLD(int midx,int giidx);
+	//모임 더보기 부모임장 > 모임장으로 위임
+	public int updateTL(int midx,int giidx);
 
 	//모임사진첩작성
 	public int gatheringPhotoAlbumWrite(GatheringJoinVo gjv,MultipartFile GTImg, ArrayList<MultipartFile> GImg)throws IOException, Exception;
