@@ -62,35 +62,33 @@ public class GatheringServiceImpl implements GatheringService {
 	@Override
 	@Transactional
 	//모임생성하기
-	public int gatheringCreate(GatheringJoinVo gjv, MultipartFile GATImg, ArrayList<MultipartFile> GAImg) throws IOException, Exception {
+    public int gatheringCreate(GatheringJoinVo gjv, MultipartFile GTImg, ArrayList<MultipartFile> GImg) throws IOException, Exception {
 		
 		int value=0;
 		
 		//배포했을때
         //String savedGTImgPath = request.getSession().getServletContext().getRealPath("/resources/GTImages");
 		//String savedGImgPath = request.getSession().getServletContext().getRealPath("/resources/GImages");
-		String savedGATImgPath = "D://threekim//threeKim//src//main//webapp//resources/GATImages";//모임대표이미지
-		String savedGAImgPath = "D://threekim//threeKim//src//main//webapp//resources/GAImages";//모임이미지
-		
+        String savedGTImgPath = "D://threekim//threeKim//src//main//webapp//resources/GTImages";//모임대표이미지
+        String savedGImgPath = "D://threekim//threeKim//src//main//webapp//resources/GImages";//모임이미지
 		//모임 대표 이미지 
-		String uploadedGATImgName  = UploadFileUtiles.uploadFile(savedGATImgPath, GATImg.getOriginalFilename(), GATImg.getBytes());
-		gjv.setImageName(uploadedGATImgName);
+        String uploadedGTImgName  = UploadFileUtiles.uploadFile(savedGTImgPath, GTImg.getOriginalFilename(), GTImg.getBytes());
+        gjv.setImageName(uploadedGTImgName);
 
 			/*모임생성*/
 			//1.모임정보생성
 	        value = gsm.gatheringInfoCreate(gjv);
-	        System.out.println("impl gapidx는?"+gjv.getGpaidx());
 	        //2.모임생성
 	        value = gsm.gatheringCreate(gjv);
 	        //3.모임 대표이미지 넣기
 	        value = gsm.gatheringGTInsert(gjv);
 	        //4. 모임 이미지들 넣기
-	        for (MultipartFile file : GAImg) {
+            for (MultipartFile file : GImg) {
 	        	if (file.isEmpty()) {
 		            System.out.println(file);
 		        } else {
-		        	String uploadedGAImgName = UploadFileUtiles.uploadFile(savedGAImgPath, file.getOriginalFilename(), file.getBytes());
-		        	gjv.setImageName(uploadedGAImgName);
+	                String uploadedGImgName = UploadFileUtiles.uploadFile(savedGImgPath, file.getOriginalFilename(), file.getBytes());
+	                gjv.setImageName(uploadedGImgName); 
 		        	value = gsm.gatheringGInsert(gjv);
 		        }
 	        }
