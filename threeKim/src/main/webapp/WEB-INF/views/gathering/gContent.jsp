@@ -184,7 +184,11 @@
 				</div>
 			</div>
 			<div id="gMembers">
-				<div>모임 멤버(${gjvlist[0].gInfoParticipating}명/${gjvlist[0].gInfoCapacity}명)<span> 5+[승인대기]</span></div>
+				<div>모임 멤버(${gjvlist[0].gInfoParticipating}명/${gjvlist[0].gInfoCapacity}명)
+					<c:if test="${WaitCNT ne '0'}">
+						<span> ${WaitCNT}+[승인대기]</span>
+					</c:if>
+				</div>				
 				<div>
 					<c:forEach var="gjvm" items="${gjvmlist}">
 					    <div><img alt="" src="../resources/MemberProfile/${gjvm.memberProfile}"></div>
@@ -197,7 +201,9 @@
 			<div id="gSchedule">
 				<div>모임 일정</div>
 				<div id='calendar'></div>
-				<div><button class="gBtn2" onclick="location.href='${pageContext.request.contextPath}/gathering/gScheduleMake.do'">일정 만들기</button></div>
+				<c:if test="${MGatheringMemberType eq 'TL' or MGatheringMemberType eq 'TLD' }">
+					<div><button class="gBtn2" onclick="location.href='${pageContext.request.contextPath}/gathering/gScheduleMake.do'">일정 만들기</button></div>				
+				</c:if>
 			</div>
 			<div id="gNotice">
 				<c:forEach var="gbv" items="${gbvlist}">

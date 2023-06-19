@@ -52,6 +52,8 @@ public interface GatheringService {
 	public int gatheringMemberCheck(int giidx, int midx);
 	//모임상세리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringOneListSelect(int giidx);
+	//승인대기중인사람 가져오기 
+	public String gatheringMemberWaitCNT(int giidx);
 	//모임멤버 리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringMemberListSelect(int giidx);
 	//공지사항 데이터 가져오기

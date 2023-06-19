@@ -158,6 +158,12 @@ public class GatheringServiceImpl implements GatheringService {
 		ArrayList<GatheringJoinVo> gjvlist = gsm.gatheringOneListSelect(giidx);
 		return gjvlist;
 	}
+	@Override
+	//승인대기중인사람 가져오기 
+	public String gatheringMemberWaitCNT(int giidx) {
+		String WaitCNT = gsm.gatheringMemberWaitCNT(giidx);
+		return WaitCNT;
+	}
 
 
 
@@ -558,6 +564,10 @@ public class GatheringServiceImpl implements GatheringService {
 		
 		return gPhotoList;
 	}
+
+
+
+
 
 
 

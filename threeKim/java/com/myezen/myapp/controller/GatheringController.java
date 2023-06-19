@@ -203,6 +203,10 @@ public class GatheringController {
 	    	ArrayList<GatheringJoinVo> gjvmlist = gs.gatheringMemberListSelect(giidx);
 	    	md.addAttribute("gjvmlist", gjvmlist);
 	    	
+	    	/*승인대기중인사람 가져오기 */
+	    	String WaitCNT = gs.gatheringMemberWaitCNT(giidx);
+	    	md.addAttribute("WaitCNT", WaitCNT);
+	    	
 	    	/*모임일정 데이터 가져오기*/
 	    	ArrayList<Gathering_ScheduleVO> gsvlist = gs.gatheringScheduleListSelect(giidx);
 	    	md.addAttribute("gsvlist", gsvlist);
