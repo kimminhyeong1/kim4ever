@@ -265,11 +265,9 @@ public class AdminController {
 			}	
 	//관리자 모임 리스트 상세 페이지	
 			@RequestMapping(value="/admingatheringDetail.do")
-			public String admingatheringDetail(Model model) {
-					ArrayList<GatheringJoinVo> gjlist = as.gatheringList();
-							
-					model.addAttribute("gjlist", gjlist);	
-					
+			public String admingatheringDetail(Model model, int giidx) {
+				GatheringJoinVo gtrdv = as.gatheringDetail(giidx);							
+					model.addAttribute("gtrdv", gtrdv);						
 						return "admin/admingatheringDetail";
 					}	
 		

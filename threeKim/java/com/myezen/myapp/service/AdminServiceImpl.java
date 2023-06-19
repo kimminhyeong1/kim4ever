@@ -211,7 +211,15 @@ public class AdminServiceImpl implements AdminService {
 		ArrayList<GatheringJoinVo> gjlist = asm.gatheringList();
 		return gjlist;
 	}
-
+	
+	//모임 상세 보기
+	@Override
+	public GatheringJoinVo gatheringDetail(int giidx) {
+		
+		return asm.gatheringDetail(giidx);
+	}
+	
+	
 	//모임 신고 내역 리스트
 	@Override
 	public ArrayList<GatheringJoinVo> gatheringDeclaration() {
@@ -220,12 +228,15 @@ public class AdminServiceImpl implements AdminService {
 		return gdlist;
 	}
 
+	//모임 신고 내역 상세 보기
 	@Override
 	public GatheringJoinVo DeclarationDetail(int gdix) {
 		
 	
 		return asm.DeclarationDetail(gdix);
 	}
+
+	
 
 	
 

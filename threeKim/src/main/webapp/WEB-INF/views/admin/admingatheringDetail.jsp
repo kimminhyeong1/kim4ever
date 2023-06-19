@@ -2,9 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@page import = "com.myezen.myapp.domain.*" %>
 <%@page import = "java.util.*" %>  
-<%
-ArrayList<GatheringJoinVo> gjlist = (ArrayList<GatheringJoinVo>)request.getAttribute("gjlist");
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -21,7 +20,7 @@ ArrayList<GatheringJoinVo> gjlist = (ArrayList<GatheringJoinVo>)request.getAttri
 
  <style type="text/css">
 		 	/*만들기 부분*/
-			#main section h3{display: inline-block;font-size: 18px;}
+			#main section h3{display: inline-block;font-size: 35px;}
 			#main section p{display: inline-block; color: #f14242; padding-left: 10px;}
 			#main section>div:nth-child(1){margin: 20px 0px 20px 100px;}
 			#main section>div:nth-child(2){text-align: center;}
@@ -65,28 +64,32 @@ ArrayList<GatheringJoinVo> gjlist = (ArrayList<GatheringJoinVo>)request.getAttri
 					<div>	
 						<h3>모임 이름</h3>
 					</div>
-					<div class="gInfoName">${gInfoName}11</div>
+					<div class="gInfoName">${gtrdv.gInfoName}</div>
 				</div>
 				<div>
 					<div>
 						<h3>모임장</h3>
 					</div>
-					<div class="gatheringMemberType"></div>							
+					<div class="gatheringMemberType">${gtrdv.memberName}</div>							
 				</div>
 				<div>
-					<h3>모임 프로필 이미지</h3>
-					<div class="imageUpload"></div>				
+					<h3>모임 인원</h3>
+					<div class="gInfoCapacity">${gtrdv.gInfoCapacity}명</div>				
 				</div>
 				<div>
-					<h3>모임 정원</h3>
-					<div class="gatheringMemberType"></div>
-	
+					<h3>모임 생성일</h3>
+					<div class="gInfoCreationDay">${gtrdv.gInfoCreationDay}</div>	
 				</div>
 				<div>
-					<h3>모임 간단 소개글</h3>
-					<input class="gInput" type="text" placeholder="맨 앞에 노출되는 간단 소개글입니다." name="gInfoBriefIntroduction">		
+					<h3>모임 소개글</h3>
+					<div class="gInfoCreationDay">${gtrdv.gInfoAreaIntroduction}</div>	
 				</div>
-				
+				 <div>
+	                <h3>모임 신고 접수</h3>
+	                <div class="ReportCount">
+						${gtrdv.REPORTCNT}
+	                </div>
+	            </div>
 			<div>
 				<button class="gBtn2">돌아가기</button>				 
 			</div>
