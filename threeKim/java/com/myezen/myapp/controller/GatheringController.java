@@ -102,8 +102,18 @@ public class GatheringController {
 		 
 		return "redirect:/gathering/gList.do";
 	}
+//모임명 중복체크
+	@ResponseBody
+	@RequestMapping(value = "/gInfoNameCheck.do")
+	public HashMap<String, Object> gInfoNameCheck(@RequestParam("gInfoName") String gInfoName) {
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		System.out.println("이름체크"+gInfoName);
+		int value = gs.gInfoNameCheck(gInfoName);
+		System.out.println(value);
+		hm.put("value",value);//0은 거짓 1은 참
+		return hm; 
+	}
 	
-
 //모임간단소개페이지
 	@RequestMapping(value="/gSimpleInfo.do")
 	public String gSimpleInfo(

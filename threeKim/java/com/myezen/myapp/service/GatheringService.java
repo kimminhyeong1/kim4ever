@@ -34,6 +34,8 @@ public interface GatheringService {
 
 	//모임 생성하기
 	public int gatheringCreate(GatheringJoinVo gjv,MultipartFile GTImg, ArrayList<MultipartFile> GImg)throws IOException, Exception;
+	//모임명 중복체크
+	public int gInfoNameCheck(String gInfoName);
 	//모임 리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringListSelect();
 	//모임 리스트 더보기 

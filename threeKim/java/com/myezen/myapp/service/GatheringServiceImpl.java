@@ -93,7 +93,15 @@ public class GatheringServiceImpl implements GatheringService {
 		return value;
 	}
 	
+	//모임명 중복체크
+	@Override
+	public int gInfoNameCheck(String gInfoName) {
+		int value = gsm.gInfoNameCheck(gInfoName);
+		return value;
 
+	}
+	
+	
 	@Override
 	//모임 리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringListSelect() {
