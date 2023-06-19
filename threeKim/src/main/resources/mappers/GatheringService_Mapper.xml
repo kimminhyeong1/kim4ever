@@ -462,16 +462,16 @@
 	
 	
 	<!--  사진첩  게시글 수정 조회 -->
-	<select id="gatheringPhotoAlbumModify" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int">
-		SELECT gPhotoAlbumTitle, gPhotoAlbumContents
+	<select id="gatheringPhotoAlbumModify" resultType="com.myezen.myapp.domain.GatheringJoinVo">
+		SELECT gpaidx, gPhotoAlbumTitle, gPhotoAlbumContents
 		FROM GATHERING_PHOTOALBUM1234 
-		WHERE gPhotoAlbumDelYN = 'N' AND gpaidx = #{0}  AND  midx = #{1}
+		WHERE gPhotoAlbumDelYN = 'N' AND gpaidx = #{0}
 	</select>
 	
 	<!--  사진첩 게시글 수정 작성 -->
 	<update id="gatheringPhotoAlbumModifyUpdate" parameterType="com.myezen.myapp.domain.GatheringJoinVo">
 		UPDATE GATHERING_PHOTOALBUM1234
 		SET gPhotoAlbumTitle = #{gPhotoAlbumTitle}, gPhotoAlbumContents = #{gPhotoAlbumContents}
-		WHERE gpaidx = #{gpaidx} AND midx = #{midx}
+		WHERE gpaidx = #{gpaidx}
 	</update>
 </mapper>
