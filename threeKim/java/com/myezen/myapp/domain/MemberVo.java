@@ -14,7 +14,7 @@ public class MemberVo {//회원 테이블
 	private String writeDay;
 	private String memberProfile;
 	private String memberIntro;
-	
+	private String memberLoginType;
 	
 	public int getMidx() {
 		return midx;
@@ -88,6 +88,12 @@ public class MemberVo {//회원 테이블
 	}
 	public void setMemberIntro(String memberIntro) {
 		this.memberIntro = memberIntro;
+	}
+	public String getMemberLoginType() {
+		return memberLoginType;
+	}
+	public void setMemberLoginType(String memberLoginType) {
+		this.memberLoginType = memberLoginType;
 	}
 	
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import = "com.myezen.myapp.domain.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -71,12 +72,18 @@ function fnSubmit() {
 	            <div class="section-header">아이디</div>
 	            <div class="section-content"> <img src="../resources/icon/check.png" alt="이미지">${memberId}</div>
 	        </div>
-	         <div class="section">
-	            <div class="section-header">비밀번호</div>
-	            <div class="section-content">
-	            	<input type="password" id="memberPwd" name="memberPwd">
-	            </div>
-	        </div>
+			<c:choose>
+				<c:when test="${mv.memberLoginType eq '구글' or mv.memberLoginType eq '카카오'}">
+				</c:when>
+				<c:otherwise>
+		         <div class="section">
+		            <div class="section-header">비밀번호</div>
+		            <div class="section-content">
+		            	<input type="password" id="memberPwd" name="memberPwd">
+	            	</div>
+		        </div>
+				</c:otherwise>
+			</c:choose>
 			 <div class="section">
 	            <div class="section-header">이름</div>
 	            <div class="section-content">

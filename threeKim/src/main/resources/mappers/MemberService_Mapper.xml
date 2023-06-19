@@ -131,6 +131,10 @@
 	     update member1234 set memberProfile = #{memberProfile} where midx = #{midx} and MEMBERDELYN='N'
 	</update>
     
+    <!-- QR찍고 휴대폰 번호 없는지 체크 -->
+    <select id="memberPhoneCheck" parameterType="int" resultType="String">
+    	select count(memberPhone) as memberPhone from member1234 where midx = #{0} 
+    </select>
     
 
     

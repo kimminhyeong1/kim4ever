@@ -598,10 +598,17 @@ public class MemberController {
 		
 	//비밀번호 확인 페이지
 		@RequestMapping("/memberCheckPwd.do")
-		public String memberCheckPwd(@RequestParam(value = "error", defaultValue = "0") int error, Model model) {
+		public String memberCheckPwd(@RequestParam(value = "error", defaultValue = "0") int error, Model model,HttpSession session) {
 			 if (error == 1) {
 			        model.addAttribute("errorMsg", "비밀번호가 일치하지 않습니다. 다시 시도해주세요.");
 			    }
+			 
+			 int midx = (Integer) session.getAttribute("midx");
+			 MemberVo mv = ms.getMemberInfo(midx);			
+			 //소셜로그인이면 PASS
+			 if (mv.getMemberLoginType().equals("구글") || mv.getMemberLoginType().equals("카카오")) {
+				return "redirect:/member/memberUpdate.do";
+			 }
 			  return "member/memberCheckPwd";
 		}
 		
@@ -614,7 +621,7 @@ public class MemberController {
 			
 			//로그인한 midx값으로 memberPwd받아오기
 			int midx = (Integer) session.getAttribute("midx");
-			MemberVo mv = ms.getMemberInfo(midx);
+			MemberVo mv = ms.getMemberInfo(midx);			
 			
 			//입력한 비밀번호와 memberVo에 담긴 memberPwd 일치 여부 확인
 			String loggedInPassword = mv.getMemberPwd();

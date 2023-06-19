@@ -33,6 +33,7 @@ import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.ErrorVo;
 import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.service.BikeRentService;
+import com.myezen.myapp.service.MemberService;
 import com.myezen.myapp.util.AESUtil;
 import com.myezen.myapp.util.QRCodeUtil;
 
@@ -47,6 +48,8 @@ public class bikeRentController {
 	
 	@Autowired
 	BikeRentService bs; //업캐스팅 부모만 지정
+	@Autowired
+	MemberService ms;
 	
 	/*자전거 소개글*/ 
 	@RequestMapping(value="/bikeRentInfo.do")
@@ -185,7 +188,14 @@ public class bikeRentController {
 		 String dbkidx = AESUtil.decrypt(ebkidx);
 		 int bkidx = Integer.parseInt(dbkidx);
 		 System.out.println("복호화한키"+bkidx);
+		 HttpSession session = request.getSession();
+		 int midx = (int) session.getAttribute("midx");
 		 
+		 //사용자테이블에 휴대폰번호가없으면 
+		 String memberPhone = ms.memberPhoneCheck(midx);
+		 if (memberPhone.equals("0")) {
+			return "redirect:/member/memberEditInformation.do";
+		}
 		 
 		  BikeJoinVo bjv = bs.RentDetail(bkidx);
 		  

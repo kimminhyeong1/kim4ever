@@ -385,6 +385,12 @@ public class MemberServiceImpl implements MemberService {
 		value = msm.memberUpdateMemberProfile(mv);
 		return value;
 	}
+	@Override
+	//QR찍고 휴대폰 번호 없는지 체크
+	public String memberPhoneCheck(int midx) {
+		String memberPhone = msm.memberPhoneCheck(midx);
+		return memberPhone;
+	}
 	
 	
 

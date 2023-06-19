@@ -65,7 +65,8 @@ public interface MemberService_Mapper {
 	//회원 프로필 업데이트 /*김건우*/
 	public int memberUpdateMemberProfile(MemberVo mv);
 	
-
+	//QR찍고 휴대폰 번호 없는지 체크
+	public String memberPhoneCheck(int midx);
 	
 
 }
