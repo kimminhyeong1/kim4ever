@@ -132,6 +132,13 @@ public interface GatheringService_Mapper {
 	public int gatheringBoardCommentTotal(HashMap<String, Object> hm);
 	//4. 댓글 리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringBoardCommentListSelect(HashMap<String, Object> hm);
+	//댓글 좋아요
+	//좋아요 확인 midx
+	public int gatheringBoardLikeCheck(Gathering_BoardVO gbv);
+	//좋아요 테이블에 넣기
+	public int gatheringBoardLikeInsert(Gathering_BoardVO gbv);
+	//좋아요 업데이트
+	public int gatheringBoardLike(Gathering_BoardVO gbv);
 	
 	
 	

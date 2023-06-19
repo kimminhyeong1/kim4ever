@@ -120,6 +120,8 @@ public interface GatheringService {
 	public int gatheringBoardCommentTotal(int gbidx,SearchCriteria scri);
 	//4. 댓글 리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringBoardCommentListSelect(int gbidx,SearchCriteria scri);
+	//댓글 좋아요 누르기
+	public int gatheringBoardLike(Gathering_BoardVO gbv);
 	
 
 

@@ -424,6 +424,19 @@ public class GatheringServiceImpl implements GatheringService {
 		ArrayList<GatheringJoinVo> gjvblist = gsm.gatheringBoardCommentListSelect(hm);
 		return gjvblist;
 	}
+	@Override
+	@Transactional
+	//모임 게시글 좋아요
+	public int gatheringBoardLike(Gathering_BoardVO gbv) {
+		
+		int value1 = gsm.gatheringBoardLikeCheck(gbv);
+		if (value1 == 0) { 
+			int value2 = gsm.gatheringBoardLikeInsert(gbv);
+			int value3 = gsm.gatheringBoardLike(gbv);	
+			
+		}
+		return value1;
+	}
 
 
 	//신고하기 수정중..
@@ -503,6 +516,9 @@ public class GatheringServiceImpl implements GatheringService {
 		
 		return gPhotoList;
 	}
+
+
+
 
 
 

@@ -512,6 +512,25 @@ public class GatheringController {
 	    hm.put("value",value); //0은 거짓 1은 참
 		return hm;
 	}
+	//모임 게시글 ajax로 좋아요 누르기
+	@RequestMapping(value="/gBoardLike.do")
+	@ResponseBody
+	public HashMap<String, Object> gBoardLike(
+			@ModelAttribute Gathering_BoardVO gbv,
+			HttpServletRequest request
+			) {
+		System.out.println("좋아요 컨트롤러진입");
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		HttpSession session = request.getSession();
+	    Object Omidx = session.getAttribute("midx");
+	    gbv.setMidx((int)Omidx);
+	    System.out.println(gbv.getGbidx());
+
+		//좋아요 메소드
+	    int value = gs.gatheringBoardLike(gbv);
+	    hm.put("value",value); //0은 거짓 1은 참
+		return hm;
+	}
 	
 
 	//모임 사진첩

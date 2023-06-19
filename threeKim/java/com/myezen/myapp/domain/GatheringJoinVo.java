@@ -129,7 +129,8 @@ public class GatheringJoinVo {//모임조인
 	//모임 찜
 	private int gwidx;//모임 찜 번호
 	
-	
+	//모임 좋아요
+	private int glidx;//모임 좋아요 번호
 	
 	//모임 신고
 	private int gdix; //모임 신고 번호
@@ -762,6 +763,14 @@ public class GatheringJoinVo {//모임조인
 
 	public void setgBoardViewsCNT(int gBoardViewsCNT) {
 		this.gBoardViewsCNT = gBoardViewsCNT;
+	}
+
+	public int getGlidx() {
+		return glidx;
+	}
+
+	public void setGlidx(int glidx) {
+		this.glidx = glidx;
 	}
 	
 	

@@ -169,8 +169,8 @@
 	<!-- 모임 게시판 -->
 	<!--  모임 게시글 쓰기 -->
 	<insert  id="gatheringBoardWrite" parameterType="com.myezen.myapp.domain.Gathering_BoardVO" >
-		INSERT INTO gathering_board1234 (gbidx,giidx,midx,gBoardTitle,gBoardCategory,gBoardContents,gBoardWriteDay,gBoardDelYN,gBoardViewsCNT)
-		VALUES(gbidx_seq.NEXTVAL, #{giidx},#{midx},#{gBoardTitle},#{gBoardCategory},#{gBoardContents},SYSDATE,'N',0)
+		INSERT INTO gathering_board1234 (gbidx,giidx,midx,gBoardTitle,gBoardCategory,gBoardContents,gBoardWriteDay,gBoardDelYN,gBoardViewsCNT,gBoardLikeCNT)
+		VALUES(gbidx_seq.NEXTVAL, #{giidx},#{midx},#{gBoardTitle},#{gBoardCategory},#{gBoardContents},SYSDATE,'N',0,0)
 	</insert>
 	<!--  모임 게시글 수정하는 게시물 가져오기 -->
 	<select id="gatheringBoardModify" resultType="com.myezen.myapp.domain.Gathering_BoardVO" parameterType="int">
@@ -280,7 +280,19 @@
 		INSERT INTO gathering_comment1234 (gcidx,gbidx,midx,gCommentContents,gCommentWriteDay,gCommentDelYN,gCommentDepth,regcidx)
 		VALUES(gcidx_SEQ.NEXTVAL,#{gbidx},#{midx},#{gCommentContents},SYSDATE,'N',1,#{gcidx})
 	</insert>
-	
+	<!-- 모임 좋아요 확인 -->
+	<select id="gatheringBoardLikeCheck" parameterType="com.myezen.myapp.domain.Gathering_BoardVO" resultType="int">
+		select count(*) as cnt from gathering_like1234 where gbidx = #{gbidx} and midx = #{midx}
+	</select>
+	<!-- 모임 좋아요 테이블 넣기-->
+	<insert  id="gatheringBoardLikeInsert" parameterType="com.myezen.myapp.domain.Gathering_BoardVO" >
+		INSERT INTO gathering_like1234 (glidx,gbidx,midx)
+		VALUES(glidx_SEQ.NEXTVAL,#{gbidx},#{midx})
+	</insert>
+    <!--  모임 좋아요 증가 -->
+    <update id="gatheringBoardLike" parameterType="com.myezen.myapp.domain.Gathering_BoardVO">
+    	UPDATE GATHERING_BOARD1234 SET gBoardLikeCNT = gBoardLikeCNT + 1 where gbidx= #{gbidx}
+	</update>
 	
 	
 	

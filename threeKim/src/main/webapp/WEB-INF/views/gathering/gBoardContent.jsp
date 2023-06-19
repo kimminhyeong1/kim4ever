@@ -130,17 +130,17 @@
 						<div>${gjv.gBoardContents}</div>
 					</div>
 					<div class="gBoardLike">
-						<img alt="좋아요" src="${pageContext.request.contextPath}/resources/icon/like.png" style="width: 50px;">
+						 <img alt="좋아요" src="${pageContext.request.contextPath}/resources/icon/like.png" style="width: 50px;">
 						 <div>${gjv.gBoardLikeCNT}</div>
 					</div>
 					<div class="gBoardCommentWrite">
-  <form id="commentForm">
-    <input id="gbidx" type="hidden" name="gbidx" value="${gbidx}">
-    <textarea id="gCommentContents" rows="5" cols="100" maxlength="200" name="gCommentContents" oninput="updateCharacterCount()"></textarea>
-    <span id="characterCount">0/200</span>
-    <button class="writeBtn">댓글달기</button>
-  </form>
-</div>
+					  <form id="commentForm">
+					    <input id="gbidx" type="hidden" name="gbidx" value="${gbidx}">
+					    <textarea id="gCommentContents" rows="5" cols="100" maxlength="200" name="gCommentContents" oninput="updateCharacterCount()"></textarea>
+					    <span id="characterCount">0/200</span>
+					    <button class="writeBtn">댓글달기</button>
+					  </form>
+					</div>
 					<div class="gBoardCommentTitle">댓글(${commentTotal})</div>
 			    	<c:forEach var="gjvc" items="${gjvclist}">
 						<div class="gBoardMember">
@@ -189,7 +189,7 @@
 							    	</c:if>
 								</div>
 							</div>
-								<div class="under_ba"></div>
+							<div class="under_ba"></div>
 						</div>
 					</c:forEach>	
 					<div class="gPaging">
@@ -529,6 +529,28 @@
 		
 			        submitReplyComment(gbidx, gcidx, gCommentContents);
 			    });
+			    //좋아요
+			    $(".gBoardLike").on("click", function() {
+			    	// 현재 스크롤 위치 저장
+			        var scrollPosition = $(window).scrollTop();
+			        // Ajax
+			        $.ajax({
+			          url: "${pageContext.request.contextPath}/gathering/gBoardLike.do",
+			          data: { gbidx: '${gbidx}'}, 
+			          method: "POST", 
+			          success: function(data) {
+			        	  if (data.value == 0) {
+				    	        alert("좋아요 성공했습니다.");
+				    	        location.reload(); // 댓글 새로고침
+				    	      } else {
+				    	        alert("좋아요  실패했습니다.");
+				    	      }
+			          },
+			          error: function(xhr, status, error) {
+			        	  console.error("좋아요 오류 발생: " + error);
+			          }
+			        });
+			      });
 
 		</script>
 		
