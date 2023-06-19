@@ -100,6 +100,7 @@
 	</head>
 	<body>
 		<%@include file="../header2.jsp" %>
+		<%@include file="header3.jsp" %>
 		<main id="main">
 			<h2 class="menu">
 				<a id="gMemberListLink" href="${pageContext.request.contextPath}/gathering/gMemberList.do">멤버 리스트</a>

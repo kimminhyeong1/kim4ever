@@ -102,6 +102,7 @@ function fnDelete(midx, giidx) {
 	</head>
 	<body>
 		<%@include file="../header2.jsp" %>
+		<%@include file="header3.jsp" %>
 		<main id="main">
 			<h2 class="menu">
 			    <c:choose>
