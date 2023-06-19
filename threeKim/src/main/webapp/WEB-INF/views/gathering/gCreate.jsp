@@ -81,16 +81,31 @@
 				<div>
 					<h3>모임 소개 이미지</h3>
 					<div>
-
-					<div id="imageUploadContainer">
-					  <input id="imageInfo" type="file" name="GImg" onchange="uploadImage(event)" style="display: none;"/>
-					</div>
-					<div id="previewContainer" style="display: inline-block;"></div>
-					<label for="imageInfo">
-						<img id="imagePreviewInfo" src="${pageContext.request.contextPath}/resources/icon/photoFrame.png" />
-					</label>
-	
-					</div>
+						<div id="imageUploadContainer">
+						  <input id="imageInfo1" type="file" name="GImg" onchange="previewImage2(event, 1)" style="display: none;">
+						  <input id="imageInfo2" type="file" name="GImg" onchange="previewImage2(event, 2)" style="display: none;">
+						  <input id="imageInfo3" type="file" name="GImg" onchange="previewImage2(event, 3)" style="display: none;">
+						  <input id="imageInfo4" type="file" name="GImg" onchange="previewImage2(event, 4)" style="display: none;">
+						  <input id="imageInfo5" type="file" name="GImg" onchange="previewImage2(event, 5)" style="display: none;">
+						</div>
+						<div id="previewContainer" style="display: inline-block;">
+						  <label for="imageInfo1">
+						    <img id="imagePreview1" src="${pageContext.request.contextPath}/resources/icon/photoFrame.png">
+						  </label>
+						  <label for="imageInfo2">
+						    <img id="imagePreview2" src="${pageContext.request.contextPath}/resources/icon/photoFrame.png">
+						  </label>
+						  <label for="imageInfo3">
+						    <img id="imagePreview3" src="${pageContext.request.contextPath}/resources/icon/photoFrame.png">
+						  </label>
+						  <label for="imageInfo4">
+						    <img id="imagePreview4" src="${pageContext.request.contextPath}/resources/icon/photoFrame.png">
+						  </label>
+						  <label for="imageInfo5">
+						    <img id="imagePreview5" src="${pageContext.request.contextPath}/resources/icon/photoFrame.png">
+						  </label>
+						</div>
+					</div>	
 	
 				</div>
 				<div>
@@ -213,56 +228,37 @@
 		    reader.readAsDataURL(input.files[0]);
 		  }
 		}
-	var totalUploads = 0;
+	
+	function previewImage2(event, index) {
+		  var input = event.target;
+		  var reader = new FileReader();
 
-	  function uploadImage(event) {
-	    var input = event.target;
-	    var imageUploadContainer = document.getElementById('imageUploadContainer');
-	    var previewContainer = document.getElementById('previewContainer');
-	    var imageLabel = document.getElementById('imageLabel');
-		var imagePreviewInfo = document.getElementById('imagePreviewInfo');
-	    if (totalUploads < 5) {
-	      var files = input.files;
-	      for (var i = 0; i < files.length; i++) {
-	        var file = files[i];
-	        var reader = new FileReader();
+		  reader.onload = function() {
+		    var preview = document.getElementById('imagePreview' + index);
+		    preview.src = reader.result;
+		  };
 
-	        reader.onload = function(e) {
-	          var image = document.createElement('img');
-	          image.src = e.target.result;
-	          previewContainer.appendChild(image);
-	        };
+		  if (input.files && input.files[0]) {
+		    reader.readAsDataURL(input.files[0]);
+		  }
+		}
 
-	        reader.readAsDataURL(file);
-	        totalUploads++;
-	      }
+	
+	
 
-	      if (totalUploads < 5) {
-	        var newImageInput = document.createElement('input');
-	        newImageInput.id = 'image';
-	        newImageInput.type = 'file';
-	        newImageInput.name = 'GImg';
-	        newImageInput.onchange = uploadImage;
-	        newImageInput.style.display = 'none';
-	        imageUploadContainer.appendChild(newImageInput);
-	      } else {
-	        // 사진이 5개 이상이면 추가 이미지 업로드 숨기기
-	        imagePreviewInfo.style.display = 'none';
-	      }
-	    }
 
-	    // 썸네일 업데이트 
-	    var thumbnail = document.getElementById('imagePreview2');
-	    if (input.files && input.files[0]) {
-	      var reader = new FileReader();
-	      reader.onload = function(e) {
-	        thumbnail.src = e.target.result;
-	      };
-	      reader.readAsDataURL(input.files[0]);
-	    } else {
-	      thumbnail.src = '${pageContext.request.contextPath}/resources/icon/photoFrame.png';
-	    }
-	  }
+
+
+
+
+
+
+	
+
+
+
+
+
 
 
 	</script>

@@ -86,9 +86,13 @@ public class GatheringServiceImpl implements GatheringService {
 	        value = gsm.gatheringGTInsert(gjv);
 	        //4. 모임 이미지들 넣기
 	        for (MultipartFile file : GAImg) {
-	        	String uploadedGAImgName = UploadFileUtiles.uploadFile(savedGAImgPath, file.getOriginalFilename(), file.getBytes());
-	        	gjv.setImageName(uploadedGAImgName);
-	        	value = gsm.gatheringGInsert(gjv);
+	        	if (file.isEmpty()) {
+		            System.out.println(file);
+		        } else {
+		        	String uploadedGAImgName = UploadFileUtiles.uploadFile(savedGAImgPath, file.getOriginalFilename(), file.getBytes());
+		        	gjv.setImageName(uploadedGAImgName);
+		        	value = gsm.gatheringGInsert(gjv);
+		        }
 	        }
 
 		return value;
