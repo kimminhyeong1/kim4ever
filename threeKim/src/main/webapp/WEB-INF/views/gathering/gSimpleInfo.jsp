@@ -127,6 +127,7 @@
 					<p>${gjvlist[0].gInfoAreaIntroduction}</p>
 					<c:choose>
 						<c:when test="${gatheringApprovalType eq 'Y'}">
+							<button onclick="location.href='${pageContext.request.contextPath}/gathering/gContentCheck.do?giidx=${giidx}'">들어가기</button>
 						</c:when>
 						<c:when test="${gatheringApprovalType eq 'W'}">
 							<button>승인대기중</button>
