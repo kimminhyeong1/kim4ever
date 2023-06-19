@@ -434,7 +434,7 @@
 	
 	<!-- 사진첩 리스트 조회 -->
 	<select id="gatheringPhotoAlbumListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo">
-		SELECT a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, b.imgtype, b.imageName
+		SELECT a.gpaidx, a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, b.imgtype, b.imageName
 		FROM gathering_photoalbum1234 a
 		JOIN image1234 b ON a.giidx = b.GIIDX AND a.gpaidx = b.gpaidx
 		WHERE b.imgtype='GAT'
@@ -442,16 +442,25 @@
 	
 	<!-- 사진첩 리스트 조회 -->
 	<select id="gatheringPhotoAlbumListSelectOne" resultType="com.myezen.myapp.domain.GatheringJoinVo">
-		SELECT a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, b.imgtype, b.imageName
+		SELECT a.gpaidx, a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, a.GPHOTOALBUMCONTENTS, b.imgtype, b.imageName
 		FROM gathering_photoalbum1234 a
 		JOIN image1234 b ON a.giidx = b.GIIDX AND a.gpaidx = b.gpaidx
-		WHERE b.imgtype in ('GAT','GA') 
+		WHERE b.imgtype = 'GA'
+		AND a.gpaidx = #{gpaidx}
 	</select>
 	
 	
-		
+	<!--  사진첩  게시글 수정 조회 -->
+	<select id="gatheringPhotoAlbumModify" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int">
+		SELECT gPhotoAlbumTitle, gPhotoAlbumContents
+		FROM GATHERING_PHOTOALBUM1234 
+		WHERE gPhotoAlbumDelYN = 'N' AND gpaidx = #{0}  AND  midx = #{1}
+	</select>
 	
-
-
-
+	<!--  사진첩 게시글 수정 작성 -->
+	<update id="gatheringPhotoAlbumModifyUpdate" parameterType="com.myezen.myapp.domain.GatheringJoinVo">
+		UPDATE GATHERING_PHOTOALBUM1234
+		SET gPhotoAlbumTitle = #{gPhotoAlbumTitle}, gPhotoAlbumContents = #{gPhotoAlbumContents}
+		WHERE gpaidx = #{gpaidx} AND midx = #{midx}
+	</update>
 </mapper>

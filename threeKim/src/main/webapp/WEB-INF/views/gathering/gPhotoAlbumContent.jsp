@@ -13,60 +13,25 @@
 		<style type="text/css">
 			.gContainer{border: 1px solid #0000;}
 			/*사진첩 틀*/ 
-			.gContent{width:100%; border:1px solid #bbb;background-color:#f1f1f1;border-radius:10px; padding: 20px;box-sizing border-box;display:flex;flex-direction:column;align-items:flex-start;}
-			/*사진첩 부분*/
-			.card{height: 320px; background-color: #d2dfcc;}
-			.cardImg{height: 80%;}
-
+			.gContent{width:100%; border:1px solid #bbb;background-color:#f1f1f1;border-radius:10px; padding: 20px;}
 			/*버튼 부분*/
-			#createBtn{text-align: right;}	
+			#createBtn{text-align: right; margin-right:-35px;}	
 			/*페이징 부분*/
 			.gPaging{font-size: 25px;}	
+			/*사진첩 헤더*/   
+			.albumHeader {display:flex;align-items:center;justify-content:space-between;border:1px solid #000;width:100%;height:80px;padding:0 20px;}
+			.albumHeader h2 {font-size:35px;font-weight:bold;margin:0;}
+			.albumHeader button {font-size:16px;padding:10px 20px;}
+			/*사진첩 제목 */
+			.albumTitle {width:100%;text-align:left;border:1px solid #000;padding:20px;margin-top:20px;}
+			.albumTitle p {font-size:24px;margin:0;}
+			/*사진첩 이미지 */
+			.albumImage {width:100%;height:400px;border:1px solid #000; padding:20px;margin-top:20px;display:flex;justify-content:center;align-items:center;}
+			.albumImage img {max-width:100%;max-height:100%;}
+			/*사진첩 내용글 */
+			.albumContent {width:100%;border:1px solid #000;padding:20px;margin-top:20px;}
+			.albumContent p {font-size:24px;line-height:1.5;margin:0;}
 			
-			/* 사진첩 틀 */ 
-			/* 사진첩 날짜와 제목 */
-			.albumHeader {
-				margin-bottom:20px;
-				text-align:left; 
-				
-			}
-
-			.albumHeader h2 {
-				font-size:35px;
-				font-weight:bold;
-				margin:0;
-			}
-
-			.albumHeader p {
-				font-size: 24px;
-				color: #888;
-				margin: 0;
-			}
-
-			/* 사진첩 내용 */
-			.albumContent {
-				width:1000px;
-				height:auto;
-				font-size: 24px;
-				line-height: 2;
-				border:1px solid #000;
-			}
-
-			.albumContent img {
-				max-width: 100%;
-				height: auto;
-				margin-bottom: 10px;
-				border-radius: 5px;
-			}
-
-			/* 좋아요 버튼 */
-			.likeButton {
-				align-self: flex-end;
-				width:300px;
-				margin-bottom:40px;
-				float:right;
-				text-align:right;
-			}
 		</style>
 	</head>
 	<body>
@@ -75,21 +40,26 @@
 		<main id="main">
 			<section class="gContainer">
 				<div class="gContent" >
-					<div class="likeButton">
-						<button class="gBtn2">좋아요</button>
-					</div>
+					
 					<div class="albumHeader">
-						<h2>${gpv.gPhotoAlbumWriteDay}</h2>
-						<p>${gpv.gPhotoAlbumTitle }</p>
-						
+						<h2>${gjv.gPhotoAlbumWriteDay}</h2>
+						<button>좋아요</button>
+					</div>
+					
+					<div class="albumTitle">
+					<p>${gjv.gPhotoAlbumTitle }</p>
+					</div>
+					
+					<div class="albumImage">
+					<img src="../resources/GAImages/${gjv.imageName}">
 					</div>
 					
 					<div class="albumContent">
-					<p>${gpv.gPhotoAlbumContents }</p>
+					<p>${gjv.gPhotoAlbumContents }</p>
 					</div>
 				</div>
 				<div id="createBtn">
-					<button class="gBtn2" onclick="location.href='${pageContext.request.contextPath}/gathering/gPhotoAlbumModifiy.do'">수정하기</button>
+					<button class="gBtn2" onclick="location.href='${pageContext.request.contextPath}/gathering/gPhotoAlbumModifiy.do?gpaidx=${gjv.gpaidx}'">수정하기</button>
 					<button class="gBtn2">삭제하기</button>
 				</div>
 				

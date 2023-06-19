@@ -48,32 +48,22 @@
 			<section class="gContainer">
 				<div class="gContent" >
 				
-					<table>
-						<tr>
-							<th>작성자</th>
-							<td>김가네</td>
-						</tr>
-						
+					<table>	
 						<tr>
 							<th>제목</th>
 							<td><input type="text" id="gPhotoAlbumTitle" name="gPhotoAlbumTitle"></td>
 						</tr>
-						
-						<tr>
-							<th>작성일자</th>
-							<td></td>
-						</tr>
-						
+							
 						<tr>
 							<th>대표 이미지</th>
-							<td><input type="file" id="image" name="GTImg" onchange="previewImage(event)" />
+							<td><input type="file" id="image" name="GATImg" onchange="previewImage(event)" />
 							<img id="imagePreview" />
 							</td>
 						</tr>
 						
 							<tr>
 							<th>첨부파일</th>
-							<td><input type="file" id="image" name="GImg" onchange="uploadImage(event)"/>
+							<td><input type="file" id="image" name="GAImg" onchange="uploadImage(event)"/>
 							
 							</td>
 						</tr>
@@ -139,7 +129,7 @@
 	      var newImageInput = document.createElement('input');
 	      newImageInput.id = 'image';
 	      newImageInput.type = 'file';
-	      newImageInput.name = 'GImg';
+	      newImageInput.name = 'GAImg';
 	      newImageInput.onchange = uploadImage;
 	      imageUploadContainer.appendChild(newImageInput);
 	    }
