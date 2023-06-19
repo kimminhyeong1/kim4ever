@@ -40,6 +40,7 @@ import com.myezen.myapp.domain.ScheduleVo;
 import com.myezen.myapp.domain.SearchCriteria;
 import com.myezen.myapp.service.GatheringService;
 import com.myezen.myapp.util.IPUtil;
+import com.myezen.myapp.util.UploadFileUtiles;
 
 @Controller
 @RequestMapping(value="/gathering")
@@ -636,37 +637,53 @@ public class GatheringController {
 	//모임 사진첩수정
 	@RequestMapping(value="/gPhotoAlbumModifiy.do")
 	public String gPhotoAlbumModifiy(
-			@RequestParam("gpaidx") int gpaidx,//게시글 번호
 			HttpServletRequest request,
 			Model md) {
 		
 		HttpSession session = request.getSession();
-		
-		  Object Omidx = session.getAttribute("midx");
-		    if (Omidx == null) {//midx가 없으면 진입불가
-		    	return "redirect:/gathering/gList.do";
-			}
-		    int midx =(int)Omidx;
-		    GatheringJoinVo gjv = gs.gatheringPhotoAlbumModify(gpaidx);
-			//담기 
-			md.addAttribute("gjv", gjv);
+		int midx = (int) session.getAttribute("midx");
+		int gpaidx = Integer.parseInt(request.getParameter("gpaidx"));
+	    GatheringJoinVo gjv = gs.gatheringPhotoAlbumModify(gpaidx);
+		md.addAttribute("gjv", gjv);
 			
 		return "gathering/gPhotoAlbumModifiy";
 	}
 	
 	//모임 사진첩수정
-	@RequestMapping(value="/gPhotoAlbumModifiyAction.do")
+	@RequestMapping(value="/gPhotoAlbumModifyAction.do", method=RequestMethod.POST)
 	public String gPhotoAlbumModifiyAction(
-			@RequestParam("gpaidx") int gpaidx,
 			@ModelAttribute GatheringJoinVo gjv,
+			@RequestParam("GATImg") MultipartFile GATImg,
+			@RequestParam("GAImg") ArrayList<MultipartFile> GAImg,
+			Model md,
+			@RequestParam("gpaidx") int gpaidx,
 			HttpServletRequest request
-			) {
+			)throws IOException, Exception {
 		HttpSession session = request.getSession();
 	    Object Omidx = session.getAttribute("midx");
 	    if (Omidx == null) {//midx가 없으면 진입불가
 	    	return "redirect:/gathering/gList.do";
 		}
 	    gjv.setMidx((int)Omidx);
+	    
+	    // 대표 이미지 업로드 처리
+	    String savedGATImgPath = "D://threekim//threeKim//src//main//webapp//resources/GATImages"; // 사진첩 대표이미지 저장 경로
+	    if (!GATImg.isEmpty()) {
+	        String uploadedGATImgName = UploadFileUtiles.uploadFile(savedGATImgPath, GATImg.getOriginalFilename(), GATImg.getBytes());
+	        gjv.setImageName(uploadedGATImgName);
+	       
+	    }
+
+	    // 이미지 업로드 처리
+	    String savedGAImgPath = "D://threekim//threeKim//src//main//webapp//resources/GAImages"; // 사진첩 이미지 저장 경로
+	    for (MultipartFile file : GAImg) {
+	        if (!file.isEmpty()) {
+	            String uploadedGAImgName = UploadFileUtiles.uploadFile(savedGAImgPath, file.getOriginalFilename(), file.getBytes());
+	            gjv.setImageName(uploadedGAImgName);
+	        }
+	    }
+	    
+   
 	    //게시글 번호에 해당하는 게시물 업데이트 하기
 	    int value = gs.gatheringPhotoAlbumModifyUpdate(gjv);
 	    
