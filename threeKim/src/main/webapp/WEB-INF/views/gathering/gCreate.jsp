@@ -28,15 +28,14 @@
 				/*****모바일 넓이***/
 				@media (min-width: 300px) and (max-width: 940px)  {
 					/*만들기 부분*/
-		   #gatheringIntro{width:100%; height:auto; background-color:#F8F8F8;  border-radius:10px;  }  
 					
-			#main section h3{display: inline-block;font-size: 27px;}
+			#main section h3{display: inline-block;font-size: 20px;}
 			#main section p{display: inline-block; color: #f14242; padding-left: 10px;}
 			#main section>div:nth-child(1){margin: 20px 0px 20px 100px;}
 			#main section>div:nth-child(2){text-align: center;}
 			#main section>div>div{margin: 20px 0px 20px 0px;}
 			#main section input {display: block;}
-			#main section textarea {display: block; width: 80%; height: 200px;font-size: 23px;}
+			#main section textarea {display: block; width: 80%; height: 200px;font-size: 20px;}
 			#main section button{text-align: center;}  
 			#main section img{width: 100px;height: 100px;}  
 			#main section .radio{display: inline-block;width: 4%; margin-top: 10px; } 

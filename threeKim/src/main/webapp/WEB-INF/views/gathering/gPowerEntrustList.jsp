@@ -8,6 +8,8 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">
+		<link rel="stylesheet" media="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_gathering_mo.css">
+		
 		<meta name="viewport" content="width=device-width, initial-scale=1">		
 	<style type="text/css">
 .menu {
@@ -71,11 +73,11 @@
 }
 
 .gmemberName {
-  width: 100px;
+  width: 80px;
 }
 
 .gmemberInfo {
-  width: 250px;
+  width: 200px;
 }
 	
 .gmemberAddr {
@@ -137,13 +139,13 @@
 										        <!-- 모임장인 경우 추방 불가 텍스트를 표시합니다. -->
 										              
 										    </c:when>
-										    <c:when test="${smv.gatheringMemberType eq 'TLM'}">
+										    <c:when test="${smv.gatheringMemberType eq 'TLD'}">
 										        <!-- 부모임장인 경우 해제을 표시합니다. -->
-										        <button type="button" class="EntrustBtn" onclick="fnCancle(${smv.gatheringMemberType});">해제</button>
-										        <button type="button" class="EntrustBtn" onclick="fnCancle(${smv.gatheringMemberType});">모임장 위임</button>
+										        <button type="button" class="EntrustBtn" onclick="fnDownTM('${smv.gatheringMemberType}', ${smv.midx}, ${smv.giidx});">강등</button>
+										        <button type="button" class="EntrustBtn" onclick="fnEntrustTL('${smv.gatheringMemberType}', ${smv.midx}, ${smv.giidx});">모임장</button>
 										    </c:when>
 										    <c:when test="${smv.gatheringMemberType eq 'TM'}">
-										        <button type="button" class="EntrustBtn" onclick="fnEntrust('${smv.gatheringMemberType}', ${smv.midx}, ${smv.giidx});">위임</button>
+										        <button type="button" class="EntrustBtn" onclick="fnEntrustTLD('${smv.gatheringMemberType}', ${smv.midx}, ${smv.giidx});">위임</button>
 										    </c:when>
 										</c:choose>
 									</c:if>	
@@ -168,11 +170,36 @@
 		</main>
 		<%@include file="../footer.jsp" %>
 		<script type="text/javascript">
-			function fnEntrust(gatheringMemberType, bmidx, bgiidx) {
+			function fnEntrustTLD(gatheringMemberType, bmidx, bgiidx) {
+				// 모임원을 부모임장으로 위임
 			    if (confirm("정말 위임하시겠습니까?")) {
 			        location.href = "<%=request.getContextPath()%>/gathering/gMemberEntrust.do?gatheringMemberType=${gatheringMemberType}&midx="+bmidx+"&giidx="+bgiidx+"";
 			    }
 			}
+			
+			function fnEntrustTL(gatheringMemberType, bmidx, bgiidx) {
+				  if (confirm("정말 모임장으로 위임하시겠습니까?\n확인을 누르시면 부모임장으로 되며 멤버 목록페이지로 이동합니다")) {
+				    // 첫 번째 리다이렉트 수행
+				    fetch('<%=request.getContextPath()%>/gathering/gMemberDownTLD.do?gatheringMemberType=' + gatheringMemberType + '&midx=' + bmidx + '&giidx=' + bgiidx)
+				      .then(function(response) {
+				        // 첫 번째 리다이렉트 완료 후 두 번째 리다이렉트 수행
+				        fetch('<%=request.getContextPath()%>/gathering/gMemberEntrustTL.do?gatheringMemberType=' + gatheringMemberType + '&midx=' + bmidx + '&giidx=' + bgiidx)
+				          .then(function(response) {
+				            // 두 번째 리다이렉트 완료 후 멤버 목록 페이지로 이동
+				            location.href = '<%=request.getContextPath()%>/gathering/gMemberList.do';
+				          });
+				      });
+				  }
+				}
+			
+			function fnDownTM(gatheringMemberType, bmidx, bgiidx) {
+				// 부모임장을 모임원으로 강등시킴
+			    if (confirm("정말 모임원으로 강등 시키겠습니까?")) {
+			        location.href = "<%=request.getContextPath()%>/gathering/gMemberDownTM.do?gatheringMemberType=${gatheringMemberType}&midx="+bmidx+"&giidx="+bgiidx+"";
+			    }
+			}
+			
+			
 		</script>
 	</body>
 </html>

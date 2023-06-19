@@ -734,7 +734,7 @@ public class GatheringController {
 			return "redirect:/gathering/gMemberList.do"; 
 		}	
 	
-//모임 더 보기 부모임장으로 위임
+//모임 더 보기 모임원 > 부모임장으로 위임
 		@RequestMapping(value="/gMemberEntrust.do")
 		public String updateTLD(
 				@RequestParam("midx") int midx, 
@@ -748,7 +748,47 @@ public class GatheringController {
 			System.out.println("권한메소드");
 			return "redirect:/gathering/gPowerEntrustList.do"; 
 		}	
-	
+
+//모임 더 보기 부모임장> 모임원으로 강등
+		@RequestMapping(value="/gMemberDownTM.do")
+		public String updateTM(
+				@RequestParam("midx") int midx,
+				HttpServletRequest request
+				){
+			HttpSession session = request.getSession();	
+			Object Ogiidx = session.getAttribute("giidx");
+			int giidx = (int)Ogiidx;
+			int value = gs.updateTM(midx, giidx);
+			return "redirect:/gathering/gPowerEntrustList.do"; 
+		}	
+
+//모임 더 보기 모임장 > 부모임장으로 강등
+		@RequestMapping(value = "/gMemberDownTLD.do")
+		public String updateDownTLD(
+		        @RequestParam("midx") int midx,
+		        HttpServletRequest request
+		) {
+		    HttpSession session = request.getSession();
+		    Object Ogiidx = session.getAttribute("giidx");
+		    int giidx = (int) Ogiidx;
+		    int value = gs.updateDownTLD(midx, giidx);
+		    return "redirect:/gathering/gMemberList.do";
+		}
+
+//모임 더 보기 부모임장 > 모임장으로 위임	
+		@RequestMapping(value="/gMemberEntrustTL.do")
+		public String updateTL(
+		        @RequestParam("midx") int midx,
+		        HttpServletRequest request
+		) {
+		    HttpSession session = request.getSession();
+		    Object Ogiidx = session.getAttribute("giidx");
+		    int giidx = (int) Ogiidx;
+		    int value = gs.updateTL(midx, giidx);
+		    return "redirect:/gathering/gPowerEntrustList.do";
+		}
+		
+		
 //모임 더 보기 가입 대기 리스트 보기	
 		@RequestMapping(value="/gMemberJoinWaitList.do")
 		public String gMemberJoinWaitList() {

@@ -153,9 +153,15 @@ public interface GatheringService_Mapper {
 	public ArrayList<GatheringJoinVo> gatheringSeeMoreMemberList(int giidx);
 	//모임 더보기 멤버 추방
 	public int updateMemberDELYN(int midx,int giidx);
-	//모임 더보기 부모임장으로 위임
+	//모임 더보기 모임원 > 부모임장으로 위임
 	public int updateTLD(int midx,int giidx);
-
+	//모임 더보기 부모임장 > 모임원으로 강등
+	public int updateTM(int midx,int giidx);
+	//모임 더보기 모임장 > 부모임장으로 강등
+	public int updateDownTLD(int midx,int giidx);
+	//모임 더보기 부모임장 > 모임장으로 위임
+	public int updateTL(int midx,int giidx);
+	
 	
 	//모임사진첩작성
 	public int gatheringPhotoAlbumWrite(GatheringJoinVo gjv);

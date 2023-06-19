@@ -33,8 +33,8 @@
 			#gatheringIntro p{text-align:center; padding:5px; font-family:'GangwonEdu_OTFBoldA'; font-size:10px; margin-top:1px;  overflow: hidden;}
 			#gatheringList{width:100%; display:flex; flex-wrap:wrap;justify-content:center; align-items:center;}
  			#gatheringList h2 {text-align:center; font-family: 'GangwonEdu_OTFBoldA'; font-size: 14px;  padding:10px;}
- 			  
-			}
+ 			 footer{margin-top: 0px !important;}
+ 			 }
 		 </style>
 	
 	
