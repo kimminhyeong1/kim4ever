@@ -81,7 +81,7 @@
 					<div class="albumHeader">
 						<h2>${gpv.gPhotoAlbumWriteDay}</h2>
 						<p>${gpv.gPhotoAlbumTitle }</p>
-						<button class="gBtn2">좋아요</button>
+						
 					</div>
 					
 					<div class="albumContent">
