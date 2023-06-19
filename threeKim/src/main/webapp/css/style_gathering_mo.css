@@ -32,7 +32,7 @@ header{width:auto; margin:0 auto; text-align:center;}
 /*공통 부분*/
 /*틀부분*/
     /*박스전체틀*/
-    .gContainer{width:auto; margin:0 auto; text-align:center; border:none;  background-color: #fafafa;  min-height:610px;}
+    .gContainer{width:auto; margin:0 auto; text-align:center; border:none;  background-color: #fafafa;  min-height:610px; padding:0px;}
     /*박스작은틀*/
     .gContent{width:auto; display:flex; flex-wrap:wrap;justify-content:center; align-items:center;}
     /*박스제목*/
