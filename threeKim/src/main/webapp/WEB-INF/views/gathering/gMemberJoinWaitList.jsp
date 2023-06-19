@@ -99,9 +99,20 @@ display: flex; justify-content: flex-end;}
 		<%@include file="header3.jsp" %>
 		<main id="main">
 			<h2 class="menu">
-			<a id="gMemberListLink" href="${pageContext.request.contextPath}/gathering/gMemberList.do">멤버 리스트</a>
-			<a id="gMemberJoinWaitListLink" href="${pageContext.request.contextPath}/gathering/gMemberJoinWaitList.do">가입 대기</a>
-			<a id="gPowerEntrustListLink" href="${pageContext.request.contextPath}/gathering/gPowerEntrustList.do">권한 위임</a>
+			<c:choose>
+			        <c:when test="${gmt.gatheringMemberType eq 'TL'}">
+			            <a id="gMemberListLink" href="${pageContext.request.contextPath}/gathering/gMemberList.do">멤버 리스트</a>
+			            <a id="gMemberJoinWaitListLink" href="${pageContext.request.contextPath}/gathering/gMemberJoinWaitList.do">가입 대기</a>
+			            <a id="gPowerEntrustListLink" href="${pageContext.request.contextPath}/gathering/gPowerEntrustList.do">권한 위임</a>			            
+			        </c:when>
+			        <c:when test="${gmt.gatheringMemberType eq 'TLD'}">
+			        	<a id="gMemberListLink" href="${pageContext.request.contextPath}/gathering/gMemberList.do">멤버 리스트</a>
+			            <a id="gMemberJoinWaitListLink" href="${pageContext.request.contextPath}/gathering/gMemberJoinWaitList.do">가입 대기</a>
+			        </c:when>
+			        <c:otherwise> 
+			            <a id="gMemberListLink" href="${pageContext.request.contextPath}/gathering/gMemberList.do">멤버 리스트</a>
+			        </c:otherwise>
+   				 </c:choose>
 			</h2>
 			<section class="gContainer gSetContainer">
 				<h2>멤버 승인 대기</h2>
