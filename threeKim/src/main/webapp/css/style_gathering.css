@@ -10,12 +10,12 @@ header{width:1250px; margin:35px auto 70px; text-align:center;}
 /*틀부분*/
     /*박스전체틀*/
     
+   	.gContainer{width: 1250px;text-align: center;border: 1px solid #bbb;margin: 40px auto;padding: 20px;background-color: #f1f1f1;border-radius: 10px;}
     
-   .gContainer {width:1250px; margin:35px auto 70px; text-align:center; }
     /*박스작은틀*/
     .gContent{width:100%; display:flex; flex-wrap:wrap;justify-content:center; align-items:center;}
     /*박스제목*/
-    .gContentTitle h2{width:100%; text-align:center; font-size:27px; margin-top:50px; margin-bottom:50px;}
+    .gContentTitle h2{width:100%; text-align:center; font-size:27px; margin-top:50px; margin-bottom:50px;  }
 /*카드부분*/
     /*모임카드박스*/ 
     .card{position:relative; width:265px; height:450px; margin:20px; padding:20px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:10px; } 

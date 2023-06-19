@@ -8,7 +8,7 @@
 		<title>소모임 검색</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">		
 		<link rel="stylesheet"  media ="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_gathering_mo.css">  
 		
 		  
@@ -24,8 +24,7 @@
 				/*************************모바일****************************************/
 				/*****모바일 넓이***/
 			@media (min-width: 300px) and (max-width: 940px)  {
-			.gContainer{width: 100%; text-align: center;border:none;  margin: 10px auto;padding: 0px;background-color: #f1f1f1;border-radius: 10px;}
-			#SearchPart button{position: absolute;width: 50px; height: 30px;border: 0px;background: 0px; top: 3px; right: 380px;}
+			#SearchPart button{position: absolute;width: 50px; height: 30px;border: 0px;background: 0px; top: 3px; right: 0px;}
 			#SearchPart img{width: 40px; height: 40px;}
 			#keywordMark p{font-size:21px;}
 				}
