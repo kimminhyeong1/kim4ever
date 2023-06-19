@@ -14,6 +14,10 @@
 		INSERT INTO GATHERING1234 (GIDX,GIIDX,MIDX,GATHERINGAPPROVALTYPE,GATHERINGMEMBERTYPE,GATHERINGJOININGDAY)
 		VALUES(GIDX_SEQ.NEXTVAL ,GIIDX_SEQ.CURRVAL , #{midx}, 'Y', 'TL', SYSDATE)
 	</insert>
+	<!-- 모임생성 2-1. 모임명 중복체크-->
+	<select id="gInfoNameCheck" parameterType="String" resultType="int">
+		select count(*) from gathering_info1234 where gInfoName=#{gInfoName}
+	</select>
 	<!-- 모임생성 3.모임대표 이미지 넣기-->
 	<insert  id="gatheringGTInsert" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
 		INSERT INTO IMAGE1234 (IMIDX,IMAGENAME,MIDX,GIIDX,IMGTYPE,IMGCREATIONDAY)
@@ -389,6 +393,8 @@
 		<update id="updateTL" parameterType="int"> 
 		UPDATE GATHERING1234 SET GATHERINGMEMBERTYPE = 'TL' WHERE giidx = #{1} AND midx = #{0}
 		</update>
+		
+		
 
 
 	<!--  모임 더보기 모임원 추방으로 변경 -->
@@ -443,7 +449,9 @@
 	</select>
 	
 	
+		
 	
-	
+
+
 
 </mapper>

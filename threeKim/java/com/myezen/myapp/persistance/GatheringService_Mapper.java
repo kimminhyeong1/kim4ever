@@ -30,6 +30,8 @@ public interface GatheringService_Mapper {
 	public int gatheringInfoCreate(GatheringJoinVo gjv);
 	//2.모임 생성하기
 	public int gatheringCreate(GatheringJoinVo gjv);
+	//2-1.모임명 중복 체크
+	public int gInfoNameCheck(String gInfoName);
 	//3.모임대표 이미지 넣기
 	public int gatheringGTInsert(GatheringJoinVo gjv);
 	//4.모임 이미지 넣기

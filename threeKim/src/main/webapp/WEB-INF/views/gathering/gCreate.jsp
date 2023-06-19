@@ -8,7 +8,8 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">
-		<link rel="stylesheet" media="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_gathering_mo.css">		
+		<link rel="stylesheet" media="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_gathering_mo.css">
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>		
 		<meta name="viewport" content="width=device-width, initial-scale=1">		
 		 <style type="text/css">
 		 	/*만들기 부분*/
@@ -42,6 +43,8 @@
 			#main section span{font-size: 20px;} 
 				}
 		 </style>
+	
+	
 	</head>
 	<body>
 	<%@include file="../header2.jsp" %>
@@ -50,11 +53,12 @@
 		<section class="gContainer gSetContainer">
 			<div>
 				<div> 
-					<div>
+					<div>	
 						<h3>모임 이름</h3>
 						<p>필수</p>
 					</div>
-					<input class="gInput" type="text" placeholder="내용을 입력해주세요" name="gInfoName">
+					<input id="gInfoName" class="gInput" type="text" placeholder="내용을 입력해주세요" name="gInfoName">
+					<p id="nameMsg" class="ability_chk" style="display:none;">사용가능한 모임명 입니다.</p>
 				</div>
 				<div>
 					<div>
@@ -119,6 +123,81 @@
 		</form>
 	</main>
 	<%@include file="../footer.jsp" %>
+	
+	<script type="text/javascript">
+		//전역변수
+		$(document).ready(function(){
+		var nameFlag;
+		
+			
+			$("#gInfoName").blur(function(){//blur input값에 쓰고 다른데로 갈때 발동
+				var name = document.getElementById("gInfoName").value;
+				var oMsg = document.getElementById("nameMsg");
+				var oMsgC = document.getElementById("nameMsgCheck");
+			
+				nameFlag = false;
+				
+				if (name == "") {				
+				    oMsg.style.display = "block";
+				    oMsg.style.color = "red";
+					oMsg.style.padding = "15px 0px 0px 5px";
+					oMsg.style.textAlign = "left"; 
+					oMsg.className = "ability_chk";
+					oMsg.innerHTML = "필수 정보입니다.";
+					return false;
+				}
+				
+				 try {
+						// 성공 Api
+						var url = '${pageContext.request.contextPath}/gathering/gInfoNameCheck.do';
+						var param = [{ name: "gInfoName", value: name }];
+
+						$.ajax({
+							url: url,
+							data: param,
+							type: "GET",
+							contentType: "application/json;",
+							dataType: "json",
+							success: function (data) {
+								if (data.value == 1) {
+									oMsg.style.display = "block";
+									oMsg.style.color = "red";
+									oMsg.style.padding = "15px 0px 0px 5px";
+									oMsg.style.textAlign = "left";
+									oMsg.className = "ability_chk";
+									oMsg.innerHTML = "이미 사용중인 모임명입니다.";
+									return false;
+								} else {
+									oMsg.style.display = "block";
+									oMsg.style.color = "red";
+									oMsg.style.padding = "15px 0px 0px 5px";
+									oMsg.style.textAlign = "left";
+									oMsg.className = "ability_chk submit";
+									oMsg.innerHTML = "사용 가능한 모임명입니다.";
+								}
+								nameFlag = true;	
+								return true;
+							},
+							error: function (error) {
+								alert("Error");
+							}
+						});
+					} catch (e) {
+						if (window.bridgeGotTime) {
+							throw e;
+						 } else {
+							//page reload?
+						 }
+					}
+					return true; 
+					
+			});
+		});		
+
+	
+	</script>
+	
+	
 	<script type="text/javascript">
 	function previewImage(event) {
 		  var input = event.target;
