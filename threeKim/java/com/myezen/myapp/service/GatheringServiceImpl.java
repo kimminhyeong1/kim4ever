@@ -594,13 +594,21 @@ public class GatheringServiceImpl implements GatheringService {
 				
 		//1.사진첩 생성		
 		value = gsm.gatheringPhotoAlbumWrite(gjv);
+		System.out.println("value1성공"+value);
+		int gpaidx = gsm.gatheringPhotoAlbumGetGpaidx(gjv);
+		gjv.setGpaidx(gpaidx);
+		System.out.println("gpaidx값은?"+gpaidx);
+		
+        
 		//2.모임 대표이미지 넣기
         value = gsm.gatheringPhotoGATInsert(gjv);
+        System.out.println("value2성공"+value);
         //3. 모임 이미지들 넣기
         for (MultipartFile file : GAImg) {
         	String uploadedGAImgName = UploadFileUtiles.uploadFile(savedGAImgPath, file.getOriginalFilename(), file.getBytes());
         	gjv.setImageName(uploadedGAImgName);
         	value = gsm.gatheringPhotoGAInsert(gjv);
+        	 System.out.println("value3성공"+value);
         }
 
 		return value;

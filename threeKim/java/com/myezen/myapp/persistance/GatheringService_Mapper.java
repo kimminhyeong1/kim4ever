@@ -202,5 +202,8 @@ public interface GatheringService_Mapper {
 	public int gatheringPhotoGAUpdate(GatheringJoinVo gjv);
 	//모임사진첩 삭제하기
 	public void deletePhotoAlbum(int midx, int gpaidx);
+	//모임 gpaidx값얻기
+	public int gatheringPhotoAlbumGetGpaidx(GatheringJoinVo gjv);
+	
 	
 }
