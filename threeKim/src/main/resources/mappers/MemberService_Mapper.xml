@@ -5,8 +5,8 @@
 <mapper namespace="com.myezen.myapp.persistance.MemberService_Mapper">
 	<!-- 회원가입 -->
 	<insert id="memberInsert" parameterType="mv">
-		INSERT INTO member1234(midx,memberId,memberPwd,memberName,memberAge,memberPhone,memberEmail,memberAddr,memberProfile,memberIntro)
-		VALUES(midx_seq.nextval,#{memberId},#{memberPwd},#{memberName},#{memberAge},#{memberPhone},#{memberEmail},#{memberAddr},'/profile.jpg','안녕하세요.')
+		INSERT INTO member1234(memberId,memberPwd,memberName,memberAge,memberPhone,memberEmail,memberAddr,memberProfile,memberIntro)
+		VALUES(#{memberId},#{memberPwd},#{memberName},#{memberAge},#{memberPhone},#{memberEmail},#{memberAddr},'/profile.jpg','안녕하세요.')
 	</insert>
 	<!-- 회원가입 아이디중복체크 -->
 	<select id="memberIdCheck" parameterType="String" resultType="int">
@@ -31,8 +31,8 @@
 	</select>
 	<!-- 로그인에서 아이디찾기,비밀번호찾기 인증번호저장 -->
 	<insert id="memberMailAuthSave" parameterType="String">
-		INSERT INTO mailAuth1234(mail_idx,mail_key,memberEmail)
-		VALUES(mail_idx_seq.NEXTVAL,#{0},#{1}) 
+		INSERT INTO mailAuth1234(mail_key,memberEmail)
+		VALUES(#{0},#{1}) 
 	</insert>
 	<!-- 로그인에서 아이디찾기,비밀번호찾기 인증번호 대조 -->
 	<select id="memberMailAuthMatch" parameterType="String" resultType="int">
@@ -83,7 +83,7 @@
 	<update id="withdrawMember" parameterType="String">
     UPDATE member1234
     SET memberDelYN = 'Y',
-        memberOutDay = SYSDATE
+        memberOutDay = CURDATE()
     WHERE memberId = #{memberId}
 	</update>
 
@@ -100,12 +100,12 @@
 	
 	<!--소셜 회원가입 -->
 	<insert id="googleMemberInsert" parameterType="String">
-		INSERT INTO member1234(midx,memberId,memberPwd,memberName,memberEmail,memberLoginType)
-		VALUES(midx_seq.nextval,#{0},#{1},#{2},#{0},'구글')
+		INSERT INTO member1234(memberId,memberPwd,memberName,memberEmail,memberLoginType)
+		VALUES(#{0},#{1},#{2},#{0},'구글')
 	</insert>
 	<insert id="kakaoMemberInsert" parameterType="String">
-		INSERT INTO member1234(midx,memberId,memberPwd,memberName,memberEmail,memberLoginType)
-		VALUES(midx_seq.nextval,#{0},#{1},#{2},#{0},'카카오')
+		INSERT INTO member1234(memberId,memberPwd,memberName,memberEmail,memberLoginType)
+		VALUES(#{0},#{1},#{2},#{0},'카카오')
 	</insert>
 	<!--소셜 멤버 확인 -->
 	<select id="socialMemberCheck" parameterType="String" resultType="int">
