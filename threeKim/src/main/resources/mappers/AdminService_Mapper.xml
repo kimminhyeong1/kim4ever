@@ -25,12 +25,17 @@
 	
 <!--관리자 회원관리 리스트  -->
 <select id="memberList" resultType="com.myezen.myapp.domain.BikeJoinVo">
-	SELECT memberId, memberName, memberAge, memberDelYN, writeDay, memberType
-	FROM member1234
-	WHERE memberDelYN = 'N'
-	<include refid="search3" />
-	ORDER BY memberType ASC, writeDay DESC
-	LIMIT #{perPageNum} OFFSET ((#{page} - 1) * #{perPageNum});
+SELECT *
+FROM (
+  SELECT memberId, memberName, memberAge, memberDelYN, writeDay, memberType,
+         ROW_NUMBER() OVER (ORDER BY memberType ASC, writeDay DESC) AS row_num
+  FROM member1234
+  WHERE memberDelYN = 'N'
+  -- <include refid="search3" />
+) AS numbered_rows
+WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPageNum};
+
+	
 </select>
 
 
