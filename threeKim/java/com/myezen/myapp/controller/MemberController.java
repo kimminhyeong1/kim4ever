@@ -684,7 +684,9 @@ public class MemberController {
 		    int midx = (int)omidx;
 		    
 		    //회원 프로필 업데이트
-		    int value = ms.memberUpdateMemberProfile(midx,memberProfile);
+		    String profile = ms.memberUpdateMemberProfile(midx,memberProfile);
+		    
+		    session.setAttribute("memberProfile", profile);
 		 
 		    return "redirect:/member/memberMypage.do";
 	    }

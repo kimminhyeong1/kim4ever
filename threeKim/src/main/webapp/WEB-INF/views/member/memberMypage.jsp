@@ -43,24 +43,24 @@ li{list-style:none;}
 #content table h2{margin-top:40px; font-size:40px; font-family:'GangwonEdu_OTFBoldA'; }
 #content table {position:relative; width:60%; height:20%; border-collapse:collapse; border:1px solid #ddd; margin: 60px auto 0; font-family:'omyu_pretty'; }
 #content table th{width:200px; text-align:center; border:1px solid #ddd; padding:8px;}
-#content table td {border:1px solid #ddd;padding:20px;text-align:left;vertical-align:middle;height:100px; font-size:30px;}
+#content table td {border:1px solid #bbb;padding:20px;text-align:left;vertical-align:middle;height:100px; font-size:30px;}
 #content table img{width:60px; height:50px; float:right; margin: 0 auto; vertical-align:middle;}
 #content table td a {display:flex;  color:#333;}
 #content table td a.logout-btn {display:inline-block;padding:10px 20px;background-color:#ff9800;color:#fff;text-decoration:none;border-radius:5px;transition:background-color 0.3s ease;}
 #content table td a.logout-btn:hover {background-color: #FF6600;}
 #content table .image-container {position:relative; width:180px;height:180px;}
-#content table #imagePreview {position:absolute; width:100%; height:100%; border:1px solid #000; border-radius:100px;object-fit:cover;}
+#content table #imagePreview {position:absolute; width:100%; height:100%; border:1px solid #bbb; border-radius:100px;object-fit:cover;}
 #content table .button-container {width:200px; margin-left:20px; position:absolute; bottom:680px; left:0; align-items:center; }
-#content table .intro-container {width:550px;height:auto; float:right;border:1px solid #ddd; border-radius:50px; display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:20px;}
+#content table .intro-container {width:550px;height:auto; float:right;border:1px solid #ddd; border-radius:50px; display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:20px;margin-top: 25px;}
 #content table .intro-container h3 {font-size:24px;margin-bottom:10px;border-bottom:1px solid #000;}
 #content table input[type="text"] {font-family:'omyu_pretty';font-size:24px;box-sizing:border-box;width:100%;padding:10px;margin-bottom:10px;border:1px solid #ccc;border-radius:4px;}
-#content table .intro-container .button-container2 {display:flex;justify-content:flex-end;gap:10px;margin-top:10px;margin-left:480px;}
-#content table .button-container2 button{border:1px solid #000; border-radius:50px; width:70px; }
-#formImg{float: left;} 
-
-
-
-
+#content table .intro-container .button-container2 {display:flex;justify-content:flex-end;gap:10px;margin-top:10px;margin-left:430px;}
+#content table .button-container2 button{width: 100px;height: 30px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;border: 1px solid;}
+#formImg{float: left;}  
+#editImgBtn{position: absolute;top: 3px;right: -460px;width: 100px;height: 30px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;border: 1px solid;}
+#content table #memberProfile{position:absolute; width:100%; height:100%; border:1px solid #bbb; border-radius:100px;object-fit:cover;} 
+#UploadImgBtn{position: absolute;top: 3px;right: -460px;width: 100px;height: 30px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;border: 1px solid;}
+ 
 
 /**************************모바일****************************************/
 
@@ -78,7 +78,7 @@ li{list-style:none;}
 #content table td a.logout-btn {display:inline-block;padding:10px 20px;background-color:#ff9800;color:#fff;text-decoration:none;border-radius:5px;transition:background-color 0.3s ease;}
 #content table td a.logout-btn:hover {background-color: #FF6600;}
 #content table .image-container {position:abosolute; width:100px;height:100px; margin:0px;   left: 20%; top: 50%; transform: translate(-50%, 0%);}
-#content table #imagePreview {float:center; width:100%; height:100%; border:1px solid #000; border-radius:100px;object-fit:cover;}
+#content table #imagePreview {float:center; width:100%; height:100%; border:1px solid #bbb; border-radius:100px;object-fit:cover;}
 #content table .button-container {width:100px; margin-left:10px;  bottom:320px; left:112px; align-items:center;  font-size:10px;}
 #content table .intro-container {width:250px;height:5px; margin-top: 8px; float:right;border:1px solid #ddd; border-radius:50px; padding-top:30px; }
 #content table .intro-container h3 {font-size:14px;margin-bottom:5px;border-bottom:1px solid #000;}
@@ -165,13 +165,15 @@ function previewImage(event) {
 				  <!-- 이미지업로드 란  -->
 					<form method="post" action="${pageContext.request.contextPath}/member/MypageProfile.do" enctype="multipart/form-data" id="formImg">
 						<div class="image-container">	
-							<label for="image">
-							  <img id="imagePreview" src="${pageContext.request.contextPath}/resources/images/profile.jpg" />
+								<img id="memberProfile" src="${pageContext.request.contextPath}/resources/MemberProfile/${sessionScope.memberProfile}" />
+							<label id="imgLabel" for="image" style="display: none;">
+							  <img id="imagePreview" src="${pageContext.request.contextPath}/resources/icon/imgPlus.png" />
 							</label>
 						</div>
 						<div class="button-container">
 							<input id="image" type="file" name="memberProfile" onchange="previewImage(event)" style="display: none;"/>
-							<button style="display: none;">업로드</button>
+							<button id="UploadImgBtn" style="display: none;">업로드</button>
+							<button id="editImgBtn" type="button">프로필편집</button>
 						</div>
 					</form>
                    
@@ -229,7 +231,14 @@ function previewImage(event) {
 
 
 </div>
-
+	<script type="text/javascript">
+	document.getElementById('editImgBtn').addEventListener('click', function() {
+	    document.getElementById('editImgBtn').style.display = 'none';
+	    document.getElementById('memberProfile').style.display = 'none';
+	    document.getElementById('UploadImgBtn').style.display = 'block';
+	    document.getElementById('imgLabel').style.display = 'block';
+	});
+	</script>
 </body>
 <%@include file="../footer.jsp" %>
 </html>

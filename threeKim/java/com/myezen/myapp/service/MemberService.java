@@ -68,7 +68,7 @@ public interface MemberService {
 	public String getMemberIntro(int midx);
 	
 	//회원 프로필 업데이트 /*김건우*/
-	public int memberUpdateMemberProfile(int midx , MultipartFile memberProfile)throws IOException, Exception;
+	public String memberUpdateMemberProfile(int midx , MultipartFile memberProfile)throws IOException, Exception;
 	
 	//QR찍고 휴대폰 번호 없는지 체크
 	public String memberPhoneCheck(int midx);

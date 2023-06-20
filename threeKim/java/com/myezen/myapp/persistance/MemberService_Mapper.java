@@ -64,7 +64,8 @@ public interface MemberService_Mapper {
 	public String getMemberIntro(int midx);
 	//회원 프로필 업데이트 /*김건우*/
 	public int memberUpdateMemberProfile(MemberVo mv);
-	
+	//회원 프로필 업데이트 프로필가져오기
+	public String getMemberProfile(int midx);
 	//QR찍고 휴대폰 번호 없는지 체크
 	public String memberPhoneCheck(int midx);
 	

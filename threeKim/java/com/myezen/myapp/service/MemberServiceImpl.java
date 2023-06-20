@@ -372,8 +372,7 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Override
 	//회원 프로필 업데이트 /*김건우*/
-	public int memberUpdateMemberProfile(int midx, MultipartFile memberProfile) throws IOException, Exception {
-		int value=0;
+	public String memberUpdateMemberProfile(int midx, MultipartFile memberProfile) throws IOException, Exception {
 		//배포했을때
         //String savedMemberProfileImgPath = request.getSession().getServletContext().getRealPath("/resources/MemberProfile");
 		String savedMemberProfileImgPath = "D://threekim//threeKim//src//main//webapp//resources/MemberProfile";//회원 프로필 이미지
@@ -382,8 +381,9 @@ public class MemberServiceImpl implements MemberService {
 		MemberVo mv = new MemberVo();
 		mv.setMidx(midx);
 		mv.setMemberProfile(uploadedMemberProfileImgName);
-		value = msm.memberUpdateMemberProfile(mv);
-		return value;
+		int value = msm.memberUpdateMemberProfile(mv);
+		String profile = msm.getMemberProfile(midx);
+		return profile;
 	}
 	@Override
 	//QR찍고 휴대폰 번호 없는지 체크
