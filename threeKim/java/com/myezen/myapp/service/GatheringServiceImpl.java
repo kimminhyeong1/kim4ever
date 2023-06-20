@@ -72,26 +72,30 @@ public class GatheringServiceImpl implements GatheringService {
         String savedGTImgPath = "D://threekim//threeKim//src//main//webapp//resources/GTImages";//모임대표이미지
         String savedGImgPath = "D://threekim//threeKim//src//main//webapp//resources/GImages";//모임이미지
 		//모임 대표 이미지 
-        String uploadedGTImgName  = UploadFileUtiles.uploadFile(savedGTImgPath, GTImg.getOriginalFilename(), GTImg.getBytes());
-        gjv.setImageName(uploadedGTImgName);
+    	if (GTImg.isEmpty()) {
+            System.out.println(GTImg);
+        } else {
+        	String uploadedGTImgName  = UploadFileUtiles.uploadFile(savedGTImgPath, GTImg.getOriginalFilename(), GTImg.getBytes());
+        	gjv.setImageName(uploadedGTImgName);
+        }
 
-			/*모임생성*/
-			//1.모임정보생성
-	        value = gsm.gatheringInfoCreate(gjv);
-	        //2.모임생성
-	        value = gsm.gatheringCreate(gjv);
-	        //3.모임 대표이미지 넣기
-	        value = gsm.gatheringGTInsert(gjv);
-	        //4. 모임 이미지들 넣기
-            for (MultipartFile file : GImg) {
-	        	if (file.isEmpty()) {
-		            System.out.println(file);
-		        } else {
-	                String uploadedGImgName = UploadFileUtiles.uploadFile(savedGImgPath, file.getOriginalFilename(), file.getBytes());
-	                gjv.setImageName(uploadedGImgName); 
-		        	value = gsm.gatheringGInsert(gjv);
-		        }
+		/*모임생성*/
+		//1.모임정보생성
+        value = gsm.gatheringInfoCreate(gjv);
+        //2.모임생성
+        value = gsm.gatheringCreate(gjv);
+        //3.모임 대표이미지 넣기
+        value = gsm.gatheringGTInsert(gjv);
+        //4. 모임 이미지들 넣기
+        for (MultipartFile file : GImg) {
+        	if (file.isEmpty()) {
+	            System.out.println(file);
+	        } else {
+                String uploadedGImgName = UploadFileUtiles.uploadFile(savedGImgPath, file.getOriginalFilename(), file.getBytes());
+                gjv.setImageName(uploadedGImgName); 
+	        	value = gsm.gatheringGInsert(gjv);
 	        }
+        }
 
 		return value;
 	}
