@@ -461,22 +461,21 @@
 	
 	<!-- 사진첩 리스트 조회 -->
 	<select id="gatheringPhotoAlbumListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo"  parameterType="com.myezen.myapp.domain.SearchCriteria">
-		SELECT *
-		FROM (
-		    SELECT ROWNUM AS RNUM, A.*
-		    FROM (
-		        SELECT a.gpaidx, a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, b.imgtype, b.imageName
-		        FROM gathering_photoalbum1234 a
-		        JOIN image1234 b ON a.giidx = b.GIIDX AND a.gpaidx = b.gpaidx
-		        WHERE b.imgtype = 'GAT'
-		        <if test="keyword != null">
-		            AND a.GPHOTOALBUMTITLE LIKE '%'||#{keyword}||'%'
-		        </if>
-		        ORDER BY GPHOTOALBUMWRITEDAY DESC
-		    ) A
-		      <![CDATA[WHERE ROWNUM <= #{page} * #{perPageNum}]]>
-		) B
-		<![CDATA[WHERE B.rnum >= (#{page} - 1) * #{perPageNum} + 1]]>
+	 SELECT *
+	  FROM (
+	    SELECT @rownum := @rownum + 1 AS RNUM, B.*
+	    FROM (
+	      SELECT a.gpaidx, a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, b.imgtype, b.imageName
+	      FROM gathering_photoalbum1234 a
+	      JOIN image1234 b ON a.giidx = b.GIIDX AND a.gpaidx = b.gpaidx
+	      WHERE b.imgtype = 'GAT'
+	      <if test="keyword != null">
+	        AND a.GPHOTOALBUMTITLE LIKE CONCAT('%', #{keyword}, '%')
+	      </if>
+	      ORDER BY GPHOTOALBUMWRITEDAY DESC
+	    ) B, (SELECT @rownum := 0) R
+	  ) C
+	  WHERE C.RNUM BETWEEN ${(page - 1) * perPageNum + 1} AND ${page * perPageNum}
 	</select>
 	
 	<!-- 사진첩 리스트  총 게시물 조회 -->

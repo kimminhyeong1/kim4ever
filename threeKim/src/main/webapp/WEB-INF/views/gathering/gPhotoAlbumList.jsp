@@ -70,7 +70,7 @@ window.onload = function() {
 							<img class="cardImg" src="../resources/GATImages/${gpv.imageName}">
 							<h3 class="cardTitle"> 
 							<c:set var="dateString" value="${gpv.gPhotoAlbumWriteDay}" />
-							<fmt:parseDate var="date" value="${dateString}" pattern="yyyy-MM-dd HH:mm:ss.S" />
+							<fmt:parseDate var="date" value="${dateString}" pattern="yyyy-MM-dd HH:mm:ss" />
 							<fmt:formatDate value="${date}" pattern="yyyy년 MM월 dd일" />
 							</h3>
 							<h3 class="cardTitle">${gpv.gPhotoAlbumTitle }</h3>
