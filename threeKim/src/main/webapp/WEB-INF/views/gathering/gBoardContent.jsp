@@ -110,7 +110,7 @@
 							</div>
 							<div>
 								<div>
-									<fmt:parseDate value="${gjv.gBoardWriteDay}" pattern="yyyy-MM-dd HH:mm:ss.S" var="parsedRentDay" />
+									<fmt:parseDate value="${gjv.gBoardWriteDay}" pattern="yyyy-MM-dd HH:mm:ss" var="parsedRentDay" />
 									<fmt:formatDate value="${parsedRentDay}" pattern="yyyy-MM-dd HH:mm" var="formattedRentDay" />
 									${formattedRentDay}
 									<span>${gjv.gBoardCategory}</span><span>&nbsp;&nbsp;&nbsp;조회수[${gjv.gBoardViewsCNT}회]</span>
@@ -168,7 +168,7 @@
 								</div>
 								<div>
 									<div>
-										<fmt:parseDate value="${gjvc.gCommentWriteDay}" pattern="yyyy-MM-dd HH:mm:ss.S" var="parsedRentDay" />
+										<fmt:parseDate value="${gjvc.gCommentWriteDay}" pattern="yyyy-MM-dd HH:mm:ss" var="parsedRentDay" />
 										<fmt:formatDate value="${parsedRentDay}" pattern="yyyy-MM-dd HH:mm" var="formattedRentDay" />
 										${formattedRentDay}
 									</div>
@@ -196,13 +196,13 @@
 					</c:forEach>	
 					<div class="gPaging">
 						<c:if test="${pm.prev == true}">
-							<a href="${pageContext.request.contextPath}/gathering/gBoardContent.do?gbidx=${gjv.gbidx}&page=${pm.startPage-1}">◀</a>
+							<a href="${pageContext.request.contextPath}/gathering/gBoard/${gjv.gbidx}/Content.do?page=${pm.startPage-1}">◀</a>
 						</c:if><!--if문-end-->
 						<c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}" step="1">
-						<a href="${pageContext.request.contextPath}/gathering/gBoardContent.do?gbidx=${gjv.gbidx}&page=${i}">${i}</a>
+						<a href="${pageContext.request.contextPath}/gathering/gBoard/${gjv.gbidx}/Content.do?page=${i}">${i}</a>
 						</c:forEach><!--for문-end-->
 						<c:if test="${pm.next && pm.endPage > 0}">
-							<a href="${pageContext.request.contextPath}/gathering/gBoardContent.do?gbidx=${gjv.gbidx}&page=${pm.endPage+1}">▶</a>
+							<a href="${pageContext.request.contextPath}/gathering/gBoard/${gjv.gbidx}/Content.do?page=${pm.endPage+1}">▶</a>
 						</c:if><!--if문-end-->
 					</div><!-- 페이징 -->
 		 		</div>

@@ -6,13 +6,13 @@
 	
 	<!-- 모임생성 1.모임정보생성 -->
 	<insert  id="gatheringInfoCreate" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
-	  	INSERT INTO GATHERING_INFO1234 (GIIDX,GINFONAME,GINFOAREA,GINFOBRIEFINTRODUCTION,GINFOAREAINTRODUCTION,GINFOCAPACITY,gInfoParticipating,GINFOCREATIONDAY,GINFOJOINTYPE)
-		VALUES(giidx_seq.NEXTVAL, #{gInfoName}, #{gInfoArea}, #{gInfoBriefIntroduction}, #{gInfoAreaIntroduction}, #{gInfoCapacity},'1', SYSDATE,#{gInfoJoinType})
+	  	INSERT INTO GATHERING_INFO1234 (GINFONAME,GINFOAREA,GINFOBRIEFINTRODUCTION,GINFOAREAINTRODUCTION,GINFOCAPACITY,gInfoParticipating,GINFOCREATIONDAY,GINFOJOINTYPE)
+		VALUES(#{gInfoName}, #{gInfoArea}, #{gInfoBriefIntroduction}, #{gInfoAreaIntroduction}, #{gInfoCapacity},'1', NOW(),#{gInfoJoinType})
 	</insert>
 	<!-- 모임생성 2.모임생성-->
 	<insert  id="gatheringCreate" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
-		INSERT INTO GATHERING1234 (GIDX,GIIDX,MIDX,GATHERINGAPPROVALTYPE,GATHERINGMEMBERTYPE,GATHERINGJOININGDAY)
-		VALUES(GIDX_SEQ.NEXTVAL ,GIIDX_SEQ.CURRVAL , #{midx}, 'Y', 'TL', SYSDATE)
+		INSERT INTO GATHERING1234 (GIIDX,MIDX,GATHERINGAPPROVALTYPE,GATHERINGMEMBERTYPE,GATHERINGJOININGDAY)
+		VALUES(LAST_INSERT_ID() , #{midx}, 'Y', 'TL', NOW())
 	</insert>
 	<!-- 모임생성 2-1. 모임명 중복체크-->
 	<select id="gInfoNameCheck" parameterType="String" resultType="int">
@@ -20,41 +20,42 @@
 	</select>
 	<!-- 모임생성 3.모임대표 이미지 넣기-->
 	<insert  id="gatheringGTInsert" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
-		INSERT INTO IMAGE1234 (IMIDX,IMAGENAME,MIDX,GIIDX,IMGTYPE,IMGCREATIONDAY)
-		VALUES(IMIDX_SEQ.NEXTVAL,#{imageName},#{midx},GIIDX_SEQ.CURRVAL,'GT',SYSDATE)
+		INSERT INTO IMAGE1234 (IMAGENAME,MIDX,GIIDX,IMGTYPE,IMGCREATIONDAY)
+		VALUES(#{imageName},#{midx},LAST_INSERT_ID(),'GT',NOW())
 	</insert>
 	<!-- 모임생성 4.모임 이미지 넣기-->
 	<insert  id="gatheringGInsert" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
-		INSERT INTO IMAGE1234 (IMIDX,IMAGENAME,MIDX,GIIDX,IMGTYPE,IMGCREATIONDAY)
-		VALUES(IMIDX_SEQ.NEXTVAL,#{imageName},#{midx},GIIDX_SEQ.CURRVAL,'G',SYSDATE)
+		INSERT INTO IMAGE1234 (IMAGENAME,MIDX,GIIDX,IMGTYPE,IMGCREATIONDAY)
+		VALUES(#{imageName},#{midx},LAST_INSERT_ID(),'G',NOW())
 	</insert>
 	<!-- 모임 리스트 가져오기 -->
 	<select id="gatheringListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo">
-		SELECT a.*, b.*, COALESCE(c.gwidx, 0) AS gwidx
-		FROM GATHERING_INFO1234 a
-		JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
-		LEFT JOIN gathering_wish1234 c ON c.GIIDX = a.GIIDX
-		WHERE b.IMGTYPE = 'GT' AND ROWNUM <![CDATA[<]]>= 8 
+	    SELECT a.*, b.*, COALESCE(c.gwidx, 0) AS gwidx
+	    FROM GATHERING_INFO1234 a
+	    JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
+	    LEFT JOIN gathering_wish1234 c ON c.GIIDX = a.GIIDX
+	    WHERE b.IMGTYPE = 'GT'
+	    LIMIT 8
 	</select>
 	<!-- 모임 리스트  더 가져오기 -->
     <select id="getMoreGatheringList" resultType="com.myezen.myapp.domain.GatheringJoinVo">
 
-            SELECT a.*, b.*, COALESCE(c.gwidx, 0) AS gwidx
-            FROM GATHERING_INFO1234 a
-            JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
-            LEFT JOIN gathering_wish1234 c ON c.GIIDX = a.GIIDX
-            WHERE b.IMGTYPE = 'GT'
-            ORDER BY a.GIIDX
-            OFFSET #{offset} ROWS FETCH NEXT 8 ROWS ONLY
+	    SELECT a.*, b.*, COALESCE(c.gwidx, 0) AS gwidx
+	    FROM GATHERING_INFO1234 a
+	    JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
+	    LEFT JOIN gathering_wish1234 c ON c.GIIDX = a.GIIDX
+	    WHERE b.IMGTYPE = 'GT'
+	    ORDER BY a.GIIDX
+	    LIMIT #{offset}, 8
 
     </select>
 	<!--  모임 나의 리스트 가져오기 -->
 	<select id="gatheringMyListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int"> 
-		SELECT a.GIIDX,a.GINFONAME,a.GINFOBRIEFINTRODUCTION,a.GINFOCAPACITY,a.GINFOPARTICIPATING,b.IMAGENAME, COALESCE(c.gwidx, 0) AS gwidx, c.GATHERINGAPPROVALTYPE 
+		SELECT a.GIIDX,a.GINFONAME,a.GINFOBRIEFINTRODUCTION,a.GINFOCAPACITY,a.GINFOPARTICIPATING,b.IMAGENAME, COALESCE(d.gwidx, 0) AS gwidx, c.GATHERINGAPPROVALTYPE 
 		FROM GATHERING_INFO1234 a
 		JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
 		JOIN GATHERING1234 c ON c.GIIDX = a.GIIDX
-		LEFT JOIN gathering_wish1234 c ON c.GIIDX = a.GIIDX
+		LEFT JOIN gathering_wish1234 d ON d.GIIDX = a.GIIDX
 		WHERE b.IMGTYPE = 'GT' AND c.midx = #{0} AND a.GINFODELYN = 'N'
 	</select>
 	<!--  모임 소개페이지 리스트 가져오기 -->
@@ -100,7 +101,7 @@
 		SELECT a.*,b.MEMBERPROFILE
 		FROM GATHERING1234 a
 		JOIN MEMBER1234 b ON b.midx = a.midx
-		WHERE a.GIIDX = #{giidx} AND b.MEMBERDELYN = 'N' AND a.GATHERINGMEMBERDELYN = 'N' AND a.GATHERINGAPPROVALTYPE = 'Y' AND ROWNUM <![CDATA[<]]>= 8 
+		WHERE a.GIIDX = #{giidx} AND b.MEMBERDELYN = 'N' AND a.GATHERINGMEMBERDELYN = 'N' AND a.GATHERINGAPPROVALTYPE = 'Y' LIMIT 8
 	</select>
 	<!-- 모임공지사항 리스트 가져오기 -->
 	<select id="gatheringNoticeListSelect" resultType="com.myezen.myapp.domain.Gathering_BoardVO" parameterType="int"> 
@@ -118,13 +119,13 @@
 	</select>
 	<!-- 가입타입 확인후 데이터넣기 자유가입-->
 	<insert  id="gatheringJoinTypeAInsert" parameterType="int" >
-	 	INSERT INTO gathering1234 (GIDX,GIIDX,MIDX,GATHERINGAPPROVALTYPE,GATHERINGMEMBERTYPE,GATHERINGJOININGDAY)
-		VALUES(gidx_seq.NEXTVAL, #{0},#{1},'Y','TM',SYSDATE)
+	 	INSERT INTO gathering1234 (GIIDX,MIDX,GATHERINGAPPROVALTYPE,GATHERINGMEMBERTYPE,GATHERINGJOININGDAY)
+		VALUES(#{0},#{1},'Y','TM',NOW())
 	</insert>
 	<!-- 가입타입 확인후 데이터넣기 승인가입-->
 	<insert  id="gatheringJoinTypeBInsert" parameterType="int" >
-	 	INSERT INTO gathering1234 (GIDX,GIIDX,MIDX,GATHERINGAPPROVALTYPE,GATHERINGMEMBERTYPE,GATHERINGJOININGDAY)
-		VALUES(gidx_seq.NEXTVAL, #{0},#{1},'W','TM',SYSDATE) 
+	 	INSERT INTO gathering1234 (GIIDX,MIDX,GATHERINGAPPROVALTYPE,GATHERINGMEMBERTYPE,GATHERINGJOININGDAY)
+		VALUES(#{0},#{1},'W','TM',NOW()) 
 	</insert>
 	<!-- 모임 가입 참여멤버 수 1++업데이트 -->
 	<update id="gatheringParticipatingUpdate" parameterType="int">
@@ -134,8 +135,8 @@
 	</update>
 	<!-- 찜하기 -->
 	<insert  id="gatheringWish" parameterType="int" >
-	 	INSERT INTO gathering_wish1234 (gwidx,GIIDX,MIDX)
-		VALUES(gwidx_seq.NEXTVAL, #{0},#{1}) 
+	 	INSERT INTO gathering_wish1234 (GIIDX,MIDX)
+		VALUES(#{0},#{1}) 
 	</insert>
 	<!-- 찜삭제 -->
 	<delete id="gatheringWishDel" parameterType="int">
@@ -144,11 +145,11 @@
 	</delete>
 	<!--  모임 나의 찜 리스트 가져오기 -->
 	<select id="gatheringMyWishListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int"> 
-		SELECT a.GIIDX,a.GINFONAME,a.GINFOBRIEFINTRODUCTION,a.GINFOCAPACITY,a.GINFOPARTICIPATING,b.IMAGENAME, COALESCE(c.gwidx, 0) AS gwidx , c.GATHERINGAPPROVALTYPE 
+		SELECT a.GIIDX,a.GINFONAME,a.GINFOBRIEFINTRODUCTION,a.GINFOCAPACITY,a.GINFOPARTICIPATING,b.IMAGENAME, COALESCE(d.gwidx, 0) AS gwidx , c.GATHERINGAPPROVALTYPE 
 		FROM GATHERING_INFO1234 a
 		JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
 		JOIN GATHERING1234 c ON c.GIIDX = a.GIIDX
-		JOIN gathering_wish1234 c ON c.GIIDX = a.GIIDX
+		JOIN gathering_wish1234 d ON d.GIIDX = a.GIIDX
 		WHERE b.IMGTYPE = 'GT' AND c.midx = #{0} AND a.GINFODELYN = 'N'
 	</select>	
 	<!-- 모임 검색기능 -->
@@ -161,7 +162,7 @@
 	    JOIN MEMBER1234 e ON e.midx = c.midx
 	    WHERE b.IMGTYPE = 'GT' AND a.GINFODELYN = 'N' AND e.memberdelyn='N' 
 	     <if test="keyword != null">
-	     AND a.GINFONAME LIKE '%'||#{keyword}||'%'
+	     AND a.GINFONAME LIKE CONCAT('%', #{keyword}, '%')
 	    </if>
 	     GROUP BY a.GIIDX, a.GINFONAME, a.GINFOBRIEFINTRODUCTION, a.GINFOCAPACITY, a.GINFOPARTICIPATING, b.IMAGENAME, COALESCE(d.gwidx, 0)
 	</select>
@@ -169,8 +170,8 @@
 
 	<!-- 모임 일정 만들기 -->
 	<insert  id="gatheringScheduleMake" parameterType="com.myezen.myapp.domain.Gathering_ScheduleVO" >
-	 	INSERT INTO gathering_schedule1234 (GSIDX,GIIDX,MIDX,GSCHEDULETITLE,GSCHEDULESTARTDAY,GSCHEDULEENDDAY,GSCHEDULELOCATION,GSCHEDULELATITUDE,GSCHEDULELONGITUDE,GSCHEDULEARRANGEMENTS,GSCHEDULECAPACITY,GSCHEDULEFEE,GSCHEDULEWRITEDAY,gScheduleDelYN)
-		VALUES(gsidx_seq.NEXTVAL, #{giidx},#{midx},#{gScheduleTitle},#{gScheduleStartDay},#{gScheduleEndDay},#{gScheduleLocation},#{gScheduleLatitude},#{gScheduleLongitude},#{gScheduleArrangements},#{gScheduleCapacity},#{gScheduleFee}, SYSDATE,'N')
+	 	INSERT INTO gathering_schedule1234 (GIIDX,MIDX,GSCHEDULETITLE,GSCHEDULESTARTDAY,GSCHEDULEENDDAY,GSCHEDULELOCATION,GSCHEDULELATITUDE,GSCHEDULELONGITUDE,GSCHEDULEARRANGEMENTS,GSCHEDULECAPACITY,GSCHEDULEFEE,GSCHEDULEWRITEDAY,gScheduleDelYN)
+		VALUES(#{giidx},#{midx},#{gScheduleTitle},#{gScheduleStartDay},#{gScheduleEndDay},#{gScheduleLocation},#{gScheduleLatitude},#{gScheduleLongitude},#{gScheduleArrangements},#{gScheduleCapacity},#{gScheduleFee}, NOW(),'N')
 	</insert>
 	<!--  모임 일정 리스트 가져오기 -->
 	<select id="gatheringScheduleListSelect" resultType="com.myezen.myapp.domain.Gathering_ScheduleVO" parameterType="int"> 
@@ -184,8 +185,8 @@
 	<!-- 모임 게시판 -->
 	<!--  모임 게시글 쓰기 -->
 	<insert  id="gatheringBoardWrite" parameterType="com.myezen.myapp.domain.Gathering_BoardVO" >
-		INSERT INTO gathering_board1234 (gbidx,giidx,midx,gBoardTitle,gBoardCategory,gBoardContents,gBoardWriteDay,gBoardDelYN,gBoardViewsCNT,gBoardLikeCNT)
-		VALUES(gbidx_seq.NEXTVAL, #{giidx},#{midx},#{gBoardTitle},#{gBoardCategory},#{gBoardContents},SYSDATE,'N',0,0)
+		INSERT INTO gathering_board1234 (giidx,midx,gBoardTitle,gBoardCategory,gBoardContents,gBoardWriteDay,gBoardDelYN,gBoardViewsCNT,gBoardLikeCNT)
+		VALUES(#{giidx},#{midx},#{gBoardTitle},#{gBoardCategory},#{gBoardContents},NOW(),'N',0,0)
 	</insert>
 	<!--  모임 게시글 수정하는 게시물 가져오기 -->
 	<select id="gatheringBoardModify" resultType="com.myezen.myapp.domain.Gathering_BoardVO" parameterType="int">
@@ -208,19 +209,19 @@
 	
     <sql id="search">
         <if test="scri.searchType != null and scri.searchType.equals('daily')"><!-- 일상  -->
-            and gBoardCategory ='일상' and (gBoardTitle like '%'|| #{scri.keyword} ||'%' OR gBoardContents like '%'|| #{scri.keyword} ||'%')
+            and gBoardCategory ='일상' and (gBoardTitle like CONCAT('%', #{scri.keyword}, '%') OR gBoardContents like CONCAT('%', #{scri.keyword}, '%'))
         </if>
         <if test="scri.searchType != null and scri.searchType.equals('hobby')"><!-- 취미  -->
-            and gBoardCategory ='취미' and (gBoardTitle like '%'|| #{scri.keyword} ||'%' OR gBoardContents like '%'|| #{scri.keyword} ||'%')
+            and gBoardCategory ='취미' and (gBoardTitle like CONCAT('%', #{scri.keyword}, '%') OR gBoardContents like CONCAT('%', #{scri.keyword}, '%'))
         </if>
         <if test="scri.searchType != null and scri.searchType.equals('regularMeeting')"><!-- 정모  -->
-            and gBoardCategory ='정모' and (gBoardTitle like '%'|| #{scri.keyword} ||'%' OR gBoardContents like '%'|| #{scri.keyword} ||'%')
+            and gBoardCategory ='정모' and (gBoardTitle like CONCAT('%', #{scri.keyword}, '%') OR gBoardContents like CONCAT('%', #{scri.keyword}, '%'))
         </if>
         <if test="scri.searchType != null and scri.searchType.equals('greet ')"><!-- 가입인사  -->
-            and gBoardCategory ='가입인사' (and gBoardTitle like '%'|| #{scri.keyword} ||'%' OR gBoardContents like '%'|| #{scri.keyword} ||'%')
+            and gBoardCategory ='가입인사' (and gBoardTitle like CONCAT('%', #{scri.keyword}, '%') OR gBoardContents like CONCAT('%', #{scri.keyword}, '%'))
         </if>
         <if test="scri.searchType != null and scri.searchType.equals('notice')"><!-- 공지사항  -->
-            and gBoardCategory ='공지사항' (and gBoardTitle like '%'|| #{scri.keyword} ||'%' OR gBoardContents like '%'|| #{scri.keyword} ||'%')
+            and gBoardCategory ='공지사항' (and gBoardTitle like CONCAT('%', #{scri.keyword}, '%') OR gBoardContents like CONCAT('%', #{scri.keyword}, '%'))
         </if>
 
     </sql>
@@ -236,18 +237,18 @@
     <!--  모임 게시글 리스트 가져오기 -->
     <select id="gatheringBoardListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="java.util.HashMap"> 
         SELECT *
+    FROM (
+        SELECT ROW_NUMBER() OVER (ORDER BY CASE WHEN GBOARDCATEGORY = '공지사항' THEN 0 ELSE 1 END, GBOARDWRITEDAY DESC) AS rnum, A.*
         FROM (
-            SELECT ROWNUM AS rnum, A.*
-            FROM (
-                SELECT a.*, b.memberName, b.memberProfile, c.gatheringMemberType
-                FROM GATHERING_BOARD1234 a
-                JOIN member1234 b ON b.midx = a.midx
-                JOIN GATHERING1234 c ON c.giidx = a.giidx AND c.midx = a.midx
-                WHERE gBoardDelYN = 'N' AND memberdelyn = 'N' AND gatheringMemberDelYN = 'N' AND a.GIIDX = #{giidx} <include refid="search"></include>
-                ORDER BY CASE WHEN GBOARDCATEGORY = '공지사항' THEN 0 ELSE 1 END, GBOARDWRITEDAY DESC
-            ) A
-        )
-        WHERE rnum BETWEEN (#{scri.page}-1)*#{scri.perPageNum}+1 AND #{scri.page}*#{scri.perPageNum} 
+            SELECT a.*, b.memberName, b.memberProfile, c.gatheringMemberType
+            FROM GATHERING_BOARD1234 a
+            JOIN member1234 b ON b.midx = a.midx
+            JOIN GATHERING1234 c ON c.giidx = a.giidx AND c.midx = a.midx
+            WHERE gBoardDelYN = 'N' AND memberdelyn = 'N' AND gatheringMemberDelYN = 'N' AND a.GIIDX = #{giidx}
+            <include refid="search"></include>
+        ) A
+    ) B
+    WHERE rnum BETWEEN (#{scri.page}-1)*#{scri.perPageNum}+1 AND #{scri.page}*#{scri.perPageNum}
     </select>
         <!--  모임 게시글 보기 -->
     <select id="gatheringBoardOneSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int"> 
@@ -263,9 +264,15 @@
 	</update>
 	<!--  모임 게시글에서 댓글 작성하기 -->
 	<insert id="gatheringBoardCommentAdd"  parameterType="com.myezen.myapp.domain.Gathering_CommentVO"> 
-		INSERT INTO gathering_comment1234 (gcidx,gbidx,midx,gCommentContents,gCommentWriteDay,gCommentDelYN,gCommentDepth,regcidx)
-		VALUES(gcidx_seq.NEXTVAL, #{gbidx},#{midx},#{gCommentContents},SYSDATE,'N',0,gcidx_seq.NEXTVAL)
+		INSERT INTO gathering_comment1234 (gbidx,midx,gCommentContents,gCommentWriteDay,gCommentDelYN,gCommentDepth,regcidx)
+		VALUES(#{gbidx},#{midx},#{gCommentContents},NOW(),'N',0,0)
 	</insert>
+	<!--  모임 게시글에서 댓글 작성하기 업데이트 -->
+	<update id="gatheringBoardCommentAddUpdate" parameterType="com.myezen.myapp.domain.Gathering_CommentVO">
+	  UPDATE gathering_comment1234
+	  SET regcidx = LAST_INSERT_ID()
+	  WHERE gcidx = LAST_INSERT_ID() AND gbidx = #{gbidx} AND midx = #{midx}
+	</update>
 	<!-- 모임 게시글에서 댓글 삭제하기 -->
 	<update id="gatheringBoardCommentDelete" parameterType="com.myezen.myapp.domain.Gathering_CommentVO">
 	  UPDATE gathering_comment1234
@@ -292,8 +299,8 @@
 	</update>
 	<!-- 모임 게시글에서 답글 달기-->
 	<insert  id="gatheringBoardReplyComment" parameterType="com.myezen.myapp.domain.Gathering_CommentVO" >
-		INSERT INTO gathering_comment1234 (gcidx,gbidx,midx,gCommentContents,gCommentWriteDay,gCommentDelYN,gCommentDepth,regcidx)
-		VALUES(gcidx_SEQ.NEXTVAL,#{gbidx},#{midx},#{gCommentContents},SYSDATE,'N',1,#{gcidx})
+		INSERT INTO gathering_comment1234 (gbidx,midx,gCommentContents,gCommentWriteDay,gCommentDelYN,gCommentDepth,regcidx)
+		VALUES(#{gbidx},#{midx},#{gCommentContents},NOW(),'N',1,#{gcidx})
 	</insert>
 	<!-- 모임 좋아요 확인 -->
 	<select id="gatheringBoardLikeCheck" parameterType="com.myezen.myapp.domain.Gathering_BoardVO" resultType="int">
@@ -301,8 +308,8 @@
 	</select>
 	<!-- 모임 좋아요 테이블 넣기-->
 	<insert  id="gatheringBoardLikeInsert" parameterType="com.myezen.myapp.domain.Gathering_BoardVO" >
-		INSERT INTO gathering_like1234 (glidx,gbidx,midx)
-		VALUES(glidx_SEQ.NEXTVAL,#{gbidx},#{midx})
+		INSERT INTO gathering_like1234 (gbidx,midx)
+		VALUES(#{gbidx},#{midx})
 	</insert>
     <!--  모임 좋아요 증가 -->
     <update id="gatheringBoardLike" parameterType="com.myezen.myapp.domain.Gathering_BoardVO">
@@ -313,10 +320,10 @@
 	
 	<sql id="searchComment">
 		<if test="scri.searchType != null and scri.searchType.equals('subject')"><!-- 동적 SQL  -->
-			and gBoardTitle like '%'|| #{scri.keyword} ||'%'
+			and gBoardTitle like CONCAT('%', #{scri.keyword}, '%')
 		</if>
 		<if test="scri.searchType != null and scri.searchType.equals('writer')">
-			and gBoardContents like '%'|| #{scri.keyword} ||'%'
+			and gBoardContents like CONCAT('%', #{scri.keyword}, '%')
 		</if>
 	</sql>
 	<!--  모임 총댓글 가져오기 -->
@@ -333,25 +340,26 @@
 	<select id="gatheringBoardCommentListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="java.util.HashMap"> 
 		SELECT *
 		FROM (
-		    SELECT ROWNUM AS rnum, A.*
+		    SELECT @rownum := @rownum + 1 AS rnum, A.*
 		    FROM (
 		        SELECT a.*, c.memberName, c.memberProfile, d.gatheringMemberType
 		        FROM Gathering_Comment1234 a
-		        JOIN GATHERING_BOARD1234 b ON  b.GBIDX = a.GBIDX
+		        JOIN GATHERING_BOARD1234 b ON b.GBIDX = a.GBIDX
 		        JOIN member1234 c ON c.midx = a.midx
 		        JOIN GATHERING1234 d ON d.giidx = b.giidx AND d.midx = a.midx
-		        WHERE gBoardDelYN = 'N' AND memberdelyn = 'N' AND gatheringMemberDelYN = 'N' AND gCommentDelYN = 'N'  AND a.gbidx = #{gbidx}
-		        ORDER BY regcidx DESC, gCommentDepth asc , gCommentWriteDay DESC
+		        CROSS JOIN (SELECT @rownum := 0) AS dummy
+		        WHERE gBoardDelYN = 'N' AND memberdelyn = 'N' AND gatheringMemberDelYN = 'N' AND gCommentDelYN = 'N' AND a.gbidx = #{gbidx}
+		        ORDER BY regcidx DESC, gCommentDepth ASC , gCommentWriteDay DESC
 		    ) A
-		)
+		) AS subquery
 		WHERE rnum BETWEEN (#{scri.page}-1)*#{scri.perPageNum}+1 AND #{scri.page}*#{scri.perPageNum}
 	</select>
 	
 	
 	<!--모임 신고-->
 	<insert id="insertDeclaration" parameterType="com.myezen.myapp.domain.GatheringJoinVo">
-	INSERT INTO gathering_declaration1234(gdix, giidx, midx, gatheringReportContent, gatheringDeclarationDay)
-	values(gdix_seq.NEXTVAL, #{giidx}, #{midx}, #{gatheringReportContent},sysdate)
+	INSERT INTO gathering_declaration1234(giidx, midx, gatheringReportContent, gatheringDeclarationDay)
+	values(#{giidx}, #{midx}, #{gatheringReportContent},NOW())
 	</insert>
 	
 
@@ -366,21 +374,22 @@
 		</select>
 	<!--  모임 더보기 멤버 리스트 -->
 		<select id="gatheringSeeMoreMemberList" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int"> 
-			SELECT a.*,
-				b.memberProfile,
-				b.memberName,
-				b.memberIntro,
-				b.memberAddr
-			FROM GATHERING1234 a
-			JOIN MEMBER1234 b ON b.midx = a.midx
-			WHERE a.GIIDX = #{GIIDX}
-				AND b.MEMBERDELYN = 'N'
-				AND a.GATHERINGMEMBERDELYN = 'N'
-			ORDER BY CASE WHEN a.GATHERINGMEMBERTYPE = 'TL' THEN 1
-			              WHEN a.GATHERINGMEMBERTYPE = 'TLD' THEN 2
-			              WHEN a.GATHERINGMEMBERTYPE = 'TM' THEN 3
-			              ELSE 4
-			END
+		    SELECT a.*,
+		           b.memberProfile,
+		           b.memberName,
+		           b.memberIntro,
+		           b.memberAddr
+		    FROM GATHERING1234 a
+		    INNER JOIN MEMBER1234 b ON b.midx = a.midx
+		    WHERE a.GIIDX = #{GIIDX}
+		      AND b.MEMBERDELYN = 'N'
+		      AND a.GATHERINGMEMBERDELYN = 'N'
+		    ORDER BY CASE a.GATHERINGMEMBERTYPE
+		        WHEN 'TL' THEN 1
+		        WHEN 'TLD' THEN 2
+		        WHEN 'TM' THEN 3
+		        ELSE 4
+		    END
 		</select>
 	<!--  모임 더 보기 승인대기 회원 승인승낙하기 -->	
 	<update id="gatheringApproveMembers" parameterType="int"> 
@@ -435,19 +444,19 @@
 	
 	<!-- 사진첩 작성 -->
 	<insert  id="gatheringPhotoAlbumWrite" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
-		INSERT INTO gathering_photoalbum1234 (gpaidx,giidx,midx,gPhotoAlbumTitle,gPhotoAlbumLikeCNT,gPhotoAlbumContents,gPhotoAlbumWriteDay,gPhotoAlbumDelYN)
-		VALUES(gpaidx_seq.NEXTVAL, #{giidx},#{midx},#{gPhotoAlbumTitle},#{gPhotoAlbumLikeCNT},#{gPhotoAlbumContents},SYSDATE,'N')
+		INSERT INTO gathering_photoalbum1234 (giidx,midx,gPhotoAlbumTitle,gPhotoAlbumLikeCNT,gPhotoAlbumContents,gPhotoAlbumWriteDay,gPhotoAlbumDelYN)
+		VALUES(#{giidx},#{midx},#{gPhotoAlbumTitle},#{gPhotoAlbumLikeCNT},#{gPhotoAlbumContents},NOW(),'N')
 	</insert>
 	
 	<!-- 사진첩 모임대표 이미지 넣기-->
 	<insert  id="gatheringPhotoGATInsert" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
-		INSERT INTO IMAGE1234 (IMIDX,IMAGENAME,MIDX,GIIDX,GPAIDX,IMGTYPE,IMGCREATIONDAY)
-		VALUES(IMIDX_SEQ.NEXTVAL,#{imageName},#{midx},#{giidx},GPAIDX_SEQ.CURRVAL,'GAT',SYSDATE)
+		INSERT INTO IMAGE1234 (IMAGENAME,MIDX,GIIDX,GPAIDX,IMGTYPE,IMGCREATIONDAY)
+		VALUES(#{imageName},#{midx},#{giidx},LAST_INSERT_ID(),'GAT',NOW())
 	</insert>
 	<!-- 사진첩 모임 이미지 넣기-->
 	<insert  id="gatheringPhotoGAInsert" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
-		INSERT INTO IMAGE1234 (IMIDX,IMAGENAME,MIDX,GIIDX,GPAIDX,IMGTYPE,IMGCREATIONDAY)
-		VALUES(IMIDX_SEQ.NEXTVAL,#{imageName},#{midx},#{giidx},GPAIDX_SEQ.CURRVAL,'GA',SYSDATE)
+		INSERT INTO IMAGE1234 (IMAGENAME,MIDX,GIIDX,GPAIDX,IMGTYPE,IMGCREATIONDAY)
+		VALUES(#{imageName},#{midx},#{giidx},LAST_INSERT_ID(),'GA',NOW())
 	</insert>
 	
 	<!-- 사진첩 리스트 조회 -->

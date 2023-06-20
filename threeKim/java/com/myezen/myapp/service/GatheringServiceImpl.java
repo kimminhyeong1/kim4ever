@@ -447,9 +447,11 @@ public class GatheringServiceImpl implements GatheringService {
 		gsm.increaseViewCount(gbidx);
 	}
 	@Override
+	@Transactional
 	//2.1게시물에 댓글쓰기
 	public int gatheringBoardCommentAdd(Gathering_CommentVO gcv) {
 		int value = gsm.gatheringBoardCommentAdd(gcv);
+					gsm.gatheringBoardCommentAddUpdate(gcv);
 		return value;
 	}
 	@Override

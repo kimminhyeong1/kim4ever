@@ -124,6 +124,8 @@ public interface GatheringService_Mapper {
 	public void increaseViewCount(int gbidx);
 	//2.1게시물에 댓글쓰기
 	public int gatheringBoardCommentAdd(Gathering_CommentVO gcv);
+	//시퀀스값 받아와서 넣기
+	public void gatheringBoardCommentAddUpdate(Gathering_CommentVO gcv);
 	//2.2게시물에 댓글삭제
 	public int gatheringBoardCommentDelete(Gathering_CommentVO gcv);
 	//2.3.1 게시물에 댓글수정검증하기
