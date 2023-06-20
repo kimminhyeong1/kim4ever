@@ -125,7 +125,7 @@
 						<div><p>자전거 고유번호</p><p>:</p><p>${bjv.bikeCode}</p></div>
 						<div>
 							<p>대여 시작 시간</p><p>:</p><p>
-								<fmt:parseDate value="${bjv.rentDay}" pattern="yyyy-MM-dd HH:mm:ss.S" var="parsedRentDay" />
+								<fmt:parseDate value="${bjv.rentDay}" pattern="yyyy-MM-dd HH:mm:ss" var="parsedRentDay" />
 								<fmt:formatDate value="${parsedRentDay}" pattern="yyyy-MM-dd HH:mm:ss" var="formattedRentDay" />
 								${formattedRentDay}
 							</p>
