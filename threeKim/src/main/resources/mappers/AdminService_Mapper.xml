@@ -423,7 +423,7 @@ WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPag
 		SELECT
 		    i.GIIDX,
 		    i.gInfoName,
-		    i.gInfoCapacity,
+		    i.gInfoParticipating,
 		    i.gInfoCreationDay,
 		    i.gInfoAreaIntroduction,
 		    g.MIDX,
