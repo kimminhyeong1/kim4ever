@@ -28,7 +28,6 @@
 			#main section input {display: block;}
 			#main section button{text-align: center;}  
 			#main section img{width: 100px;height: 100px;}   
-			#main section .radio{display: inline-block;width: 4%; margin-top: 10px; } 
 			#main section span{font-size: 20px;} 
 			#main section .gInfoName{font-size: 25px;}
 			#main section .gatheringMemberType{font-size: 25px;}	
@@ -64,7 +63,7 @@
 <main id="main">
 		
 		<section class="gContainer gSetContainer">
-			<div>
+			<div class= contents>
 				<div> 
 					<div>	
 						<h3>모임 이름</h3>
@@ -96,10 +95,23 @@
 	                </div>
 	            </div>
 	        </div>
-			<div>
-				<button class="gBtn2">돌아가기</button>				 
-			</div>
-		</section> 
+	        
+	        <div class= contents>
+			
+	        	        
+	        <c:if test="${empty gtrdv.imageName}">
+    <div>모임 이미지 없음</div>
+</c:if>
+<c:if test="${not empty gtrdv.imageName}">
+    <div>
+        <div><img alt="" src="../resources/GTImages/${gtrdv.imageName}"></div>
+    </div>
+</c:if>
+	        
+	        </div>
+			
+		</section>
+		
 	</main>
 
 
