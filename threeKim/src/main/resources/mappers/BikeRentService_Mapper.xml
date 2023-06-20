@@ -38,37 +38,38 @@
 
 <!-- bike1234에서 대여하기버튼을 누르면 대여테이블인 rent1234로 데이터삽입 쿼리 -->
 <insert id="insertRentInfo" parameterType="com.myezen.myapp.domain.BikeJoinVo">
-  	INSERT INTO rent1234 (ridx, rentDay, rentPlace, bkidx, rsidx, midx)
-	VALUES(ridx_seq.NEXTVAL, SYSDATE, #{rentPlace}, #{bkidx}, #{rsidx}, #{midx})
-	<selectKey resultType="int" keyProperty="ridx" order="AFTER">
-       select ridx_seq.CURRVAL as ridx FROM DUAL
-    </selectKey>   
+	  INSERT INTO rent1234 (rentDay, rentPlace, bkidx, rsidx, midx)
+	  VALUES(NOW(), #{rentPlace}, #{bkidx}, #{rsidx}, #{midx})
+	  <selectKey resultType="int" keyProperty="ridx" order="AFTER">
+	    SELECT LAST_INSERT_ID() AS ridx
+	  </selectKey>
 </insert>
+
 
 <select id="getBikeLocationByBkidx" parameterType="int" resultType="java.lang.String">
         SELECT bikeLocation
-        FROM bike1234
+        FROM bike1234	
         WHERE bkidx = #{bkidx}
 </select>
 
 <select id="RentUseList" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
  SELECT
-    b.bikeType,
-    b.bikeState,
-    b.bikeLocation,
-    m.memberName,
-    b.bikeCode,
-    r.rentDay,
-    i.rentPrice
-  FROM
-    bike1234 b
-    JOIN bikeInfo1234 i ON b.bikeType = i.bikeType
-    JOIN rent1234 r ON b.bkidx = r.bkidx
-    JOIN member1234 m ON r.midx = m.midx
-  WHERE
-    r.bkidx = #{bkidx}
-    ORDER BY r.rentDay DESC
-	FETCH FIRST 1 ROW ONLY
+  b.bikeType,
+  b.bikeState,
+  b.bikeLocation,
+  m.memberName,
+  b.bikeCode,
+  r.rentDay,
+  i.rentPrice
+FROM
+  bike1234 b
+  JOIN bikeInfo1234 i ON b.bikeType = i.bikeType
+  JOIN rent1234 r ON b.bkidx = r.bkidx
+  JOIN member1234 m ON r.midx = m.midx
+WHERE
+  r.bkidx = #{bkidx}
+ORDER BY r.rentDay DESC
+LIMIT 1;		<!-- FETCH FIRST 1 ROW ONLY를 MySQL에서 사용하는 LIMIT 1로 변경 해야 함 -->
 </select>
 
 <!-- 휴대폰 번호, 인증번호 데이터베이스에 저장 -->
@@ -89,12 +90,12 @@
 
 <!-- 휴대폰 번호를 받아서 해당 번호에 대해 저장된 인증번호를 가져옴 -->
 <select id="getSavedRandomNumber" parameterType="java.lang.String" resultType="int">
-    SELECT VERIFICATIONCODE
-    FROM PHONE1234
-    WHERE PHONENUMBER = #{userPhoneNumber}
-    AND VERIFICATIONSTATUS = 'N'
-    ORDER BY CREATED_AT DESC
-    FETCH FIRST 1 ROW ONLY
+	SELECT VERIFICATIONCODE
+	FROM PHONE1234
+	WHERE PHONENUMBER = #{userPhoneNumber}
+	  AND VERIFICATIONSTATUS = 'N'
+	ORDER BY CREATED_AT DESC
+	LIMIT 1;	<!-- FETCH FIRST 1 ROW ONLY를 MySQL에서 사용하는 LIMIT 1로 변경 해야 함 -->
 </select>
 
 <update id="updateVerificationStatus" parameterType="java.lang.String">
@@ -136,8 +137,8 @@
 	
     <!-- 고장/신고 접수 -->
     <insert id="bikeRentErrorInsert" parameterType="com.myezen.myapp.domain.BikeJoinVo">
-        INSERT INTO error1234(eidx,ridx,bkidx,errorContent,errorLatitude,errorLongitude,errorLocation,errorImage) 
-		VALUES(eidx_seq.NEXTVAL,#{ridx},#{bkidx},#{errorContent},#{errorLatitude},#{errorLongitude},#{errorLocation},#{errorImage}) 
+        INSERT INTO error1234(ridx,bkidx,errorContent,errorLatitude,errorLongitude,errorLocation,errorImage) 
+		VALUES(#{ridx},#{bkidx},#{errorContent},#{errorLatitude},#{errorLongitude},#{errorLocation},#{errorImage}) <!-- eidx 시퀀스 제거 -->
     </insert>
     <update id="bikeRentStateE" parameterType="int">
 	UPDATE BIKE1234
@@ -171,9 +172,9 @@
 	</update>
 	<insert id="bikeRentReturnInsert" parameterType="com.myezen.myapp.domain.BikeJoinVo">
 		 INSERT INTO RETURN1234
-		(rtidx,RETURNDAY,returnplace,ridx)
+		(RETURNDAY,returnplace,ridx)
 		VALUES
-		(rtidx_seq.nextval,SYSDATE,#{0},#{1}) 
+		(NOW(),#{0},#{1}) 
 	</insert>
 	
 	<select id="bikeRentHistoryList" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
@@ -193,44 +194,6 @@
 		LEFT JOIN BIKE1234 b ON a.RENTALSHOPNAME = b.BIKELOCATION AND b.BIKESTATE = 'Y'
 		GROUP BY a.RENTALSHOPNAME, a.RENTALSHOPLATITUDE, a.RENTALSHOPLONGITUDE,a.RSIDX,a.RENTALSHOPLOCATION
 	</select>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 
 </mapper>
