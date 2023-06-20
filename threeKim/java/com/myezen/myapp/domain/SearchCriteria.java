@@ -5,6 +5,10 @@ public class SearchCriteria extends Criteria {
 	private String searchType;
 	
 	private String keyword;
+	
+	private int startRow;
+
+	private int endRow;
 
 	public String getSearchType() {
 		return searchType;
@@ -20,6 +24,22 @@ public class SearchCriteria extends Criteria {
 
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
+	}
+
+	public int getStartRow() {
+		return startRow;
+	}
+
+	public void setStartRow(int startRow) {
+		this.startRow = startRow;
+	}
+
+	public int getEndRow() {
+		return endRow;
+	}
+
+	public void setEndRow(int endRow) {
+		this.endRow = endRow;
 	}
 	
 	
