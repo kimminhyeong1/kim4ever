@@ -43,14 +43,13 @@ function requestPay() {
         buyer_postcode: ' ${bjv.bikeCode}',
         popup: true,
         m_redirect_url: "http://localhost:8080/myapp/index.jsp",
-        notice_url: "https://da1e-123-143-87-62.ngrok-free.app/verifyIamport" 
    
     }, function(rsp) {
 		console.log(rsp);
 		// 결제검증
 		$.ajax({
 		    type: "POST",
-		    url: "/verifyIamport/" + rsp.imp_uid,
+		    url: "${pageContext.request.contextPath}/verifyIamport/" + rsp.imp_uid +"/pay.do",
 		    success: function(data) {
 		        console.log(data);
 		        // 위의 rsp.paid_amount 와 data.response.amount를 비교한 후 로직 실행 (import 서버검증)
@@ -74,32 +73,7 @@ function requestPay() {
 }
     
     
-    
-/*     }, function(rsp) {
-        console.log(rsp);
-        if (rsp.success) {
-            var msg = rsp.name + '결제가 완료되었습니다.' + '\n';
-            msg += '구매자 : ' + rsp.buyer_name + '\n';
-            msg += '대여소위치 : ' + rsp.buyer_addr + '\n';
-            msg += '결제 금액 : ' + rsp.paid_amount;
-            //성공시 제출
-            var fm = document.frm;
-            fm.action = "${pageContext.request.contextPath}/bikeRent/bikeRentUpdate.do";
-            fm.method = "post";
-            fm.submit();
-     
-        } else { 
-            var msg = '결제에 실패하였습니다.';
-            msg += '에러내용 : ' + rsp.error_msg;
-        }
-        alert(msg);
-    });
-} */
 
-
-
-
-/* 
   $(document).ready(function() {
 
       //휴대폰 번호 인증
@@ -167,7 +141,7 @@ function requestPay() {
                   
       
   })
-   */
+   
 
   
 
@@ -244,7 +218,6 @@ function requestPay() {
 				<tr>
 				  <td colspan="3">
 					<button id="rentButton" class="rentButton" type="button" onclick="requestPay()" disabled>대여하기</button>
-					<button onclick="requestPay()">결제하기</button>
 					
 			
 				  </td>
@@ -317,7 +290,6 @@ function requestPay() {
 				<tr>
 				  <td colspan="3">
 					<button id="rentButton" class="rentButton" type="button" onclick="requestPay()" >대여하기</button>
-					<button onclick="requestPay()">결제하기</button>
 					
 			
 				  </td>

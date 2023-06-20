@@ -543,8 +543,16 @@ public class bikeRentController {
 	}
 	
 	
-	
+	/* ******************************************************************/
+	/*자전거 결제*/
+	@RequestMapping(value="/pay.do")
+	public String pay()
+	{	  
+		System.out.println("페이들어옴");
+	    return "bikeRent/pay";
 	}
+	
+}
 
 
 

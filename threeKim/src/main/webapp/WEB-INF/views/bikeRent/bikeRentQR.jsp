@@ -51,7 +51,10 @@
                             <p>ELE41</p>
                         </div>					
                         
-                        
+                            <div class="QRcard">
+                            <a href="${pageContext.request.contextPath}/bikeRent/pay.do"><img class="QRImg" src="data:image/png;base64,${QRCode91}" alt=""></a>
+                            <p>ELE41</p>
+                        </div>	
                         
 				</div>				
 			</section>
