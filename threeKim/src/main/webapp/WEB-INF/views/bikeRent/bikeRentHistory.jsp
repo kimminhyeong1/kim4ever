@@ -72,12 +72,12 @@
 				           	 			${formattedRentDay1}	
 									</td>
 									<td><!-- 대여시간 -->
-							            <fmt:parseDate value="${bjv.rentDay}" pattern="yyyy-MM-dd HH:mm:ss.S" var="parsedRentDay2" /><!-- 날짜 변경 -->
+							            <fmt:parseDate value="${bjv.rentDay}" pattern="yyyy-MM-dd HH:mm:ss" var="parsedRentDay2" /><!-- 날짜 변경 -->
 			            				<fmt:formatDate value="${parsedRentDay2}" pattern="HH:mm" var="formattedRentDay2" /><!-- 시간 설정 변경 -->
 				           	 			${formattedRentDay2}	
 									</td>
 									<td><!-- 반납시간 -->
-							            <fmt:parseDate value="${bjv.returnDay}" pattern="yyyy-MM-dd HH:mm:ss.S" var="parsedRentDay3" /><!-- 날짜 변경 -->
+							            <fmt:parseDate value="${bjv.returnDay}" pattern="yyyy-MM-dd HH:mm:ss" var="parsedRentDay3" /><!-- 날짜 변경 -->
 			            				<fmt:formatDate value="${parsedRentDay3}" pattern="HH:mm" var="formattedRentDay3" /><!-- 시간 설정 변경 -->
 				           	 			${formattedRentDay3}						
 									</td>
