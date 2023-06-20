@@ -535,10 +535,7 @@
         WHERE midx = #{0} AND gpaidx = #{1}
    	</delete>
    	
-   	<select id="getGatheringMemberType" resultType="java.lang.String">
-    SELECT gatheringMemberType FROM GATHERING1234
-     WHERE midx = #{midx} AND giidx = #{giidx}
-	</select>
+   
 	
 	
 </mapper>
