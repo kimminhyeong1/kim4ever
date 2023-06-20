@@ -61,17 +61,18 @@
 <select id="memberOutList" resultType="com.myezen.myapp.domain.BikeJoinVo">
 	SELECT *
 	FROM (
-	  SELECT ROW_NUMBER() OVER (ORDER BY memberOutDay DESC) AS rnum, A.*
+	  SELECT (@row_number:=@row_number + 1) AS rnum, A.*
 	  FROM (
 	    SELECT memberId, memberName, memberAge, memberDelYN, memberOutDay, memberType
 	    FROM member1234
+	    CROSS JOIN (SELECT @row_number:=0) AS t
 	    WHERE memberDelYN = 'Y'
 	    <include refid="search4" />
 	    ORDER BY memberOutDay DESC
 	  ) A
 	) B
-	WHERE B.rnum <= (#{page} * #{perPageNum})
-	  AND B.rnum >= ((#{page} - 1) * #{perPageNum}) + 1;
+	WHERE B.rnum >= ((#{page} - 1) * #{perPageNum}) + 1
+	LIMIT #{perPageNum};
 </select>
 
 <select id="memberOutListCount" resultType="int">
