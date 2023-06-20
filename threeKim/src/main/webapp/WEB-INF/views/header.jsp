@@ -129,7 +129,7 @@ header{width:auto;margin:0 auto;}
 				<ul class ="sub-menu-list">
 					
 					<li>
-						<p id="bike">자전거 대여</p>
+						<p id="bike">자전거 대여</p> 
 					</li>
 					
 					<% String memberType = (String) pageContext.findAttribute("memberType"); %>
@@ -140,7 +140,7 @@ header{width:auto;margin:0 auto;}
 					</li>
 					<% } else { %>
 					<li>
-						 <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/member/memberMypage.do'">마이페이지</span></a>
+						 <a href="#"><span class="title" onclick="location.href='<%=request.getContextPath()%>/member/memberMypage.do'">마이페이지</span></a>						 
 					</li>
 					<% } %>
 							
