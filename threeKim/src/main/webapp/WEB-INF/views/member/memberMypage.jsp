@@ -56,6 +56,7 @@ li{list-style:none;}
 #content table input[type="text"] {font-family:'omyu_pretty';font-size:24px;box-sizing:border-box;width:100%;padding:10px;margin-bottom:10px;border:1px solid #ccc;border-radius:4px;}
 #content table .intro-container .button-container2 {display:flex;justify-content:flex-end;gap:10px;margin-top:10px;margin-left:480px;}
 #content table .button-container2 button{border:1px solid #000; border-radius:50px; width:70px; }
+#formImg{float: left;} 
 
 
 
@@ -162,13 +163,15 @@ function previewImage(event) {
 			<tr>
 				<td class="top" colspan="2" >
 				  <!-- 이미지업로드 란  -->
-					<form method="post" action="${pageContext.request.contextPath}/member/MypageProfile.do" enctype="multipart/form-data">
-						<div class="image-container">
-							<img id="imagePreview" />		
+					<form method="post" action="${pageContext.request.contextPath}/member/MypageProfile.do" enctype="multipart/form-data" id="formImg">
+						<div class="image-container">	
+							<label for="image">
+							  <img id="imagePreview" src="${pageContext.request.contextPath}/resources/images/profile.jpg" />
+							</label>
 						</div>
 						<div class="button-container">
-							<input id="image" type="file" name="memberProfile" onchange="previewImage(event)" />
-							<button>업로드</button>
+							<input id="image" type="file" name="memberProfile" onchange="previewImage(event)" style="display: none;"/>
+							<button style="display: none;">업로드</button>
 						</div>
 					</form>
                    
@@ -194,24 +197,24 @@ function previewImage(event) {
             <tr>
                 <td  colspan="2">
 					<h2><%= session.getAttribute("memberName") %>님 환영합니다.</h2>
-					<a class="logout-btn" style="float:right;  " href="<%=request.getContextPath() %>/member/memberLogOut.do">로그아웃</a>
+					<a class="logout-btn" style="float:right;  " href="${pageContext.request.contextPath}/member/memberLogOut.do">로그아웃</a>
 				</td>
 			</tr>
 			
 			<tr>
 				<%-- <td onclick="window.location.href='<%=request.getContextPath() %>/member/memberEditInformation.do'">회원정보수정<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td> --%>
-				<td onclick="window.location.href='<%=request.getContextPath() %>/member/memberEditInformation.do'">회원정보수정<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
-				<td onclick="window.location.href='<%=request.getContextPath() %>/member/memberMyPost.do'">내 게시글<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
+				<td onclick="window.location.href='${pageContext.request.contextPath}/member/memberEditInformation.do'">회원정보수정<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
+				<td onclick="window.location.href='${pageContext.request.contextPath}/member/memberMyPost.do'">내 게시글<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
 			</tr>
 		
 			<tr>
-				<td onclick="window.location.href='<%=request.getContextPath() %>/bikeRent/bikeRentHistory.do'">대여내역<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
-				<td  onclick="window.location.href='<%=request.getContextPath() %>/bikeRent/bikeRentQR.do'">자전거 타러가기<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
+				<td onclick="window.location.href='${pageContext.request.contextPath}/bikeRent/bikeRentHistory.do'">대여내역<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
+				<td  onclick="window.location.href='${pageContext.request.contextPath}/bikeRent/bikeRentQR.do'">자전거 타러가기<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
 			</tr>
 		
 			<tr>
-				<td onclick="window.location.href='<%=request.getContextPath() %>/gathering/gMyPage.do'">나의 소모임<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
-				<td onclick="window.location.href='<%=request.getContextPath() %>/gathering/gMyWish.do'">내가 찜한 모임<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
+				<td onclick="window.location.href='${pageContext.request.contextPath}/gathering/gMyPage.do'">나의 소모임<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
+				<td onclick="window.location.href='${pageContext.request.contextPath}/gathering/gMyWish.do'">내가 찜한 모임<img src="../resources/icon/moveicon.png" alt="이동아이콘"></td>
 			</tr>
 		</table>
 		
