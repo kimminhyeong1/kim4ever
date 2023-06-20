@@ -481,7 +481,7 @@
 	    </if>
 	</select>
 	
-	<!-- 사진첩 리스트 조회 -->
+	<!-- 사진첩 상세페이지 조회 -->
 	<select id="gatheringPhotoAlbumListSelectOne" resultType="com.myezen.myapp.domain.GatheringJoinVo">
 		SELECT a.gpaidx, a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, a.GPHOTOALBUMCONTENTS, b.imgtype, b.imageName
 		FROM gathering_photoalbum1234 a
