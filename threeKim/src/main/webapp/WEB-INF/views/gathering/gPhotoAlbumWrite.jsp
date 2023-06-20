@@ -63,7 +63,7 @@
 						
 							<tr>
 							<th>첨부파일</th>
-							<td><input type="file" id="image" name="GAImg" onchange="uploadImage(event)"/>
+							<td><input type="file" id="image" name="GAImg" onchange="uploadImage(event)" multiple/>
 							
 							</td>
 						</tr>
