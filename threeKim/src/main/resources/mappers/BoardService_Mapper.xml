@@ -6,11 +6,11 @@
 
 <sql id="search"><!-- 검색기능 -->
 <if test="searchType != null and searchType.equals('writer')">
-		where writer like '%'||#{keyword}||'%'
+		WHERE writer like CONCAT('%', #{keyword}, '%')
 </if>
 
 <if test="searchType != null and searchType.equals('subject')">
-		where  subject like '%'||#{keyword}||'%'
+		WHERE subject like CONCAT('%', #{keyword}, '%')
 </if>
 
 </sql>
@@ -27,9 +27,9 @@
 SELECT *
 FROM (
   SELECT
-    CASE WHEN boarddelyn = 'N' THEN RANK() OVER (PARTITION BY boardtype ORDER BY modified_rebidx ASC) END AS sortN,
+    CASE WHEN boarddelyn = 'N' THEN ROW_NUMBER() OVER (PARTITION BY boardtype ORDER BY modified_rebidx ASC) END AS sortN,
     board1234.*,
-    CASE WHEN boarddelyn = 'N' THEN RANK() OVER (PARTITION BY boardtype ORDER BY modified_rebidx DESC) END AS sortY <!-- sortn반대로 순번 -->
+    CASE WHEN boarddelyn = 'N' THEN ROW_NUMBER() OVER (PARTITION BY boardtype ORDER BY modified_rebidx DESC) END AS sortY <!-- sortn반대로 순번 -->
   FROM (
     SELECT board1234.*,
            CASE WHEN level_ = 1
@@ -38,8 +38,8 @@ FROM (
            END AS modified_rebidx
     FROM board1234
     WHERE boarddelyn = 'N' 
-  ) board1234
-) B
+  ) AS board1234
+) AS B
 WHERE (sortY BETWEEN (#{page}-1)*#{perPageNum}+1 AND #{page}*#{perPageNum}) <!-- 페이징 -->
 ORDER BY rebidx DESC, level_ ASC, writeday ASC
 
@@ -52,33 +52,33 @@ ORDER BY rebidx DESC, level_ ASC, writeday ASC
 
 
 <select id="boardSelectQna" parameterType="int" resultType="bv" ><!-- 답변글용 -->
- SELECT NVL(CASE WHEN level_ = 0 THEN RANK() OVER (PARTITION BY boardtype, level_ ORDER BY rebidx DESC) END,0) AS sortN
- 			, board1234.* 
-  FROM board1234 
-  WHERE boarddelyn = 'N' 
-  ORDER BY rebidx DESC, level_ ASC, writeday asc 
+	SELECT COALESCE(CASE WHEN level_ = 0 THEN ROW_NUMBER() OVER (PARTITION BY boardtype, level_ ORDER BY rebidx DESC) END, 0) AS sortN,
+	       board1234.* 
+	FROM board1234 
+	WHERE boarddelyn = 'N' 
+	ORDER BY rebidx DESC, level_ ASC, writeday ASC 
 </select>
 
 
 <update id="boardView" parameterType="int">
-  UPDATE board1234 SET boardView = NVL(boardView, 0) + 1 WHERE bidx = #{bidx}
+  UPDATE board1234 SET boardView = COALESCE(boardView, 0) + 1 WHERE bidx = #{bidx}
 </update>
 
 
 <insert id="boardInsert" parameterType="bv"><!-- 공지 -->
-  INSERT INTO board1234(bidx ,boardType, writer, writeDay, subject, content, boardView ,depth,level_, midx,filename,rebidx)
-  VALUES (bidx_seq.nextval, 0 , #{writer}, SYSDATE, #{subject}, #{content}, 0,0,0,#{midx},#{filename}, bidx_seq.currval)
+  INSERT INTO board1234(boardType, writer, writeDay, subject, content, boardView ,depth,level_, midx,filename,rebidx)
+  VALUES (0 , #{writer}, NOW(), #{subject}, #{content}, 0,0,0,#{midx},#{filename}, LAST_INSERT_ID())
 </insert>
 
 <insert id="boardInsert2" parameterType="bv"><!-- qna --><!-- rebidx와 bidx값 동일한값 넣어줌 -->
-  INSERT INTO board1234(bidx, boardType, writer, writeDay, subject, content, boardView, depth, level_, midx, filename, rebidx)
-  VALUES (bidx_seq.nextval, 1, #{writer}, SYSDATE, #{subject}, #{content}, 0, 0, 0, #{midx}, #{filename}, bidx_seq.currval)
+  INSERT INTO board1234(boardType, writer, writeDay, subject, content, boardView, depth, level_, midx, filename, rebidx)
+  VALUES (1, #{writer}, NOW(), #{subject}, #{content}, 0, 0, 0, #{midx}, #{filename}, LAST_INSERT_ID())
 </insert>
 
 
 <insert id="boardInsert3" parameterType="bv"><!-- faq -->
-  INSERT INTO board1234(bidx ,boardType, writer, writeDay, subject, content, boardView ,depth,level_, midx,filename,rebidx)
-  VALUES (bidx_seq.nextval, 2 , #{writer}, SYSDATE, #{subject}, #{content}, 0,0,0,#{midx},#{filename}, bidx_seq.currval)
+  INSERT INTO board1234(boardType, writer, writeDay, subject, content, boardView ,depth,level_, midx,filename,rebidx)
+  VALUES (2 , #{writer}, NOW(), #{subject}, #{content}, 0,0,0,#{midx},#{filename}, LAST_INSERT_ID())
 </insert>
 
 <update id="boardModify" parameterType="bv">
@@ -105,19 +105,20 @@ update board1234 set depth =depth+1 where bidx = #{bidx} and depth >#{depth}
 </update>
 
 <insert id="boardReplyInsert" parameterType="bv"><!-- 세션에서 rebidx에 bidx를 넣고 그값을 rebidx에 넣음 -->
-  insert into board1234 (bidx, rebidx, boardType, depth, level_, subject, content, writer, midx ,filename)
-  values (bidx_seq.nextval, #{rebidx}, 1, #{depth}+1, #{level_}+1, #{subject}, #{content}, #{writer}, #{midx},#{filename})
+  insert into board1234 (rebidx, boardType, depth, level_, subject, content, writer, midx ,filename,boardView)
+  values (#{rebidx}, 1, #{depth}+1, #{level_}+1, #{subject}, #{content}, #{writer}, #{midx},#{filename},0) 
 </insert>
 
 
 <select id="boardSelectAll2" parameterType="scri" resultType="bv">
 
-SELECT * FROM(
-	SELECT ROWNUM AS rnum, A.* FROM (
-	 SELECT * FROM board1234 
-	 <include refid="search" />
-	  ORDER BY bidx desc, depth asc) A 
-	 )B WHERE B.rnum BETWEEN (#{page}-1)*#{perPageNum}+1 AND #{page}* #{perPageNum}
+SELECT * FROM (
+        SELECT @rownum := @rownum + 1 AS rnum, A.* FROM (
+            SELECT * FROM board1234
+            <include refid="search" />
+            ORDER BY bidx DESC, depth ASC
+        ) AS A, (SELECT @rownum := 0) AS R
+    ) AS B WHERE B.rnum BETWEEN (#{page} - 1) * #{perPageNum} + 1 AND #{page} * #{perPageNum}
 </select>
 
 <select id="boardTotal2" parameterType="scri" resultType="int">
