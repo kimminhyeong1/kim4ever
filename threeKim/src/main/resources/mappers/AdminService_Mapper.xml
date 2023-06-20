@@ -25,19 +25,12 @@
 	
 <!--관리자 회원관리 리스트  -->
 <select id="memberList" resultType="com.myezen.myapp.domain.BikeJoinVo">
-  SELECT *
-  FROM (
-    SELECT ROWNUM AS rnum, A.*
-    FROM (
-	  SELECT memberId, memberName, memberAge, memberDelYN, writeDay, memberType
-	  FROM member1234
-	  WHERE memberDelYN = 'N'
-	   <include refid="search3" />
-	  ORDER BY memberType ASC, writeDay DESC
-	   ) A
-       <![CDATA[WHERE ROWNUM <= #{page} * #{perPageNum}]]>
-  	) B
-  <![CDATA[WHERE B.rnum >= (#{page} - 1) * #{perPageNum} + 1]]>
+	SELECT memberId, memberName, memberAge, memberDelYN, writeDay, memberType
+	FROM member1234
+	WHERE memberDelYN = 'N'
+	<include refid="search3" />
+	ORDER BY memberType ASC, writeDay DESC
+	LIMIT #{perPageNum} OFFSET ((#{page} - 1) * #{perPageNum});
 </select>
 
 
@@ -52,33 +45,33 @@
 
 
 <sql id="search4">
- <if test="searchType != null and searchType != ''">
-    <choose>
-      <when test="searchType == 'memberId'">
-        AND memberId LIKE '%' || #{keyword} || '%'
-      </when>
-      <when test="searchType == 'memberName'">
-        AND memberName LIKE '%' || #{keyword} || '%'
-      </when>
-    </choose>
-  </if>
+	 <if test="searchType != null and searchType != ''">
+	  <choose>
+	    <when test="searchType == 'memberId'">
+	      AND memberId LIKE CONCAT('%', #{keyword}, '%')
+	    </when>
+	    <when test="searchType == 'memberName'">
+	      AND memberName LIKE CONCAT('%', #{keyword}, '%')
+	    </when>
+	  </choose>
+	</if>
 </sql>
 
 	<!--관리자 탈퇴회원관리 리스트  -->
 <select id="memberOutList" resultType="com.myezen.myapp.domain.BikeJoinVo">
- SELECT *
-  FROM (
-    SELECT ROWNUM AS rnum, A.*
-    FROM (
-	  SELECT memberId, memberName, memberAge, memberDelYN, memberOutDay, memberType
-	  FROM member1234
-	  WHERE memberDelYN = 'Y'
-	  <include refid="search4" />
-	  ORDER BY memberOutDay desc
-	   ) A
-       <![CDATA[WHERE ROWNUM <= #{page} * #{perPageNum}]]>
-  	) B
-  <![CDATA[WHERE B.rnum >= (#{page} - 1) * #{perPageNum} + 1]]>
+	SELECT *
+	FROM (
+	  SELECT ROW_NUMBER() OVER (ORDER BY memberOutDay DESC) AS rnum, A.*
+	  FROM (
+	    SELECT memberId, memberName, memberAge, memberDelYN, memberOutDay, memberType
+	    FROM member1234
+	    WHERE memberDelYN = 'Y'
+	    <include refid="search4" />
+	    ORDER BY memberOutDay DESC
+	  ) A
+	) B
+	WHERE B.rnum <= (#{page} * #{perPageNum})
+	  AND B.rnum >= ((#{page} - 1) * #{perPageNum}) + 1;
 </select>
 
 <select id="memberOutListCount" resultType="int">
@@ -94,7 +87,7 @@
 	
 	<!--관리자 회원삭제  -->
 	<delete id="deleteMember" parameterType="String">
-	UPDATE member1234 SET memberDelYN ='Y', memberOutDay = SYSDATE WHERE memberId=#{memberId}
+	UPDATE member1234 SET memberDelYN ='Y', memberOutDay = now() WHERE memberId=#{memberId}
 	</delete>
 	
 	<!-- 대여소 이용 가능 자전거 -->
@@ -113,42 +106,42 @@
 	<!--관리자 메인 페이지 요일 별 이용 현황 -->
 	<select id="getRentalCountByDateRange" resultType="com.myezen.myapp.domain.BikeJoinVo">
 	SELECT
-		  TO_CHAR(a.date_value, 'YYYY-MM-DD') AS dayago,
-		  NVL(SUM(CASE WHEN b.bikeType = '일반자전거' THEN 1 ELSE 0 END), 0) AS rentNorCount,
-		  NVL(SUM(CASE WHEN b.bikeType = '전기자전거' THEN 1 ELSE 0 END), 0) AS rentEleCount
-		FROM (
-		  SELECT TRUNC(SYSDATE) - LEVEL + 1 AS date_value
-		  FROM dual
-		  CONNECT BY TRUNC(SYSDATE) - LEVEL + 1 >= TRUNC(SYSDATE) - 6
-		) a
-		LEFT JOIN (
-		  SELECT bkidx, TRUNC(rentDay) AS rentDay
-		  FROM RENT1234
-		  WHERE TRUNC(rentDay) >= TRUNC(SYSDATE) - 6
-		) r ON a.date_value = r.rentDay
-		LEFT JOIN bike1234 b ON r.bkidx = b.BKIDX
-		WHERE a.date_value >= TRUNC(SYSDATE) - 6
-		GROUP BY TO_CHAR(a.date_value, 'YYYY-MM-DD')
-		ORDER BY TO_CHAR(a.date_value, 'YYYY-MM-DD') DESC
+	    DATE_FORMAT(a.date_value, '%Y-%m-%d') AS dayago,
+	    COALESCE(SUM(CASE WHEN b.bikeType = '일반자전거' THEN 1 ELSE 0 END), 0) AS rentNorCount,
+	    COALESCE(SUM(CASE WHEN b.bikeType = '전기자전거' THEN 1 ELSE 0 END), 0) AS rentEleCount
+	FROM (
+	    SELECT DATE(NOW() - INTERVAL (ROW_NUMBER() OVER() - 1) DAY) AS date_value
+	    FROM INFORMATION_SCHEMA.TABLES
+	    LIMIT 7
+	) a
+	LEFT JOIN (
+	    SELECT bkidx, DATE(rentDay) AS rentDay
+	    FROM RENT1234
+	    WHERE DATE(rentDay) >= DATE(NOW() - INTERVAL 6 DAY)
+	) r ON a.date_value = r.rentDay
+	LEFT JOIN bike1234 b ON r.bkidx = b.BKIDX
+	WHERE a.date_value >= DATE(NOW() - INTERVAL 6 DAY)
+	GROUP BY DATE_FORMAT(a.date_value, '%Y-%m-%d')
+	ORDER BY DATE_FORMAT(a.date_value, '%Y-%m-%d') DESC
 	</select>
  	
 <sql id="search1">
 	<if test="searchType != null and searchType != ''">
-        <choose>
-          <when test="searchType == 'memberName'">
-            AND m.memberName LIKE '%'||#{keyword}||'%'
-          </when>
-          <when test="searchType == 'memberPhone'">
-            AND m.memberPhone LIKE '%'||#{keyword}||'%'
-          </when>
-          <when test="searchType == 'rentPlace'">
-            AND r.rentPlace LIKE '%'||#{keyword}||'%'
-          </when>
-          <when test="searchType == 'errorContent'">
-            AND e.errorContent LIKE '%'||#{keyword}||'%'
-          </when>
-        </choose>
-      </if>
+	  <choose>
+	    <when test="searchType == 'memberName'">
+	      AND m.memberName LIKE CONCAT('%', #{keyword}, '%')
+	    </when>
+	    <when test="searchType == 'memberPhone'">
+	      AND m.memberPhone LIKE CONCAT('%', #{keyword}, '%')
+	    </when>
+	    <when test="searchType == 'rentPlace'">
+	      AND r.rentPlace LIKE CONCAT('%', #{keyword}, '%')
+	    </when>
+	    <when test="searchType == 'errorContent'">
+	      AND e.errorContent LIKE CONCAT('%', #{keyword}, '%')
+	    </when>
+	  </choose>
+	</if>
 </sql>
 	
 	
@@ -156,60 +149,57 @@
 <select id="searchBikeErrors" parameterType="com.myezen.myapp.domain.SearchCriteria"
   resultType="com.myezen.myapp.domain.BikeJoinVo">
 
-  SELECT *
-  FROM (
-    SELECT ROWNUM AS rnum, A.*
-    FROM (
-      SELECT
-        m.memberName,
-        m.memberPhone,
-        r.rentPlace,
-        b.bikeType,
-        b.bikeCode,
-        b.bikeState,
-        e.eidx,
-        e.errorDay,
-        e.errorContent
-      FROM rent1234 r
-      JOIN member1234 m ON m.midx = r.midx
-      JOIN bike1234 b ON b.bkidx = r.bkidx
-      JOIN error1234 e ON e.ridx = r.ridx
-      WHERE 1=1
-   
-     <include refid="search1" />
-      ORDER BY e.errorDay DESC
-    ) A
-       <![CDATA[WHERE ROWNUM <= #{page} * #{perPageNum}]]>
-    
-  ) B
-  <![CDATA[WHERE B.rnum >= (#{page} - 1) * #{perPageNum} + 1]]>
-  
-
+	SELECT *
+	FROM (
+	  SELECT 
+	    ROW_NUMBER() OVER() AS rnum, A.*
+	  FROM (
+	    SELECT
+	      m.memberName,
+	      m.memberPhone,
+	      r.rentPlace,
+	      b.bikeType,
+	      b.bikeCode,
+	      b.bikeState,
+	      e.eidx,
+	      e.errorDay,
+	      e.errorContent
+	    FROM rent1234 r
+	    JOIN member1234 m ON m.midx = r.midx
+	    JOIN bike1234 b ON b.bkidx = r.bkidx
+	    JOIN error1234 e ON e.ridx = r.ridx
+	    WHERE 1=1
+	    <include refid="search1" />
+	    ORDER BY e.errorDay DESC
+	  ) A
+	  LIMIT #{perPageNum} OFFSET #{perPageNum} * (#{page} - 1)
+	) B
 </select>
 	
 	
 	
 	<!--수리내역 갯수  -->
 	 <select id="searchBikeErrorsCount" resultType="int">
-        SELECT COUNT(*)
-		  FROM rent1234 r
-		  JOIN member1234 m ON m.midx = r.midx
-		  JOIN bike1234 b ON b.bkidx = r.bkidx
-		  JOIN error1234 e ON e.ridx = r.ridx
-		  <if test="searchType != null and searchType != ''">
+		SELECT COUNT(*)
+		FROM rent1234 r
+		JOIN member1234 m ON m.midx = r.midx
+		JOIN bike1234 b ON b.bkidx = r.bkidx
+		JOIN error1234 e ON e.ridx = r.ridx
+		WHERE 1=1
+		<if test="searchType != null and searchType != ''">
 		    <choose>
 		        <when test="searchType == 'memberName'">
-		            AND m.memberName LIKE '%'||#{keyword}||'%'
+		            AND m.memberName LIKE CONCAT('%', #{keyword}, '%')
 		        </when>
 		        <when test="searchType == 'memberPhone'">
-		            AND m.memberPhone LIKE '%'||#{keyword}||'%'
+		            AND m.memberPhone LIKE CONCAT('%', #{keyword}, '%')
 		        </when>
 		        <when test="searchType == 'rentPlace'">
-		            AND r.rentPlace LIKE '%'||#{keyword}||'%' 
+		            AND r.rentPlace LIKE CONCAT('%', #{keyword}, '%')
 		        </when>
 		        <when test="searchType == 'errorContent'">
-	                AND e.errorContent LIKE '%'||#{keyword}||'%'
-	            </when>
+		            AND e.errorContent LIKE CONCAT('%', #{keyword}, '%')
+		        </when>
 		    </choose>
 		</if>
      </select>
@@ -250,77 +240,74 @@
 	
 	<sql id="search2">
 		<if test="searchType != null and searchType != ''">
-		<choose>
-			<when test="searchType == 'bikeType'">
-				AND b.bikeType LIKE '%'||#{keyword}||'%'
-			</when>
-			<when test="searchType == 'bikeCode'">
-				AND b.bikeCode LIKE '%'||#{keyword}||'%'
-			</when>
-			<when test="searchType == 'errorContent'">
-				AND e.errorContent LIKE '%'||#{keyword}||'%'
-			</when>
-			<when test="searchType == 'bikeState'">
-				AND b.bikeState LIKE '%'||#{keyword}||'%'
-			</when>
-		</choose>
+		    <choose>
+		        <when test="searchType == 'bikeType'">
+		            AND b.bikeType LIKE CONCAT('%', #{keyword}, '%')
+		        </when>
+		        <when test="searchType == 'bikeCode'">
+		            AND b.bikeCode LIKE CONCAT('%', #{keyword}, '%')
+		        </when>
+		        <when test="searchType == 'errorContent'">
+		            AND e.errorContent LIKE CONCAT('%', #{keyword}, '%')
+		        </when>
+		        <when test="searchType == 'bikeState'">
+		            AND b.bikeState LIKE CONCAT('%', #{keyword}, '%')
+		        </when>
+		    </choose>
 		</if>		
 	</sql>
 
 
 	<!-- 수리 내역 리스트 -->
 	<select id="searchBikerepairList" parameterType="com.myezen.myapp.domain.SearchCriteria" resultType="com.myezen.myapp.domain.BikeJoinVo">
-	 SELECT *
-  		FROM (
-    SELECT ROWNUM AS rnum, A.*
-    	FROM (
-	SELECT
-		m.memberName,
-		m.memberPhone,
-		r.rentPlace,
-		b.bikeType,
-		b.bikeCode,
-		b.bikeState,
-		e.eidx,
-		e.errorDay,
-		e.errorContent
-	FROM rent1234 r
-	JOIN member1234 m ON m.midx = r.midx
-	JOIN bike1234 b ON b.bkidx = r.bkidx
-	JOIN error1234 e ON	e.ridx = r.ridx
-	WHERE 1=1
-	 <include refid="search2" />
-      ORDER BY e.errorDay DESC
-    ) A
-       <![CDATA[WHERE ROWNUM <= #{page} * #{perPageNum}]]>
-    
-  ) B
-  <![CDATA[WHERE B.rnum >= (#{page} - 1) * #{perPageNum} + 1]]>
+		SELECT *
+		FROM (
+		    SELECT
+		        m.memberName,
+		        m.memberPhone,
+		        r.rentPlace,
+		        b.bikeType,
+		        b.bikeCode,
+		        b.bikeState,
+		        e.eidx,
+		        e.errorDay,
+		        e.errorContent
+		    FROM rent1234 r
+		    JOIN member1234 m ON m.midx = r.midx
+		    JOIN bike1234 b ON b.bkidx = r.bkidx
+		    JOIN error1234 e ON e.ridx = r.ridx
+		    WHERE 1=1
+		    <include refid="search2" />
+		    ORDER BY e.errorDay DESC
+		    LIMIT #{perPageNum}
+		    OFFSET #{offset}
+		) AS B;
 	</select>
 	
 	<!-- 수리 내역 리스트 갯수 -->
 	<select id="searchBikerepairListCount" resultType="int">
-       SELECT count(*) as cnt
-	FROM rent1234 r
-	JOIN member1234 m ON m.midx = r.midx
-	JOIN bike1234 b ON b.bkidx = r.bkidx
-	JOIN error1234 e ON	e.ridx = r.ridx
-	<if test="searchType != null and searchType != ''">
-		<choose>
-			<when test="searchType == 'bikeType'">
-				AND b.bikeType LIKE '%'||#{keyword}||'%'
-			</when>
-			<when test="searchType == 'bikeCode'">
-				AND b.bikeCode LIKE '%'||#{keyword}||'%'
-			</when>
-			<when test="searchType == 'errorContent'">
-				AND e.errorContent LIKE '%'||#{keyword}||'%'
-			</when>
-			<when test="searchType == 'bikeState'">
-				AND b.bikeState LIKE '%'||#{keyword}||'%'
-			</when>
-		</choose>
-	</if>		
+		SELECT COUNT(*) as cnt
+		FROM rent1234 r
+		JOIN member1234 m ON m.midx = r.midx
+		JOIN bike1234 b ON b.bkidx = r.bkidx
+		JOIN error1234 e ON e.ridx = r.ridx
+		WHERE 1=1
+		<if test="searchType != null and searchType != ''">
+		    <choose>
+		        <when test="searchType == 'bikeType'">
+		            AND b.bikeType LIKE CONCAT('%', #{keyword}, '%')
+		        </when>
+		        <when test="searchType == 'bikeCode'">
+		            AND b.bikeCode LIKE CONCAT('%', #{keyword}, '%')
+		        </when>
+		        <when test="searchType == 'errorContent'">
+		            AND e.errorContent LIKE CONCAT('%', #{keyword}, '%')
+		        </when>
+		        <when test="searchType == 'bikeState'">
+		            AND b.bikeState LIKE CONCAT('%', #{keyword}, '%')
+		        </when>
+		    </choose>
+		</if>
      </select>
 	
 	<!-- 관리자 자전거 리스트 -->
@@ -341,8 +328,8 @@
 	
 	<!-- 대여소 등록 -->
 	<insert id="rentalshopInsert" parameterType="String"> 
-		INSERT INTO rentalshop1234(rsidx,rentalshopName,rentalshopLocation,rentalshopLatitude,rentalshopLongitude)
-		VALUES(rsidx_seq.nextval,#{0},#{1},#{2},#{3})
+		INSERT INTO rentalshop1234(rentalshopName,rentalshopLocation,rentalshopLatitude,rentalshopLongitude)
+		VALUES(#{0},#{1},#{2},#{3})
 	</insert>
 
 	<!-- 대여소 등록 페이지 이름 중복체크-->
@@ -386,11 +373,11 @@
 		
 	<sql id="search">
 		<if test="searchType != null and searchType.equals('writer')">
-				and writer like '%'||#{keyword}||'%'
+		    AND writer LIKE CONCAT('%', #{keyword}, '%')
 		</if>
 		
 		<if test="searchType != null and searchType.equals('subject')">
-				and  subject like '%'||#{keyword}||'%'
+		    AND subject LIKE CONCAT('%', #{keyword}, '%')
 		</if>
 	</sql>
 	
