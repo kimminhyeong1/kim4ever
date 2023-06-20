@@ -9,15 +9,15 @@
 <sql id="search3">
  <if test="searchType != null and searchType != ''">
     <choose>
-      <when test="searchType == 'memberId'">
-        AND memberId LIKE '%' || #{keyword} || '%'
-      </when>
-      <when test="searchType == 'memberName'">
-        AND memberName LIKE '%' || #{keyword} || '%'
-      </when>
-      <when test="searchType == 'memberType'">
-        AND memberType LIKE '%' || #{keyword} || '%'
-      </when>
+		<when test="searchType == 'memberId'">
+		  AND memberId LIKE CONCAT('%', #{keyword}, '%')
+		</when>
+		<when test="searchType == 'memberName'">
+		  AND memberName LIKE CONCAT('%', #{keyword}, '%')
+		</when>
+		<when test="searchType == 'memberType'">
+		  AND memberType LIKE CONCAT('%', #{keyword}, '%')
+		</when>
     </choose>
   </if>
 </sql>

@@ -9,6 +9,8 @@ public class SearchCriteria extends Criteria {
 	private int startRow;
 
 	private int endRow;
+	
+	private int offset;
 
 	public String getSearchType() {
 		return searchType;
@@ -40,6 +42,14 @@ public class SearchCriteria extends Criteria {
 
 	public void setEndRow(int endRow) {
 		this.endRow = endRow;
+	}
+
+	public int getOffset() {
+		return offset;
+	}
+
+	public void setOffset(int offset) {
+		this.offset = offset;
 	}
 	
 	
