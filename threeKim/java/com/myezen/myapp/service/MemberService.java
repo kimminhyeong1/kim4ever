@@ -18,6 +18,8 @@ public interface MemberService {
 	public int memberEmailCheck(String memberEmail);
 //로그인
 	public MemberVo memberLogin(String memberId);
+//로그인 에서 이용중인 내역 가져오기
+	public BikeJoinVo bikeRentUsing(int midx);
 //로그인에서 아이디찾기에서 인증번호보내기 
 	public int memberMailAuth(String memberEmail) throws Exception;
 //로그인에서 아이디찾기

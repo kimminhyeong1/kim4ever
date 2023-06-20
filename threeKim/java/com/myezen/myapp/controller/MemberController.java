@@ -416,8 +416,11 @@ public class MemberController {
 			session.setAttribute("memberType", mv.getMemberType());
 			session.setAttribute("memberIntro", mv.getMemberIntro());
 			session.setAttribute("memberProfile", mv.getMemberProfile());
-			
-			
+			BikeJoinVo bjv = ms.bikeRentUsing(mv.getMidx());
+			if (bjv != null) {//이용중인내역 유지
+				session.setAttribute("ridx", bjv.getRidx());//세션값에 저장
+				session.setAttribute("bkidx", bjv.getBkidx());//세션값에 저장
+			}
 			if(session.getAttribute("dest") == null) {
 				return "redirect:/";	
 			}else {

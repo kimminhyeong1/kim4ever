@@ -145,6 +145,12 @@ public class MemberServiceImpl implements MemberService {
 		MemberVo mv = msm.memberLogin(memberId);
 		return mv;
 	}
+	@Override
+	//로그인 에서 이용중인 내역 가져오기
+	public BikeJoinVo bikeRentUsing(int midx) {
+		BikeJoinVo bjv = msm.bikeRentUsing(midx);
+		return bjv;
+	}
 
 	//회원리스트
 		@Override
@@ -391,6 +397,7 @@ public class MemberServiceImpl implements MemberService {
 		String memberPhone = msm.memberPhoneCheck(midx);
 		return memberPhone;
 	}
+
 	
 	
 
