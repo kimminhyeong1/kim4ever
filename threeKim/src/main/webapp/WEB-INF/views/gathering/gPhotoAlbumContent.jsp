@@ -9,13 +9,14 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">
 		<link rel="stylesheet" media="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_gathering_mo.css">
-		  
+		<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script><!-- 풀캘린더 라이브러리 -->  
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<style type="text/css">
 			.gContainer{border: 1px solid #0000;}
 			/*사진첩 틀*/ 
-			.gContent{width:100%; border:1px solid #bbb;background-color:#f1f1f1;border-radius:10px; padding: 20px;}
+			.gContent{width:97%; border:1px solid #bbb;background-color:#f1f1f1;border-radius:10px; padding: 20px;}
 			/*버튼 부분*/
-			#createBtn{text-align: right; margin-right:-35px;}	
+			#createBtn{text-align: right; margin-top:20px; }	
 			/*페이징 부분*/
 			.gPaging{font-size: 25px;}	
 			/*사진첩 헤더*/   
@@ -33,14 +34,32 @@
 			.albumContent p {font-size:24px;line-height:1.5;margin:0;}
 			
 		</style>
+		
+		<script type="text/javascript">
+		    function deletePhotoAlbum(midx, gpaidx) {
+		        var confirmExit = confirm("사진첩을 삭제하시겠습니까?");
+		        if (confirmExit) {
+		            $.ajax({
+		                url: "${pageContext.request.contextPath}/gathering/gPhotoAlbumDelete.do?midx=" + midx + "&gpaidx=" + gpaidx,
+		                method: "POST",
+		                success: function(response) {
+		                    alert("삭제가 완료되었습니다.");
+		                    window.location.href = "${pageContext.request.contextPath}/gathering/gPhotoAlbumList.do";
+		                },
+		                error: function(xhr, status, error) {
+		                    // 에러 발생 시 수행할 작업
+		                }
+		            });
+		        }
+		    }
+		</script>
 	</head>
 	<body>
 		<%@include file="../header2.jsp" %>
 		<%@include file="header3.jsp" %>
 		<main id="main">
 			<section class="gContainer">
-				<div class="gContent" >
-					
+				<div class="gContent" >	
 					<div class="albumHeader">
 						<h2>${gjv.gPhotoAlbumWriteDay}</h2>
 						<button>좋아요</button>
@@ -60,7 +79,7 @@
 				</div>
 				<div id="createBtn">
 					<button class="gBtn2" onclick="location.href='${pageContext.request.contextPath}/gathering/gPhotoAlbumModifiy.do?gpaidx=${gjv.gpaidx}'">수정하기</button>
-					<button class="gBtn2">삭제하기</button>
+					<button class="gBtn2" onclick="deletePhotoAlbum(${midx}, ${gpaidx});">삭제하기</button>
 				</div>
 				
 			</section>

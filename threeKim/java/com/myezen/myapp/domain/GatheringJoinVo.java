@@ -784,7 +784,6 @@ public class GatheringJoinVo {//모임조인
 	}
 
 
-
 	
 
 	
