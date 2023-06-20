@@ -77,6 +77,8 @@
 			#gReportExit{margin-top:30px;width: 100%; height: 100px; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;text-align: right;}
 			#gReportExit>button{color: rgb(149, 165, 166);margin-top: 30px;margin-left: 10px;margin-right: 20px;width: 132px;height: 40px;font-size: 25px;border: 1px solid #0000;}
 			#gReportExit>button:active{color: #000;} 
+			/*캘린더*/
+			.fc-daygrid-event {white-space: break-spaces;}
 		 </style>
 
 		<script>
@@ -90,7 +92,7 @@
 		        // 예를 들어, 서버에서 스케줄 데이터를 events 받음
 		        <c:forEach var="gsvlist" items="${gsvlist}">
 		          {
-		            title: '${gsvlist.gScheduleTitle}',
+		            title: '${gsvlist.gScheduleTitle} 정원 (0/${gsvlist.gScheduleCapacity}명)',
 		            start: '${gsvlist.gScheduleStartDay}',
 		            end: '${gsvlist.gScheduleEndDay}',
 		            display: 'block', // 이벤트 표시 방식 설정

@@ -17,6 +17,7 @@ public class Gathering_ScheduleVO {//모임 일정
 	private String gScheduleWriteDay;//모임 일정 작성일
 	private String gScheduleDelDay;//모임 일정 삭제일
 	private String gScheduleDelYN;//모임 댓글 삭제 여부
+	private String gScheduleParticipating;//모임 일정 참여멤버 수	//가상컬럼
 	public int getGsidx() {
 		return gsidx;
 	}
@@ -106,6 +107,12 @@ public class Gathering_ScheduleVO {//모임 일정
 	}
 	public void setgScheduleDelYN(String gScheduleDelYN) {
 		this.gScheduleDelYN = gScheduleDelYN;
+	}
+	public String getgScheduleParticipating() {
+		return gScheduleParticipating;
+	}
+	public void setgScheduleParticipating(String gScheduleParticipating) {
+		this.gScheduleParticipating = gScheduleParticipating;
 	}
 
 	
