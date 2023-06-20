@@ -41,12 +41,12 @@ li{list-style:none;}
 #content table {width:70%; border-collapse:collapse; margin:0 auto; line-height:50px;font-family:'omyu_pretty'; font-size:24px;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000; white-space: nowrap; overflow: hidden;  text-overflow: ellipsis; }
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC; white-space: nowrap; overflow: hidden;  text-overflow: ellipsis; }
+#content table .cell-content {width: 100px;height: 40px;overflow: hidden;text-overflow: ellipsis; white-space: nowrap;}
 #content .search {text-align:right; margin-right:185px; margin-bottom:40px;}
 #content .search select {width:120px;height:30px;font-size:14px;padding:5px;}
 #content .search input[type="text"] {width:200px;height:17px;font-size:14px;padding:5px;}
 #content #searchBtn{width:80px;height:30px;font-size:14px;padding:5px;text-align:center; font-family:'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content #searchBtn:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px}
-#content table .cell-content {width:200px;height: 40px; overflow: hidden; text-overflow: ellipsis;}
 #content #btn{text-align:right; margin-top:20px; margin-right:144px; }
 #content button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
