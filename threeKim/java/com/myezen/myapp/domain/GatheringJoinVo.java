@@ -772,6 +772,8 @@ public class GatheringJoinVo {//모임조인
 	public void setGlidx(int glidx) {
 		this.glidx = glidx;
 	}
+
+
 	
 	
 	

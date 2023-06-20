@@ -180,8 +180,20 @@ public interface GatheringService_Mapper {
 	//모임사진첩이미지
 	public int gatheringPhotoGAInsert(GatheringJoinVo gjv);
 	//모임사진첩조회
-	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelect();
+	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelect(SearchCriteria scri);
+	//모임사진첩 총갯수
+	public int gatheringPhotoAlbumListSelectAll(SearchCriteria scri);
+	//모임사진첩 상세보기
 	public GatheringJoinVo gatheringPhotoAlbumListSelectOne(int gpaidx);
+	//모임사진첩 수정하기 조회
 	public GatheringJoinVo gatheringPhotoAlbumModify(int gpaidx);
+	//모임사진첩 수정하기
 	public int gatheringPhotoAlbumModifyUpdate(GatheringJoinVo gjv);
+	//모임사진첩 수정하기(대표이미지 업데이트)
+	public int gatheringPhotoGATUpdate(GatheringJoinVo gjv);
+	//모임사진첩 수정하기(이미지 업데이트)
+	public int gatheringPhotoGAUpdate(GatheringJoinVo gjv);
+	//모임사진첩 삭제하기
+	public void deletePhotoAlbum(int midx, int gpaidx);
+	
 }

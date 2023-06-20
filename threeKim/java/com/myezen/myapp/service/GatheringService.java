@@ -157,10 +157,20 @@ public interface GatheringService {
 	public int gatheringPhotoAlbumWrite(GatheringJoinVo gjv,MultipartFile GTImg, ArrayList<MultipartFile> GImg)throws IOException, Exception;
 	//모임사진첩조회
 
-	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelect();
+	//사진첩 리스트 조회
+	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelect(SearchCriteria scri);
+	//사진첩 리스트 총갯수
+	public int gatheringPhotoAlbumListSelectAll(SearchCriteria scri);
+	//사진첩 상세보기
 	public GatheringJoinVo gatheringPhotoAlbumListSelectOne(int gpaidx);
+	//사진첩 수정페이지 조회
 	public GatheringJoinVo gatheringPhotoAlbumModify(int gpaidx);
-	public int gatheringPhotoAlbumModifyUpdate(GatheringJoinVo gjv);
+	//사진첩 수정하기 
+	public int gatheringPhotoAlbumModifyUpdate(GatheringJoinVo gjv,MultipartFile GTImg, ArrayList<MultipartFile> GImg)throws IOException, Exception;
+	//사진첩 삭제하기
+	public void deletePhotoAlbum(int midx, int gpaidx);
+	
+
 
 
 	
