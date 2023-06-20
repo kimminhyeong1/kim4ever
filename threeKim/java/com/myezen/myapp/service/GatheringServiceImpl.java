@@ -75,6 +75,8 @@ public class GatheringServiceImpl implements GatheringService {
 		/*모임생성*/
 		//1.모임정보생성
         value = gsm.gatheringInfoCreate(gjv);
+        int giidx = gsm.gatheringInfoCreategiidx(gjv);
+        gjv.setGiidx(giidx);
         //2.모임생성
         value = gsm.gatheringCreate(gjv);
         //3.모임 대표이미지 넣기
@@ -197,7 +199,7 @@ public class GatheringServiceImpl implements GatheringService {
 		String joinType = giv.getgInfoJoinType();
 		if (joinType.equals("자유가입")) {
 			int type1=gsm.gatheringJoinTypeAInsert(giidx,midx);
-			gsm.gatheringParticipatingUpdate(giidx);
+			gsm.gatheringParticipatingUpdate(giidx); //참여멤버수 +1
 			return type1;
 			
 		}
@@ -351,6 +353,7 @@ public class GatheringServiceImpl implements GatheringService {
 		return gjvsmlist;
 	}
 	@Override
+	@Transactional
 	//모임 멤버 승낙 하기
 	public int gatheringApproveMembers(ArrayList<Integer> selectedMembers,int giidx) {
 		int value = 0;
@@ -358,6 +361,7 @@ public class GatheringServiceImpl implements GatheringService {
 	            // midx를 사용하여 매퍼로 전달하여 처리하는 로직을 구현
 			 System.out.println(midx);
 			 value = gsm.gatheringApproveMembers(giidx,midx);
+			 gsm.gatheringParticipatingUpdate(giidx); //참여멤버수 +1
 	         
 	        }
 		return value;
@@ -375,9 +379,11 @@ public class GatheringServiceImpl implements GatheringService {
 		return value;
 	}
 	@Override
+	@Transactional
 	//모임 더 보기 멤버 추방
 	public int updateMemberDELYN(int midx, int giidx) {		
 		int value= gsm.updateMemberDELYN(midx,giidx);
+		gsm.gatheringParticipatingUpdate1(giidx);//참여멤버수 -1
 		
 		return value; 
 	}

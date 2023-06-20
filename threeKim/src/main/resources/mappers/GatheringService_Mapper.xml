@@ -9,10 +9,13 @@
 	  	INSERT INTO GATHERING_INFO1234 (GINFONAME,GINFOAREA,GINFOBRIEFINTRODUCTION,GINFOAREAINTRODUCTION,GINFOCAPACITY,gInfoParticipating,GINFOCREATIONDAY,GINFOJOINTYPE)
 		VALUES(#{gInfoName}, #{gInfoArea}, #{gInfoBriefIntroduction}, #{gInfoAreaIntroduction}, #{gInfoCapacity},'1', NOW(),#{gInfoJoinType})
 	</insert>
+	<select id="gatheringInfoCreategiidx" parameterType="com.myezen.myapp.domain.GatheringJoinVo" resultType="int">
+		select giidx from gathering_info1234 WHERE giidx = LAST_INSERT_ID()
+	</select>
 	<!-- 모임생성 2.모임생성-->
 	<insert  id="gatheringCreate" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
 		INSERT INTO GATHERING1234 (GIIDX,MIDX,GATHERINGAPPROVALTYPE,GATHERINGMEMBERTYPE,GATHERINGJOININGDAY)
-		VALUES(LAST_INSERT_ID() , #{midx}, 'Y', 'TL', NOW())
+		VALUES(#{giidx} , #{midx}, 'Y', 'TL', NOW())
 	</insert>
 	<!-- 모임생성 2-1. 모임명 중복체크-->
 	<select id="gInfoNameCheck" parameterType="String" resultType="int">
@@ -21,12 +24,12 @@
 	<!-- 모임생성 3.모임대표 이미지 넣기-->
 	<insert  id="gatheringGTInsert" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
 		INSERT INTO IMAGE1234 (IMAGENAME,MIDX,GIIDX,IMGTYPE,IMGCREATIONDAY)
-		VALUES(#{imageName},#{midx},LAST_INSERT_ID(),'GT',NOW())
+		VALUES(#{imageName},#{midx},#{giidx},'GT',NOW())
 	</insert>
 	<!-- 모임생성 4.모임 이미지 넣기-->
 	<insert  id="gatheringGInsert" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
 		INSERT INTO IMAGE1234 (IMAGENAME,MIDX,GIIDX,IMGTYPE,IMGCREATIONDAY)
-		VALUES(#{imageName},#{midx},LAST_INSERT_ID(),'G',NOW())
+		VALUES(#{imageName},#{midx},#{giidx},'G',NOW())
 	</insert>
 	<!-- 모임 리스트 가져오기 -->
 	<select id="gatheringListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo">

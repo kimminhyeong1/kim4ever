@@ -28,6 +28,8 @@ public interface GatheringService_Mapper {
 	/*모임 생성*/
 	//1.모임 정보 생성하기 
 	public int gatheringInfoCreate(GatheringJoinVo gjv);
+	//모임 giidx값얻기
+	public int gatheringInfoCreategiidx(GatheringJoinVo gjv);
 	//2.모임 생성하기
 	public int gatheringCreate(GatheringJoinVo gjv);
 	//2-1.모임명 중복 체크
