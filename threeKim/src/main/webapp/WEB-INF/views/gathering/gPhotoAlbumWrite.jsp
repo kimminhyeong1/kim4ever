@@ -44,110 +44,81 @@
 		<%@include file="../header2.jsp" %>
 		<%@include file="header3.jsp" %>
 		<main id="main">
-		<form action="${pageContext.request.contextPath}/gathering/gPhotoAlbumWriteAction.do" method="POST" enctype="multipart/form-data">
-			<section class="gContainer">
-				<div class="gContent" >
-				
-					<table>	
-						<tr>
-							<th>제목</th>
-							<td><input type="text" id="gPhotoAlbumTitle" name="gPhotoAlbumTitle"></td>
-						</tr>
-							
-						<tr>
-							<th>대표 이미지</th>
-							<td><input type="file" id="image" name="GATImg" onchange="previewImage(event)" />
-							<img id="imagePreview" />
-							</td>
-						</tr>
-						
-							<tr>
-							<th>첨부파일</th>
-							<td><input type="file" id="image" name="GAImg" onchange="uploadImage(event)" multiple/>
-							
-							</td>
-						</tr>
-						
-						<tr>
-							<th>내용</th>
-							<td><textarea id="gPhotoAlbumContents" name="gPhotoAlbumContents" cols="97" rows="43" style="font-size: 26px;"></textarea></td>
-						</tr>
-					
-					</table>
-					
-				</div>
-				<div id="createBtn">
-					<button type="submit" class="gBtn2">작성하기</button>
-					<button class="gBtn2">취소하기</button>
-				</div>
-				
-			</section>
-			</form>
+	 <form action="${pageContext.request.contextPath}/gathering/gPhotoAlbumWriteAction.do" method="POST" enctype="multipart/form-data">
+        <section class="gContainer">
+            <div class="gContent">
+                <table>
+                    <tr>
+                        <th>제목</th>
+                        <td><input type="text" id="gPhotoAlbumTitle" name="gPhotoAlbumTitle"></td>
+                    </tr>
+                    <tr>
+                        <th>대표 이미지</th>
+                        <td><input type="file" id="image" name="GATImg" /></td>
+                    </tr>
+                     <tr id="postsContainer">
+            <th>첨부파일</th>
+            <td>
+                <!-- 게시물 추가 버튼 -->
+                <button type="button" onclick="addPost()">게시물 추가하기</button>
+                <!-- 추가된 게시물들 -->
+                <div id="postList"></div>
+            </td>
+        </tr>
+                </table>
+            </div>
+            <div id="createBtn">
+              
+                <button type="submit" class="gBtn2">작성하기</button>
+                <button class="gBtn2">취소하기</button>
+            </div>
+        </section>
+    </form>
 		</main>
 		<%@include file="../footer.jsp" %>
 		
 		
 <script type="text/javascript">
-	function previewImage(event) {
-		  var input = event.target;
-		  var reader = new FileReader();
+function previewImage(event) {
+    var input = event.target;
+    var reader = new FileReader();
 
-		  reader.onload = function() {
-		    var preview = document.getElementById('imagePreview');
-		    preview.src = reader.result;
-		  };
+    reader.onload = function() {
+        var imagePreview = input.nextElementSibling;
+        imagePreview.src = reader.result;
+    };
 
-		  if (input.files && input.files[0]) {
-		    reader.readAsDataURL(input.files[0]);
-		  }
-		}
-	var totalUploads = 0;
+    if (input.files && input.files[0]) {
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 
-	function uploadImage(event) {
-	  var input = event.target;
-	  var imageUploadContainer = document.getElementById('imageUploadContainer');
-	  var thumbnail = document.getElementById('thumbnail');
-	  var previewContainer = document.getElementById('previewContainer');
-
-	  if (totalUploads < 5) {
-	    var files = input.files;
-	    for (var i = 0; i < files.length; i++) {
-	      var file = files[i];
-	      var reader = new FileReader();
-
-	      reader.onload = function (e) {
-	        var image = document.createElement('img');
-	        image.src = e.target.result;
-	        previewContainer.appendChild(image);
-	      };
-
-	      reader.readAsDataURL(file);
-	      totalUploads++;
-	    }
-
-	    if (totalUploads < 5) {
-	      var newImageInput = document.createElement('input');
-	      newImageInput.id = 'image';
-	      newImageInput.type = 'file';
-	      newImageInput.name = 'GAImg';
-	      newImageInput.onchange = uploadImage;
-	      imageUploadContainer.appendChild(newImageInput);
-	    }
-	  }
-
-	  // Update the thumbnail with the first selected image
-	  if (input.files && input.files[0]) {
-	    var reader = new FileReader();
-	    reader.onload = function (e) {
-	      thumbnail.src = e.target.result;
-	      thumbnail.style.display = 'block';
-	    };
-	    reader.readAsDataURL(input.files[0]);
-	  } else {
-	    thumbnail.src = '#';
-	    thumbnail.style.display = 'none';
-	  }
-	}
+function addPost() {
+    var postList = document.getElementById('postList');
+    var postContainer = document.createElement('div');
+    postContainer.classList.add('postContainer');
+    
+    var imageInput = document.createElement('input');
+    imageInput.classList.add('imageInput');
+    imageInput.type = 'file';
+    imageInput.name = 'GAImg';
+    imageInput.onchange = function(event) {
+        previewImage(event);
+    };
+    
+    var imagePreview = document.createElement('img');
+    imagePreview.classList.add('imagePreview');
+    
+    var postContent = document.createElement('textarea');
+    postContent.classList.add('postContent');
+    postContent.name = 'gPhotoAlbumContents';
+    postContent.placeholder = '내용을 입력하세요';
+    
+    postContainer.appendChild(imageInput);
+    postContainer.appendChild(imagePreview);
+    postContainer.appendChild(postContent);
+    postList.appendChild(postContainer);
+}
 
 
 </script>

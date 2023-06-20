@@ -457,15 +457,19 @@
 		VALUES(#{giidx},#{midx},#{gPhotoAlbumTitle},#{gPhotoAlbumLikeCNT},#{gPhotoAlbumContents},NOW(),'N')
 	</insert>
 	
+	<select id="gatheringPhotoAlbumGetGpaidx" parameterType="com.myezen.myapp.domain.GatheringJoinVo" resultType="int">
+		select gpaidx from gathering_photoalbum1234 WHERE gpaidx = LAST_INSERT_ID()
+	</select>
+	
 	<!-- 사진첩 모임대표 이미지 넣기-->
 	<insert  id="gatheringPhotoGATInsert" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
 		INSERT INTO IMAGE1234 (IMAGENAME,MIDX,GIIDX,GPAIDX,IMGTYPE,IMGCREATIONDAY)
-		VALUES(#{imageName},#{midx},#{giidx},LAST_INSERT_ID(),'GAT',NOW())
+		VALUES(#{imageName},#{midx},#{giidx},#{gpaidx},'GAT',NOW())
 	</insert>
 	<!-- 사진첩 모임 이미지 넣기-->
 	<insert  id="gatheringPhotoGAInsert" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
 		INSERT INTO IMAGE1234 (IMAGENAME,MIDX,GIIDX,GPAIDX,IMGTYPE,IMGCREATIONDAY)
-		VALUES(#{imageName},#{midx},#{giidx},LAST_INSERT_ID(),'GA',NOW())
+		VALUES(#{imageName},#{midx},#{giidx},#{gpaidx},'GA',NOW())
 	</insert>
 	
 	<!-- 사진첩 리스트 조회 -->
