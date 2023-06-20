@@ -34,36 +34,46 @@ function requestPay() {
     IMP.request_pay({
         pg: 'kakaopay', //카카오 페이
         pay_method: 'card',
-        merchant_uid: "IMP" + makeMerchantUid,
-        name: ' 타:바 자전거 대여',
+        merchant_uid: 'merchant_' + new Date().getTime(),
+        name: '대여',
         amount: '${bjv.rentPrice}', // 가격
         buyer_name: '<%=session.getAttribute("memberName")%>',
         buyer_tel: '구매자 번호',
         buyer_addr: '${bjv.bikeLocation}',
         buyer_postcode: ' ${bjv.bikeCode}',
         popup: true,
-        m_redirect_url: "http://localhost:8080/myapp/index.jsp"
+        m_redirect_url: "http://localhost:8080/myapp/index.jsp",
+   
     }, function(rsp) {
-        console.log(rsp);
-        if (rsp.success) {
-            var msg = rsp.name + '결제가 완료되었습니다.' + '\n';
-            msg += '구매자 : ' + rsp.buyer_name + '\n';
-            msg += '대여소위치 : ' + rsp.buyer_addr + '\n';
-            msg += '결제 금액 : ' + rsp.paid_amount;
-            //성공시 제출
-            var fm = document.frm;
-            fm.action = "${pageContext.request.contextPath}/bikeRent/bikeRentUpdate.do";
-            fm.method = "post";
-            fm.submit();
+		console.log(rsp);
+		// 결제검증
+		$.ajax({
+		    type: "POST",
+		    url: "${pageContext.request.contextPath}/verifyIamport/" + rsp.imp_uid +"/pay.do",
+		    success: function(data) {
+		        console.log(data);
+		        // 위의 rsp.paid_amount 와 data.response.amount를 비교한 후 로직 실행 (import 서버검증)
+		        if (rsp.paid_amount == data.response.amount) {
+		            alert("결제 및 결제검증 완료");
+		            var fm = document.frm;
+		            fm.action = "${pageContext.request.contextPath}/bikeRent/bikeRentUpdate.do";
+		            fm.method = "post";
+		            fm.submit();
+		        } else {
+		            alert("결제 실패");
+		        }
+		    },
+		    error: function(xhr, status, error) {
+		        console.log("AJAX 요청 실패: " + error);
+		    }
+		});
+
      
-        } else { 
-            var msg = '결제에 실패하였습니다.';
-            msg += '에러내용 : ' + rsp.error_msg;
-        }
-        alert(msg);
-    });
+	});
 }
-/* 
+    
+    
+
   $(document).ready(function() {
 
       //휴대폰 번호 인증
@@ -131,7 +141,7 @@ function requestPay() {
                   
       
   })
-   */
+   
 
   
 
@@ -208,7 +218,6 @@ function requestPay() {
 				<tr>
 				  <td colspan="3">
 					<button id="rentButton" class="rentButton" type="button" onclick="requestPay()" disabled>대여하기</button>
-					<button onclick="requestPay()">결제하기</button>
 					
 			
 				  </td>
@@ -281,7 +290,6 @@ function requestPay() {
 				<tr>
 				  <td colspan="3">
 					<button id="rentButton" class="rentButton" type="button" onclick="requestPay()" >대여하기</button>
-					<button onclick="requestPay()">결제하기</button>
 					
 			
 				  </td>

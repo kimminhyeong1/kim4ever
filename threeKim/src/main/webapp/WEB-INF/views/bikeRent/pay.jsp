@@ -7,56 +7,58 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	    <!-- jQuery -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+	  		<meta charset="UTF-8">
+		<title>응답해더 확인용</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">				
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent.css">	
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent_mo.css?수정중">
+		
+		 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
     <!-- iamport.payment.js -->
-    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-    
-    <script>
-    var IMP = window.IMP;
-    IMP.init("imp67011510");
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+<script type="text/javascript">
 
-    var today = new Date();
-    var hours = today.getHours(); // 시
-    var minutes = today.getMinutes(); // 분
-    var seconds = today.getSeconds(); // 초
-    var milliseconds = today.getMilliseconds();
-    var makeMerchantUid = hours + minutes + seconds + milliseconds;
 
     function requestPay() {
+        var IMP = window.IMP;
+        IMP.init("imp01337483");
+      
         IMP.request_pay({
             pg: 'kakaopay', //카카오 페이
             pay_method: 'card',
-            merchant_uid: "IMP" + makeMerchantUid,
+            merchant_uid : 'merchant_' + new Date().getTime(),
             name: ' 타:바 자전거 대여',
-            amount: '${bjv.rentPrice}', // 가격
+            amount: '1000', // 가격
             buyer_name: '<%=session.getAttribute("memberName")%>',
             buyer_tel: '구매자 번호',
             buyer_addr: '${bjv.bikeLocation}',
             buyer_postcode: ' ${bjv.bikeCode}',
             popup: true,
-
-            m_redirect_url: ''
+            m_redirect_url: "http://localhost:8080/myapp/index.jsp"
         }, function(rsp) {
-            console.log(rsp);
-            if (rsp.success) {
-                var msg = rsp.name + '결제가 완료되었습니다.' + '\n';
-                msg += '구매자 : ' + rsp.buyer_name + '\n';
-                msg += '대여소위치 : ' + rsp.buyer_addr + '\n';
-                msg += '결제 금액 : ' + rsp.paid_amount;
-                //성공시 제출
-                var fm = document.frm;
-                fm.action = "${pageContext.request.contextPath}/bikeRent/bikeRentUpdate.do";
-                fm.method = "post";
-                fm.submit();
-            } else {
-                var msg = '결제에 실패하였습니다.';
-                msg += '에러내용 : ' + rsp.error_msg;
-            }
-            alert(msg);
-        });
-    }
-
+			console.log(rsp);
+			// 결제검증
+			$.ajax({
+	        	type : "POST",
+	        	url : "${pageContext.request.contextPath}/verifyIamport/" + rsp.imp_uid +"/pay.do"
+	        }).done(function(data) {
+	        	
+	        	console.log(data);
+	        	
+	        	// 위의 rsp.paid_amount 와 data.response.amount를 비교한후 로직 실행 (import 서버검증)
+	        	if(rsp.paid_amount == data.response.amount){
+		        	alert("결제 및 결제검증완료");
+	        	} else {
+	        		alert("결제 실패");
+	        	}
+	        });
+		});
+	}
     </script>
 	
 		<meta charset="UTF-8">
@@ -85,7 +87,32 @@
 		</main>
 		<%@include file="../footer.jsp" %>
 	</body>
-	
+	<table id="bikeDetail_mo">
+		
+				<tr>					
+					<td colspan="3"><img src="${pageContext.request.contextPath}/resources/bikeimg/${bjv.bikeType eq '전기자전거' ? '전기자전거.jpg' : '일반자전거.jpg'}" alt="${bjv.bikeType}"></td>
+				</tr>
+					
+				<tr>
+					<td colspan="3"><h2>${bjv.bikeType}</h2></td>
+				</tr>
+			
+				<tr>
+					<td colspan="3">${bjv.bikeContent }</td>
+				</tr>
+			
+				<tr>
+					<td colspan="3">자전거 고유번호 : ${bjv.bikeCode}</td>	
+				</tr>
+				
+				<tr>
+					<td colspan="3">자전거 위치 : ${bjv.bikeLocation}대여소</td>
+				</tr>
+				
+				<tr>
+					<td colspan="3">이용 요금 : ${bjv.rentPrice}원</td>
+				</tr>
+			</table>
 
 
 </html>

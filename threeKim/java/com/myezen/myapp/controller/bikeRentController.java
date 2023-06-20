@@ -537,6 +537,7 @@ public class bikeRentController {
 	@RequestMapping(value="/pay.do")
 	public String pay()
 	{	  
+		System.out.println("페이들어옴");
 	    return "bikeRent/pay";
 	}
 
