@@ -420,24 +420,26 @@
 	<!-- 모임 상세 리스트 -->
 	<select id="gatheringDetail" parameterType="int" resultType="com.myezen.myapp.domain.GatheringJoinVo">
 		SELECT
-    i.GIIDX,
-    i.gInfoName,
-    i.gInfoCapacity,
-    i.gInfoCreationDay,
-    i.gInfoAreaIntroduction,
-    g.MIDX,
-    m.memberName,
-    COALESCE(COUNT(d.gdix), 0) AS REPORTCNT
-FROM
-    gathering_info1234 i
-    JOIN gathering1234 g ON g.giidx = i.giidx
-    JOIN member1234 m ON m.midx = g.midx
-    LEFT JOIN gathering_Declaration1234 d ON d.giidx = i.giidx
-WHERE
-    g.gatheringMemberType = 'TL'
-    AND i.giidx = #{giidx}
-GROUP BY
-    i.GIIDX, i.gInfoName, i.gInfoCapacity, i.gInfoCreationDay, i.gInfoAreaIntroduction, g.MIDX, m.memberName
+		    i.GIIDX,
+		    i.gInfoName,
+		    i.gInfoCapacity,
+		    i.gInfoCreationDay,
+		    i.gInfoAreaIntroduction,
+		    g.MIDX,
+		    m.memberName,
+		    COALESCE(COUNT(d.gdix), 0) AS REPORTCNT,
+		    img.imageName
+		FROM
+		    gathering_info1234 i
+		    JOIN gathering1234 g ON g.giidx = i.giidx
+		    JOIN member1234 m ON m.midx = g.midx
+		    LEFT JOIN gathering_Declaration1234 d ON d.giidx = i.giidx
+		    LEFT JOIN image1234 img ON img.giidx = i.giidx AND img.ImgType = 'GT'
+		WHERE
+		    g.gatheringMemberType = 'TL'
+		    AND i.giidx = #{giidx}
+		GROUP BY
+		    i.GIIDX, i.gInfoName, i.gInfoCapacity, i.gInfoCreationDay, i.gInfoAreaIntroduction, g.MIDX, m.memberName, img.imageName
 	</select>
 	
 	<!-- 모임 신고 내역 리스트 -->
