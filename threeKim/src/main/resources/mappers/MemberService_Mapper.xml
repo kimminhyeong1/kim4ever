@@ -56,7 +56,7 @@
 	</select>
 	<!-- 회원로그인 -->
 	<select id="memberLogin" parameterType="String" resultType="mv">
-	select * from member1234 where MEMBERDELYN='N' and memberId=#{memberId}
+	select * from member1234 where memberdelyn='N' and memberId=#{memberId}
 	</select>
 	<!-- 회원삭제 -->
 	<delete id="deleteMember" parameterType="String">

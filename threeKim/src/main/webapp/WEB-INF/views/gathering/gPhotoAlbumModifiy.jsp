@@ -63,8 +63,9 @@
 						
 							<tr>
 							<th>첨부파일</th>
-							<td><input type="file" id="image" name="GAImg" onchange="uploadImage(event)"/>
-							
+							<td>
+							<img src="../resources/GAImages/${gjv.imageName}">
+							<input type="file" id="image" name="GAImg" onchange="uploadImage(event)"/>
 							</td>
 						</tr>
 						

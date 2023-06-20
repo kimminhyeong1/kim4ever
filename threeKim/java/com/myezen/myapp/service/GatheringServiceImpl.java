@@ -549,9 +549,9 @@ public class GatheringServiceImpl implements GatheringService {
 	
 	//모임사진첩 조회
 	@Override
-	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelect() {
+	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelect(SearchCriteria scri) {
 		
-		ArrayList<GatheringJoinVo> gPhotoList = gsm.gatheringPhotoAlbumListSelect();
+		ArrayList<GatheringJoinVo> gPhotoList = gsm.gatheringPhotoAlbumListSelect(scri);
 		
 		return gPhotoList;
 	}
@@ -608,11 +608,62 @@ public class GatheringServiceImpl implements GatheringService {
 
 
 	@Override
-	public int gatheringPhotoAlbumModifyUpdate(GatheringJoinVo gjv) {
-		int value = gsm.gatheringPhotoAlbumModifyUpdate(gjv);
-		return value;
+	@Transactional
+	public int gatheringPhotoAlbumModifyUpdate(GatheringJoinVo gjv, MultipartFile GATImg, ArrayList<MultipartFile> GAImg) throws IOException, Exception {
+
+		int value = 0;
+		
+		String savedGATImgPath = "D://threekim//threeKim//src//main//webapp//resources/GATImages";//사진첩 대표이미지
+		String savedGAImgPath = "D://threekim//threeKim//src//main//webapp//resources/GAImages";//사진첩 이미지
+		
+	
+		 // 모임 대표 이미지 업데이트
+	    if (GATImg != null && !GATImg.isEmpty()) {
+	        String uploadedGATImgName = UploadFileUtiles.uploadFile(savedGATImgPath, GATImg.getOriginalFilename(), GATImg.getBytes());
+	        gjv.setImageName(uploadedGATImgName);
+	        value = gsm.gatheringPhotoGATUpdate(gjv);
+	        System.out.println("모임 대표 이미지 업데이트 성공: " + value);
+	    }
+
+	    // 모임 이미지들 업데이트
+	    for (MultipartFile file : GAImg) {
+	        if (file != null && !file.isEmpty()) {
+	            String uploadedGAImgName = UploadFileUtiles.uploadFile(savedGAImgPath, file.getOriginalFilename(), file.getBytes());
+	            gjv.setImageName(uploadedGAImgName);
+	            value = gsm.gatheringPhotoGAUpdate(gjv);
+	            System.out.println("모임 이미지 업데이트 성공: " + value);
+	        }
+	    }
+
+	    // 사진첩 정보 업데이트
+	    value = gsm.gatheringPhotoAlbumModifyUpdate(gjv);
+	    System.out.println("사진첩 정보 업데이트 성공: " + value);
+	    
+	    return value;
 	}
 
+
+
+	@Override
+	public void deletePhotoAlbum(int midx, int gpaidx) {
+		gsm.deletePhotoAlbum(midx, gpaidx);
+		
+	}
+
+
+
+	@Override
+	public int gatheringPhotoAlbumListSelectAll(SearchCriteria scri) {
+		return gsm.gatheringPhotoAlbumListSelectAll(scri);
+	}
+
+
+
+	
+
+
+
+	
 
 
 

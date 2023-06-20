@@ -460,11 +460,34 @@
 	</insert>
 	
 	<!-- 사진첩 리스트 조회 -->
-	<select id="gatheringPhotoAlbumListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo">
-		SELECT a.gpaidx, a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, b.imgtype, b.imageName
+	<select id="gatheringPhotoAlbumListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo"  parameterType="com.myezen.myapp.domain.SearchCriteria">
+		SELECT *
+		FROM (
+		    SELECT ROWNUM AS RNUM, A.*
+		    FROM (
+		        SELECT a.gpaidx, a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, b.imgtype, b.imageName
+		        FROM gathering_photoalbum1234 a
+		        JOIN image1234 b ON a.giidx = b.GIIDX AND a.gpaidx = b.gpaidx
+		        WHERE b.imgtype = 'GAT'
+		        <if test="keyword != null">
+		            AND a.GPHOTOALBUMTITLE LIKE '%'||#{keyword}||'%'
+		        </if>
+		        ORDER BY GPHOTOALBUMWRITEDAY DESC
+		    ) A
+		      <![CDATA[WHERE ROWNUM <= #{page} * #{perPageNum}]]>
+		) B
+		<![CDATA[WHERE B.rnum >= (#{page} - 1) * #{perPageNum} + 1]]>
+	</select>
+	
+	<!-- 사진첩 리스트  총 게시물 조회 -->
+	<select id="gatheringPhotoAlbumListSelectAll" resultType="int">
+		SELECT count(*) as cnt
 		FROM gathering_photoalbum1234 a
 		JOIN image1234 b ON a.giidx = b.GIIDX AND a.gpaidx = b.gpaidx
 		WHERE b.imgtype='GAT'
+		<if test="keyword != null">
+	     AND a.GPHOTOALBUMTITLE LIKE '%'||#{keyword}||'%'
+	    </if>
 	</select>
 	
 	<!-- 사진첩 리스트 조회 -->
@@ -476,18 +499,46 @@
 		AND a.gpaidx = #{gpaidx}
 	</select>
 	
-	
 	<!--  사진첩  게시글 수정 조회 -->
 	<select id="gatheringPhotoAlbumModify" resultType="com.myezen.myapp.domain.GatheringJoinVo">
-		SELECT gpaidx, gPhotoAlbumTitle, gPhotoAlbumContents
-		FROM GATHERING_PHOTOALBUM1234 
-		WHERE gPhotoAlbumDelYN = 'N' AND gpaidx = #{0}
+    	SELECT a.gpaidx, a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, a.GPHOTOALBUMCONTENTS, b.imgtype, b.imageName
+		FROM gathering_photoalbum1234 a
+		JOIN image1234 b ON a.giidx = b.GIIDX AND a.gpaidx = b.gpaidx
+		WHERE b.imgtype = 'GA'
+		AND a.gpaidx = #{gpaidx}
 	</select>
 	
 	<!--  사진첩 게시글 수정 작성 -->
 	<update id="gatheringPhotoAlbumModifyUpdate" parameterType="com.myezen.myapp.domain.GatheringJoinVo">
 		UPDATE GATHERING_PHOTOALBUM1234
-		SET gPhotoAlbumTitle = #{gPhotoAlbumTitle}, gPhotoAlbumContents = #{gPhotoAlbumContents}
+		SET gPhotoAlbumTitle = #{gPhotoAlbumTitle}, gPhotoAlbumContents = #{gPhotoAlbumContents}, gpaidx = #{gpaidx}
 		WHERE gpaidx = #{gpaidx}
 	</update>
+	
+	<!-- 사진첩 모임대표 이미지 업데이트 -->
+	<update id="gatheringPhotoGATUpdate" parameterType="com.myezen.myapp.domain.GatheringJoinVo">
+     UPDATE IMAGE1234
+  	SET IMAGENAME = #{imageName}
+  	WHERE GPAIDX = #{gpaidx} AND IMGTYPE = 'GAT'
+	</update>
+	
+	<!-- 사진첩 모임 이미지 업데이트 -->
+	<update id="gatheringPhotoGAUpdate" parameterType="com.myezen.myapp.domain.GatheringJoinVo">
+	   UPDATE IMAGE1234
+	  SET IMAGENAME = #{imageName}
+	  WHERE GPAIDX = #{gpaidx} AND IMGTYPE = 'GA'
+	</update>
+	
+	<!-- 사진첩 삭제 -->
+	<delete id="deletePhotoAlbum" parameterType="int">
+        DELETE FROM GATHERING_PHOTOALBUM1234
+        WHERE midx = #{0} AND gpaidx = #{1}
+   	</delete>
+   	
+   	<select id="getGatheringMemberType" resultType="java.lang.String">
+    SELECT gatheringMemberType FROM GATHERING1234
+     WHERE midx = #{midx} AND giidx = #{giidx}
+	</select>
+	
+	
 </mapper>
