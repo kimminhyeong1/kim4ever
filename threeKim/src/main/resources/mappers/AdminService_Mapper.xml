@@ -153,8 +153,17 @@ WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPag
 	<!-- 신고 내역 리스트 -->
 <select id="searchBikeErrors" parameterType="com.myezen.myapp.domain.SearchCriteria"
   resultType="com.myezen.myapp.domain.BikeJoinVo">
-
-	SELECT *
+	SELECT
+	  rnum,
+	  memberName,
+	  memberPhone,
+	  rentPlace,
+	  bikeType,
+	  bikeCode,
+	  bikeState,
+	  eidx,
+	  errorDay,
+	  errorContent
 	FROM (
 	  SELECT 
 	    ROW_NUMBER() OVER() AS rnum, A.*
@@ -177,8 +186,8 @@ WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPag
 	    <include refid="search1" />
 	    ORDER BY e.errorDay DESC
 	  ) A
-	  LIMIT #{perPageNum} OFFSET #{perPageNum} * (#{page} - 1)
 	) B
+	WHERE rnum BETWEEN #{startRow} AND #{endRow}
 </select>
 	
 	
