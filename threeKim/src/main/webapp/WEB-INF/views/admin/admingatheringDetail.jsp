@@ -78,7 +78,7 @@
 				</div>
 				<div>
 					<h3>모임 인원</h3>
-					<div class="gInfoCapacity">${gtrdv.gInfoCapacity}명</div>				
+					<div class="gInfoCapacity">${gtrdv.gInfoParticipating}명</div>				
 				</div>
 				<div>
 					<h3>모임 생성일</h3>
