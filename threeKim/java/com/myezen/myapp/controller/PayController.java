@@ -1,4 +1,25 @@
-//package com.myezen.myapp.controller;
+package com.myezen.myapp.controller;
+
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Locale;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.siot.IamportRestClient.IamportClient;
+import com.siot.IamportRestClient.exception.IamportResponseException;
+import com.siot.IamportRestClient.response.IamportResponse;
+import com.siot.IamportRestClient.response.Payment;
 //
 //import java.io.IOException;
 //import java.util.Locale;
@@ -106,6 +127,58 @@
 //	 
 //	}
 //	
+/* ******************************************************************/
+	/*자전거 결제*/
+	
+	@Controller
+	public class PayController {
 
+		
+		private IamportClient api;
+		
+		public PayController() {
+	    	// REST API 키와 REST API secret 를 아래처럼 순서대로 입력한다.
+			this.api = new IamportClient("7862328132623281","VdxBnSTJBqwo00ZuD3rlCC7skBjyEsjFf1XyOVQchbsSaGCJaLSg3m9ya6X4ucWxHM1moy9jLXZJP0ve");
+		}
+			
+		@ResponseBody
+		@RequestMapping(value="/verifyIamport/{imp_uid}")
 
+		public IamportResponse<Payment> paymentByImpUid(
+				Model model
+				, Locale locale
+				, HttpSession session
+				, @PathVariable(value= "imp_uid") String imp_uid) throws IamportResponseException, IOException
+		
+		{	
+			
+			  // API 호출
+	        String url = "https://api.iamport.kr/payments/" + imp_uid + "?_token=1bc8886c6ce2ffaf317cebaff2fce4dcf884e7fc";
+	        System.out.println("imp_uid? " + imp_uid);
+	        URL apiUrl = new URL(url);
+	        HttpURLConnection connection = (HttpURLConnection) apiUrl.openConnection();
+	        connection.setRequestMethod("GET");
 
+	        int responseCode = connection.getResponseCode();
+	        if (responseCode == HttpURLConnection.HTTP_OK) {
+	            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+	            String line;
+	            StringBuilder response = new StringBuilder();
+
+	            while ((line = reader.readLine()) != null) {
+	                response.append(line);
+	            }
+
+	            reader.close();
+
+	            System.out.println(response.toString());
+	        } else {
+	            System.out.println("HTTP request failed with response code: " + responseCode);
+	        }
+
+	        connection.disconnect();
+
+	        return api.paymentByImpUid(imp_uid);
+	    }
+
+	}
