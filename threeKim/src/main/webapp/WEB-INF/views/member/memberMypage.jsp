@@ -59,8 +59,8 @@ li{list-style:none;}
 #formImg{float: left;}  
 #editImgBtn{position: absolute;top: 3px;right: -460px;width: 100px;height: 30px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;border: 1px solid;}
 #content table #memberProfile{position:absolute; width:100%; height:100%; border:1px solid #bbb; border-radius:100px;object-fit:cover;} 
-#UploadImgBtn{position: absolute;top: 3px;right: -460px;width: 100px;height: 30px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;border: 1px solid;}
- 
+#UploadImgBtn{position: absolute;top: 3px;right: -460px; width: 100px;height: 30px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;}
+#introText{margin-bottom:0px;}
 
 /**************************모바일****************************************/
 
@@ -70,23 +70,33 @@ li{list-style:none;}
 #main #content{width:auto; height:auto;}
 #main #bottom{width:auto; height:10px;}
 #content table h2{margin-top:10px; font-size:20px; font-family:'GangwonEdu_OTFBoldA'; }
-#content table {width:200px; height:20%; border-collapse:collapse; border:1px solid #ddd; margin:0 auto; font-family:'omyu_pretty'; }
-#content table th{width:100px; text-align:center; border:1px solid #ddd; padding:2px;}
-#content table td {border:1px solid #ddd;padding:5px;text-align:left;vertical-align:middle;height:40px; width:100px;font-size:15px;}
-#content table img{width:40px; height:20px; float:right; margin: 0 auto; vertical-align:middle;}
+#content table {position:relative; width:85%; max-width:550px; height:20%; min-width:320px; border-collapse:collapse; border:1px solid #ddd; margin: 60px auto 0; font-family:'omyu_pretty'; }
+#content table th{width:200px; text-align:center; border:1px solid #ddd; padding:8px;}
+#content table td {border:1px solid #bbb;padding:10px;text-align:left;vertical-align:middle;height:90px; font-size:15px;}
+#content table img{width:20%; height:20%; float:right; margin: 0 auto; vertical-align:middle;}
 #content table td a {display:flex;  color:#333;}
 #content table td a.logout-btn {display:inline-block;padding:10px 20px;background-color:#ff9800;color:#fff;text-decoration:none;border-radius:5px;transition:background-color 0.3s ease;}
 #content table td a.logout-btn:hover {background-color: #FF6600;}
-#content table .image-container {position:abosolute; width:100px;height:100px; margin:0px;   left: 20%; top: 50%; transform: translate(-50%, 0%);}
+#content table .image-container {position:absolute; width:100px;height:100px;}
 #content table #imagePreview {float:center; width:100%; height:100%; border:1px solid #bbb; border-radius:100px;object-fit:cover;}
-#content table .button-container {width:100px; margin-left:10px;  bottom:320px; left:112px; align-items:center;  font-size:10px;}
-#content table .intro-container {width:250px;height:5px; margin-top: 8px; float:right;border:1px solid #ddd; border-radius:50px; padding-top:30px; }
+#content table .button-container { position: relative;width:70%; margin-left:10px;  bottom:10px; left:10px; align-items:center;  font-size:10px;}
+#content table .intro-container {width:50%;height:20px; margin-top: 8px; float:right;border:1px solid #ddd; border-radius:50px; padding-top:0px; }
 #content table .intro-container h3 {font-size:14px;margin-bottom:5px;border-bottom:1px solid #000;}
-#content table input[type="text"] {font-family:'omyu_pretty';font-size:13px;width:70%;padding:1px;margin-bottom:-63px;border:1px solid #ccc;border-radius:4px;}
-#content table .intro-container .button-container2 {display:flex;justify-content:flex-end;gap:10px;margin-bottom:50px;margin-left:180px; transform: translate(0%, 160%)}
-#content table .button-container2 button{border:none; font-family:'omyu_pretty';  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); border-radius:50px; width:70px; height:20px;}
-.intro-container{height:200px; width:50px;}
-.top{height:500px;}
+#content table input[type="text"] {margin-top: -20px;  font-family:'omyu_pretty';font-size:13px;width:70%;padding:1px;margin-left:-7px; margin-bottom:-63px;border:1px solid #ccc;border-radius:4px;}
+#content table .intro-container {display:flex;justify-content:normal;gap:0px;margin-bottom:50px;margin-left:10px; transform: translate(0%, 60%)}
+ .button-container2 {display:flex;justify-content:flex-end;gap:10px;margin-bottom:50px;margin-left:50px; transform: translate(0%, 160%)}
+ #content table .intro-container .button-container2 {display:flex;justify-content:flex-end;gap:10px;margin-top:-25px;margin-left:55%;}
+ 
+#content table .button-container2 button{border:0px solid; font-family:'omyu_pretty';  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); border-radius:50px; width:70px; height:20px;}
+.intro-container{height:170px; width:50px;}
+#content table .top{height:100px;}
+#editImgBtn{border:0px;top: 0px;right:0px; font-family:'omyu_pretty';  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); border-radius:50px; width:70px; height:20px;text-decoration: none;transition: background-color 0.3s ease; margin-top: 88px; 
+    margin-right: 25px;}
+#content table #memberProfile{position:absolute; width:100%; height:100%; border:1px solid #bbb; border-radius:100px;object-fit:cover;} 
+#UploadImgBtn{position: absolute;top: 3px;right: -460px; font-family:'omyu_pretty';  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); border-radius:50px; width:70px; height:20px;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;}
+ #formImg{float: none;}  
+ 
+
 }
 
 </style>
