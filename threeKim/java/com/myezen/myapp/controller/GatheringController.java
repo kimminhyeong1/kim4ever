@@ -151,7 +151,11 @@ public class GatheringController {
 		    	return "redirect:/gathering/gList.do";
 			}
 		    int midx = (int)omidx;
-		    
+		    //모임 정원수 확인
+		    int CapacityCheck = gs.gatheringJoinCheck(giidx);
+		    if (CapacityCheck == 0) {
+				return "redirect:/gathering/gList.do";
+			}
 		    //모임가입하기
 		    int value = gs.gatheringJoin(giidx,midx);
 

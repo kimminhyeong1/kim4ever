@@ -59,7 +59,8 @@ public interface GatheringService {
 	//공지사항 데이터 가져오기
 	public ArrayList<Gathering_BoardVO> gatheringNoticeListSelect(int giidx);
 	
-	
+	//모임 가입전 인원수 확인
+	public int gatheringJoinCheck(int giidx);
 	//모임 가입하기
 	public int gatheringJoin(int giidx, int midx);
 	/*찜*/

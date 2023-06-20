@@ -172,7 +172,21 @@ public class GatheringServiceImpl implements GatheringService {
 	}
 
 
-
+	
+	@Override
+	@Transactional
+	//모임 가입전 인원수 확인
+	public int gatheringJoinCheck(int giidx) {
+		 int gInfoCapacity = gsm.gatheringInfoCapacityCheck(giidx);//모임 정원수 
+		 int gInfoParticipating = gsm.gatheringInfoParticipatingCheck(giidx);//모임 참여멤버 수
+		 if (gInfoCapacity == gInfoParticipating) {
+			 System.out.println("모임인원수가 꽉찼습니다."+gInfoCapacity+""+gInfoParticipating);
+			 return 0;
+		} 
+		return 1;
+	}
+	
+	
 	@Override
 	@Transactional
 	//모임 가입하기
@@ -656,6 +670,10 @@ public class GatheringServiceImpl implements GatheringService {
 	public int gatheringPhotoAlbumListSelectAll(SearchCriteria scri) {
 		return gsm.gatheringPhotoAlbumListSelectAll(scri);
 	}
+
+
+
+
 
 
 

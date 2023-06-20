@@ -59,8 +59,11 @@ public interface GatheringService_Mapper {
 	//공지사항 데이터 가져오기
 	public ArrayList<Gathering_BoardVO> gatheringNoticeListSelect(int giidx);
 	
-	
 	/*모임 가입*/
+	//모임 정원수 
+	public int gatheringInfoCapacityCheck(int giidx);
+	//모임 참여멤버 수
+	public int gatheringInfoParticipatingCheck(int giidx);
 	//1.모임 가입타입 확인하기
 	public Gathering_InfoVo gatheringJoinTypeCheck(int giidx);
 	//2.모임 가입타입 확인후 데이터넣기 A OR B

@@ -111,8 +111,14 @@
         ORDER BY GBOARDWRITEDAY DESC
 	</select>
 	
-	
-	
+	<!-- 모임 정원수 -->
+	<select id="gatheringInfoCapacityCheck" resultType="int" parameterType="int"> 
+		SELECT gInfoCapacity FROM GATHERING_INFO1234 a WHERE a.GIIDX = #{0} AND GINFODELYN = 'N'
+	</select>
+	<!-- 모임 참여멤버 수-->
+	<select id="gatheringInfoParticipatingCheck" resultType="int" parameterType="int"> 
+		SELECT gInfoParticipating FROM GATHERING_INFO1234 a WHERE a.GIIDX = #{0} AND GINFODELYN = 'N'
+	</select>
 	<!-- 모임 가입타입 확인하기-->
 	<select id="gatheringJoinTypeCheck" resultType="com.myezen.myapp.domain.Gathering_InfoVo" parameterType="int"> 
 		SELECT ginfojointype FROM GATHERING_INFO1234 a WHERE a.GIIDX = #{0} AND GINFODELYN = 'N'
