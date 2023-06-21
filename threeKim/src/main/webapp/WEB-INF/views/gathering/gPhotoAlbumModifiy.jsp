@@ -46,9 +46,10 @@
 		<main id="main">
 			<form action="${pageContext.request.contextPath}/gathering/gPhotoAlbumModifyAction.do?gpaidx=${gjv.gpaidx}" method="POST" enctype="multipart/form-data">
 			<section class="gContainer">
+			<c:forEach var="gjv" items="${gmist}" varStatus="status">
 				<div class="gContent" >
-				
 					<table>	
+					 <c:if test="${status.index == 0}">
 						<tr>
 							<th>제목</th>
 							<td><input style="font-size:26px;"type="text" id="gPhotoAlbumTitle" name="gPhotoAlbumTitle" value="${gjv.gPhotoAlbumTitle }"></td>
@@ -60,7 +61,7 @@
 							<img id="imagePreview" />
 							</td>
 						</tr>
-						
+					</c:if>
 							<tr>
 							<th>첨부파일</th>
 							<td>
@@ -77,6 +78,7 @@
 					</table>
 				
 				</div>
+				</c:forEach>
 				<div id="createBtn">
 					<button type="submit" class="gBtn2">작성하기</button>
 					<button class="gBtn2">취소하기</button>

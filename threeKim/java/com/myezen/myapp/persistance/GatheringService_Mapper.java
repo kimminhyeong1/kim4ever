@@ -191,9 +191,9 @@ public interface GatheringService_Mapper {
 	//모임사진첩 총갯수
 	public int gatheringPhotoAlbumListSelectAll(SearchCriteria scri);
 	//모임사진첩 상세보기
-	public GatheringJoinVo gatheringPhotoAlbumListSelectOne(int gpaidx);
+	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelectOne(int gpaidx);
 	//모임사진첩 수정하기 조회
-	public GatheringJoinVo gatheringPhotoAlbumModify(int gpaidx);
+	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumModify(int gpaidx);
 	//모임사진첩 수정하기
 	public int gatheringPhotoAlbumModifyUpdate(GatheringJoinVo gjv);
 	//모임사진첩 수정하기(대표이미지 업데이트)

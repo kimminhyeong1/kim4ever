@@ -2,6 +2,7 @@ package com.myezen.myapp.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -604,9 +605,9 @@ public class GatheringController {
 			int gpaidx = Integer.parseInt(request.getParameter("gpaidx"));
 			 
 			/*모임상세리스트 가져오기*/
-			GatheringJoinVo gjv = gs.gatheringPhotoAlbumListSelectOne(gpaidx);
+			ArrayList<GatheringJoinVo> gjvList = gs.gatheringPhotoAlbumListSelectOne(gpaidx);
 			    
-		    md.addAttribute("gjv", gjv);
+		    md.addAttribute("gjvList", gjvList);
 		    session.setAttribute("gpaidx", gpaidx);
 			return "gathering/gPhotoAlbumContent";
 		}
@@ -646,35 +647,33 @@ public class GatheringController {
 			return "gathering/gPhotoAlbumWrite";
 		}
 			
-		//모임 사진첩작성동작기능
 		@RequestMapping(value="/gPhotoAlbumWriteAction.do", method=RequestMethod.POST)
 		public String gPhotoAlbumWriteAction(
-				@ModelAttribute GatheringJoinVo gjv,
-				@RequestParam("GATImg") MultipartFile GATImg,
-				@RequestParam("GAImg") ArrayList<MultipartFile> GAImg,
-				Model md,
-				HttpServletRequest request
-				) throws IOException, Exception {
-			
-			HttpSession session = request.getSession();
-			int midx = (int) session.getAttribute("midx");
-			int giidx = (int) session.getAttribute("giidx");
-			
-			gjv.setMidx(midx);
-			gjv.setGiidx(giidx);
-			
+		        @ModelAttribute GatheringJoinVo gjv,
+		        @RequestParam("GATImg") MultipartFile GATImg,
+		        @RequestParam("GAImg") ArrayList<MultipartFile> GAImg,
+		       
+		        Model md,
+		        HttpServletRequest request
+		) throws IOException, Exception {
 
-			System.out.println("midx는?"+midx);
-			System.out.println("giidx는?"+giidx);
-			System.out.println(gjv.getgPhotoAlbumTitle());
-			System.out.println(gjv.getgPhotoAlbumContents());
+		    HttpSession session = request.getSession();
+		    int midx = (int) session.getAttribute("midx");
+		    int giidx = (int) session.getAttribute("giidx");
+
+		    gjv.setMidx(midx);
+		    gjv.setGiidx(giidx);
+
+		    int value = gs.gatheringPhotoAlbumWrite(gjv, GATImg, GAImg);
+
+		    System.out.println("midx는? " + midx);
+		    System.out.println("giidx는? " + giidx);
+		    System.out.println(gjv.getgPhotoAlbumTitle());
+		    System.out.println(gjv.getgPhotoAlbumContents());
 		    
-			int value = gs.gatheringPhotoAlbumWrite(gjv,GATImg,GAImg);
-		
-			
-			
-			return "redirect:/gathering/gPhotoAlbumList.do";
-		}	
+
+		    return "redirect:/gathering/gPhotoAlbumList.do";
+		}
 				
 					
 			
@@ -688,9 +687,9 @@ public class GatheringController {
 			int midx = (int) session.getAttribute("midx");
 			int giidx = (int) session.getAttribute("giidx");
 			int gpaidx = Integer.parseInt(request.getParameter("gpaidx"));
-			
-		    GatheringJoinVo gjv = gs.gatheringPhotoAlbumModify(gpaidx);
-			md.addAttribute("gjv", gjv);
+			System.out.println("gpaidx"+gpaidx);
+			ArrayList<GatheringJoinVo> gmist = gs.gatheringPhotoAlbumModify(gpaidx);
+			md.addAttribute("gmist", gmist);
 				
 			return "gathering/gPhotoAlbumModifiy";
 		}

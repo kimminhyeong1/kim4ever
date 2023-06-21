@@ -56,15 +56,17 @@
                         <th>대표 이미지</th>
                         <td><input type="file" id="image" name="GATImg" /></td>
                     </tr>
-                     <tr id="postsContainer">
-            <th>첨부파일</th>
-            <td>
-                <!-- 게시물 추가 버튼 -->
-                <button type="button" onclick="addPost()">게시물 추가하기</button>
-                <!-- 추가된 게시물들 -->
-                <div id="postList"></div>
-            </td>
-        </tr>
+                      <tr>
+                        <th>이미지</th>
+                        <td><input type="file" id="image" name="GAImg" required multiple /></td>
+                    </tr>
+                    
+                    <tr>
+                    	<th>내용글</th>
+                    	<td>
+                    		<input type="text" id="gPhotoAlbumContents" name="gPhotoAlbumContents"> 
+                    	</td>
+                    </tr>
                 </table>
             </div>
             <div id="createBtn">
@@ -92,34 +94,6 @@ function previewImage(event) {
         reader.readAsDataURL(input.files[0]);
     }
 }
-
-function addPost() {
-    var postList = document.getElementById('postList');
-    var postContainer = document.createElement('div');
-    postContainer.classList.add('postContainer');
-    
-    var imageInput = document.createElement('input');
-    imageInput.classList.add('imageInput');
-    imageInput.type = 'file';
-    imageInput.name = 'GAImg';
-    imageInput.onchange = function(event) {
-        previewImage(event);
-    };
-    
-    var imagePreview = document.createElement('img');
-    imagePreview.classList.add('imagePreview');
-    
-    var postContent = document.createElement('textarea');
-    postContent.classList.add('postContent');
-    postContent.name = 'gPhotoAlbumContents';
-    postContent.placeholder = '내용을 입력하세요';
-    
-    postContainer.appendChild(imageInput);
-    postContainer.appendChild(imagePreview);
-    postContainer.appendChild(postContent);
-    postList.appendChild(postContainer);
-}
-
 
 </script>
 	

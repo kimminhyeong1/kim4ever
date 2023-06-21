@@ -59,29 +59,38 @@
 		<%@include file="header3.jsp" %>
 		<main id="main">
 			<section class="gContainer">
-				<div class="gContent" >	
-					<div class="albumHeader">
-						 <h2>${gjv.gPhotoAlbumWriteDay.substring(0, 10)}</h2>
-						<button>좋아요</button>
-					</div>
-					<div class="albumTitle">
-					<p>${gjv.gPhotoAlbumTitle }</p>
-					</div>
-					
-					<div class="albumImage">
-					<img src="../resources/GAImages/${gjv.imageName}">
-					</div>
-					
-					<div class="albumContent">
-					<p>${gjv.gPhotoAlbumContents }</p>
-					</div>
-				</div>
-				<div id="createBtn">
-					<button class="gBtn2" onclick="location.href='${pageContext.request.contextPath}/gathering/gPhotoAlbumModifiy.do?gpaidx=${gjv.gpaidx}'">수정하기</button>
-					<button class="gBtn2" onclick="deletePhotoAlbum(${midx}, ${gpaidx});">삭제하기</button>
-				</div>
-				
-			</section>
+		   <c:forEach var="gjv" items="${gjvList}" varStatus="status">
+		        <div class="gContent">
+		           <c:if test="${status.index == 0}">
+		                <div class="albumHeader">
+		                    <h2>${gjv.gPhotoAlbumWriteDay.substring(0, 10)}</h2>
+		                    <button>좋아요</button>
+		                </div>
+		                <div class="albumTitle">
+		                    <p>${gjv.gPhotoAlbumTitle}</p>
+		                </div>
+		                
+		                 <div class="albumContent">
+			                <p>${gjv.gPhotoAlbumContents}</p>
+			            </div>
+                  </c:if>
+		          
+		            <div class="albumImage">
+		                <img src="../resources/GAImages/${gjv.imageName}">
+		            </div>
+		           
+		        </div>
+		     </c:forEach>
+		    <div id="createBtn">
+		         <c:if test="${not empty gjvList}">
+        <c:set var="firstGjv" value="${gjvList[0]}" />
+        <c:if test="${not empty firstGjv.gpaidx}">
+            <button class="gBtn2" onclick="location.href='${pageContext.request.contextPath}/gathering/gPhotoAlbumModifiy.do?gpaidx=${firstGjv.gpaidx}'">수정하기</button>
+        </c:if>
+    </c:if>
+		        <button class="gBtn2" onclick="deletePhotoAlbum(${midx}, ${gpaidx});">삭제하기</button>
+		    </div>
+		</section>
 		</main>
 		<%@include file="../footer.jsp" %>
 	</body>
