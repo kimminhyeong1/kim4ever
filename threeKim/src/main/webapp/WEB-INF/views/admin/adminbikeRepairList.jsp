@@ -43,9 +43,9 @@ a{color:inherit; text-decoration:none;}
 #content table {width:70%; border-collapse:collapse; margin:0 auto; line-height:50px; font-size:20px;font-family:'omyu_pretty'; font-size:24px;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
-#content table tr th:nth-child(1){width:70px;}
-#content table tr th:nth-child(2){width:180px;}
-#content table tr th:nth-child(3){width:70px;}
+#content table tr th:nth-child(1){width:30px;}
+#content table tr th:nth-child(2){width:40px;}
+#content table tr th:nth-child(3){width:40px;}
 #content table tr th:nth-child(4){width:120px;}
 #content #bikeError{color: #000; margin-right:10px;} 
 #content #bikeRepair{color: #ff7700;} 
@@ -85,7 +85,7 @@ a{color:inherit; text-decoration:none;}
 					<th>자전거종류</th>
 					<th>자전거번호</th>		
 					<th>내용</th>
-					<th>상태</th>					
+					<th></th>			
 				</tr>
 			<c:forEach var="ejv" items="${elist}">
 					<tr>
@@ -93,7 +93,16 @@ a{color:inherit; text-decoration:none;}
 						<td>${ejv.bikeType}</td>
 						<td>${ejv.bikeCode}</td>  
 						<td>${ejv.errorContent}</td>
-						<td>${ejv.bikeState}</td>				
+						<td>
+							 <c:choose>
+						        <c:when test="${ejv.bikeState == 'R'}">
+						          <button type="button" onclick="confirmRepair(${ejv.eidx},'${ejv.bikeCode}', '${ejv.bikeType}')">수리 완료</button>
+						        </c:when>
+						        <c:when test="${ejv.bikeState == 'Y'}">
+						        		  처리 완료
+						        </c:when>
+						      </c:choose>
+						</td>			
 					</tr>
 			</c:forEach>
 		</table>
@@ -120,9 +129,19 @@ a{color:inherit; text-decoration:none;}
 
 	
 	</div>
-	
-	<div id="bottom">
-	</div>
+
+<script>
+function confirmRepair(eidx, bikeCode, bikeType) {
+  var confirmed = confirm(bikeType + "   " + bikeCode + "\n수리 완료 처리하시겠습니까?");
+  if (confirmed) {
+    // 확인 버튼을 눌렀을 때 수행할 로직을 여기에 작성하세요.
+    location.href = '<%=request.getContextPath()%>/admin/adminbikeRepairYesAction.do?eidx=' + eidx;
+  }
+}
+</script>
+
+
+
 </div>
 </body>
 

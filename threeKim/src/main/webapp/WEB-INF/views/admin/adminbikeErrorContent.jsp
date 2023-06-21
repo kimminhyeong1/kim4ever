@@ -10,6 +10,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20f538f14cf29a1eb30d2f9dbaa4e1fb&libraries=services,clusterer,drawing"></script> <!-- 카카오지도APIkey -->
 <style>
 /*리셋코드*/ 
 *{margin:0;padding:0;}
@@ -36,28 +38,23 @@ li{list-style:none;}
 }
 
 
-#main{width:1440px; margin:35px auto 70px; text-align:center;}
-#main #content{width:1440px; height:2400px;}
-#main #bottom{width:1440px; height:300px;}
+#main{width:1250px; margin:35px auto 70px; text-align:center;}
+#main #content{width:1250px; height:1500px;}
 h2{text-align: center; margin-top:20px;}
+
+
+
 #content table {width:60%; border-collapse:collapse; border:1px solid #ddd; margin: 60px auto 0; text-align:center;  line-height:100px; font-family:'omyu_pretty'; font-size:24px;}
-#content table th{width:200px; text-align:center; border:1px solid #ddd; padding:8px;}
+#content table th{width:150px; text-align:center; border:1px solid #ddd; padding:8px;}
 #content table td{border:1px solid #ddd; padding:8px; text-align:left;}
-#content table td:nth-child(1){width:140px;text-align:center;}
-#content table td:nth-child(2){width:400px; text-align:left;}
+#content table td:nth-child(1){width:100px;text-align:center;}
 #content table tr:last-child td input{display: inline-block; width:120px; height:50px;}
 #content table button{width:160px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
-input{
-  font-family: 'omyu_pretty';
-  font-size:24px;
-  box-sizing: border-box;
-  width: 100%;
-  padding: 10px;
-  margin: 2px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
+
+
+
+
 </style>
 
 </head>
@@ -69,18 +66,13 @@ input{
 		<%@include file="../header4.jsp"%>
 
 		<div id="content">
-			<h2>신고 내용</h2>
+			<h2>신고 상세 내용</h2>
 
 	
-			<table>
-		 <tr>
-		    <th colspan="2"><h2>신고 내역</h2></th>
-		  </tr>
-		  		
+			<table>	  		
 				<tr>
 					<th>고객명</th>
-					<td>${ejv.memberName}</td>
-					
+					<td>${ejv.memberName}</td>										
 				</tr>
 				
 				<tr>
@@ -102,6 +94,11 @@ input{
 					<th>대여 장소</th>
 					<td>${ejv.rentPlace}</td>
 				</tr>
+				<tr>
+					<th>고장 장소</th>
+					<td><div id="map" style="width:600px;height:300px;"></div></td>
+				</tr>
+				
 				
 				<tr>
 					<th>고장 시간</th>
@@ -126,11 +123,55 @@ input{
 		</div>
 
 
-
-
-
 		<div id="bottom"></div>
+		
+		<script>
+		var map;
+		var marker;
+
+		function initMap() {
+			var latitude = '${ejv.errorLatitude}'; 
+			var longitude = '${ejv.errorLongitude}'; 
+
+			var mapOptions = {
+				center: new kakao.maps.LatLng(latitude, longitude),
+				level: 4,
+				zoomable: false, // 지도 확대/축소 비활성화
+				  scrollwheel: false // 마우스 휠 스크롤 비활성화
+			};
+
+			// 지도 생성
+			map = new kakao.maps.Map(document.getElementById('map'), mapOptions);
+
+			// 마커 생성
+			marker = new kakao.maps.Marker({
+				position: map.getCenter()
+			});
+			marker.setMap(map);
+
+			// 주소 정보를 표시할 인포윈도우 생성
+			var infowindow = new kakao.maps.InfoWindow({
+				content: '${ejv.errorLocation}',
+			    removable: true,
+				
+			});
+				
+			var content = '<div style="font-family: omyu_pretty; font-size: 18px;">' + '${ejv.errorLocation}' + '</div>';
+			infowindow.setContent(content);
+			
+			// 마커 클릭 시 인포윈도우 표시
+			kakao.maps.event.addListener(marker, 'click', function() {
+				infowindow.open(map, marker);
+			});
+		}
+
+		// HTML 로딩 완료 후 initMap 함수 호출
+		document.addEventListener('DOMContentLoaded', initMap);
+	</script> 		
+				
 	</div>
+		
+	
 </body>
-<%@include file="../footer.jsp"%>
+
 </html>
