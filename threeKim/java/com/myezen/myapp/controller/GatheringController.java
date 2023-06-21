@@ -155,10 +155,10 @@ public class GatheringController {
 		    int CapacityCheck = gs.gatheringJoinCheck(giidx);
 		    if (CapacityCheck == 0) {
 				return "redirect:/gathering/gList.do";
+			}else {	
+				//모임가입하기
+				int value = gs.gatheringJoin(giidx,midx);
 			}
-		    //모임가입하기
-		    int value = gs.gatheringJoin(giidx,midx);
-
 			return "redirect:/gathering/gList.do";
 		}
 //모임상세보기체크
@@ -980,7 +980,7 @@ public class GatheringController {
 			HttpSession session = request.getSession();	
 			Object Ogiidx = session.getAttribute("giidx");
 			int giidx = (int)Ogiidx;
-			gs.updateMemberDELYN(giidx, midx);
+			gs.updateMemberDELYN(giidx, midx); 
 			return "redirect:/gathering/gMemberList.do"; 
 		}	
 	

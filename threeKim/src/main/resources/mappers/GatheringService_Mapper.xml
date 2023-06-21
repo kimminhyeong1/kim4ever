@@ -483,9 +483,9 @@
 
 
 	<!--  모임 더보기 모임원 추방으로 변경 -->
-		<update id="updateMemberDELYN" parameterType="int">
-	    UPDATE GATHERING1234 SET GATHERINGMEMBERDELYN = 'Y' WHERE giidx = #{0} and midx = #{1}
-		</update>
+		<delete id="updateMemberDELYN" parameterType="int">
+	    	DELETE FROM GATHERING1234 WHERE giidx = #{0} AND midx = #{1}
+		</delete>
 		
 	
 	<!-- 모임 나가기 (midx,giidx에 해당하는 값 삭제)-->

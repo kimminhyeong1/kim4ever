@@ -181,11 +181,11 @@ public class GatheringServiceImpl implements GatheringService {
 	public int gatheringJoinCheck(int giidx) {
 		 int gInfoCapacity = gsm.gatheringInfoCapacityCheck(giidx);//모임 정원수 
 		 int gInfoParticipating = gsm.gatheringInfoParticipatingCheck(giidx);//모임 참여멤버 수
-		 if (gInfoCapacity == gInfoParticipating) {
+		 if (gInfoParticipating < gInfoCapacity) {
 			 System.out.println("모임인원수가 꽉찼습니다."+gInfoCapacity+""+gInfoParticipating);
-			 return 0;
+			 return 1;
 		} 
-		return 1;
+		 return 0;
 	}
 	
 	
