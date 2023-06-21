@@ -114,6 +114,7 @@ public class GatheringServiceImpl implements GatheringService {
         String savedGTImgPath = "D://threekim//threeKim//src//main//webapp//resources/GTImages";//모임대표이미지
         String savedGImgPath = "D://threekim//threeKim//src//main//webapp//resources/GImages";//모임이미지
 
+        
 		/*모임수정*/
 		//1.모임정보업데이트
         value = gsm.gatheringInfoModify(gjv);
