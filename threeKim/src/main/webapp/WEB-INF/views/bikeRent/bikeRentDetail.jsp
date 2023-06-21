@@ -12,13 +12,27 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent.css">	
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent_mo.css?수정중">
 		
+		 <style>
+		 #phoneChk {
+  cursor: pointer;
+}
 		 
+		 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
    <!-- jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
     <!-- iamport.payment.js -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <script type="text/javascript">
+
+
+$("#phoneChk").on("click touchstart", function() {
+	  console.log("클릭 또는 터치 이벤트가 발생했습니다.");
+	  // 추가적인 로직을 작성할 수 있습니다.
+	});
+
 
 var IMP = window.IMP;
 IMP.init("imp01337483");
@@ -140,6 +154,11 @@ function requestPay() {
         });
                   
       
+      
+      
+      
+
+      
   })
    
 
@@ -159,85 +178,15 @@ function requestPay() {
 			    <input type="hidden" name="bkidx" value="${bjv.bkidx}">
 			
 				<table id="bikeDetail">
-				<tr>					
-					<td rowspan="10"><img src="${pageContext.request.contextPath}/resources/bikeimg/${bjv.bikeType eq '전기자전거' ? '전기자전거.jpg' : '일반자전거.jpg'}" alt="${bjv.bikeType}"></td>
+				
+				<tr>
 					<td colspan="3"><h2>${bjv.bikeType}</h2></td>
-				</tr>
-						
-				<tr>
-					<td colspan="3">${bjv.bikeContent }</td>
-				</tr>
-			
-				<tr>
-					<td colspan="3">자전거 고유번호 : ${bjv.bikeCode}</td>	
-				</tr>
-				
-				<tr>
-					<td colspan="3">자전거 위치 : ${bjv.bikeLocation}대여소</td>
-				</tr>
-				
-				<tr>
-					<td colspan="3">이용 요금 : ${bjv.rentPrice}원</td>
-				</tr>
-			
-				<tr>
-				  <td colspan="3">
-				    <label for="phone">휴대폰 번호</label>
-				  </td>
-				</tr>
-				
-				<tr>
-				  <td colspan="2">
-				    <input id="phone" type="text" name="phone" maxlength="11" title="전화번호 입력" required/>
-				  </td>
-				  
-				  <td width="200px;">
-				    <span id="phoneChk" class="doubleChk">인증번호 보내기</span>
-				  </td>
-				</tr>
-				
-				<tr>
-				  <td colspan="3">
-				    <label for="verification-code">인증번호</label>
-				  </td>
-				</tr>
-				
-				<tr>
-				  <td colspan="2">
-				    <input id="phone2" type="text" name="phone2" maxlength="6" title="인증번호 입력" disabled required/>
-				  </td>
-				  
-				  <td width="200px;">
-				    <span id="phoneChk2" class="doubleChk" >인증확인</span><br/>
-				    <span class="point successPhoneChk"></span>
-					<input type="hidden" id="phoneDoubleChk"/>
-					
-				  </td>
-				</tr>
-				  
-				<tr>
-				  <td colspan="3">
-					<button id="rentButton" class="rentButton" type="button" onclick="requestPay()" disabled>대여하기</button>
-					
-			
-				  </td>
-				</tr>
-			</table>
-			
-			<!-- 모바일용 표 -->
-			
-				<table id="bikeDetail_mo">
-		
-				<tr>					
+				</tr>				
+					<tr>					
 					<td colspan="3"><img src="${pageContext.request.contextPath}/resources/bikeimg/${bjv.bikeType eq '전기자전거' ? '전기자전거.jpg' : '일반자전거.jpg'}" alt="${bjv.bikeType}"></td>
-				</tr>
-					
+				</tr>	
 				<tr>
-					<td colspan="3"><h2>${bjv.bikeType}</h2></td>
-				</tr>
-			
-				<tr>
-					<td colspan="3">${bjv.bikeContent }</td>
+					<td colspan="3">${bjv.bikeContent}</td>
 				</tr>
 			
 				<tr>
@@ -253,18 +202,18 @@ function requestPay() {
 				</tr>
 			
 				<tr>
-				  <td colspan="3">
+				  	  <td colspan="3">
 				    <label for="phone">휴대폰 번호</label>
 				  </td>
 				</tr>
 				
 				<tr>
 				  <td colspan="2">
-				    <input id="phone" type="text" name="phone" maxlength="11" title="전화번호 입력" required/>
+				    <input id="phone2" type="text" name="phone2" maxlength="11" title="전화번호 입력" required/>
 				  </td>
 				  
 				  <td width="200px;">
-				    <span id="phoneChk" class="doubleChk">인증번호 보내기</span>
+				    <button><span id="phoneChk" class="doubleChk">인증번호 보내기</span></button>
 				  </td>
 				</tr>
 				
@@ -276,11 +225,11 @@ function requestPay() {
 				
 				<tr>
 				  <td colspan="2">
-				    <input id="phone2" type="text" name="phone2" maxlength="6" title="인증번호 입력" disabled required/>
+				    <input id="phone4" type="text" name="phone4" maxlength="6" title="인증번호 입력" disabled required/>
 				  </td>
 				  
 				  <td width="200px;">
-				    <span id="phoneChk2" class="doubleChk" >인증확인</span><br/>
+				   <button><span id="phoneChk4" class="doubleChk" >인증확인</span></button> <br/>
 				    <span class="point successPhoneChk"></span>
 					<input type="hidden" id="phoneDoubleChk"/>
 					
@@ -289,12 +238,14 @@ function requestPay() {
 				  
 				<tr>
 				  <td colspan="3">
-					<button id="rentButton" class="rentButton" type="button" onclick="requestPay()" >대여하기</button>
+					<button id="rentButton2" class="rentButton2" type="button" onclick="requestPay()" disabled>대여하기</button>
 					
 			
 				  </td>
 				</tr>
 			</table>
+		
+		
 			</form>
 			</div>
 			</section> 

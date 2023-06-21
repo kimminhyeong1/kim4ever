@@ -53,7 +53,8 @@ header{width: 1250px;margin: 35px auto 70px;text-align: center;}
 #content{width:1250px; height:1200px;}
 #bottom{width:1250px; height:300px; }
  .hidden_img {display: none; }
-
+ .change{width: 85px; height: 45px; margin: 0 auto; position: absolute; top: 48px; right:0;}
+.change img{width:100%; height:100%;}
  
 /****************************모바일**************************/
 @media (min-width: 300px) and (max-width: 940px)  {
@@ -61,7 +62,7 @@ header{width:auto;margin:0 auto;}
 /*사이드메뉴바, 로고, 로그인버튼*/
 #top_logo{width:auto; height:80px; text-align:center; position:relative; margin-top:15px;}
 #top_logo .logo{display:inline-block; text-align:center; position:absolute; transform:translate(-50%, -50%);}
-#top_logo .logo img{width:75px; height:80px; margin-left:45%; cursor:pointer;transition: all 0.3s ease-in-out;}
+#top_logo .logo img{width:75px; height:85px; margin-left:45%; cursor:pointer;transition: all 0.3s ease-in-out;}
 #top_logo .login {display:flex;justify-content:flex-end;float:right; margin-right:3%}
 #top_logo .login ul {display:flex;list-style:none;margin-top:5px; padding:0;   flex-direction: column; margin-bottom:5px;}
 #top_logo .login li {margin-left:5px; font-family: 'GangwonEdu_OTFBoldA'; font-size:10px;}
@@ -104,7 +105,8 @@ header{width:auto;margin:0 auto;}
 #bottom{width:auto; height:300px; }
 /* 이미지*/
  .hidden_img {display: block; width:25px; height :25px; margin:0 auto; border-radius: 10px; padding:5px;   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
- 
+  .change{width: 41px; height: 24px; margin: 0 auto; position: absolute; top: 54px; right: 3%;}
+.change img{width:100%; height:100%;}
  
  }
 
@@ -182,6 +184,9 @@ header{width:auto;margin:0 auto;}
 		<div class="logo" style="display:inline-block;">
 		<h1><img src="${pageContext.request.contextPath}/resources/logo/logo6.jpg" alt="타:바" onclick="location.href='<%=request.getContextPath()%>/index.jsp'"/></h1>
 		</div>
+		<div class="change"  onclick="location.href='<%=request.getContextPath()%>/gathering/gList.do'">	
+			  <img src="${pageContext.request.contextPath}/resources/mobile/change3.png" alt="전환버튼" >	
+		 </div>	 
 		<div class="login">
 	   		<ul>
 		      <% if(session.getAttribute("memberName") != null) { %>
