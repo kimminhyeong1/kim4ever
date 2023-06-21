@@ -69,15 +69,26 @@
 		                <div class="albumTitle">
 		                    <p>${gjv.gPhotoAlbumTitle}</p>
 		                </div>
-		                
-		                 <div class="albumContent">
-			                <p>${gjv.gPhotoAlbumContents}</p>
-			            </div>
                   </c:if>
-		          
+                  
+                  
 		            <div class="albumImage">
 		                <img src="../resources/GAImages/${gjv.imageName}">
 		            </div>
+		            
+		            
+	                <c:forEach var="contentIndex" begin="0" end="2">
+			            <c:set var="contentName" value="gPhotoAlbumContents${contentIndex}" />
+			            <c:if test="${not empty gjv[contentName]}">
+			                <div class="albumContent">
+			                    <p>${gjv[contentName]}</p>
+			                </div>
+			            </c:if>
+			        </c:forEach>
+			            
+			            
+                 
+		          
 		           
 		        </div>
 		     </c:forEach>

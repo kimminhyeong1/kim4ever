@@ -539,8 +539,8 @@
 	
 	<!-- 사진첩 작성 -->
 	<insert  id="gatheringPhotoAlbumWrite" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
-		INSERT INTO gathering_photoalbum1234 (giidx,midx,gPhotoAlbumTitle,gPhotoAlbumLikeCNT,gPhotoAlbumContents,gPhotoAlbumWriteDay,gPhotoAlbumDelYN)
-		VALUES(#{giidx},#{midx},#{gPhotoAlbumTitle},#{gPhotoAlbumLikeCNT},#{gPhotoAlbumContents},NOW(),'N')
+		INSERT INTO gathering_photoalbum1234 (giidx,midx,gPhotoAlbumTitle,gPhotoAlbumLikeCNT,gPhotoAlbumContents0,gPhotoAlbumContents1,gPhotoAlbumContents2,gPhotoAlbumWriteDay,gPhotoAlbumDelYN)
+		VALUES(#{giidx},#{midx},#{gPhotoAlbumTitle},#{gPhotoAlbumLikeCNT},#{gPhotoAlbumContents0},#{gPhotoAlbumContents1},#{gPhotoAlbumContents2},NOW(),'N')
 	</insert>
 	
 	<select id="gatheringPhotoAlbumGetGpaidx" parameterType="com.myezen.myapp.domain.GatheringJoinVo" resultType="int">
@@ -590,7 +590,7 @@
 	
 	<!-- 사진첩 상세페이지 조회 -->
 	<select id="gatheringPhotoAlbumListSelectOne" resultType="com.myezen.myapp.domain.GatheringJoinVo">
-		SELECT a.gpaidx, a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, a.GPHOTOALBUMCONTENTS, b.imgtype, b.imageName
+		SELECT a.gpaidx, a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, a.GPHOTOALBUMCONTENTS0, a.GPHOTOALBUMCONTENTS1, a.GPHOTOALBUMCONTENTS2, b.imgtype, b.imageName
 		FROM gathering_photoalbum1234 a
 		JOIN image1234 b ON a.giidx = b.GIIDX AND a.gpaidx = b.gpaidx
 		WHERE b.imgtype = 'GA'
