@@ -10,6 +10,7 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">
 		<link rel="stylesheet" media="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_gathering_mo.css">
+		  <meta name="viewport" content="width=device-width, initial-scale=1">		
 		  
 		<style type="text/css">
 			.gContainer{border: 1px solid #0000;}
@@ -42,6 +43,42 @@
 			.gPaging{font-size: 25px;}
 			/*a태그*/
 			a{text-decoration: none; color: #000;}		
+			
+			
+			/*************************모바일****************************************/
+				/*****모바일 넓이***/
+				@media (min-width: 300px) and (max-width: 940px)  {
+			.gBoardList { width: 100%; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;}
+				
+			/*검색하기 부분*/
+			#searchCategory{text-align: right; font-size: 18px; margin: 20px 10px; height: 30px; font-family: 'omyu_pretty';} 
+			#searchCategory>div{display: inline-block; vertical-align: top;} 
+			#searchCategory>div>select{width: 21%; height: 30px; font-size: 15px; font-family: 'omyu_pretty';vertical-align: top;} 
+			#searchCategory>div>input{width: 53%; max-width:300px; height: 26px; font-size: 15px;vertical-align: top;} 
+			#searchCategory>div>button{width: 18%; height: 30px; margin-top: 0px;margin-bottom: 0px;} 
+			/*공지사항부분*/
+			.gNotice{text-align: left; font-size: 20px; margin: 40px 60px;}
+			.gNotice>div>div{display: inline-block; font-size: 25px; font-weight: bold;}
+			.gNotice>div>div:nth-child(1){color: #f00; margin-right: 20px;}
+			.gNotice>div:nth-child(2){border-bottom: 2px solid #bbb; padding-bottom: 10px; margin-top: 10px;}/* 끝나는바*/
+			/*게시글 부분*/
+			.gBoard{text-align: left; font-size: 20px; margin: 40px 60px;} 
+			.gBoard>div>div:nth-child(1){width: 50px; height: 50px; float: left;}/*프로필*/ 
+			.gProfileimage img{width: 50px; height: 50px; object-fit: cover; border-radius: 50%;}/*프로필이미지*/
+			.gBoard>div>div:nth-child(2){height: 25px; margin-left: 70px;}/*모임장,이름*/ 
+			.gBoard>div>div:nth-child(2)>div{display: inline-block; margin-top: 5px;} 
+			.gBoard>div>div:nth-child(3)>div:nth-child(1){height: 25px; margin-left: 70px; font-size: 15px; margin-top: 5px;}/*날짜 카테고리*/ 
+			.gBoard>div:nth-child(2){clear: both;margin-top: 10px; font-weight: bold;}/*게시글제목*/
+			.gBoard>div:nth-child(2)>span{font-size: 18px;}/*게시글 카테고리*/
+			.gBoard>div:nth-child(3){font-size: 18px; margin-top: 10px; border-bottom: 2px solid #bbb; padding-bottom: 10px; margin-top: 10px;}/*게시글 내용*/
+			/*버튼 부분*/
+			#writeBtn{text-align: right;}	
+			/*페이징 부분*/
+			.gPaging{font-size: 25px;}
+			/*a태그*/
+			a{text-decoration: none; color: #000;}		
+			.search{width:80%}
+				}
 		</style>
 	</head>
 	<body>

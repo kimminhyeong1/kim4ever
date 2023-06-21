@@ -29,19 +29,19 @@ FROM (
   SELECT
     CASE WHEN boarddelyn = 'N' THEN ROW_NUMBER() OVER (PARTITION BY boardtype ORDER BY modified_rebidx ASC) END AS sortN,
     board1234.*,
-    CASE WHEN boarddelyn = 'N' THEN ROW_NUMBER() OVER (PARTITION BY boardtype ORDER BY modified_rebidx DESC) END AS sortY <!-- sortn반대로 순번 -->
+    CASE WHEN boarddelyn = 'N' THEN ROW_NUMBER() OVER (PARTITION BY boardtype ORDER BY modified_rebidx DESC) END AS sortY
   FROM (
     SELECT board1234.*,
            CASE WHEN level_ = 1
-                THEN rebidx - (ROW_NUMBER() OVER (PARTITION BY rebidx ORDER BY writeday) * 0.01)<!-- 댓글 -->
+                THEN rebidx - (ROW_NUMBER() OVER (PARTITION BY rebidx ORDER BY writeday) * 0.01)
                 ELSE rebidx
            END AS modified_rebidx
     FROM board1234
     WHERE boarddelyn = 'N' 
   ) AS board1234
 ) AS B
-WHERE (sortY BETWEEN (#{page}-1)*#{perPageNum}+1 AND #{page}*#{perPageNum}) <!-- 페이징 -->
-ORDER BY rebidx DESC, level_ ASC, writeday ASC
+WHERE (sortY BETWEEN (#{page}-1)*#{perPageNum}+1 AND #{page}*#{perPageNum})
+ORDER BY rebidx DESC, level_ ASC, writeday ASC;
 
 
      

@@ -223,10 +223,21 @@ public class AdminController {
 
 	//관리자 신고 내역 내용 상세페이지
 	@RequestMapping("/adminbikeErrorContent.do")
-	public String getErrorContent(@RequestParam("eidx") int eidx, Model model) {
-	 BikeJoinVo ejv = as.getErrorContent(eidx);	 
-	 model.addAttribute("ejv", ejv);
-	 return "admin/adminbikeErrorContent";
+	public String getErrorContent(
+	@RequestParam("eidx") int eidx, Model model) {
+	 
+		BikeJoinVo ejv = as.getErrorContent(eidx);	 
+	 
+		model.addAttribute("ejv", ejv);
+	 
+
+		
+		
+		
+		
+		
+		return "admin/adminbikeErrorContent";
+	 	 
 	}
 	
 	//수리센터 버튼 누를 시 bikeState E로 변경
@@ -252,6 +263,15 @@ public class AdminController {
 		model.addAttribute("pm", pm); 
   
 		return "admin/adminbikeRepairList";
+	}
+
+	//수리완료 버튼 누를 시 bikeState Y로 변경
+	@RequestMapping("/adminbikeRepairYesAction.do")
+	public String UpdateBikeStateY(int eidx) {
+		System.out.println("자전거 상태 테스트중");
+		as.updateBikeStateY(eidx);
+		System.out.println("자전거 상태 테스트중2");
+		return "redirect:/admin/adminbikeRepairList.do";
 	}
 	
 	//관리자 모임 리스트 페이지	

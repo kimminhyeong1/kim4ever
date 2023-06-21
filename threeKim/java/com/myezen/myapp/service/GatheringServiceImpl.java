@@ -740,17 +740,17 @@ public class GatheringServiceImpl implements GatheringService {
 
 
 	@Override
-	public GatheringJoinVo gatheringPhotoAlbumListSelectOne(int gpaidx) {
-		GatheringJoinVo gjv = gsm.gatheringPhotoAlbumListSelectOne(gpaidx);
+	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelectOne(int gpaidx) {
+		ArrayList<GatheringJoinVo> gjv = gsm.gatheringPhotoAlbumListSelectOne(gpaidx);
 	    return gjv;
 	}
 
 
 
 	@Override
-	public GatheringJoinVo gatheringPhotoAlbumModify(int gpaidx) {
+	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumModify(int gpaidx) {
 		
-		GatheringJoinVo gjv = gsm.gatheringPhotoAlbumModify(gpaidx);
+		ArrayList<GatheringJoinVo> gjv = gsm.gatheringPhotoAlbumModify(gpaidx);
 	
 	
 		return gjv;

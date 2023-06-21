@@ -23,6 +23,25 @@
 			#main section textarea {display: block; width: 500px;height: 200px;font-size: 23px;}
 			#main section button{text-align: center;}  
 			#main section img{width: 100px;height: 100px;}  
+			#map{width: 500px; height: 500px;}
+								
+			/*************************모바일****************************************/
+				/*****모바일 넓이***/
+				@media (min-width: 300px) and (max-width: 940px)  {
+			/*일정만들기 부분*/
+			#main section h3{display: inline-block;font-size: 20px;}
+			#main section p{display: inline-block; color: #f14242; padding-left: 10px;}
+			#main section>div:nth-child(1){margin: 20px 0px 20px 25px;}
+			#main section>div:nth-child(2){text-align: center;}
+			#main section>div>div{margin: 20px 0px 20px 0px;}
+			#main section input {display: block;}
+			#main section textarea {display: block; width: 90%;height: 200px;font-size: 23px;}
+			#main section button{text-align: center;}  
+			#main section img{width: 100px;height: 100px;}  
+			#map{width:90%;height:40vh;}
+			
+		
+		}
 		</style>
 		<script type="text/javascript">
 			$(document).ready(function(){
@@ -200,9 +219,9 @@
 						<div>
 							<h3>일정 위치</h3><!-- 지도 api사용 -->
 							<div>일정 위치를 지정해주세요.</div>
-				            <div id="map" style="width: 500px; height: 500px;"></div>
-				            <input class="gInput" style="width: 500px;" type="text" id="scheduleLocation" name="scheduleLocation" placeholder="일정 주소"> 
-							<input class="gInput" style="width: 500px;" type="button" onclick="openAddressPopup()" value="주소 검색"> 
+				            <div id="map" ></div>
+				            <input class="gInput"  type="text" id="scheduleLocation" name="scheduleLocation" placeholder="일정 주소"> 
+							<input class="gInput"  type="button" onclick="openAddressPopup()" value="주소 검색"> 
 				            <input type="hidden" id="latitude" name="gScheduleLatitude" value=""><!-- 위도 -->
 				            <input type="hidden" id="longitude" name="gScheduleLongitude" value=""><!-- 경도 -->
 				            <input type="hidden" id="address" name="gScheduleLocation" value=""><!-- 주소 -->

@@ -137,7 +137,7 @@ public class AdminServiceImpl implements AdminService {
 		return asm.getErrorContent(eidx);
 	}
 	
-	//errorState D에서 R로 업데이트
+	//수리센터 보내기 버튼 누르면 bikeState R로 업데이트
 	@Override
 	public void updateBikeState(int eidx) {
 		asm.updateBikeState(eidx);
@@ -155,6 +155,13 @@ public class AdminServiceImpl implements AdminService {
 	public int searchBikerepairListCount(SearchCriteria scri) {
 
 		return asm.searchBikerepairListCount(scri);
+	}
+	
+	//수리 완료 버튼 누르면 bikeState Y로 업데이트
+	@Override
+	public void updateBikeStateY(int eidx) {
+		asm.updateBikeStateY(eidx);
+		
 	}
 	
 	//회원 상세정보
@@ -235,6 +242,8 @@ public class AdminServiceImpl implements AdminService {
 	
 		return asm.DeclarationDetail(gdix);
 	}
+
+
 
 	
 

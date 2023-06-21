@@ -12,6 +12,8 @@
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1">		
 	<style type="text/css">
+		li{list-style:none;}
+	a { text-decoration:none; color: inherit;} 
 .menu {
   width: 500px;
   text-align: left;

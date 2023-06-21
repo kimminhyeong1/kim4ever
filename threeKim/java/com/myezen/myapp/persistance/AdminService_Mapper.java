@@ -34,16 +34,18 @@ public interface AdminService_Mapper {
 	public int memberListCount(SearchCriteria scri);
 	public ArrayList<BikeJoinVo> memberOutList(SearchCriteria scri);
 	public int memberOutListCount(SearchCriteria scri);
-	//고장 내역 리스트	
+	//고장 신고 내역 리스트	
 	public ArrayList<BikeJoinVo> searchBikeErrors(SearchCriteria scri);
 	public int searchBikeErrorsCount(SearchCriteria scri);
-	//고장  내역 상세 페이지	
+	//고장 신고 내역 상세 페이지	
 	public BikeJoinVo getErrorContent(int eidx);
-	//bikeState E로 업데이트
+	//수리센터 보내기 버튼 누르면  bikeState R로 업데이트
 	public void updateBikeState(int eidx);
 	//수리 내역 페이지
 	public ArrayList<BikeJoinVo> searchBikerepairList(SearchCriteria scri);	
 	public int searchBikerepairListCount(SearchCriteria scri);
+	//수리완료 버튼 누르면 bikeState Y로 업데이트
+	public void updateBikeStateY(int eidx);
 	//자전거 리스트
 	public ArrayList<BikeJoinVo> bikeList();
 	//대여소 리스트

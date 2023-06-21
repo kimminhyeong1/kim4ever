@@ -82,18 +82,19 @@ li{list-style:none;}
 #content table .button-container { position: relative;width:70%; margin-left:10px;  bottom:10px; left:10px; align-items:center;  font-size:10px;}
 #content table .intro-container {width:50%;height:20px; margin-top: 8px; float:right;border:1px solid #ddd; border-radius:50px; padding-top:0px; }
 #content table .intro-container h3 {font-size:14px;margin-bottom:5px;border-bottom:1px solid #000;}
-#content table input[type="text"] {margin-top: -20px;  font-family:'omyu_pretty';font-size:13px;width:70%;padding:1px;margin-left:-7px; margin-bottom:-63px;border:1px solid #ccc;border-radius:4px;}
+#content table input[type="text"] {margin-top: -20px;  font-family:'omyu_pretty';font-size:13px;width:105%;padding:11px;margin-left:-7px; margin-bottom:-63px;border:1px solid #ccc;border-radius:4px;}
 #content table .intro-container {display:flex;justify-content:normal;gap:0px;margin-bottom:50px;margin-left:10px; transform: translate(0%, 60%)}
  .button-container2 {display:flex;justify-content:flex-end;gap:10px;margin-bottom:50px;margin-left:50px; transform: translate(0%, 160%)}
- #content table .intro-container .button-container2 {display:flex;justify-content:flex-end;gap:10px;margin-top:-25px;margin-left:55%;}
+ #content table .intro-container .button-container2 {position:absolute; display:flex;justify-content:flex-end;gap:10px;margin-top:-25px;margin-left:55%;}
  
-#content table .button-container2 button{border:0px solid; font-family:'omyu_pretty';  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); border-radius:50px; width:70px; height:20px;}
-.intro-container{height:170px; width:50px;}
+#content table .button-container2 button{position: absolute; border:0px solid; font-family:'omyu_pretty';  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); border-radius:50px; width:70px; height:20px; margin-top: 70px; right: -45px;}
+.intro-container{height:170px; width:50px; }
 #content table .top{height:100px;}
 #editImgBtn{border:0px;top: 0px;right:0px; font-family:'omyu_pretty';  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); border-radius:50px; width:70px; height:20px;text-decoration: none;transition: background-color 0.3s ease; margin-top: 88px; 
-    margin-right: 25px;}
+    margin-right: 25px; }
 #content table #memberProfile{position:absolute; width:100%; height:100%; border:1px solid #bbb; border-radius:100px;object-fit:cover;} 
-#UploadImgBtn{position: absolute;top: 3px;right: -460px; font-family:'omyu_pretty';  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); border-radius:50px; width:70px; height:20px;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;}
+#UploadImgBtn{border:0px;top: 0px;right:0px; font-family:'omyu_pretty';  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); border-radius:50px; width:70px; height:20px;text-decoration: none;transition: background-color 0.3s ease; margin-top: 88px; 
+    margin-right: 25px;}
  #formImg{float: none;}  
  
 
