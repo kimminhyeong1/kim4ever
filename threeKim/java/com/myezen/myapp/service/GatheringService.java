@@ -79,6 +79,8 @@ public interface GatheringService {
 	public ArrayList<Gathering_ScheduleVO> gatheringScheduleListSelect(int giidx);
 	//모임일정 상세보기 가져오기
 	public Gathering_ScheduleVO gatheringScheduleView(int gsidx,int giidx);
+	//모임 일정 참여하기
+	public int gatheringScheduleJoin(int gsidx,int midx);
 	
 	/*모임 게시판*/
 	

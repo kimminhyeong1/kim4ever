@@ -60,7 +60,10 @@
 	</select>
 	<!-- 로그인 에서 이용중인 내역 가져오기 -->
 	<select id="bikeRentUsing" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
-		SELECT ridx,bkidx from rent1234 a where midx = #{0} order by rentday desc limit 1
+		SELECT ridx,a.bkidx from rent1234 a 
+		join bike1234 b on b.bkidx = a.bkidx
+		where midx = #{0} and bikeState = 'N' 
+		order by rentday desc limit 1
 	</select>
 	<!-- 회원삭제 -->
 	<delete id="deleteMember" parameterType="String">

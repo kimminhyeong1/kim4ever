@@ -275,6 +275,26 @@ public class GatheringController {
 		
 		return "gathering/gScheduleDetails";
 	}
+//모임상세보기에서 일정 참여하기
+	@RequestMapping(value="/gScheduleJoin.do")
+	public String gScheduleJoin(
+			@RequestParam("gsidx") int gsidx,
+			HttpServletRequest request,
+			Model md
+			) {
+		HttpSession session = request.getSession();
+	    Object Omidx = session.getAttribute("midx");
+	    if (Omidx == null) {//midx가 없으면 진입불가
+	    	return "redirect:/gathering/gList.do";
+		}
+	    int midx = (int)Omidx;
+
+	    int value = gs.gatheringScheduleJoin(gsidx,midx);
+	    if (value == 1) {
+	    	return "redirect:/gathering/gScheduleDetails.do";
+		}
+		return "redirect:/gathering/gContent.do";
+	}	
 	
 	
 	

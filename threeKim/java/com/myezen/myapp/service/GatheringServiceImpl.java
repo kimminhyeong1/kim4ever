@@ -276,7 +276,14 @@ public class GatheringServiceImpl implements GatheringService {
 		Gathering_ScheduleVO gsv = gsm.gatheringScheduleView(gsidx,giidx);
 		return gsv;
 	}
-
+	
+	@Override
+	//모임 일정 참여하기
+	public int gatheringScheduleJoin(int gsidx, int midx) {
+		//모임 일정 참여 테이블 넣기
+		int value = gsm.gatheringScheduleJoin(gsidx,midx);
+		return value;
+	}
 
 
 	@Override
@@ -684,6 +691,10 @@ public class GatheringServiceImpl implements GatheringService {
 	public int gatheringPhotoAlbumListSelectAll(SearchCriteria scri) {
 		return gsm.gatheringPhotoAlbumListSelectAll(scri);
 	}
+
+
+
+
 
 
 

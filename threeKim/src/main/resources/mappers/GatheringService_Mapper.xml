@@ -190,6 +190,11 @@
 	<select id="gatheringScheduleView" resultType="com.myezen.myapp.domain.Gathering_ScheduleVO" parameterType="int"> 
 		SELECT * FROM gathering_schedule1234 WHERE  GSCHEDULEDELYN = 'N' AND GSIDX = #{0} AND GIIDX = #{1}
 	</select>
+	<!-- 모임 일정 참여하기 -->
+	<insert id="gatheringScheduleJoin" parameterType="int">
+		INSERT INTO gathering_schedule1234 (gsidx,MIDX)
+		VALUES(#{gsidx},#{midx})
+	</insert>
 	
 	<!-- 모임 게시판 -->
 	<!--  모임 게시글 쓰기 -->
