@@ -45,13 +45,12 @@ li{list-style:none;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
 #content table tr th:nth-child(1){width:50px;}
-#content table tr th:nth-child(2){width:90px;}
-#content table tr th:nth-child(3){width:100px;}
-#content table tr th:nth-child(4){width:100px;}
-#content table tr th:nth-child(5){width:120px;}
-#content table tr th:nth-child(6){width:80px;}
-#content table tr th:nth-child(7){width:200px;}
-#content table tr th:nth-child(8){width:180px;}
+#content table tr th:nth-child(2){width:60px;}
+#content table tr th:nth-child(3){width:60px;}
+#content table tr th:nth-child(4){width:60px;}
+#content table tr th:nth-child(5){width:80px;}
+#content table tr th:nth-child(6){width:150px;}
+#content table tr th:nth-child(7){width:220px;}
 #content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 #content .search {text-align:right; margin-right:185px; margin-bottom:40px;}
@@ -71,7 +70,6 @@ li{list-style:none;}
 		<div class="search">
 			<select id="searchType" name="searchType">
 				<option value="memberName">고객명</option> 
-				<option value="memberPhone">연락처</option>
 				<option value="rentPlace">대여소</option>
 				<option value="errorContent">내용</option>
 			</select>
@@ -83,7 +81,6 @@ li{list-style:none;}
 				<tr>
 					<th>번호</th>
 					<th>고객명</th>
-					<th>연락처</th>
 					<th>대여소</th>
 					<th>종류</th>
 					<th>번호</th>		
@@ -94,7 +91,6 @@ li{list-style:none;}
 					<tr>						
 						<td>${ejv.eidx}</td>
 						<td>${ejv.memberName}</td>
-						<td>${ejv.memberPhone}</td>
 						<td>${ejv.rentPlace}</td>
 						<td>
 						<c:choose>
@@ -107,7 +103,7 @@ li{list-style:none;}
 							</c:choose>
 						</td>
 						<td>${ejv.bikeCode}</td>  
-						<td>${ejv.errorDay}</td>   
+						<td>${ejv.errorDay.substring(0, 16)}</td>   
 						<td><a href="adminbikeErrorContent.do?eidx=${ejv.eidx}">${ejv.errorContent}</a></td>
 			
 					</tr>
@@ -138,6 +134,9 @@ li{list-style:none;}
 	<div id="bottom">
 	</div>
 </div>
+
+
+
 </body>
 
 <%-- <%@include file="../footer.jsp" %> --%>
