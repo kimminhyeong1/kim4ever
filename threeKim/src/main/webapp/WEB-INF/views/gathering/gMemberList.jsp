@@ -90,7 +90,39 @@
 }	
 
 .DeleteBtn {width:70px; height:40px; margin-top:-10px; margin-left:5px; text-align:center; font-family:'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}	
-.DeleteBtn:active{background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}	
+.DeleteBtn:active{background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+
+
+/*************************모바일****************************************/
+				/*****모바일 넓이***/
+	@media (min-width: 300px) and (max-width: 940px)  {
+.menu {width: 500px;text-align: left; margin-top: 50px; margin-left: 460px; font-size: 25px;}
+.gProfileimage img {width: 50px; height: 50px; object-fit: cover; border-radius: 50%;}
+
+.gMemberList {display: flex; flex-direction: column; align-items: flex-start; text-align: left; font-size: 20px; margin: 40px 20px;}
+
+.gMemberList > div {display: flex; align-items: center; margin-bottom: 10px; position: relative;}
+
+.gMemberList > div::after {content: ""; position: absolute; bottom: -5px; /* 선의 위치 조정 */ left: 0; width: 100%; height: 1px; background-color: #ccc;}
+
+.gMemberList > div > div:nth-child(1) {width: 50px; height: 50px; float: left;}
+
+.gMemberList > div > div:nth-child(2) {height: 25px; margin-left: 10px;}
+
+.gMemberList > div > div:nth-child(2) > div,
+.gMemberList > div > div:nth-child(3) > div {
+  display: inline-block; margin-top: 5px; font-size: 20px; margin-left: 10px;}
+
+.gmemberName {width: 100px;}
+.gmemberInfo {width: 250px;}	
+.gmemberAddr {width: 250px;}		
+.gmemberType {width: 80px;}	
+.DeleteBtn {width:70px; height:40px; margin-top:-10px; margin-left:5px; text-align:center; font-family:'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}	
+.DeleteBtn:active{background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+				}
+				
+				
+					
 	</style>  
 <script type="text/javascript">
 function fnDelete(midx, giidx) {
