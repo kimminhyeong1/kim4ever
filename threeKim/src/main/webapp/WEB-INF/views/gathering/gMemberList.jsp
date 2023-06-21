@@ -11,6 +11,8 @@
 		<link rel="stylesheet" media="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_gathering_mo.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1">		
 	<style type="text/css">
+	li{list-style:none;}
+	a { text-decoration:none; color: inherit;} 
 .menu {
   width: 500px;
   text-align: left;
@@ -181,6 +183,5 @@ function fnDelete(midx, giidx) {
 				</div>
 			</section>
 		</main>
-		<%@include file="../footer.jsp" %>
 	</body>
 </html>

@@ -52,6 +52,22 @@ li{list-style:none;}
 #btn{text-align:right; margin-top:20px; margin-right:144px;}
 #btn button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+
+/*****************************************모바일***************************************************************/
+		
+	@media (min-width: 300px) and (max-width: 940px)  {	
+	#main{width:auto; min-height:760px; margin:0 auto; text-align:center;}
+#main #content{width:auto; height:auto;}
+#main #content h2{text-align:left; margin-top:50px; margin-left:16px; margin-left:10%;font-family: 'GangwonEdu_OTFBoldA'; font-size:15px; }
+#main #bottom{width:auto; height:10px;}
+#content table {width:80vw; border-collapse:collapse; margin:10px auto 0; line-height:13px; font-size:14px; font-family: 'omyu_pretty'; cursor:pointer; }
+#content table th{padding: 10px;text-align: center; }
+#content table td{padding: 5px; text-align:center;border-bottom:1px solid #CCCCCC; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#content #btn{text-align:right; margin-top:20px; margin-right:5%; }
+#content #btn button{width:50px; height:25px; text-align:center; font-family: 'omyu_pretty'; font-size:12px;  border-radius:7px; border:0px solid #ff9933; background:#ff9933;  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
+#content #btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+.cell-content {width: 25vw; overflow: hidden; text-overflow: ellipsis;}
+
 </style>
 <script type="text/javascript">
 	function fnWrite() {
@@ -89,7 +105,7 @@ li{list-style:none;}
 					<tr>
 						<th>제목</th>
 						<td><input type="text" name="subject"
-							style="width: 600px; height: 40px; font-size: 26px;"></td>
+							></td>
 					</tr>
 					
 					<tr>

@@ -25,7 +25,7 @@
 				/*****모바일 넓이***/
 			@media (min-width: 300px) and (max-width: 940px)  {
 			#SearchPart button{position: absolute;width: 50px; height: 30px;border: 0px;background: 0px; top: 3px; right: 0px;}
-			#SearchPart img{width: 40px; height: 40px; margin-top:25px; margin-right:10%;}
+			#SearchPart img{width: 25px; height: 25px; margin-top:30px; margin-right:10%;}
 			#keywordMark p{font-size:21px;}
 				}
 		 </style>

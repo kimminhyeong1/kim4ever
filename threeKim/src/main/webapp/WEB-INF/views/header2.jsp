@@ -57,9 +57,9 @@ header{width:auto;margin:0 auto;}
 /*사이드메뉴바, 로고, 로그인버튼*/
 #top_logo{width:auto; height:85px; text-align:center; position:relative; margin-top:15px;}
 #top_logo .logo{display:inline-block; text-align:center; position:absolute; transform:translate(-50%, -50%);}
-#top_logo .logo img{width:75px; height:80px; margin-left:33%; cursor:pointer;transition: all 0.3s ease-in-out;}
+#top_logo .logo img{width:75px; height:80px; margin-left:22%; cursor:pointer;transition: all 0.3s ease-in-out;}
 #top_logo .login {display:flex;justify-content:flex-end;float:right; margin-right:3%}
-#top_logo .login ul {display:flex;list-style:none;margin-top:5px; padding:0;   flex-direction: column; margin-bottom:5px;}
+#top_logo .login ul {display:flex;list-style:none;margin-top:-5px; padding:0;   flex-direction: column; margin-bottom:5px;}
 #top_logo .login li {margin-left:5px; font-family: 'GangwonEdu_OTFBoldA'; font-size:10px;}
 #top_logo .login a {display:block;padding:3px 5px;margin-top:5px;background-color:white;color:black;border-radius:20px;text-decoration:none;transition:background-color 0.3s ease; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); }
 #top_logo .login a:hover {background-color: #666;}
@@ -90,17 +90,18 @@ header{width:auto;margin:0 auto;}
 
 /*메뉴*/
 #menu {width:auto; height: 60px; text-align:center; display:flex; justify-content:center; align-items:center; box-sizing:border-box;}
-#menu p { height:30px; font-size: 10px; font-weight: bold; font-family: 'GangwonEdu_OTFBoldA'; margin: 2px 2px auto;  word-wrap: break-word; text-align:center;
+#menu p { height:17px; font-size: 10px; font-weight: bold; font-family: 'GangwonEdu_OTFBoldA'; margin: 2px 2px auto;  word-wrap: break-word; text-align:center;
   display: inline-block; white-space: nowrap;   border-radius:20px;  display: flex; align-items: center;}  
 
  .topmenu:hover p {color:#ff9900; cursor:pointer;}
- .topmenu{height:70px; align-items: center; margin:5px;}
+ .topmenu{height:70px; align-items: center; margin:10px;}
 
 #content{width:auto; height:1200px;}
 #bottom{width:auto; height:300px; }
 /* 이미지*/
- .hidden_img {display: block; width:25px; height :25px; margin:0 auto; border-radius: 10px; padding:5px;   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
- .change{width: 41px; height: 20px; margin: 0 auto; position: absolute; top: 54px; right: 3%;}
+ .hidden_img {display: block; width:35px; height :35px; margin:0 auto; border-radius: 10px; padding:5px;   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); }
+ .change{width: 41px; height: 18px; margin: 0 auto; position: absolute; top: 0px; right: 16%;}
+   
 .change img{width:100%; height:100%;}
  
  
@@ -170,7 +171,7 @@ header{width:auto;margin:0 auto;}
 			</div>
 	</div>
 		<div class="logo" style="display:inline-block;">
-		<h1><img src="${pageContext.request.contextPath}/resources/logo/logo7.jpg" alt="타:바" onclick="location.href='${pageContext.request.contextPath}/gathering/gMyPage.do'"></h1>
+		<h1><img src="${pageContext.request.contextPath}/resources/logo/logo7.jpg" alt="타:바" onclick="location.href='${pageContext.request.contextPath}/gathering/gList.do'"></h1>
 		</div>
 			<div class="change"  onclick="location.href='<%=request.getContextPath()%>/index.jsp'">	
 			  <img src="${pageContext.request.contextPath}/resources/mobile/change3_1.png" alt="전환버튼" >	 
@@ -205,7 +206,7 @@ header{width:auto;margin:0 auto;}
 		</div>
 		<div class="topmenu"  onclick="location.href='<%=request.getContextPath()%>/gathering/gMyWish.do'">
 			 <img src="${pageContext.request.contextPath}/resources/mobile/heart2.png" alt="찜" class="hidden_img">
-			<p>내가 찜한 소모임</p>
+			<p>찜한 소모임</p>
 		</div>
 		<div class="topmenu"  onclick="location.href='<%=request.getContextPath()%>/gathering/gSearch.do'">
 			<img src="${pageContext.request.contextPath}/resources/mobile/search.png" alt="소모임검색" class="hidden_img">
