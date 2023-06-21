@@ -57,22 +57,22 @@
 				@media (min-width: 300px) and (max-width: 940px)  {
 		#main{width:auto; margin:0 auto; text-align:center;}
 			#main #content{width:auto; height:auto; background-color:#F8F8F8;}
-			#bottom{width:auto; height:100px; }
-			#main #content h2{text-align: center; margin-top:20px;}
-			#content #gather{width:90%; height:auto; border-collapse:collapse; border:1px solid #ddd; margin: 30px auto 0; text-align:center;  line-height:100px;}
+			#bottom{width:auto; height:100px; } 
+			#main #content h2{text-align: center; margin-top:20px; font-size:20px;}
+			#content #gather{width:90%; height:auto; border-collapse:collapse; border:1px solid #ddd; margin: 30px auto 0; text-align:center;  line-height:100px; font-size:18px;}
 			#content #gather label{font-family:'omyu_pretty'; font-size:20px; margin-left:10px;}
 			#content #gather input{box-sizing: border-box; width:100%;padding:20px; border:1px solid #ccc; border-radius:4px;}
-			#content button{width:20%; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}
+			#content button{width:20%; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:18px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}
 			#content button:active {background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 			#content img{width:80%; height:50%;}
-			#content #gatherCon p{font-family:'omyu_pretty'; font-size:27px;}
-			#content #gatherCon{width:90%; height:400px; border-collapse:collapse; border:1px solid #ddd; margin:10px auto 30px; text-align:center;  line-height:100px;}
+			#content #gatherCon p{font-family:'omyu_pretty'; font-size:20px;}
+			#content #gatherCon{width:90%; height:auto; border-collapse:collapse; border:1px solid #ddd; margin:10px auto 30px; text-align:center;  line-height:100px;}
 			/*모임슬라이더부분*/
 			#gather{vertical-align: top;margin-left:42px; display: inline-block; width: 800px; height: 500px; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;}
 			#gatherCon{vertical-align: top;margin-left:42px; display: inline-block; width: 800px; height: 500px; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;}
 			/* 슬라이더 1 시작 */
 		/* 슬라이더 1 시작 */
-		.slider-1 {height:30vh; width:100%; position:relative; float:left;}
+		.slider-1 {height:30vh; width:100%; position:relative; float:left; min-height:200px;}
 		/* 슬라이더 1 - 페이지 버튼 */
 		.slider-1 > .page-btns {text-align:center; position:absolute; bottom:10px; left:0; width:100%;}
 		
