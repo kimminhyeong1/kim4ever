@@ -61,7 +61,7 @@
 		select imidx as imidx from image1234 a where giidx = #{giidx}  and imgType = 'G' order by ImgCreationDay asc limit 1
 	</select>
 	<!-- 모임수정 3.모임 이미지들 넣기 업데이트 -->
-	<update id="gatheringGUpdate" parameterType="int">
+	<update id="gatheringGUpdate" parameterType="com.myezen.myapp.domain.GatheringJoinVo">
 		UPDATE image1234
 		SET imageName = #{imageName},
 			IMGCREATIONDAY = NOW(6)
