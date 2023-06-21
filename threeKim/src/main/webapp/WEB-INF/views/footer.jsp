@@ -62,7 +62,7 @@ footer {width:100%;background-color:#eeeeee; height:180px; display:flex; justify
 		<h2  class="hide">-타:바 이용안내</h2>
 		<p class="hide">자전거는 여러종류로 운용중이며 대여료는 일반자전거 기준 1회 대여 시 1,000원입니다.</p>   
 		<p>2023 TABA/ThreeKim. All rights reserved.</p>
-		<p>Designed by ThreeKim..</p>
+		<p>Designed by 아이콘: flaticon.com</p>
 	</div>
   </div>
 </footer>
