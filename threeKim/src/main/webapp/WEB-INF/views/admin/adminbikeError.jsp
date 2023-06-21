@@ -92,7 +92,7 @@ li{list-style:none;}
 				</tr>
 			<c:forEach var="ejv" items="${elist}">
 					<tr>						
-						<td>${ejv.eidx }
+						<td>${ejv.eidx}</td>
 						<td>${ejv.memberName}</td>
 						<td>${ejv.memberPhone}</td>
 						<td>${ejv.rentPlace}</td>
@@ -107,11 +107,7 @@ li{list-style:none;}
 							</c:choose>
 						</td>
 						<td>${ejv.bikeCode}</td>  
-						<td>
-				            <fmt:parseDate value="${ejv.errorDay}" pattern="yyyy-MM-dd HH:mm" var="parsedRentDay" /><!-- 날짜 변경 -->
-            				<fmt:formatDate value="${parsedRentDay}" pattern="yyyy-MM-dd HH:mm" var="formattedRentDay" /><!-- 시간 설정 변경 -->
-	           	 			${formattedRentDay}
-						</td>   
+						<td>${ejv.errorDay}</td>   
 						<td><a href="adminbikeErrorContent.do?eidx=${ejv.eidx}">${ejv.errorContent}</a></td>
 			
 					</tr>

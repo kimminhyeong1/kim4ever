@@ -153,41 +153,25 @@ WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPag
 	<!-- 신고 내역 리스트 -->
 <select id="searchBikeErrors" parameterType="com.myezen.myapp.domain.SearchCriteria"
   resultType="com.myezen.myapp.domain.BikeJoinVo">
-	SELECT
-	  rnum,
-	  memberName,
-	  memberPhone,
-	  rentPlace,
-	  bikeType,
-	  bikeCode,
-	  bikeState,
-	  eidx,
-	  errorDay,
-	  errorContent
-	FROM (
-	  SELECT 
-	    ROW_NUMBER() OVER() AS rnum, A.*
-	  FROM (
-	    SELECT
-	      m.memberName,
-	      m.memberPhone,
-	      r.rentPlace,
-	      b.bikeType,
-	      b.bikeCode,
-	      b.bikeState,
-	      e.eidx,
-	      e.errorDay,
-	      e.errorContent
-	    FROM rent1234 r
-	    JOIN member1234 m ON m.midx = r.midx
-	    JOIN bike1234 b ON b.bkidx = r.bkidx
-	    JOIN error1234 e ON e.ridx = r.ridx
-	    WHERE 1=1
-	    <include refid="search1" />
-	    ORDER BY e.errorDay DESC
-	  ) A
-	) B
-	WHERE rnum BETWEEN #{startRow} AND #{endRow}
+SELECT
+  m.memberName,
+  m.memberPhone,
+  r.rentPlace,
+  b.bikeType,
+  b.bikeCode,
+  b.bikeState,
+  e.eidx,
+  e.errorDay,
+  e.errorContent
+FROM rent1234 r
+JOIN member1234 m ON m.midx = r.midx
+JOIN bike1234 b ON b.bkidx = r.bkidx
+JOIN error1234 e ON e.ridx = r.ridx
+WHERE 1=1
+  <include refid="search1" />
+ORDER BY e.errorDay DESC
+LIMIT #{perPageNum}
+OFFSET #{offset};
 </select>
 	
 	
@@ -242,14 +226,15 @@ WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPag
 	
 	<!-- 수리버튼 누르면 bikeState R로 변경 -->
 	<update id="updateBikeState" parameterType="int">
-   	UPDATE bike1234
-		SET bikeState = 'E'
-		WHERE bkidx IN (SELECT b.bkidx
-      		FROM rent1234 r
-      		JOIN bike1234 b ON b.bkidx = r.bkidx
-      		JOIN error1234 e ON e.ridx = r.ridx
-      		WHERE e.eidx =#{eidx})
+UPDATE bike1234 b
+JOIN rent1234 r ON b.bkidx = r.bkidx
+JOIN error1234 e ON e.ridx = r.ridx
+SET b.bikeState = 'R'
+WHERE e.eidx = #{eidx}
 	</update>
+	
+	
+	
 	
 	
 	<sql id="search2">
