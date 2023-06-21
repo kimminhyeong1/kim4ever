@@ -258,6 +258,20 @@ public class GatheringServiceImpl implements GatheringService {
 		int value = gsm.gatheringScheduleMake(gsv);
 		return value;
 	}
+	@Override
+	//모임 일정 수정하기
+	public int gatheringScheduleModify(Gathering_ScheduleVO gsv) {
+		int value = gsm.gatheringScheduleModify(gsv);
+		return value;
+	}
+	@Override
+	@Transactional
+	//모임 일정 삭제하기
+	public int gatheringScheduleDel(int giidx,int gsidx) {
+		int value1 = gsm.gatheringScheduleDel1(gsidx);
+		int value2 = gsm.gatheringScheduleDel2(giidx,gsidx);
+		return value2;
+	}
 
 
 
@@ -276,12 +290,56 @@ public class GatheringServiceImpl implements GatheringService {
 		Gathering_ScheduleVO gsv = gsm.gatheringScheduleView(gsidx,giidx);
 		return gsv;
 	}
+	@Override
+	//모임참여이력이있으면 gsjidx가져오기
+	public String gatheringScheduleViewCheck(int gsidx, int midx) {
+		String gsjidx = gsm.gatheringScheduleViewCheck(gsidx,midx);
+		return gsjidx;
+	}
+	@Override
+	//참여인원 가지고오기
+	public String gatheringScheduleViewJoinCNT(int gsidx) {
+		String joinCNT = gsm.gatheringScheduleViewJoinCNT(gsidx);
+		return joinCNT;
+	}
 	
 	@Override
+	@Transactional
 	//모임 일정 참여하기
-	public int gatheringScheduleJoin(int gsidx, int midx) {
-		//모임 일정 참여 테이블 넣기
-		int value = gsm.gatheringScheduleJoin(gsidx,midx);
+	public int gatheringScheduleJoin(int gsidx, int midx, int giidx) {
+		int value = 0;
+		//모임 일정 참여하기 검증
+		int check = gsm.gatheringScheduleJoinCheck(gsidx,midx);
+		
+		//인원이 꽉차면 가입 못 하게 막기
+		
+		//모임 일정 참여수  
+		String joinCNT = gsm.gatheringScheduleViewJoinCNT(gsidx);
+		//모임 일정 정원수
+		Gathering_ScheduleVO gsv = gsm.gatheringScheduleView(gsidx,giidx);
+		
+		String Capacity = gsv.getgScheduleCapacity();
+		if (Integer.parseInt(joinCNT) < Integer.parseInt(Capacity)) {
+			if (check == 0) {
+				//모임 일정 참여 테이블 넣기
+				value = gsm.gatheringScheduleJoin(gsidx,midx);		
+				System.out.println("모임일정참여");
+			}			
+		}
+		return value;
+	}
+	@Override
+	@Transactional
+	//모임 일정 참여하기
+	public int gatheringScheduleJoinExit(int gsidx, int midx) {
+		//모임 일정 참여취소하기
+		int value = 0;
+		int check = gsm.gatheringScheduleJoinCheck(gsidx,midx);
+		if (check != 0) {
+			//모임 일정 참여 테이블 넣기
+			value = gsm.gatheringScheduleJoinExit(gsidx,midx);		
+			System.out.println("모임일정참여취소");
+		}
 		return value;
 	}
 
@@ -568,7 +626,7 @@ public class GatheringServiceImpl implements GatheringService {
 			        return false; // 실패 시 false 반환
 			    } else {
 			        gsm.exitGathering(midx, giidx);
-			        gsm.gatheringParticipatingUpdate1(giidx);
+			        gsm.gatheringParticipatingUpdate1(giidx);//-1
 			        System.out.println("모임에서 나가셨습니다.");
 			        return true; // 성공 시 true 반환
 			    }
@@ -691,6 +749,10 @@ public class GatheringServiceImpl implements GatheringService {
 	public int gatheringPhotoAlbumListSelectAll(SearchCriteria scri) {
 		return gsm.gatheringPhotoAlbumListSelectAll(scri);
 	}
+
+
+
+
 
 
 

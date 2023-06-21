@@ -92,7 +92,7 @@
 		        // 예를 들어, 서버에서 스케줄 데이터를 events 받음
 		        <c:forEach var="gsvlist" items="${gsvlist}">
 		          {
-		            title: '${gsvlist.gScheduleTitle} 정원 (0/${gsvlist.gScheduleCapacity}명)',
+		            title: '${gsvlist.gScheduleTitle} 정원 (${gsvlist.gScheduleParticipating}/${gsvlist.gScheduleCapacity}명)',
 		            start: '${gsvlist.gScheduleStartDay}',
 		            end: '${gsvlist.gScheduleEndDay}',
 		            display: 'block', // 이벤트 표시 방식 설정

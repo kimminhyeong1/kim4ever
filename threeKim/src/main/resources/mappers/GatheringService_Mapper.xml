@@ -182,19 +182,63 @@
 	 	INSERT INTO gathering_schedule1234 (GIIDX,MIDX,GSCHEDULETITLE,GSCHEDULESTARTDAY,GSCHEDULEENDDAY,GSCHEDULELOCATION,GSCHEDULELATITUDE,GSCHEDULELONGITUDE,GSCHEDULEARRANGEMENTS,GSCHEDULECAPACITY,GSCHEDULEFEE,GSCHEDULEWRITEDAY,gScheduleDelYN)
 		VALUES(#{giidx},#{midx},#{gScheduleTitle},#{gScheduleStartDay},#{gScheduleEndDay},#{gScheduleLocation},#{gScheduleLatitude},#{gScheduleLongitude},#{gScheduleArrangements},#{gScheduleCapacity},#{gScheduleFee}, NOW(),'N')
 	</insert>
+	<!-- 모임 일정 수정하기 -->
+	<update  id="gatheringScheduleModify" parameterType="com.myezen.myapp.domain.Gathering_ScheduleVO" >
+	 	UPDATE gathering_schedule1234
+		SET
+		  GSCHEDULETITLE = #{gScheduleTitle},
+		  GSCHEDULESTARTDAY = #{gScheduleStartDay},
+		  GSCHEDULEENDDAY = #{gScheduleEndDay},
+		  GSCHEDULELOCATION = #{gScheduleLocation},
+		  GSCHEDULELATITUDE = #{gScheduleLatitude},
+		  GSCHEDULELONGITUDE = #{gScheduleLongitude},
+		  GSCHEDULEARRANGEMENTS = #{gScheduleArrangements},
+		  GSCHEDULECAPACITY = #{gScheduleCapacity},
+		  GSCHEDULEFEE = #{gScheduleFee}
+		WHERE
+		  gsidx = #{gsidx}
+	</update>
+	<!-- 모임 일정 삭제하기 -->
+	<delete id="gatheringScheduleDel1" parameterType="int">
+		DELETE FROM gathering_schedule_join1234 WHERE gsidx = #{0}
+	</delete>
+	<delete id="gatheringScheduleDel2" parameterType="int">
+		DELETE FROM gathering_schedule1234 WHERE giidx = #{0} AND gsidx = #{1}
+	</delete>
 	<!--  모임 일정 리스트 가져오기 -->
 	<select id="gatheringScheduleListSelect" resultType="com.myezen.myapp.domain.Gathering_ScheduleVO" parameterType="int"> 
-		SELECT * FROM gathering_schedule1234 WHERE  GSCHEDULEDELYN = 'N' AND GIIDX = #{0}
+		SELECT a.*,
+		    (SELECT COUNT(*) FROM gathering_schedule_join1234 c WHERE c.gsidx = a.gsidx) AS gScheduleParticipating 
+		FROM gathering_schedule1234 a
+		LEFT JOIN gathering_schedule_join1234 b ON b.gsidx = a.gsidx and b.midx = a.midx
+		WHERE GSCHEDULEDELYN = 'N' AND GIIDX = #{0}
 	</select>
 	<!--  모임 일정 상세보기 가져오기 -->
 	<select id="gatheringScheduleView" resultType="com.myezen.myapp.domain.Gathering_ScheduleVO" parameterType="int"> 
 		SELECT * FROM gathering_schedule1234 WHERE  GSCHEDULEDELYN = 'N' AND GSIDX = #{0} AND GIIDX = #{1}
 	</select>
+	<!--  모임참여이력이있으면 gsjidx가져오기  -->
+	<select id="gatheringScheduleViewCheck" parameterType="int" resultType="String">
+		select gsjidx FROM  gathering_schedule_join1234 where gsidx = #{0} AND midx = #{1}
+	</select>
+	<!--  모임일정참여인원 가지고오기  -->
+	<select id="gatheringScheduleViewJoinCNT" parameterType="int" resultType="String">
+		select count(*) as CNT from gathering_schedule_join1234 where gsidx = #{0}
+	</select>
+	<!--  모임 일정 참여하기 검증 -->
+	<select id="gatheringScheduleJoinCheck" parameterType="int" resultType="int">
+		select count(*) as CNT FROM  gathering_schedule_join1234 where gsidx = #{0} AND midx = #{1}
+	</select>
 	<!-- 모임 일정 참여하기 -->
 	<insert id="gatheringScheduleJoin" parameterType="int">
-		INSERT INTO gathering_schedule1234 (gsidx,MIDX)
-		VALUES(#{gsidx},#{midx})
+		INSERT INTO gathering_schedule_join1234 (gsidx,MIDX)
+		VALUES(#{0},#{1})
 	</insert>
+	<!-- 모임 일정 참여취소하기 -->
+	<delete id="gatheringScheduleJoinExit" parameterType="int">
+		DELETE FROM gathering_schedule_join1234
+		WHERE gsidx = #{0} AND MIDX = #{1};
+	</delete>
 	
 	<!-- 모임 게시판 -->
 	<!--  모임 게시글 쓰기 -->

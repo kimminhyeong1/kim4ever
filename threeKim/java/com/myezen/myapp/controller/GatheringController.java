@@ -257,6 +257,23 @@ public class GatheringController {
 
 			return "redirect:/gathering/gContent.do";
 		}
+		//모임상세보기에서 일정 보기 페이지 에서 일정 삭제하기 버튼 클릭
+		@RequestMapping(value="/gScheduleDel.do")
+		public String gScheduleDel(
+				@RequestParam("gsidx") int gsidx,
+				HttpServletRequest request
+				) {
+			HttpSession session = request.getSession();
+		    Object Omidx = session.getAttribute("midx");
+		    Object Ogiidx = session.getAttribute("giidx");
+		    if (Omidx == null) {//midx가 없으면 진입불가
+		    	return "redirect:/gathering/gList.do";
+			}
+		    int giidx =(int)Ogiidx;
+		    int value = gs.gatheringScheduleDel(giidx,gsidx);
+
+			return "redirect:/gathering/gContent.do";
+		}
 //모임상세보기에서 일정 보기 페이지
 	@RequestMapping(value="/gScheduleDetails.do")
 	public String gScheduleDetails(
@@ -266,18 +283,106 @@ public class GatheringController {
 			) {
 		HttpSession session = request.getSession();
 	    Object Ogiidx = session.getAttribute("giidx");
+	    Object Omidx = session.getAttribute("midx");
+	    if (Omidx == null) {//midx가 없으면 진입불가
+	    	return "redirect:/gathering/gList.do";
+		}
+	    int midx = (int)Omidx;
 	    int giidx = (int)Ogiidx;
 		//일정가져오기 
 	    Gathering_ScheduleVO gsv = gs.gatheringScheduleView(gsidx,giidx);
 		//일정모델에담기
 	    md.addAttribute("gsv", gsv);
-		
+	    
+	    //모임참여이력이있으면 gsjidx가져오기 
+	    String gsjidx = gs.gatheringScheduleViewCheck(gsidx,midx);
+	    md.addAttribute("gsjidx", gsjidx);
+	    
+	    //참여인원 가지고오기
+	    String joinCNT = gs.gatheringScheduleViewJoinCNT(gsidx);
+	    md.addAttribute("joinCNT", joinCNT);
 		
 		return "gathering/gScheduleDetails";
 	}
+	//모임상세보기에서 일정 수정하기 페이지
+		@RequestMapping(value="/gScheduleModify.do")
+		public String gScheduleModify(
+				@RequestParam("gsidx") int gsidx,
+				HttpServletRequest request,
+				Model md
+				) {
+			HttpSession session = request.getSession();
+		    Object Ogiidx = session.getAttribute("giidx");
+		    Object Omidx = session.getAttribute("midx");
+		    if (Omidx == null) {//midx가 없으면 진입불가
+		    	return "redirect:/gathering/gList.do";
+			}
+		    int midx = (int)Omidx;
+		    int giidx = (int)Ogiidx;
+			//일정가져오기 
+		    Gathering_ScheduleVO gsv = gs.gatheringScheduleView(gsidx,giidx);
+			//일정모델에담기
+		    md.addAttribute("gsv", gsv);
+		    
+		    //모임참여이력이있으면 gsjidx가져오기 
+		    String gsjidx = gs.gatheringScheduleViewCheck(gsidx,midx);
+		    md.addAttribute("gsjidx", gsjidx);
+		    
+		    //참여인원 가지고오기
+		    String joinCNT = gs.gatheringScheduleViewJoinCNT(gsidx);
+		    md.addAttribute("joinCNT", joinCNT);
+			
+			return "gathering/gScheduleModify";
+		}
+		//일정 만들기 페이지에서 일정 수정하기 버튼 클릭
+		@RequestMapping(value="/gScheduleModifyAction.do", method = RequestMethod.POST)
+		public String gScheduleModifyAction(
+				@ModelAttribute Gathering_ScheduleVO gsv,
+				HttpServletRequest request
+				) {
+			HttpSession session = request.getSession();
+		    Object Omidx = session.getAttribute("midx");
+		    Object Ogiidx = session.getAttribute("giidx");
+		    if (Omidx == null) {//midx가 없으면 진입불가
+		    	return "redirect:/gathering/gList.do";
+			}
+		    gsv.setMidx((int)Omidx);
+		    gsv.setGiidx((int)Ogiidx);
+		    System.out.println(gsv.getGiidx()+""+gsv.getMidx());
+		    int value = gs.gatheringScheduleModify(gsv);
+
+			return "redirect:/gathering/gContent.do";
+		}
+		
+		
+		
+		
 //모임상세보기에서 일정 참여하기
 	@RequestMapping(value="/gScheduleJoin.do")
 	public String gScheduleJoin(
+			@RequestParam("gsidx") int gsidx,
+			HttpServletRequest request,
+			Model md
+			) {
+		HttpSession session = request.getSession();
+	    Object Omidx = session.getAttribute("midx");
+	    Object Ogiidx = session.getAttribute("giidx");
+	    if (Omidx == null) {//midx가 없으면 진입불가
+	    	return "redirect:/gathering/gList.do";
+		}
+	    int midx = (int)Omidx;
+	    int giidx = (int)Ogiidx;
+
+	    int value = gs.gatheringScheduleJoin(gsidx,midx,giidx);
+	    if (value == 1) {
+	    	md.addAttribute("gsidx", gsidx);
+	    	return "redirect:/gathering/gScheduleDetails.do";
+		}
+		return "redirect:/gathering/gContent.do";
+	}
+//모임상세보기에서 일정 참여취소하기
+	@RequestMapping(value="/gScheduleJoinExit.do")
+	public String gScheduleJoinExit(
 			@RequestParam("gsidx") int gsidx,
 			HttpServletRequest request,
 			Model md
@@ -289,8 +394,9 @@ public class GatheringController {
 		}
 	    int midx = (int)Omidx;
 
-	    int value = gs.gatheringScheduleJoin(gsidx,midx);
+	    int value = gs.gatheringScheduleJoinExit(gsidx,midx);
 	    if (value == 1) {
+	    	md.addAttribute("gsidx", gsidx);
 	    	return "redirect:/gathering/gScheduleDetails.do";
 		}
 		return "redirect:/gathering/gContent.do";

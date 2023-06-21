@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>모임-일정만들기</title>
+		<title>모임-일정수정하기</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">
@@ -64,10 +64,9 @@
 			var marker;
 			
 			function initMap() {
-			  // 사용자의 현재 위치를 가져옵니다.
-			  navigator.geolocation.getCurrentPosition(function(position) {
-			    var latitude = position.coords.latitude; // 위도
-			    var longitude = position.coords.longitude; // 경도
+
+			    var latitude = ${gsv.gScheduleLatitude}; // 위도
+			    var longitude = ${gsv.gScheduleLongitude}; // 경도
 			
 			    var initialLatLng = new kakao.maps.LatLng(latitude, longitude);
 			
@@ -170,7 +169,6 @@
 			        }
 			      }
 			    });
-			  });
 			}
 			</script>
 	</head>
@@ -178,24 +176,24 @@
 		<%@include file="../header2.jsp" %>
 		<%@include file="header3.jsp" %>
 		<main id="main">
-			<form action="${pageContext.request.contextPath}/gathering/gScheduleMakeAction.do" method="POST">
-				<input type="hidden" id="giidx" name="giidx" value="${giidx}"><!-- 모임 정보 -->
+			<form action="${pageContext.request.contextPath}/gathering/gScheduleModifyAction.do" method="POST">
+				<input type="hidden" id="gsidx" name="gsidx" value="${gsv.gsidx}"><!-- 모임 일정 번호 -->
 				<section class="gContainer gSetContainer">
 					<div>
 						<div> 
 							<div>
 								<h3>일정 제목</h3>
 							</div>
-							<input class="gInput" type="text" name="gScheduleTitle" placeholder="내용을 입력해주세요">
+							<input class="gInput" type="text" name="gScheduleTitle" placeholder="내용을 입력해주세요" value="${gsv.gScheduleTitle}">
 						</div>
 						<div>
 							<div>
 								<h3>일정 날짜</h3>
 							</div>
 							<label for="start">시작일:</label>
-							<input class="gInput" type="datetime-local" id="start" name="gScheduleStartDay" required>
+							<input class="gInput" type="datetime-local" id="start" name="gScheduleStartDay" value="${gsv.gScheduleStartDay}" required>
 							<label for="end">종료일:</label>		
-							<input class="gInput" type="datetime-local" id="end" name="gScheduleEndDay" required>												
+							<input class="gInput" type="datetime-local" id="end" name="gScheduleEndDay" value="${gsv.gScheduleEndDay}" required>												
 						</div>
 						<div>
 							<h3>일정 위치</h3><!-- 지도 api사용 -->
@@ -211,21 +209,21 @@
 						</div>
 						<div>
 							<h3>모임비</h3>
-							<input class="gInput" type="number" name="gScheduleFee" placeholder="가격을 적어주세요.">		
+							<input class="gInput" type="text" name="gScheduleFee" placeholder="가격을 적어주세요." value="${gsv.gScheduleFee}">		
 						</div>
 						<div>
 							<h3>준비물</h3>
-							<textarea rows="5" cols="5"  name="gScheduleArrangements"placeholder="글자제한:500자이내"></textarea>		
+							<textarea rows="5" cols="5"  name="gScheduleArrangements"placeholder="글자제한:500자이내">${gsv.gScheduleArrangements}</textarea>		
 						</div>
 						<div>
 							<div>
 								<h3>정원(최대 100명)</h3>
 							</div>
-							<input class="gInput" type="number" name="gScheduleCapacity" placeholder="예:5">	
+							<input class="gInput" type="number" name="gScheduleCapacity" placeholder="예:5" value="${gsv.gScheduleCapacity}">	
 						</div>
 					</div><!-- 끝-->
 					<div>
-						<button class="gBtn2">일정추가</button>				 
+						<button class="gBtn2">일정수정하기</button>				 
 					</div>
 				</section>
 			</form>

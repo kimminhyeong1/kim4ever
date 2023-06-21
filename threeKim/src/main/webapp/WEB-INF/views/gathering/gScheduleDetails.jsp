@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -24,6 +25,8 @@
 			#main section textarea {display: block; width: 500px;height: 200px;font-size: 23px;}
 			#main section button{text-align: center;}  
 			#main section img{width: 100px;height: 100px;}  
+			.gBtn2{margin-right: 10px; margin-left: 10px;}
+			.boxContent {display: inline-block;}
 		</style>
 		<script type="text/javascript">
 			$(document).ready(function(){
@@ -49,23 +52,31 @@
 						<div>
 							<h3>일정 날짜</h3>
 						</div>
-						<label for="start">시작일:</label>
-						<div class="boxContent">${gsv.gScheduleStartDay}</div>
-						<label for="end">종료일:</label>		
-						<div class="boxContent">${gsv.gScheduleEndDay}</div>									
+						<div><label for="start">시작일:</label></div>
+						<div class="boxContent">
+							<fmt:parseDate value="${gsv.gScheduleStartDay}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedRentDay" />
+							<fmt:formatDate value="${parsedRentDay}" pattern="yyyy년 MM월 dd일 a HH:mm" var="formattedRentDay" />
+							${formattedRentDay}
+						</div>
+						<div><label for="end">종료일:</label></div>
+						<div class="boxContent">
+							<fmt:parseDate value="${gsv.gScheduleEndDay}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedRentDay" />
+							<fmt:formatDate value="${parsedRentDay}" pattern="yyyy년 MM월 dd일 a HH:mm" var="formattedRentDay" />
+							${formattedRentDay}
+						</div>									
 					</div>
 					<div>
-						<h3>일정 위치</h3><!-- 지도 api사용 -->
-						<div id="map" style="width: 500px; height: 500px;"></div>
+						<div><h3>일정 위치</h3></div><!-- 지도 api사용 -->
+						<div id="map" style="width: 800px; height: 500px;"></div>
 						<div id="address" class="boxContent" style="width: 500px;">주소: ${gsv.gScheduleLocation}</div>		
 					</div>
 					<div>
-						<h3>모임비</h3>
+						<div><h3>모임비</h3></div>
 						<div class="boxContent">${gsv.gScheduleFee}원</div>	
 					</div>
 					<div>
-						<h3>준비물</h3>
-						<div class="boxContent" style="width: 90%;">
+						<div><h3>준비물</h3></div>
+						<div class="boxContent" style="width: 80%">
 						${gsv.gScheduleArrangements}					
 						</div>	
 					</div>
@@ -73,12 +84,23 @@
 						<div>
 							<h3>정원(최대 ${gsv.gScheduleCapacity} 명)</h3>
 						</div>
-						<div class="boxContent">현재 [추가예정] 명</div>	
+						<div class="boxContent">현재 ${joinCNT} 명</div>	
 					</div>
 				</div><!-- 끝-->
 				<div>
 					<button class="gBtn2" onclick="location.href='${pageContext.request.contextPath}/gathering/gContent.do'">돌아가기</button>
-					<button class="gBtn2" onclick="location.href='${pageContext.request.contextPath}/gathering/gScheduleJoin.do?gsidx=${gsv.gsidx}'">참가하기</button>				 	 
+					<c:choose>
+						<c:when test="${empty gsjidx}">
+							<button class="gBtn2" onclick="location.href='${pageContext.request.contextPath}/gathering/gScheduleJoin.do?gsidx=${gsv.gsidx}'">참가하기</button>				 	 							
+						</c:when>
+						<c:otherwise>
+							<button class="gBtn2" onclick="location.href='${pageContext.request.contextPath}/gathering/gScheduleJoinExit.do?gsidx=${gsv.gsidx}'">참가취소하기</button>	
+						</c:otherwise>
+					</c:choose>
+					<c:if test="${MGatheringMemberType eq 'TL' or MGatheringMemberType eq 'TLD' }">
+						<button class="gBtn2" onclick="location.href='${pageContext.request.contextPath}/gathering/gScheduleModify.do?gsidx=${gsv.gsidx}'">일정 수정하기</button>
+						<button class="gBtn2" onclick="location.href='${pageContext.request.contextPath}/gathering/gScheduleDel.do?gsidx=${gsv.gsidx}'">일정 삭제하기</button>				
+					</c:if>
 				</div>
 			</section>
 		</main>

@@ -85,12 +85,25 @@ public interface GatheringService_Mapper {
 
 	//모임일정만들기
 	public int gatheringScheduleMake(Gathering_ScheduleVO gsv);
+	//모임일정수정하기
+	public int gatheringScheduleModify(Gathering_ScheduleVO gsv);
+	//모임일정삭제하기
+	public int gatheringScheduleDel1(int gsidx);
+	public int gatheringScheduleDel2(int giidx,int gsidx);
 	//모임일정 리스트 가져오기
 	public ArrayList<Gathering_ScheduleVO> gatheringScheduleListSelect(int giidx);	
 	//모임일정 상세보기 가져오기
 	public Gathering_ScheduleVO gatheringScheduleView(int gsidx,int giidx);
+	//모임참여이력이있으면 gsjidx가져오기 
+	public String gatheringScheduleViewCheck(int gsidx,int midx);
+	//참여인원 가지고오기
+	public String gatheringScheduleViewJoinCNT(int gsidx);
+	//모임 일정 참여하기 검증
+	public int gatheringScheduleJoinCheck(int gsidx,int midx);
 	//모임 일정 참여하기
 	public int gatheringScheduleJoin(int gsidx,int midx);
+	//모임 일정 참여취소하기
+	public int gatheringScheduleJoinExit(int gsidx,int midx);
 	
 	/*모임 게시판*/
 	//모임 게시글 쓰기
