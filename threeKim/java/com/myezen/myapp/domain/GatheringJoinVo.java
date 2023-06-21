@@ -1,5 +1,7 @@
 package com.myezen.myapp.domain;
 
+import java.util.List;
+
 public class GatheringJoinVo {//모임조인
 	
 	//이미지업로드테이블
@@ -12,6 +14,8 @@ public class GatheringJoinVo {//모임조인
 	private int gbidx;//모임 게시판 번호
 	private int gpaidx;//모임 사진첩 번호
 	private String ImgType;//이미지 구분
+	private List<String> gPhotoAlbumContentsList;
+	private String[] imageNames;
 	/*
 	이미지 구분
 	노말 이미지 : N
@@ -25,7 +29,23 @@ public class GatheringJoinVo {//모임조인
 	모임 사진첩 이미지:GA
 	모임 게시글 이미지:GB
 	*/
-	
+
+	public String[] getImageNames() {
+		return imageNames;
+	}
+
+	public void setImageNames(String[] imageNames) {
+		this.imageNames = imageNames;
+	}
+
+	public List<String> getgPhotoAlbumContentsList() {
+		return gPhotoAlbumContentsList;
+	}
+
+	public void setgPhotoAlbumContentsList(List<String> gPhotoAlbumContentsList) {
+		this.gPhotoAlbumContentsList = gPhotoAlbumContentsList;
+	}
+
 	//모임 테이블
 	private int gidx;//모임 번호
 	//private int giidx;//모임 정보 번호
