@@ -490,7 +490,7 @@
 	
 	<!-- 모임 나가기 (midx,giidx에 해당하는 값 삭제)-->
 	  <delete id="exitGathering" parameterType="int">
-	   DELETE FROM gathering1234 WHERE midx = #{0} AND giidx = #{1} AND GATHERINGMEMBERTYPE IN ('TM', 'TMD')
+	   DELETE FROM gathering1234 WHERE midx = #{0} AND giidx = #{1} 
 	  </delete>
 	
 	<!-- 모임 가입 참여멤버 수(-)업데이트 -->
