@@ -36,8 +36,21 @@ public interface GatheringService_Mapper {
 	public int gInfoNameCheck(String gInfoName);
 	//3.모임대표 이미지 넣기
 	public int gatheringGTInsert(GatheringJoinVo gjv);
-	//4.모임 이미지 넣기
+	//4.모임 이미지 넣기 //4.모임 이미지들 넣기 인설트
 	public int gatheringGInsert(GatheringJoinVo gjv);
+	/*모임 수정*/
+	//1.모임정보업데이트
+	public int gatheringInfoModify(GatheringJoinVo gjv);
+	//2.모임 대표이미지 넣기
+	public int gatheringGTUpdate(GatheringJoinVo gjv);
+	//이미지고유번호 가져오기	
+	public int gatheringGSelect(GatheringJoinVo gjv);
+	//3.모임 이미지들 넣기 업데이트
+	public int gatheringGUpdate(GatheringJoinVo gjv);
+	
+	
+	//모임수정리스트가져오기 
+	public ArrayList<GatheringJoinVo> gatheringModifyList(int giidx);
 	//모임 리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringListSelect();
 	//모임 리스트 더보기 

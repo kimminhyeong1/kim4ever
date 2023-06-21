@@ -11,7 +11,8 @@ public class GatheringJoinVo {//모임조인
 	private int giidx;//모임 정보 번호
 	private int gbidx;//모임 게시판 번호
 	private int gpaidx;//모임 사진첩 번호
-	private String ImgType;//이미지 구분
+	private String imgType;//이미지 구분
+	private String ImgCreationDay;// 이미지 생성날짜
 	/*
 	이미지 구분
 	노말 이미지 : N
@@ -245,14 +246,6 @@ public class GatheringJoinVo {//모임조인
 
 	public void setGpaidx(int gpaidx) {
 		this.gpaidx = gpaidx;
-	}
-
-	public String getImgType() {
-		return ImgType;
-	}
-
-	public void setImgType(String imgType) {
-		ImgType = imgType;
 	}
 
 	public int getGidx() {
@@ -781,6 +774,22 @@ public class GatheringJoinVo {//모임조인
 
 	public void setREPORTCNT(int rEPORTCNT) {
 		REPORTCNT = rEPORTCNT;
+	}
+
+	public String getImgType() {
+		return imgType;
+	}
+
+	public void setImgType(String imgType) {
+		this.imgType = imgType;
+	}
+
+	public String getImgCreationDay() {
+		return ImgCreationDay;
+	}
+
+	public void setImgCreationDay(String imgCreationDay) {
+		ImgCreationDay = imgCreationDay;
 	}
 
 

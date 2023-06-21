@@ -24,6 +24,7 @@
 			#main section img{width: 100px;height: 100px;}   
 			#main section .radio{display: inline-block;width: 4%; margin-top: 10px; } 
 			#main section span{font-size: 20px;} 
+			#gInfoArea{font-family: 'omyu_pretty';font-size: 24px;box-sizing: border-box;width: 40%;padding: 10px;margin: 2px 0;border: 1px solid #ccc;border-radius: 4px;}
 			
 			/*************************모바일****************************************/
 				/*****모바일 넓이***/
@@ -65,7 +66,10 @@
 						<h3>모임 지역</h3>
 						<p>필수</p>
 					</div>
-					<input class="gInput" type="text" placeholder="내용을 입력해주세요" name="gInfoArea">
+					<select name="gInfoArea" id="gInfoArea">
+						<option value="덕진구" selected="selected">덕진구</option>	
+						<option value="완산구">완산구</option>	
+					</select>
 					<p id="areaMsg" class="ability_chk" style="display:none;">입력.</p>										
 				</div>
 				<div>
@@ -121,7 +125,7 @@
 						<h3>모임 정원(최대 100명)</h3>
 						<p>필수</p>
 					</div>
-					<input class="gInput" type="number" placeholder="예:5" name="gInfoCapacity">	
+					<input class="gInput" type="number" placeholder="예:5" name="gInfoCapacity" id="gInfoCapacity">	
 				</div>
 				<div>
 					<div>
@@ -266,8 +270,11 @@
 	<script>
     function validateForm() {
         var gInfoName = document.getElementById("gInfoName").value;
-        var gInfoArea = document.getElementsByName("gInfoArea")[0].value;
-
+        var gInfoArea = document.getElementById("gInfoArea").value;
+        var image = document.getElementById("image").value;    
+        var imageInfo1 = document.getElementById("imageInfo1").value;    
+        var gInfoCapacity = document.getElementById("gInfoCapacity").value;    
+        
         if (gInfoName === "") {
             alert("모임 이름을 입력해주세요.");
             return false; // 양식 제출을 중지합니다.
@@ -275,6 +282,21 @@
 
         if (gInfoArea === "") {
             alert("모임 지역을 입력해주세요.");
+            return false; // 양식 제출을 중지합니다.
+        }
+        
+        if (image === "") {
+            alert("모임 대표이미지를 올려주세요.");
+            return false; // 양식 제출을 중지합니다.
+        }
+        
+        if (imageInfo1 === "") {
+            alert("모임 이미지를 올려주세요.");
+            return false; // 양식 제출을 중지합니다.
+        }
+        
+        if (gInfoCapacity === "") {
+            alert("모임 정원을 입력해주세요.");
             return false; // 양식 제출을 중지합니다.
         }
 

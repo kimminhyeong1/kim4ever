@@ -24,13 +24,50 @@
 	<!-- 모임생성 3.모임대표 이미지 넣기-->
 	<insert  id="gatheringGTInsert" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
 		INSERT INTO IMAGE1234 (IMAGENAME,MIDX,GIIDX,IMGTYPE,IMGCREATIONDAY)
-		VALUES(#{imageName},#{midx},#{giidx},'GT',NOW())
+		VALUES(#{imageName},#{midx},#{giidx},'GT',NOW(6))
 	</insert>
 	<!-- 모임생성 4.모임 이미지 넣기-->
 	<insert  id="gatheringGInsert" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
 		INSERT INTO IMAGE1234 (IMAGENAME,MIDX,GIIDX,IMGTYPE,IMGCREATIONDAY)
-		VALUES(#{imageName},#{midx},#{giidx},'G',NOW())
+		VALUES(#{imageName},#{midx},#{giidx},'G',NOW(6))
 	</insert>
+	<!-- 모임수정리스트가져오기 --> 
+	<select id="gatheringModifyList" parameterType="int" resultType="com.myezen.myapp.domain.GatheringJoinVo">
+		SELECT 
+		*
+		FROM GATHERING_INFO1234 a
+		JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
+		WHERE a.GINFODELYN = 'N'  AND a.GIIDX = #{0} and (b.ImgType = 'GT' or b.ImgType = 'G')
+	</select>
+	<!-- 모임수정 1.모임정보업데이트 -->
+	<update id="gatheringInfoModify" parameterType="com.myezen.myapp.domain.GatheringJoinVo">
+		UPDATE GATHERING_INFO1234
+		SET GINFONAME = #{gInfoName},
+		    GINFOAREA = #{gInfoArea},
+		    GINFOBRIEFINTRODUCTION = #{gInfoBriefIntroduction},
+		    GINFOAREAINTRODUCTION = #{gInfoAreaIntroduction},
+		    GINFOCAPACITY = #{gInfoCapacity},
+		    GINFOJOINTYPE = #{gInfoJoinType}
+		WHERE giidx = #{giidx}
+	</update>
+	<!-- 모임수정 2.모임 대표이미지 업데이트 -->
+	<update id="gatheringGTUpdate" parameterType="com.myezen.myapp.domain.GatheringJoinVo">
+		UPDATE image1234
+		SET imageName = #{imageName}
+		WHERE giidx = #{giidx} and imgType = 'GT'
+	</update>
+	<!-- 모임수정 //이미지고유번호 가져오기-->
+	<select id="gatheringGSelect" parameterType="com.myezen.myapp.domain.GatheringJoinVo" resultType="int">
+		select imidx as imidx from image1234 a where giidx = #{giidx}  and imgType = 'G' order by ImgCreationDay asc limit 1
+	</select>
+	<!-- 모임수정 3.모임 이미지들 넣기 업데이트 -->
+	<update id="gatheringGUpdate" parameterType="int">
+		UPDATE image1234
+		SET imageName = #{imageName},
+			IMGCREATIONDAY = NOW(6)
+		WHERE imidx = #{imidx} and imgType = 'G'
+	</update>
+	
 	<!-- 모임 리스트 가져오기 -->
 	<select id="gatheringListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo">
 	    SELECT a.*, b.*, COALESCE(c.gwidx, 0) AS gwidx

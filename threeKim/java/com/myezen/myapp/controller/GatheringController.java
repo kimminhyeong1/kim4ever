@@ -101,11 +101,42 @@ public class GatheringController {
 	    System.out.println(gjv.getgInfoJoinType());
 	    
 		int value = gs.gatheringCreate(gjv,GTImg,GImg);
-		
-		request.setAttribute("gidx", gjv.getGidx());
 		 
 		return "redirect:/gathering/gList.do";
 	}
+//모임수정하기페이지	
+	@RequestMapping(value="/gModify.do")
+	public String gModify(
+			HttpServletRequest request,
+			Model md
+			) {
+		HttpSession session = request.getSession();
+	    Object Ogiidx = session.getAttribute("giidx");
+	    int giidx = (int)Ogiidx;
+		//모임수정리스트가져오기 
+		ArrayList<GatheringJoinVo> gjvlist = gs.gatheringModifyList(giidx);
+		md.addAttribute("gjvlist", gjvlist);
+		return "gathering/gModify";
+	}
+	@RequestMapping(value="/gModifyAction.do")
+	public String gModifyAction(
+			@ModelAttribute GatheringJoinVo gjv,
+			@RequestParam("GTImg") MultipartFile GTImg,//업데이트
+			@RequestParam("GImgU") ArrayList<MultipartFile> GImgU,//업데이트
+			@RequestParam("GImgI") ArrayList<MultipartFile> GImgI,//인설트
+			HttpServletRequest request
+			) throws IOException, Exception {
+		HttpSession session = request.getSession();
+	    Object Ogiidx = session.getAttribute("giidx");
+	    gjv.setGiidx((int)Ogiidx);
+	   
+	    System.out.println(gjv.getgInfoJoinType());
+	    
+		int value = gs.gatheringModify(gjv,GTImg,GImgU,GImgI); //업데이트 메소드로 바꾸기
+		
+		 
+		return "redirect:/gathering/gList.do";
+	}	
 //모임명 중복체크
 	@ResponseBody
 	@RequestMapping(value = "/gInfoNameCheck.do")
@@ -867,12 +898,7 @@ public class GatheringController {
 	
 	
 	
-	//모임 수정
-	@RequestMapping(value="/gModify.do")
-	public String gModify() {
-		
-		return "gathering/gModify";
-	}	
+
 //내 모임 정보
 	@RequestMapping(value="/gMyPage.do")
 	public String gMyPage(

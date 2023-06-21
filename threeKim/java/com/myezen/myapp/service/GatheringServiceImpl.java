@@ -100,6 +100,58 @@ public class GatheringServiceImpl implements GatheringService {
 
 		return value;
 	}
+	@Override
+	@Transactional
+	//모임수정하기
+    public int gatheringModify(GatheringJoinVo gjv, MultipartFile GTImg, ArrayList<MultipartFile> GImgU,ArrayList<MultipartFile> GImgI) throws IOException, Exception {
+		
+		int value=0;
+		int imidx=0;
+		
+		//배포했을때
+        //String savedGTImgPath = request.getSession().getServletContext().getRealPath("/resources/GTImages");
+		//String savedGImgPath = request.getSession().getServletContext().getRealPath("/resources/GImages");
+        String savedGTImgPath = "D://threekim//threeKim//src//main//webapp//resources/GTImages";//모임대표이미지
+        String savedGImgPath = "D://threekim//threeKim//src//main//webapp//resources/GImages";//모임이미지
+
+		/*모임수정*/
+		//1.모임정보업데이트
+        value = gsm.gatheringInfoModify(gjv);
+        //2.모임 대표이미지 넣기
+        if (GTImg.isEmpty()) {
+        	System.out.println(GTImg);
+        } else {
+        	String uploadedGTImgName  = UploadFileUtiles.uploadFile(savedGTImgPath, GTImg.getOriginalFilename(), GTImg.getBytes());
+        	gjv.setImageName(uploadedGTImgName);
+        	value = gsm.gatheringGTUpdate(gjv);	
+        }
+        //3. 모임 이미지들 넣기 업데이트
+        for (MultipartFile GU : GImgU) {
+        	if (GU.isEmpty()) {
+	            System.out.println(GU); 
+	        } else {
+                String uploadedGImgName = UploadFileUtiles.uploadFile(savedGImgPath, GU.getOriginalFilename(), GU.getBytes());
+                gjv.setImageName(uploadedGImgName); 
+                //이미지고유번호 가져오기
+            	imidx = gsm.gatheringGSelect(gjv); //날짜도 변경
+            	gjv.setImidx(imidx);
+	        	value = gsm.gatheringGUpdate(gjv);
+	        }
+        }
+        //4. 모임 이미지들 넣기 인설트
+        for (MultipartFile GI : GImgI) {
+        	if (GI.isEmpty()) {
+	            System.out.println(GI);
+	        } else {
+                String uploadedGImgName = UploadFileUtiles.uploadFile(savedGImgPath, GI.getOriginalFilename(), GI.getBytes());
+                gjv.setImageName(uploadedGImgName); 
+	        	value = gsm.gatheringGInsert(gjv);
+	        }
+        }
+
+        
+        return value;
+	}
 	
 	//모임명 중복체크
 	@Override
@@ -107,6 +159,12 @@ public class GatheringServiceImpl implements GatheringService {
 		int value = gsm.gInfoNameCheck(gInfoName);
 		return value;
 
+	}
+	@Override
+	//모임수정리스트가져오기
+	public ArrayList<GatheringJoinVo> gatheringModifyList(int giidx) {
+		ArrayList<GatheringJoinVo> gjv = gsm.gatheringModifyList(giidx);
+		return gjv;
 	}
 	
 	
@@ -182,9 +240,9 @@ public class GatheringServiceImpl implements GatheringService {
 		 int gInfoCapacity = gsm.gatheringInfoCapacityCheck(giidx);//모임 정원수 
 		 int gInfoParticipating = gsm.gatheringInfoParticipatingCheck(giidx);//모임 참여멤버 수
 		 if (gInfoParticipating < gInfoCapacity) {
-			 System.out.println("모임인원수가 꽉찼습니다."+gInfoCapacity+""+gInfoParticipating);
 			 return 1;
 		} 
+		 System.out.println("모임인원수가 꽉찼습니다."+gInfoCapacity+""+gInfoParticipating);
 		 return 0;
 	}
 	
@@ -749,6 +807,10 @@ public class GatheringServiceImpl implements GatheringService {
 	public int gatheringPhotoAlbumListSelectAll(SearchCriteria scri) {
 		return gsm.gatheringPhotoAlbumListSelectAll(scri);
 	}
+
+
+
+
 
 
 
