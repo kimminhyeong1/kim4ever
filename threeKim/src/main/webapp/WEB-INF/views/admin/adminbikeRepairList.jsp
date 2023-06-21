@@ -89,7 +89,7 @@ a{color:inherit; text-decoration:none;}
 				</tr>
 			<c:forEach var="ejv" items="${elist}">
 					<tr>
-						<td>${ejv.eidx }</td>						
+						<td>${ejv.eidx}</td>						
 						<td>${ejv.bikeType}</td>
 						<td>${ejv.bikeCode}</td>  
 						<td>${ejv.errorContent}</td>
