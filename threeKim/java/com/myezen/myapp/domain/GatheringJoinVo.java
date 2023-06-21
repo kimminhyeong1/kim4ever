@@ -109,7 +109,33 @@ public class GatheringJoinVo {//모임조인
 	private String gPhotoAlbumWriteDay;//모임 사진첩 작성일
 	private String gPhotoAlbumDelDay;//모임 사진첩 삭제일
 	private String gPhotoAlbumDelYN;//모임 사진첩 삭제 여부
-	
+	private String gPhotoAlbumContents1;
+	private String gPhotoAlbumContents0;
+	private String gPhotoAlbumContents2;
+	public String getgPhotoAlbumContents0() {
+		return gPhotoAlbumContents0;
+	}
+
+	public void setgPhotoAlbumContents0(String gPhotoAlbumContents0) {
+		this.gPhotoAlbumContents0 = gPhotoAlbumContents0;
+	}
+
+	public String getgPhotoAlbumContents1() {
+		return gPhotoAlbumContents1;
+	}
+
+	public void setgPhotoAlbumContents1(String gPhotoAlbumContents1) {
+		this.gPhotoAlbumContents1 = gPhotoAlbumContents1;
+	}
+
+	public String getgPhotoAlbumContents2() {
+		return gPhotoAlbumContents2;
+	}
+
+	public void setgPhotoAlbumContents2(String gPhotoAlbumContents2) {
+		this.gPhotoAlbumContents2 = gPhotoAlbumContents2;
+	}
+
 	//모임일정
 	private int gsidx;//모임 일정 번호
 	//private int giidx;//모임 정보 번호

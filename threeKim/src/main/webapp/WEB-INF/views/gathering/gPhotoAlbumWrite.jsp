@@ -56,15 +56,40 @@
                         <th>대표 이미지</th>
                         <td><input type="file" id="image" name="GATImg" /></td>
                     </tr>
-                      <tr>
-                        <th>이미지</th>
+                    
+                    <tr>
+                        <th>이미지1</th>
                         <td><input type="file" id="image" name="GAImg" required multiple /></td>
                     </tr>
                     
                     <tr>
-                    	<th>내용글</th>
+                    	<th>내용글1</th>
                     	<td>
-                    		<input type="text" id="gPhotoAlbumContents" name="gPhotoAlbumContents"> 
+                    		<input type="text" id="gPhotoAlbumContents" name="gPhotoAlbumContents0"> 
+                    	</td>
+                    </tr>
+                    
+                     <tr>
+                        <th>이미지2</th>
+                        <td><input type="file" id="image" name="GAImg" required multiple /></td>
+                    </tr>
+                    
+                    <tr>
+                    	<th>내용글2</th>
+                    	<td>
+                    		<input type="text" id="gPhotoAlbumContents" name="gPhotoAlbumContents1"> 
+                    	</td>
+                    </tr>
+                    
+                     <tr>
+                        <th>이미지3</th>
+                        <td><input type="file" id="image" name="GAImg" required multiple /></td>
+                    </tr>
+                    
+                    <tr>
+                    	<th>내용글3</th>
+                    	<td>
+                    		<input type="text" id="gPhotoAlbumContents" name="gPhotoAlbumContents2"> 
                     	</td>
                     </tr>
                 </table>
