@@ -15,6 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.ibatis.session.SqlSession;
@@ -179,9 +180,34 @@ public class GatheringServiceImpl implements GatheringService {
 
 	@Override
 	//모임 리스트 더보기 
-	public ArrayList<GatheringJoinVo> getMoreGjvList(int offset) {
-		ArrayList<GatheringJoinVo> moreGjvList = gsm.getMoreGatheringList(offset);
-		return moreGjvList;
+	public ArrayList<GatheringJoinVo> getMoreGjvList(int offset,HttpServletRequest request,String URI) {
+		
+    	String gList = request.getContextPath() + "/gathering/gList.do";
+    	String gMyPage = request.getContextPath() + "/gathering/gMyPage.do";
+    	String gMyWish = request.getContextPath() + "/gathering/gMyWish.do";
+    	HttpSession session = request.getSession();
+    	//모임 메인 리스트
+    	if (URI.equals(gList)) {
+    		ArrayList<GatheringJoinVo> moreGjvList = gsm.getMoreGatheringList(offset);
+    		return moreGjvList;
+		}
+    	//모임 나의 리스트
+    	if (URI.equals(gMyPage)) {
+    		 Object omidx = session.getAttribute("midx");
+    		 int midx = (int)omidx;
+    		ArrayList<GatheringJoinVo> moreGjvList = gsm.getMoreGatheringMyListSelect(offset,midx);
+    		return moreGjvList;
+		}
+    	//모임 나의 찜 리스트
+    	if (URI.equals(gMyWish)) {
+    		Object omidx = session.getAttribute("midx");
+   		 	int midx = (int)omidx;
+    		ArrayList<GatheringJoinVo> moreGjvList = gsm.getMoreGatheringMyWishListSelect(offset,midx);
+    		return moreGjvList;
+		}
+		
+    	ArrayList<GatheringJoinVo> error= new ArrayList<GatheringJoinVo>();
+		return error;
 	}
 
 

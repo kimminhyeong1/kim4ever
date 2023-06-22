@@ -56,7 +56,7 @@
 				<h2>전주 모임 보기</h2>
 			</div>
 			<div class="gContent" >
-			 <c:if test="${not empty midx}">
+
 						<c:forEach var="gjvmy" items="${gjvmylist}">
 							<div class="card" >
 								<img class="cardImg" src="../resources/GTImages/${gjvmy.imageName}">
@@ -71,11 +71,11 @@
 								<h3 class="cardTitle">${gjvmy.gInfoName}</h3>
 								<p class="cardInfo">${gjvmy.gInfoBriefIntroduction}</p>
 								<p class="attend">(참여멤버${gjvmy.gInfoParticipating}/${gjvmy.gInfoCapacity})</p>
-								<button class="gBtn" onclick="delayedRedirect('${pageContext.request.contextPath}/gathering/gContent.do?giidx=${gjvmy.giidx}, 700)">구경하기</button><!-- 버튼딜레이 -->						
+								<button class="gBtn" onclick="delayedRedirect('${pageContext.request.contextPath}/gathering/gSimpleInfo.do?giidx=${gjvmy.giidx}', 50)">구경하기</button><!-- 버튼딜레이 -->						
 								
 							</div>
 						</c:forEach>
-			</c:if>
+
 			</div>
 				
 			<div><button class="gBtn2" >더보기</button></div>
