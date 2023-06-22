@@ -151,12 +151,14 @@ public class MemberServiceImpl implements MemberService {
 	public String memberIdFind(String memberName, String memberEmail, String mailKey) {
 		
 		int value1 = msm.memberMailAuthMatch(mailKey,memberEmail);//인증키 대조
-
-		String mId = msm.memberIdFind(memberName,memberEmail);//아이디 뽑아오기
+		if (value1 == 1) {
+			String mId = msm.memberIdFind(memberName,memberEmail);//아이디 뽑아오기
+			int value2 = msm.memberMailAuthKeyDel(mailKey,memberEmail);//인증키 삭제
+			return mId;
+			
+		}
+		return null;
 		
-		int value2 = msm.memberMailAuthKeyDel(mailKey,memberEmail);//인증키 삭제
-		
-		return mId;
 	}
 	//비밀번호찾기 1.대조
 	@Override
@@ -169,10 +171,14 @@ public class MemberServiceImpl implements MemberService {
 	@Transactional
 	public int memberPwdFindMatch(String memberId, String memberName, String memberEmail, String mailKey) {
 		int value1 = msm.memberMailAuthMatch(mailKey,memberEmail);//인증키 대조
-
+		if (value1==0) {
+			return 0;
+		}
 		int value2 = msm.memberPwdFindMatch(memberId, memberName, memberEmail);//맞는지 대조
-		
-		return value2;
+		if (value2==0) {
+			return 0;
+		}
+		return 1;
 	}
 	//비밀번호찾기 3.재설정
 	@Override
