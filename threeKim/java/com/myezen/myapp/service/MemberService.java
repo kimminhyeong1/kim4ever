@@ -16,6 +16,19 @@ public interface MemberService {
 	public int memberIdCheck(String memberId);
 //회원가입부분 이메일 중복체크
 	public int memberEmailCheck(String memberEmail);
+//회원가입	휴대폰번호,인증번호 데이터베이스에 저장
+	public void savePhoneNumberVerification(BikeJoinVo bjv);
+//회원가입	인증번호를 받아서 일치 여부 확인
+	public boolean verifyPhoneNumber(String userPhoneNumber, int randomNumber);
+//회원가입	휴대폰 번호를 받아서 해당 번호에 대해 저장된 인증번호를 가져오는 역할
+	public int getSavedRandomNumber(String userPhoneNumber);	
+//회원가입	휴대폰 인증완료 -> 인증상태 Y로 변경
+	public void updateVerificationStatus(String userPhoneNumber);
+//회원가입	이메일 인증 일치 여부 확인
+	public boolean joinEmailCheck (String mail_key, String memberEmail);
+	
+	
+	
 //로그인
 	public MemberVo memberLogin(String memberId);
 //로그인 에서 이용중인 내역 가져오기

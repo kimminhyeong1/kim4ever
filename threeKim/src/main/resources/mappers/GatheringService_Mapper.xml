@@ -112,7 +112,18 @@
 		JOIN GATHERING1234 c ON c.GIIDX = a.GIIDX
 		LEFT JOIN gathering_wish1234 d ON d.GIIDX = a.GIIDX
 		WHERE b.IMGTYPE = 'GT' AND c.midx = #{0} AND a.GINFODELYN = 'N'
+		LIMIT 4
 	</select>
+	<!-- 모임 나의 리스트  더 가져오기  -->
+    <select id="getMoreGatheringMyListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo">
+	    SELECT a.GIIDX,a.GINFONAME,a.GINFOBRIEFINTRODUCTION,a.GINFOCAPACITY,a.GINFOPARTICIPATING,b.IMAGENAME, COALESCE(d.gwidx, 0) AS gwidx, c.GATHERINGAPPROVALTYPE 
+		FROM GATHERING_INFO1234 a
+		JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
+		JOIN GATHERING1234 c ON c.GIIDX = a.GIIDX
+		LEFT JOIN gathering_wish1234 d ON d.GIIDX = a.GIIDX
+		WHERE b.IMGTYPE = 'GT' AND c.midx = #{1} AND a.GINFODELYN = 'N'
+	    LIMIT #{0}, 4
+    </select>
 	<!--  모임 소개페이지 리스트 가져오기 -->
 	<select id="gatheringOneSimpleListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int"> 
 		SELECT * FROM GATHERING_INFO1234 a
@@ -212,7 +223,18 @@
 		JOIN GATHERING1234 c ON c.GIIDX = a.GIIDX
 		JOIN gathering_wish1234 d ON d.GIIDX = a.GIIDX
 		WHERE b.IMGTYPE = 'GT' AND c.midx = #{0} AND a.GINFODELYN = 'N'
-	</select>	
+		LIMIT 4
+	</select>
+	<!-- 모임 나의 찜 리스트 더 가져오기  -->
+    <select id="getMoreGatheringMyWishListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo">
+	    SELECT a.GIIDX,a.GINFONAME,a.GINFOBRIEFINTRODUCTION,a.GINFOCAPACITY,a.GINFOPARTICIPATING,b.IMAGENAME, COALESCE(d.gwidx, 0) AS gwidx , c.GATHERINGAPPROVALTYPE 
+		FROM GATHERING_INFO1234 a
+		JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
+		JOIN GATHERING1234 c ON c.GIIDX = a.GIIDX
+		JOIN gathering_wish1234 d ON d.GIIDX = a.GIIDX
+		WHERE b.IMGTYPE = 'GT' AND c.midx = #{1} AND a.GINFODELYN = 'N'
+	    LIMIT #{0}, 4
+    </select>	
 	<!-- 모임 검색기능 -->
 	<select id="searchGatherings" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="com.myezen.myapp.domain.SearchCriteria">
 	   	SELECT a.GIIDX, a.GINFONAME, a.GINFOBRIEFINTRODUCTION, a.GINFOCAPACITY, a.GINFOPARTICIPATING, b.IMAGENAME,COALESCE(d.gwidx, 0) AS gwidx 
@@ -226,6 +248,22 @@
 	     AND a.GINFONAME LIKE CONCAT('%', #{keyword}, '%')
 	    </if>
 	     GROUP BY a.GIIDX, a.GINFONAME, a.GINFOBRIEFINTRODUCTION, a.GINFOCAPACITY, a.GINFOPARTICIPATING, b.IMAGENAME, COALESCE(d.gwidx, 0)
+	     LIMIT 8
+	</select>
+	<!-- 모임 검색기능 더보기 -->
+	<select id="getMoreSearchGatherings" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="java.util.HashMap">
+	   	SELECT a.GIIDX, a.GINFONAME, a.GINFOBRIEFINTRODUCTION, a.GINFOCAPACITY, a.GINFOPARTICIPATING, b.IMAGENAME,COALESCE(d.gwidx, 0) AS gwidx 
+	    FROM GATHERING_INFO1234 a
+	    JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
+	    JOIN GATHERING1234 c ON c.GIIDX = a.GIIDX
+	    LEFT JOIN gathering_wish1234 d ON d.GIIDX = a.GIIDX
+	    JOIN MEMBER1234 e ON e.midx = c.midx
+	    WHERE b.IMGTYPE = 'GT' AND a.GINFODELYN = 'N' AND e.memberdelyn='N' 
+	     <if test="scri.keyword != null">
+	     AND a.GINFONAME LIKE CONCAT('%', #{scri.keyword}, '%')
+	    </if>
+	     GROUP BY a.GIIDX, a.GINFONAME, a.GINFOBRIEFINTRODUCTION, a.GINFOCAPACITY, a.GINFOPARTICIPATING, b.IMAGENAME, COALESCE(d.gwidx, 0)
+	      LIMIT #{offset}, 8
 	</select>
 	
 
@@ -531,9 +569,6 @@
 		UPDATE GATHERING1234 SET GATHERINGMEMBERTYPE = 'TL' WHERE giidx = #{1} AND midx = #{0}
 		</update>
 		
-		
-
-
 	<!--  모임 더보기 모임원 추방으로 변경 -->
 		<delete id="updateMemberDELYN" parameterType="int">
 	    	DELETE FROM GATHERING1234 WHERE giidx = #{0} AND midx = #{1}
@@ -558,6 +593,7 @@
 		VALUES(#{giidx},#{midx},#{gPhotoAlbumTitle},#{gPhotoAlbumLikeCNT},#{gPhotoAlbumContents0},#{gPhotoAlbumContents1},#{gPhotoAlbumContents2},NOW(),'N')
 	</insert>
 	
+	<!-- gpaidx값 조회 -->
 	<select id="gatheringPhotoAlbumGetGpaidx" parameterType="com.myezen.myapp.domain.GatheringJoinVo" resultType="int">
 		select gpaidx from gathering_photoalbum1234 WHERE gpaidx = LAST_INSERT_ID()
 	</select>
@@ -570,7 +606,7 @@
 	<!-- 사진첩 모임 이미지 넣기-->
 	<insert  id="gatheringPhotoGAInsert" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
 		INSERT INTO IMAGE1234 (IMAGENAME,MIDX,GIIDX,GPAIDX,IMGTYPE,IMGCREATIONDAY)
-		VALUES(#{imageName},#{midx},#{giidx},#{gpaidx},'GA',NOW())
+		VALUES(#{imageName},#{midx},#{giidx},#{gpaidx},'GA',NOW(6))
 	</insert>
 	
 	<!-- 사진첩 리스트 조회 -->
@@ -612,9 +648,24 @@
 		AND a.gpaidx = #{gpaidx}
 	</select>
 	
+	<!-- 사진첩 좋아요 확인 -->
+	<select id="gatheringPhotoAlbumLikeCheck" parameterType="com.myezen.myapp.domain.GatheringJoinVo" resultType="int">
+		select count(*) as cnt from gathering_photoalbumlike1234 where gpaidx = #{gpaidx} and midx = #{midx}
+	</select>
+	<!-- 사진첩 좋아요 테이블 넣기-->
+	<insert  id="gatheringPhotoAlbumLikeInsert" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
+		INSERT INTO gathering_photoalbumlike1234 (gpaidx,midx)
+		VALUES(#{gpaidx},#{midx})
+	</insert>
+    <!--  사진첩 좋아요 증가 -->
+    <update id="gatheringPhotoAlbumLike" parameterType="com.myezen.myapp.domain.GatheringJoinVo">
+    	UPDATE gathering_photoalbum1234 SET gPhotoAlbumLikeCNT = gPhotoAlbumLikeCNT + 1 where gpaidx= #{gpaidx}
+	</update>
+	
+	
 	<!--  사진첩  게시글 수정 조회 -->
 	<select id="gatheringPhotoAlbumModify" resultType="com.myezen.myapp.domain.GatheringJoinVo">
-    	SELECT a.gpaidx, a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, a.GPHOTOALBUMCONTENTS, b.imgtype, b.imageName
+    	SELECT a.gpaidx, a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, a.GPHOTOALBUMCONTENTS0 ,a.GPHOTOALBUMCONTENTS1,a.GPHOTOALBUMCONTENTS2, b.imgtype, b.imageName
 		FROM gathering_photoalbum1234 a
 		JOIN image1234 b ON a.giidx = b.GIIDX AND a.gpaidx = b.gpaidx
 		WHERE b.imgtype = 'GA'
@@ -624,7 +675,7 @@
 	<!--  사진첩 게시글 수정 작성 -->
 	<update id="gatheringPhotoAlbumModifyUpdate" parameterType="com.myezen.myapp.domain.GatheringJoinVo">
 		UPDATE GATHERING_PHOTOALBUM1234
-		SET gPhotoAlbumTitle = #{gPhotoAlbumTitle}, gPhotoAlbumContents = #{gPhotoAlbumContents}, gpaidx = #{gpaidx}
+		SET gPhotoAlbumTitle = #{gPhotoAlbumTitle}, gPhotoAlbumContents0 = #{gPhotoAlbumContents0}, gPhotoAlbumContents1 = #{gPhotoAlbumContents1},gPhotoAlbumContents2 = #{gPhotoAlbumContents2}, gpaidx = #{gpaidx}
 		WHERE gpaidx = #{gpaidx}
 	</update>
 	
@@ -635,11 +686,16 @@
   	WHERE GPAIDX = #{gpaidx} AND IMGTYPE = 'GAT'
 	</update>
 	
+	<!-- 모임수정 //이미지고유번호 가져오기-->
+	<select id="gatheringGASelect" parameterType="com.myezen.myapp.domain.GatheringJoinVo" resultType="int">
+		select imidx as imidx from image1234 a where gpaidx = #{gpaidx}  and imgType = 'GA' order by ImgCreationDay asc limit 1
+	</select>
+	
 	<!-- 사진첩 모임 이미지 업데이트 -->
 	<update id="gatheringPhotoGAUpdate" parameterType="com.myezen.myapp.domain.GatheringJoinVo">
 	   UPDATE IMAGE1234
-	  SET IMAGENAME = #{imageName}
-	  WHERE GPAIDX = #{gpaidx} AND IMGTYPE = 'GA'
+	  SET IMAGENAME = #{imageName} , IMGCREATIONDAY = NOW(6)
+	  WHERE imidx = #{imidx} AND IMGTYPE = 'GA'
 	</update>
 	
 	<!-- 사진첩 삭제 -->

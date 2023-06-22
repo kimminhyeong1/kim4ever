@@ -7,7 +7,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시글 삭제</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
 /*리셋코드*/ 
 *{margin:0;padding:0;}
@@ -52,6 +54,33 @@ li{list-style:none;}
 #btn{text-align:right; margin-top:20px; margin-right:144px; }
 #btn button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+
+/**************************모바일****************************************/
+
+
+@media (min-width: 300px) and (max-width: 940px)  {
+#main{width:400px; margin:35px auto 70px; text-align:center;}
+#main #content{width:100%; height:auto;}
+#main #content h2{text-align:left; margin-top:50px; margin-left:160px; font-family: 'GangwonEdu_OTFBoldA'; font-size:20px;}
+#main #bottom{width:auto; height:300px;}
+#content table {width:250px; border-collapse:collapse; margin: 60px auto 0; line-height:30px; font-size:24px; font-family: 'omyu_pretty';}
+#content table th{width:140px;padding: 10px;text-align: center;}
+#content table td{padding: 10px; text-align:left; border-left:1px solid #ddd;}
+#content table tr{border:1px solid #ddd;}
+#content table input[type="text"],[type="password"],textarea{
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  margin: 2px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+#btn{text-align:right; margin-top:20px; margin-right:19%; }
+#btn button{width:80px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+#btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+
+
+}
 </style>
 
 

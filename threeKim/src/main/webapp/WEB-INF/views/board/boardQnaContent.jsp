@@ -190,7 +190,6 @@ $(document).ready(function() {
 			</form>
 		</div>
 </div>
-		<div id="bottom"></div>
 
 </body>
 <!-- <%@include file="../footer.jsp" %> -->

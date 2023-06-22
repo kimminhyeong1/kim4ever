@@ -74,7 +74,7 @@ li{list-style:none;}
 	/*****************************************모바일***************************************************************/
 		
 	@media (min-width: 300px) and (max-width: 940px)  {	
-	#main{width:auto; min-height:760px; margin:0 auto; text-align:center;}
+	#main{width:auto; min-height:640px; margin:0 auto; text-align:center;}
 #main #content{width:auto; height:auto;}
 #main #content h2{text-align:left; margin-top:50px; margin-left:16px; margin-left:10%;font-family: 'GangwonEdu_OTFBoldA'; font-size:15px; }
 #main #bottom{width:auto; height:10px;}
@@ -210,7 +210,7 @@ li{list-style:none;}
 				        <a href="${pageContext.request.contextPath}/board/boardList.do?page=${pm.startPage-1}">◀</a>
 				      </c:if>
 				    </td>
-				    <td style="text-align: center; width: 300px; font-size:30px;">
+				    <td style="text-align: center; width: 300px; font-size:20px;">
 				         <c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}" step="1">
 				        <a href="${pageContext.request.contextPath}/board/boardList.do?page=${i}">${i}</a>
 				      </c:forEach>
@@ -327,7 +327,6 @@ document.addEventListener("DOMContentLoaded", function() {
 		</div>
 
 
-		<div id="bottom"></div>
 	</div>
 </body>
 <%@include file="../footer.jsp"%>

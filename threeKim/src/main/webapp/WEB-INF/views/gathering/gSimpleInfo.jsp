@@ -135,7 +135,7 @@
 							<button onclick="location.href='${pageContext.request.contextPath}/gathering/gSimpleInfoAction.do?giidx=${giidx}'">가입하기</button>
 						</c:otherwise>
 					</c:choose>			
-					<button onclick="location.href='${pageContext.request.contextPath}/gathering/gatheringList.do'">돌아가기</button>
+					<button onclick="location.href='${pageContext.request.contextPath}/gathering/gList.do'">돌아가기</button>
 				</div>
 			</div>
 		</main>

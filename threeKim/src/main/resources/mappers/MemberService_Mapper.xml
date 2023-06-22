@@ -16,6 +16,49 @@
 	<select id="memberEmailCheck" parameterType="String" resultType="int">
 		select count(*) from member1234 where MEMBERDELYN='N' and memberEmail=#{memberEmail}
 	</select>
+
+	
+	<!-- 회원가입 휴대폰 인증 -->
+		<!-- 휴대폰 번호, 인증번호 데이터베이스에 저장 -->
+		<insert id="savePhoneNumberVerification" parameterType="com.myezen.myapp.domain.BikeJoinVo">
+		    INSERT INTO PHONE1234 (PHONENUMBER, VERIFICATIONCODE)
+		    VALUES (#{phoneNumber}, #{verificationCode})
+		</insert>
+		
+		<!-- 인증번호를 받아서 일치 여부 확인 -->
+		<select id="verifyPhoneNumber" parameterType="java.util.HashMap" resultType="boolean">		 
+		    SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+			FROM PHONE1234
+			WHERE PHONENUMBER = #{userPhoneNumber}
+			AND VERIFICATIONCODE = #{randomNumber}
+			AND VERIFICATIONSTATUS = 'N';
+		</select>
+		
+		<!-- 휴대폰 번호를 받아서 해당 번호에 대해 저장된 인증번호를 가져옴 -->
+		<select id="getSavedRandomNumber" parameterType="java.lang.String" resultType="int">
+			SELECT VERIFICATIONCODE
+			FROM PHONE1234
+			WHERE PHONENUMBER = #{userPhoneNumber}
+			  AND VERIFICATIONSTATUS = 'N'
+			ORDER BY CREATED_AT DESC
+			LIMIT 1;	<!-- FETCH FIRST 1 ROW ONLY를 MySQL에서 사용하는 LIMIT 1로 변경 해야 함 -->
+		</select>
+	
+		<!-- 인증 했을 때 Y로 업데이트 -->
+		<update id="updateVerificationStatus" parameterType="java.lang.String">
+		 UPDATE PHONE1234
+		    SET VERIFICATIONCODE = null,
+		        VERIFICATIONSTATUS = 'Y'
+		    WHERE PHONENUMBER = #{userPhoneNumber}
+		</update>
+	<!-- 회원가입 이메일 인증 할 때 인증번호 대조 -->
+	<select id="joinEmailCheck" parameterType="String" resultType="boolean">
+		SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+		from mailAuth1234
+		where mail_key = #{0}
+		 AND memberEmail = #{1}
+	</select>
+
 	
 	<!-- 로그인에서 아이디찾기 -->
 	<select id="memberIdFind" parameterType="String" resultType="String">

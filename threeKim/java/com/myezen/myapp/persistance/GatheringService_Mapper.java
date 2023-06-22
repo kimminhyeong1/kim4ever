@@ -55,8 +55,16 @@ public interface GatheringService_Mapper {
 	public ArrayList<GatheringJoinVo> gatheringListSelect();
 	//모임 리스트 더보기 
 	public ArrayList<GatheringJoinVo> getMoreGatheringList(int offset);
+
 	// 이전 데이터를 제외한 새로운 데이터 가져오기
 	public List<GatheringJoinVo> getNewData(List<Integer> excludedData);
+
+	//모임 나의 리스트 더보기
+	public ArrayList<GatheringJoinVo> getMoreGatheringMyListSelect(int offset,int midx);
+	//모임 나의 찜 리스트 더보기
+	public ArrayList<GatheringJoinVo> getMoreGatheringMyWishListSelect(int offset,int midx);
+	//모임 검색 리스트 더보기
+	public ArrayList<GatheringJoinVo> getMoreSearchGatherings(HashMap<String, Object> hm);
 	//모임 나의리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringMyListSelect(int midx);
 	//모임 소개페이지 리스트 가져오기
@@ -223,10 +231,19 @@ public interface GatheringService_Mapper {
 	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelectOne(int gpaidx);
 	//모임사진첩 수정하기 조회
 	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumModify(int gpaidx);
+	
+	public int gatheringPhotoAlbumLikeCheck(GatheringJoinVo gjv);
+	//좋아요 테이블에 넣기
+	public int gatheringPhotoAlbumLikeInsert(GatheringJoinVo gjv);
+	//좋아요 업데이트
+	public int gatheringPhotoAlbumLike(GatheringJoinVo gjv);
+	
 	//모임사진첩 수정하기
 	public int gatheringPhotoAlbumModifyUpdate(GatheringJoinVo gjv);
 	//모임사진첩 수정하기(대표이미지 업데이트)
 	public int gatheringPhotoGATUpdate(GatheringJoinVo gjv);
+	//이미지고유번호 가져오기	
+	public int gatheringGASelect(GatheringJoinVo gjv);
 	//모임사진첩 수정하기(이미지 업데이트)
 	public int gatheringPhotoGAUpdate(GatheringJoinVo gjv);
 	//모임사진첩 삭제하기

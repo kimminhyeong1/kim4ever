@@ -5,7 +5,7 @@
 
 <style>
 /*리셋코드*/
-*{margin:0;padding:0;}
+*{margin:0;padding:0; word-break:keep-all}
 li{list-style:none;}
 
 /*사이드메뉴바, 로고, 로그인버튼*/
@@ -32,7 +32,7 @@ li{list-style:none;}
 .sub-menu-list li p{color:#000; text-decoration:none; font-weight:bold; font-size: 25px;}
 .sub-menu-list li:hover a {color:#999;text-shadow:none;}
 .sub-menu-list li:first-child {width:450px;border-bottom: 2px solid #ff9933; }
-.sub-menu-list li:nth-child(7){width:450px; border-bottom:2px solid #99CC99; }
+.sub-menu-list li:nth-child(6){width:450px; border-bottom:2px solid #99CC99; }
 
 
 /*사이드바 내부 상단 로그인,회원가입*/
@@ -61,7 +61,7 @@ header{width:auto;margin:0 auto;}
 #top_logo .login {display:flex;justify-content:flex-end;float:right; margin-right:3%}
 #top_logo .login ul {display:flex;list-style:none;margin-top:-5px; padding:0;   flex-direction: column; margin-bottom:5px;}
 #top_logo .login li {margin-left:5px; font-family: 'GangwonEdu_OTFBoldA'; font-size:10px;}
-#top_logo .login a {display:block;padding:3px 5px;margin-top:5px;background-color:white;color:black;border-radius:20px;text-decoration:none;transition:background-color 0.3s ease; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); }
+#top_logo .login a {display:block;padding:3px 5px;margin-top:5px;background:#99CC99; color:black;border-radius:20px;text-decoration:none;transition:background-color 0.3s ease; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); }
 #top_logo .login a:hover {background-color: #666;}
 
 /*사이드바*/

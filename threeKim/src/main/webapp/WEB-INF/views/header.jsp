@@ -7,7 +7,8 @@
 <style>
 /*리셋코드*/
 
-*{margin:0;padding:0;}
+*{margin:0;padding:0; word-break:keep-all;}
+
 li{list-style:none;}
 /*헤더부분 영역*/
 header{width: 1250px;margin: 35px auto 70px;text-align: center;}
@@ -58,7 +59,7 @@ header{width: 1250px;margin: 35px auto 70px;text-align: center;}
  
 /****************************모바일**************************/
 @media (min-width: 300px) and (max-width: 940px)  {
-header{width:auto;margin:0 auto;}
+header{width:auto;margin:0 auto; }
 /*사이드메뉴바, 로고, 로그인버튼*/
 #top_logo{width:auto; height:80px; text-align:center; position:relative; margin-top:15px;}
 #top_logo .logo{display:inline-block; text-align:center; position:absolute; transform:translate(-50%, -50%);}
@@ -66,7 +67,7 @@ header{width:auto;margin:0 auto;}
 #top_logo .login {display:flex;justify-content:flex-end;float:right; margin-right:3%}
 #top_logo .login ul {display:flex;list-style:none;margin-top:-5px; padding:0;   flex-direction: column; margin-bottom:5px;}
 #top_logo .login li {margin-left:5px; font-family: 'GangwonEdu_OTFBoldA'; font-size:10px;}
-#top_logo .login a {display:block;padding:3px 5px;margin-top:5px;background-color:white;color:black;border-radius:20px;text-decoration:none;transition:background-color 0.3s ease; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); }
+#top_logo .login a {display:block;padding:3px 5px;margin-top:5px;background-color:orange;color:black;border-radius:20px;text-decoration:none;transition:background-color 0.3s ease; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); }
 #top_logo .login a:hover {background-color: #666;}
 
 /*사이드바*/
@@ -231,7 +232,7 @@ header{width:auto;margin:0 auto;}
 		</div>
 		<div class="topmenu"  onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">
 			 <img src=" ${pageContext.request.contextPath}/resources/mobile/edit-code.png" alt="게시판" class="hidden_img">
-			 <p>게 시 판</p>	
+			 <p>&nbsp;&nbsp;게 시 판</p>	
 		 </div>
 		 <div  class="topmenu"  onclick="location.href='<%=request.getContextPath()%>/gathering/gList.do'">		
 			  <img src="${pageContext.request.contextPath}/resources/mobile/friendship.png" alt="자전거모임" class="hidden_img">		 

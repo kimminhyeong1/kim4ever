@@ -36,7 +36,7 @@ li{list-style:none;}
 #main #content{width:1440px; height:auto;}
 #main #bottom{width:1440px; height:300px;}
 #main #content h2{text-align:left; margin-top:50px; margin-left:160px; font-family: 'GangwonEdu_OTFBoldA'; font-size:25px;}
-#content table {width:80%; border-collapse:collapse; margin: 60px auto 0; line-height:100px; font-size:24px; font-family: 'omyu_pretty';}
+#content table {width:80%; border-collapse:collapse; margin: 60px auto 0; line-height:30px; font-size:24px; font-family: 'omyu_pretty';}
 #content table th{width:140px;padding: 10px;text-align: center;}
 #content table td{padding: 10px; text-align:left; border-left:1px solid #ddd;}
 #content table tr{border:1px solid #ddd;}
@@ -56,30 +56,62 @@ li{list-style:none;}
 /*****************************************모바일***************************************************************/
 		
 	@media (min-width: 300px) and (max-width: 940px)  {	
-	#main{width:auto; min-height:760px; margin:0 auto; text-align:center;}
+#main{width:auto; margin:0 auto; text-align:center;}
 #main #content{width:auto; height:auto;}
-#main #content h2{text-align:left; margin-top:50px; margin-left:16px; margin-left:10%;font-family: 'GangwonEdu_OTFBoldA'; font-size:15px; }
+#main #content h2{text-align:left; margin-top:30px; margin-left:10%; font-family: 'GangwonEdu_OTFBoldA'; font-size:18px; margin-bottom:10px;}
 #main #bottom{width:auto; height:10px;}
-#content table {width:80vw; border-collapse:collapse; margin:10px auto 0; line-height:13px; font-size:14px; font-family: 'omyu_pretty'; cursor:pointer; }
-#content table th{padding: 10px;text-align: center; }
-#content table td{padding: 5px; text-align:center;border-bottom:1px solid #CCCCCC; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-#content #btn{text-align:right; margin-top:20px; margin-right:5%; }
-#content #btn button{width:50px; height:25px; text-align:center; font-family: 'omyu_pretty'; font-size:12px;  border-radius:7px; border:0px solid #ff9933; background:#ff9933;  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
-#content #btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
-.cell-content {width: 25vw; overflow: hidden; text-overflow: ellipsis;}
+#content table {width:90%; height:auto; border-collapse:collapse; margin: auto; font-size:14px; font-family: 'omyu_pretty' ; border-radius:10px; line-height: 45px;}
+#content table tr{border:1px solid #ddd;}
+#content table th {width:30px; padding:2px; text-align:left; border-right:0px solid #ddd;}
+#content table td {padding:4px;  text-align:left; line-height:12px; }
+#content table tr th {width:50px; text-align:center;  }
+#content table td { white-space: pre-line;}
+#content #btn{text-align:right; margin-top:20px; margin-right:10%; }
+#content #btn button{width:50px; height:25px; margin:0 auto; text-align:center; font-family: 'omyu_pretty'; font-size:14px; border-radius:10px; border:0px solid #ff9933; background:#ff9933; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
+#content #btn button:active {background:#f fcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+.maintext{height: 200px; width: auto; text-align:left;}
+
+
+
 
 </style>
 <script type="text/javascript">
+function validateForm() {
+	  var subject = document.getElementsByName("subject")[0].value;
+	  var content = document.getElementsByName("content")[0].value;
+
+	  if (subject.trim() === '') {
+	    alert("제목을 입력해주세요.");
+	    return false; // 폼 제출 방지
+	  }
+
+	  if (content.trim() === '') {
+	    alert("내용을 입력해주세요.");
+	    return false; // 폼 제출 방지
+	  }
+
+	  return true; // 폼 제출 허용
+	}
+
 	function fnWrite() {
-		var fm = document.frm;
-		if(confirm("글을 등록 하시겠습니까?")) {
-			location.href='<%=request.getContextPath()%>/board/boardList.do';
-		}
-		fm.action = "<%=request.getContextPath()%>/board/boardWriteAction2.do";
-		fm.enctype ="multipart/form-data";
-		fm.method="post";
-		fm.submit();
-	}	
+	  var fm = document.frm;
+	  if (validateForm() === false) {
+	    return false; // 폼 제출 방지
+	  }
+
+	  var confirmResult = confirm("글을 등록 하시겠습니까?");
+	  if (confirmResult) {
+	    fm.action = "<%=request.getContextPath()%>/board/boardWriteAction2.do";
+	    fm.enctype = "multipart/form-data";
+	    fm.method = "post";
+	    fm.submit();
+	  } else {
+	    location.href = '<%=request.getContextPath()%>/board/boardList.do';
+	  }
+
+	  return false; // 페이지 이동 방지
+	}
+
 
 </script>
 
@@ -93,7 +125,7 @@ li{list-style:none;}
 
 		<div id="content">
 			<h2>QnA 게시글 작성</h2>
-						<form name="frm">
+						<form name="frm" onsubmit="return validateForm()">
 <input type="hidden" name="writer" value="	<%= session.getAttribute("memberName") %>"><!-- writer로 저장 -->
 				<table>
 					<tr>
@@ -104,13 +136,12 @@ li{list-style:none;}
 					
 					<tr>
 						<th>제목</th>
-						<td><input type="text" name="subject"
-							></td>
+						<td><input type="text" name="subject"></td>
 					</tr>
 					
 					<tr>
 						<th>내용</th>
-						<td><textarea name="content" cols="100" rows="8"  style="font-size: 26px;"></textarea></td>
+						<td><textarea name="content" cols="50" rows="10" ></textarea></td>
 					</tr>
 					
 					<tr>

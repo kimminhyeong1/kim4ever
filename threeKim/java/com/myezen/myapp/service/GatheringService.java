@@ -44,9 +44,13 @@ public interface GatheringService {
 	//모임 리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringListSelect();
 	//모임 리스트 더보기 
+
 	public ArrayList<GatheringJoinVo> getMoreGjvList(int offset);
 	// 이전 데이터를 제외한 새로운 데이터 가져오기
 	public List<GatheringJoinVo> getNewData(List<Integer> excludedData);
+
+	public ArrayList<GatheringJoinVo> getMoreGjvList(int offset,HttpServletRequest request,String URI,SearchCriteria scri);
+
 	//모임 나의리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringMyListSelect(int midx);
 	//모임 소개페이지 리스트 가져오기
@@ -180,10 +184,12 @@ public interface GatheringService {
 	public int gatheringPhotoAlbumListSelectAll(SearchCriteria scri);
 	//사진첩 상세보기
 	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelectOne(int gpaidx);
+	//사진첩 상세보기 좋아요
+	public int gatheringPhotoAlbumLike(GatheringJoinVo gjv);
 	//사진첩 수정페이지 조회
 	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumModify(int gpaidx);
 	//사진첩 수정하기 
-	public int gatheringPhotoAlbumModifyUpdate(GatheringJoinVo gjv,MultipartFile GTImg, ArrayList<MultipartFile> GImg)throws IOException, Exception;
+	public int gatheringPhotoAlbumModifyUpdate(GatheringJoinVo gjv,MultipartFile GTImg,  ArrayList<MultipartFile> GAImgList)throws IOException, Exception;
 	//사진첩 삭제하기
 	public void deletePhotoAlbum(int midx, int gpaidx);
 	

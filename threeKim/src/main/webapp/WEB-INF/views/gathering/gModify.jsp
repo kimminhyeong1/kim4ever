@@ -144,7 +144,7 @@
 				</div>
 			</div>
 			<div>
-				<button class="gBtn2">만들기</button>				 
+				<button class="gBtn2">수정하기</button>				 
 			</div>
 		</section> 
 		</form>

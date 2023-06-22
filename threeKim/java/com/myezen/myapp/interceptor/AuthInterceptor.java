@@ -20,7 +20,18 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 				//로그인 후 이동할 주소를 담는다
 				saveDest(request);
 				
-				response.sendRedirect(request.getContextPath()+"/member/memberLogin.do");
+				//response.sendRedirect(request.getContextPath()+"/member/memberLogin.do");
+				//request.getRequestDispatcher("/member/memberLogin.do").forward(request, response);
+				if (!response.isCommitted()) { // 응답이 커밋되지 않은 경우에만 리다이렉션 수행
+		            try {
+		                response.sendRedirect(request.getContextPath() + "/member/memberLogin.do");
+		            } catch (IllegalStateException e) {
+		                // 이미 응답이 커밋된 경우 처리
+		                // 응답이 이미 커밋된 경우 예외를 다시 던지거나 로그에 기록하기
+		                e.printStackTrace();
+		            }
+		        }
+		        return false; // 처리 중단
 				
 			}
 			

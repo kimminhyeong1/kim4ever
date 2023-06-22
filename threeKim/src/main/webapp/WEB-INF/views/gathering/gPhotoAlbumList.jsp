@@ -38,10 +38,10 @@
 
  <script>
 window.onload = function() {
-    var alertMessage = "${alertMessage}"; // Flash Attributes에서 알림 메시지를 가져옴
+    var alertMessage = "${alertMessage}"; //알림 메시지를 가져옴
 
     if (alertMessage) {
-        alert(alertMessage); // 알림 메시지를 출력
+        alert(alertMessage); //알림 메시지를 출력
     }
 }
 </script>

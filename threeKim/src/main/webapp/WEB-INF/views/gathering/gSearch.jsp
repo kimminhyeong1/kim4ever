@@ -18,7 +18,7 @@
 		 <style type="text/css">
 		 	/*검색부분*/
 			#SearchPart{margin: 30px 0 30px 0; position: relative;}
-			#SearchPart button{position: absolute;width: 50px; height: 50px;border: 0px;background: 0px; top: 3px; right: 380px;}
+			#SearchPart button{position: absolute;width: 50px; height: 50px;border: 0px;background: 0px; top: 3px; right: 225px;}
 			#SearchPart img{width: 40px; height: 40px;}
 			#keywordMark p{font-size:21px;}
 				/*************************모바일****************************************/
@@ -55,31 +55,27 @@
 			<div class="gContentTitle" >
 				<h2>전주 모임 보기</h2>
 			</div>
-			<div class="gContent" >
-			 <c:if test="${not empty midx}">
-						<c:forEach var="gjvmy" items="${gjvmylist}">
-							<div class="card" >
-								<img class="cardImg" src="../resources/GTImages/${gjvmy.imageName}">
-								<c:choose>
-									<c:when test="${gjvmy.gwidx != 0}">
-										<img class="cardWish" src="../resources/icon/fullheart.png" onclick="handleHeartClick(${gjvmy.giidx}, ${midx}, this)">
-									</c:when>
-									<c:otherwise>
-										<img class="cardWish" src="../resources/icon/heart.png" onclick="handleHeartClick(${gjvmy.giidx}, ${midx}, this)">
-									</c:otherwise>
-								</c:choose>
-								<h3 class="cardTitle">${gjvmy.gInfoName}</h3>
-								<p class="cardInfo">${gjvmy.gInfoBriefIntroduction}</p>
-								<p class="attend">(참여멤버${gjvmy.gInfoParticipating}/${gjvmy.gInfoCapacity})</p>
-								<button class="gBtn" onclick="delayedRedirect('${pageContext.request.contextPath}/gathering/gContent.do?giidx=${gjvmy.giidx}, 700)">구경하기</button><!-- 버튼딜레이 -->						
-								
-							</div>
-						</c:forEach>
-			</c:if>
-			</div>
-				
-			<div><button class="gBtn2" >더보기</button></div>
-			
+				<div class="gContent gContentB" >
+					<c:forEach var="gjv" items="${gjvlist}">
+						<div class="card" >
+							<img class="cardImg" src="../resources/GTImages/${gjv.imageName}">
+							<c:choose>
+								<c:when test="${gjv.gwidx != 0}">
+								<img class="cardWish" src="../resources/icon/fullheart.png" onclick="handleHeartClick(${gjv.giidx}, ${midx}, this)">
+								</c:when>
+								<c:otherwise>
+									<button ><img class="cardWish" src="../resources/icon/heart.png" onclick="handleHeartClick(${gjv.giidx}, ${midx}, this)"></button>
+								</c:otherwise>
+							</c:choose>
+						
+							<h3 class="cardTitle">${gjv.gInfoName}</h3>
+							<p class="cardInfo" id="textContainer">${gjv.gInfoBriefIntroduction}</p>
+							<p class="attend">(참여멤버${gjv.gInfoParticipating}/${gjv.gInfoCapacity})</p> 
+							<button class="gBtn" onclick="delayedRedirect('${pageContext.request.contextPath}/gathering/gSimpleInfo.do?giidx=${gjv.giidx}', 50)">구경하기</button><!-- 버튼딜레이 -->						
+						</div>
+					 </c:forEach>
+				</div>
+				<div><button id="moreButton" class="gBtn2" >더보기</button></div>
 			<div class="gContentTitle" >
 			<h2>근처 모임 보기</h2>
 			</div>
@@ -212,5 +208,37 @@
 					  }
 				
 		</script>
+    	<script>
+	            var offset = 8;
+	            $("#moreButton").click(function() {
+	                $.ajax({
+	                    url: "${pageContext.request.contextPath}/gathering/more.do",
+	                    type: "GET",
+	                    dataType: "json",
+	                    data: {offset: offset , URI: "${pageContext.request.contextPath}/gathering/gSearch.do" , keyword: "${param.keyword}"},
+	                    success: function(data) {
+	                        // 가져온 데이터를 gContent에 추가
+	                        $.each(data, function(index, gjv) {
+                                var card = "<div class='card'>"
+                                    + "<img class='cardImg' src='../resources/GTImages/" + gjv.imageName + "'>"
+                                    + "<img class='cardWish' src='../resources/icon/" + (gjv.gwidx != 0 ? "fullheart.png" : "heart.png") + "' onclick='handleHeartClick(" + gjv.giidx + ", " + ${midx} + ", this)'>"
+                                    + "<h3 class='cardTitle'>" + gjv.gInfoName + "</h3>"
+                                    + "<p class='cardInfo'>" + gjv.gInfoBriefIntroduction + "</p>"
+                                    + "<p class='attend'>(참여멤버 " + gjv.gInfoParticipating + "/" + gjv.gInfoCapacity + ")</p>" 
+                                    + "<button class='gBtn' onclick=\"location.href='${pageContext.request.contextPath}/gathering/gSimpleInfo.do?giidx="+gjv.giidx+"'\">구경하기</button>"
+
+                                    + "</div>";
+                                $(".gContentB").append(card);
+	                        });
+
+	                        //alert(offset);
+	                        offset += 8;
+	                    },
+	                    error: function() {
+	                        alert("더 보기 요청에 실패했습니다.");
+	                    }
+	                });
+	            });
+    </script>		
 	</body>
 </html>

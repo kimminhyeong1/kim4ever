@@ -42,8 +42,7 @@
 			/*페이징 부분*/
 			.gPaging{font-size: 25px;}
 			/*a태그*/
-			a{text-decoration: none; color: #000;}		
-			
+			a{text-decoration: none; color: #000;}					
 			
 			/*************************모바일****************************************/
 				/*****모바일 넓이***/

@@ -78,10 +78,18 @@ public class GatheringController {
 //모임 추천리스트 더보기 
     @RequestMapping("/more.do")
     @ResponseBody
-    public ArrayList<GatheringJoinVo> getMoreGjvList(@RequestParam("offset") int offset) {
-    	System.out.println("더보기");
-    	ArrayList<GatheringJoinVo> moreGjvList = gs.getMoreGjvList(offset);
-        return moreGjvList;
+    public ArrayList<GatheringJoinVo> getMoreGjvList(
+    		@RequestParam("offset") int offset,
+    		@RequestParam("URI") String URI,
+    		SearchCriteria scri,
+    		HttpServletRequest request
+    		) {
+		System.out.println("더보기"+URI);
+		ArrayList<GatheringJoinVo> moreGjvList = gs.getMoreGjvList(offset,request,URI,scri);
+		return moreGjvList;
+		
+		
+		
     }
  // 이전 데이터를 제외한 새로운 데이터 가져오기
     @PostMapping("/getNewData.do")
@@ -92,8 +100,14 @@ public class GatheringController {
     }
 //모임만들기페이지	
 	@RequestMapping(value="/gCreate.do")
-	public String gCreate() {
-		
+	public String gCreate(
+			HttpServletRequest request
+			) {
+		HttpSession session = request.getSession();
+	    Object Omidx = session.getAttribute("midx");
+	    if (Omidx == null) {//midx가 없으면 진입불가
+	    	return "redirect:/member/memberLogin.do";
+		}
 		return "gathering/gCreate";
 	}
 	@RequestMapping(value="/gCreateAction.do")
@@ -104,8 +118,11 @@ public class GatheringController {
 			HttpServletRequest request
 			) throws IOException, Exception {
 		HttpSession session = request.getSession();
-	    int midx = (int) session.getAttribute("midx");
-	    gjv.setMidx(midx);
+	    Object Omidx = session.getAttribute("midx");
+	    if (Omidx == null) {//midx가 없으면 진입불가
+	    	return "redirect:/member/memberLogin.do";
+		}
+	    gjv.setMidx((int)Omidx);
 	   
 	    System.out.println(gjv.getgInfoJoinType());
 	    
@@ -120,7 +137,11 @@ public class GatheringController {
 			Model md
 			) {
 		HttpSession session = request.getSession();
-	    Object Ogiidx = session.getAttribute("giidx");
+		Object Ogiidx = session.getAttribute("giidx");
+	    Object Omidx = session.getAttribute("midx");
+	    if (Omidx == null) {//midx가 없으면 진입불가
+	    	return "redirect:/member/memberLogin.do";
+		}
 	    int giidx = (int)Ogiidx;
 		//모임수정리스트가져오기 
 		ArrayList<GatheringJoinVo> gjvlist = gs.gatheringModifyList(giidx);
@@ -136,7 +157,11 @@ public class GatheringController {
 			HttpServletRequest request
 			) throws IOException, Exception {
 		HttpSession session = request.getSession();
-	    Object Ogiidx = session.getAttribute("giidx");
+		Object Ogiidx = session.getAttribute("giidx");
+	    Object Omidx = session.getAttribute("midx");
+	    if (Omidx == null) {//midx가 없으면 진입불가
+	    	return "redirect:/member/memberLogin.do";
+		}
 	    gjv.setGiidx((int)Ogiidx);
 	   
 	    System.out.println(gjv.getgInfoJoinType());
@@ -168,7 +193,7 @@ public class GatheringController {
 		HttpSession session = request.getSession();
 	    Object omidx = session.getAttribute("midx");
 	    if (omidx == null) {//midx가 없으면 진입불가
-	    	return "redirect:/gathering/gList.do";
+	    	return "redirect:/member/memberLogin.do";
 		}
 	    int midx = (int)omidx;
 	    String gatheringApprovalType = gs.gatheringOneSimpleListCheck(giidx,midx); // 사용자의 모임 승인 값 
@@ -188,7 +213,7 @@ public class GatheringController {
 			HttpSession session = request.getSession();
 		    Object omidx = session.getAttribute("midx");
 		    if (omidx == null) {//midx가 없으면 진입불가
-		    	return "redirect:/gathering/gList.do";
+		    	return "redirect:/member/memberLogin.do";
 			}
 		    int midx = (int)omidx;
 		    //모임 정원수 확인
@@ -211,7 +236,7 @@ public class GatheringController {
 		HttpSession session = request.getSession();
 	    Object Omidx = session.getAttribute("midx");
 	    if (Omidx == null) {//midx가 없으면 진입불가
-	    	return "redirect:/gathering/gList.do";
+	    	return "redirect:/member/memberLogin.do";
 		}
 	    int midx = (int)Omidx;
 	    GatheringVo gmt = gs.gatheringMemberType(giidx,midx);
@@ -235,7 +260,7 @@ public class GatheringController {
 		Object Ogiidx = session.getAttribute("giidx");
 	    Object Omidx = session.getAttribute("midx");
 	    if (Omidx == null) {//midx가 없으면 진입불가
-	    	return "redirect:/gathering/gList.do";
+	    	return "redirect:/member/memberLogin.do";
 		}
 	    int midx = (int)Omidx;
 	    int giidx = (int)Ogiidx;
@@ -274,8 +299,13 @@ public class GatheringController {
 	
 //모임상세보기에서 일정 만들기 페이지
 	@RequestMapping(value="/gScheduleMake.do")
-	public String gScheduleMake() {
-		
+	public String gScheduleMake(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+	    Object Omidx = session.getAttribute("midx");
+	    if (Omidx == null) {//midx가 없으면 진입불가
+	    	return "redirect:/member/memberLogin.do";
+		}
+
 		return "gathering/gScheduleMake";
 	}
 	//일정 만들기 페이지에서 일정 만들기 버튼 클릭
@@ -288,7 +318,7 @@ public class GatheringController {
 		    Object Omidx = session.getAttribute("midx");
 		    Object Ogiidx = session.getAttribute("giidx");
 		    if (Omidx == null) {//midx가 없으면 진입불가
-		    	return "redirect:/gathering/gList.do";
+		    	return "redirect:/member/memberLogin.do";
 			}
 		    gsv.setMidx((int)Omidx);
 		    gsv.setGiidx((int)Ogiidx);
@@ -307,7 +337,7 @@ public class GatheringController {
 		    Object Omidx = session.getAttribute("midx");
 		    Object Ogiidx = session.getAttribute("giidx");
 		    if (Omidx == null) {//midx가 없으면 진입불가
-		    	return "redirect:/gathering/gList.do";
+		    	return "redirect:/member/memberLogin.do";
 			}
 		    int giidx =(int)Ogiidx;
 		    int value = gs.gatheringScheduleDel(giidx,gsidx);
@@ -325,7 +355,7 @@ public class GatheringController {
 	    Object Ogiidx = session.getAttribute("giidx");
 	    Object Omidx = session.getAttribute("midx");
 	    if (Omidx == null) {//midx가 없으면 진입불가
-	    	return "redirect:/gathering/gList.do";
+	    	return "redirect:/member/memberLogin.do";
 		}
 	    int midx = (int)Omidx;
 	    int giidx = (int)Ogiidx;
@@ -355,7 +385,7 @@ public class GatheringController {
 		    Object Ogiidx = session.getAttribute("giidx");
 		    Object Omidx = session.getAttribute("midx");
 		    if (Omidx == null) {//midx가 없으면 진입불가
-		    	return "redirect:/gathering/gList.do";
+		    	return "redirect:/member/memberLogin.do";
 			}
 		    int midx = (int)Omidx;
 		    int giidx = (int)Ogiidx;
@@ -384,7 +414,7 @@ public class GatheringController {
 		    Object Omidx = session.getAttribute("midx");
 		    Object Ogiidx = session.getAttribute("giidx");
 		    if (Omidx == null) {//midx가 없으면 진입불가
-		    	return "redirect:/gathering/gList.do";
+		    	return "redirect:/member/memberLogin.do";
 			}
 		    gsv.setMidx((int)Omidx);
 		    gsv.setGiidx((int)Ogiidx);
@@ -408,7 +438,7 @@ public class GatheringController {
 	    Object Omidx = session.getAttribute("midx");
 	    Object Ogiidx = session.getAttribute("giidx");
 	    if (Omidx == null) {//midx가 없으면 진입불가
-	    	return "redirect:/gathering/gList.do";
+	    	return "redirect:/member/memberLogin.do";
 		}
 	    int midx = (int)Omidx;
 	    int giidx = (int)Ogiidx;
@@ -430,7 +460,7 @@ public class GatheringController {
 		HttpSession session = request.getSession();
 	    Object Omidx = session.getAttribute("midx");
 	    if (Omidx == null) {//midx가 없으면 진입불가
-	    	return "redirect:/gathering/gList.do";
+	    	return "redirect:/member/memberLogin.do";
 		}
 	    int midx = (int)Omidx;
 
@@ -454,8 +484,12 @@ public class GatheringController {
 			Model md
 			) {
 		HttpSession session = request.getSession();
-	    Object Ogiidx = session.getAttribute("giidx");
-	    int giidx=(int)Ogiidx;
+		Object Ogiidx = session.getAttribute("giidx");
+	    Object Omidx = session.getAttribute("midx");
+	    if (Omidx == null) {//midx가 없으면 진입불가
+	    	return "redirect:/member/memberLogin.do";
+		}
+	    int giidx = (int)Ogiidx;
 	    System.out.println("보드리스트진입");
 	    scri.setPerPageNum(10);//게시물갯수
 	    
@@ -476,8 +510,14 @@ public class GatheringController {
 	//모임 게시판 작성
 	@RequestMapping(value="/gBoardWrite.do")
 	public String gBoardWrite(
+			HttpServletRequest request
 			) {
-		
+		HttpSession session = request.getSession();
+	    Object Omidx = session.getAttribute("midx");
+	    if (Omidx == null) {//midx가 없으면 진입불가
+	    	return "redirect:/member/memberLogin.do";
+		}
+
 		return "gathering/gBoardWrite";
 	}
 	//모임 게시판 작성하기 버튼 클릭시
@@ -490,7 +530,7 @@ public class GatheringController {
 	    Object Omidx = session.getAttribute("midx");
 	    Object Ogiidx = session.getAttribute("giidx");
 	    if (Omidx == null) {//midx가 없으면 진입불가
-	    	return "redirect:/gathering/gList.do";
+	    	return "redirect:/member/memberLogin.do";
 		}
 	    gbv.setMidx((int)Omidx);
 	    gbv.setGiidx((int)Ogiidx);
@@ -517,7 +557,7 @@ public class GatheringController {
 		HttpSession session = request.getSession();
 	    Object Omidx = session.getAttribute("midx");
 	    if (Omidx == null) {//midx가 없으면 진입불가
-	    	return "redirect:/gathering/gList.do";
+	    	return "redirect:/member/memberLogin.do";
 		}
 	    int midx =(int)Omidx;
 		//게시글 번호에 해당하는 게시물 가져오기
@@ -535,7 +575,7 @@ public class GatheringController {
 		HttpSession session = request.getSession();
 	    Object Omidx = session.getAttribute("midx");
 	    if (Omidx == null) {//midx가 없으면 진입불가
-	    	return "redirect:/gathering/gList.do";
+	    	return "redirect:/member/memberLogin.do";
 		}
 	    gbv.setMidx((int)Omidx);
 	    //게시글 번호에 해당하는 게시물 업데이트 하기
@@ -551,7 +591,7 @@ public class GatheringController {
 		HttpSession session = request.getSession();
 	    Object Omidx = session.getAttribute("midx");
 	    if (Omidx == null) {//midx가 없으면 진입불가
-	    	return "redirect:/gathering/gList.do";
+	    	return"redirect:/member/memberLogin.do";
 		}
 	    int midx =(int)Omidx;
 	    
@@ -570,10 +610,13 @@ public class GatheringController {
 			Model md
 			) {
 		HttpSession session = request.getSession();
-	    Object Ogiidx = session.getAttribute("giidx");
+		Object Ogiidx = session.getAttribute("giidx");
 	    Object Omidx = session.getAttribute("midx");
-	    int giidx=(int)Ogiidx;
-	    int midx=(int)Omidx;
+	    if (Omidx == null) {//midx가 없으면 진입불가
+	    	return "redirect:/member/memberLogin.do";
+		}
+	    int midx = (int)Omidx;
+	    int giidx = (int)Ogiidx;
 	    // 게시물 조회 전 쿠키 확인
 	    String cookieName = "viewedPosts"+ gbidx;
 	    Cookie[] cookies = request.getCookies();
@@ -768,13 +811,42 @@ public class GatheringController {
 			int midx = (int) session.getAttribute("midx");
 			int giidx = (int) session.getAttribute("giidx");
 			int gpaidx = Integer.parseInt(request.getParameter("gpaidx"));
-			 
+			
 			/*모임상세리스트 가져오기*/
 			ArrayList<GatheringJoinVo> gjvList = gs.gatheringPhotoAlbumListSelectOne(gpaidx);
-			    
+
+			 // gatheringMemberType 값 가져오기
+	        GatheringVo gjv = gs.gatheringMemberType(giidx, midx);
+	        String gatheringMemberType = gjv.getGatheringMemberType();
+	     
+			System.out.println("gatheringMemberType는???!!"+ gatheringMemberType);
+			
 		    md.addAttribute("gjvList", gjvList);
+		   
+		    
 		    session.setAttribute("gpaidx", gpaidx);
 			return "gathering/gPhotoAlbumContent";
+		}
+		
+		
+	//사진첩 상세보기 좋아요
+		@RequestMapping(value="/gPhotoAlbumLike.do",method=RequestMethod.POST)
+		@ResponseBody
+		public HashMap<String, Object> gPhotoAlbumLike(
+				@ModelAttribute GatheringJoinVo gjv,
+				HttpServletRequest request
+				) {
+			System.out.println("사진첩 좋아요  컨트롤러진입");
+			HashMap<String, Object> hm = new HashMap<String, Object>();
+			HttpSession session = request.getSession();
+		    Object Omidx = session.getAttribute("midx");
+		    gjv.setMidx((int)Omidx);
+		   
+
+			//좋아요 메소드
+		    int value = gs.gatheringPhotoAlbumLike(gjv);
+		    hm.put("value",value); //0은 거짓 1은 참
+			return hm;
 		}
 
 		
@@ -834,7 +906,7 @@ public class GatheringController {
 		    System.out.println("midx는? " + midx);
 		    System.out.println("giidx는? " + giidx);
 		    System.out.println(gjv.getgPhotoAlbumTitle());
-		    System.out.println(gjv.getgPhotoAlbumContents());
+		   
 		    
 
 		    return "redirect:/gathering/gPhotoAlbumList.do";
@@ -872,10 +944,11 @@ public class GatheringController {
 			HttpSession session = request.getSession();
 		    Object Omidx = session.getAttribute("midx");
 		    if (Omidx == null) {//midx가 없으면 진입불가
-		    	return "redirect:/gathering/gList.do";
+		    	return "redirect:/member/memberLogin.do";
 			}
 		    gjv.setMidx((int)Omidx);
 		    
+		    System.out.println("수정이미지파일"+GAImg);
 		  
 		    int value = gs.gatheringPhotoAlbumModifyUpdate(gjv, GATImg, GAImg);
 		    
@@ -912,14 +985,16 @@ public class GatheringController {
 		HttpServletRequest request,
 		Model md
 		) {
-	HttpSession session = request.getSession();
-    Object omidx = session.getAttribute("midx");
-    if (omidx != null) {
-    	int midx = (int)omidx;
+		HttpSession session = request.getSession();
+	    Object Omidx = session.getAttribute("midx");
+	    if (Omidx == null) {//midx가 없으면 진입불가
+	    	return "redirect:/member/memberLogin.do";
+		}
+	    int midx = (int)Omidx;
     	ArrayList<GatheringJoinVo> gjvmylist = gs.gatheringMyListSelect(midx);
     	md.addAttribute("gjvmylist", gjvmylist);
 		
-	}
+	
 
 		return "gathering/gMyPage";
 	}
@@ -930,14 +1005,16 @@ public class GatheringController {
 			Model md
 			) {
 		HttpSession session = request.getSession();
-	    Object omidx = session.getAttribute("midx");
-	    if (omidx != null) {
-	    	int midx = (int)omidx;
+	    Object Omidx = session.getAttribute("midx");
+	    if (Omidx == null) {//midx가 없으면 진입불가
+	    	return "redirect:/member/memberLogin.do";
+		}
+	    int midx = (int)Omidx;
 	    	
 	    	ArrayList<GatheringJoinVo> gjvmywishlist = gs.gatheringMyWishListSelect(midx);
 	    	md.addAttribute("gjvmywishlist", gjvmywishlist);
 	    
-	    }
+	  
 		
 		return "gathering/gMyWish";
 	}
@@ -945,8 +1022,8 @@ public class GatheringController {
 	@RequestMapping(value="/gSearch.do")
 	public String gSearch(SearchCriteria scri, Model model) {
 		scri.setSearchType("GINFONAME"); // 검색 유형 설정
-	    ArrayList<GatheringJoinVo> gjvmylist = gs.searchGatherings(scri);
-	    model.addAttribute("gjvmylist", gjvmylist);
+	    ArrayList<GatheringJoinVo> gjvlist = gs.searchGatherings(scri);
+	    model.addAttribute("gjvlist", gjvlist);
 	    return "gathering/gSearch";
 	}
 //모임 검색 결과
@@ -992,9 +1069,12 @@ public class GatheringController {
 			Model md) {
 		HttpSession session = request.getSession();
 		Object Ogiidx = session.getAttribute("giidx");
-		Object Omidx = session.getAttribute("midx");
-		int giidx = (int)Ogiidx;
-		int midx = (int)Omidx;
+	    Object Omidx = session.getAttribute("midx");
+	    if (Omidx == null) {//midx가 없으면 진입불가
+	    	return "redirect:/member/memberLogin.do";
+		}
+	    int midx = (int)Omidx;
+	    int giidx = (int)Ogiidx;
 		
 		GatheringVo gmt = gs.gatheringMemberType(giidx,midx);
 		ArrayList<GatheringJoinVo> gjvsmlist = gs.gatheringSeeMoreMemberList(giidx);
@@ -1010,9 +1090,13 @@ public class GatheringController {
 				@RequestParam("midx") int midx, 
 				HttpServletRequest request
 				){
-			HttpSession session = request.getSession();	
+			HttpSession session = request.getSession();
 			Object Ogiidx = session.getAttribute("giidx");
-			int giidx = (int)Ogiidx;
+		    Object Omidx = session.getAttribute("midx");
+		    if (Omidx == null) {//midx가 없으면 진입불가
+		    	return "redirect:/member/memberLogin.do";
+			}
+		    int giidx = (int)Ogiidx;
 			gs.updateMemberDELYN(giidx, midx); 
 			return "redirect:/gathering/gMemberList.do"; 
 		}	
@@ -1023,9 +1107,13 @@ public class GatheringController {
 				@RequestParam("midx") int midx, 
 				HttpServletRequest request
 				){
-			HttpSession session = request.getSession();	
+			HttpSession session = request.getSession();
 			Object Ogiidx = session.getAttribute("giidx");
-			int giidx = (int)Ogiidx;
+		    Object Omidx = session.getAttribute("midx");
+		    if (Omidx == null) {//midx가 없으면 진입불가
+		    	return "redirect:/member/memberLogin.do";
+			}
+		    int giidx = (int)Ogiidx;
 			System.out.println("권한주기"+midx);
 			int value = gs.updateTLD(midx, giidx);
 			System.out.println("권한메소드");
@@ -1038,9 +1126,13 @@ public class GatheringController {
 				@RequestParam("midx") int midx,
 				HttpServletRequest request
 				){
-			HttpSession session = request.getSession();	
+			HttpSession session = request.getSession();
 			Object Ogiidx = session.getAttribute("giidx");
-			int giidx = (int)Ogiidx;
+		    Object Omidx = session.getAttribute("midx");
+		    if (Omidx == null) {//midx가 없으면 진입불가
+		    	return "redirect:/member/memberLogin.do";
+			}
+		    int giidx = (int)Ogiidx;
 			int value = gs.updateTM(midx, giidx);
 			return "redirect:/gathering/gPowerEntrustList.do"; 
 		}	
@@ -1051,9 +1143,13 @@ public class GatheringController {
 		        @RequestParam("midx") int midx,
 		        HttpServletRequest request
 		) {
-		    HttpSession session = request.getSession();
-		    Object Ogiidx = session.getAttribute("giidx");
-		    int giidx = (int) Ogiidx;
+			HttpSession session = request.getSession();
+			Object Ogiidx = session.getAttribute("giidx");
+		    Object Omidx = session.getAttribute("midx");
+		    if (Omidx == null) {//midx가 없으면 진입불가
+		    	return "redirect:/member/memberLogin.do";
+			}
+		    int giidx = (int)Ogiidx;
 		    int value = gs.updateDownTLD(midx, giidx);
 		    return "redirect:/gathering/gMemberList.do";
 		}
@@ -1064,9 +1160,13 @@ public class GatheringController {
 		        @RequestParam("midx") int midx,
 		        HttpServletRequest request
 		) {
-		    HttpSession session = request.getSession();
-		    Object Ogiidx = session.getAttribute("giidx");
-		    int giidx = (int) Ogiidx;
+			HttpSession session = request.getSession();
+			Object Ogiidx = session.getAttribute("giidx");
+		    Object Omidx = session.getAttribute("midx");
+		    if (Omidx == null) {//midx가 없으면 진입불가
+		    	return "redirect:/member/memberLogin.do";
+			}
+		    int giidx = (int)Ogiidx;
 		    int value = gs.updateTL(midx, giidx);
 		    return "redirect:/gathering/gPowerEntrustList.do";
 		}
@@ -1080,9 +1180,12 @@ public class GatheringController {
 				) {
 			HttpSession session = request.getSession();
 			Object Ogiidx = session.getAttribute("giidx");
-			Object Omidx = session.getAttribute("midx");
-			int giidx = (int)Ogiidx;
-			int midx = (int)Omidx;
+		    Object Omidx = session.getAttribute("midx");
+		    if (Omidx == null) {//midx가 없으면 진입불가
+		    	return "redirect:/member/memberLogin.do";
+			}
+		    int midx = (int)Omidx;
+		    int giidx = (int)Ogiidx;
 			
 			GatheringVo gmt = gs.gatheringMemberType(giidx,midx);
 			ArrayList<GatheringJoinVo> gjvsmlist = gs.gatheringSeeMoreMemberList(giidx);
@@ -1100,7 +1203,11 @@ public class GatheringController {
 				) {
 			try {
 				HttpSession session = request.getSession();
-			    Object Ogiidx = session.getAttribute("giidx");
+				Object Ogiidx = session.getAttribute("giidx");
+			    Object Omidx = session.getAttribute("midx");
+			    if (Omidx == null) {//midx가 없으면 진입불가
+			    	return "redirect:/member/memberLogin.do";
+				}
 			    int giidx = (int)Ogiidx;
 				ArrayList<Integer> selectedMembers = requestMidx.get("selectedMembers");
 		        // 선택된 멤버의 가입 승인 처리
@@ -1126,7 +1233,11 @@ public class GatheringController {
 				) {
 			try {
 				HttpSession session = request.getSession();
-			    Object Ogiidx = session.getAttribute("giidx");
+				Object Ogiidx = session.getAttribute("giidx");
+			    Object Omidx = session.getAttribute("midx");
+			    if (Omidx == null) {//midx가 없으면 진입불가
+			    	return "redirect:/member/memberLogin.do";
+				}
 			    int giidx = (int)Ogiidx;
 				ArrayList<Integer> selectedMembers = requestMidx.get("selectedMembers");
 		        // 선택된 멤버의 가입 승인 처리
@@ -1153,9 +1264,12 @@ public class GatheringController {
 				Model md) {
 			HttpSession session = request.getSession();
 			Object Ogiidx = session.getAttribute("giidx");
-			Object Omidx = session.getAttribute("midx");
-			int giidx = (int)Ogiidx;
-			int midx = (int)Omidx;
+		    Object Omidx = session.getAttribute("midx");
+		    if (Omidx == null) {//midx가 없으면 진입불가
+		    	return "redirect:/member/memberLogin.do";
+			}
+		    int midx = (int)Omidx;
+		    int giidx = (int)Ogiidx;
 			
 			GatheringVo gmt = gs.gatheringMemberType(giidx,midx);
 			ArrayList<GatheringJoinVo> gjvsmlist = gs.gatheringSeeMoreMemberList(giidx);
@@ -1174,7 +1288,7 @@ public class GatheringController {
 		Object Ogiidx = session.getAttribute("giidx");
 	    Object Omidx = session.getAttribute("midx");
 	    if (Omidx == null) {//midx가 없으면 진입불가
-	    	return "redirect:/gathering/gList.do";
+	    	return "redirect:/member/memberLogin.do";
 		}
 	    int midx = (int)Omidx;
 	    int giidx = (int)Ogiidx;
@@ -1198,8 +1312,13 @@ public class GatheringController {
 			System.out.println("신고하기 컨트롤러 들어옴");
 		
 			HttpSession session = request.getSession();
-		    int giidx = (int) session.getAttribute("giidx");
-		    int midx = (int)session.getAttribute("midx");
+			Object Ogiidx = session.getAttribute("giidx");
+		    Object Omidx = session.getAttribute("midx");
+		    if (Omidx == null) {//midx가 없으면 진입불가
+		    	return "redirect:/member/memberLogin.do";
+			}
+		    int midx = (int)Omidx;
+		    int giidx = (int)Ogiidx;
 		    
 		GatheringJoinVo gjv = new GatheringJoinVo();
 	    gjv.setGatheringReportContent(gatheringReportContent);

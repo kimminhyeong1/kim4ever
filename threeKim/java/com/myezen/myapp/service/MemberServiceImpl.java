@@ -13,6 +13,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer.MvcMatchersAuthorizedUrl;
 import org.springframework.stereotype.Service;
@@ -35,7 +36,10 @@ public class MemberServiceImpl implements MemberService {
 	private MemberService_Mapper msm;
 	//SqlSession : PreparedStatement와 표현 방법이 다를뿐 같은 기능을 한다.
 	//Autowired : 메모리에 올려둔 주소들이 자동으로 연결 됨
-
+	
+	@Autowired
+	private TaskExecutor taskExecutor;
+	
 	@Autowired
 	public MemberServiceImpl(SqlSession sqlSession) {
 		this.msm = sqlSession.getMapper(MemberService_Mapper.class);
@@ -83,15 +87,70 @@ public class MemberServiceImpl implements MemberService {
 		int value = msm.memberMailAuthSave(mailKey,memberEmail);//인증번호 DB에 담기
 		//이메일 보내기
 		
-		 MailHandler mh = new MailHandler(mailSender);
-		 mh.setSubject("[타바 인증메일 입니다.]"); //메일제목 
-		 mh.setText("<h1>타바 메일인증</h1><br>인증번호:"+mailKey); 
-		 mh.setFrom("taba1234TA@gmail.com","타바"); 
-		 mh.setTo(memberEmail); 
-		 mh.send();
-		 
-		return value;
+		// 이메일을 비동기적으로 전송
+		taskExecutor.execute(() -> {
+			try {
+				MailHandler mh = new MailHandler(mailSender);
+				mh.setSubject("[타바 인증메일 입니다.]"); //메일제목 
+				mh.setText("<h1>타바 메일인증</h1><br>인증번호:"+mailKey); 
+				mh.setFrom("taba1234TA@gmail.com","타바"); 
+				mh.setTo(memberEmail); 
+				mh.send();
+			} catch (Exception e) {
+				 e.printStackTrace();
+			}
+		});
+
+	    return value;
+		
 	}
+	
+	
+	//휴대폰번호,인증번호 데이터베이스에 저장
+	@Override
+	public void savePhoneNumberVerification(BikeJoinVo bjv) {
+		msm.savePhoneNumberVerification(bjv);
+		
+	}
+	
+	//인증번호 받아서 일치 여부 확인
+	@Override
+	public boolean verifyPhoneNumber(String userPhoneNumber, int randomNumber) {
+		int savedRandomnumber = msm.getSavedRandomNumber(userPhoneNumber);
+		if (savedRandomnumber == randomNumber) {
+			
+			msm.updateVerificationStatus(userPhoneNumber);
+			  return true;
+		}
+		return false;
+	}
+	
+	//휴대폰번호를 받아서 해당 번호에 대해 저장된 인증번호를 가져옴
+	@Override
+	public int getSavedRandomNumber(String userPhoneNumber) {		
+		return msm.getSavedRandomNumber(userPhoneNumber);
+	}
+	
+	//인증번호가 일치하면 인증상태 ->Y로 변경 , 인증번호를 NULL값으로 변경 
+	@Override
+	public void updateVerificationStatus(String userPhoneNumber) {
+		msm.updateVerificationStatus(userPhoneNumber);
+		
+	}
+	
+	//회원가입 이메일 인증 인증번호 대조
+	@Override
+	public boolean joinEmailCheck(String mail_key, String memberEmail) {
+		boolean A = msm.joinEmailCheck(mail_key,memberEmail);
+
+		return A;
+	}
+	
+	
+	
+	
+	
+	
 	//아이디찾기 1.대조
 	@Override
 	public int memberIdFindMatch(String memberName, String memberEmail) {//아이디찾기에서 이 사람이 맞는지 확인 
@@ -104,12 +163,14 @@ public class MemberServiceImpl implements MemberService {
 	public String memberIdFind(String memberName, String memberEmail, String mailKey) {
 		
 		int value1 = msm.memberMailAuthMatch(mailKey,memberEmail);//인증키 대조
-
-		String mId = msm.memberIdFind(memberName,memberEmail);//아이디 뽑아오기
+		if (value1 == 1) {
+			String mId = msm.memberIdFind(memberName,memberEmail);//아이디 뽑아오기
+			int value2 = msm.memberMailAuthKeyDel(mailKey,memberEmail);//인증키 삭제
+			return mId;
+			
+		}
+		return null;
 		
-		int value2 = msm.memberMailAuthKeyDel(mailKey,memberEmail);//인증키 삭제
-		
-		return mId;
 	}
 	//비밀번호찾기 1.대조
 	@Override
@@ -122,10 +183,14 @@ public class MemberServiceImpl implements MemberService {
 	@Transactional
 	public int memberPwdFindMatch(String memberId, String memberName, String memberEmail, String mailKey) {
 		int value1 = msm.memberMailAuthMatch(mailKey,memberEmail);//인증키 대조
-
+		if (value1==0) {
+			return 0;
+		}
 		int value2 = msm.memberPwdFindMatch(memberId, memberName, memberEmail);//맞는지 대조
-		
-		return value2;
+		if (value2==0) {
+			return 0;
+		}
+		return 1;
 	}
 	//비밀번호찾기 3.재설정
 	@Override
@@ -397,6 +462,8 @@ public class MemberServiceImpl implements MemberService {
 		String memberPhone = msm.memberPhoneCheck(midx);
 		return memberPhone;
 	}
+
+
 
 	
 	

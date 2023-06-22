@@ -12,7 +12,7 @@
 		<style type="text/css">
 			.gContainer{border: 1px solid #0000;}
 			/*사진첩 틀*/ 
-			.gContent{width:100%; border:1px solid #bbb;background-color:#f1f1f1;border-radius:10px; padding: 20px;box-sizing border-box;display:flex;flex-direction:column;align-items:flex-start;}
+			.gContent{width:97%; border:1px solid #bbb;background-color:#f1f1f1;border-radius:10px; padding: 20px;box-sizing border-box;display:flex;flex-direction:column;align-items:flex-start;}
 			/*사진첩 부분*/
 			.card{height: 320px; background-color: #d2dfcc;}
 			.cardImg{height: 80%;}
@@ -33,8 +33,9 @@
 			.gContent table td{padding:10px; text-align:left; border-left:1px solid #ddd;}
 			.gContent table tr{border:1px solid #ddd;}
 			.gContent table input[type="text"],textarea{box-sizing:border-box;width:100%;padding:10px;margin:2px 0;border:1px solid #ccc;border-radius:4px;}
-			  #imagePreview {max-width:300px;max-height:300px;}
-		
+			.gContent table textarea{font-size:21px;}
+			.imagePreview {max-width:300px;max-height:300px;width:auto;height:auto;}
+			
 		</style>
 		
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -44,7 +45,7 @@
 		<%@include file="../header2.jsp" %>
 		<%@include file="header3.jsp" %>
 		<main id="main">
-			<form action="${pageContext.request.contextPath}/gathering/gPhotoAlbumModifyAction.do?gpaidx=${gjv.gpaidx}" method="POST" enctype="multipart/form-data">
+			<form action="${pageContext.request.contextPath}/gathering/gPhotoAlbumModifyAction.do?gpaidx=${gpaidx}" method="POST" enctype="multipart/form-data">
 			<section class="gContainer">
 			<c:forEach var="gjv" items="${gmist}" varStatus="status">
 				<div class="gContent" >
@@ -57,28 +58,42 @@
 							
 						<tr>
 							<th>대표 이미지</th>
-							<td><input type="file" id="image" name="GATImg" onchange="previewImage(event)" />
-							<img id="imagePreview" />
-							</td>
+							<td><input type="file" id="image" name="GATImg"/></td>
 						</tr>
 					</c:if>
-							<tr>
+					
+						<tr>
 							<th>첨부파일</th>
 							<td>
-							<img src="../resources/GAImages/${gjv.imageName}">
-							<input type="file" id="image" name="GAImg" onchange="uploadImage(event)"/>
+							<img class="imagePreview" src="../resources/GAImages/${gjv.imageName}">
+							<input type="file" id="image" name="GAImg" onchange="previewImage(event)"/>
 							</td>
 						</tr>
 						
+						<c:if test="${status.index == 0}">
 						<tr>
 							<th>내용</th>
-							<td><textarea id="gPhotoAlbumContents" name="gPhotoAlbumContents" cols="97" rows="43" style="font-size: 26px;">${gjv.gPhotoAlbumContents}</textarea></td>
+							<td><textarea id="gPhotoAlbumContents0" name="gPhotoAlbumContents0">${gjv.gPhotoAlbumContents0 }</textarea></td>
 						</tr>
-					
+						</c:if>
+						
+						<c:if test="${status.index == 1}">
+						<tr>
+							<th>내용</th>
+							<td><textarea id="gPhotoAlbumContents1" name="gPhotoAlbumContents1">${gjv.gPhotoAlbumContents1 }</textarea></td>
+						</tr>
+						</c:if>
+						
+						<c:if test="${status.index == 2}">
+						<tr>
+							<th>내용</th>
+							<td><textarea id="gPhotoAlbumContents2" name="gPhotoAlbumContents2">${gjv.gPhotoAlbumContents2 }</textarea></td>
+						</tr>
+						</c:if>
 					</table>
 				
 				</div>
-				</c:forEach>
+			</c:forEach>
 				<div id="createBtn">
 					<button type="submit" class="gBtn2">작성하기</button>
 					<button class="gBtn2">취소하기</button>
@@ -91,18 +106,18 @@
 		
 <script type="text/javascript">
 	function previewImage(event) {
-		  var input = event.target;
-		  var reader = new FileReader();
-
-		  reader.onload = function() {
-		    var preview = document.getElementById('imagePreview');
-		    preview.src = reader.result;
-		  };
-
-		  if (input.files && input.files[0]) {
-		    reader.readAsDataURL(input.files[0]);
-		  }
-		}
+	    var input = event.target;
+	    var reader = new FileReader();
+	
+	    reader.onload = function() {
+	      var imagePreview = input.nextElementSibling;
+	      imagePreview.src = reader.result;
+	    };
+	
+	    if (input.files && input.files[0]) {
+	      reader.readAsDataURL(input.files[0]);
+	    }
+	  }
 	var totalUploads = 0;
 
 	function uploadImage(event) {

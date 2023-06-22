@@ -1,6 +1,9 @@
 package com.myezen.myapp.domain;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class GatheringJoinVo {//모임조인
 	
@@ -15,8 +18,9 @@ public class GatheringJoinVo {//모임조인
 	private int gpaidx;//모임 사진첩 번호
 	private String imgType;//이미지 구분
 	private String ImgCreationDay;// 이미지 생성날짜
-	private List<String> gPhotoAlbumContentsList;
-	private String[] imageNames;
+	
+	
+
 	/*
 	이미지 구분
 	노말 이미지 : N
@@ -31,24 +35,15 @@ public class GatheringJoinVo {//모임조인
 	모임 게시글 이미지:GB
 	*/
 
-	public String[] getImageNames() {
-		return imageNames;
-	}
+	
 
-	public void setImageNames(String[] imageNames) {
-		this.imageNames = imageNames;
-	}
-
-	public List<String> getgPhotoAlbumContentsList() {
-		return gPhotoAlbumContentsList;
-	}
-
-	public void setgPhotoAlbumContentsList(List<String> gPhotoAlbumContentsList) {
-		this.gPhotoAlbumContentsList = gPhotoAlbumContentsList;
-	}
+	
 
 	//모임 테이블
 	private int gidx;//모임 번호
+	
+
+
 	//private int giidx;//모임 정보 번호
 	//private int midx;//회원 번호
 	private String gatheringApprovalType;//모임 승인 여부   모임 대기 : W 모임 승인 : Y 모임 추방 : K 모임 기본값: N
@@ -106,37 +101,24 @@ public class GatheringJoinVo {//모임조인
 	private String gPhotoAlbumDate;//모임 사진첩 날짜
 	private String gPhotoAlbumTitle;//모임 사진첩 제목
 	private int gPhotoAlbumLikeCNT;//모임 사진첩 좋아요
-	private String gPhotoAlbumContents;//모임 사진첩 내용
 	private String gPhotoAlbumWriteDay;//모임 사진첩 작성일
 	private String gPhotoAlbumDelDay;//모임 사진첩 삭제일
 	private String gPhotoAlbumDelYN;//모임 사진첩 삭제 여부
-	private String gPhotoAlbumContents1;
-	private String gPhotoAlbumContents0;
-	private String gPhotoAlbumContents2;
-	public String getgPhotoAlbumContents0() {
-		return gPhotoAlbumContents0;
+	private int gaidx;
+
+
+	public int getGaidx() {
+		return gaidx;
 	}
 
-	public void setgPhotoAlbumContents0(String gPhotoAlbumContents0) {
-		this.gPhotoAlbumContents0 = gPhotoAlbumContents0;
+	public void setGaidx(int gaidx) {
+		this.gaidx = gaidx;
 	}
 
-	public String getgPhotoAlbumContents1() {
-		return gPhotoAlbumContents1;
-	}
-
-	public void setgPhotoAlbumContents1(String gPhotoAlbumContents1) {
-		this.gPhotoAlbumContents1 = gPhotoAlbumContents1;
-	}
-
-	public String getgPhotoAlbumContents2() {
-		return gPhotoAlbumContents2;
-	}
-
-	public void setgPhotoAlbumContents2(String gPhotoAlbumContents2) {
-		this.gPhotoAlbumContents2 = gPhotoAlbumContents2;
-	}
-
+	private String gPhotoAlbumContents0;//모임 사진첩 내용
+	private String gPhotoAlbumContents1;//모임 사진첩 내용
+	private String gPhotoAlbumContents2;//모임 사진첩 내용
+	
 	//모임일정
 	private int gsidx;//모임 일정 번호
 	//private int giidx;//모임 정보 번호
@@ -188,6 +170,30 @@ public class GatheringJoinVo {//모임조인
 	private int REPORTCNT; // 신고횟수 //가상컬럼
 
 	
+	
+	public String getgPhotoAlbumContents0() {
+		return gPhotoAlbumContents0;
+	}
+
+	public void setgPhotoAlbumContents0(String gPhotoAlbumContents0) {
+		this.gPhotoAlbumContents0 = gPhotoAlbumContents0;
+	}
+
+	public String getgPhotoAlbumContents1() {
+		return gPhotoAlbumContents1;
+	}
+
+	public void setgPhotoAlbumContents1(String gPhotoAlbumContents1) {
+		this.gPhotoAlbumContents1 = gPhotoAlbumContents1;
+	}
+
+	public String getgPhotoAlbumContents2() {
+		return gPhotoAlbumContents2;
+	}
+
+	public void setgPhotoAlbumContents2(String gPhotoAlbumContents2) {
+		this.gPhotoAlbumContents2 = gPhotoAlbumContents2;
+	}
 	public String getReporterName() {
 		return reporterName;
 	}
@@ -534,14 +540,6 @@ public class GatheringJoinVo {//모임조인
 		this.gPhotoAlbumLikeCNT = gPhotoAlbumLikeCNT;
 	}
 
-	public String getgPhotoAlbumContents() {
-		return gPhotoAlbumContents;
-	}
-
-	public void setgPhotoAlbumContents(String gPhotoAlbumContents) {
-		this.gPhotoAlbumContents = gPhotoAlbumContents;
-	}
-
 	public String getgPhotoAlbumWriteDay() {
 		return gPhotoAlbumWriteDay;
 	}
@@ -837,6 +835,9 @@ public class GatheringJoinVo {//모임조인
 	public void setImgCreationDay(String imgCreationDay) {
 		ImgCreationDay = imgCreationDay;
 	}
+
+
+
 
 
 	

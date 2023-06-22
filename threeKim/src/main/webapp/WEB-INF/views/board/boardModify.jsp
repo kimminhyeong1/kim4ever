@@ -6,7 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시글수정</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
 
 /*리셋코드*/ 
@@ -51,6 +53,28 @@ li{list-style:none;}
 #content #btn{text-align:right; margin-top:20px; margin-right:144px; }
 #content #btn button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content #btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+
+/**************************모바일****************************************/
+
+
+@media (min-width: 300px) and (max-width: 940px)  {
+#main{width:auto; margin:0 auto; text-align:center;}
+#main #content{width:auto; height:auto;}
+#main #content h2{text-align:left; margin-top:30px; margin-left:10%; font-family: 'GangwonEdu_OTFBoldA'; font-size:18px; margin-bottom:10px;}
+#main #bottom{width:auto; height:10px;}
+#content table {width:90%; height:auto; border-collapse:collapse; margin: auto; font-size:14px; font-family: 'omyu_pretty' ; border-radius:10px; line-height: 45px;}
+#content table tr{border:1px solid #ddd;}
+#content table th {width:30px; padding:2px; text-align:left; border-right:0px solid #ddd;}
+#content table td {padding:4px;  text-align:left; line-height:12px; }
+#content table tr th {width:50px; text-align:center;  }
+#content table td { white-space: pre-line;}
+#content #btn{text-align:right; margin-top:20px; margin-right:10%; }
+#content #btn button{width:50px; height:25px; margin:0 auto; text-align:center; font-family: 'omyu_pretty'; font-size:14px; border-radius:10px; border:0px solid #ff9933; background:#ff9933; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
+#content #btn button:active {background:#f fcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+.maintext{height: 200px; width: auto; text-align:left;}
+
+
+}
 </style>
 
 </head>
@@ -93,6 +117,7 @@ function getOriginalFileName(fileName){
 			<h2>게시글 수정</h2>
 			<form name="frm">
 				<input type="hidden" name="bidx" value="<%=bv.getBidx()%>"><!-- 게시글번호 숨김 -->
+				<input type="hidden" name="writer" value="<%=bv.getWriter()%>"><!-- 게시글번호 숨김 -->
 
 				<table>
 
@@ -104,13 +129,13 @@ function getOriginalFileName(fileName){
 
 					<tr>
 						<th>내용</th>
-						<td><textarea name="content" cols="70" rows="25"><%=bv.getContent()%></textarea></td>
+						<td><textarea name="content" cols="50" rows="10"><%=bv.getContent()%></textarea></td>
 					</tr>
 
 					<tr>
 						<th>작성자</th>
-						<td><input type="text" name="writer" maxlength=5
-							value="<%=bv.getWriter()%>" readonly></td>
+						<td>
+							<%=bv.getWriter()%></td>
 					</tr>
 
 					<tr>
