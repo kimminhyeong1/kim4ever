@@ -591,7 +591,7 @@
 	<!-- 사진첩 모임 이미지 넣기-->
 	<insert  id="gatheringPhotoGAInsert" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
 		INSERT INTO IMAGE1234 (IMAGENAME,MIDX,GIIDX,GPAIDX,IMGTYPE,IMGCREATIONDAY)
-		VALUES(#{imageName},#{midx},#{giidx},#{gpaidx},'GA',NOW())
+		VALUES(#{imageName},#{midx},#{giidx},#{gpaidx},'GA',NOW(6))
 	</insert>
 	
 	<!-- 사진첩 리스트 조회 -->
@@ -656,11 +656,16 @@
   	WHERE GPAIDX = #{gpaidx} AND IMGTYPE = 'GAT'
 	</update>
 	
+	<!-- 모임수정 //이미지고유번호 가져오기-->
+	<select id="gatheringGASelect" parameterType="com.myezen.myapp.domain.GatheringJoinVo" resultType="int">
+		select imidx as imidx from image1234 a where gpaidx = #{gpaidx}  and imgType = 'GA' order by ImgCreationDay asc limit 1
+	</select>
+	
 	<!-- 사진첩 모임 이미지 업데이트 -->
 	<update id="gatheringPhotoGAUpdate" parameterType="com.myezen.myapp.domain.GatheringJoinVo">
 	   UPDATE IMAGE1234
-	  SET IMAGENAME = #{imageName}
-	  WHERE GPAIDX = #{gpaidx} AND IMGTYPE = 'GA'
+	  SET IMAGENAME = #{imageName} , IMGCREATIONDAY = NOW(6)
+	  WHERE imidx = #{imidx} AND IMGTYPE = 'GA'
 	</update>
 	
 	<!-- 사진첩 삭제 -->

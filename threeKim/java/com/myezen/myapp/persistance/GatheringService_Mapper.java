@@ -232,6 +232,8 @@ public interface GatheringService_Mapper {
 	public int gatheringPhotoAlbumModifyUpdate(GatheringJoinVo gjv);
 	//모임사진첩 수정하기(대표이미지 업데이트)
 	public int gatheringPhotoGATUpdate(GatheringJoinVo gjv);
+	//이미지고유번호 가져오기	
+	public int gatheringGASelect(GatheringJoinVo gjv);
 	//모임사진첩 수정하기(이미지 업데이트)
 	public int gatheringPhotoGAUpdate(GatheringJoinVo gjv);
 	//모임사진첩 삭제하기
