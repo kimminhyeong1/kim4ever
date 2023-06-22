@@ -633,6 +633,21 @@
 		AND a.gpaidx = #{gpaidx}
 	</select>
 	
+	<!-- 사진첩 좋아요 확인 -->
+	<select id="gatheringPhotoAlbumLikeCheck" parameterType="com.myezen.myapp.domain.GatheringJoinVo" resultType="int">
+		select count(*) as cnt from gathering_photoalbumlike1234 where gpaidx = #{gpaidx} and midx = #{midx}
+	</select>
+	<!-- 사진첩 좋아요 테이블 넣기-->
+	<insert  id="gatheringPhotoAlbumLikeInsert" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
+		INSERT INTO gathering_photoalbumlike1234 (gpaidx,midx)
+		VALUES(#{gpaidx},#{midx})
+	</insert>
+    <!--  사진첩 좋아요 증가 -->
+    <update id="gatheringPhotoAlbumLike" parameterType="com.myezen.myapp.domain.GatheringJoinVo">
+    	UPDATE gathering_photoalbum1234 SET gPhotoAlbumLikeCNT = gPhotoAlbumLikeCNT + 1 where gpaidx= #{gpaidx}
+	</update>
+	
+	
 	<!--  사진첩  게시글 수정 조회 -->
 	<select id="gatheringPhotoAlbumModify" resultType="com.myezen.myapp.domain.GatheringJoinVo">
     	SELECT a.gpaidx, a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, a.GPHOTOALBUMCONTENTS0 ,a.GPHOTOALBUMCONTENTS1,a.GPHOTOALBUMCONTENTS2, b.imgtype, b.imageName

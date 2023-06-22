@@ -18,26 +18,9 @@ public class GatheringJoinVo {//모임조인
 	private int gpaidx;//모임 사진첩 번호
 	private String imgType;//이미지 구분
 	private String ImgCreationDay;// 이미지 생성날짜
-	private List<MultipartFile> GAImgList;
-	private List<String> GAImgNameList; // 모임 이미지 이름 리스트
 	
-    public List<MultipartFile> getGAImgList() {
-		return GAImgList;
-	}
-
-	public void setGAImgList(List<MultipartFile> gAImgList) {
-		GAImgList = gAImgList;
-	}
 	
-    
 
-	public List<String> getGAImgNameList() {
-		return GAImgNameList;
-	}
-
-	public void setGAImgNameList(List<String> gAImgNameList) {
-		GAImgNameList = gAImgNameList;
-	}
 	/*
 	이미지 구분
 	노말 이미지 : N

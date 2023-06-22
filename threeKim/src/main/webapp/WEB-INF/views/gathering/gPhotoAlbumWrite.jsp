@@ -32,7 +32,7 @@
          .gContent table th{width:140px;padding: 10px;text-align: center;}
          .gContent table td{padding:10px; text-align:left; border-left:1px solid #ddd;}
          .gContent table tr{border:1px solid #ddd;}
-         .gContent table input[type="text"],textarea{box-sizing:border-box;width:100%;padding:10px;margin:2px 0;border:1px solid #ccc;border-radius:4px;}
+         .gContent table input[type="text"],textarea{box-sizing:border-box;width:100%;padding:10px;margin:2px 0;border:1px solid #ccc;border-radius:4px; font-size:21px;}
 		 .imagePreview { max-width: 300px; max-height: 300px; width: auto; height: auto;}
       	 
       </style>
