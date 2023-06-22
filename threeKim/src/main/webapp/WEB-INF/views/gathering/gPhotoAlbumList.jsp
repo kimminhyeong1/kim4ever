@@ -32,9 +32,7 @@
 			#searchCategory>div>select{width: 80px; height: 30px; font-size: 18px; font-family: 'omyu_pretty';vertical-align: top;} 
 			#searchCategory>div>input{width: 300px; height: 26px; font-size: 18px;vertical-align: top;} 
 			#searchCategory>div>button{width: 100px; height: 30px; margin-top: 0px;margin-bottom: 0px;} 
-<<<<<<< HEAD
-						
-=======
+
 						 
 				/*************************모바일****************************************/
 				/*****모바일 넓이***/
@@ -55,7 +53,7 @@
 			a{text-decoration: none; color: #000;}		
 			.search{width:80%}
 				}		
->>>>>>> 김지원
+
 			
 		</style>
 
