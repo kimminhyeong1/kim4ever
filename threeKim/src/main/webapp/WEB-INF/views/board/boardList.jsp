@@ -74,7 +74,7 @@ li{list-style:none;}
 	/*****************************************모바일***************************************************************/
 		
 	@media (min-width: 300px) and (max-width: 940px)  {	
-	#main{width:auto; min-height:760px; margin:0 auto; text-align:center;}
+	#main{width:auto; min-height:640px; margin:0 auto; text-align:center;}
 #main #content{width:auto; height:auto;}
 #main #content h2{text-align:left; margin-top:50px; margin-left:16px; margin-left:10%;font-family: 'GangwonEdu_OTFBoldA'; font-size:15px; }
 #main #bottom{width:auto; height:10px;}
@@ -327,7 +327,6 @@ document.addEventListener("DOMContentLoaded", function() {
 		</div>
 
 
-		<div id="bottom"></div>
 	</div>
 </body>
 <%@include file="../footer.jsp"%>
