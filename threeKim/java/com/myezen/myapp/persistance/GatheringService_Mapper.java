@@ -59,6 +59,8 @@ public interface GatheringService_Mapper {
 	public ArrayList<GatheringJoinVo> getMoreGatheringMyListSelect(int offset,int midx);
 	//모임 나의 찜 리스트 더보기
 	public ArrayList<GatheringJoinVo> getMoreGatheringMyWishListSelect(int offset,int midx);
+	//모임 검색 리스트 더보기
+	public ArrayList<GatheringJoinVo> getMoreSearchGatherings(HashMap<String, Object> hm);
 	
 	//모임 나의리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringMyListSelect(int midx);

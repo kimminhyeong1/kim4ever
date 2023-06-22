@@ -167,10 +167,7 @@
 
 		</script>
     	<script>
-
 	            var offset = 8;
-
-	            
 	            $("#moreButton").click(function() {
 	                $.ajax({
 	                    url: "${pageContext.request.contextPath}/gathering/more.do",

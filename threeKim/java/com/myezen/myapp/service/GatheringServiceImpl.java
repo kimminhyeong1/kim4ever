@@ -180,11 +180,12 @@ public class GatheringServiceImpl implements GatheringService {
 
 	@Override
 	//모임 리스트 더보기 
-	public ArrayList<GatheringJoinVo> getMoreGjvList(int offset,HttpServletRequest request,String URI) {
+	public ArrayList<GatheringJoinVo> getMoreGjvList(int offset,HttpServletRequest request,String URI,SearchCriteria scri) {
 		
     	String gList = request.getContextPath() + "/gathering/gList.do";
     	String gMyPage = request.getContextPath() + "/gathering/gMyPage.do";
     	String gMyWish = request.getContextPath() + "/gathering/gMyWish.do";
+    	String gSearch = request.getContextPath() + "/gathering/gSearch.do";
     	HttpSession session = request.getSession();
     	//모임 메인 리스트
     	if (URI.equals(gList)) {
@@ -203,6 +204,16 @@ public class GatheringServiceImpl implements GatheringService {
     		Object omidx = session.getAttribute("midx");
    		 	int midx = (int)omidx;
     		ArrayList<GatheringJoinVo> moreGjvList = gsm.getMoreGatheringMyWishListSelect(offset,midx);
+    		return moreGjvList;
+		}
+    	//모임 검색 리스트
+    	if (URI.equals(gSearch)) {
+    		scri.setSearchType("GINFONAME"); // 검색 유형 설정
+    		System.out.println(scri.getKeyword());
+    		HashMap<String, Object> hm = new HashMap<>();
+    		hm.put("offset", offset);
+    		hm.put("scri", scri);
+    		ArrayList<GatheringJoinVo> moreGjvList = gsm.getMoreSearchGatherings(hm);
     		return moreGjvList;
 		}
 		

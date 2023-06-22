@@ -80,11 +80,15 @@ public class GatheringController {
     public ArrayList<GatheringJoinVo> getMoreGjvList(
     		@RequestParam("offset") int offset,
     		@RequestParam("URI") String URI,
+    		SearchCriteria scri,
     		HttpServletRequest request
     		) {
 		System.out.println("더보기"+URI);
-		ArrayList<GatheringJoinVo> moreGjvList = gs.getMoreGjvList(offset,request,URI);
+		ArrayList<GatheringJoinVo> moreGjvList = gs.getMoreGjvList(offset,request,URI,scri);
 		return moreGjvList;
+		
+		
+		
     }
 //모임만들기페이지	
 	@RequestMapping(value="/gCreate.do")
@@ -941,8 +945,8 @@ public class GatheringController {
 	@RequestMapping(value="/gSearch.do")
 	public String gSearch(SearchCriteria scri, Model model) {
 		scri.setSearchType("GINFONAME"); // 검색 유형 설정
-	    ArrayList<GatheringJoinVo> gjvmylist = gs.searchGatherings(scri);
-	    model.addAttribute("gjvmylist", gjvmylist);
+	    ArrayList<GatheringJoinVo> gjvlist = gs.searchGatherings(scri);
+	    model.addAttribute("gjvlist", gjvlist);
 	    return "gathering/gSearch";
 	}
 //모임 검색 결과
