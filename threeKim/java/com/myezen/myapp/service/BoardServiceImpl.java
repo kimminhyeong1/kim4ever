@@ -67,18 +67,24 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
+	@Transactional
 	public int boardInsert(BoardVo bv) {
 		int value = bsm.boardInsert(bv);
+		bsm.boardInsertUpdate();//업데이트 rebidx
 		return value;
 	}
 	@Override
+	@Transactional
 	public int boardInsert2(BoardVo bv) {
 		int value = bsm.boardInsert2(bv);
+		bsm.boardInsertUpdate();//업데이트 rebidx
 		return value;
 	}
 	@Override
+	@Transactional
 	public int boardInsert3(BoardVo bv) {
 		int value = bsm.boardInsert3(bv);
+		bsm.boardInsertUpdate();//업데이트 rebidx
 		return value;
 	}
 	@Override

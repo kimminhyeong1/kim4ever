@@ -70,7 +70,7 @@
 							<h3 class="cardTitle">${gjv.gInfoName}</h3>
 							<p class="cardInfo" id="textContainer">${gjv.gInfoBriefIntroduction}</p>
 							<p class="attend">(참여멤버${gjv.gInfoParticipating}/${gjv.gInfoCapacity})</p> 
-							<button class="gBtn" onclick="delayedRedirect('${pageContext.request.contextPath}/gathering/gSimpleInfo.do?giidx=${gjv.giidx}', 700)">구경하기</button><!-- 버튼딜레이 -->						
+							<button class="gBtn" onclick="delayedRedirect('${pageContext.request.contextPath}/gathering/gSimpleInfo.do?giidx=${gjv.giidx}', 50)">구경하기</button><!-- 버튼딜레이 -->						
 						</div>
 					 </c:forEach>
 				</div>
@@ -167,16 +167,13 @@
 
 		</script>
     	<script>
-
 	            var offset = 8;
-
-	            
 	            $("#moreButton").click(function() {
 	                $.ajax({
 	                    url: "${pageContext.request.contextPath}/gathering/more.do",
 	                    type: "GET",
 	                    dataType: "json",
-	                    data: {offset: offset},
+	                    data: {offset: offset , URI: "${pageContext.request.contextPath}/gathering/gList.do"},
 	                    success: function(data) {
 	                        // 가져온 데이터를 gContent에 추가
 	                        $.each(data, function(index, gjv) {

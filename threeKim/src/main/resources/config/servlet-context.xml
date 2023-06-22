@@ -51,6 +51,9 @@
 			<mapping path="/bikeRent/bikeRentUseList.do"/> <!-- 이용내역 페이지 -->
 			<mapping path="/bikeRent/bikeReturnQR.do"/> <!-- 대여소 QR 페이지 -->
 			<mapping path="/bikeRent/bikeRentReturn.do"/> <!-- 반납하기 페이지 -->
+			<mapping path="/gathering/gMyPage.do"/> <!-- 나의 소모임 페이지 -->
+			<mapping path="/gathering/gMyWish.do"/> <!-- 찜한 소모임 페이지 -->
+			<mapping path="/gathering/gCreate.do"/> <!-- 찜한 소모임 페이지 -->
 			
 			<beans:ref bean="authInterceptor"/>
 		</interceptor>

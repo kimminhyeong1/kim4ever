@@ -43,7 +43,7 @@ public interface GatheringService {
 	//모임 리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringListSelect();
 	//모임 리스트 더보기 
-	public ArrayList<GatheringJoinVo> getMoreGjvList(int offset);
+	public ArrayList<GatheringJoinVo> getMoreGjvList(int offset,HttpServletRequest request,String URI,SearchCriteria scri);
 	//모임 나의리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringMyListSelect(int midx);
 	//모임 소개페이지 리스트 가져오기

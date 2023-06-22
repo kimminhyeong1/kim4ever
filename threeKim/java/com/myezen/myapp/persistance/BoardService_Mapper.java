@@ -21,7 +21,8 @@ public interface BoardService_Mapper {
 	public int boardInsert(BoardVo bv);	//공지
 	public int boardInsert2(BoardVo bv); 	//qna
 	public int boardInsert3(BoardVo bv); 	//faq
-
+	public void boardInsertUpdate();//업데이트 rebidx
+	
 	public int boardModify(BoardVo bv);
 
 	public int boardDelete(BoardVo bv);
