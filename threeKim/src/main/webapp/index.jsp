@@ -11,7 +11,7 @@
 /*리셋코드*/
 *{margin:0;padding:0;}
 li{list-style:none;}
-body {width: 100vw;   height: 100vh;   overflow-x: hidden;}
+body {width: 100vw;   height: 100vh; }
 #main{width:1440px; margin:35px auto; text-align:center; border:1px solid #white;      font-family: 'IM_Hyemin-Bold';
 }
 #main #content{width:1440px; height: auto !important;/*우선권*/}

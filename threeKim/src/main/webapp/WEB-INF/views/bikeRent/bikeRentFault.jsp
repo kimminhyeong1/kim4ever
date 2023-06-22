@@ -7,7 +7,7 @@
 		<title>타다-자전거 고장/신고</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_rent.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent.css">
 		<link rel="stylesheet" media="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_bikeRent_mo.css">	
 		 
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -17,22 +17,26 @@
 			/*헤더영역 메뉴*/
 			header #menu{display: none;}
 			/*틀부분*/
-			.container{border: 1px solid #bbb; margin: 0 auto; width: 68.5% ;padding: 20px;background-color: #f1f1f1;border-radius: 10px; 
+			.container{border: 1px solid #bbb; margin: 0 auto; width: 900px; padding: 40px;background-color: #f1f1f1;border-radius: 10px; 
 			\display: flex;  justify-content: center;  align-items: center;}
-			.container>div{padding: 20px; text-align: left;}
-			.container>div>p{display: inline-block; } 
+			.container>div{padding: 20px; text-align: left; }
+			.container>div>p{display: inline-block;} 
 			.container>div>p:nth-child(1){width: 40%; margin-left: 60px;} 
 			.container>div>p:nth-child(2){width: 5%;} 
 			.container{font-size: 24px;}
-			.container h1{font-size: 50px; text-align: center;}
+			.container h1{font-size: 50px; text-align: center; margin:5px; }
 			.container h2{font-size: 40px; text-align: center;}
+			.container h3{margin:5px; margin-top:15px; font-weight:bold;}
+			
 			.container button{display:inline-block; width:45%; height:55px; margin-top:0px;text-align:center; font-family:'omyu_pretty'; font-size:25px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 			.container button:active{background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 			/*이용내역 내용*/
 			#useInfo{width:80%; font-size:22px; line-height:35px;}
 			/*이용내역 내용 버튼*/
 			#useListBtn{text-align:center;}
-			#map{width: 860px; height: 500px;}
+			img{height:100%; width:100%;}
+			
+			#map{width: 100%; height: 500px;}
 			
 						/****************************모바일**************************/
 @media (min-width: 300px) and (max-width: 940px)  {
@@ -48,7 +52,7 @@
 			.container{font-size: 16px; line-high:10px;}
 			.container h1{font-size: 20px; text-align: center;}
 			.container h2{font-size: 20px; text-align: center;}
-			.container h3{font-size: 18px; text-align: center; margin-top:10px;}
+			.container h3{font-size: 20px; text-align: center; margin-top:10px;}
 			
 			.container button{display:inline-block; width:100%; height:55px; margin-top:0px;text-align:center; font-family:'omyu_pretty'; font-size:17px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 			.container button:active{background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}

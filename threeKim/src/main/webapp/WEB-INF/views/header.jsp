@@ -7,7 +7,7 @@
 <style>
 /*리셋코드*/
 
-*{margin:0;padding:0; word-break:keep-all}
+*{margin:0;padding:0; word-break:keep-all;}
 
 li{list-style:none;}
 /*헤더부분 영역*/
@@ -59,7 +59,7 @@ header{width: 1250px;margin: 35px auto 70px;text-align: center;}
  
 /****************************모바일**************************/
 @media (min-width: 300px) and (max-width: 940px)  {
-header{width:auto;margin:0 auto;}
+header{width:auto;margin:0 auto; }
 /*사이드메뉴바, 로고, 로그인버튼*/
 #top_logo{width:auto; height:80px; text-align:center; position:relative; margin-top:15px;}
 #top_logo .logo{display:inline-block; text-align:center; position:absolute; transform:translate(-50%, -50%);}
@@ -232,7 +232,7 @@ header{width:auto;margin:0 auto;}
 		</div>
 		<div class="topmenu"  onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">
 			 <img src=" ${pageContext.request.contextPath}/resources/mobile/edit-code.png" alt="게시판" class="hidden_img">
-			 <p>게 시 판</p>	
+			 <p>&nbsp;&nbsp;게 시 판</p>	
 		 </div>
 		 <div  class="topmenu"  onclick="location.href='<%=request.getContextPath()%>/gathering/gList.do'">		
 			  <img src="${pageContext.request.contextPath}/resources/mobile/friendship.png" alt="자전거모임" class="hidden_img">		 

@@ -15,24 +15,38 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">		  
 		<style type="text/css">
 			.gContainer{border: 1px solid #0000;}
-			/*사진첩 틀*/ 
-			.gContent{ width: 100%; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px; position: relative; padding-top: 40px;  padding-bottom: 40px;}
-			/*사진첩 부분*/
-			.card{height:320px; background-color: #d2dfcc; margin-top:100px;}
-			.cardTitle{font-size:23px; }
-			.cardImg{height: 80%;}
+		
 
 			/*버튼 부분*/
 			#createBtn{text-align: right;}	
 			/*페이징 부분*/
 			.gPaging{font-size: 25px; margin-top:20px;}		
-			
-			#searchCategory{ position: absolute; top:-10px; right:-20px; text-align: right; font-size: 20px; margin: 40px 60px; height: 30px; font-family: 'omyu_pretty'; vertical-align: top;} 
-			#searchCategory>div{display: inline-block; vertical-align: top;} 
-			#searchCategory>div>select{width: 80px; height: 30px; font-size: 18px; font-family: 'omyu_pretty';vertical-align: top;} 
-			#searchCategory>div>input{width: 300px; height: 26px; font-size: 18px;vertical-align: top;} 
+			/*검색하기 부분*/
+	#searchCategory{text-align: right; font-size: 18px; margin: 0 auto; height: 30px; font-family: 'omyu_pretty';} 
+			#searchCategory>div{display: inline-block; vertical-align: top; width:auto; margin-left:755px;} 
+			#searchCategory>div>select{width: 80px; height: 30px; font-size: 15px; font-family: 'omyu_pretty';vertical-align: top;} 
+			#searchCategory>div>input{width: 300px; max-width:300px; height: 26px; font-size: 15px;vertical-align: top;} 
 			#searchCategory>div>button{width: 100px; height: 30px; margin-top: 0px;margin-bottom: 0px;} 
-						
+						 
+				/*************************모바일****************************************/
+				/*****모바일 넓이***/
+				@media (min-width: 300px) and (max-width: 940px)  {
+			.gBoardList { width: 100%; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;}
+			.gContent{margin-top:30px;}
+			/*검색하기 부분*/
+			#searchCategory{text-align: right; font-size: 18px; margin: 20px 10px; height: 30px; font-family: 'omyu_pretty';} 
+			#searchCategory>div{display: inline-block; vertical-align: top; width:300px; margin-right:30px;} 
+			#searchCategory>div>select{width: 21%; height: 30px; font-size: 15px; font-family: 'omyu_pretty';vertical-align: top;} 
+			#searchCategory>div>input{width: 53%; max-width:300px; height: 26px; font-size: 15px;vertical-align: top;} 
+			#searchCategory>div>button{width: 18%; height: 30px; margin-top: 0px;margin-bottom: 0px;} 
+			adding-bottom: 10px; margin-top: 10px;}/*게시글 내용*/
+			/*버튼 부분*/
+			#writeBtn{text-align: right; width:200px;}	
+			.gBtn{width:25%;}
+			/*a태그*/
+			a{text-decoration: none; color: #000;}		
+			.search{width:80%}
+				}		
 			
 		</style>
 
@@ -66,14 +80,14 @@ window.onload = function() {
 				
 				<c:if test="${not empty midx}">
 					<c:forEach var="gpv" items="${gPhotoList}">
-						<div class="card" onclick="window.location.href='<%=request.getContextPath() %>/gathering/gPhotoAlbumContent.do?gpaidx=${gpv.gpaidx}'" >					
-							<img class="cardImg" src="../resources/GATImages/${gpv.imageName}">
+						<div class="card2" onclick="window.location.href='<%=request.getContextPath() %>/gathering/gPhotoAlbumContent.do?gpaidx=${gpv.gpaidx}'" >					
+							<img class="cardImg2" src="../resources/GATImages/${gpv.imageName}">
 							<h3 class="cardTitle"> 
 							<c:set var="dateString" value="${gpv.gPhotoAlbumWriteDay}" />
 							<fmt:parseDate var="date" value="${dateString}" pattern="yyyy-MM-dd HH:mm:ss" />
 							<fmt:formatDate value="${date}" pattern="yyyy년 MM월 dd일" />
 							</h3>
-							<h3 class="cardTitle">${gpv.gPhotoAlbumTitle }</h3>
+							<h3 class="cardInfo2">${gpv.gPhotoAlbumTitle }</h3> <!-- 움직이는 효과때문에 info 로 변경 원래는 title -->
 						</div>	
 					</c:forEach>
 				</c:if>
