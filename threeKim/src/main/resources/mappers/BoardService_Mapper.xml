@@ -66,19 +66,21 @@ ORDER BY rebidx DESC, level_ ASC, writeday ASC;
 
 
 <insert id="boardInsert" parameterType="bv"><!-- 공지 -->
-  INSERT INTO board1234(boardType, writer, writeDay, subject, content, boardView ,depth,level_, midx,filename,rebidx)
-  VALUES (0 , #{writer}, NOW(), #{subject}, #{content}, 0,0,0,#{midx},#{filename}, LAST_INSERT_ID())
+  INSERT INTO board1234(boardType, writer, writeDay, subject, content, boardView ,depth,level_, midx,filename)
+  VALUES (0 , #{writer}, NOW(), #{subject}, #{content}, 0,0,0,#{midx},#{filename})
 </insert>
-
+<update id="boardInsertUpdate">
+	update board1234 set rebidx = LAST_INSERT_ID() where bidx = LAST_INSERT_ID()
+</update>
 <insert id="boardInsert2" parameterType="bv"><!-- qna --><!-- rebidx와 bidx값 동일한값 넣어줌 -->
-  INSERT INTO board1234(boardType, writer, writeDay, subject, content, boardView, depth, level_, midx, filename, rebidx)
-  VALUES (1, #{writer}, NOW(), #{subject}, #{content}, 0, 0, 0, #{midx}, #{filename}, LAST_INSERT_ID())
+  INSERT INTO board1234(boardType, writer, writeDay, subject, content, boardView, depth, level_, midx, filename)
+  VALUES (1, #{writer}, NOW(), #{subject}, #{content}, 0, 0, 0, #{midx}, #{filename})
 </insert>
 
 
 <insert id="boardInsert3" parameterType="bv"><!-- faq -->
-  INSERT INTO board1234(boardType, writer, writeDay, subject, content, boardView ,depth,level_, midx,filename,rebidx)
-  VALUES (2 , #{writer}, NOW(), #{subject}, #{content}, 0,0,0,#{midx},#{filename}, LAST_INSERT_ID())
+  INSERT INTO board1234(boardType, writer, writeDay, subject, content, boardView ,depth,level_, midx,filename)
+  VALUES (2 , #{writer}, NOW(), #{subject}, #{content}, 0,0,0,#{midx},#{filename})
 </insert>
 
 <update id="boardModify" parameterType="bv">
