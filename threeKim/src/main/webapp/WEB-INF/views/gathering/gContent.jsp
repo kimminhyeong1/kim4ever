@@ -104,7 +104,7 @@
 				/* 슬라이더 1 시작 */
 						/* 슬라이더 1 시작 */
 			/* 슬라이더 1 시작 */
-			.slider-1 { height: calc(100vw * 0.3);; width:100%; position:relative; float:left; min-height:200px;}
+			.slider-1 { height: calc(100vw * 0.3);; width:100%; position:relative; float:left; min-height:200px; background-size: contain;}
 			/* 슬라이더 1 - 페이지 버튼 */
 			.slider-1 > .page-btns {text-align:center; position:absolute; bottom:10px; left:0; width:100%;}
 			

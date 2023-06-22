@@ -34,8 +34,8 @@ footer {width:100%;background-color:#eeeeee; height:180px; display:flex; justify
 @media (min-width: 300px) and (max-width: 940px)  {
  footer {background-color:#eeeeee; height:130px; display:flex; justify-content:center; align-items:center; width: auto; margin-top:7%;}
 .foot {display: flex; align-items: center;}
-.footer_L{font-family:'GangwonEdu_OTFBoldA'; font-size: 10px;  font-weight:bold; margin-right:10px; margin-left:10px;}
-.footer_R{font-family:'GangwonEdu_OTFBoldA'; font-size: 10px;;  font-weight:bold; margin-right:10px; margin-left:10px;}
+.footer_L{font-family:'GangwonEdu_OTFBoldA'; font-size: 10px;  font-weight:bold; margin-right:10px; margin-left:10px;   word-break: keep-all;}
+.footer_R{font-family:'GangwonEdu_OTFBoldA'; font-size: 10px;;  font-weight:bold; margin-right:10px; margin-left:10px;   word-break: keep-all;}
 .footer_L h1{font-size: 10px;font-family: 'KCC-Ganpan'; }
 .footer_R h2{text-align:left; }
 .hide{display:none;}

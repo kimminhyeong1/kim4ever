@@ -210,7 +210,7 @@ li{list-style:none;}
 				        <a href="${pageContext.request.contextPath}/board/boardList.do?page=${pm.startPage-1}">◀</a>
 				      </c:if>
 				    </td>
-				    <td style="text-align: center; width: 300px; font-size:30px;">
+				    <td style="text-align: center; width: 300px; font-size:20px;">
 				         <c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}" step="1">
 				        <a href="${pageContext.request.contextPath}/board/boardList.do?page=${i}">${i}</a>
 				      </c:forEach>
