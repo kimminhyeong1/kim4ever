@@ -13,6 +13,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer.MvcMatchersAuthorizedUrl;
 import org.springframework.stereotype.Service;
@@ -35,7 +36,10 @@ public class MemberServiceImpl implements MemberService {
 	private MemberService_Mapper msm;
 	//SqlSession : PreparedStatement와 표현 방법이 다를뿐 같은 기능을 한다.
 	//Autowired : 메모리에 올려둔 주소들이 자동으로 연결 됨
-
+	
+	@Autowired
+	private TaskExecutor taskExecutor;
+	
 	@Autowired
 	public MemberServiceImpl(SqlSession sqlSession) {
 		this.msm = sqlSession.getMapper(MemberService_Mapper.class);
@@ -83,14 +87,22 @@ public class MemberServiceImpl implements MemberService {
 		int value = msm.memberMailAuthSave(mailKey,memberEmail);//인증번호 DB에 담기
 		//이메일 보내기
 		
-		 MailHandler mh = new MailHandler(mailSender);
-		 mh.setSubject("[타바 인증메일 입니다.]"); //메일제목 
-		 mh.setText("<h1>타바 메일인증</h1><br>인증번호:"+mailKey); 
-		 mh.setFrom("taba1234TA@gmail.com","타바"); 
-		 mh.setTo(memberEmail); 
-		 mh.send();
-		 
-		return value;
+		// 이메일을 비동기적으로 전송
+		taskExecutor.execute(() -> {
+			try {
+				MailHandler mh = new MailHandler(mailSender);
+				mh.setSubject("[타바 인증메일 입니다.]"); //메일제목 
+				mh.setText("<h1>타바 메일인증</h1><br>인증번호:"+mailKey); 
+				mh.setFrom("taba1234TA@gmail.com","타바"); 
+				mh.setTo(memberEmail); 
+				mh.send();
+			} catch (Exception e) {
+				 e.printStackTrace();
+			}
+		});
+
+	    return value;
+		
 	}
 	
 	

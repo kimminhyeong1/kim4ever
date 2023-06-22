@@ -35,6 +35,10 @@
 	<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
 	
+	<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor"><!-- 쓰레드 -->
+    	<property name="corePoolSize" value="5" /> <!-- 원하는 스레드 수를 설정 -->
+	</bean>
+	
 	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
 	
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
