@@ -782,6 +782,19 @@ public class GatheringServiceImpl implements GatheringService {
       ArrayList<GatheringJoinVo> gjv = gsm.gatheringPhotoAlbumListSelectOne(gpaidx);
        return gjv;
    }
+   
+   //사진첩 상세보기 좋아요
+   @Override
+   public int gatheringPhotoAlbumLike(GatheringJoinVo gjv) {
+	   int value1 = gsm.gatheringPhotoAlbumLikeCheck(gjv);
+	      if (value1 == 0) { 
+	         int value2 = gsm.gatheringPhotoAlbumLikeInsert(gjv);
+	         int value3 = gsm.gatheringPhotoAlbumLike(gjv);   
+	         
+	      }
+	      return value1;
+   }
+
 
 
 
@@ -851,6 +864,9 @@ public class GatheringServiceImpl implements GatheringService {
    public int gatheringPhotoAlbumListSelectAll(SearchCriteria scri) {
       return gsm.gatheringPhotoAlbumListSelectAll(scri);
    }
+
+
+
 
 
 

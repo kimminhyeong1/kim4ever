@@ -25,17 +25,18 @@
 			.albumHeader button {font-size:16px;padding:10px 20px;}
 			/*사진첩 제목 */
 			.albumTitle {width:100%;text-align:left;border:1px solid #000; border-radius:10px; padding:20px;margin-top:20px;}
-			.albumTitle p {font-size:24px;margin:0;}
+			.albumTitle p {font-size:31px;margin:0;}
 			/*사진첩 이미지 */
 			.albumImage {width:100%;height:400px;border:1px solid #000; border-radius:10px;padding:20px;margin-top:20px;display:flex;justify-content:center;align-items:center;}
 			.albumImage img {max-width:100%;max-height:100%;}
 			/*사진첩 내용글 */
 			.albumContent {width:100%;border:1px solid #000; border-radius:10px;padding:20px;margin-top:20px;}
-			.albumContent p {font-size:24px;line-height:1.5;margin:0;}
+			.albumContent p {font-size:27px;line-height:1.5;margin:0;}
 			
 		</style>
 		
 		<script type="text/javascript">
+		
 		    function deletePhotoAlbum(midx, gpaidx) {
 		        var confirmExit = confirm("사진첩을 삭제하시겠습니까?");
 		        if (confirmExit) {
@@ -52,6 +53,30 @@
 		            });
 		        }
 		    }
+		    
+		    
+		    //좋아요
+		    $(".gPhotoAlbumLike").on("click", function() {
+		    	// 현재 스크롤 위치 저장
+		        var scrollPosition = $(window).scrollTop();
+		        // Ajax
+		        $.ajax({
+		          url: "${pageContext.request.contextPath}/gathering/gPhotoAlbumLike.do",
+		          data: { gpaidx: '${gpaidx}'}, 
+		          method: "POST", 
+		          success: function(data) {
+		        	  if (data.value == 0) {
+			    	        alert("좋아요 성공했습니다.");
+			    	        location.reload(); // 댓글 새로고침
+			    	      } else {
+			    	        alert("좋아요  실패했습니다.");
+			    	      }
+		          },
+		          error: function(xhr, status, error) {
+		        	  console.error("좋아요 오류 발생: " + error);
+		          }
+		        });
+		      });
 		</script>
 	</head>
 	<body>
@@ -64,7 +89,10 @@
 		            <c:if test="${status.index == 0}">
 				        <div class="albumHeader">
 					        <h2>${gjv.gPhotoAlbumWriteDay.substring(0, 10)}</h2>
-					        <button>좋아요</button>
+					        <div class="gPhotoAlbumLike">
+								 <img alt="좋아요" src="${pageContext.request.contextPath}/resources/icon/like.png" style="width: 50px;">
+								 <div>${gjv.gPhotoAlbumLikeCNT}</div>
+							</div>
 				         </div>
 				         
 		                 <div class="albumTitle">

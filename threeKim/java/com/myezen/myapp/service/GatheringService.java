@@ -177,6 +177,8 @@ public interface GatheringService {
 	public int gatheringPhotoAlbumListSelectAll(SearchCriteria scri);
 	//사진첩 상세보기
 	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelectOne(int gpaidx);
+	//사진첩 상세보기 좋아요
+	public int gatheringPhotoAlbumLike(GatheringJoinVo gjv);
 	//사진첩 수정페이지 조회
 	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumModify(int gpaidx);
 	//사진첩 수정하기 

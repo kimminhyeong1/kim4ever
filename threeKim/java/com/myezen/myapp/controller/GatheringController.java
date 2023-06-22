@@ -819,6 +819,27 @@ public class GatheringController {
 		    session.setAttribute("gpaidx", gpaidx);
 			return "gathering/gPhotoAlbumContent";
 		}
+		
+		
+	//사진첩 상세보기 좋아요
+		@RequestMapping(value="/gPhotoAlbumLike.do",method=RequestMethod.POST)
+		@ResponseBody
+		public HashMap<String, Object> gPhotoAlbumLike(
+				@ModelAttribute GatheringJoinVo gjv,
+				HttpServletRequest request
+				) {
+			System.out.println("사진첩 좋아요  컨트롤러진입");
+			HashMap<String, Object> hm = new HashMap<String, Object>();
+			HttpSession session = request.getSession();
+		    Object Omidx = session.getAttribute("midx");
+		    gjv.setMidx((int)Omidx);
+		   
+
+			//좋아요 메소드
+		    int value = gs.gatheringPhotoAlbumLike(gjv);
+		    hm.put("value",value); //0은 거짓 1은 참
+			return hm;
+		}
 
 		
 		//모임 사진첩작성
