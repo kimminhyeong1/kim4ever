@@ -27,7 +27,7 @@
 			#searchCategory>div>select{width: 80px; height: 30px; font-size: 15px; font-family: 'omyu_pretty';vertical-align: top;} 
 			#searchCategory>div>input{width: 300px; max-width:300px; height: 26px; font-size: 15px;vertical-align: top;} 
 			#searchCategory>div>button{width: 100px; height: 30px; margin-top: 0px;margin-bottom: 0px;} 
-						
+						 
 				/*************************모바일****************************************/
 				/*****모바일 넓이***/
 				@media (min-width: 300px) and (max-width: 940px)  {

@@ -88,7 +88,7 @@ header{width:auto; margin:0 auto; text-align:center;}
     .attend{white-space: nowrap;  width:auto; margin-bottom:5px;   position: absolute; left: 50%; transform: translateX(-50%); font-size:13px; padding-bottom:5px; }
      .cardJoinMem{white-space: nowrap;  text-align: center; margin-right:: 10px;}
     /*수정하거나 설정부분에 틀*/
-    .gSetContainer{text-align:left; border:none; min-width:100px;margin: 0 auto;width: 100%;padding: 2px;background-color: #fafafa;}
+    .gSetContainer{text-align:left; border:none; min-width:100px;margin: 0 auto;width: 99%;padding: 2px;background-color: #fafafa;}
 /*메뉴부분*/
 	#gMenu{width: auto;text-align: center;margin: 0px auto 0px;}
 	#gMenu #menu{height:60px;}
