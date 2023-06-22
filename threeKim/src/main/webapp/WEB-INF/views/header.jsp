@@ -7,7 +7,8 @@
 <style>
 /*리셋코드*/
 
-*{margin:0;padding:0;}
+*{margin:0;padding:0; word-break:keep-all}
+
 li{list-style:none;}
 /*헤더부분 영역*/
 header{width: 1250px;margin: 35px auto 70px;text-align: center;}
