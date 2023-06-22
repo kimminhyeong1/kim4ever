@@ -91,18 +91,18 @@
 
     </select>
     <!-- 이전 데이터를 제외한 새로운 데이터 가져오기 -->
-	<select id="getNewData" parameterType="list" resultType="com.myezen.myapp.domain.GatheringJoinVo">
+	<select id="getNewData" parameterType="java.util.HashMap" resultType="com.myezen.myapp.domain.GatheringJoinVo">
 	    SELECT a.*, b.*, COALESCE(c.gwidx, 0) AS gwidx
 	    FROM GATHERING_INFO1234 a
 	    JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
 	    LEFT JOIN gathering_wish1234 c ON c.GIIDX = a.GIIDX
 	    WHERE b.IMGTYPE = 'GT'
 	    AND a.GIIDX NOT IN
-	        <foreach item="item" collection="list" open="(" separator="," close=")">
+	        <foreach item="item" collection="excludedData" open="(" separator="," close=")">
 	            #{item}
 	        </foreach>
 	    ORDER BY RAND()
-	    LIMIT 8
+	    LIMIT #{offset}, 1
 	</select>
 	<!--  모임 나의 리스트 가져오기 -->
 	<select id="gatheringMyListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int"> 

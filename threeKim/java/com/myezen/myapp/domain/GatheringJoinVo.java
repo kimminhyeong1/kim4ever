@@ -169,7 +169,8 @@ public class GatheringJoinVo {//모임조인
 	private String TL; // 모임장
 	private int REPORTCNT; // 신고횟수 //가상컬럼
 
-	
+	//더보기 컬럼
+	private int offset;
 	
 	public String getgPhotoAlbumContents0() {
 		return gPhotoAlbumContents0;
@@ -834,6 +835,14 @@ public class GatheringJoinVo {//모임조인
 
 	public void setImgCreationDay(String imgCreationDay) {
 		ImgCreationDay = imgCreationDay;
+	}
+
+	public int getOffset() {
+		return offset;
+	}
+
+	public void setOffset(int offset) {
+		this.offset = offset;
 	}
 
 

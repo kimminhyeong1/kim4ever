@@ -47,7 +47,7 @@ public interface GatheringService {
 
 	public ArrayList<GatheringJoinVo> getMoreGjvList(int offset);
 	// 이전 데이터를 제외한 새로운 데이터 가져오기
-	public List<GatheringJoinVo> getNewData(List<Integer> excludedData);
+	public ArrayList<GatheringJoinVo> getNewData(ArrayList<Integer> excludedData,int offset);
 
 	public ArrayList<GatheringJoinVo> getMoreGjvList(int offset,HttpServletRequest request,String URI,SearchCriteria scri);
 

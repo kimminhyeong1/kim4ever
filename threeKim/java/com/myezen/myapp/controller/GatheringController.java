@@ -94,9 +94,12 @@ public class GatheringController {
  // 이전 데이터를 제외한 새로운 데이터 가져오기
     @PostMapping("/getNewData.do")
     @ResponseBody
-    public List<GatheringJoinVo> getNewData(@RequestBody List<Integer> excludedData) {
+    public ArrayList<GatheringJoinVo> getNewData(
+    		@RequestParam("excludedData") ArrayList<Integer> excludedData,
+    		@RequestParam("offset") int offset
+    		) {
     	System.out.println("랜덤값 더보기");
-        return gs.getNewData(excludedData);
+        return gs.getNewData(excludedData,offset); 
     }
 //모임만들기페이지	
 	@RequestMapping(value="/gCreate.do")

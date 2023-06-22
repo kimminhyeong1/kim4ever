@@ -200,6 +200,7 @@
 	            });
     </script>
     <script>
+    	var offset2 = 0;
 	    function fetchNewData() {
 	        var excludedData = [];
 	        <c:forEach var="gjv" items="${gjvlist}">
@@ -209,8 +210,9 @@
 	        $.ajax({
 	            url: '${pageContext.request.contextPath}/gathering/getNewData.do',
 	            type: 'POST',
-	            contentType: 'application/json',
-	            data: JSON.stringify(excludedData),
+	            dataType: "json",
+	            traditional: true,//배열값받기
+	            data: { offset:offset2 , excludedData:excludedData},
 	            success: function(data) {
 	                // 새로운 데이터 처리
 	                console.log(data); // 응답 데이터 출력 예시
@@ -226,7 +228,9 @@
 
                             + "</div>";
                         $(".gContentB").append(card);
+                        gjv.
                     });
+                    offset2 += 1;
 	            },
 	            error: function(xhr, textStatus, errorThrown) {
 	                // 에러 처리

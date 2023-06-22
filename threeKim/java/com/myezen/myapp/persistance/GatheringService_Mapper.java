@@ -57,7 +57,7 @@ public interface GatheringService_Mapper {
 	public ArrayList<GatheringJoinVo> getMoreGatheringList(int offset);
 
 	// 이전 데이터를 제외한 새로운 데이터 가져오기
-	public List<GatheringJoinVo> getNewData(List<Integer> excludedData);
+	public ArrayList<GatheringJoinVo> getNewData(HashMap<String, Object> hm);
 
 	//모임 나의 리스트 더보기
 	public ArrayList<GatheringJoinVo> getMoreGatheringMyListSelect(int offset,int midx);
