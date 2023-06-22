@@ -32,7 +32,30 @@
 			#searchCategory>div>select{width: 80px; height: 30px; font-size: 18px; font-family: 'omyu_pretty';vertical-align: top;} 
 			#searchCategory>div>input{width: 300px; height: 26px; font-size: 18px;vertical-align: top;} 
 			#searchCategory>div>button{width: 100px; height: 30px; margin-top: 0px;margin-bottom: 0px;} 
+<<<<<<< HEAD
 						
+=======
+						 
+				/*************************모바일****************************************/
+				/*****모바일 넓이***/
+				@media (min-width: 300px) and (max-width: 940px)  {
+			.gBoardList { width: 100%; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;}
+			.gContent{margin-top:30px;}
+			/*검색하기 부분*/
+			#searchCategory{text-align: right; font-size: 18px; margin: 20px 10px; height: 30px; font-family: 'omyu_pretty';} 
+			#searchCategory>div{display: inline-block; vertical-align: top; width:300px; margin-right:30px;} 
+			#searchCategory>div>select{width: 21%; height: 30px; font-size: 15px; font-family: 'omyu_pretty';vertical-align: top;} 
+			#searchCategory>div>input{width: 53%; max-width:300px; height: 26px; font-size: 15px;vertical-align: top;} 
+			#searchCategory>div>button{width: 18%; height: 30px; margin-top: 0px;margin-bottom: 0px;} 
+			adding-bottom: 10px; margin-top: 10px;}/*게시글 내용*/
+			/*버튼 부분*/
+			#writeBtn{text-align: right; width:200px;}	
+			.gBtn{width:25%;}
+			/*a태그*/
+			a{text-decoration: none; color: #000;}		
+			.search{width:80%}
+				}		
+>>>>>>> 김지원
 			
 		</style>
 
