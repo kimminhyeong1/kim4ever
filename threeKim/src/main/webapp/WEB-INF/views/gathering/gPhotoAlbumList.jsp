@@ -21,12 +21,23 @@
 			#createBtn{text-align: right;}	
 			/*페이징 부분*/
 			.gPaging{font-size: 25px; margin-top:20px;}		
+
 			/*검색하기 부분*/
 	#searchCategory{text-align: right; font-size: 18px; margin: 0 auto; height: 30px; font-family: 'omyu_pretty';} 
 			#searchCategory>div{display: inline-block; vertical-align: top; width:auto; margin-left:755px;} 
 			#searchCategory>div>select{width: 80px; height: 30px; font-size: 15px; font-family: 'omyu_pretty';vertical-align: top;} 
 			#searchCategory>div>input{width: 300px; max-width:300px; height: 26px; font-size: 15px;vertical-align: top;} 
 			#searchCategory>div>button{width: 100px; height: 30px; margin-top: 0px;margin-bottom: 0px;} 
+
+			
+			/*검색 부분*/
+			#searchCategory {position:absolute;top:-10px;right:-90px;text-align:right;  font-size:20px;margin:40px 60px; height:30px;font-family:'omyu_pretty';vertical-align:top;display: flex;align-items: center;}
+			#searchCategory > div {display:flex;align-items:center;}
+			#searchCategory > div > select {width:80px;height:30px; font-size:18px;font-family:'omyu_pretty';vertical-align:top; margin-right: 5px;}
+			#searchCategory > div > input {width:300px; height:26px;font-size:18px;vertical-align:top;flex:1;}
+			#searchCategory > div > button {width: 100px; height: 30px;margin-top: 0px;margin-bottom: 0px;flex-shrink: 0; margin-left: 5px; }
+									
+
 						
 				/*************************모바일****************************************/
 				/*****모바일 넓이***/
@@ -68,6 +79,7 @@ window.onload = function() {
 			<section class="gContainer">
 				<div class="gContent" >
 				
+
 				<form id="searchCategory" name="frm" action="${pageContext.request.contextPath}/gathering/gPhotoAlbumList.do" method="get">
 						<div class="search">
 							<select name="searchType">
@@ -91,6 +103,31 @@ window.onload = function() {
 						</div>	
 					</c:forEach>
 				</c:if>
+
+					<form id="searchCategory" name="frm" action="${pageContext.request.contextPath}/gathering/gPhotoAlbumList.do" method="get">
+							<div class="search">
+								<select name="searchType">
+										<option value="gPhotoAlbumTitle">제목</option>					
+								</select>
+								<input type="text" name="keyword" size="10">
+								<button type="submit" id="searchBtn" class="gBtn2">검색</button>
+							</div>
+					</form>
+					
+					<c:if test="${not empty midx}">
+						<c:forEach var="gpv" items="${gPhotoList}">
+							<div class="card" onclick="window.location.href='<%=request.getContextPath() %>/gathering/gPhotoAlbumContent.do?gpaidx=${gpv.gpaidx}'" >					
+								<img class="cardImg" src="../resources/GATImages/${gpv.imageName}">
+								<h3 class="cardTitle"> 
+								<c:set var="dateString" value="${gpv.gPhotoAlbumWriteDay}" />
+								<fmt:parseDate var="date" value="${dateString}" pattern="yyyy-MM-dd HH:mm:ss" />
+								<fmt:formatDate value="${date}" pattern="yyyy년 MM월 dd일" />
+								</h3>
+								<h3 class="cardTitle">${gpv.gPhotoAlbumTitle }</h3>
+							</div>	
+						</c:forEach>
+					</c:if>
+
 				</div>
 				
 				<div class="gPaging">

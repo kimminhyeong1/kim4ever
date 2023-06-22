@@ -803,11 +803,19 @@ public class GatheringController {
 			int midx = (int) session.getAttribute("midx");
 			int giidx = (int) session.getAttribute("giidx");
 			int gpaidx = Integer.parseInt(request.getParameter("gpaidx"));
-			 
+			
 			/*모임상세리스트 가져오기*/
 			ArrayList<GatheringJoinVo> gjvList = gs.gatheringPhotoAlbumListSelectOne(gpaidx);
-			    
+
+			 // gatheringMemberType 값 가져오기
+	        GatheringVo gjv = gs.gatheringMemberType(giidx, midx);
+	        String gatheringMemberType = gjv.getGatheringMemberType();
+	     
+			System.out.println("gatheringMemberType는???!!"+ gatheringMemberType);
+			
 		    md.addAttribute("gjvList", gjvList);
+		   
+		    
 		    session.setAttribute("gpaidx", gpaidx);
 			return "gathering/gPhotoAlbumContent";
 		}
@@ -869,7 +877,7 @@ public class GatheringController {
 		    System.out.println("midx는? " + midx);
 		    System.out.println("giidx는? " + giidx);
 		    System.out.println(gjv.getgPhotoAlbumTitle());
-		    System.out.println(gjv.getgPhotoAlbumContents());
+		   
 		    
 
 		    return "redirect:/gathering/gPhotoAlbumList.do";
@@ -911,6 +919,7 @@ public class GatheringController {
 			}
 		    gjv.setMidx((int)Omidx);
 		    
+		    System.out.println("수정이미지파일"+GAImg);
 		  
 		    int value = gs.gatheringPhotoAlbumModifyUpdate(gjv, GATImg, GAImg);
 		    

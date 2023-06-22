@@ -180,7 +180,7 @@ public interface GatheringService {
 	//사진첩 수정페이지 조회
 	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumModify(int gpaidx);
 	//사진첩 수정하기 
-	public int gatheringPhotoAlbumModifyUpdate(GatheringJoinVo gjv,MultipartFile GTImg, ArrayList<MultipartFile> GImg)throws IOException, Exception;
+	public int gatheringPhotoAlbumModifyUpdate(GatheringJoinVo gjv,MultipartFile GTImg,  ArrayList<MultipartFile> GAImgList)throws IOException, Exception;
 	//사진첩 삭제하기
 	public void deletePhotoAlbum(int midx, int gpaidx);
 	
