@@ -727,12 +727,15 @@ public class GatheringServiceImpl implements GatheringService {
 		//2.모임 대표이미지 넣기
         value = gsm.gatheringPhotoGATInsert(gjv);
         System.out.println("value2성공"+value);
-        //3. 모임 이미지들 넣기
-        for (MultipartFile file : GAImg) {
-        	String uploadedGAImgName = UploadFileUtiles.uploadFile(savedGAImgPath, file.getOriginalFilename(), file.getBytes());
-        	gjv.setImageName(uploadedGAImgName);
-        	value = gsm.gatheringPhotoGAInsert(gjv);
-        	 System.out.println("value3성공"+value);
+     // 모임 이미지들 업데이트
+        for (int i = 0; i < GAImg.size(); i++) {
+            MultipartFile file = GAImg.get(i);
+            if (file != null && !file.isEmpty()) {
+                String uploadedGAImgName = UploadFileUtiles.uploadFile(savedGAImgPath, file.getOriginalFilename(), file.getBytes());
+                gjv.setImageName(uploadedGAImgName);
+                value = gsm.gatheringPhotoGAUpdate(gjv);
+                System.out.println("모임 이미지 업데이트 성공: " + value);
+            }
         }
 
 		return value;
@@ -764,6 +767,7 @@ public class GatheringServiceImpl implements GatheringService {
 	public int gatheringPhotoAlbumModifyUpdate(GatheringJoinVo gjv, MultipartFile GATImg, ArrayList<MultipartFile> GAImg) throws IOException, Exception {
 
 		int value = 0;
+		int imidx = 0;
 		
 		String savedGATImgPath = "D://threekim//threeKim//src//main//webapp//resources/GATImages";//사진첩 대표이미지
 		String savedGAImgPath = "D://threekim//threeKim//src//main//webapp//resources/GAImages";//사진첩 이미지
@@ -782,6 +786,12 @@ public class GatheringServiceImpl implements GatheringService {
 	        if (file != null && !file.isEmpty()) {
 	            String uploadedGAImgName = UploadFileUtiles.uploadFile(savedGAImgPath, file.getOriginalFilename(), file.getBytes());
 	            gjv.setImageName(uploadedGAImgName);
+	            
+	            imidx = gsm.gatheringGSelect(gjv); //날짜도 변경
+            	gjv.setImidx(imidx);
+	        	value = gsm.gatheringGUpdate(gjv);
+	            
+	            
 	            value = gsm.gatheringPhotoGAUpdate(gjv);
 	            System.out.println("모임 이미지 업데이트 성공: " + value);
 	        }

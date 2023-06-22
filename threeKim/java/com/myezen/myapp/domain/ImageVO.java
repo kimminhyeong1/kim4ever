@@ -11,6 +11,8 @@ public class ImageVO {//이미지업로드
 	private int gbidx;//모임 게시판 번호
 	private int gpaidx;//모임 사진첩 번호
 	private String ImgType;//이미지 구분
+	private int imageNum;
+	
 	/*
 	이미지 구분
 	노말 이미지 : N
@@ -24,6 +26,12 @@ public class ImageVO {//이미지업로드
 	모임 사진첩 이미지:GA
 	모임 게시글 이미지:GB
 	*/
+	public int getImageNum() {
+		return imageNum;
+	}
+	public void setImageNum(int imageNum) {
+		this.imageNum = imageNum;
+	}
 	public int getImidx() {
 		return imidx;
 	}
