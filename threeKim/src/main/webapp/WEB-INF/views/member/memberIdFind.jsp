@@ -48,7 +48,7 @@
 									IdFind.attr("style","display:inline-block;");
 									return;
 								} else {
-									alert("실패 사용자가 입력한부분중에 틀린게 있습니다. 다시 시도하시오.");
+									alert("사용자가 입력한부분중에 틀린게 있습니다. 다시 시도하시오.");
 									return false;
 								}
 							},

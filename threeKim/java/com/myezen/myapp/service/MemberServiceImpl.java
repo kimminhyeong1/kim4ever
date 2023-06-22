@@ -92,6 +92,53 @@ public class MemberServiceImpl implements MemberService {
 		 
 		return value;
 	}
+	
+	
+	//휴대폰번호,인증번호 데이터베이스에 저장
+	@Override
+	public void savePhoneNumberVerification(BikeJoinVo bjv) {
+		msm.savePhoneNumberVerification(bjv);
+		
+	}
+	
+	//인증번호 받아서 일치 여부 확인
+	@Override
+	public boolean verifyPhoneNumber(String userPhoneNumber, int randomNumber) {
+		int savedRandomnumber = msm.getSavedRandomNumber(userPhoneNumber);
+		if (savedRandomnumber == randomNumber) {
+			
+			msm.updateVerificationStatus(userPhoneNumber);
+			  return true;
+		}
+		return false;
+	}
+	
+	//휴대폰번호를 받아서 해당 번호에 대해 저장된 인증번호를 가져옴
+	@Override
+	public int getSavedRandomNumber(String userPhoneNumber) {		
+		return msm.getSavedRandomNumber(userPhoneNumber);
+	}
+	
+	//인증번호가 일치하면 인증상태 ->Y로 변경 , 인증번호를 NULL값으로 변경 
+	@Override
+	public void updateVerificationStatus(String userPhoneNumber) {
+		msm.updateVerificationStatus(userPhoneNumber);
+		
+	}
+	
+	//회원가입 이메일 인증 인증번호 대조
+	@Override
+	public boolean joinEmailCheck(String mail_key, String memberEmail) {
+		boolean A = msm.joinEmailCheck(mail_key,memberEmail);
+
+		return A;
+	}
+	
+	
+	
+	
+	
+	
 	//아이디찾기 1.대조
 	@Override
 	public int memberIdFindMatch(String memberName, String memberEmail) {//아이디찾기에서 이 사람이 맞는지 확인 
@@ -397,6 +444,8 @@ public class MemberServiceImpl implements MemberService {
 		String memberPhone = msm.memberPhoneCheck(midx);
 		return memberPhone;
 	}
+
+
 
 	
 	
