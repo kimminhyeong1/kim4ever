@@ -15,6 +15,7 @@ import java.util.List;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.myezen.myapp.domain.BikeJoinVo;
@@ -44,6 +45,8 @@ public interface GatheringService {
 	public ArrayList<GatheringJoinVo> gatheringListSelect();
 	//모임 리스트 더보기 
 	public ArrayList<GatheringJoinVo> getMoreGjvList(int offset);
+	// 이전 데이터를 제외한 새로운 데이터 가져오기
+	public List<GatheringJoinVo> getNewData(List<Integer> excludedData);
 	//모임 나의리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringMyListSelect(int midx);
 	//모임 소개페이지 리스트 가져오기

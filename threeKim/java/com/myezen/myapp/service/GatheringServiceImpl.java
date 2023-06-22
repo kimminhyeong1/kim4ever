@@ -183,6 +183,10 @@ public class GatheringServiceImpl implements GatheringService {
 		ArrayList<GatheringJoinVo> moreGjvList = gsm.getMoreGatheringList(offset);
 		return moreGjvList;
 	}
+	// 이전 데이터를 제외한 새로운 데이터 가져오기
+    public List<GatheringJoinVo> getNewData(List<Integer> excludedData) {
+        return gsm.getNewData(excludedData);
+    }
 
 
 

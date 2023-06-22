@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -81,6 +82,13 @@ public class GatheringController {
     	System.out.println("더보기");
     	ArrayList<GatheringJoinVo> moreGjvList = gs.getMoreGjvList(offset);
         return moreGjvList;
+    }
+ // 이전 데이터를 제외한 새로운 데이터 가져오기
+    @PostMapping("/getNewData.do")
+    @ResponseBody
+    public List<GatheringJoinVo> getNewData(@RequestBody List<Integer> excludedData) {
+    	System.out.println("랜덤값 더보기");
+        return gs.getNewData(excludedData);
     }
 //모임만들기페이지	
 	@RequestMapping(value="/gCreate.do")
