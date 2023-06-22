@@ -443,7 +443,11 @@ public class bikeRentController {
 			HttpSession session,
 			Model md
 			) {
-		 int midx = (int) session.getAttribute("midx");
+		Object omidx = session.getAttribute("midx");
+	    if (omidx == null) {//midx가 없으면 진입불가
+	    	return "redirect:/member/memberLogin.do";
+		}
+	    int midx = (int)omidx;
 		//로그인한 회원번호를 담아서 대여이력을 보여준다
 		 
 		 System.out.println("midx는:"+midx);
