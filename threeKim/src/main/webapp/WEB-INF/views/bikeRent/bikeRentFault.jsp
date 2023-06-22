@@ -13,11 +13,11 @@
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20f538f14cf29a1eb30d2f9dbaa4e1fb&libraries=services,clusterer,drawing"></script> <!-- 카카오지도APIkey -->
 		<style>
-		
+		*{word-break:keep-all}
 			/*헤더영역 메뉴*/
 			header #menu{display: none;}
 			/*틀부분*/
-			.container{border: 1px solid #bbb; margin: 0 auto; width: 68.5% ;padding: 20px;background-color: #f1f1f1;border-radius: 10px;
+			.container{border: 1px solid #bbb; margin: 0 auto; width: 68.5% ;padding: 20px;background-color: #f1f1f1;border-radius: 10px; 
 			\display: flex;  justify-content: center;  align-items: center;}
 			.container>div{padding: 20px; text-align: left;}
 			.container>div>p{display: inline-block; } 
@@ -56,7 +56,7 @@
 			#useInfo{width:80%; font-size:22px; line-height:35px;}
 			/*이용내역 내용 버튼*/
 			#useListBtn{text-align:center;}
-			img{height:200px; width:200px;}
+			img{height:100%; width:100%;}
 			#map{width:290px;height:200px; text-align:center}
 			
 }

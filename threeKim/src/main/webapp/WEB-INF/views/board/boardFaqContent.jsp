@@ -200,40 +200,6 @@ $(document).ready(function() {
 
 
 
-<script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
-
-
-  <video id="video-preview"></video>
-
-  <script>
-    // 비디오 요소 및 스캐너 객체 생성
-    let videoElement = document.getElementById('video-preview');
-    let scanner = new Instascan.Scanner({ video: videoElement });
-
-    // 스캔된 QR 코드 처리
-    scanner.addListener('scan', function(content) {
-      // 스캔된 QR 코드 내용(content)을 처리하는 코드 작성
-      alert('스캔 결과: ' + content);
-    });
-
-    // 비디오 스트림 시작 및 스캐너 시작
-    Instascan.Camera.getCameras()
-      .then(function(cameras) {
-        if (cameras.length > 0) {
-          scanner.start(cameras[0]);
-        } else {
-          console.error('No cameras found.');
-        }
-      })
-      .catch(function(error) {
-        console.error('Error accessing camera:', error);
-      });
-  </script>
-
-
-
-
-		<div id="bottom"></div>
 	</div>
 </body>
 <!-- <%@include file="../footer.jsp"%> -->

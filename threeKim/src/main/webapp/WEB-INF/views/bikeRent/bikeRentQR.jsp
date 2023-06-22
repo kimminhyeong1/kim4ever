@@ -14,7 +14,13 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent.css">  
+<style>
+#content{display:block;}
 
+/*************************모바일****************************************/
+				/*****모바일 넓이***/
+				@media (min-width: 300px) and (max-width: 940px)  {#content{display:none;}}
+</style>
 	</head>
 	<body>
 		<%@include file="../header.jsp" %>
@@ -50,9 +56,10 @@
                             <a href="${pageContext.request.contextPath}/bikeRent/bikeRentDetail/${ebkidx91}/view.do"><img class="QRImg" src="data:image/png;base64,${QRCode91}" alt=""></a>
                             <p>ELE41</p>
                         </div>					
-                      
+                      </div>
 				</div>				
 			</section>
+			
 		</main>
 		<%@include file="../footer.jsp" %>
 	</body>

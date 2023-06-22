@@ -37,7 +37,7 @@
 	#bikeDetail img{ width:150px; height:150px; text-align:center; margin:0 auto;}	
 	#bikeDetail td{border:1px solid #ddd; padding:5px; font-size:10px; line-height:1.5;  text-align:center; text-align:left; border-radius:10px;}
 	#bikeDetail h2{text-align:center;font-size:15px; margin-bottom: 5px; font-family: 'omyu_pretty';}
-	#bikeDetail input[type="text"],textarea{font-family:'omyu_pretty'; font-size:15px; box-sizing:border-box; width:180px; padding:2px; margin:2px 0; border:1px solid #ccc; box-sizing:border-box; border-radius:4px; }
+	#bikeDetail input[type="text"],textarea{font-family:'omyu_pretty'; font-size:15px; box-sizing:border-box; width:100%; padding:2px; margin:2px 0; border:1px solid #ccc; box-sizing:border-box; border-radius:4px; }
 	#bikeDetail button{width:100%; height:30px; text-align:center; font-family: 'omyu_pretty'; font-size:15px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 	#bikeDetail button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 	#bikeDetail label{font-size:13px;}

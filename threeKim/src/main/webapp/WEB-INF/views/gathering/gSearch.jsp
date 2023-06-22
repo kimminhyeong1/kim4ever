@@ -18,7 +18,7 @@
 		 <style type="text/css">
 		 	/*검색부분*/
 			#SearchPart{margin: 30px 0 30px 0; position: relative;}
-			#SearchPart button{position: absolute;width: 50px; height: 50px;border: 0px;background: 0px; top: 3px; right: 380px;}
+			#SearchPart button{position: absolute;width: 50px; height: 50px;border: 0px;background: 0px; top: 3px; right: 225px;}
 			#SearchPart img{width: 40px; height: 40px;}
 			#keywordMark p{font-size:21px;}
 				/*************************모바일****************************************/

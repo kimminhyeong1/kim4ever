@@ -36,7 +36,7 @@ li{list-style:none;}
 #main #content{width:1440px; height:auto;}
 #main #bottom{width:1440px; height:300px;}
 #main #content h2{text-align:left; margin-top:50px; margin-left:160px; font-family: 'GangwonEdu_OTFBoldA'; font-size:25px;}
-#content table {width:80%; border-collapse:collapse; margin: 60px auto 0; line-height:100px; font-size:24px; font-family: 'omyu_pretty';}
+#content table {width:80%; border-collapse:collapse; margin: 60px auto 0; line-height:30px; font-size:24px; font-family: 'omyu_pretty';}
 #content table th{width:140px;padding: 10px;text-align: center;}
 #content table td{padding: 10px; text-align:left; border-left:1px solid #ddd;}
 #content table tr{border:1px solid #ddd;}
@@ -76,16 +76,42 @@ li{list-style:none;}
 
 </style>
 <script type="text/javascript">
+function validateForm() {
+	  var subject = document.getElementsByName("subject")[0].value;
+	  var content = document.getElementsByName("content")[0].value;
+
+	  if (subject.trim() === '') {
+	    alert("제목을 입력해주세요.");
+	    return false; // 폼 제출 방지
+	  }
+
+	  if (content.trim() === '') {
+	    alert("내용을 입력해주세요.");
+	    return false; // 폼 제출 방지
+	  }
+
+	  return true; // 폼 제출 허용
+	}
+
 	function fnWrite() {
-		var fm = document.frm;
-		if(confirm("글을 등록 하시겠습니까?")) {
-			location.href='<%=request.getContextPath()%>/board/boardList.do';
-		}
-		fm.action = "<%=request.getContextPath()%>/board/boardWriteAction2.do";
-		fm.enctype ="multipart/form-data";
-		fm.method="post";
-		fm.submit();
-	}	
+	  var fm = document.frm;
+	  if (validateForm() === false) {
+	    return false; // 폼 제출 방지
+	  }
+
+	  var confirmResult = confirm("글을 등록 하시겠습니까?");
+	  if (confirmResult) {
+	    fm.action = "<%=request.getContextPath()%>/board/boardWriteAction2.do";
+	    fm.enctype = "multipart/form-data";
+	    fm.method = "post";
+	    fm.submit();
+	  } else {
+	    location.href = '<%=request.getContextPath()%>/board/boardList.do';
+	  }
+
+	  return false; // 페이지 이동 방지
+	}
+
 
 </script>
 
@@ -99,7 +125,7 @@ li{list-style:none;}
 
 		<div id="content">
 			<h2>QnA 게시글 작성</h2>
-						<form name="frm">
+						<form name="frm" onsubmit="return validateForm()">
 <input type="hidden" name="writer" value="	<%= session.getAttribute("memberName") %>"><!-- writer로 저장 -->
 				<table>
 					<tr>
@@ -110,13 +136,12 @@ li{list-style:none;}
 					
 					<tr>
 						<th>제목</th>
-						<td><input type="text" name="subject"
-							></td>
+						<td><input type="text" name="subject"></td>
 					</tr>
 					
 					<tr>
 						<th>내용</th>
-						<td><textarea name="content" cols="50" rows="10"  style="font-size: 26px;"></textarea></td>
+						<td><textarea name="content" cols="50" rows="10" ></textarea></td>
 					</tr>
 					
 					<tr>
