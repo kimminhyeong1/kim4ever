@@ -30,7 +30,7 @@
 			#gIntro>div:nth-child(5){width: 90%; height: 13%; margin: 20px 20px;}
 			/*모임슬라이더부분*/
 			#gThumbnail{vertical-align: top;margin-left:42px; display: inline-block; width: 790px; height: 500px; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;}
-			#gThumbnail>div>div:nth-child(1){font-size: 20px;font-weight: bold;margin-top: 15px;margin-left: 20px;}
+			#gThumbnail>div>div:nth-child(1){font-size: 20px;font-weight: bold;margin 0 auto;}
 			/* 슬라이더 1 시작 */
 			.slider-1 {height:470px;position:relative; margin: 15px auto; width: 750px;}
 			/* 슬라이더 1 - 페이지 버튼 */
@@ -88,8 +88,8 @@
 		 	.gContainer{border: 1px solid #0000; padding-top:5%;}
 		 	#main{width:auto; height:auto; background-color:#F8F8F8;}
 		 	/*모임슬라이더부분*/
-			#gThumbnail{vertical-align: top; width: 63%; height:99%; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px; margin-left:0px; margin-top: 0px; position: absolute;}
-			#gThumbnail>div>div:nth-child(1){font-size: 20px;font-weight: bold;margin-top: 15px;margin-left: 20px;}
+			#gThumbnail{vertical-align: top; width: 62%; height:99%; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px; margin-left:0px; margin-top: 0px; position: absolute;}
+			#gThumbnail>div>div:nth-child(1){font-size: 20px;font-weight: bold; margin 0 auto;}
 			
 		 	/*모임이름부분*/
 		 	#gIntro_gThumbnail{text-align:left; position: relative; overflow:hidden;}
@@ -104,7 +104,7 @@
 				/* 슬라이더 1 시작 */
 						/* 슬라이더 1 시작 */
 			/* 슬라이더 1 시작 */
-			.slider-1 { height: 100%; width:100%; position:relative; float:left; min-height:200px; background-size: contain;}
+			.slider-1 { height: 100%; width:90%; position:relative; float:left; min-height:200px; background-size: contain;}
 			/* 슬라이더 1 - 페이지 버튼 */
 			.slider-1 > .page-btns {text-align:center; position:absolute; bottom:10px; left:0; width:100%;}
 			

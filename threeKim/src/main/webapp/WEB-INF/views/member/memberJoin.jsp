@@ -38,10 +38,10 @@
 		/*로그인 외각선*/
 		#login_out{border: 1px solid #bbb;margin: 40px auto;width: 50%;padding: 20px;background-color: #f1f1f1;border-radius: 10px;}
 		/*알림*/
-		.alarm{color: #f00;text-align: left;line-height: 0px;padding-left: 5px;padding-top: 15px;} 
+		.alarm{color: #f00;text-align: left;line-height: 10px;padding-left: 5px;padding-top: 15px;} 
 		
 		h2{text-align: center; margin-top:0px;margin-bottom: 20px;}   
-		#content table {width:60%;border-collapse:collapse;  margin:10px auto 0; text-align:center;  line-height:0px; font-family:'omyu_pretty'; font-size:21px;}
+		#content table {width:60%;border-collapse:collapse;  margin:10px auto 0; text-align:center;  line-height:10px; font-family:'omyu_pretty'; font-size:21px;}
 		#content table th{width:150px; text-align:center;  padding:8px;}   
 		#content table td{padding:8px;text-align:left;}  
 		#content table td:nth-child(1){width:120px;text-align:center;}
@@ -61,6 +61,7 @@
 		  margin: 2px 0;
 		  border: 1px solid #ccc;
 		  border-radius: 4px;
+		  
 		}
 		
 		#content table button{width:430px; height:60px; text-align:center; font-family: 'omyu_pretty'; font-size:30px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
@@ -68,14 +69,7 @@
 		
 		#main #findbutton{width:100%; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 		#main #findbutton:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
-		
-		#phoneChk {
-  display: inline-block;
-  padding: 15px 16px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  cursor: pointer;
-}
+	
 		
 	/*****************************************모바일***************************************************************/
 		
@@ -90,9 +84,9 @@
 		.alarm{color: #f00;text-align: left;line-height: 0px;padding-left: 5px;padding: 10px; font-size:10px;} 
 		
 		h2{text-align: center; margin-top:0px;margin-bottom: 20px; font-size:15px;}   
-		#content table {width:250px;border-collapse:collapse;  margin:10px auto 0; text-align:center;  line-height:0px; font-family:'omyu_pretty'; font-size:21px;}
-		#content table th{width:230px; text-align:center;  padding:2px;   box-sizing: border-box; font-size:15px;}    
-		#content table td{width:230px; padding:2px;text-align:left;   box-sizing: border-box;   font-size:15px;}
+		#content table {width:250px;border-collapse:collapse;  margin:10px auto 0; text-align:center;  line-height:10px; font-family:'omyu_pretty'; font-size:21px;}
+		#content table th{width:230px; text-align:center;  padding:5px;   box-sizing: border-box; font-size:15px;}    
+		#content table td{width:230px; padding:5px;text-align:left;   box-sizing: border-box;   font-size:15px;}
 
 		#content table th{width:150px;text-align:center;}
 		#content table #memberIdCheck {padding:5px 10px; font-size:21px; width:120px; height:50px; }
@@ -115,7 +109,7 @@
 		#main #findbutton:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 		
 		    #authBar, #emailCheck {
-		        display: inline-block;
+		        display: inline-block; padding:10px;
 		    }
 
 	}
@@ -307,7 +301,7 @@
 							oMsg.style.color = "red";
 							oMsg.style.padding = "15px 0px 0px 5px";
 							oMsg.style.textAlign = "left";
-							oMsg.innerHTML = "이메일 주소를 다시 확인해주세요.222";
+							oMsg.innerHTML = "이메일 주소를 다시 확인해주세요.";
 							return false;
 						}
 				
@@ -848,7 +842,7 @@
 						</tr>
 						<tr>
 							<td>
-							<span id="phoneChk" class="doubleChk">인증번호 보내기</span>
+							<button id="phoneChk" class="doubleChk">인증번호 보내기</button>
 							</td>
 						</tr>
 						<tr>
@@ -877,7 +871,7 @@
 						</tr>
 						<tr>
 							<td>
-							 	<input type="button" id="auth"  class="memberBar" value="이메일 인증번호 받기">
+							 	<button type="button" id="auth"  class="memberBar" value="이메일 인증번호 받기">이메일 인증번호 받기</button>
 							</td>
 						</tr>
 						<tr>
@@ -889,7 +883,7 @@
 						<tr>
 							<td>
 								<input type="text" id="memberAddr" name="memberAddr" placeholder="주소"> 
-								<input type="button" onclick="openAddressPopup()" value="주소 검색"> 
+								<button type="button" onclick="openAddressPopup()" value="주소 검색">주소검색</button> 
 								
 							</td>
 						</tr> 
@@ -906,5 +900,4 @@
 		<div id="bottom"></div>
 	</main>
 	</body>
-	<%@include file="../footer.jsp" %>
 </html>
