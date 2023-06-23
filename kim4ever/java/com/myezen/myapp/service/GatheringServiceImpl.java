@@ -747,17 +747,22 @@ public class GatheringServiceImpl implements GatheringService {
    
    //모임사진첩 조회
    @Override
-   public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelect(SearchCriteria scri) {
-      
-      ArrayList<GatheringJoinVo> gPhotoList = gsm.gatheringPhotoAlbumListSelect(scri);
+   public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelect(SearchCriteria scri,int giidx) {
+	  HashMap<String, Object> hm = new HashMap<>();
+      hm.put("giidx", giidx);
+      hm.put("scri", scri);
+      ArrayList<GatheringJoinVo> gPhotoList = gsm.gatheringPhotoAlbumListSelect(hm);
       
       return gPhotoList;
    }
    
    //사진첩 리스트  총 게시물 조회
    @Override
-   public int gatheringPhotoAlbumListSelectAll(SearchCriteria scri) {
-      return gsm.gatheringPhotoAlbumListSelectAll(scri);
+   public int gatheringPhotoAlbumListSelectAll(SearchCriteria scri,int giidx) {
+	  HashMap<String, Object> hm = new HashMap<>();
+      hm.put("giidx", giidx);
+      hm.put("scri", scri);
+      return gsm.gatheringPhotoAlbumListSelectAll(hm);
    }
 
    

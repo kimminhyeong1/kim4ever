@@ -612,7 +612,7 @@
 	</insert>
 	
 	<!-- 사진첩 리스트 조회 -->
-	<select id="gatheringPhotoAlbumListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo"  parameterType="com.myezen.myapp.domain.SearchCriteria">
+	<select id="gatheringPhotoAlbumListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo"  parameterType="java.util.HashMap">
 	 SELECT *
 	  FROM (
 	    SELECT @rownum := @rownum + 1 AS RNUM, B.*
@@ -620,9 +620,9 @@
 	      SELECT a.gpaidx, a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, b.imgtype, b.imageName
 	      FROM gathering_photoalbum1234 a
 	      JOIN image1234 b ON a.giidx = b.GIIDX AND a.gpaidx = b.gpaidx
-	      WHERE b.imgtype = 'GAT'
-	      <if test="keyword != null">
-	        AND a.GPHOTOALBUMTITLE LIKE CONCAT('%', #{keyword}, '%')
+	      WHERE b.imgtype = 'GAT' and a.giidx=#{giidx}
+	      <if test="scri.keyword != null">
+	        AND a.GPHOTOALBUMTITLE LIKE CONCAT('%', #{scri.keyword}, '%')
 	      </if>
 	      ORDER BY GPHOTOALBUMWRITEDAY DESC
 	    ) B, (SELECT @rownum := 0) R
@@ -631,13 +631,13 @@
 	</select>
 	
 	<!-- 사진첩 리스트  총 게시물 조회 -->
-	<select id="gatheringPhotoAlbumListSelectAll" resultType="int">
+	<select id="gatheringPhotoAlbumListSelectAll" resultType="int" parameterType="java.util.HashMap">
 		SELECT count(*) as cnt
 		FROM gathering_photoalbum1234 a
 		JOIN image1234 b ON a.giidx = b.GIIDX AND a.gpaidx = b.gpaidx
-		WHERE b.imgtype='GAT'
-		<if test="keyword != null">
-	     AND a.GPHOTOALBUMTITLE LIKE '%'||#{keyword}||'%'
+		WHERE b.imgtype='GAT' and a.giidx=#{giidx}
+		<if test="scri.keyword != null">
+	     AND a.GPHOTOALBUMTITLE LIKE '%'||#{scri.keyword}||'%'
 	    </if>
 	</select>
 	
