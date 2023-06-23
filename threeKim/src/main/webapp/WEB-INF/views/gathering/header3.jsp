@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <style>
 /****************************모바일**************************/
@@ -27,9 +27,20 @@
 			<img src="${pageContext.request.contextPath}/resources/mobile/g_pic.png" alt="모임사진첩" class="hidden_img">	
 			<p>모임 사진첩</p>
 		</div>
-		<div class="midmenu" onclick="location.href='<%=request.getContextPath()%>/gathering/gModify.do'">
-			<img src="${pageContext.request.contextPath}/resources/mobile/g_modi.png" alt="모임수정" class="hidden_img">	
-			<p>&nbsp; 모임 수정</p>    
-		</div>
+
+		<c:choose>
+		  <c:when test="${MGatheringMemberType eq 'TL'}">
+		    <div class="midmenu" onclick="location.href='<%=request.getContextPath()%>/gathering/gModify.do'">
+		      <img src="${pageContext.request.contextPath}/resources/mobile/g_modi.png" alt="모임수정" class="hidden_img">  
+		      <p>&nbsp; 모임 수정</p>
+		    </div>
+		  </c:when>
+		  <c:otherwise>
+	
+		  </c:otherwise>
+		</c:choose>
+
+
+
 	</div>
 </header>
