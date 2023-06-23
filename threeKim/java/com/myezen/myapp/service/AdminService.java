@@ -46,7 +46,8 @@ public interface AdminService {
 	//수리완료 버튼 누르면 bikeState Y로 업데이트
 		public void updateBikeStateY(int eidx);	
 	//자전거리스트	
-		public ArrayList<BikeJoinVo> bikeList();
+		public ArrayList<BikeJoinVo> bikeList(SearchCriteria scri);
+		public int bikeListCount (SearchCriteria scri);
 	//대여소 리스트
 		public ArrayList<BikeJoinVo> rentalshopList();	
 	//대여소 등록

@@ -444,27 +444,38 @@
 
       //휴대폰 번호 인증
         var code2 = "";
-        $("#phoneChk").click(function(){
-        	alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호를 확인해 주세요.");
-        	var phone = $("#phone").val();
-        	$.ajax({
-                type:"GET",
-                url:"${pageContext.request.contextPath}/member/phoneCheck.do?phone=" + phone, //url 수정
-                cache : false,
-                success:function(data){
-                	if(data == "error"){
-                		alert("휴대폰 번호가 올바르지 않습니다.")
-        				$(".successPhoneChk").text("유효한 번호를 입력해주세요.");
-        				$(".successPhoneChk").css("color","red");
-        				$("#phone").attr("autofocus",true);
-                	}else{	        		
-                		$("#phone2").attr("disabled",false);
-                		$("#phoneChk2").css("display","inline-block");
-                		$(".successPhoneChk").text("인증번호를 입력하세요.");
-                		$(".successPhoneChk").css("color","green");
-                		$("#phone").attr("readonly",true);
-                		code2 = data;
-                	}
+        $("#phoneChk").click(function(event) {
+            event.preventDefault(); // 폼의 전송 방지
+
+            alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호를 확인해 주세요.");
+
+            // 휴대폰 번호 저장
+            var phoneValue = $("#phone").val();
+
+            var phone = phoneValue;
+            $.ajax({
+                type: "GET",
+                url: "${pageContext.request.contextPath}/member/phoneCheck.do?phone=" + phone,
+                cache: false,
+                success: function(data) {
+                    if (data == "error") {
+                        alert("휴대폰 번호가 올바르지 않습니다.")
+                        $(".successPhoneChk").text("유효한 번호를 입력해주세요.");
+                        $(".successPhoneChk").css("color", "red");
+                        $("#phone").attr("autofocus", true);
+
+                        // 입력된 휴대폰 번호를 다시 채우기
+                        $("#phone").val(phoneValue);
+                    } else {
+                        $("#phone2").attr("disabled", false);
+                        $("#phoneChk2").css("display", "inline-block");
+                        $(".successPhoneChk").text("인증번호를 입력하세요.");
+                        $(".successPhoneChk").css("color", "green");
+                        $("#phone").attr("readonly", true);
+                        code2 = data;
+
+                        // 폼의 다른 입력 요소들은 초기화하지 않도록 수정
+                    }
                 }
             });
         });

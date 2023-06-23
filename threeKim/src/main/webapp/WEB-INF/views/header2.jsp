@@ -136,9 +136,6 @@ header{width:auto;margin:0 auto;}
 						<a href="#"><span class = "title" onclick="location.href='${pageContext.request.contextPath}/bikerent/bikeRentHistory.do'">대여내역</span></a>
 					</li>
 					
-					<li>
-						<a href="#"><span class = "title" onclick="location.href='${pageContext.request.contextPath}/rent/rentFaultList.do'">신고내역</span></a>
-					</li>
 					
 					<li>
 						<a href="#"><span class = "title" onclick="location.href='${pageContext.request.contextPath}/board/boardList.do'">공지사항</span></a>
@@ -164,9 +161,6 @@ header{width:auto;margin:0 auto;}
 						<a href="#"><span class = "title" onclick="location.href='${pageContext.request.contextPath}/gathering/gCreate.do'">모임 만들기</span></a>
 					</li>
 					
-					<li>
-						<a href="#"><span class = "title" onclick="location.href='${pageContext.request.contextPath}/'">회원관리</span></a>
-					</li>
 				</ul>
 			</div>
 	</div>

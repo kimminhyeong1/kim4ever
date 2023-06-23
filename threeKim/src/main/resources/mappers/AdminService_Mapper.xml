@@ -318,11 +318,69 @@ OFFSET #{offset};
 		WHERE e.eidx = #{eidx}
 	</update>
 
+	<sql id="search5">
+		
+		
+		<if test="searchType != null and searchType != '' and keyword != null and keyword != ''">
+		    <choose>
+		        <when test="searchType == 'bikeType'">
+		            AND bikeType LIKE CONCAT('%', #{keyword}, '%')
+		        </when>
+		        <when test="searchType == 'bikeCode'">
+		            AND bikeCode LIKE CONCAT('%', #{keyword}, '%')
+		        </when>
+		        <when test="searchType == 'bikeLocation'">
+		            AND bikeLocation LIKE CONCAT('%', #{keyword}, '%')
+		        </when>
+		        <when test="searchType == 'bikeState'">
+		            AND bikeState LIKE CONCAT('%', #{keyword}, '%')
+		        </when>
+		    </choose>
+		</if>		
+	</sql>
+
+
+
+<select id="bikeListCount" resultType="int">
+  SELECT count(*) as cnt
+  FROM bike1234
+  <include refid="search5" />
+<where>
+  <if test="searchType != null and searchType != '' and keyword != null and keyword != ''">
+    <choose>
+      <when test="searchType == 'bikeType'">
+        AND bikeType LIKE CONCAT('%', #{keyword}, '%')
+      </when>
+      <when test="searchType == 'bikeCode'">
+        AND bikeCode LIKE CONCAT('%', #{keyword}, '%')
+      </when>
+      <when test="searchType == 'bikeLocation'">
+        AND bikeLocation LIKE CONCAT('%', #{keyword}, '%')
+      </when>
+      <when test="searchType == 'bikeState'">
+        AND bikeState LIKE CONCAT('%', #{keyword}, '%')
+      </when>
+    </choose>
+  </if>
+</where>
+  ORDER BY bkidx ASC
+</select>
+
+
+
 
 	
 	<!-- 관리자 자전거 리스트 -->
 	<select id="bikeList" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
-	SELECT * FROM bike1234 WHERE bkidx BETWEEN 1 AND 10
+SELECT *
+FROM (
+  SELECT bikeCode, bikeType, bikeLocation, bikeState,
+         ROW_NUMBER() OVER (ORDER BY bikeCode DESC) AS row_num
+  FROM bike1234
+  -- <include refid="search5" />
+) AS numbered_rows
+WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPageNum};
+
 	</select>
 	
 	<!-- 회원 상세 정보 보기 -->
