@@ -61,10 +61,10 @@
 		  border-radius: 4px;
 		}
 		
-		#content table button{width:430px; height:60px; text-align:center; font-family: 'omyu_pretty'; font-size:30px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+		#content table button{width:430px; height:60px; text-align:center; font-family: 'omyu_pretty'; font-size:30px; cursor:pointer; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 		#content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 		
-		#main #findbutton{width:100%; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+		#main #findbutton{width:100%; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; cursor:pointer; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 		#main #findbutton:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 		
 		</style>
@@ -334,7 +334,7 @@ function initMap() {
 						<tr>
 							<td>
 								<input type="text" id="rentalshopLocation" name="rentalshopLocation" placeholder="대여소 주소"> 
-								<input type="button" onclick="openAddressPopup()" value="주소 검색"> 
+								<input type="button" id="findbutton" onclick="openAddressPopup()" value="주소 검색"> 
 								
 							</td>
 						</tr> 
