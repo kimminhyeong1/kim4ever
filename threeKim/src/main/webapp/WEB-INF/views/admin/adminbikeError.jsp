@@ -78,36 +78,36 @@ li{list-style:none;}
 		</div>
 		</form>
 		<table>
-				<tr>
-					<th>번호</th>
-					<th>고객명</th>
-					<th>대여소</th>
-					<th>종류</th>
-					<th>번호</th>		
-					<th>신고시간</th>
-					<th>내용</th>				
-				</tr>
-			<c:forEach var="ejv" items="${elist}">
-					<tr>						
-						<td>${ejv.eidx}</td>
-						<td>${ejv.memberName}</td>
-						<td>${ejv.rentPlace}</td>
-						<td>
-						<c:choose>
-								<c:when test="${ejv.bikeType eq '일반자전거'}">  
-									일반
-								</c:when>
-								<c:when test="${ejv.bikeType eq '전기자전거'}">  
-									전기
-								</c:when>
-							</c:choose>
-						</td>
-						<td>${ejv.bikeCode}</td>  
-						<td>${ejv.errorDay.substring(0, 16)}</td>   
-						<td><a href="adminbikeErrorContent.do?eidx=${ejv.eidx}">${ejv.errorContent}</a></td>
-			
-					</tr>
-			</c:forEach>
+			<tr>
+				<th>번호</th>
+				<th>고객명</th>
+				<th>대여소</th>
+				<th>종류</th>
+				<th>번호</th>		
+				<th>신고시간</th>
+				<th>내용</th>				
+			</tr>
+		<c:forEach var="ejv" items="${elist}">
+			<tr>						
+				<td>${ejv.eidx}</td>
+				<td>${ejv.memberName}</td>
+				<td>${ejv.rentPlace}</td>
+				<td>
+				<c:choose>
+					<c:when test="${ejv.bikeType eq '일반자전거'}">  
+						일반
+					</c:when>
+					<c:when test="${ejv.bikeType eq '전기자전거'}">  
+						전기
+					</c:when>
+				</c:choose>
+				</td>
+				<td>${ejv.bikeCode}</td>  
+				<td>${ejv.errorDay.substring(0, 16)}</td>   
+				<td><a href="adminbikeErrorContent.do?eidx=${ejv.eidx}">${ejv.errorContent}</a></td>
+	
+			</tr>
+	</c:forEach>
 		</table>
 		
 		<table>

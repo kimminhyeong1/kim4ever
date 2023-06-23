@@ -144,11 +144,21 @@ public class AdminController {
 
 	// 자전거 관리 페이지
 	@RequestMapping(value="/adminbikeList.do")
-	public String adminbikeList(Model model) {
+	public String adminbikeList(SearchCriteria scri,Model model) {
 		
-		ArrayList<BikeJoinVo> klist = as.bikeList();
+		int totalCount = as.bikeListCount(scri);
+		
+		pm.setScri(scri);
+		pm.setTotalCount(totalCount);
+		
+		ArrayList<BikeJoinVo> klist = as.bikeList(scri);
+		pm.setScri(scri);
 		
 		model.addAttribute("klist",klist);
+		model.addAttribute("pm", pm);
+		
+
+			
 		
 		return "admin/adminbikeList";
 	}

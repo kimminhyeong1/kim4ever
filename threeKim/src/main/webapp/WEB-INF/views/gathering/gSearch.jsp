@@ -10,25 +10,23 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">		
 		<link rel="stylesheet"  media ="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_gathering_mo.css">  
-		
-		  
-		 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		 <meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		   
-		 <style type="text/css">
+		<style type="text/css">
 		 	/*검색부분*/
 			#SearchPart{margin: 30px 0 30px 0; position: relative;}
 			#SearchPart button{position: absolute;width: 50px; height: 50px;border: 0px;background: 0px; top: 3px; right: 225px;}
 			#SearchPart img{width: 40px; height: 40px;}
 			#keywordMark p{font-size:21px;}
-				/*************************모바일****************************************/
-				/*****모바일 넓이***/
+			/*************************모바일****************************************/
+			/*****모바일 넓이***/
 			@media (min-width: 300px) and (max-width: 940px)  {
 			#SearchPart button{position: absolute;width: 50px; height: 30px;border: 0px;background: 0px; top: 3px; right: 0px;}
 			#SearchPart img{width: 25px; height: 25px; margin-top:30px; margin-right:10%;}
 			#keywordMark p{font-size:21px;}
 				}
-		 </style>
+		</style>
 	</head>
 	<body>
 	<%@include file="../header2.jsp" %>
@@ -56,66 +54,35 @@
 				<h2>전주 모임 보기</h2>
 			</div>
 				<div class="gContent gContentB" >
-					<c:forEach var="gjv" items="${gjvlist}">
-						<div class="card" >
-							<img class="cardImg" src="../resources/GTImages/${gjv.imageName}">
-							<c:choose>
-								<c:when test="${gjv.gwidx != 0}">
-								<img class="cardWish" src="../resources/icon/fullheart.png" onclick="handleHeartClick(${gjv.giidx}, ${midx}, this)">
-								</c:when>
-								<c:otherwise>
-									<button ><img class="cardWish" src="../resources/icon/heart.png" onclick="handleHeartClick(${gjv.giidx}, ${midx}, this)"></button>
-								</c:otherwise>
-							</c:choose>
-						
-							<h3 class="cardTitle">${gjv.gInfoName}</h3>
-							<p class="cardInfo" id="textContainer">${gjv.gInfoBriefIntroduction}</p>
-							<p class="attend">(참여멤버${gjv.gInfoParticipating}/${gjv.gInfoCapacity})</p> 
-							<button class="gBtn" onclick="delayedRedirect('${pageContext.request.contextPath}/gathering/gSimpleInfo.do?giidx=${gjv.giidx}', 50)">구경하기</button><!-- 버튼딜레이 -->						
-						</div>
+					<c:forEach var="gjv" items="${gjvlist}" varStatus="loop">
+						<c:if test="${loop.index lt 8}">
+							<div class="card" >
+								<img class="cardImg" src="../resources/GTImages/${gjv.imageName}">
+								<c:choose>
+									<c:when test="${gjv.gwidx != 0}">
+									<img class="cardWish" src="../resources/icon/fullheart.png" onclick="handleHeartClick(${gjv.giidx}, ${midx}, this)">
+									</c:when>
+									<c:otherwise>
+										<button ><img class="cardWish" src="../resources/icon/heart.png" onclick="handleHeartClick(${gjv.giidx}, ${midx}, this)"></button>
+									</c:otherwise>
+								</c:choose>
+							
+								<h3 class="cardTitle">${gjv.gInfoName}</h3>
+								<p class="cardInfo" id="textContainer">${gjv.gInfoBriefIntroduction}</p>
+								<p class="attend">(참여멤버${gjv.gInfoParticipating}/${gjv.gInfoCapacity})</p> 
+								<button class="gBtn" onclick="delayedRedirect('${pageContext.request.contextPath}/gathering/gSimpleInfo.do?giidx=${gjv.giidx}', 50)">구경하기</button><!-- 버튼딜레이 -->						
+							</div>
+						 </c:if>
+						 <c:if test="${loop.index eq 8 and loop.last}">
+		                    <script>
+		                        $(document).ready(function() {
+		                            $("#moreButton").show();
+		                        });
+		                    </script>
+		                </c:if>
 					 </c:forEach>
 				</div>
-				<div><button id="moreButton" class="gBtn2" >더보기</button></div>
-			<div class="gContentTitle" >
-			<h2>근처 모임 보기</h2>
-			</div>
-			<div class="gContent" >
-				<div class="card" >
-					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-					<img class="cardWish" src="../resources/icon/heart.png">
-					<h3 class="cardTitle">바이크어썸</h3>
-					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
-					<p class="attend">참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">구경하기</button>
-					<button class="gBtn" onclick="delayedRedirect('${pageContext.request.contextPath}/gathering/gContent.do?giidx=${gjvmy.giidx}, 700)">들어가기</button><!-- 버튼딜레이 -->						
-					
-				</div>
-				<div class="card" >
-					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-					<img class="cardWish" src="../resources/icon/heart.png">
-					<h3 class="cardTitle">바이크어썸</h3>
-					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
-					<p class="attend">참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">구경하기</button>
-				</div>
-				<div class="card" >
-					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-					<img class="cardWish" src="../resources/icon/heart.png">
-					<h3 class="cardTitle">바이크어썸</h3>
-					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
-					<p class="attend">참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">구경하기</button>
-				</div>
-				<div class="card" >
-					<img class="cardImg" src="../resources/bikeimg/bike.jpg">
-					<img class="cardWish" src="../resources/icon/heart.png">
-					<h3 class="cardTitle">바이크어썸</h3>
-					<p class="cardInfo">자전거를 사랑하는 전주인들의 모임입니다!</p>
-					<p class="attend">참여멤버(5/10))</p>
-					<button class="gBtn" onclick="location.href='<%=request.getContextPath()%>/gathering/gContent.do'">구경하기</button>
-				</div>			
-			</div>
-			<div><button class="gBtn2" >더보기</button></div>
+				<div><button id="moreButton" type="button" class="gBtn2" style="display: none;">더보기</button></div>
 		</section>
 	</main>
 	<%@include file="../footer.jsp" %>
@@ -137,12 +104,12 @@
 						success: function(data) {
 							
 							if (data.value == 1) {
-								alert("찜 삭제");
+								console.log("찜 삭제");
 								// src 속성을 업데이트하여 이미지를 변경합니다.
 								$(element).attr('src', '../resources/icon/heart.png');
 								return;
 							} else {
-								alert("찜 실패");
+								console.log("찜 실패");
 								return false;
 							}
 						},
@@ -164,12 +131,12 @@
 						success: function(data) {
 							
 							if (data.value == 1) {
-								alert("찜 성공");
+								console.log("찜성공");
 								// src 속성을 업데이트하여 이미지를 변경합니다.
 								$(element).attr('src', '../resources/icon/fullheart.png');
 								return;
 							} else {
-								alert("찜 실패");
+								console.log("찜실패");
 								return false;
 							}
 						},
@@ -219,23 +186,29 @@
 	                    success: function(data) {
 	                        // 가져온 데이터를 gContent에 추가
 	                        $.each(data, function(index, gjv) {
-                                var card = "<div class='card'>"
-                                    + "<img class='cardImg' src='../resources/GTImages/" + gjv.imageName + "'>"
-                                    + "<img class='cardWish' src='../resources/icon/" + (gjv.gwidx != 0 ? "fullheart.png" : "heart.png") + "' onclick='handleHeartClick(" + gjv.giidx + ", " + ${midx} + ", this)'>"
-                                    + "<h3 class='cardTitle'>" + gjv.gInfoName + "</h3>"
-                                    + "<p class='cardInfo'>" + gjv.gInfoBriefIntroduction + "</p>"
-                                    + "<p class='attend'>(참여멤버 " + gjv.gInfoParticipating + "/" + gjv.gInfoCapacity + ")</p>" 
-                                    + "<button class='gBtn' onclick=\"location.href='${pageContext.request.contextPath}/gathering/gSimpleInfo.do?giidx="+gjv.giidx+"'\">구경하기</button>"
-
-                                    + "</div>";
-                                $(".gContentB").append(card);
+	                        	if (index !== 8) {
+	                                var card = "<div class='card'>"
+	                                    + "<img class='cardImg' src='../resources/GTImages/" + gjv.imageName + "'>"
+	                                    + "<img class='cardWish' src='../resources/icon/" + (gjv.gwidx != 0 ? "fullheart.png" : "heart.png") + "' onclick='handleHeartClick(" + gjv.giidx + ", " + ${midx} + ", this)'>"
+	                                    + "<h3 class='cardTitle'>" + gjv.gInfoName + "</h3>"
+	                                    + "<p class='cardInfo'>" + gjv.gInfoBriefIntroduction + "</p>"
+	                                    + "<p class='attend'>(참여멤버 " + gjv.gInfoParticipating + "/" + gjv.gInfoCapacity + ")</p>" 
+	                                    + "<button class='gBtn' onclick=\"location.href='${pageContext.request.contextPath}/gathering/gSimpleInfo.do?giidx="+gjv.giidx+"'\">구경하기</button>"
+	
+	                                    + "</div>";
+	                                $(".gContentB").append(card);
+	                        	}
 	                        });
 
 	                        //alert(offset);
 	                        offset += 8;
+	                      	//데이터가 없으면 
+	                        if (data.length < 8) {
+			                    $("#moreButton").hide(); // 더보기 버튼 숨기기
+			                }
 	                    },
 	                    error: function() {
-	                        alert("더 보기 요청에 실패했습니다.");
+	                    	console.log("더 보기 요청에 실패했습니다.");
 	                    }
 	                });
 	            });

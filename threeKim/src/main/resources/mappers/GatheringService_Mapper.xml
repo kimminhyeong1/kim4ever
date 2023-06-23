@@ -76,7 +76,7 @@
 	    LEFT JOIN gathering_wish1234 c ON c.GIIDX = a.GIIDX
 	    WHERE b.IMGTYPE = 'GT'
 	    ORDER BY RAND()
-	    LIMIT 8
+	    LIMIT 9
 	</select>
 	<!-- 모임 리스트  더 가져오기 -->
     <select id="getMoreGatheringList" resultType="com.myezen.myapp.domain.GatheringJoinVo">
@@ -87,7 +87,7 @@
 	    LEFT JOIN gathering_wish1234 c ON c.GIIDX = a.GIIDX
 	    WHERE b.IMGTYPE = 'GT'
 	    ORDER BY a.GIIDX
-	    LIMIT #{offset}, 8
+	    LIMIT #{offset}, 9
 
     </select>
     <!-- 이전 데이터를 제외한 새로운 데이터 가져오기 -->
@@ -102,7 +102,7 @@
 	            #{item}
 	        </foreach>
 	    ORDER BY RAND()
-	    LIMIT #{offset}, 8
+	    LIMIT #{offset}, 9
 	</select>
 	<!--  모임 나의 리스트 가져오기 -->
 	<select id="gatheringMyListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int"> 
@@ -112,7 +112,7 @@
 		JOIN GATHERING1234 c ON c.GIIDX = a.GIIDX
 		LEFT JOIN gathering_wish1234 d ON d.GIIDX = a.GIIDX
 		WHERE b.IMGTYPE = 'GT' AND c.midx = #{0} AND a.GINFODELYN = 'N'
-		LIMIT 4
+		LIMIT 5
 	</select>
 	<!-- 모임 나의 리스트  더 가져오기  -->
     <select id="getMoreGatheringMyListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo">
@@ -122,7 +122,7 @@
 		JOIN GATHERING1234 c ON c.GIIDX = a.GIIDX
 		LEFT JOIN gathering_wish1234 d ON d.GIIDX = a.GIIDX
 		WHERE b.IMGTYPE = 'GT' AND c.midx = #{1} AND a.GINFODELYN = 'N'
-	    LIMIT #{0}, 4
+	    LIMIT #{0}, 5
     </select>
 	<!--  모임 소개페이지 리스트 가져오기 -->
 	<select id="gatheringOneSimpleListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int"> 
@@ -223,7 +223,7 @@
 		JOIN GATHERING1234 c ON c.GIIDX = a.GIIDX
 		JOIN gathering_wish1234 d ON d.GIIDX = a.GIIDX
 		WHERE b.IMGTYPE = 'GT' AND c.midx = #{0} AND a.GINFODELYN = 'N'
-		LIMIT 4
+		LIMIT 5
 	</select>
 	<!-- 모임 나의 찜 리스트 더 가져오기  -->
     <select id="getMoreGatheringMyWishListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo">
@@ -233,7 +233,7 @@
 		JOIN GATHERING1234 c ON c.GIIDX = a.GIIDX
 		JOIN gathering_wish1234 d ON d.GIIDX = a.GIIDX
 		WHERE b.IMGTYPE = 'GT' AND c.midx = #{1} AND a.GINFODELYN = 'N'
-	    LIMIT #{0}, 4
+	    LIMIT #{0}, 5
     </select>	
 	<!-- 모임 검색기능 -->
 	<select id="searchGatherings" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="com.myezen.myapp.domain.SearchCriteria">
@@ -248,7 +248,8 @@
 	     AND a.GINFONAME LIKE CONCAT('%', #{keyword}, '%')
 	    </if>
 	     GROUP BY a.GIIDX, a.GINFONAME, a.GINFOBRIEFINTRODUCTION, a.GINFOCAPACITY, a.GINFOPARTICIPATING, b.IMAGENAME, COALESCE(d.gwidx, 0)
-	     LIMIT 8
+	     ORDER BY a.gInfoCreationDay DESC
+	     LIMIT 9
 	</select>
 	<!-- 모임 검색기능 더보기 -->
 	<select id="getMoreSearchGatherings" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="java.util.HashMap">
@@ -263,7 +264,8 @@
 	     AND a.GINFONAME LIKE CONCAT('%', #{scri.keyword}, '%')
 	    </if>
 	     GROUP BY a.GIIDX, a.GINFONAME, a.GINFOBRIEFINTRODUCTION, a.GINFOCAPACITY, a.GINFOPARTICIPATING, b.IMAGENAME, COALESCE(d.gwidx, 0)
-	      LIMIT #{offset}, 8
+	     ORDER BY a.gInfoCreationDay DESC
+	      LIMIT #{offset}, 9
 	</select>
 	
 
@@ -641,7 +643,7 @@
 	
 	<!-- 사진첩 상세페이지 조회 -->
 	<select id="gatheringPhotoAlbumListSelectOne" resultType="com.myezen.myapp.domain.GatheringJoinVo">
-		SELECT a.gpaidx, a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, a.GPHOTOALBUMCONTENTS0, a.GPHOTOALBUMCONTENTS1, a.GPHOTOALBUMCONTENTS2, b.imgtype, b.imageName
+		SELECT a.gpaidx, a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, a.GPHOTOALBUMCONTENTS0, a.GPHOTOALBUMCONTENTS1, a.GPHOTOALBUMCONTENTS2, a.gPhotoAlbumLikeCNT, b.imgtype, b.imageName
 		FROM gathering_photoalbum1234 a
 		JOIN image1234 b ON a.giidx = b.GIIDX AND a.gpaidx = b.gpaidx
 		WHERE b.imgtype = 'GA'
@@ -661,7 +663,6 @@
     <update id="gatheringPhotoAlbumLike" parameterType="com.myezen.myapp.domain.GatheringJoinVo">
     	UPDATE gathering_photoalbum1234 SET gPhotoAlbumLikeCNT = gPhotoAlbumLikeCNT + 1 where gpaidx= #{gpaidx}
 	</update>
-	
 	
 	<!--  사진첩  게시글 수정 조회 -->
 	<select id="gatheringPhotoAlbumModify" resultType="com.myezen.myapp.domain.GatheringJoinVo">

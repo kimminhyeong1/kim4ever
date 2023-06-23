@@ -24,7 +24,7 @@
 
 	
 <!--관리자 회원관리 리스트  -->
-<select id="memberList" resultType="com.myezen.myapp.domain.BikeJoinVo">
+<select id="memberList" resultType="com.myezen.myapp.domain.BikeJoinVo" parameterType="com.myezen.myapp.domain.SearchCriteria">
 SELECT *
 FROM (
   SELECT memberId, memberName, memberAge, memberDelYN, writeDay, memberType,
@@ -62,7 +62,7 @@ WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPag
 </sql>
 
 	<!--관리자 탈퇴회원관리 리스트  -->
-<select id="memberOutList" resultType="com.myezen.myapp.domain.BikeJoinVo">
+<select id="memberOutList" resultType="com.myezen.myapp.domain.BikeJoinVo" parameterType="com.myezen.myapp.domain.SearchCriteria">
 	SELECT *
 	FROM (
 	  SELECT (@row_number:=@row_number + 1) AS rnum, A.*
@@ -174,7 +174,7 @@ OFFSET #{offset};
 	
 	
 	<!--수리내역 갯수  -->
-	 <select id="searchBikeErrorsCount" resultType="int">
+	 <select id="searchBikeErrorsCount" resultType="int" >
 		SELECT COUNT(*)
 		FROM rent1234 r
 		JOIN member1234 m ON m.midx = r.midx
@@ -318,11 +318,49 @@ OFFSET #{offset};
 		WHERE e.eidx = #{eidx}
 	</update>
 
+	
+
+
+
+<select id="bikeListCount" resultType="int" parameterType="com.myezen.myapp.domain.SearchCriteria">
+  SELECT count(*) as cnt
+  FROM bike1234
+  WHERE 1=1
+  <include refid="search5" />
+</select>
+
+
+<sql id="search5">
+		 <if test="searchType != null and searchType != ''">
+		    <choose>
+		        <when test="searchType == 'bikeCode'">
+		            AND bikeCode LIKE CONCAT('%', #{keyword}, '%')
+		        </when>
+		        <when test="searchType == 'bikeType'">
+		            AND bikeType LIKE CONCAT('%', #{keyword}, '%')
+		        </when>
+		        <when test="searchType == 'bikeLocation'">
+		            AND bikeLocation LIKE CONCAT('%', #{keyword}, '%')
+		        </when>
+		        <when test="searchType == 'bikeState'">
+		            AND bikeState LIKE CONCAT('%', #{keyword}, '%')
+		        </when>
+		    </choose>
+		</if>		
+	</sql>
 
 	
 	<!-- 관리자 자전거 리스트 -->
-	<select id="bikeList" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
-	SELECT * FROM bike1234 WHERE bkidx BETWEEN 1 AND 10
+	<select id="bikeList" resultType="com.myezen.myapp.domain.BikeJoinVo" parameterType="com.myezen.myapp.domain.SearchCriteria">
+	SELECT *
+	FROM (
+	  SELECT bikeCode, bikeType, bikeLocation, bikeState,
+	         ROW_NUMBER() OVER (ORDER BY bikeCode DESC) AS row_num
+	  FROM bike1234
+	   WHERE 1=1
+	<include refid="search5" />
+	) AS numbered_rows
+	WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPageNum};
 	</select>
 	
 	<!-- 회원 상세 정보 보기 -->

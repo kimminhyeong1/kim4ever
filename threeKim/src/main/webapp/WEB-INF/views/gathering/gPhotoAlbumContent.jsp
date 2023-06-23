@@ -32,11 +32,12 @@
 			/*사진첩 내용글 */
 			.albumContent {width:100%;border:1px solid #000; border-radius:10px;padding:20px;margin-top:20px;}
 			.albumContent p {font-size:27px;line-height:1.5;margin:0;}
-			
+			/*좋아요버튼*/
+			.gPhotoAlbumLike {position:relative;}
+			.likeCount {position:absolute;top:-20%; right:-35%; background-color:#ff0000; color:#ffffff; font-size:12px; padding:4px 8px;  border-radius:10px; }
 		</style>
 		
 		<script type="text/javascript">
-		
 		    function deletePhotoAlbum(midx, gpaidx) {
 		        var confirmExit = confirm("사진첩을 삭제하시겠습니까?");
 		        if (confirmExit) {
@@ -56,6 +57,7 @@
 		    
 		    
 		    //좋아요
+		    $(function() {
 		    $(".gPhotoAlbumLike").on("click", function() {
 		    	// 현재 스크롤 위치 저장
 		        var scrollPosition = $(window).scrollTop();
@@ -66,10 +68,10 @@
 		          method: "POST", 
 		          success: function(data) {
 		        	  if (data.value == 0) {
-			    	        alert("좋아요 성공했습니다.");
+			    	        alert("좋아요를 누르셨습니다.");
 			    	        location.reload(); // 댓글 새로고침
 			    	      } else {
-			    	        alert("좋아요  실패했습니다.");
+			    	        alert("이미 좋아요를 누르셨습니다.");
 			    	      }
 		          },
 		          error: function(xhr, status, error) {
@@ -77,6 +79,7 @@
 		          }
 		        });
 		      });
+		    });
 		</script>
 	</head>
 	<body>
@@ -91,10 +94,10 @@
 					        <h2>${gjv.gPhotoAlbumWriteDay.substring(0, 10)}</h2>
 					        <div class="gPhotoAlbumLike">
 								 <img alt="좋아요" src="${pageContext.request.contextPath}/resources/icon/like.png" style="width: 50px;">
-								 <div>${gjv.gPhotoAlbumLikeCNT}</div>
+								<div class="likeCount">${gjv.gPhotoAlbumLikeCNT}</div>
 							</div>
 				         </div>
-				         
+		
 		                 <div class="albumTitle">
 		                     <p>${gjv.gPhotoAlbumTitle}</p>
 		                 </div>
@@ -123,14 +126,17 @@
 		        </div>
 	        </c:forEach>
 	        
-		    <div id="createBtn">  
-			  	<c:if test="${gjv.gatheringMemberType ne 'TM'}">
-			    	<c:set var="firstGjv" value="${gjvList[0]}" />
-			    <c:if test="${not empty firstGjv.gpaidx}">
-		      		<button class="gBtn2" onclick="location.href='${pageContext.request.contextPath}/gathering/gPhotoAlbumModifiy.do?gpaidx=${firstGjv.gpaidx}'">수정하기</button>
-			    </c:if>
-			    	<button class="gBtn2" onclick="deletePhotoAlbum(${midx}, ${gpaidx});">삭제하기</button>
-			  	</c:if>
+		    <div id="createBtn">
+			  <c:choose>
+			    <c:when test="${gatheringMemberType eq 'TM'}"></c:when>
+			    <c:otherwise>
+			      <c:set var="firstGjv" value="${gjvList[0]}" />
+			      <c:if test="${not empty firstGjv.gpaidx}">
+			        <button class="gBtn2" onclick="location.href='${pageContext.request.contextPath}/gathering/gPhotoAlbumModifiy.do?gpaidx=${firstGjv.gpaidx}'">수정하기</button>
+			      </c:if>
+			      <button class="gBtn2" onclick="deletePhotoAlbum(${midx}, ${gpaidx});">삭제하기</button>
+			    </c:otherwise>
+			  </c:choose>
 			</div>
 		</section>
 	</main>

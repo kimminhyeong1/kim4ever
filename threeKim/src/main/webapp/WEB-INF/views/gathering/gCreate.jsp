@@ -58,7 +58,7 @@
 						<h3>모임 이름</h3>
 						<p>필수</p>
 					</div>
-					<input id="gInfoName" class="gInput" type="text" placeholder="내용을 입력해주세요" name="gInfoName">
+					<input id="gInfoName" class="gInput" type="text" placeholder="내용을 입력해주세요" name="gInfoName" maxlength='8'>
 					<p id="nameMsg" class="ability_chk" style="display:none;">사용가능한 모임명 입니다.</p>
 				</div>
 				<div>
@@ -114,18 +114,18 @@
 				</div>
 				<div>
 					<h3>모임 간단 소개글</h3>
-					<input class="gInput" type="text" placeholder="맨 앞에 노출되는 간단 소개글입니다." name="gInfoBriefIntroduction">		
+					<input id="gInfoBriefIntroduction" class="gInput" type="text" placeholder="맨 앞에 노출되는 간단 소개글입니다." name="gInfoBriefIntroduction" maxlength='100'>		
 				</div>
 				<div>
 					<h3>모임 소개글</h3>
-					<textarea rows="5" cols="5" placeholder="글자제한:500자이내" name="gInfoAreaIntroduction"></textarea>		
+					<textarea id="gInfoAreaIntroduction" rows="5" cols="5" placeholder="글자제한:500자이내" name="gInfoAreaIntroduction" maxlength='500'></textarea>		
 				</div>
 				<div>
 					<div>
 						<h3>모임 정원(최대 100명)</h3>
 						<p>필수</p>
 					</div>
-					<input class="gInput" type="number" placeholder="예:5" name="gInfoCapacity" id="gInfoCapacity">	
+					<input class="gInput" type="number" placeholder="예:5" name="gInfoCapacity" id="gInfoCapacity" maxlength='3'>	
 				</div>
 				<div>
 					<div>
@@ -246,25 +246,6 @@
 		    reader.readAsDataURL(input.files[0]);
 		  }
 		}
-
-	
-	
-
-
-
-
-
-
-
-
-	
-
-
-
-
-
-
-
 	</script>
 	
 	<script>
@@ -286,12 +267,12 @@
         }
         
         if (image === "") {
-            alert("모임 대표이미지를 올려주세요.");
+            alert("모임 프로필이미지를 올려주세요.");
             return false; // 양식 제출을 중지합니다.
         }
         
         if (imageInfo1 === "") {
-            alert("모임 이미지를 올려주세요.");
+            alert("모임 소개이미지를 올려주세요.");
             return false; // 양식 제출을 중지합니다.
         }
         
@@ -299,10 +280,59 @@
             alert("모임 정원을 입력해주세요.");
             return false; // 양식 제출을 중지합니다.
         }
+    	 // 추가적인 입력 유효성 검사를 위해 validateInput() 함수 호출
+        if (!validateInput()) {
+          return false; // 폼 제출 중단
+        }
 
         return true; // 양식을 제출합니다.
     }
-</script>
+    
+    function validateInput() {
+
+        var briefIntroduction = document.getElementById("gInfoBriefIntroduction").value;
+        var areaIntroduction = document.getElementById("gInfoAreaIntroduction").value;
+        
+        // 입력 값의 앞뒤 공백 제거하기
+        briefIntroduction = briefIntroduction.trim();
+        areaIntroduction = areaIntroduction.trim();
+
+        // "간단한 소개" 필드 유효성 검사
+        if (briefIntroduction.length === 0) {
+          // 빈 입력 처리
+          alert("간단한 소개를 입력해주세요.");
+          return false;
+        } else if (briefIntroduction.length > 100) {
+          // 100자를 초과하는 경우 처리
+          alert("간단한 소개는 100자 이내로 입력해주세요.");
+          return false;
+        } else if (!/^[a-zA-Z0-9가-힣\s]+$/.test(briefIntroduction)) {
+          // 특수 문자 처리
+          alert("간단한 소개에는 영문, 숫자, 한글, 공백 문자만 포함될 수 있습니다.");
+          return false;
+        }
+
+        // "모임 소개글" 필드 유효성 검사
+        if (areaIntroduction.length === 0) {
+          // 빈 입력 처리
+          alert("모임 소개글를 입력해주세요.");
+          return false;
+        } else if (areaIntroduction.length > 500) {
+          // 100자를 초과하는 경우 처리
+          alert("모임 소개글은 100자 이내로 입력해주세요.");
+          return false;
+        } else if (!/^[a-zA-Z0-9가-힣\s]+$/.test(areaIntroduction)) {
+          // 특수 문자 처리
+          alert("모임 소개글에는 영문, 숫자, 한글(초성불가), 공백 문자만 포함될 수 있습니다.");
+          return false;
+        }
+
+        // 유효성 검사 통과
+        return true;
+      }
+    
+    
+	</script>
 	
 	
 	</body>

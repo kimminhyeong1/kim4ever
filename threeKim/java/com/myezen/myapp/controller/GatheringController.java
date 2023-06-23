@@ -776,8 +776,7 @@ public class GatheringController {
 		return hm;
 	}
 	
-
-	//모임 사진첩
+		//모임 사진첩
 		@RequestMapping(value="/gPhotoAlbumList.do")
 		public String gPhotoAlbumList(
 				SearchCriteria scri,
@@ -805,7 +804,7 @@ public class GatheringController {
 	
 	
 	
-	//모임 사진첩내용
+		//모임 사진첩내용
 		@RequestMapping(value="/gPhotoAlbumContent.do")
 		public String gPhotoAlbumContent(
 				HttpServletRequest request,
@@ -818,21 +817,21 @@ public class GatheringController {
 			/*모임상세리스트 가져오기*/
 			ArrayList<GatheringJoinVo> gjvList = gs.gatheringPhotoAlbumListSelectOne(gpaidx);
 
-			 // gatheringMemberType 값 가져오기
+			//gatheringMemberType 값 가져오기
 	        GatheringVo gjv = gs.gatheringMemberType(giidx, midx);
 	        String gatheringMemberType = gjv.getGatheringMemberType();
 	     
 			System.out.println("gatheringMemberType는???!!"+ gatheringMemberType);
 			
 		    md.addAttribute("gjvList", gjvList);
-		   
+		    md.addAttribute("gatheringMemberType", gatheringMemberType);
 		    
 		    session.setAttribute("gpaidx", gpaidx);
 			return "gathering/gPhotoAlbumContent";
 		}
 		
 		
-	//사진첩 상세보기 좋아요
+		//사진첩 상세보기 좋아요
 		@RequestMapping(value="/gPhotoAlbumLike.do",method=RequestMethod.POST)
 		@ResponseBody
 		public HashMap<String, Object> gPhotoAlbumLike(
@@ -880,13 +879,14 @@ public class GatheringController {
 		}
 		
 		
-		//모임 사진첩작성
+		//모임 사진첩작성 페이지 들어가기
 		@RequestMapping(value="/gPhotoAlbumWrite.do")
 		public String gPhotoAlbumWrite() {
 			
 			return "gathering/gPhotoAlbumWrite";
 		}
-			
+		
+		//모임 사진첩작성 수행
 		@RequestMapping(value="/gPhotoAlbumWriteAction.do", method=RequestMethod.POST)
 		public String gPhotoAlbumWriteAction(
 		        @ModelAttribute GatheringJoinVo gjv,
@@ -903,7 +903,7 @@ public class GatheringController {
 
 		    gjv.setMidx(midx);
 		    gjv.setGiidx(giidx);
-
+		    
 		    int value = gs.gatheringPhotoAlbumWrite(gjv, GATImg, GAImg);
 
 		    System.out.println("midx는? " + midx);
@@ -917,7 +917,7 @@ public class GatheringController {
 				
 					
 			
-		//모임 사진첩수정
+		//모임 사진첩수정 페이지 들어가기
 		@RequestMapping(value="/gPhotoAlbumModifiy.do")
 		public String gPhotoAlbumModifiy(
 				HttpServletRequest request,
@@ -934,7 +934,7 @@ public class GatheringController {
 			return "gathering/gPhotoAlbumModifiy";
 		}
 	
-		//모임 사진첩수정
+		//모임 사진첩 수정 업데이트
 		@RequestMapping(value="/gPhotoAlbumModifyAction.do", method=RequestMethod.POST)
 		public String gPhotoAlbumModifiyAction(
 				@ModelAttribute GatheringJoinVo gjv,
@@ -982,7 +982,7 @@ public class GatheringController {
 	
 	
 
-//내 모임 정보
+	//내 모임 정보
 	@RequestMapping(value="/gMyPage.do")
 	public String gMyPage(
 		HttpServletRequest request,

@@ -16,12 +16,10 @@
          /*사진첩 부분*/
          .card{height: 320px; background-color: #d2dfcc;}
          .cardImg{height: 80%;}
-
          /*버튼 부분*/
          #createBtn{text-align: right;}   
          /*페이징 부분*/
          .gPaging{font-size: 25px;}   
-         
          /* 사진첩 날짜와 제목 */
          .albumHeader {margin-bottom:20px;text-align:left;    }
          /* 사진첩 내용 */
@@ -33,12 +31,8 @@
          .gContent table td{padding:10px; text-align:left; border-left:1px solid #ddd;}
          .gContent table tr{border:1px solid #ddd;}
          .gContent table input[type="text"],textarea{box-sizing:border-box;width:100%;padding:10px;margin:2px 0;border:1px solid #ccc;border-radius:4px; font-size:21px;}
-		 .imagePreview { max-width: 300px; max-height: 300px; width: auto; height: auto;}
-      	 
+		 .imagePreview { max-width: 300px; max-height: 300px; width: auto; height: auto;}	 
       </style>
-      
-
-
    </head>
    <body>
       <%@include file="../header2.jsp" %>
@@ -87,7 +81,7 @@
     
  <%@include file="../footer.jsp" %>
       
-      
+    
  <script type="text/javascript">
   // 행 추가 함수
   function addRow() {
@@ -174,6 +168,5 @@
     }
   });
 </script>
-
    </body>
 </html>

@@ -11,39 +11,36 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent.css">	
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent_mo.css?수정중">
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+		<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 		
-		 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-   <!-- jQuery -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
-    <!-- iamport.payment.js -->
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <script type="text/javascript">
 
-var IMP = window.IMP;
-IMP.init("imp01337483");
-
-var today = new Date();
-var hours = today.getHours(); // 시
-var minutes = today.getMinutes(); // 분
-var seconds = today.getSeconds(); // 초
-var milliseconds = today.getMilliseconds();
-var makeMerchantUid = hours + minutes + seconds + milliseconds;
-
-function requestPay() {
-    IMP.request_pay({
-        pg: 'kakaopay', //카카오 페이
-        pay_method: 'card',
-        merchant_uid: 'merchant_' + new Date().getTime(),
-        name: '대여',
-        amount: '${bjv.rentPrice}', // 가격
-        buyer_name: '<%=session.getAttribute("memberName")%>',
-        buyer_tel: '구매자 번호',
-        buyer_addr: '${bjv.bikeLocation}',
-        buyer_postcode: ' ${bjv.bikeCode}',
-        popup: true,
-        m_redirect_url: "http://localhost:8080/myapp/index.jsp",
-   
+	var IMP = window.IMP;
+	IMP.init("imp01337483");
+	
+	var today = new Date();
+	var hours = today.getHours(); // 시
+	var minutes = today.getMinutes(); // 분
+	var seconds = today.getSeconds(); // 초
+	var milliseconds = today.getMilliseconds();
+	var makeMerchantUid = hours + minutes + seconds + milliseconds;
+	
+	function requestPay() {
+	    IMP.request_pay({
+	        pg: 'kakaopay', //카카오 페이
+	        pay_method: 'card',
+	        merchant_uid: 'merchant_' + new Date().getTime(),
+	        name: '대여',
+	        amount: '${bjv.rentPrice}', // 가격
+	        buyer_name: '<%=session.getAttribute("memberName")%>',
+	        buyer_tel: '구매자 번호',
+	        buyer_addr: '${bjv.bikeLocation}',
+	        buyer_postcode: ' ${bjv.bikeCode}',
+	        popup: true,
+	        m_redirect_url: "http://localhost:8080/myapp/index.jsp",
+	   
     }, function(rsp) {
 		console.log(rsp);
 		// 결제검증
@@ -67,11 +64,9 @@ function requestPay() {
 		        console.log("AJAX 요청 실패: " + error);
 		    }
 		});
-
-     
 	});
 }
-    
+	    
     
 
   $(document).ready(function() {
@@ -116,35 +111,27 @@ function requestPay() {
                 },
                 cache: false,
                 success: function(data) {
-                    if (data === "success") {
-                        $(".successPhoneChk").text("인증번호가 일치합니다.");
-                        $(".successPhoneChk").css("color", "green");
-                        $("#phoneDoubleChk").val("true");
-                        $("#phone2").attr("disabled", true);              
+                if (data === "success") {
+                    $(".successPhoneChk").text("인증번호가 일치합니다.");
+                    $(".successPhoneChk").css("color", "green");
+                    $("#phoneDoubleChk").val("true");
+                    $("#phone2").attr("disabled", true);              
 
-                        document.getElementById('rentButton').disabled = false;
+                    document.getElementById('rentButton').disabled = false;
 
-                    } else {
-                        $(".successPhoneChk").text("인증번호가 일치하지 않습니다.");
-                        $(".successPhoneChk").css("color", "red");
-                        $("#phoneDoubleChk").val("false");
-                        $("#phone2").focus();
+                } else {
+                    $(".successPhoneChk").text("인증번호가 일치하지 않습니다.");
+                    $(".successPhoneChk").css("color", "red");
+                    $("#phoneDoubleChk").val("false");
+                    $("#phone2").focus();
 
-                        document.getElementById('rentButton').disabled = true;
-
-        
-
-                    }
+                    document.getElementById('rentButton').disabled = true;
                 }
-            });
-        });
-                  
-      
+              }
+           });
+        });            
   })
    
-
-  
-
 </script>
         
  
@@ -192,7 +179,6 @@ function requestPay() {
 				  <td colspan="2">
 				    <input id="phone" type="text" name="phone" maxlength="11" title="전화번호 입력" required/>
 				  </td>
-				  
 				  <td width="200px;">
 				    <span id="phoneChk" class="doubleChk">인증번호 보내기</span>
 				  </td>
@@ -213,20 +199,15 @@ function requestPay() {
 				    <span id="phoneChk2" class="doubleChk" >인증확인</span><br/>
 				    <span class="point successPhoneChk"></span>
 					<input type="hidden" id="phoneDoubleChk"/>
-					
 				  </td>
 				</tr>
 				  
 				<tr>
 				  <td colspan="3">
 					<button id="rentButton" class="rentButton" type="button" onclick="requestPay()" disabled>대여하기</button>
-					
-			
 				  </td>
 				</tr>
 			</table>
-			
-			
 			</form>
 			</div>
 			</section> 
