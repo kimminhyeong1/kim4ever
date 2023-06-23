@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.task.TaskExecutor;
@@ -443,10 +445,10 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Override
 	//회원 프로필 업데이트 /*김건우*/
-	public String memberUpdateMemberProfile(int midx, MultipartFile memberProfile) throws IOException, Exception {
+	public String memberUpdateMemberProfile(int midx, MultipartFile memberProfile,HttpServletRequest request) throws IOException, Exception {
 		//배포했을때
-        //String savedMemberProfileImgPath = request.getSession().getServletContext().getRealPath("/resources/MemberProfile");
-		String savedMemberProfileImgPath = "D://threekim//threeKim//src//main//webapp//resources/MemberProfile";//회원 프로필 이미지
+        String savedMemberProfileImgPath = request.getSession().getServletContext().getRealPath("/resources/MemberProfile");
+		//String savedMemberProfileImgPath = "D://threekim//threeKim//src//main//webapp//resources/MemberProfile";//회원 프로필 이미지
 		//회원 프로필 이미지
 		String uploadedMemberProfileImgName  = UploadFileUtiles.uploadFile(savedMemberProfileImgPath, memberProfile.getOriginalFilename(), memberProfile.getBytes());
 		MemberVo mv = new MemberVo();

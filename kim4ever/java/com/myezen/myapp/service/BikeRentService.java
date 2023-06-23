@@ -58,7 +58,7 @@ public interface BikeRentService {
 	//midx로 휴대폰번호 조회하기
 	public MemberVo getMemberPhoneByMidx(int midx);
 	//자전거소개 자전거등록
-	public String processBikeRentWrite(MultipartFile file, BikeJoinVo bjv);
+	public String processBikeRentWrite(MultipartFile file, BikeJoinVo bjv , HttpServletRequest request);
 	//자전거 정보 조회
 	public ArrayList<BikeJoinVo> getBikeList();
 	//자전거 정보 삭제
@@ -67,7 +67,7 @@ public interface BikeRentService {
 	
 	/*----------------------------------------------*/
     //고장/신고 작성 메소드
-    public int bikeRentErrorInsert(ErrorVo ev,MultipartFile file);
+    public int bikeRentErrorInsert(ErrorVo ev,MultipartFile file, HttpServletRequest request);
     
 	//대여소 QR을 찍고 반납하기 체크 메소드
     public BikeJoinVo bikeRentReturnCheck(int ridx, int rsidx);

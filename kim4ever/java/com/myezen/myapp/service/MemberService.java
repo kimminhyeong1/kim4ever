@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import com.myezen.myapp.domain.BikeJoinVo;
@@ -83,7 +85,7 @@ public interface MemberService {
 	public String getMemberIntro(int midx);
 	
 	//회원 프로필 업데이트 /*김건우*/
-	public String memberUpdateMemberProfile(int midx , MultipartFile memberProfile)throws IOException, Exception;
+	public String memberUpdateMemberProfile(int midx , MultipartFile memberProfile,HttpServletRequest request)throws IOException, Exception;
 	
 	//QR찍고 휴대폰 번호 없는지 체크
 	public String memberPhoneCheck(int midx);

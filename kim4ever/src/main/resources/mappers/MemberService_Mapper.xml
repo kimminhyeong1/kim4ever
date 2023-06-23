@@ -150,12 +150,12 @@
 	
 	<!--소셜 회원가입 -->
 	<insert id="googleMemberInsert" parameterType="String">
-		INSERT INTO member1234(memberId,memberPwd,memberName,memberEmail,memberLoginType)
-		VALUES(#{0},#{1},#{2},#{0},'구글')
+		INSERT INTO member1234(memberId,memberPwd,memberName,memberEmail,memberLoginType,memberProfile,memberIntro, writeDay)
+		VALUES(#{0},#{1},#{2},#{0},'구글','/profile.jpg','안녕하세요.', NOW())
 	</insert>
 	<insert id="kakaoMemberInsert" parameterType="String">
-		INSERT INTO member1234(memberId,memberPwd,memberName,memberEmail,memberLoginType)
-		VALUES(#{0},#{1},#{2},#{0},'카카오')
+		INSERT INTO member1234(memberId,memberPwd,memberName,memberEmail,memberLoginType,memberProfile,memberIntro, writeDay)
+		VALUES(#{0},#{1},#{2},#{0},'카카오','/profile.jpg','안녕하세요.', NOW())
 	</insert>
 	<!--소셜 멤버 확인 -->
 	<select id="socialMemberCheck" parameterType="String" resultType="int">

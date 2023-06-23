@@ -129,7 +129,7 @@ public class GatheringController {
 	   
 	    System.out.println(gjv.getgInfoJoinType());
 	    
-		int value = gs.gatheringCreate(gjv,GTImg,GImg);
+		int value = gs.gatheringCreate(gjv,GTImg,GImg,request);
 		 
 		return "redirect:/gathering/gList.do";
 	}
@@ -169,7 +169,7 @@ public class GatheringController {
 	   
 	    System.out.println(gjv.getgInfoJoinType());
 	    
-		int value = gs.gatheringModify(gjv,GTImg,GImgU,GImgI); //업데이트 메소드로 바꾸기
+		int value = gs.gatheringModify(gjv,GTImg,GImgU,GImgI,request); //업데이트 메소드로 바꾸기
 		
 		 
 		return "redirect:/gathering/gList.do";
@@ -789,9 +789,9 @@ public class GatheringController {
 			scri.setPerPageNum(12);//게시물갯수
 			
 			//게시글 총갯수
-			int totalCount = gs.gatheringPhotoAlbumListSelectAll(scri); //총 게시물 갯수 꺼내오기
+			int totalCount = gs.gatheringPhotoAlbumListSelectAll(scri,giidx); //총 게시물 갯수 꺼내오기
 			  
-			ArrayList<GatheringJoinVo> gPhotoList = gs.gatheringPhotoAlbumListSelect(scri);
+			ArrayList<GatheringJoinVo> gPhotoList = gs.gatheringPhotoAlbumListSelect(scri,giidx);
 			
 			pm.setScri(scri);
 	    	pm.setTotalCount(totalCount);
@@ -904,7 +904,7 @@ public class GatheringController {
 		    gjv.setMidx(midx);
 		    gjv.setGiidx(giidx);
 		    
-		    int value = gs.gatheringPhotoAlbumWrite(gjv, GATImg, GAImg);
+		    int value = gs.gatheringPhotoAlbumWrite(gjv, GATImg, GAImg,request);
 
 		    System.out.println("midx는? " + midx);
 		    System.out.println("giidx는? " + giidx);
@@ -953,7 +953,7 @@ public class GatheringController {
 		    
 		    System.out.println("수정이미지파일"+GAImg);
 		  
-		    int value = gs.gatheringPhotoAlbumModifyUpdate(gjv, GATImg, GAImg);
+		    int value = gs.gatheringPhotoAlbumModifyUpdate(gjv, GATImg, GAImg,request);
 		    
 		    if (value > 0) {
 		        return "redirect:/gathering/gPhotoAlbumList.do";
