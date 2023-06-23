@@ -46,12 +46,20 @@ li{list-style:none;}
 #content table {width:70%; border-collapse:collapse; margin:60px auto 0; line-height:40px; font-family:'omyu_pretty'; font-size:24px;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
+#content #bikeAddBtn button{width:250px; height:40px; margin-top:20px; margin-left:630px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+#content #bikeAddBtn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 #content table tr th:nth-child(1){width:50px;}
 #content table tr th:nth-child(2){width:50px;}
 #content table tr th:nth-child(3){width:50px;}
 #content table tr th:nth-child(4){width:80px;}
-button{width:250px; height:40px; margin-top:40px; margin-left:630px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
-button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+#content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+#content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+#content .search {text-align:right; margin-right:185px; margin-bottom:40px;}
+#content .search select {width:120px;height:30px;font-size:14px;padding:5px;}
+#content .search input[type="text"] {width:200px;height:17px;font-size:14px;padding:5px;}
+#content .search #searchBtn{width:80px;height:30px;font-size:14px;padding:5px;text-align:center; font-family:'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+#content .search #searchBtn:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px}
+
 
 
 </style>
@@ -109,8 +117,11 @@ button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transfo
 			</tr>
 		</c:forEach>		
 		</table>
-		<button onclick="location.href='${pageContext.request.contextPath}/bikeRent/bikeRentInfo.do'">자전거 등록/삭제 하러가기</button>
-	
+		
+			<div id="bikeAddBtn">
+				<button onclick="location.href='${pageContext.request.contextPath}/bikeRent/bikeRentInfo.do'">자전거 등록/삭제 하러가기</button>
+			</div>
+			
 			<table>
 			<tr>
 				<td>
