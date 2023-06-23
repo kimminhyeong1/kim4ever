@@ -179,9 +179,9 @@ public interface GatheringService {
 	//모임사진첩작성
 	public int gatheringPhotoAlbumWrite(GatheringJoinVo gjv,MultipartFile GATImg, ArrayList<MultipartFile> GAImg,HttpServletRequest request)throws IOException, Exception;
 	//사진첩 리스트 조회
-	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelect(SearchCriteria scri);
+	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelect(SearchCriteria scri,int giidx);
 	//사진첩 리스트 총갯수
-	public int gatheringPhotoAlbumListSelectAll(SearchCriteria scri);
+	public int gatheringPhotoAlbumListSelectAll(SearchCriteria scri,int giidx);
 	//사진첩 상세보기
 	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelectOne(int gpaidx);
 	//사진첩 상세보기 좋아요
