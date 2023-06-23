@@ -286,8 +286,14 @@ public class AdminController {
 	
 	//관리자 모임 리스트 페이지	
 		@RequestMapping(value="/admingatheringList.do")
-		public String admingatheringList(Model model) {
-			ArrayList<GatheringJoinVo> gjlist = as.gatheringList();
+		public String admingatheringList(
+				Model model,
+				HttpServletRequest request,
+				SearchCriteria scri
+				) {
+			
+			
+			ArrayList<GatheringJoinVo> gjlist = as.gatheringList(scri);
 					
 			model.addAttribute("gjlist", gjlist);	
 			
@@ -303,8 +309,11 @@ public class AdminController {
 		
 	//관리자 모임 신고 내역 페이지	
 		@RequestMapping(value="/adminGReportList.do")
-		public String adminGReportList(Model model) {
-			ArrayList<GatheringJoinVo> gdlist = as.gatheringDeclaration();					
+		public String adminGReportList(
+				Model model,
+				HttpServletRequest request,
+				SearchCriteria scri) {
+			ArrayList<GatheringJoinVo> gdlist = as.gatheringDeclaration(scri);					
 			model.addAttribute("gdlist", gdlist);
 			
 				return "admin/adminGReportList";

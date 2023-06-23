@@ -221,9 +221,9 @@ public class AdminServiceImpl implements AdminService {
 	
 	//모임 리스트
 	@Override
-	public ArrayList<GatheringJoinVo> gatheringList() {
+	public ArrayList<GatheringJoinVo> gatheringList(SearchCriteria scri) {
 		
-		ArrayList<GatheringJoinVo> gjlist = asm.gatheringList();
+		ArrayList<GatheringJoinVo> gjlist = asm.gatheringList(scri);
 		return gjlist;
 	}
 	
@@ -237,9 +237,9 @@ public class AdminServiceImpl implements AdminService {
 	
 	//모임 신고 내역 리스트
 	@Override
-	public ArrayList<GatheringJoinVo> gatheringDeclaration() {
+	public ArrayList<GatheringJoinVo> gatheringDeclaration(SearchCriteria scri) {
 		
-		ArrayList<GatheringJoinVo> gdlist = asm.gatheringDeclaration();
+		ArrayList<GatheringJoinVo> gdlist = asm.gatheringDeclaration(scri);
 		return gdlist;
 	}
 
