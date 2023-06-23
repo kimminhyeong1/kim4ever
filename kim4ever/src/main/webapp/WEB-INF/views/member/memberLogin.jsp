@@ -249,11 +249,19 @@ msg = (String)request.getAttribute("msg");
 							<p><a href="${pageContext.request.contextPath}/member/memberJoin.do">회원가입</a></p>
 						</div>
 						<div>
-							<div id="g_id_onload"
+							<!-- <div id="g_id_onload"
 							     data-client_id="225367376527-0b4amsji9p7soai6hnhnt2bkbp4ma82p.apps.googleusercontent.com"
 							     data-context="signin"
 							     data-ux_mode="popup"
-							     data-login_uri="${pageContext.request.contextPath}/member/login/oauth2/code/google.do"
+							     data-login_uri="http://jjezen.cafe24.com/kim4ever/member/login/oauth2/code/google.do"
+							     data-auto_prompt="false">
+							</div> -->
+							
+							<div id="g_id_onload" 
+							     data-client_id="225367376527-0b4amsji9p7soai6hnhnt2bkbp4ma82p.apps.googleusercontent.com"
+							     data-context="signin"
+							     data-ux_mode="popup"
+							     data-login_uri="http://jjezen.cafe24.com/kim4ever/member/login/oauth2/code/google.do"
 							     data-auto_prompt="false">
 							</div>
 							
@@ -264,16 +272,32 @@ msg = (String)request.getAttribute("msg");
 							     data-text="signin_with"
 							     data-width="300"
 							     data-height="50"
-							     data-logo_alignment="left"
-							     >
+							     data-logo_alignment="left">
 							</div>
 						</div>
 					
-						     <a class="kakao" href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=76703a8d13e15a9a7deb9a931b73de9e&redirect_uri=http://jjezen.cafe24.com/kim4ever/member/memberLogin.do">
+						     <a class="kakao" href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=76703a8d13e15a9a7deb9a931b73de9e&redirect_uri=http://jjezen.cafe24.com/kim4ever/member/login/oauth2/code/kakao.do">
 						      	<div class="kakao_i"></div>
 						      	<div class="kakao_txt"><img  alt="카카오톡 로그인 버튼" src="${pageContext.request.contextPath}/resources/btn/kakao_login_medium_wide.png"></div>
 						   	</a>
-
+						   	
+						      <script>
+						        function handleCredentialResponse(response) {
+						          console.log("Encoded JWT ID token: " + response.credential);
+						        }
+						        window.onload = function () {
+						          google.accounts.id.initialize({
+						            client_id: "225367376527-0b4amsji9p7soai6hnhnt2bkbp4ma82p.apps.googleusercontent.com",
+						            callback: handleCredentialResponse
+						          });
+						          google.accounts.id.renderButton(
+						            document.getElementById("buttonDiv"),
+						            { theme: "outline", size: "large" }  // customization attributes
+						          );
+						          google.accounts.id.prompt(); // also display the One Tap dialog
+						        }
+						    </script>
+						    <div id="buttonDiv"></div>
 					</div>
 				</form>
 			</div>

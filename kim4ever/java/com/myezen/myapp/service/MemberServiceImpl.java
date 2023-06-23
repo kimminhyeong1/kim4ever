@@ -282,7 +282,8 @@ public class MemberServiceImpl implements MemberService {
 	public String getAccessToken(String authorize_code) throws Throwable {
 		
 		String kakaoClientId ="76703a8d13e15a9a7deb9a931b73de9e"; //REST API
-		String kakaoRedirectUri ="http://localhost:8080/myapp/member/login/oauth2/code/kakao.do";
+		//String kakaoRedirectUri ="http://localhost:8080/myapp/member/login/oauth2/code/kakao.do";
+		String kakaoRedirectUri ="http://jjezen.cafe24.com/kim4ever/member/login/oauth2/code/kakao.do";
 		String access_Token = "";
 		String refresh_Token = "";
 		String id_token = "";
@@ -354,10 +355,11 @@ public class MemberServiceImpl implements MemberService {
 				String reqURL = "https://kapi.kakao.com/v2/user/me";
 
 				try { 
+					System.out.println("access_Token::::"+access_Token);
 					URL url = new URL(reqURL);
 					HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 					conn.setRequestMethod("GET");
-
+					conn.setRequestProperty("charset","utf-8");
 					// 요청에 필요한 Header에 포함될 내용
 					conn.setRequestProperty("Authorization", "Bearer " + access_Token);
 
@@ -390,7 +392,10 @@ public class MemberServiceImpl implements MemberService {
 						// System.out.println(properties.get("nickname"));
 						// System.out.println(kakao_account.get("email"));
 
-						String nickname = properties.get("nickname").toString();
+						String nickname = new String(properties.get("nickname").toString().getBytes(),"utf-8");
+						
+						System.out.println("##############nicName##########  ::::"+nickname);
+						
 						String email = kakao_account.get("email").toString();
 
 						userInfo.put("nickname", nickname);

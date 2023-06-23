@@ -194,6 +194,8 @@ public class MemberController {
 				System.out.println("###nickname#### : " + userInfo.get("nickname"));
 				System.out.println("###email#### : " + userInfo.get("email"));
 				
+				System.out.println("userinfo::::"+userInfo);
+				
 				//변수선언
 	            String memberId = (String) userInfo.get("email");
 				String memberPwd = bcryptPasswordEncoder.encode(memberId);
