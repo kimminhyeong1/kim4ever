@@ -785,19 +785,20 @@ public class GatheringController {
 			HttpSession session = request.getSession();
 			int midx = (int) session.getAttribute("midx");
 			int giidx = (int) session.getAttribute("giidx");
-			
+			System.out.println("컨트롤러 giidx는?"+giidx);
 			scri.setPerPageNum(12);//게시물갯수
 			
 			//게시글 총갯수
 			int totalCount = gs.gatheringPhotoAlbumListSelectAll(scri,giidx); //총 게시물 갯수 꺼내오기
 			  
-			ArrayList<GatheringJoinVo> gPhotoList = gs.gatheringPhotoAlbumListSelect(scri,giidx);
+			ArrayList<HashMap<String, Object>> gPhotoList = gs.gatheringPhotoAlbumListSelect(scri,giidx);
 			
 			pm.setScri(scri);
 	    	pm.setTotalCount(totalCount);
 	    	
 	    	md.addAttribute("pm", pm);
 	    	md.addAttribute("gPhotoList", gPhotoList);
+	    	md.addAttribute("giidx", giidx);
 	    	
 			return "gathering/gPhotoAlbumList";
 		}

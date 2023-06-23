@@ -224,7 +224,7 @@ public interface GatheringService_Mapper {
 	//모임사진첩이미지
 	public int gatheringPhotoGAInsert(GatheringJoinVo gjv);
 	//모임사진첩조회
-	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelect(HashMap<String, Object> hm);
+	public ArrayList<HashMap<String, Object>> gatheringPhotoAlbumListSelect(HashMap<String, Object> hm);
 	//모임사진첩 총갯수
 	public int gatheringPhotoAlbumListSelectAll(HashMap<String, Object> hm);
 	//모임사진첩 상세보기
