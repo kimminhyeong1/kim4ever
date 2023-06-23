@@ -231,7 +231,7 @@ public interface GatheringService_Mapper {
 	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelectOne(int gpaidx);
 	//모임사진첩 수정하기 조회
 	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumModify(int gpaidx);
-	
+	//모임사진첩 상세보기 좋아요
 	public int gatheringPhotoAlbumLikeCheck(GatheringJoinVo gjv);
 	//좋아요 테이블에 넣기
 	public int gatheringPhotoAlbumLikeInsert(GatheringJoinVo gjv);
@@ -248,7 +248,7 @@ public interface GatheringService_Mapper {
 	public int gatheringPhotoGAUpdate(GatheringJoinVo gjv);
 	//모임사진첩 삭제하기
 	public void deletePhotoAlbum(int midx, int gpaidx);
-	//모임 gpaidx값얻기
+	//모임 gpaidx 꺼내오기
 	public int gatheringPhotoAlbumGetGpaidx(GatheringJoinVo gjv);
 	
 	

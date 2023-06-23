@@ -643,7 +643,7 @@
 	
 	<!-- 사진첩 상세페이지 조회 -->
 	<select id="gatheringPhotoAlbumListSelectOne" resultType="com.myezen.myapp.domain.GatheringJoinVo">
-		SELECT a.gpaidx, a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, a.GPHOTOALBUMCONTENTS0, a.GPHOTOALBUMCONTENTS1, a.GPHOTOALBUMCONTENTS2, b.imgtype, b.imageName
+		SELECT a.gpaidx, a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, a.GPHOTOALBUMCONTENTS0, a.GPHOTOALBUMCONTENTS1, a.GPHOTOALBUMCONTENTS2, a.gPhotoAlbumLikeCNT, b.imgtype, b.imageName
 		FROM gathering_photoalbum1234 a
 		JOIN image1234 b ON a.giidx = b.GIIDX AND a.gpaidx = b.gpaidx
 		WHERE b.imgtype = 'GA'
@@ -663,7 +663,6 @@
     <update id="gatheringPhotoAlbumLike" parameterType="com.myezen.myapp.domain.GatheringJoinVo">
     	UPDATE gathering_photoalbum1234 SET gPhotoAlbumLikeCNT = gPhotoAlbumLikeCNT + 1 where gpaidx= #{gpaidx}
 	</update>
-	
 	
 	<!--  사진첩  게시글 수정 조회 -->
 	<select id="gatheringPhotoAlbumModify" resultType="com.myezen.myapp.domain.GatheringJoinVo">

@@ -27,12 +27,13 @@
 			/*페이징 부분*/
 			.gPaging{font-size: 25px; margin-top:20px;}		
 			
+			/*검색부분*/
 			#searchCategory{ position: absolute; top:-10px; right:-20px; text-align: right; font-size: 20px; margin: 40px 60px; height: 30px; font-family: 'omyu_pretty'; vertical-align: top;} 
 			#searchCategory>div{display: inline-block; vertical-align: top;} 
 			#searchCategory>div>select{width: 80px; height: 30px; font-size: 18px; font-family: 'omyu_pretty';vertical-align: top;} 
 			#searchCategory>div>input{width: 300px; height: 26px; font-size: 18px;vertical-align: top;} 
 			#searchCategory>div>button{width: 100px; height: 30px; margin-top: 0px;margin-bottom: 0px;} 
-						
+
 			
 		</style>
 
@@ -66,7 +67,7 @@ window.onload = function() {
 				
 				<c:if test="${not empty midx}">
 					<c:forEach var="gpv" items="${gPhotoList}">
-						<div class="card" onclick="window.location.href='<%=request.getContextPath() %>/gathering/gPhotoAlbumContent.do?gpaidx=${gpv.gpaidx}'" >					
+						<div class="card" onclick="window.location.href='<%=request.getContextPath() %>/gathering/gPhotoAlbumContent.do?gpaidx=${gpv.gpaidx}'" >				
 							<img class="cardImg" src="../resources/GATImages/${gpv.imageName}">
 							<h3 class="cardTitle"> 
 							<c:set var="dateString" value="${gpv.gPhotoAlbumWriteDay}" />

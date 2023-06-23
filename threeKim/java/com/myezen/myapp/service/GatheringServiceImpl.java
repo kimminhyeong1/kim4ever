@@ -752,9 +752,15 @@ public class GatheringServiceImpl implements GatheringService {
       
       return gPhotoList;
    }
+   
+   //사진첩 리스트  총 게시물 조회
+   @Override
+   public int gatheringPhotoAlbumListSelectAll(SearchCriteria scri) {
+      return gsm.gatheringPhotoAlbumListSelectAll(scri);
+   }
 
    
- //모임사진첩작성
+   //모임사진첩작성
    @Override
    @Transactional
    public int gatheringPhotoAlbumWrite(GatheringJoinVo gjv, MultipartFile GATImg, ArrayList<MultipartFile> GAImg) throws IOException, Exception {
@@ -792,7 +798,7 @@ public class GatheringServiceImpl implements GatheringService {
    }
 
 
-
+   //사진첩 상세보기
    @Override
    public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelectOne(int gpaidx) {
       ArrayList<GatheringJoinVo> gjv = gsm.gatheringPhotoAlbumListSelectOne(gpaidx);
@@ -812,19 +818,17 @@ public class GatheringServiceImpl implements GatheringService {
    }
 
 
-
-
+   //사진첩 수정하기 페이지 조회
    @Override
    public ArrayList<GatheringJoinVo> gatheringPhotoAlbumModify(int gpaidx) {
       
       ArrayList<GatheringJoinVo> gjv = gsm.gatheringPhotoAlbumModify(gpaidx);
-   
-   
+ 
       return gjv;
    }
 
 
-
+   //사진첩 수정하게 업데이트 수행
    @Override
    @Transactional
    public int gatheringPhotoAlbumModifyUpdate(GatheringJoinVo gjv, MultipartFile GATImg, ArrayList<MultipartFile> GAImg) throws IOException, Exception {
@@ -836,7 +840,7 @@ public class GatheringServiceImpl implements GatheringService {
       String savedGAImgPath = "D://threekim//threeKim//src//main//webapp//resources/GAImages";//사진첩 이미지
       
    
-       // 모임 대표 이미지 업데이트
+       //모임 대표 이미지 업데이트
        if (GATImg != null && !GATImg.isEmpty()) {
            String uploadedGATImgName = UploadFileUtiles.uploadFile(savedGATImgPath, GATImg.getOriginalFilename(), GATImg.getBytes());
            gjv.setImageName(uploadedGATImgName);
@@ -844,22 +848,23 @@ public class GatheringServiceImpl implements GatheringService {
            System.out.println("모임 대표 이미지 업데이트 성공: " + value);
        }
 
-       // 모임 이미지들 업데이트
+       //모임 이미지들 업데이트
        for (MultipartFile file : GAImg) {
            if (file != null && !file.isEmpty()) {
                String uploadedGAImgName = UploadFileUtiles.uploadFile(savedGAImgPath, file.getOriginalFilename(), file.getBytes());
                gjv.setImageName(uploadedGAImgName);
                
+               //이미지고유번호 가져오기 (gpaidx값)
                imidx = gsm.gatheringGASelect(gjv); //날짜도 변경
                gjv.setImidx(imidx);
-           
+               //모임이미지(GA) 업데이트 수행
                value = gsm.gatheringPhotoGAUpdate(gjv);
                
                System.out.println("모임 이미지 업데이트 성공: " + value);
            }
        }
 
-       // 사진첩 정보 업데이트
+       //사진첩 정보 업데이트
        value = gsm.gatheringPhotoAlbumModifyUpdate(gjv);
        System.out.println("사진첩 정보 업데이트 성공: " + value);
        
@@ -867,7 +872,7 @@ public class GatheringServiceImpl implements GatheringService {
    }
 
 
-
+   //사진첩 삭제
    @Override
    public void deletePhotoAlbum(int midx, int gpaidx) {
       gsm.deletePhotoAlbum(midx, gpaidx);
@@ -875,11 +880,7 @@ public class GatheringServiceImpl implements GatheringService {
    }
 
 
-
-   @Override
-   public int gatheringPhotoAlbumListSelectAll(SearchCriteria scri) {
-      return gsm.gatheringPhotoAlbumListSelectAll(scri);
-   }
+ 
 
 
 
