@@ -14,7 +14,7 @@
 
 <style>
 /*리셋코드*/ 
-*{margin:0;padding:0;}
+*{margin:0;padding:0; word-break:break-all;}
 li{list-style:none;}
 @font-face {
     font-family: 'GangwonEdu_OTFBoldA';
@@ -38,7 +38,7 @@ li{list-style:none;}
 
 #main{width:1440px; margin:35px auto 70px; text-align:center;}
 #main #content{width:1440px; height:auto;}
-#main #content h2{text-align:left; margin-top:50px; margin-left:160px; font-family: 'GangwonEdu_OTFBoldA'; font-size:25px;}
+#main #content h2{text-align:left; margin-top:50px; margin-left:160px; font-family: 'GangwonEdu_OTFBoldA'; font-size:25px;  overflow-wrap: break-word;}
 #main #bottom{width:1440px; height:100px;}
 #content table {width:80%; border-collapse:collapse; margin:60px auto 0; font-size:24px; font-family: 'omyu_pretty'; border: 1px solid #ddd;}
 #content table tr{border:none;}
@@ -50,7 +50,7 @@ li{list-style:none;}
 #content #btn{text-align:right; margin-top:20px; margin-right:144px; }
 #content #btn button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content #btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
-.maintext{height: auto;  min-height: 200px; width: 1800px; text-align:left; clear:both;  border: 1px solid #ddd;}
+.maintext{height: auto;  min-height: 200px; width:800px; text-align:left; clear:both;  border: 1px solid #ddd;}
 
 /**************************모바일****************************************/
 
@@ -126,6 +126,9 @@ $(document).ready(function() {
 	}
 	
 
+
+
+
 		</script>
 <body>
 	<div id="main">
@@ -133,12 +136,12 @@ $(document).ready(function() {
 
 		<div id="content">
 			<h2>게시글 내용</h2>
-			<form name="frm">
+			<form name="frm" >
 				<table>
 
 					<tr>
 						<th>제목</th>
-						<td>${bv.subject}</td>
+						<td><span>${bv.subject}</span></td>
 					</tr>
 					<tr>		
 						<th>조회수</th>
@@ -152,7 +155,7 @@ $(document).ready(function() {
 
 					<tr class="maintext">
 						<th>글 내용</th>
-							<td class="maintext-cell" >${bv.content}
+							<td class="maintext-cell" ><span>${bv.content}
 							<c:if test="${not empty bv.filename}">
 							    <c:set var="exp" value="${fn:substring(bv.filename, fn:length(bv.filename) - 3, fn:length(bv.filename))}" />
 							    <c:choose>
@@ -162,6 +165,7 @@ $(document).ready(function() {
 							        </c:when>
 							    </c:choose>
 							</c:if>
+							</span>
 							</td>
 
 					</tr>
