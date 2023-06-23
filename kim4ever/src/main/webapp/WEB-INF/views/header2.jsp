@@ -6,8 +6,10 @@
 <style>
 /*리셋코드*/
 *{margin:0;padding:0; word-break:keep-all}
+*{caret-color: transparent;}
 li{list-style:none;}
 
+button{cursor:pointer;}
 /*사이드메뉴바, 로고, 로그인버튼*/
 #top_logo{width:1250px; height:200px; text-align:center; position:relative;}
 #top_logo .logo{display:inline-block; text-align:center; position:absolute; left:45.5%; top:50%; transform:translate(-50%, -50%);}
