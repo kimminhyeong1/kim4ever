@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 /*리셋코드*/
-*{margin:0;padding:0;}
+*{margin:0;padding:0;word-break:keep-all;}
 li{list-style:none;}
 body {width: 100vw;   height: 100vh; }
 #main{width:1440px; margin:35px auto; text-align:center; border:1px solid #white;      font-family: 'IM_Hyemin-Bold';
@@ -72,7 +72,7 @@ background-size:cover; background-position: center; background-repeat:no-repeat;
   
 /*소형배너*/
 #banner, #banner2 {width:300px; height:450px;overflow:hidden; box-shadow:0px 0px 10px rgba(0, 0, 0, 0.8); 
--radius: 20px;}
+-radius: 20px; }
 #banner img, #banner2 img {width:100%; height:100%;}
 #banner, #banner2 {position:relative; margin-top:200px; border-radius:20px;}      
 #banner img, #banner2 img {position:absolute; top:0; left:0; opacity:0; transition:opacity 3s ease-in-out, transform 0.2s ease-in-out;
