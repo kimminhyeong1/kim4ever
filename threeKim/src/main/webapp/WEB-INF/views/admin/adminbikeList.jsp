@@ -65,6 +65,21 @@ button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transfo
 	
 	<div id="content">
 		<h2>자전거 리스트</h2>
+			<form action="${pageContext.request.contextPath}/admin/adminbikeList.do" method="get">
+				<div class="search">
+					<select id="searchType" name="searchType">
+						<option value="bikeCode">번호</option> 
+						<option value="bikeType">종류</option>
+						<option value="bikeLocation">위치</option>
+						<option value="bikeState">상태</option>
+					</select>
+					<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요"/>
+					<button type="submit" id="searchBtn">검색</button>
+				</div>
+			</form>
+		
+		
+		
 		<table>
 			<tr>
 				<th>번호</th>
@@ -95,6 +110,30 @@ button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transfo
 		</c:forEach>		
 		</table>
 		<button onclick="location.href='${pageContext.request.contextPath}/bikeRent/bikeRentInfo.do'">자전거 등록/삭제 하러가기</button>
+	
+			<table>
+			<tr>
+				<td>
+					<c:if test="${ pm.prev == true }">
+					<a href="${pageContext.request.contextPath }/admin/adminbikeList.do?page=${pm.startPage-1}&searchType=${ pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } "> ◀</a>
+					</c:if>
+				</td>
+				<td>
+					<c:forEach var="i"  begin="${pm.startPage}" end="${pm.endPage}"  step="1" >
+						<a href="${pageContext.request.contextPath }/admin/adminbikeList.do?page=${ i }&searchType=${pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">${ i }</a>
+					</c:forEach>	
+				</td>
+					<td>
+					<c:if test="${pm.next&&pm.endPage >0 }">
+					<a href="${pageContext.request.contextPath }/adminadminbikeList.do?page=${pm.endPage+1}&searchType=${pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">▶</a>
+					</c:if>
+				</td>
+			</tr>
+		</table>
+	
+	
+	
+	
 	</div>
 	
 	

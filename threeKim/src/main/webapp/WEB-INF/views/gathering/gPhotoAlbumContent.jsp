@@ -38,7 +38,6 @@
 		</style>
 		
 		<script type="text/javascript">
-		
 		    function deletePhotoAlbum(midx, gpaidx) {
 		        var confirmExit = confirm("사진첩을 삭제하시겠습니까?");
 		        if (confirmExit) {

@@ -23,7 +23,7 @@
 </style>
 	</head>
 	<body>
-		<%@include file="../header.jsp" %>
+	<%@include file="../header.jsp" %>
 		<main id="main">
 			<section id="content">
 			<h2 class="QRTitle">일반 자전거QR</h2>
