@@ -81,11 +81,6 @@ input{
 				</tr>
 				
 				<tr>
-					<th>비밀번호</th>
-					<td>${bjv.memberPwd}</td>
-				</tr>
-				
-				<tr>
 					<th>이름</th>
 					<td>${bjv.memberName}</td>
 				</tr>

@@ -431,12 +431,20 @@ OFFSET #{offset};
 	
 	
 	
-	
+	<sql id="search6">
+		<if test="searchType != null and searchType.equals('gInfoName')">
+		    AND gInfoName LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+		
+		<if test="searchType != null and searchType.equals('memberName')">
+		    AND memberName LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+	</sql>
 	
 	
 	
 	<!-- 모임 리스트 -->
-	<select id="gatheringList" parameterType="int" resultType="com.myezen.myapp.domain.GatheringJoinVo">
+	<select id="gatheringList" parameterType="com.myezen.myapp.domain.SearchCriteria" resultType="com.myezen.myapp.domain.GatheringJoinVo">
 		SELECT
 			g.giidx, 
 			i.ginfoName,
@@ -446,8 +454,8 @@ OFFSET #{offset};
 			FROM GATHERING1234 g
 			JOIN member1234 m ON m.midx = g.midx
 			JOIN gathering_info1234 i ON i.giidx = g.giidx
-			WHERE
-			gatheringmembertype = 'TL'
+			WHERE gatheringMemberType = 'TL'
+			<include refid="search6" />
 			ORDER BY
    			i.gInfoCreationDay DESC
 	</select>
@@ -477,8 +485,28 @@ OFFSET #{offset};
 		    i.GIIDX, i.gInfoName, i.gInfoCapacity, i.gInfoCreationDay, i.gInfoAreaIntroduction, g.MIDX, m.memberName, img.imageName
 	</select>
 	
+	
+	<sql id="search7">
+		<if test="searchType != null and searchType.equals('gInfoName')">
+		    AND gInfoName LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+		
+		<if test="searchType != null and searchType.equals('memberName')">
+		    AND memberName LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+		
+		<if test="searchType != null and searchType.equals('reporterName')">
+		    AND reporterName LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+		
+		<if test="searchType != null and searchType.equals('gatheringReportContent')">
+		    AND gatheringReportContent LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+	</sql>
+	
+	
 	<!-- 모임 신고 내역 리스트 -->
-	<select id="gatheringDeclaration" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="com.myezen.myapp.domain.GatheringJoinVo"> 
+	<select id="gatheringDeclaration" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="com.myezen.myapp.domain.SearchCriteria"> 
        SELECT gi.giidx,
 	       gi.GINFONAME,
 	       gi.ginfoarea,
@@ -495,6 +523,7 @@ OFFSET #{offset};
 		JOIN GATHERING1234 g ON g.giidx = gd.giidx -- 모임 정보를 가져오기 위한 조인
 		JOIN member1234 ml ON ml.midx = g.midx -- 모임장 정보를 가져오기 위한 조인
 		WHERE  g.gatheringMemberType = 'TL'
+		<include refid="search7" />
 		ORDER BY
 		gd.gatheringDeclarationDay DESC
    </select>

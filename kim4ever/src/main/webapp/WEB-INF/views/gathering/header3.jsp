@@ -10,6 +10,10 @@
  .midmenu:hover p {color:#ff9900; cursor:pointer;}
  .midmenu{height:70px; align-items: center; margin:10px;}
  .midmenu p{margin:0 auto;}
+
+*{caret-color: transparent;}
+a{color:inherit; text-decoration:none;} 
+
 }
 
 </style>

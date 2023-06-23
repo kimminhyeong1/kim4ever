@@ -157,6 +157,44 @@
 		<script>
 			$(document).ready(function() {
 			});
+			
+			function characterCheck(obj){
+				var regExp =/[\{\}\[\]\/|\)*`^\_┼<>@\#$%&\'\"\\(\=]/gi;
+			    if(regExp.test(obj.value)){
+			        alert("특수문자는 입력할 수 없습니다.");
+			        obj.value = obj.value.substring( 0 , obj.value.length - 1 );
+			    }
+			}
+			function fnWrite() {
+			    var fm = document.frm;
+			    
+			    // 특수문자 검사 정규식
+			    var specialChars =/[\{\}\[\]\/|\)*`^\_┼<>@\#$%&\'\"\\(\=]/gi; 
+			    
+			    if (fm.subject.value == "") {
+			        alert("제목을 입력하세요");
+			        fm.subject.focus();
+			        return;
+			    } else if (specialChars.test(fm.subject.value)) {
+			        alert("제목에 특수문자를 포함할 수 없습니다.");
+			        fm.subject.focus();
+			        return;
+			    } else if (fm.content.value == "") {
+			        alert("내용을 입력하세요");
+			        fm.content.focus();
+			        return;
+			    } else if (specialChars.test(fm.content.value)) {
+			        alert("내용에 특수문자를 포함할 수 없습니다.");
+			        fm.content.focus();
+			        return;
+			    } else if (fm.writer.value == "") {
+			        alert("작성자를 입력하세요");
+			        fm.writer.focus();
+			        return;
+			    }
+
+			  
+			}
 		</script>
 	</head>
 	<body>
@@ -211,9 +249,9 @@
 						 <div>${gjv.gBoardLikeCNT}</div>
 					</div>
 					<div class="gBoardCommentWrite">
-					  <form id="commentForm">
+					  <form id="commentForm"  name="frm" >
 					    <input id="gbidx" type="hidden" name="gbidx" value="${gbidx}">
-					    <textarea id="gCommentContents" rows="5" cols="100" maxlength="200" name="gCommentContents" oninput="updateCharacterCount()"></textarea>
+					    <textarea id="gCommentContents" rows="5" cols="100" maxlength="200" name="gCommentContents" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)" oninput="updateCharacterCount()"></textarea>
 					    <span id="characterCount">0/200</span>
 					    <button class="writeBtn">댓글달기</button>
 					  </form>

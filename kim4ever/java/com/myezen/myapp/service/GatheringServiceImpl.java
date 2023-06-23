@@ -747,11 +747,11 @@ public class GatheringServiceImpl implements GatheringService {
    
    //모임사진첩 조회
    @Override
-   public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelect(SearchCriteria scri,int giidx) {
+   public ArrayList<HashMap<String, Object>> gatheringPhotoAlbumListSelect(SearchCriteria scri,int giidx) {
 	  HashMap<String, Object> hm = new HashMap<>();
       hm.put("giidx", giidx);
       hm.put("scri", scri);
-      ArrayList<GatheringJoinVo> gPhotoList = gsm.gatheringPhotoAlbumListSelect(hm);
+      ArrayList<HashMap<String, Object>> gPhotoList = gsm.gatheringPhotoAlbumListSelect(hm);
       
       return gPhotoList;
    }
@@ -762,6 +762,7 @@ public class GatheringServiceImpl implements GatheringService {
 	  HashMap<String, Object> hm = new HashMap<>();
       hm.put("giidx", giidx);
       hm.put("scri", scri);
+      
       return gsm.gatheringPhotoAlbumListSelectAll(hm);
    }
 

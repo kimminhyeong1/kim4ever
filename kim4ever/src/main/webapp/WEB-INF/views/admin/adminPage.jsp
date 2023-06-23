@@ -13,13 +13,15 @@
 	.aContent{height:200px; flex-wrap:nowrap; width:100%;}
 	.aContent2{display: flex;}	   
     .abox{width:265px; height:150px; margin:20px; padding:30px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:10px; }	
-	.abox2{width:570px; height:auto; margin:20px 20px 20px 35px; padding:5px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:10px;}
-	.abox3{width:570px; margin:20px; padding:5px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:10px;}
-	.cardTitle{margin-bottom:40px;}	
+	.abox2{width:570px; height:auto; margin:0 20px 40px 35px; padding:-5px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:10px;}
+	.abox3{width:570px; height:auto; margin:0 20px 40px 20px; padding:-5px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:10px;}
+	/* .abox3{width:570px; margin:20px; padding:5px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:10px;} */
+	.cardTitle{margin-bottom:40px; border-bottom:1px solid #ddd;}	
 	.abox2 table, .abox3 table {width: 60%; border-collapse: collapse;margin: 15px 	83.703px ;line-height: 60px;font-size: 18px;font-family: 'omyu_pretty';}
 	.pcontent {font-size:32px;}	
 	.abox2 th{font-size:35px;}
 	.abox3 th{font-size:35px;}
+	h2{margin-top:20px; padding-bottom:20px; border-bottom:1px solid #ddd;}
 		
 		</style>
 	</head>
@@ -68,9 +70,9 @@
 							</tr>	
 							<c:forEach var="rblist" items="${rblist}">
 	           				<tr>
-						         <td>${rblist.rentalshopName}</td>
-						         <td>${rblist.bikeNorCnt}</td>
-						         <td>${rblist.bikeEleCnt}</td>
+						         <td>${rblist.rentalshopName}대여소</td>
+						         <td>${rblist.bikeNorCnt}대</td>
+						         <td>${rblist.bikeEleCnt}대</td>
 			        		</tr>
         					</c:forEach>
 						</table>					
@@ -89,8 +91,8 @@
 			        <c:forEach var="rbclist" items="${rbclist}">
 			            <tr>
 			                <td>${rbclist.dayago}</td>
-				         	<td>${rbclist.rentNorCount}</td>
-				         	<td>${rbclist.rentEleCount}</td>
+				         	<td>${rbclist.rentNorCount}대</td>
+				         	<td>${rbclist.rentEleCount}대</td>
 			            </tr>
 			        </c:forEach>
 			    </tbody>
