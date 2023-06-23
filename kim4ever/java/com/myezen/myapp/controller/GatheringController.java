@@ -789,9 +789,9 @@ public class GatheringController {
 			scri.setPerPageNum(12);//게시물갯수
 			
 			//게시글 총갯수
-			int totalCount = gs.gatheringPhotoAlbumListSelectAll(scri); //총 게시물 갯수 꺼내오기
+			int totalCount = gs.gatheringPhotoAlbumListSelectAll(scri,giidx); //총 게시물 갯수 꺼내오기
 			  
-			ArrayList<GatheringJoinVo> gPhotoList = gs.gatheringPhotoAlbumListSelect(scri);
+			ArrayList<GatheringJoinVo> gPhotoList = gs.gatheringPhotoAlbumListSelect(scri,giidx);
 			
 			pm.setScri(scri);
 	    	pm.setTotalCount(totalCount);
