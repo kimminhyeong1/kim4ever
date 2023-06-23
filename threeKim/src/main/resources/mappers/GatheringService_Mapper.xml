@@ -102,7 +102,7 @@
 	            #{item}
 	        </foreach>
 	    ORDER BY RAND()
-	    LIMIT #{offset}, 1
+	    LIMIT #{offset}, 8
 	</select>
 	<!--  모임 나의 리스트 가져오기 -->
 	<select id="gatheringMyListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="int"> 
@@ -248,6 +248,7 @@
 	     AND a.GINFONAME LIKE CONCAT('%', #{keyword}, '%')
 	    </if>
 	     GROUP BY a.GIIDX, a.GINFONAME, a.GINFOBRIEFINTRODUCTION, a.GINFOCAPACITY, a.GINFOPARTICIPATING, b.IMAGENAME, COALESCE(d.gwidx, 0)
+	     ORDER BY a.gInfoCreationDay DESC
 	     LIMIT 8
 	</select>
 	<!-- 모임 검색기능 더보기 -->
@@ -263,6 +264,7 @@
 	     AND a.GINFONAME LIKE CONCAT('%', #{scri.keyword}, '%')
 	    </if>
 	     GROUP BY a.GIIDX, a.GINFONAME, a.GINFOBRIEFINTRODUCTION, a.GINFOCAPACITY, a.GINFOPARTICIPATING, b.IMAGENAME, COALESCE(d.gwidx, 0)
+	     ORDER BY a.gInfoCreationDay DESC
 	      LIMIT #{offset}, 8
 	</select>
 	
