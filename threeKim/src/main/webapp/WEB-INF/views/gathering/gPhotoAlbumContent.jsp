@@ -127,14 +127,17 @@
 		        </div>
 	        </c:forEach>
 	        
-		    <div id="createBtn">  
-			  	<c:if test="${gjv.gatheringMemberType ne 'TM'}">
-			    	<c:set var="firstGjv" value="${gjvList[0]}" />
-			    <c:if test="${not empty firstGjv.gpaidx}">
-		      		<button class="gBtn2" onclick="location.href='${pageContext.request.contextPath}/gathering/gPhotoAlbumModifiy.do?gpaidx=${firstGjv.gpaidx}'">수정하기</button>
-			    </c:if>
-			    	<button class="gBtn2" onclick="deletePhotoAlbum(${midx}, ${gpaidx});">삭제하기</button>
-			  	</c:if>
+		    <div id="createBtn">
+			  <c:choose>
+			    <c:when test="${gatheringMemberType eq 'TM'}"></c:when>
+			    <c:otherwise>
+			      <c:set var="firstGjv" value="${gjvList[0]}" />
+			      <c:if test="${not empty firstGjv.gpaidx}">
+			        <button class="gBtn2" onclick="location.href='${pageContext.request.contextPath}/gathering/gPhotoAlbumModifiy.do?gpaidx=${firstGjv.gpaidx}'">수정하기</button>
+			      </c:if>
+			      <button class="gBtn2" onclick="deletePhotoAlbum(${midx}, ${gpaidx});">삭제하기</button>
+			    </c:otherwise>
+			  </c:choose>
 			</div>
 		</section>
 	</main>
