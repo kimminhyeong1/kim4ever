@@ -147,6 +147,7 @@ public class AdminController {
 	public String adminbikeList(SearchCriteria scri,Model model) {
 		
 		int totalCount = as.bikeListCount(scri);
+		
 		pm.setScri(scri);
 		pm.setTotalCount(totalCount);
 		
