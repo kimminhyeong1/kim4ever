@@ -86,12 +86,13 @@ public class bikeRentController {
 	    public String bikeRentWriteAction(
 	    		@ModelAttribute BikeJoinVo bjv,
                 @RequestParam("uploadfile") MultipartFile file, Model model,
+                HttpServletRequest request,
                 RedirectAttributes redirectAttributes) {
 
 		 System.out.println("bjv는?"+bjv);
 		 System.out.println("업로드파일?"+file);
 		 
-		 String savedFilePath = bs.processBikeRentWrite(file, bjv);
+		 String savedFilePath = bs.processBikeRentWrite(file, bjv,request);
 		   
 		 	//등록된 자전거 정보를 다시 조회하여 모델에 추가
 		    ArrayList<BikeJoinVo> bikeList = bs.getBikeList();
@@ -419,7 +420,7 @@ public class bikeRentController {
 		ev.setBkidx(bkidx);
 
 		//System.out.println("고장/신고페이지 에서 작성하기 클릭 메서드 실행"+ridx+""+errorContent);
-		 int value = bs.bikeRentErrorInsert(ev,errorImage); 
+		 int value = bs.bikeRentErrorInsert(ev,errorImage,request); 
 			
 			session.removeAttribute("ridx");
 			session.removeAttribute("bkidx");

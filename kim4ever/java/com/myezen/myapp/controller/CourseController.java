@@ -3,13 +3,11 @@ package com.myezen.myapp.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.myezen.myapp.service.CourseService;
-import com.myezen.myapp.service.MemberService;
+
 
 @Controller
 @RequestMapping(value="/course")
 public class CourseController {
-CourseService cs;
 	
 	@RequestMapping(value="/courseIntro.do")
 	public String memberJoin() {

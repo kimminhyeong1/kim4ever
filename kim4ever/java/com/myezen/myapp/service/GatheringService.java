@@ -34,11 +34,11 @@ import com.myezen.myapp.util.QRCodeUtil;
 public interface GatheringService {
 
 	//모임 생성하기
-	public int gatheringCreate(GatheringJoinVo gjv,MultipartFile GTImg, ArrayList<MultipartFile> GImg)throws IOException, Exception;
+	public int gatheringCreate(GatheringJoinVo gjv,MultipartFile GTImg, ArrayList<MultipartFile> GImg ,HttpServletRequest request)throws IOException, Exception;
 	//모임수정리스트가져오기 
 	public ArrayList<GatheringJoinVo> gatheringModifyList(int giidx);
 	//모임 수정하기
-	public int gatheringModify(GatheringJoinVo gjv,MultipartFile GTImg, ArrayList<MultipartFile> GImgU,ArrayList<MultipartFile> GImgI)throws IOException, Exception;
+	public int gatheringModify(GatheringJoinVo gjv,MultipartFile GTImg, ArrayList<MultipartFile> GImgU,ArrayList<MultipartFile> GImgI,HttpServletRequest request)throws IOException, Exception;
 	//모임명 중복체크
 	public int gInfoNameCheck(String gInfoName);
 	//모임 리스트 가져오기
@@ -177,7 +177,7 @@ public interface GatheringService {
 	public int updateTL(int midx,int giidx);
 
 	//모임사진첩작성
-	public int gatheringPhotoAlbumWrite(GatheringJoinVo gjv,MultipartFile GATImg, ArrayList<MultipartFile> GAImg)throws IOException, Exception;
+	public int gatheringPhotoAlbumWrite(GatheringJoinVo gjv,MultipartFile GATImg, ArrayList<MultipartFile> GAImg,HttpServletRequest request)throws IOException, Exception;
 	//사진첩 리스트 조회
 	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumListSelect(SearchCriteria scri);
 	//사진첩 리스트 총갯수
@@ -189,7 +189,7 @@ public interface GatheringService {
 	//사진첩 수정페이지 조회
 	public ArrayList<GatheringJoinVo> gatheringPhotoAlbumModify(int gpaidx);
 	//사진첩 수정하기 
-	public int gatheringPhotoAlbumModifyUpdate(GatheringJoinVo gjv,MultipartFile GTImg,  ArrayList<MultipartFile> GAImgList)throws IOException, Exception;
+	public int gatheringPhotoAlbumModifyUpdate(GatheringJoinVo gjv,MultipartFile GTImg,  ArrayList<MultipartFile> GAImgList,HttpServletRequest request)throws IOException, Exception;
 	//사진첩 삭제하기
 	public void deletePhotoAlbum(int midx, int gpaidx);
 	

@@ -135,11 +135,11 @@ public class BikeRentServiceImpl implements BikeRentService {
 	
 	//자전거 소개에서 추가등록할때 이미지 경로
 	@Override
-	public String processBikeRentWrite(MultipartFile file, BikeJoinVo bjv) {
+	public String processBikeRentWrite(MultipartFile file, BikeJoinVo bjv,HttpServletRequest request) {
 		
 		//배포했을때
-        //String savedFilePath = request.getSession().getServletContext().getRealPath("/resources/bikeImages");
-		String savedFilePath = "D://threekim//threeKim//src//main//webapp//resources/bikeImages";
+        String savedFilePath = request.getSession().getServletContext().getRealPath("/resources/bikeImages");
+		//String savedFilePath = "D://threekim//threeKim//src//main//webapp//resources/bikeImages";
 		// 파일을 실제 경로에 저장
 	    try {
 	        String originalFilename = file.getOriginalFilename();
@@ -186,9 +186,7 @@ public class BikeRentServiceImpl implements BikeRentService {
 
 
 
-	
-	@Autowired
-	private HttpServletRequest request;
+
 	
 	
 	
@@ -197,13 +195,13 @@ public class BikeRentServiceImpl implements BikeRentService {
     @Override
     @Transactional
     //고장/신고하기 //String errorContent,int ridx,String latitude,String longitude,String address
-    public int bikeRentErrorInsert(ErrorVo ev,MultipartFile file) {
+    public int bikeRentErrorInsert(ErrorVo ev,MultipartFile file,HttpServletRequest request) {
         System.out.println("서비스단에 들어옴");
         int value = 0;
         //배포했을때
-        //String savedFilePath = request.getSession().getServletContext().getRealPath("/resources/bikeError");
+        String savedFilePath = request.getSession().getServletContext().getRealPath("/resources/bikeError");
 		// 파일을 실제 경로에 저장
-        String savedFilePath = "D://threekim//threeKim//src//main//webapp//resources/bikeError";
+        //String savedFilePath = "D://threekim//threeKim//src//main//webapp//resources/bikeError";
         System.out.println(savedFilePath);
 	    try {
 	        String originalFilename = file.getOriginalFilename();
