@@ -53,4 +53,9 @@
   <session-config><!-- 세션타임아웃 -->
     <session-timeout>60</session-timeout> <!-- 10분(분 단위) -->
   </session-config>
+  
+  <error-page><!--404에러처리-->
+    <error-code>404</error-code>
+    <location>/WEB-INF/views/error/404errorPage.jsp</location>
+  </error-page>
 </web-app>
