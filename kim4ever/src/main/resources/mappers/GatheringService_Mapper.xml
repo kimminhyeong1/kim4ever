@@ -613,21 +613,21 @@
 	
 	<!-- 사진첩 리스트 조회 -->
 	<select id="gatheringPhotoAlbumListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo"  parameterType="java.util.HashMap">
-	 SELECT *
-	  FROM (
-	    SELECT @rownum := @rownum + 1 AS RNUM, B.*
-	    FROM (
-	      SELECT a.gpaidx, a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, b.imgtype, b.imageName
-	      FROM gathering_photoalbum1234 a
-	      JOIN image1234 b ON a.giidx = b.GIIDX AND a.gpaidx = b.gpaidx
-	      WHERE b.imgtype = 'GAT' and a.giidx=#{giidx}
-	      <if test="scri.keyword != null and scri.keyword !=''">
-	        AND a.GPHOTOALBUMTITLE LIKE CONCAT('%', #{scri.keyword}, '%')
-	      </if>
-	      ORDER BY GPHOTOALBUMWRITEDAY DESC
-	    ) B, (SELECT @rownum := 0) R
-	  ) C
-	  WHERE C.RNUM BETWEEN ${(page - 1) * perPageNum + 1} AND ${page * perPageNum}
+	  SELECT *
+  FROM (
+    SELECT ROW_NUMBER() OVER (ORDER BY GPHOTOALBUMWRITEDAY DESC) AS RNUM, B.*
+    FROM (
+      SELECT a.gpaidx, a.giidx, a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, b.imgtype, b.imageName
+      FROM gathering_photoalbum1234 a
+      JOIN image1234 b ON a.giidx = b.giidx AND a.gpaidx = b.gpaidx
+      WHERE b.imgtype = 'GAT'  AND a.GIIDX = #{giidx}
+      <if test="scri.keyword != null">
+        AND a.GPHOTOALBUMTITLE LIKE CONCAT('%', #{scri.keyword}, '%')
+      </if>
+      ORDER BY GPHOTOALBUMWRITEDAY DESC
+    ) B
+  ) C
+  WHERE c.rnum BETWEEN ((#{scri.page}-1)*#{scri.perPageNum}+1) AND (#{scri.page}*#{scri.perPageNum})
 	</select>
 	
 	<!-- 사진첩 리스트  총 게시물 조회 -->
@@ -635,8 +635,8 @@
 		SELECT count(*) as cnt
 		FROM gathering_photoalbum1234 a
 		JOIN image1234 b ON a.giidx = b.GIIDX AND a.gpaidx = b.gpaidx
-		WHERE b.imgtype='GAT' and a.giidx=#{giidx}
-		<if test="scri.keyword != null and scri.keyword !=''">
+		WHERE b.imgtype='GAT' AND a.GIIDX = #{giidx}
+		<if test="scri.keyword != null">
 	     AND a.GPHOTOALBUMTITLE LIKE '%'||#{scri.keyword}||'%'
 	    </if>
 	</select>
