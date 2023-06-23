@@ -9,8 +9,9 @@
 li{list-style:none;}
 
 *{margin:0;padding:0; }
+*{caret-color: transparent;}
 a{color:inherit; text-decoration:none;} 
-
+button{cursor:pointer;}
 /*헤더부분 영역*/
 header{width: 1250px;margin: 35px auto 70px;text-align: center;}
 /*사이드메뉴바, 로고, 로그인버튼*/
