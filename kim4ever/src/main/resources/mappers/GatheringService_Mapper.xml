@@ -621,7 +621,7 @@
 	      FROM gathering_photoalbum1234 a
 	      JOIN image1234 b ON a.giidx = b.GIIDX AND a.gpaidx = b.gpaidx
 	      WHERE b.imgtype = 'GAT' and a.giidx=#{giidx}
-	      <if test="scri.keyword != null">
+	      <if test="scri.keyword != null and scri.keyword !=''">
 	        AND a.GPHOTOALBUMTITLE LIKE CONCAT('%', #{scri.keyword}, '%')
 	      </if>
 	      ORDER BY GPHOTOALBUMWRITEDAY DESC
@@ -636,7 +636,7 @@
 		FROM gathering_photoalbum1234 a
 		JOIN image1234 b ON a.giidx = b.GIIDX AND a.gpaidx = b.gpaidx
 		WHERE b.imgtype='GAT' and a.giidx=#{giidx}
-		<if test="scri.keyword != null">
+		<if test="scri.keyword != null and scri.keyword !=''">
 	     AND a.GPHOTOALBUMTITLE LIKE '%'||#{scri.keyword}||'%'
 	    </if>
 	</select>
