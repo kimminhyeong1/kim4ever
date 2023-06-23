@@ -32,7 +32,8 @@ li{list-style:none;}
     font-weight:normal;
     font-style:normal;
 }
-
+ .but{width:100px !important; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+ .but:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 
 #main{width:1250px; margin:35px auto 70px; text-align:center;}
 #main #content{width:1250px; height:auto;}
@@ -48,8 +49,8 @@ li{list-style:none;}
 #content #searchBtn{width:80px;height:30px;font-size:14px;padding:5px;text-align:center; font-family:'omyu_pretty'; cursor:pointer; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content #searchBtn:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px}
 #content #btn{text-align:right; margin-top:20px; margin-right:144px; }
-#content button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
-#content button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+ 
+
 .form-table input[type="submit"] {width:100px; height:30px; text-align:center; font-family: 'omyu_pretty'; font-size:15px;  border-radius:10px; border:0px solid black; background:#ff9933;}
 .form-table select,.form-table input[type="text"] { width:100px; height:30px; text-align:center; font-family: 'omyu_pretty'; font-size:15px;  }
 /*메뉴바 테이블*/
@@ -159,12 +160,13 @@ li{list-style:none;}
 									<c:choose>
 									  <c:when test="${bv.boarddelyn == 'N'}">
 									    <td>							<!-- 버튼에 고유한식별자 값을 주고 bidx값을 id로 할당 -->									    
-									    	<button type="button" id="searchBtn" onclick="check();" id="deleteButton_${bv.bidx}">삭제</button>
+									    	<button class="but" type="button" onclick="check();" id="deleteButton_${bv.bidx}">삭제</button>
+									    	
 									    </td>
 									  </c:when>
 									  <c:otherwise>
 									    <td>
-									    	<button type="button" id="searchBtn" onclick="check2();" id="deleteButton_${bv.bidx}">복구</button>
+									    	<button type="button" class="but"  onclick="check2();" id="deleteButton_${bv.bidx}">복구</button>
 									    </td> 
 									  </c:otherwise>
 									</c:choose>
