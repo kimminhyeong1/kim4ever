@@ -95,12 +95,12 @@
 						success: function(data) {
 							
 							if (data.value == 1) {
-								alert("찜 삭제");
+								console.log("찜 삭제");
 								// src 속성을 업데이트하여 이미지를 변경합니다.
 								$(element).attr('src', '../resources/icon/heart.png');
 								return;
 							} else {
-								alert("찜 실패");
+								console.log("찜 실패");
 								return false;
 							}
 						},
@@ -122,12 +122,12 @@
 						success: function(data) {
 							
 							if (data.value == 1) {
-								alert("찜 성공");
+								console.log("찜성공");
 								// src 속성을 업데이트하여 이미지를 변경합니다.
 								$(element).attr('src', '../resources/icon/fullheart.png');
 								return;
 							} else {
-								alert("찜 실패");
+								console.log("찜실패");
 								return false;
 							}
 						},
@@ -175,7 +175,7 @@
 	                    dataType: "json",
 	                    data: {offset: offset , URI: "${pageContext.request.contextPath}/gathering/gMyPage.do"},
 	                    success: function(data) {
-	                    	console.log(data)
+	                    	console.log(data);
 	                        // 가져온 데이터를 gContent에 추가
 	                        $.each(data, function(index, gjv) {
 	                        	//값이 4개만 출력하게
@@ -204,7 +204,7 @@
 	                        
 	                    },
 	                    error: function() {
-	                        alert("더 보기 요청에 실패했습니다.");
+	                        console.log("더 보기 요청에 실패했습니다.");
 	                    }
 	                });
 	            });
