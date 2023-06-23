@@ -84,9 +84,8 @@
 			
 			function initMap() {
 			  // 사용자의 현재 위치를 가져옵니다.
-			  navigator.geolocation.getCurrentPosition(function(position) {
-			    var latitude = position.coords.latitude; // 위도
-			    var longitude = position.coords.longitude; // 경도
+			    var latitude = 35.84027500058197; // 위도
+			    var longitude = 127.13196055769883; // 경도
 			
 			    var initialLatLng = new kakao.maps.LatLng(latitude, longitude);
 			
@@ -189,7 +188,6 @@
 			        }
 			      }
 			    });
-			  });
 			}
 			</script>
 	</head>
