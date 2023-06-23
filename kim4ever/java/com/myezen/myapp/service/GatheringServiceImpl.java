@@ -13,6 +13,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 import javax.annotation.Resource;
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -63,15 +64,15 @@ public class GatheringServiceImpl implements GatheringService {
    @Override
    @Transactional
    //모임생성하기
-    public int gatheringCreate(GatheringJoinVo gjv, MultipartFile GTImg, ArrayList<MultipartFile> GImg) throws IOException, Exception {
+    public int gatheringCreate(GatheringJoinVo gjv, MultipartFile GTImg, ArrayList<MultipartFile> GImg,HttpServletRequest request) throws IOException, Exception {
       
       int value=0;
       
-      //배포했을때
-        //String savedGTImgPath = request.getSession().getServletContext().getRealPath("/resources/GTImages");
-      //String savedGImgPath = request.getSession().getServletContext().getRealPath("/resources/GImages");
-        String savedGTImgPath = "D://threekim//threeKim//src//main//webapp//resources/GTImages";//모임대표이미지
-        String savedGImgPath = "D://threekim//threeKim//src//main//webapp//resources/GImages";//모임이미지
+        //배포했을때
+        String savedGTImgPath = request.getSession().getServletContext().getRealPath("/resources/GTImages");
+        String savedGImgPath = request.getSession().getServletContext().getRealPath("/resources/GImages");
+        //String savedGTImgPath = "D://threekim//threeKim//src//main//webapp//resources/GTImages";//모임대표이미지
+        //String savedGImgPath = "D://threekim//threeKim//src//main//webapp//resources/GImages";//모임이미지
 
       /*모임생성*/
       //1.모임정보생성
@@ -104,16 +105,16 @@ public class GatheringServiceImpl implements GatheringService {
    @Override
    @Transactional
    //모임수정하기
-    public int gatheringModify(GatheringJoinVo gjv, MultipartFile GTImg, ArrayList<MultipartFile> GImgU,ArrayList<MultipartFile> GImgI) throws IOException, Exception {
+    public int gatheringModify(GatheringJoinVo gjv, MultipartFile GTImg, ArrayList<MultipartFile> GImgU,ArrayList<MultipartFile> GImgI,HttpServletRequest request) throws IOException, Exception {
       
       int value=0;
       int imidx=0;
       
       //배포했을때
-        //String savedGTImgPath = request.getSession().getServletContext().getRealPath("/resources/GTImages");
-      //String savedGImgPath = request.getSession().getServletContext().getRealPath("/resources/GImages");
-        String savedGTImgPath = "D://threekim//threeKim//src//main//webapp//resources/GTImages";//모임대표이미지
-        String savedGImgPath = "D://threekim//threeKim//src//main//webapp//resources/GImages";//모임이미지
+        String savedGTImgPath = request.getSession().getServletContext().getRealPath("/resources/GTImages");
+        String savedGImgPath = request.getSession().getServletContext().getRealPath("/resources/GImages");
+        //String savedGTImgPath = "D://threekim//threeKim//src//main//webapp//resources/GTImages";//모임대표이미지
+        //String savedGImgPath = "D://threekim//threeKim//src//main//webapp//resources/GImages";//모임이미지
 
         
       /*모임수정*/
@@ -763,12 +764,14 @@ public class GatheringServiceImpl implements GatheringService {
    //모임사진첩작성
    @Override
    @Transactional
-   public int gatheringPhotoAlbumWrite(GatheringJoinVo gjv, MultipartFile GATImg, ArrayList<MultipartFile> GAImg) throws IOException, Exception {
+   public int gatheringPhotoAlbumWrite(GatheringJoinVo gjv, MultipartFile GATImg, ArrayList<MultipartFile> GAImg,HttpServletRequest request) throws IOException, Exception {
       
       int value = 0;
       
-      String savedGATImgPath = "D://threekim//threeKim//src//main//webapp//resources/GATImages";//사진첩 대표이미지
-      String savedGAImgPath = "D://threekim//threeKim//src//main//webapp//resources/GAImages";//사진첩 이미지
+      String savedGATImgPath = request.getSession().getServletContext().getRealPath("/resources/GATImages");
+      String savedGAImgPath = request.getSession().getServletContext().getRealPath("/resources/GAImages");
+      //String savedGATImgPath = "D://threekim//threeKim//src//main//webapp//resources/GATImages";//사진첩 대표이미지
+      //String savedGAImgPath = "D://threekim//threeKim//src//main//webapp//resources/GAImages";//사진첩 이미지
       
    
       //모임 대표 이미지 
@@ -831,13 +834,15 @@ public class GatheringServiceImpl implements GatheringService {
    //사진첩 수정하게 업데이트 수행
    @Override
    @Transactional
-   public int gatheringPhotoAlbumModifyUpdate(GatheringJoinVo gjv, MultipartFile GATImg, ArrayList<MultipartFile> GAImg) throws IOException, Exception {
+   public int gatheringPhotoAlbumModifyUpdate(GatheringJoinVo gjv, MultipartFile GATImg, ArrayList<MultipartFile> GAImg,HttpServletRequest request) throws IOException, Exception {
 
       int value = 0;
       int imidx = 0;
       
-      String savedGATImgPath = "D://threekim//threeKim//src//main//webapp//resources/GATImages";//사진첩 대표이미지
-      String savedGAImgPath = "D://threekim//threeKim//src//main//webapp//resources/GAImages";//사진첩 이미지
+      String savedGATImgPath = request.getSession().getServletContext().getRealPath("/resources/GATImages");
+      String savedGAImgPath = request.getSession().getServletContext().getRealPath("/resources/GAImages");
+      //String savedGATImgPath = "D://threekim//threeKim//src//main//webapp//resources/GATImages";//사진첩 대표이미지
+      //String savedGAImgPath = "D://threekim//threeKim//src//main//webapp//resources/GAImages";//사진첩 이미지
       
    
        //모임 대표 이미지 업데이트
