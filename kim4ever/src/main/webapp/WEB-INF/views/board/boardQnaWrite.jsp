@@ -82,7 +82,7 @@ textarea {
 <script type="text/javascript">
 
 function characterCheck(obj){
-	var regExp = /[ \{\}\[\]\/|\)*`^\_┼<>@\#$%&\'\"\\\(\=]/gi; 
+	var regExp =/[\{\}\[\]\/|\)*`^\_┼<>@\#$%&\'\"\\(\=]/gi;
     if(regExp.test(obj.value)){
         alert("특수문자는 입력할 수 없습니다.");
         obj.value = obj.value.substring( 0 , obj.value.length - 1 );
@@ -92,7 +92,7 @@ function fnWrite() {
     var fm = document.frm;
     
     // 특수문자 검사 정규식
-    var specialChars = /[ \{\}\[\]\/|\)*`^\┼<>@\#$%&\'\"\\\(\=]/gi; 
+    var specialChars =/[\{\}\[\]\/|\)*`^\_┼<>@\#$%&\'\"\\(\=]/gi; 
     
     if (fm.subject.value == "") {
         alert("제목을 입력하세요");
