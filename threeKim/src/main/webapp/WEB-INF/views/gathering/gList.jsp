@@ -74,8 +74,7 @@
 						</div>
 					 </c:forEach>
 				</div>
-				<div><button id="moreButton" class="gBtn2" >더보기</button></div>
-				<button type="button" onclick="fetchNewData()">더 보기</button>
+				<button type="button" class="gBtn2" onclick="fetchNewData()">더 보기</button>
 			</section>
 		</main>
 		<%@include file="../footer.jsp" %>
@@ -167,76 +166,44 @@
 					  }
 
 		</script>
-    	<script>
-	            var offset = 8;
-	            $("#moreButton").click(function() {
-	                $.ajax({
-	                    url: "${pageContext.request.contextPath}/gathering/more.do",
-	                    type: "GET",
-	                    dataType: "json",
-	                    data: {offset: offset , URI: "${pageContext.request.contextPath}/gathering/gList.do"},
-	                    success: function(data) {
-	                        // 가져온 데이터를 gContent에 추가
-	                        $.each(data, function(index, gjv) {
-                                var card = "<div class='card'>"
-                                    + "<img class='cardImg' src='../resources/GTImages/" + gjv.imageName + "'>"
-                                    + "<img class='cardWish' src='../resources/icon/" + (gjv.gwidx != 0 ? "fullheart.png" : "heart.png") + "' onclick='handleHeartClick(" + gjv.giidx + ", " + ${midx} + ", this)'>"
-                                    + "<h3 class='cardTitle'>" + gjv.gInfoName + "</h3>"
-                                    + "<p class='cardInfo'>" + gjv.gInfoBriefIntroduction + "</p>"
-                                    + "<p class='attend'>(참여멤버 " + gjv.gInfoParticipating + "/" + gjv.gInfoCapacity + ")</p>" 
-                                    + "<button class='gBtn' onclick=\"location.href='${pageContext.request.contextPath}/gathering/gSimpleInfo.do?giidx="+gjv.giidx+"'\">구경하기</button>"
-
-                                    + "</div>";
-                                $(".gContentB").append(card);
-	                        });
-
-	                        //alert(offset);
-	                        offset += 8;
-	                    },
-	                    error: function() {
-	                        alert("더 보기 요청에 실패했습니다.");
-	                    }
-	                });
-	            });
-    </script>
-    <script>
-    	var offset2 = 0;
-	    function fetchNewData() {
+	    <script>
+	    	var offset2 = 0;
 	        var excludedData = [];
-	        <c:forEach var="gjv" items="${gjvlist}">
-	            excludedData.push(${gjv.giidx});
-	        </c:forEach>
+		    function fetchNewData() {
+		        <c:forEach var="gjv" items="${gjvlist}">
+		            excludedData.push(${gjv.giidx});
+		        </c:forEach>
+		
+		        $.ajax({
+		            url: '${pageContext.request.contextPath}/gathering/getNewData.do',
+		            type: 'POST',
+		            dataType: "json",
+		            traditional: true,//배열값받기
+		            data: { offset:offset2 , excludedData:excludedData},
+		            success: function(data) {
+		                // 새로운 데이터 처리
+		                console.log(data); // 응답 데이터 출력 예시
+		             // 가져온 데이터를 gContent에 추가
+	                    $.each(data, function(index, gjv) {
+	                        var card = "<div class='card'>"
+	                            + "<img class='cardImg' src='../resources/GTImages/" + gjv.imageName + "'>"
+	                            + "<img class='cardWish' src='../resources/icon/" + (gjv.gwidx != 0 ? "fullheart.png" : "heart.png") + "' onclick='handleHeartClick(" + gjv.giidx + ", " + ${midx} + ", this)'>"
+	                            + "<h3 class='cardTitle'>" + gjv.gInfoName + "</h3>"
+	                            + "<p class='cardInfo'>" + gjv.gInfoBriefIntroduction + "</p>"
+	                            + "<p class='attend'>(참여멤버 " + gjv.gInfoParticipating + "/" + gjv.gInfoCapacity + ")</p>" 
+	                            + "<button class='gBtn' onclick=\"location.href='${pageContext.request.contextPath}/gathering/gSimpleInfo.do?giidx="+gjv.giidx+"'\">구경하기</button>"
 	
-	        $.ajax({
-	            url: '${pageContext.request.contextPath}/gathering/getNewData.do',
-	            type: 'POST',
-	            dataType: "json",
-	            traditional: true,//배열값받기
-	            data: { offset:offset2 , excludedData:excludedData},
-	            success: function(data) {
-	                // 새로운 데이터 처리
-	                console.log(data); // 응답 데이터 출력 예시
-	             // 가져온 데이터를 gContent에 추가
-                    $.each(data, function(index, gjv) {
-                        var card = "<div class='card'>"
-                            + "<img class='cardImg' src='../resources/GTImages/" + gjv.imageName + "'>"
-                            + "<img class='cardWish' src='../resources/icon/" + (gjv.gwidx != 0 ? "fullheart.png" : "heart.png") + "' onclick='handleHeartClick(" + gjv.giidx + ", " + ${midx} + ", this)'>"
-                            + "<h3 class='cardTitle'>" + gjv.gInfoName + "</h3>"
-                            + "<p class='cardInfo'>" + gjv.gInfoBriefIntroduction + "</p>"
-                            + "<p class='attend'>(참여멤버 " + gjv.gInfoParticipating + "/" + gjv.gInfoCapacity + ")</p>" 
-                            + "<button class='gBtn' onclick=\"location.href='${pageContext.request.contextPath}/gathering/gSimpleInfo.do?giidx="+gjv.giidx+"'\">구경하기</button>"
-
-                            + "</div>";
-                        $(".gContentB").append(card);
-                        gjv.
-                    });
-                    offset2 += 1;
-	            },
-	            error: function(xhr, textStatus, errorThrown) {
-	                // 에러 처리
-	            }
-	        });
-	    }
-	</script>
+	                            + "</div>";
+	                        $(".gContentB").append(card);
+	                        excludedData.push(gjv.giidx);
+	                    });
+	                    offset2 += 8;
+		            },
+		            error: function(xhr, textStatus, errorThrown) {
+		                // 에러 처리
+		            }
+		        });
+		    }
+		</script>
 	</body>
 </html>
