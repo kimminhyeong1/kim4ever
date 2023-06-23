@@ -173,10 +173,7 @@ header{width:auto;margin:0 auto; }
 					<li>
 						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/gathering/gCreate.do'">모임 만들기</span></a>
 					</li>
-					
-					<li>
-						<a href="#"><span class = "title" onclick="location.href='<%=request.getContextPath()%>/'">회원관리</span></a>
-					</li>
+
 				</ul>
 				
 			</div>

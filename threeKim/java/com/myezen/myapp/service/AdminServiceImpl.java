@@ -173,11 +173,19 @@ public class AdminServiceImpl implements AdminService {
 
 	//관리자 자전거 리스트
 	@Override
-	public ArrayList<BikeJoinVo> bikeList() {
+	public ArrayList<BikeJoinVo> bikeList(SearchCriteria scri) {
 		
-	ArrayList<BikeJoinVo> klist = asm.bikeList();	
+	ArrayList<BikeJoinVo> klist = asm.bikeList(scri);	
 		return klist;
 	}
+	
+	//관리자 자전거 카운트
+	@Override
+	public int bikeListCount(SearchCriteria scri) {
+		
+		return asm.bikeListCount(scri);
+	}
+	
 	
 	//대여소 리스트
 	@Override
@@ -242,6 +250,8 @@ public class AdminServiceImpl implements AdminService {
 	
 		return asm.DeclarationDetail(gdix);
 	}
+
+
 
 
 
