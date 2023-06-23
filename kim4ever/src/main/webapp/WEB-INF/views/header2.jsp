@@ -49,7 +49,7 @@ li{list-style:none;}
 #bottom{width:1250px; height:300px; }
  .hidden_img {display: none; }
  .change{width: 85px; height: 36px; margin: 0 auto; position: absolute; top: 48px; right:0;}
-.change img{width:100%; height:100%;}
+.change img{width:100%; height:100%;  cursor:pointer}
 
 /****************************모바일**************************/
 @media (min-width: 300px) and (max-width: 940px)  {

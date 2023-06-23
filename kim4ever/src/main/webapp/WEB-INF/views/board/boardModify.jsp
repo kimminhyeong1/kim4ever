@@ -38,7 +38,7 @@ li{list-style:none;}
 #main #content{width:1440px; height:2400px;}
 #main #content h2{text-align:left; margin-top:50px; margin-left:160px; font-family: 'GangwonEdu_OTFBoldA'; font-size:25px;}
 #main #bottom{width:1440px; height:300px;}
-#content table {width:80%; border-collapse:collapse; margin: 60px auto 0; line-height:100px; font-size:24px; font-family: 'omyu_pretty';}
+#content table {width:80%; border-collapse:collapse; margin: 60px auto 0; line-height:30px; font-size:24px; font-family: 'omyu_pretty';}
 #content table th{width:140px;padding: 10px;text-align: center;}
 #content table td{padding: 10px; text-align:left; border-left:1px solid #ddd;}
 #content table tr{border:1px solid #ddd;}
@@ -80,15 +80,33 @@ li{list-style:none;}
 </head>
 <script type="text/javascript">
 
+function characterCheck(obj){
+	var regExp = /[ \{\}\[\]\/|\)*`^\_┼<>@\#$%&\'\"\\\(\=]/gi; 
+    if(regExp.test(obj.value)){
+        alert("특수문자는 입력할 수 없습니다.");
+        obj.value = obj.value.substring( 0 , obj.value.length - 1 );
+    }
+}
 function fnWrite() {
-	var fm = document.frm;
-	
+    var fm = document.frm;
+    
+    // 특수문자 검사 정규식
+    var specialChars = /[ \{\}\[\]\/|\)*`^\┼<>@\#$%&\'\"\\\(\=]/gi; 
+    
     if (fm.subject.value == "") {
         alert("제목을 입력하세요");
         fm.subject.focus();
         return;
+    } else if (specialChars.test(fm.subject.value)) {
+        alert("제목에 특수문자를 포함할 수 없습니다.");
+        fm.subject.focus();
+        return;
     } else if (fm.content.value == "") {
         alert("내용을 입력하세요");
+        fm.content.focus();
+        return;
+    } else if (specialChars.test(fm.content.value)) {
+        alert("내용에 특수문자를 포함할 수 없습니다.");
         fm.content.focus();
         return;
     } else if (fm.writer.value == "") {
@@ -97,16 +115,26 @@ function fnWrite() {
         return;
     }
 
-
-	fm.action = "<%=request.getContextPath()%>/board/boardModifyAction.do";
-		fm.enctype = "multipart/form-data";
-		fm.method = "post";
-		fm.submit();
-	}
-function getOriginalFileName(fileName){	
-	var idx = fileName.lastIndexOf("_")+1;	
-	return fileName.substr(idx);
+    fm.action = "<%=request.getContextPath()%>/board/boardWriteAction2.do";
+    fm.enctype = "multipart/form-data";
+    fm.method = "post";
+    fm.submit();
 }
+function updateCharacterCount(inputName) {
+	  var input = document.getElementsByName(inputName)[0];
+	  var maxLength = parseInt(input.getAttribute('maxlength'));
+	  var currentLength = input.value.length;
+	  var countElement = document.getElementById(inputName + 'Count');
+	  
+	  countElement.textContent = currentLength + '/' + maxLength;
+	}
+
+	// 초기 로딩 시 글자 수 업데이트
+	window.addEventListener('DOMContentLoaded', function() {
+	  updateCharacterCount('subject');
+	  updateCharacterCount('content');
+	});
+
 </script>
 
 <body>
@@ -123,13 +151,16 @@ function getOriginalFileName(fileName){
 
 					<tr>
 						<th>제목</th>
-						<td><input type="text" name="subject"
-							value="<%=bv.getSubject()%>"></td>
+						<td><input type="text" name="subject" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)" maxlength="20" oninput="updateCharacterCount('subject')">
+						  <span id="subjectCount"></span>
+						</td>
 					</tr>
 
 					<tr>
 						<th>내용</th>
-						<td><textarea name="content" cols="50" rows="10"><%=bv.getContent()%></textarea></td>
+						<td><textarea name="content" cols="50" rows="10"  onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"  maxlength="500" oninput="updateCharacterCount('content')"></textarea>
+							 <span id="contentCount"></span>
+						</td>
 					</tr>
 
 					<tr>
@@ -153,13 +184,9 @@ function getOriginalFileName(fileName){
 				</div>
 
 			</form>
-		<script type="text/javascript">
-				var originalFileName = getOriginalFileName("<%=bv.getFilename()%>");
-				document.getElementById("filenm").innerHTML = originalFileName;
-		</script>
+		
 		</div>
 
-		<div id="bottom"></div>
 	</div>
 
 </body>

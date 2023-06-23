@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>QnA</title>
 <style>
 /*리셋코드*/
 *{margin:0;padding:0;}
@@ -82,7 +82,7 @@ textarea {
 <script type="text/javascript">
 
 function characterCheck(obj){
-	var regExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi; 
+	var regExp = /[ \{\}\[\]\/|\)*`^\_┼<>@\#$%&\'\"\\\(\=]/gi; 
     if(regExp.test(obj.value)){
         alert("특수문자는 입력할 수 없습니다.");
         obj.value = obj.value.substring( 0 , obj.value.length - 1 );
@@ -92,7 +92,7 @@ function fnWrite() {
     var fm = document.frm;
     
     // 특수문자 검사 정규식
-    var specialChars = /[~!@#$%^&*()_+={}[\]|\\;:'"<>,.?]/;
+    var specialChars = /[ \{\}\[\]\/|\)*`^\┼<>@\#$%&\'\"\\\(\=]/gi; 
     
     if (fm.subject.value == "") {
         alert("제목을 입력하세요");
@@ -121,7 +121,20 @@ function fnWrite() {
     fm.method = "post";
     fm.submit();
 }
+function updateCharacterCount(inputName) {
+	  var input = document.getElementsByName(inputName)[0];
+	  var maxLength = parseInt(input.getAttribute('maxlength'));
+	  var currentLength = input.value.length;
+	  var countElement = document.getElementById(inputName + 'Count');
+	  
+	  countElement.textContent = currentLength + '/' + maxLength;
+	}
 
+	// 초기 로딩 시 글자 수 업데이트
+	window.addEventListener('DOMContentLoaded', function() {
+	  updateCharacterCount('subject');
+	  updateCharacterCount('content');
+	});
 
 </script>
 
@@ -134,7 +147,8 @@ function fnWrite() {
 		<%@include file="../header.jsp"%>
 
 		<div id="content">
-			<h2>QnA 게시글 작성</h2>
+					<h2>문의사항 작성</h2>
+		
 						<form name="frm" >
 <input type="hidden" name="writer" value="	<%= session.getAttribute("memberName") %>"><!-- writer로 저장 -->
 				<table>
@@ -146,12 +160,17 @@ function fnWrite() {
 					
 					<tr>
 						<th>제목</th>
-						<td><input type="text" name="subject" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"></td>
+						<td><input type="text" name="subject" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)" maxlength="20" oninput="updateCharacterCount('subject')">
+						  <span id="subjectCount"></span>
+						</td>
 					</tr>
 					
 					<tr>
 						<th>내용</th>
-						<td><textarea name="content" cols="50" rows="10"  onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"></textarea></td>
+						<td><textarea name="content" cols="50" rows="10"  onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"  maxlength="500" oninput="updateCharacterCount('content')"></textarea>
+							 <span id="contentCount"></span>
+						</td>
+					
 					</tr>
 					
 					<tr>
@@ -174,7 +193,6 @@ function fnWrite() {
 		</div>
 
 
-		<div id="bottom"></div>
 
 	</div>
 

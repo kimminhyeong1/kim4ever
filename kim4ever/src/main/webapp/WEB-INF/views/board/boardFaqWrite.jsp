@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>자주묻는질문</title>
 <style>
 /*리셋코드*/
 *{margin:0;padding:0;}
@@ -74,41 +74,61 @@ li{list-style:none;}
 
 </style>
 <script type="text/javascript">
-function validateForm() {
-	  var subject = document.getElementsByName("subject")[0].value;
-	  var content = document.getElementsByName("content")[0].value;
 
-	  if (subject.trim() === '') {
-	    alert("제목을 입력해주세요.");
-	    return false; // 폼 제출 방지
-	  }
+function characterCheck(obj){
+	var regExp = /[ \{\}\[\]\/|\)*`^\_┼<>@\#$%&\'\"\\\(\=]/gi; 
+    if(regExp.test(obj.value)){
+        alert("특수문자는 입력할 수 없습니다.");
+        obj.value = obj.value.substring( 0 , obj.value.length - 1 );
+    }
+}
+function fnWrite() {
+    var fm = document.frm;
+    
+    // 특수문자 검사 정규식
+    var specialChars = /[ \{\}\[\]\/|\)*`^\┼<>@\#$%&\'\"\\\(\=]/gi; 
+    
+    if (fm.subject.value == "") {
+        alert("제목을 입력하세요");
+        fm.subject.focus();
+        return;
+    } else if (specialChars.test(fm.subject.value)) {
+        alert("제목에 특수문자를 포함할 수 없습니다.");
+        fm.subject.focus();
+        return;
+    } else if (fm.content.value == "") {
+        alert("내용을 입력하세요");
+        fm.content.focus();
+        return;
+    } else if (specialChars.test(fm.content.value)) {
+        alert("내용에 특수문자를 포함할 수 없습니다.");
+        fm.content.focus();
+        return;
+    } else if (fm.writer.value == "") {
+        alert("작성자를 입력하세요");
+        fm.writer.focus();
+        return;
+    }
 
-	  if (content.trim() === '') {
-	    alert("내용을 입력해주세요.");
-	    return false; // 폼 제출 방지
-	  }
-
-	  return true; // 폼 제출 허용
+    fm.action = "<%=request.getContextPath()%>/board/boardWriteAction3.do";
+    fm.enctype = "multipart/form-data";
+    fm.method = "post";
+    fm.submit();
+}
+function updateCharacterCount(inputName) {
+	  var input = document.getElementsByName(inputName)[0];
+	  var maxLength = parseInt(input.getAttribute('maxlength'));
+	  var currentLength = input.value.length;
+	  var countElement = document.getElementById(inputName + 'Count');
+	  
+	  countElement.textContent = currentLength + '/' + maxLength;
 	}
 
-	function fnWrite() {
-	  var fm = document.frm;
-	  if (validateForm() === false) {
-	    return false; // 폼 제출 방지
-	  }
-
-	  var confirmResult = confirm("글을 등록 하시겠습니까?");
-	  if (confirmResult) {
-	    fm.action = "<%=request.getContextPath()%>/board/boardWriteAction3.do";
-	    fm.enctype = "multipart/form-data";
-	    fm.method = "post";
-	    fm.submit();
-	  } else {
-	    location.href = '<%=request.getContextPath()%>/board/boardList.do';
-	  }
-
-	  return false; // 페이지 이동 방지
-	}
+	// 초기 로딩 시 글자 수 업데이트
+	window.addEventListener('DOMContentLoaded', function() {
+	  updateCharacterCount('subject');
+	  updateCharacterCount('content');
+	});
 
 </script>
 
@@ -120,7 +140,7 @@ function validateForm() {
 
 		<div id="content">
 			<h2>FAQ 게시글 작성</h2>
-			<form name="frm" onsubmit="return validateForm()">
+			<form name="frm" >
 				<input type="hidden" name="writer"
 					value="<%=session.getAttribute("memberName")%>">
 				<!-- writer로 저장 -->
@@ -133,13 +153,16 @@ function validateForm() {
 
 					<tr>
 						<th>제목</th>
-						<td><input type="text" name="subject"></td>
+						<td><input type="text" name="subject" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)" maxlength="20" oninput="updateCharacterCount('subject')">
+						  <span id="subjectCount"></span>
+						</td>
 					</tr>
 
 					<tr>
 						<th>내용</th>
-						<td><textarea name="content" cols="50" rows="10" ></textarea></td>
-					
+							<td><textarea name="content" cols="50" rows="10"  onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"  maxlength="500" oninput="updateCharacterCount('content')"></textarea>
+							 <span id="contentCount"></span>
+						</td>					
 					</tr>
 
 					<tr>

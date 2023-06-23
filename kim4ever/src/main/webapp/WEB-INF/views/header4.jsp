@@ -7,6 +7,7 @@
 /*리셋코드*/
 *{margin:0;padding:0;}
 li{list-style:none;}
+a{color:inherit; text-decoration:none;} 
 /*헤더부분 영역*/
 header{width: 1250px;margin: 35px auto 70px;text-align: center;}
 /*사이드메뉴바, 로고, 로그인버튼*/

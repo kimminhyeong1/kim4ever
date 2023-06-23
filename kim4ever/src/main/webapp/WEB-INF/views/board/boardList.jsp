@@ -40,7 +40,7 @@ li{list-style:none;}
 #main #content{width:1440px; height:auto;}
 #main #content h2{text-align:left; margin-top:50px; margin-left:160px; font-family: 'GangwonEdu_OTFBoldA'; font-size:25px;}
 #main #bottom{width:1440px; height:300px;}
-#content table {width:80%; border-collapse:collapse; margin:60px auto 0; line-height:100px; font-size:24px; font-family: 'omyu_pretty'; cursor:pointer;  white-space: nowrap;  overflow: hidden; text-overflow: ellipsis;}
+#content table {width:80%; border-collapse:collapse; margin:60px auto 0; line-height:100px; font-size:24px; font-family: 'omyu_pretty';   white-space: nowrap;  overflow: hidden; text-overflow: ellipsis;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;  }
 #content table tr th:nth-child(1){width: 20px;}
@@ -69,6 +69,8 @@ li{list-style:none;}
 
  a {color: inherit; text-decoration: none;}
   .reply{color: red;}
+.pageing{font-size:30px !important;} 
+.pageing a{margin:5px !important;}
 
  
 	/*****************************************모바일***************************************************************/
@@ -96,6 +98,8 @@ li{list-style:none;}
 .tab__list__item.active {background-color:#ff9933; color:#fff; border:none ;}
 
  a {color: inherit; text-decoration: none;}
+ .pageing{font-size:20px !important;} 
+ 
  }
 
 </style>
@@ -118,7 +122,6 @@ li{list-style:none;}
 				<div class="tab__contents show" data-order="1">
 <!-- 공지사항 -->			
 
-					<h2>공지사항</h2>
 					<table>
 						<tr>
 							<th>No</th>
@@ -157,7 +160,6 @@ li{list-style:none;}
 
 <!-- QNA -->
 				<div class="tab__contents" data-order="2">
-				<h2>문의게시판</h2>
 					<table>
 						<tr>
 							<th>No</th>
@@ -202,7 +204,7 @@ li{list-style:none;}
 		
 					</table>
 					
-			<table>
+			<table class="pageing">
 <!-- 페이징 -->
   				<tr style="border-bottom: none;">
 				    <td style="width: 200px; text-align: right;">
@@ -210,7 +212,7 @@ li{list-style:none;}
 				        <a href="${pageContext.request.contextPath}/board/boardList.do?page=${pm.startPage-1}">◀</a>
 				      </c:if>
 				    </td>
-				    <td style="text-align: center; width: 300px; font-size:20px;">
+				    <td style="text-align: center; width: 300px;">
 				         <c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}" step="1">
 				        <a href="${pageContext.request.contextPath}/board/boardList.do?page=${i}">${i}</a>
 				      </c:forEach>
@@ -232,7 +234,6 @@ li{list-style:none;}
 
 <!-- FAQ -->
 				<div class="tab__contents" data-order="3">
-					<h2>자주묻는질문</h2>
 					<table>
 						<tr>
 							<th>No</th>

@@ -55,8 +55,8 @@ header{width: 1250px;margin: 35px auto 70px;text-align: center;}
 #content{width:1250px; height:1200px;}
 #bottom{width:1250px; height:300px; }
  .hidden_img {display: none; }
- .change{width: 85px; height: 45px; margin: 0 auto; position: absolute; top: 48px; right:0;}
-.change img{width:100%; height:100%;}
+ .change{width: 85px; height: 45px; margin: 0 auto; position: absolute; top: 48px; right:0;  cursor:pointer}
+.change img{width:100%; height:100%;  cursor:pointer}
  
 /****************************모바일**************************/
 @media (min-width: 300px) and (max-width: 940px)  {
@@ -107,8 +107,8 @@ header{width:auto;margin:0 auto; }
 #bottom{width:auto; height:300px; }
 /* 이미지*/
  .hidden_img {display: block; width:35px; height :35px; margin:0 auto; border-radius: 10px; padding:5px;   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); }
-  .change{width: 41px; height: 23px; margin: 0 auto; position: absolute; top: -1px; right: 16%;}
-.change img{width:100%; height:100%;}
+  .change{width: 41px; height: 23px; margin: 0 auto; position: absolute; top: -1px; right: 16%;  cursor:pointer}
+.change img{width:100%; height:100%;  cursor:pointer}
  
  }
 

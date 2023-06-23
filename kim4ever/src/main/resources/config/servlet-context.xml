@@ -60,6 +60,22 @@
 			<mapping path="/gathering/gMyWish.do"/> <!-- 찜한 소모임 페이지 -->
 			<mapping path="/gathering/gCreate.do"/> <!-- 모임 만들기 페이지 -->
 			<mapping path="/gathering/gContent.do"/> <!-- 모임 상세보기 페이지 -->
+			<mapping path="/board/boardQnaWrite.do"/> <!-- qna쓰기 페이지 -->
+			<mapping path="/board/boardNoticeWrite.do"/> <!-- 공지쓰기 페이지 -->
+			<mapping path="/board/boardFaqWrite.do"/> <!-- faq쓰기 페이지 -->
+			<mapping path="/admin/adminPage.do"/> <!--관리자 -->
+			<mapping path="/admin/adminboardList.do"/> <!--관리자게시판 -->
+			<mapping path="/admin/adminbikeList.do"/> <!--관리자자전거관리 -->
+			<mapping path="/admin/adminrentalshopList.do"/> <!--관리자 대여소리스트 -->
+			<mapping path="/admin/adminbikeError.do"/> <!--관리자 고장 -->
+			<mapping path="/admin/adminbikeRepairList.do"/> <!--관리자수리 -->
+			<mapping path="/admin/admingatheringList.do"/> <!-- 관리자 모임리스트 -->
+			<mapping path="/admin/adminGReportList.do"/> <!-- 관리자 모임신고 -->
+						
+			
+			
+			
+			
 			
 			<beans:ref bean="authInterceptor"/>
 		</interceptor>
