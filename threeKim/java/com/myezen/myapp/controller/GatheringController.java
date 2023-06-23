@@ -817,14 +817,14 @@ public class GatheringController {
 			/*모임상세리스트 가져오기*/
 			ArrayList<GatheringJoinVo> gjvList = gs.gatheringPhotoAlbumListSelectOne(gpaidx);
 
-			 // gatheringMemberType 값 가져오기
+			//gatheringMemberType 값 가져오기
 	        GatheringVo gjv = gs.gatheringMemberType(giidx, midx);
 	        String gatheringMemberType = gjv.getGatheringMemberType();
 	     
 			System.out.println("gatheringMemberType는???!!"+ gatheringMemberType);
 			
 		    md.addAttribute("gjvList", gjvList);
-		   
+		    md.addAttribute("gatheringMemberType", gatheringMemberType);
 		    
 		    session.setAttribute("gpaidx", gpaidx);
 			return "gathering/gPhotoAlbumContent";
