@@ -223,7 +223,7 @@
 		JOIN GATHERING1234 c ON c.GIIDX = a.GIIDX
 		JOIN gathering_wish1234 d ON d.GIIDX = a.GIIDX
 		WHERE b.IMGTYPE = 'GT' AND c.midx = #{0} AND a.GINFODELYN = 'N'
-		LIMIT 4
+		LIMIT 5
 	</select>
 	<!-- 모임 나의 찜 리스트 더 가져오기  -->
     <select id="getMoreGatheringMyWishListSelect" resultType="com.myezen.myapp.domain.GatheringJoinVo">
@@ -233,7 +233,7 @@
 		JOIN GATHERING1234 c ON c.GIIDX = a.GIIDX
 		JOIN gathering_wish1234 d ON d.GIIDX = a.GIIDX
 		WHERE b.IMGTYPE = 'GT' AND c.midx = #{1} AND a.GINFODELYN = 'N'
-	    LIMIT #{0}, 4
+	    LIMIT #{0}, 5
     </select>	
 	<!-- 모임 검색기능 -->
 	<select id="searchGatherings" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="com.myezen.myapp.domain.SearchCriteria">
