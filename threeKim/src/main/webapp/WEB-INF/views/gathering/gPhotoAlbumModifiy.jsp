@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">  
 		<link rel="stylesheet" media="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_gathering_mo.css">
-		
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<style type="text/css">
 			.gContainer{border: 1px solid #0000;}
 			/*사진첩 틀*/ 
@@ -16,12 +16,10 @@
 			/*사진첩 부분*/
 			.card{height: 320px; background-color: #d2dfcc;}
 			.cardImg{height: 80%;}
-
 			/*버튼 부분*/
 			#createBtn{text-align: right;}	
 			/*페이징 부분*/
-			.gPaging{font-size: 25px;}	
-			
+			.gPaging{font-size: 25px;}		
 			/* 사진첩 날짜와 제목 */
 			.albumHeader {margin-bottom:20px;text-align:left; 	}
 			/* 사진첩 내용 */
@@ -34,12 +32,8 @@
 			.gContent table tr{border:1px solid #ddd;}
 			.gContent table input[type="text"],textarea{box-sizing:border-box;width:100%;padding:10px;margin:2px 0;border:1px solid #ccc;border-radius:4px;}
 			.gContent table textarea{font-size:21px;}
-			.imagePreview {max-width:300px;max-height:300px;width:auto;height:auto;}
-			
+			.imagePreview {max-width:300px;max-height:300px;width:auto;height:auto;}	
 		</style>
-		
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 	</head>
 	<body>
 		<%@include file="../header2.jsp" %>
@@ -105,6 +99,7 @@
 		
 		
 <script type="text/javascript">
+	//미리보기 이미지
 	function previewImage(event) {
 	    var input = event.target;
 	    var reader = new FileReader();
@@ -120,6 +115,7 @@
 	  }
 	var totalUploads = 0;
 
+	//이미지 업로드
 	function uploadImage(event) {
 	  var input = event.target;
 	  var imageUploadContainer = document.getElementById('imageUploadContainer');
@@ -152,7 +148,6 @@
 	    }
 	  }
 
-	  // Update the thumbnail with the first selected image
 	  if (input.files && input.files[0]) {
 	    var reader = new FileReader();
 	    reader.onload = function (e) {
@@ -165,10 +160,6 @@
 	    thumbnail.style.display = 'none';
 	  }
 	}
-
-
 </script>
-	
-	
 	</body>
 </html>

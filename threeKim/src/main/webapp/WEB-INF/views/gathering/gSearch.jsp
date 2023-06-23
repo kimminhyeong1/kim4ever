@@ -10,25 +10,23 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">		
 		<link rel="stylesheet"  media ="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_gathering_mo.css">  
-		
-		  
-		 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		 <meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		   
-		 <style type="text/css">
+		<style type="text/css">
 		 	/*검색부분*/
 			#SearchPart{margin: 30px 0 30px 0; position: relative;}
 			#SearchPart button{position: absolute;width: 50px; height: 50px;border: 0px;background: 0px; top: 3px; right: 225px;}
 			#SearchPart img{width: 40px; height: 40px;}
 			#keywordMark p{font-size:21px;}
-				/*************************모바일****************************************/
-				/*****모바일 넓이***/
+			/*************************모바일****************************************/
+			/*****모바일 넓이***/
 			@media (min-width: 300px) and (max-width: 940px)  {
 			#SearchPart button{position: absolute;width: 50px; height: 30px;border: 0px;background: 0px; top: 3px; right: 0px;}
 			#SearchPart img{width: 25px; height: 25px; margin-top:30px; margin-right:10%;}
 			#keywordMark p{font-size:21px;}
 				}
-		 </style>
+		</style>
 	</head>
 	<body>
 	<%@include file="../header2.jsp" %>

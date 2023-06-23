@@ -21,12 +21,10 @@
 			.card{height:320px; background-color: #d2dfcc; margin-top:100px;}
 			.cardTitle{font-size:23px; }
 			.cardImg{height: 80%;}
-
 			/*버튼 부분*/
 			#createBtn{text-align: right;}	
 			/*페이징 부분*/
 			.gPaging{font-size: 25px; margin-top:20px;}		
-			
 			/*검색부분*/
 			#searchCategory{ position: absolute; top:-10px; right:-20px; text-align: right; font-size: 20px; margin: 40px 60px; height: 30px; font-family: 'omyu_pretty'; vertical-align: top;} 
 			#searchCategory>div{display: inline-block; vertical-align: top;} 
@@ -38,13 +36,12 @@
 		</style>
 
  <script>
-window.onload = function() {
-    var alertMessage = "${alertMessage}"; //알림 메시지를 가져옴
-
-    if (alertMessage) {
-        alert(alertMessage); //알림 메시지를 출력
-    }
-}
+	window.onload = function() {
+	    var alertMessage = "${alertMessage}"; //알림 메시지를 가져옴
+	    if (alertMessage) {
+	        alert(alertMessage); //알림 메시지를 출력
+	    }
+	}
 </script>
 
 	</head>
