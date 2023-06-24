@@ -86,7 +86,7 @@ border-radius:20px;  float:left; }
 #youtube iframe {border-radius: 20px; box-shadow:0 0 20px rgba(0, 0, 0, 0.8);}
 
 /*메인3*/
-#main3{width:1440px; margin:180px auto; text-align:center;  justify-content: center;  
+#main3{width:1440px; margin:150px auto; text-align:center;  justify-content: center; margin-bottom:0px;
 }
 .container {margin-top:20px;display:flex; flex-wrap:wrap; justify-content:center;  opacity: 0; }
 .item {position:relative; width:calc(27% - 10px); margin-bottom: 20px; margin-right:20px; height:300px;   box-shadow: 4px 0px 4px 0px rgba(0, 0, 0, 0.5); border-radius: 5px;}
@@ -97,8 +97,11 @@ border-radius:20px;  float:left; }
 .item .text h2 {font-size:25px; margin:0 0 5px;     font-family: 'omyu_pretty';}
 .item .text p {font-size:14px; margin:0;   font-family: 'omyu_pretty';}
 
+   .main3-subtitle{display:block; order: 2; color: black; font-weight: 900;  text-transform: uppercase; font-size: 30px; line-height: 1.75em; text-align: center;
+  margin-bottom:20px; font-family: 'omyu_pretty'; margin-top:20px;}
+
 /*메인2 글자효과추가*/
-.main2-title{order: 2; color: white; font-weight: 900;  text-transform: uppercase; font-size: 84px; line-height: 0.75em; text-align: center;
+.main2-title{order: 2; color: white; font-weight: 900;  text-transform: uppercase; font-size: 60px; line-height: 0.75em; text-align: center;
 text-shadow: 3px 1px 1px #000000, 2px 2px 1px #fec339, 4px 2px 1px #ff7f00,
   3px 3px 1px #fec339, 5px 3px 1px #ff7f00, 4px 4px 1px #fec339,
   6px 4px 1px #ff7f00, 5px 5px 1px #fec339, 7px 5px 1px #ff7f00,
@@ -106,13 +109,14 @@ text-shadow: 3px 1px 1px #000000, 2px 2px 1px #fec339, 4px 2px 1px #ff7f00,
   9px 7px 1px #ffff; } 
   
    /*메인3 중앙글씨추가*/
-  .main3-title  {order: 2; color: black; font-weight: 900;  text-transform: uppercase; font-size: 60px; line-height: 0.75em; text-align: center;
+  .main3-title{order: 2; color: black; font-weight: 900;  text-transform: uppercase; font-size: 60px; line-height: 0.75em; text-align: center;
 text-shadow: 3px 1px 1px #fec339, 2px 2px 1px #fec339, 4px 2px 1px #fec339,
   3px 3px 1px #fec339, 5px 3px 1px #fec339, 4px 4px 1px #fec339,
   6px 4px 1px #fec339, 5px 5px 1px #fec339, 7px 5px 1px #fec339,
   6px 6px 1px #fec339, 8px 6px 1px #fec339, 7px 7px 1px #fec339,
-  9px 7px 1px #000000;
-  margin-bottom:50px;  font-family: 'omyu_pretty';}
+  9px 7px 1px #000000; font-family: 'omyu_pretty';
+  }
+
 
 /**************************모바일****************************************/
 
@@ -184,9 +188,10 @@ text-shadow: 3px 1px 1px #fec339, 2px 2px 1px #fec339, 4px 2px 1px #fec339,
   6px 6px 1px #fec339, 8px 6px 1px #fec339, 7px 7px 1px #fec339,
   9px 7px 1px #000000;
   margin-bottom:20px;  font-family: 'omyu_pretty';}
-}
-    .main3-subtitle  {display:block; order: 2; color: black; font-weight: 900;  text-transform: uppercase; font-size: 15px; line-height: 0.75em; text-align: center;
-  margin-bottom:20px;  font-family: 'omyu_pretty';}
+
+    .main3-subtitle{display:block; order: 2; color: black; font-weight: 900;  text-transform: uppercase; font-size: 20px; line-height: 0.75em; text-align: center;
+  margin-bottom:20px; font-family: 'omyu_pretty';}
+  
 }
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

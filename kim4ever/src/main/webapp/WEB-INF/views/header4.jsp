@@ -11,7 +11,7 @@ a{color:inherit; text-decoration:none;}
 *{caret-color: transparent;}
 button{cursor:pointer;}
 /*헤더부분 영역*/
-header{width: 1250px;margin: 35px auto 70px;text-align: center;}
+header{width: 1250px;margin: 35px auto 0px;text-align: center;}
 /*사이드메뉴바, 로고, 로그인버튼*/
 #top_logo{width:1250px; height:200px; text-align:center; position:relative;}
 #top_logo .logo{display:inline-block; text-align:center; position:absolute; left:45.5%; top:50%; transform:translate(-50%, -50%);}
