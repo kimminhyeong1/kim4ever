@@ -116,7 +116,8 @@ function fnWrite() {
         return;
     }
 
-    fm.action = "<%=request.getContextPath()%>/board/boardWriteAction2.do";
+    fm.action = "<%=request.getContextPath()%>/board/boardWriteActio2.do"; 
+    //오류페이지용 오류생성(오타)
     fm.enctype = "multipart/form-data";
     fm.method = "post";
     fm.submit();
