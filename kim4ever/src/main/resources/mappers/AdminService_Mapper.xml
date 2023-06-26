@@ -224,14 +224,6 @@ OFFSET #{offset};
 	e.eidx =#{eidx}
 	</select>
 	
-	
-	<select id="getErrorState" parameterType="int" resultType="java.lang.String">
-	    SELECT errorState
-	    FROM error1234
-	    WHERE eidx = #{eidx}
-	</select>
-
-
 	<!-- 수리버튼 누르면 ErrorState R로 변경 -->
 	<update id="updateErrorState" parameterType="int">
 		UPDATE error1234 e
@@ -240,9 +232,6 @@ OFFSET #{offset};
 		SET e.errorState = 'R'
 		WHERE e.eidx = #{eidx};
 	</update>
-	
-	
-	
 	
 	
 	<sql id="search2">

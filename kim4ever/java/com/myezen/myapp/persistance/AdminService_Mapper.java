@@ -39,8 +39,6 @@ public interface AdminService_Mapper {
 	public int searchBikeErrorsCount(SearchCriteria scri);
 	//고장 신고 내역 상세 페이지	
 	public BikeJoinVo getErrorContent(int eidx);
-	//errorState값 가져오기
-	public String adminCheckErrorState(int eidx);
 	//수리센터 보내기 버튼 누르면  ErrorState R로 업데이트
 	public void updateErrorState(int eidx);
 	//수리 내역 페이지
