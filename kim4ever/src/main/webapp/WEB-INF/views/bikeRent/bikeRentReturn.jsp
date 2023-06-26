@@ -45,8 +45,8 @@
 			/*이용내역 내용 버튼*/
 			#useListBtn{text-align:center;}
 			.stateimg {display: flex; justify-content: center; align-items: center;}			
-			.stateimg img{width:100px; height:100px;  border-radius: 10px; padding:5px;   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);}
-			.using img{border:5px solid #90EE90;}
+			.stateimg img{width:100px; height:100px; background:white; border-radius: 10px; padding:5px;   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);}
+			.using img{border:5px solid #90EE90; box-shadow: 0 5px 22px rgb(13 254 106 / 70%);}
 			.dot img{width:50px; height:50px; background:none;  box-shadow: none;}
 			
 			
@@ -105,11 +105,11 @@
 						</div>
 						<div><h1>이용내역</h1></div>
 						<div class="stateimg"> 
-							<img src="${pageContext.request.contextPath}/resources/mobile/qr_stop.png" alt="qr">
+							<img src="${pageContext.request.contextPath}/resources/mobile/qr_stop2.png" alt="qr">
 							<div class="dot"><img src="${pageContext.request.contextPath}/resources/mobile/dot.gif" alt="dot"></div>						
-							<img src="${pageContext.request.contextPath}/resources/mobile/bike_stop.png" alt="자전거">
+							<img src="${pageContext.request.contextPath}/resources/mobile/bike_stop2.png" alt="자전거">
 							<div class="dot"><img src="${pageContext.request.contextPath}/resources/mobile/dot.gif" alt="dot"></div>						
-						<div class="using">	<img src="${pageContext.request.contextPath}/resources/mobile/rentbike.gif" alt="자전거대여소"></div>				
+						<div class="using">	<img src="${pageContext.request.contextPath}/resources/mobile/rentbike2.gif" alt="자전거대여소"></div>				
 						</div>
 						<div>
 						<p id="useInfo">

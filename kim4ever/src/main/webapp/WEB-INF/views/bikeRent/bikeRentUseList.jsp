@@ -33,7 +33,7 @@
 			#useListBtn{text-align:center;}
 			.stateimg {display: flex; justify-content: center; align-items: center;}			
 			.stateimg img{width:100px; height:100px; background:white;  border-radius: 10px; padding:5px;   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);}
-			.using img{border:5px solid #90EE90;}
+			.using img{border:5px solid #90EE90; box-shadow: 0 5px 22px rgb(13 254 106 / 70%);}
 			.dot img{width:50px; height:50px; background:none;  box-shadow: none;}
 			/****************************모바일**************************/
 @media (min-width: 300px) and (max-width: 940px)  {
@@ -56,6 +56,7 @@
 			.stateimg {display: flex; justify-content: center; align-items: center;}			
 			.stateimg img{width:40px; height:40px; background:white;  border-radius: 10px; padding:5px;   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);}
 			.using img{border:3px solid #90EE90;}
+			
 			.dot img{width:20px; height:20px; background:none;  box-shadow: none;}
 			
 }
@@ -70,11 +71,11 @@
 				<div class="container">
 					<div><h1>이용내역</h1></div>
 					<div class="stateimg"> 
-					<img src="../resources/mobile/qr_stop.png" alt="qr">
+					<img src="../resources/mobile/qr_stop2.png" alt="qr">
 					<div class="dot"><img src="../resources/mobile/dot.gif" alt="dot"></div>					
-					<div class="using"><img src="../resources/mobile/bike_move.gif" alt="자전거"></div>
+					<div class="using"><img src="../resources/mobile/bike_move2.gif" alt="자전거"></div>
 					<div class="dot"><img src="../resources/mobile/dot.gif" alt="dot"></div>					
-					<img src="../resources/mobile/rent_stop.png" alt="자전거대여소">
+					<img src="../resources/mobile/rent_stop2.png" alt="자전거대여소">
 					</div>
 					<div>
 					<p id="useInfo">
