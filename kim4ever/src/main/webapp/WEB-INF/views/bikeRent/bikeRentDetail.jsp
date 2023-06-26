@@ -15,6 +15,17 @@
 		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 		<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 		
+		<!-- bikeState 유효성 검사  alert 창 스크립트-->
+		<script>
+		    var alertMessage = "${alertMessage}";
+		
+		    if (alertMessage !== "") {
+		        alert(alertMessage);
+		        history.back(); // 이전 페이지로 이동
+		    }
+		</script>
+		
+				
 <script type="text/javascript">
 
 	var IMP = window.IMP;

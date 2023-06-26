@@ -21,6 +21,7 @@
 				/*****모바일 넓이***/
 				@media (min-width: 300px) and (max-width: 940px)  {#content{display:none;}}
 </style>
+
 	</head>
 	<body>
 	<%@include file="../header.jsp" %>
@@ -58,9 +59,9 @@
                         </div>					
                       </div>
 				</div>				
-			</section>
+			</section>	
 			
 		</main>
-		<%@include file="../footer.jsp" %>
+		<%@include file="../footer.jsp" %>		
 	</body>
 </html>

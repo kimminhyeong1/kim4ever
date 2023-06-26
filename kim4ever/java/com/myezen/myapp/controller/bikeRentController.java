@@ -211,10 +211,27 @@ public class bikeRentController {
 		 
 		  BikeJoinVo bjv = bs.RentDetail(bkidx);
 		  
-		  md.addAttribute("bjv", bjv);
+		  String bikeState = bjv.getBikeState();
+		  System.out.println("자전거 상태: " + bjv.getBikeState());
 		  
-		return "bikeRent/bikeRentDetail";
-	}
+		  String alertMessage = "";
+
+		  //bikeState 값을 확인 하여 Y면 대여 가능, 나머지는 alert 표시
+		  if (bikeState.equals("Y")) {
+		      // 'Y'인 경우 로직 없이 패스
+		  } else if (bikeState.equals("RS")) {
+		      alertMessage = bjv.getBikeCode() + " 는 수리 중인 자전거입니다";
+		  } else if (bikeState.equals("E")) {
+			  alertMessage = bjv.getBikeCode() + " 는 고장 접수된 자전거입니다";
+		  } else if (bikeState.equals("N")){
+			  alertMessage = bjv.getBikeCode() + " 는 대여 중인 자전거입니다.";
+		  }
+
+		  md.addAttribute("alertMessage", alertMessage);
+		  md.addAttribute("bjv", bjv);
+
+		  return "bikeRent/bikeRentDetail";
+		}
 	
 	
 	
