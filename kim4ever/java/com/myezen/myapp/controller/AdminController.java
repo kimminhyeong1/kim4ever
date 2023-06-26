@@ -246,6 +246,20 @@ public class AdminController {
 	 	 
 	}
 	
+	//errorState값 가져오기
+	@RequestMapping("/adminbikeRepairCheck.do")
+	public String adminbikeRepairCheck(int eidx, Model md) {
+		
+	  try {
+	        as.adminCheckErrorState(eidx);
+	        return "redirect:/admin/adminbikeRepairAction.do?eidx=" + eidx;
+	    } catch (IllegalStateException e) {
+	        md.addAttribute("errorMessage", e.getMessage());
+	        return "adminbikeRepairCheckPage";
+	    }
+	}	
+	
+
 	//수리센터 버튼 누를 시 bikeState E로 변경
 	@RequestMapping("/adminbikeRepairAction.do")
 	public String UpdateBikeState(int eidx) {

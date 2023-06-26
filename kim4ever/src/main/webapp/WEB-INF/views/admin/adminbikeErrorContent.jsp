@@ -114,7 +114,7 @@ h2{text-align: center; margin-top:20px;}
 				</tr>
 				<tr>
 					<td colspan="2">
-						<button type="button" onclick="location.href='<%=request.getContextPath()%>/admin/adminbikeRepairAction.do?eidx=${ejv.eidx}'">수리센터 보내기</button>
+						<button type="button" onclick="sendToRepairCenter(${ejv.eidx})">수리센터 보내기</button>
 					</td>		
 				</tr>
 		</table>
@@ -163,10 +163,23 @@ h2{text-align: center; margin-top:20px;}
 			kakao.maps.event.addListener(marker, 'click', function() {
 				infowindow.open(map, marker);
 			});
-		}
+		
 
 		// HTML 로딩 완료 후 initMap 함수 호출
 		document.addEventListener('DOMContentLoaded', initMap);
+		}
+		
+		
+	    function sendToRepairCenter(eidx) {
+	        var bikeState = '${ejv.bikeState}';
+	        if (bikeState === 'Y') {
+	            alert("이미 수리 처리된 자전거입니다.");
+	            location.href = '<%=request.getContextPath()%>/admin/adminbikeError.do';
+	        } else {
+	            location.href = '<%=request.getContextPath()%>/admin/adminbikeRepairAction.do?eidx=' + eidx;
+	        }
+	    }
+	
 	</script> 		
 				
 	</div>

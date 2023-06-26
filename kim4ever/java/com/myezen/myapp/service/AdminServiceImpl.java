@@ -137,6 +137,12 @@ public class AdminServiceImpl implements AdminService {
 		return asm.getErrorContent(eidx);
 	}
 	
+	//errorState값 가져오기
+	@Override
+	public void adminCheckErrorState(int eidx) {
+		asm.adminCheckErrorState(eidx);
+	}
+	
 	//수리센터 보내기 버튼 누르면 errorState R로 업데이트
 	@Override
 	public void updateErrorState(int eidx) {
@@ -262,6 +268,8 @@ public class AdminServiceImpl implements AdminService {
 	
 		return asm.DeclarationDetail(gdix);
 	}
+
+
 
 
 
