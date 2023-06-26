@@ -417,6 +417,55 @@ public class MemberServiceImpl implements MemberService {
 		int value = msm.kakaoMemberInsert(memberId,memberPwd,memberName);
 		return value;
 	}
+	@Override
+	//카카오 회원탈퇴
+	public HashMap<String, Object> kakaoWithdrawMember(String access_Token) throws Throwable {
+		// 요청하는 클라이언트마다 가진 정보가 다를 수 있기에 HashMap타입으로 선언
+				HashMap<String, Object> userlogout = new HashMap<String, Object>();
+				String reqURL = "https://kapi.kakao.com/v1/user/unlink";
+
+				try { 
+					System.out.println("access_Token::::"+access_Token);
+					URL url = new URL(reqURL);
+					HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+					conn.setRequestMethod("GET");
+					conn.setRequestProperty("charset","utf-8");
+					// 요청에 필요한 Header에 포함될 내용
+					conn.setRequestProperty("Authorization", "Bearer " + access_Token);
+
+					int responseCode = conn.getResponseCode();
+					System.out.println("responseCode : " + responseCode);
+
+					BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+					String line = "";
+					String result = "";
+
+					while ((line = br.readLine()) != null) {
+						result += line;
+					}
+					System.out.println("response body : " + result);
+					System.out.println("result type" + result.getClass().getName()); // java.lang.String
+
+					try {
+						// jackson objectmapper 객체 생성
+						ObjectMapper objectMapper = new ObjectMapper();
+						// JSON String -> Map
+						Map<String, Object> jsonMap = objectMapper.readValue(result, new TypeReference<Map<String, Object>>() {
+						});
+
+						System.out.println(jsonMap.get("id"));
+						userlogout.put("id", jsonMap.get("id"));
+
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				return userlogout;
+	}
 	//내가 쓴 게시글
 	@Override
 	public ArrayList<BikeJoinVo> getMyPosts(String memberName) {

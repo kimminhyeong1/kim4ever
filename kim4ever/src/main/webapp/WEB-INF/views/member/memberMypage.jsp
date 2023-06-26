@@ -44,12 +44,13 @@ li{list-style:none;}
 #content table {position:relative; width:60%; height:20%; border-collapse:collapse; border:1px solid #ddd; margin: 60px auto 0; font-family:'omyu_pretty'; }
 #content table th{width:200px; text-align:center; border:1px solid #ddd; padding:8px;}
 #content table td {border:1px solid #bbb;padding:20px;text-align:left;vertical-align:middle;height:100px; font-size:30px;}
+#content table .top{position:relative;}
 #content table img{width:60px; height:50px; float:right; margin: 0 auto; vertical-align:middle;}
 #content table td a {display:flex;  color:#333;}
 #content table td a.logout-btn {display:inline-block;padding:10px 20px;background-color:#ff9800;color:#fff;text-decoration:none;border-radius:5px;transition:background-color 0.3s ease;}
 #content table td a.logout-btn:hover {background-color: #FF6600;}
-#content table .image-container {position:relative; width:180px;height:180px;}
-#content table #imagePreview {position:absolute; width:100%; height:100%; border:1px solid #bbb; border-radius:100px;object-fit:cover;}
+#content table .image-container {width:180px;height:180px;}  
+#content table #imagePreview {position:absolute; width:122px;  height:122px; border:1px solid #bbb; border-radius:100px;object-fit:cover;top: 43px;left: 65px;}
 #content table .button-container {width:200px; margin-left:20px; position:absolute; bottom:680px; left:0; align-items:center; }
 #content table .intro-container {width:550px;height:auto; float:right;border:1px solid #ddd; border-radius:50px; display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:20px;margin-top: 25px;}
 #content table .intro-container h3 {font-size:24px;margin-bottom:10px;border-bottom:1px solid #000;}
@@ -57,9 +58,10 @@ li{list-style:none;}
 #content table .intro-container .button-container2 {display:flex;justify-content:flex-end;gap:10px;margin-top:10px;margin-left:430px;}
 #content table .button-container2 button{width: 100px;height: 30px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;border: 1px solid;}
 #formImg{float: left;}  
-#editImgBtn{position: absolute;top: 3px;right: -460px;width: 100px;height: 30px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;border: 1px solid;}
-#content table #memberProfile{position:absolute; width:100%; height:100%; border:1px solid #bbb; border-radius:100px;object-fit:cover;} 
-#UploadImgBtn{position: absolute;top: 3px;right: -460px; width: 100px;height: 30px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;}
+#editImgBtn{position: absolute;top: 569px;right:-500px;width: 100px;height: 30px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;border: 1px solid;}
+#editIntroBtn{position: absolute;top: 110px;right: 45px; z-index:5; width: 100px;height: 30px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;border: 1px solid;}
+#content table #memberProfile{position:absolute; width:122px; height:122px;top: 43px;left: 65px; border:1px solid #bbb; border-radius:100px;object-fit:cover;} 
+#UploadImgBtn{position: absolute;top: 569px;right:-500px; width: 100px;height: 30px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;}
 #introText{margin-bottom:0px;}
 
 /**************************모바일****************************************/
@@ -78,7 +80,7 @@ li{list-style:none;}
 #content table td a.logout-btn {display:inline-block;padding:10px 20px;background-color:#ff9800;color:#fff;text-decoration:none;border-radius:5px;transition:background-color 0.3s ease;}
 #content table td a.logout-btn:hover {background-color: #FF6600;}
 #content table .image-container {position:absolute; width:100px;height:100px;}
-#content table #imagePreview {float:center; width:100%; height:100%; border:1px solid #bbb; border-radius:100px;object-fit:cover;}
+#content table #imagePreview {float:center; width:100px; height:100px; border:1px solid #bbb; border-radius:100px;object-fit:cover;}
 #content table .button-container { position: relative;width:70%; margin-left:10px;  bottom:10px; left:10px; align-items:center;  font-size:10px;}
 #content table .intro-container {width:50%;height:20px; margin-top: 8px; float:right;border:1px solid #ddd; border-radius:50px; padding-top:0px; }
 #content table .intro-container h3 {font-size:14px;margin-bottom:5px;border-bottom:1px solid #000;}
@@ -92,7 +94,7 @@ li{list-style:none;}
 #content table .top{height:100px;}
 #editImgBtn{border:0px;top: 0px;right:0px; font-family:'omyu_pretty';  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); border-radius:50px; width:70px; height:20px;text-decoration: none;transition: background-color 0.3s ease; margin-top: 88px; 
     margin-right: 25px; }
-#content table #memberProfile{position:absolute; width:100%; height:100%; border:1px solid #bbb; border-radius:100px;object-fit:cover;} 
+#content table #memberProfile{position:absolute; width:100px; height:100px; border:1px solid #bbb; border-radius:100px;object-fit:cover;} 
 #UploadImgBtn{border:0px;top: 0px;right:0px; font-family:'omyu_pretty';  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); border-radius:50px; width:70px; height:20px;text-decoration: none;transition: background-color 0.3s ease; margin-top: 88px; 
     margin-right: 25px;}
  #formImg{float: none;}  
@@ -176,7 +178,7 @@ function previewImage(event) {
 				  <!-- 이미지업로드 란  -->
 					<form method="post" action="${pageContext.request.contextPath}/member/MypageProfile.do" enctype="multipart/form-data" id="formImg">
 						<div class="image-container">	
-								<img id="memberProfile" src="${pageContext.request.contextPath}/resources/MemberProfile/${sessionScope.memberProfile}" />
+								<img id="memberProfile" src="${pageContext.request.contextPath}/resources/MemberProfile/${memberProfile}" />
 							<label id="imgLabel" for="image" style="display: none;">
 							  <img id="imagePreview" src="${pageContext.request.contextPath}/resources/icon/imgPlus.png" />
 							</label>
@@ -194,15 +196,15 @@ function previewImage(event) {
 						<h3>내 간단 소개</h3>
 						<c:choose>
 			                <c:when test="${empty sessionScope.memberIntro}">
-			                    <input type="text" id="introInput" placeholder="멤버보기에 있는 소개입니다." value="멤버보기에 있는 소개입니다.">
+			                    <input type="text" id="introInput" placeholder="멤버보기에 있는 소개입니다." value="${memberIntro}">
 			                </c:when>
 			                <c:otherwise>
-			                    <span id="introText">${sessionScope.memberIntro}</span>
+			                    <span id="introText">${memberIntro}</span>
 			                </c:otherwise>
 			            </c:choose>
 			            <div class="button-container2">
-			              	<button onclick="editIntro()">편집하기</button>    
-			            </div>
+			              	<button id="editIntroBtn" onclick="editIntro()">편집하기</button>    
+			            </div> 
 					</div>
 					
                 </td>

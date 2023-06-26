@@ -79,6 +79,8 @@ public interface MemberService {
 	public MemberVo kakaoMemberLogin(String memberId);
 	//구글 로그인 확인
 	public MemberVo googleMemberLogin(String memberId);
+	//카카오 회원탈퇴
+	public HashMap<String, Object> kakaoWithdrawMember(String access_Token) throws Throwable;
 	//내가 쓴 게시글
 	public ArrayList<BikeJoinVo> getMyPosts(String memberName);
 	

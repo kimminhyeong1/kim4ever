@@ -123,7 +123,15 @@ header{width:auto;margin:0 auto; }
 				<div class="top-login">
 	           <% if(session.getAttribute("memberName") != null) { %>
 	                <a href="<%=request.getContextPath()%>/member/memberMypage.do"><%= session.getAttribute("memberName") %>님</a>
-	                <a href="<%=request.getContextPath() %>/member/memberLogOut.do">로그아웃</a>
+	                <c:choose>
+     					<c:when test="${memberLoginType eq '구글' or memberLoginType eq '카카오'}">
+				            <a href="https://kauth.kakao.com/oauth/logout?client_id=76703a8d13e15a9a7deb9a931b73de9e&logout_redirect_uri=http://localhost:8080/myapp/member/memberLogOut.do">로그아웃</a>
+ 						<!-- <a href="https://kauth.kakao.com/oauth/logout?client_id=76703a8d13e15a9a7deb9a931b73de9e&logout_redirect_uri=http://jjezen.cafe24.com/kim4ever/member/memberLogOut.do">로그아웃</a> -->
+						</c:when>
+						<c:otherwise>
+				            <a href="${pageContext.request.contextPath}/member/memberLogOut.do">로그아웃</a>
+						</c:otherwise>
+					</c:choose>
 	             <% } else { %>
 	                <a href="<%=request.getContextPath() %>/member/memberLogin.do">로그인</a>
 	                <a href="<%=request.getContextPath() %>/member/memberJoin.do">회원가입</a>
@@ -191,7 +199,16 @@ header{width:auto;margin:0 auto; }
 	   		<ul>
 		      <% if(session.getAttribute("memberName") != null) { %>
 		            <li style="margin-top:10px;"><%= session.getAttribute("memberName") %>님</li>
-		            <li><a href="<%=request.getContextPath() %>/member/memberLogOut.do">로그아웃</a></li>
+		            
+		           <c:choose>
+						<c:when test="${memberLoginType eq '구글' or memberLoginType eq '카카오'}">
+				            <li><a href="https://kauth.kakao.com/oauth/logout?client_id=76703a8d13e15a9a7deb9a931b73de9e&logout_redirect_uri=http://localhost:8080/myapp/member/memberLogOut.do">로그아웃</a></li>
+				            <!-- <li><a href="https://kauth.kakao.com/oauth/logout?client_id=76703a8d13e15a9a7deb9a931b73de9e&logout_redirect_uri=http://jjezen.cafe24.com/kim4ever/member/memberLogOut.do">로그아웃</a></li> -->
+						</c:when>
+						<c:otherwise>
+				            <li><a href="${pageContext.request.contextPath}/member/memberLogOut.do">로그아웃</a></li>
+						</c:otherwise>
+					</c:choose>
    		            <c:if test="${not empty sessionScope.midx && not empty sessionScope.ridx}"> 
    		            	<li><a href="<%=request.getContextPath() %>/bikeRent/bikeRentUseList.do">이용중인내역</a></li>			
 					</c:if>
