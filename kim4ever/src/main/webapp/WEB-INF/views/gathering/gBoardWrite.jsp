@@ -35,38 +35,45 @@ function fnWrite() {
     var fm = document.frm;
     
     // 특수문자 검사 정규식
-    var specialChars = /[\{\}\[\]\/|\)*`^\_┼<>@\#$%&\'\"\\(\=]/gi;
+   
     
-    if (fm.subject.value == "") {
+    if (fm.gBoardTitle.value == "") {
         alert("제목을 입력하세요");
-        fm.subject.focus();
+        fm.gBoardTitle.focus();
         return;
-    } else if (specialChars.test(fm.subject.value)) {
-        alert("제목에 특수문자를 포함할 수 없습니다.");
-        fm.subject.focus();
-        return;
-    } else if (fm.content.value == "") {
+    
+    } else if (fm.gBoardContents.value == "") {
         alert("내용을 입력하세요");
         fm.content.focus();
         return;
-    } else if (specialChars.test(fm.content.value)) {
-        alert("내용에 특수문자를 포함할 수 없습니다.");
-        fm.content.focus();
-        return;
-    } else if (fm.writer.value == "") {
-        alert("작성자를 입력하세요");
-        fm.writer.focus();
-        return;
+    } 
+    fm.action = "<%=request.getContextPath()%>/gathering/gBoardWriteAction.do";
+    fm.enctype = "multipart/form-data";
+    fm.method = "post";
+    fm.submit();
     }
 
-  
-}
+function updateCharacterCount(inputName) {
+	  var input = document.getElementsByName(inputName)[0];
+	  var maxLength = parseInt(input.getAttribute('maxlength'));
+	  var currentLength = input.value.length;
+	  var countElement = document.getElementById(inputName + 'Count');
+	  
+	  countElement.textContent = currentLength + '/' + maxLength;
+	}
+
+	// 초기 로딩 시 글자 수 업데이트
+	window.addEventListener('DOMContentLoaded', function() {
+	  updateCharacterCount('gBoardTitle');
+	  updateCharacterCount('gBoardContents');
+	});
+
 </script>
 	<body>
 		<%@include file="../header2.jsp" %>
 		<%@include file="header3.jsp" %>
 		<main id="main">
-			<form name="frm" action="${pageContext.request.contextPath}/gathering/gBoardWriteAction.do" method="POST">
+			<form name="frm" >
 			
 				<section class="gContainer gSetContainer">
 				
@@ -89,15 +96,19 @@ function fnWrite() {
 							<div>
 								<h3>게시글 제목</h3>
 							</div>
-							<input class="gInput" type="text" name="gBoardTitle" placeholder="내용을 입력해주세요" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)">											
+							<input class="gInput" type="text" name="gBoardTitle" placeholder="내용을 입력해주세요" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)" maxlength="20" oninput="updateCharacterCount('gBoardTitle')">
+							          <span id="gBoardTitle"></span>
+																		
 						</div>
 						<div>
 							<h3>게시글 내용</h3>
-							<textarea rows="5" cols="5" name="gBoardContents" placeholder="글자제한:500자이내" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"></textarea>		
+							<textarea rows="5" cols="5" name="gBoardContents" placeholder="글자제한:500자이내" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"  maxlength="500" oninput="updateCharacterCount('gBoardContents')"></textarea>
+								 <span id="gBoardContents"></span>
+									
 						</div>
 					</div><!-- 끝-->
 					<div>
-						<button class="gBtn2">글쓰기</button>				 
+						<button type="button"  class="gBtn2" onclick="fnWrite();">글쓰기</button>				 
 					</div>
 				</section>
 			</form>

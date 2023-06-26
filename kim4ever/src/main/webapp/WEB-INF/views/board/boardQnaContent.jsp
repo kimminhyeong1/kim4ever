@@ -161,7 +161,7 @@ $(document).ready(function() {
 							    <c:choose>
 							        <c:when test="${exp eq 'jpg' or exp eq 'gif' or exp eq 'png'}">
 							            <img src="${pageContext.request.contextPath}/board/displayFile.do?fileName=${bv.filename}"
-							                width="100%" height="100%" />
+							                width="30%" height="30%" />
 							        </c:when>
 							    </c:choose>
 							</c:if>

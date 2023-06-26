@@ -1,4 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+     <%@ page import="com.myezen.myapp.domain.BoardVo" %>    
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -82,7 +87,7 @@ function updateCharacterCount(inputName) {
 		<%@include file="../header2.jsp" %>
 		<%@include file="header3.jsp" %>
 		<main id="main">
-			<form name="frm" action="${pageContext.request.contextPath}/gathering/gBoardModifyAction.do" method="POST">
+			<form name="frm" action="${pageContext.request.contextPath}/gathering/gBoardModifyAction.do" method="POST" enctype="multipart/form-data">
 			
 				<input id="gbidx" type="hidden" name="gbidx" value="${gbv.gbidx}">
 				<section class="gContainer gSetContainer">
@@ -110,7 +115,18 @@ function updateCharacterCount(inputName) {
 						</div>
 						<div>
 							<h3>게시글 내용</h3>
-							<textarea rows="5" cols="5" name="gBoardContents" placeholder="글자제한:500자이내"onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"  maxlength="500" oninput="updateCharacterCount('content')" >${gbv.gBoardContents} </textarea>		
+							<textarea rows="5" cols="5" name="gBoardContents" placeholder="글자제한:500자이내"onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"  maxlength="500" oninput="updateCharacterCount('content')" >${gbv.gBoardContents}
+							
+							<c:if test="${not empty bv.filename}">
+							    <c:set var="exp" value="${fn:substring(bv.filename, fn:length(bv.filename) - 3, fn:length(bv.filename))}" />
+							    <c:choose>
+							        <c:when test="${exp eq 'jpg' or exp eq 'gif' or exp eq 'png'}">
+							            <img src="${pageContext.request.contextPath}/board/displayFile.do?fileName=${bv.filename}"
+							                width="30%" height="30%" />
+							        </c:when>
+							    </c:choose>
+							</c:if>
+							 </textarea>		
 							 <span id="contentCount"></span>
 							
 						</div>

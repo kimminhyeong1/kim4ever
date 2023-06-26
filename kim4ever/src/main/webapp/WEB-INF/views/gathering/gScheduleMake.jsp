@@ -77,6 +77,8 @@
 		            }
 		        }).open();
 		    }
+		    
+
 		</script>
 		<script>
 			var map;
@@ -189,13 +191,46 @@
 			      }
 			    });
 			}
+				
+			</script>
+			<script>
+			function characterCheck(obj){
+				var regExp =/[\{\}\[\]\/|\)*`^\_┼<>@\#$%&\'\"\\(\=]/gi;
+			    if(regExp.test(obj.value)){
+			        alert("특수문자는 입력할 수 없습니다.");
+			        obj.value = obj.value.substring( 0 , obj.value.length - 1 );
+			    }
+			}
+			function fnWrite() {
+			    var fm = document.frm;
+			    if (fm.gScheduleTitle.value == "") {
+			        alert("제목을 입력하세요");
+			        fm.gScheduleTitle.focus();
+			        return;
+			    }
+			}
+		
+			function updateCharacterCount(inputName) {
+				  var input = document.getElementsByName(inputName)[0];
+				  var maxLength = parseInt(input.getAttribute('maxlength'));
+				  var currentLength = input.value.length;
+				  var countElement = document.getElementById(inputName + 'Count');
+				  
+				  countElement.textContent = currentLength + '/' + maxLength;
+				}
+
+				// 초기 로딩 시 글자 수 업데이트
+				window.addEventListener('DOMContentLoaded', function() {
+				  updateCharacterCount('gScheduleTitle');
+				  updateCharacterCount('gScheduleArrangements');
+				});
 			</script>
 	</head>
 	<body>
 		<%@include file="../header2.jsp" %>
 		<%@include file="header3.jsp" %>
 		<main id="main">
-			<form action="${pageContext.request.contextPath}/gathering/gScheduleMakeAction.do" method="POST">
+			<form name="frm" action="${pageContext.request.contextPath}/gathering/gScheduleMakeAction.do" method="POST">
 				<input type="hidden" id="giidx" name="giidx" value="${giidx}"><!-- 모임 정보 -->
 				<section class="gContainer gSetContainer">
 					<div>
@@ -203,7 +238,10 @@
 							<div>
 								<h3>일정 제목</h3>
 							</div>
-							<input class="gInput" type="text" name="gScheduleTitle" placeholder="내용을 입력해주세요">
+							<input class="gInput" type="text" name="gScheduleTitle" placeholder="내용을 입력해주세요" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)" maxlength="20" oninput="updateCharacterCount('gScheduleTitle')">
+          <span id="gScheduleTitleCount"></span>
+							
+							
 						</div>
 						<div>
 							<div>
@@ -232,7 +270,9 @@
 						</div>
 						<div>
 							<h3>준비물</h3>
-							<textarea rows="5" cols="5"  name="gScheduleArrangements"placeholder="글자제한:500자이내"></textarea>		
+							<textarea rows="5" cols="5"  name="gScheduleArrangements"placeholder="글자제한:500자이내"   onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"  maxlength="500" oninput="updateCharacterCount('gScheduleArrangements')"></textarea>
+     					     <span id="gScheduleArrangementsCount"></span>
+									
 						</div>
 						<div>
 							<div>

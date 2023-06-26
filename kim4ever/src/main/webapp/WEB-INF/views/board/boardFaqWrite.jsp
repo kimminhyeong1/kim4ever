@@ -86,25 +86,16 @@ function fnWrite() {
     var fm = document.frm;
     
     // 특수문자 검사 정규식
-    var specialChars =/[\{\}\[\]\/|\)*`^\_┼<>@\#$%&\'\"\\(\=]/gi; 
     
     if (fm.subject.value == "") {
         alert("제목을 입력하세요");
         fm.subject.focus();
         return;
-    } else if (specialChars.test(fm.subject.value)) {
-        alert("제목에 특수문자를 포함할 수 없습니다.");
-        fm.subject.focus();
-        return;
-    } else if (fm.content.value == "") {
+    }  else if (fm.content.value == "") {
         alert("내용을 입력하세요");
         fm.content.focus();
         return;
-    } else if (specialChars.test(fm.content.value)) {
-        alert("내용에 특수문자를 포함할 수 없습니다.");
-        fm.content.focus();
-        return;
-    } else if (fm.writer.value == "") {
+    }  else if (fm.writer.value == "") {
         alert("작성자를 입력하세요");
         fm.writer.focus();
         return;

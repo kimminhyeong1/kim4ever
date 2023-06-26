@@ -107,7 +107,7 @@ public class boardController {
 	}
 	
 	// 게시글수정 
-	@RequestMapping(value="/boardModifyAction.do")
+	@RequestMapping(value="/boardModifyAction.do", method=RequestMethod.POST)
 	public String boardModifyAction(
 			@RequestParam("bidx") int bidxInt,
 			  @RequestParam("subject") String subject,

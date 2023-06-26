@@ -2,6 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="com.myezen.myapp.domain.BoardVo"%>
 <%BoardVo bv = (BoardVo) request.getAttribute("bv");%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+     <%@ page import="com.myezen.myapp.domain.BoardVo" %>    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,23 +94,13 @@ function characterCheck(obj){
 function fnWrite() {
     var fm = document.frm;
     
-    // 특수문자 검사 정규식
-    var specialChars =/[\{\}\[\]\/|\)*`^\_┼<>@\#$%&\'\"\\(\=]/gi;
-    
+
     if (fm.subject.value == "") {
         alert("제목을 입력하세요");
         fm.subject.focus();
         return;
-    } else if (specialChars.test(fm.subject.value)) {
-        alert("제목에 특수문자를 포함할 수 없습니다.");
-        fm.subject.focus();
-        return;
-    } else if (fm.content.value == "") {
+    }  else if (fm.content.value == "") {
         alert("내용을 입력하세요");
-        fm.content.focus();
-        return;
-    } else if (specialChars.test(fm.content.value)) {
-        alert("내용에 특수문자를 포함할 수 없습니다.");
         fm.content.focus();
         return;
     } else if (fm.writer.value == "") {
@@ -115,7 +109,7 @@ function fnWrite() {
         return;
     }
 
-    fm.action = "<%=request.getContextPath()%>/board/boardWriteAction2.do";
+    fm.action = "<%=request.getContextPath()%>/board/boardModifyAction.do";
     fm.enctype = "multipart/form-data";
     fm.method = "post";
     fm.submit();
@@ -134,6 +128,11 @@ function updateCharacterCount(inputName) {
 	  updateCharacterCount('subject');
 	  updateCharacterCount('content');
 	});
+	
+	  window.onload = function() {
+		    var filenameInput = document.getElementsByName("filename")[0];
+		    filenameInput.value = '<%=bv.getFilename()%>';
+		  };
 
 </script>
 
@@ -151,14 +150,14 @@ function updateCharacterCount(inputName) {
 
 					<tr>
 						<th>제목</th>
-						<td><input type="text" name="subject" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)" maxlength="20" oninput="updateCharacterCount('subject')">
+						<td><input type="text" name="subject" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)" maxlength="20" oninput="updateCharacterCount('subject')" value="<%=bv.getSubject()%>">
 						  <span id="subjectCount"></span>
 						</td>
 					</tr>
 
 					<tr>
 						<th>내용</th>
-						<td><textarea name="content" cols="50" rows="10"  onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"  maxlength="500" oninput="updateCharacterCount('content')"></textarea>
+						<td><textarea name="content" cols="50" rows="10"  onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"  maxlength="500" oninput="updateCharacterCount('content') "><%=bv.getContent()%>	</textarea>
 							 <span id="contentCount"></span>
 						</td>
 					</tr>
@@ -166,13 +165,22 @@ function updateCharacterCount(inputName) {
 					<tr>
 						<th>작성자</th>
 						<td>
-							<%=bv.getWriter()%></td>
+							<%=bv.getWriter()%>
+							</td>
 					</tr>
 
 					<tr>
 						<th>첨부파일</th>
-						<td><input type="file" name="filename">
-						<span id="filenm"></span>
+						<td><input type="file" name="filename" > 
+									<c:if test="${not empty bv.filename}">
+							    <c:set var="exp" value="${fn:substring(bv.filename, fn:length(bv.filename) - 3, fn:length(bv.filename))}" />
+							    <c:choose>
+							        <c:when test="${exp eq 'jpg' or exp eq 'gif' or exp eq 'png'}">
+							            <img src="${pageContext.request.contextPath}/board/displayFile.do?fileName=${bv.filename}"
+							                width="10%" height="10%" />
+							        </c:when>
+							    </c:choose>
+							</c:if>
 						</td>
 					</tr>
 				</table>

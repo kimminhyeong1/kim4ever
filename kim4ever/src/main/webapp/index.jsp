@@ -159,8 +159,8 @@ opacity:1;padding:5px; border-radius:50px;font-size:20px;}
 .slider-1 >.side-btns > div:last-child > span {left:auto;right:30px; }
 
 /*날씨*/
-#ww_73df1f3b67ed7 {display:none;}
-#ww_8d73add77d5ae {display:block;}
+#ww_73df1f3b67ed7 {display:none;  font-family: 'omyu_pretty' !important;}
+#ww_8d73add77d5ae {display:block;  font-family: 'omyu_pretty'!important;}
 
 
 
@@ -168,7 +168,7 @@ opacity:1;padding:5px; border-radius:50px;font-size:20px;}
 #main2{display:none} 
 
 /*메인3*/
-#main3{width:auto; margin:50px auto; text-align:center;  justify-content: center;  
+#main3{width:auto; margin:20px auto; text-align:center;  justify-content: center;  
 }
 .container {margin-top:20px;display:flex; flex-wrap:wrap; justify-content:center;  opacity: 0; }
 .item {position:relative; width:calc(27% - 1px); margin-bottom: 20px; margin-right:10px; height:100px;   box-shadow: 4px 0px 4px 0px rgba(0, 0, 0, 0.5); border-radius: 5px;}

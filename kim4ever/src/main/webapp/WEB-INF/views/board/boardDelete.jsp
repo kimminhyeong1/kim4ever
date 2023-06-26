@@ -82,7 +82,11 @@ li{list-style:none;}
 
 }
 </style>
-
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
 
 </head>
 <body>
@@ -104,7 +108,7 @@ li{list-style:none;}
 				<div id="btn">
 					<button type="button" onclick="check();"
 						style="width: 120px; height: 30px;">확인</button>
-					<button type="reset" style="width: 120px; height: 30px;">취소</button>
+					<button type="reset" onclick="goBack()" style="width: 120px; height: 30px;">취소</button>
 				</div>
 			</form>
 		</div>
