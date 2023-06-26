@@ -11,7 +11,7 @@ html,body {width: 100%; height: 100%; overflow: hidden;}
 .background {display: block; position: absolute; top: 0; left: 0; object-fit: cover; width: 100%; height: 100%; mask-image: radial-gradient(white 0%, white 30%, transparent 80%, transparent);
 }
 .circle-container {position: absolute; transform: translateY(-10vh); animation-iteration-count: infinite; animation-timing-function: linear;}
-.circle-container .circle {width: 100%; height: 100%; border-radius: 50%; mix-blend-mode: screen; background-image: radial-gradient(#99CC99,#ff9933 10%, rgba(255, 153, 51, 0) 70%);
+.circle-container .circle {width: 100%; height: 100%; border-radius: 50%; mix-blend-mode: screen; background-image: radial-gradient(#ff9933,#ff9933 10%, rgba(255, 153, 51, 0) 70%);
   animation: fadein-frames 200ms infinite, scale-frames 2s infinite;}
 @keyframes fade-frames {
 0% {
@@ -48,12 +48,10 @@ html,body {width: 100%; height: 100%; overflow: hidden;}
     transform: translate3d(3vw, -119vh, 0);
   }
 }
-.circle-container:nth-child(1) .circle {
-  animation-delay: 580ms;
-}
+
 .circle-container:nth-child(2) {
-  width: 2px;
-  height: 2px;
+  width: 12px;
+  height: 12px;
   animation-name: move-frames-2;
   animation-duration: 29204ms;
   animation-delay: 29638ms;
@@ -66,12 +64,10 @@ html,body {width: 100%; height: 100%; overflow: hidden;}
     transform: translate3d(68vw, -115vh, 0);
   }
 }
-.circle-container:nth-child(2) .circle {
-  animation-delay: 3381ms;
-}
+
 .circle-container:nth-child(3) {
-  width: 1px;
-  height: 1px;
+  width: 11px;
+  height: 11px;
   animation-name: move-frames-3;
   animation-duration: 30333ms;
   animation-delay: 31643ms;
@@ -88,8 +84,8 @@ html,body {width: 100%; height: 100%; overflow: hidden;}
   animation-delay: 8ms;
 }
 .circle-container:nth-child(4) {
-  width: 7px;
-  height: 7px;
+  width: 17px;
+  height: 17px;
   animation-name: move-frames-4;
   animation-duration: 36555ms;
   animation-delay: 3314ms;
@@ -106,8 +102,8 @@ html,body {width: 100%; height: 100%; overflow: hidden;}
   animation-delay: 1829ms;
 }
 .circle-container:nth-child(5) {
-  width: 7px;
-  height: 7px;
+  width: 17px;
+  height: 17px;
   animation-name: move-frames-5;
   animation-duration: 28969ms;
   animation-delay: 6801ms;
@@ -124,8 +120,8 @@ html,body {width: 100%; height: 100%; overflow: hidden;}
   animation-delay: 3957ms;
 }
 .circle-container:nth-child(6) {
-  width: 8px;
-  height: 8px;
+  width: 18px;
+  height: 18px;
   animation-name: move-frames-6;
   animation-duration: 34557ms;
   animation-delay: 17103ms;
@@ -142,8 +138,8 @@ html,body {width: 100%; height: 100%; overflow: hidden;}
   animation-delay: 2619ms;
 }
 .circle-container:nth-child(7) {
-  width: 7px;
-  height: 7px;
+  width: 17px;
+  height: 17px;
   animation-name: move-frames-7;
   animation-duration: 36790ms;
   animation-delay: 12789ms;
@@ -160,8 +156,8 @@ html,body {width: 100%; height: 100%; overflow: hidden;}
   animation-delay: 948ms;
 }
 .circle-container:nth-child(8) {
-  width: 5px;
-  height: 5px;
+  width: 15px;
+  height: 15px;
   animation-name: move-frames-8;
   animation-duration: 34868ms;
   animation-delay: 4217ms;
@@ -178,8 +174,8 @@ html,body {width: 100%; height: 100%; overflow: hidden;}
   animation-delay: 1908ms;
 }
 .circle-container:nth-child(9) {
-  width: 7px;
-  height: 7px;
+  width: 17px;
+  height: 17px;
   animation-name: move-frames-9;
   animation-duration: 30933ms;
   animation-delay: 12966ms;
@@ -214,8 +210,8 @@ html,body {width: 100%; height: 100%; overflow: hidden;}
   animation-delay: 856ms;
 }
 .circle-container:nth-child(11) {
-  width: 7px;
-  height: 7px;
+  width: 17px;
+  height: 17px;
   animation-name: move-frames-11;
   animation-duration: 31072ms;
   animation-delay: 16128ms;
@@ -232,121 +228,21 @@ html,body {width: 100%; height: 100%; overflow: hidden;}
   animation-delay: 3013ms;
 }
 .circle-container:nth-child(12) {
-  width: 1px;
-  height: 1px;
+  width: 11px;
+  height: 11px;
   animation-name: move-frames-12;
   animation-duration: 29832ms;
   animation-delay: 18653ms;
-}
+}  
+.title{order: 2; color: black; font-weight: 900;  text-transform: uppercase; font-size: 130px; line-height: 1.35em; text-align: center;
+text-shadow: 3px 1px 1px #ff9933, 2px 2px 1px #ff9933, 4px 2px 1px #ff9933,
+  3px 3px 1px #ff9933, 5px 3px 1px #ff9933, 4px 4px 1px #ff9933,
+  6px 4px 1px #ff9933, 5px 5px 1px #ff9933, 7px 5px 1px #ff9933,
+  6px 6px 1px #ff9933, 8px 6px 1px #ff9933, 7px 7px 1px #ff9933,
+  9px 7px 1px #000000;
+  margin-bottom:10px;  font-family: 'omyu_pretty'; }
+  
 
-
-.message {
-  position: absolute;
-  right: 20px;
-  bottom: 10px;
-  color: white;
-  font-family: "Josefin Slab", serif;
-  line-height: 27px;
-  font-size: 18px;
-  text-align: right;
-  pointer-events: none;
-  animation: message-frames 1.5s ease 5s forwards;
-  opacity: 0;
-}
-@keyframes message-frames {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-:root {
-  --color-primary: #ff9933;
-  --color-secondary: #e67d00;
-  --color-tertiary: #d46c00;
-  --color-quaternary: #c25b00;
-  --color-quinary: #ae4a00;
-}
-
-
-body {
-  min-height: 100vh;
-  font-weight: 300;
-  font-size: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.content {
-  display: flex;
-  align-content: center;
-  justify-content: center;
-}
-
-.text-shadows {
-  text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary);
-  font-family: bungee, sans-serif;
-  font-weight: 400;
-  text-transform: uppercase;
-  font-size: calc(2rem + 5vw);
-  text-align: center;
-  margin: 0;
-  color: var(--color-primary);
-  animation: shadows 2s ease-in infinite;
-  letter-spacing: 0.4rem;
-}
-
-@keyframes shadows {
-  0% {
-    text-shadow: none;
-  }
-  10% {
-    transform: translate(-3px, -3px);
-    text-shadow: 3px 3px 0 var(--color-secondary);
-  }
-  20% {
-    transform: translate(-6px, -6px);
-    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary);
-  }
-  30% {
-    transform: translate(-9px, -9px);
-    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary);
-  }
-  40% {
-    transform: translate(-12px, -12px);
-    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary);
-  }
-  50% {
-    transform: translate(-12px, -12px);
-    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary);
-  }
-  60% {
-    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary);
-  }
-  70% {
-    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary);
-  }
-  80% {
-    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary);
-  }
-  90% {
-    text-shadow: 3px 3px 0 var(--color-secondary);
-  }
-  100% {
-    text-shadow: none;
-  }
-}
 
 @font-face {
     font-family: 'omyu_pretty';
@@ -354,8 +250,8 @@ body {
     font-weight: normal;
     font-style: normal;
 }
-.content{margin-top:7%;}
-.container2 {display: flex; flex-direction: column; justify-content: center; align-items: center; height: 300px;;}
-.container2 img {max-width: 20%; height: auto;}
-  p{ font-family: 'omyu_pretty';  }
-button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933; margin:20px;}
+.content{margin-top:7%; height:auto}
+.container2 {display: flex; flex-direction: column; justify-content: center; align-items: center; height: auto;}
+.container2 img {max-width: 20%; height: auto; margin-bottom: 3%}
+  p{ font-family: 'omyu_pretty'; font-size: 17px;  line-height: 30px; }
+button{width:100px; height:50px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933; margin-top:20px;}
