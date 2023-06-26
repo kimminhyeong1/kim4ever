@@ -117,7 +117,7 @@ function editIntro() {
             '<h3>내 간단 소개</h3>' +
             '<input type="text" id="introInput" placeholder="멤버보기에 있는 소개입니다." value="' + introText + '">' +
             '<div class="button-container2">' +
-            '<button onclick="editIntro()">편집하기</button>' +
+            '<button id="editIntroBtn" onclick="editIntro()">편집하기</button>' +
             '</div>'
         );
     } else {
@@ -138,7 +138,7 @@ function editIntro() {
                     '<h3>내 간단 소개</h3>' +
                     '<span id="introText">' + intro + '</span>' +
                     '<div class="button-container2">' +
-                    '<button onclick="editIntro()">편집하기</button>' +
+                    '<button id="editIntroBtn" onclick="editIntro()">편집하기</button>' +
                     '</div>'
                 );
             },
