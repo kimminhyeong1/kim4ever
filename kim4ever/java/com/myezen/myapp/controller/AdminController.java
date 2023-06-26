@@ -250,7 +250,7 @@ public class AdminController {
 	@RequestMapping("/adminbikeRepairAction.do")
 	public String UpdateBikeState(int eidx) {
 		//System.out.println("test1");
-		as.updateBikeState(eidx);
+		as.updateErrorState(eidx);
 		//System.out.println("test2");
 		return "redirect:/admin/adminbikeError.do";
 	}	

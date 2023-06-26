@@ -38,8 +38,8 @@ public interface AdminService {
 		public int searchBikeErrorsCount(SearchCriteria scri);
 	//고장 신고 내역 상세 페이지	
 		public BikeJoinVo getErrorContent(int eidx);
-	//수리센터 보내기 버튼 누르면 bikeState R로 업데이트
-		public void updateBikeState(int eidx);
+	//수리센터 보내기 버튼 누르면 errorState R로 업데이트
+		public void updateErrorState(int eidx);
 	//수리 내역 페이지
 		public ArrayList<BikeJoinVo> searchBikerepairList(SearchCriteria scri);
 		public int searchBikerepairListCount(SearchCriteria scri);
@@ -70,6 +70,7 @@ public interface AdminService {
 		public int gatheringDeclarationSelectAll(SearchCriteria scri);
 	//모임 신고 내역 상세 보기	
 		public GatheringJoinVo DeclarationDetail(int gdix);
+		
 		
 		
 		
