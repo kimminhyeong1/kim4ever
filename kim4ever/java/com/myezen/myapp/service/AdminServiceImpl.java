@@ -137,10 +137,10 @@ public class AdminServiceImpl implements AdminService {
 		return asm.getErrorContent(eidx);
 	}
 	
-	//수리센터 보내기 버튼 누르면 bikeState R로 업데이트
+	//수리센터 보내기 버튼 누르면 errorState R로 업데이트
 	@Override
-	public void updateBikeState(int eidx) {
-		asm.updateBikeState(eidx);
+	public void updateErrorState(int eidx) {
+		asm.updateErrorState(eidx);
 		
 	}
 	

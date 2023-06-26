@@ -85,7 +85,7 @@ a{color:inherit; text-decoration:none;}
 					<th>자전거종류</th>
 					<th>자전거번호</th>		
 					<th>내용</th>
-					<th></th>			
+					<th>상태</th>			
 				</tr>
 			<c:forEach var="ejv" items="${elist}">
 					<tr>
@@ -95,10 +95,10 @@ a{color:inherit; text-decoration:none;}
 						<td>${ejv.errorContent}</td>
 						<td>
 							 <c:choose>
-						        <c:when test="${ejv.bikeState == 'R'}">
+						        <c:when test="${ejv.errorState == 'R'}">
 						          <button type="button" onclick="confirmRepair(${ejv.eidx},'${ejv.bikeCode}', '${ejv.bikeType}')">수리 완료</button>
 						        </c:when>
-						        <c:when test="${ejv.bikeState == 'Y'}">
+						        <c:when test="${ejv.errorState == 'Y'}">
 						        		  처리 완료
 						        </c:when>
 						      </c:choose>

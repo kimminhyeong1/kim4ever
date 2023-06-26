@@ -109,20 +109,20 @@ li{list-style:none;}
 				<td><a href="adminbikeErrorContent.do?eidx=${ejv.eidx}">${ejv.errorContent}</a></td>
 				 <td>
 			        <c:choose>
-			            <c:when test="${ejv.bikeState eq 'E'}">
+			            <c:when test="${ejv.errorState eq 'E'}">
 							고장접수
 						</c:when>
-						<c:when test="${ejv.bikeState eq 'Y'}">
+						<c:when test="${ejv.errorState eq 'Y'}">
 							수리완료
 						</c:when>
-						<c:when test="${ejv.bikeState eq 'R'}">
+						<c:when test="${ejv.errorState eq 'R'}">
 							수리중
 						</c:when>
-			             <c:when test="${ejv.bikeState eq 'N'}">  
+			             <c:when test="${ejv.errorState eq 'N'}">  
 		                	이용중
 			            </c:when>
 			            <c:otherwise>
-			                ${ejv.bikeState}
+			                ${ejv.errorState}
 			            </c:otherwise>
 			        </c:choose>
 			    </td>

@@ -150,27 +150,26 @@ WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPag
 	<!-- 고장 신고 내역 리스트 -->
 <select id="searchBikeErrors" parameterType="com.myezen.myapp.domain.SearchCriteria"
   resultType="com.myezen.myapp.domain.BikeJoinVo">
-	 SELECT *
-  FROM (
-    SELECT
-      m.memberName,
-      m.memberPhone,
-      r.rentPlace,
-      b.bikeType,
-      b.bikeCode,
-      b.bikeState,
-      e.eidx,
-      e.errorDay,
-      e.errorContent,
-      ROW_NUMBER() OVER (ORDER BY e.errorDay DESC) AS row_num
-    FROM rent1234 r
-    JOIN member1234 m ON m.midx = r.midx
-    JOIN bike1234 b ON b.bkidx = r.bkidx
-    JOIN error1234 e ON e.ridx = r.ridx
-    WHERE 1=1
-    <include refid="search1" />
-  ) c
-  WHERE c.row_num BETWEEN ((#{page}-1)*#{perPageNum}+1) AND (#{page}*#{perPageNum})
+		SELECT
+		  m.memberName,
+		  m.memberPhone,
+		  r.rentPlace,
+		  b.bikeType,
+		  b.bikeCode,
+		  b.bikeState,
+		  e.eidx,
+		  e.errorDay,
+		  e.errorContent,
+		  e.errorState
+		FROM rent1234 r
+		JOIN member1234 m ON m.midx = r.midx
+		JOIN bike1234 b ON b.bkidx = r.bkidx
+		JOIN error1234 e ON e.ridx = r.ridx
+		WHERE 1=1
+  <include refid="search1" />
+ORDER BY e.errorDay DESC
+LIMIT #{perPageNum}
+OFFSET #{offset};
 </select>
 	
 	
@@ -201,8 +200,6 @@ WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPag
 		</if>
      </select>
      
-
-
 	<!-- 고장 신고 내역 상세 보기 -->
 	<select id="getErrorContent" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
   	SELECT
@@ -226,13 +223,13 @@ WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPag
 	e.eidx =#{eidx}
 	</select>
 	
-	<!-- 수리버튼 누르면 bikeState R로 변경 -->
-	<update id="updateBikeState" parameterType="int">
-		UPDATE bike1234 b
-		JOIN rent1234 r ON b.bkidx = r.bkidx
-		JOIN error1234 e ON e.ridx = r.ridx
-		SET b.bikeState = 'R'
-		WHERE e.eidx = #{eidx}
+	<!-- 수리버튼 누르면 ErrorState R로 변경 -->
+	<update id="updateErrorState" parameterType="int">
+		UPDATE error1234 e
+		JOIN rent1234 r ON e.ridx = r.ridx
+		JOIN bike1234 b ON b.bkidx = r.bkidx
+		SET e.errorState = 'R'
+		WHERE e.eidx = #{eidx};
 	</update>
 	
 	
@@ -261,30 +258,29 @@ WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPag
 
 	<!-- 수리 내역 리스트 -->
 	<select id="searchBikerepairList" parameterType="com.myezen.myapp.domain.SearchCriteria" resultType="com.myezen.myapp.domain.BikeJoinVo">
-		 SELECT *
-  FROM (
-    SELECT
-      m.memberName,
-      m.memberPhone,
-      r.rentPlace,
-      b.bikeType,
-      b.bikeCode,
-      b.bikeState,
-      e.eidx,
-      e.errorDay,
-      e.errorContent,
-      ROW_NUMBER() OVER (ORDER BY e.errorDay DESC) AS row_num
-    FROM rent1234 r
-    JOIN member1234 m ON m.midx = r.midx
-    JOIN bike1234 b ON b.bkidx = r.bkidx
-    JOIN error1234 e ON e.ridx = r.ridx
-    WHERE 1=1
-    <include refid="search2" />
-    ORDER BY e.errorDay DESC
-    LIMIT #{perPageNum}
-    OFFSET #{offset}
-  ) AS B
-  WHERE B.row_num BETWEEN ((#{page}-1)*#{perPageNum}+1) AND (#{page}*#{perPageNum});
+		SELECT *
+		FROM (
+		    SELECT
+		        m.memberName,
+		        m.memberPhone,
+		        r.rentPlace,
+		        b.bikeType,
+		        b.bikeCode,
+		        b.bikeState,
+		        e.eidx,
+		        e.errorDay,
+		        e.errorContent,
+		        e.errorState
+		    FROM rent1234 r
+		    JOIN member1234 m ON m.midx = r.midx
+		    JOIN bike1234 b ON b.bkidx = r.bkidx
+		    JOIN error1234 e ON e.ridx = r.ridx
+		    WHERE 1=1
+		    <include refid="search2" />
+		    ORDER BY e.errorDay DESC
+		    LIMIT #{perPageNum}
+		    OFFSET #{offset}
+		) AS B;
 	</select>
 	
 	<!-- 수리 내역 리스트 갯수 -->
@@ -315,16 +311,12 @@ WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPag
 
 	<!-- 수리 완료 버튼  누르면 bikeState Y로 변경 -->
 	<update id="updateBikeStateY" parameterType="int">
-		UPDATE bike1234 b
-		JOIN rent1234 r ON b.bkidx = r.bkidx
-		JOIN error1234 e ON e.ridx = r.ridx
-		SET b.bikeState = 'Y'
-		WHERE e.eidx = #{eidx}
+		UPDATE error1234 e
+		JOIN rent1234 r ON e.ridx = r.ridx
+		JOIN bike1234 b ON b.bkidx = r.bkidx
+		SET b.bikeState = 'Y', e.errorState = 'Y'
+		WHERE e.eidx = #{eidx};
 	</update>
-
-	
-
-
 
 <select id="bikeListCount" resultType="int" parameterType="com.myezen.myapp.domain.SearchCriteria">
   SELECT count(*) as cnt
