@@ -206,9 +206,49 @@
 			    if (fm.gScheduleTitle.value == "") {
 			        alert("제목을 입력하세요");
 			        fm.gScheduleTitle.focus();
-			        return;
-			    }
-			}
+			        return;		 
+				}
+			    else if (fm.gScheduleStartDay.value == "") {
+				    alert("시작일을 입력하세요");
+				    fm.gScheduleStartDay.focus();
+				    return;
+				  } 
+				else if (fm.gScheduleEndDay.value == "") {
+				    alert("종료일을 입력하세요");
+				    fm.gScheduleEndDay.focus();
+				    return;
+				  } 
+				else if (fm.gScheduleEndDay.value <= fm.gScheduleStartDay.value) {
+					  alert("종료일은 시작일보다 크거나 같아야 합니다.");
+					  fm.gScheduleEndDay.focus();
+					  return;
+					}
+				 else if (fm.scheduleLocation.value == "") {
+				        alert("주소를 입력하세요");
+				        fm.scheduleLocation.focus();
+				        return;
+				  }
+				  else if (fm.gScheduleFee.value == "") {
+				        alert("모임비를 입력하세요");
+				        fm.gScheduleFee.focus();
+				        return;
+				  }
+				  else if (fm.gScheduleArrangements.value == "") {
+				        alert("준비물을 입력하세요");
+				        fm.gScheduleArrangements.focus();
+				        return;
+				  }
+				  else if (fm.gScheduleCapacity.value == "") {
+				        alert("정원을 입력하세요");
+				        fm.gScheduleCapacity.focus();
+				        return;
+				  }
+				 
+					    fm.action = "<%=request.getContextPath()%>/gathering/gScheduleMakeAction.do";
+					    fm.enctype = "multipart/form-data";
+					    fm.method = "post";
+					    fm.submit();
+					    }
 		
 			function updateCharacterCount(inputName) {
 				  var input = document.getElementsByName(inputName)[0];
@@ -224,13 +264,15 @@
 				  updateCharacterCount('gScheduleTitle');
 				  updateCharacterCount('gScheduleArrangements');
 				});
+				
+			
 			</script>
 	</head>
 	<body>
 		<%@include file="../header2.jsp" %>
 		<%@include file="header3.jsp" %>
 		<main id="main">
-			<form name="frm" action="${pageContext.request.contextPath}/gathering/gScheduleMakeAction.do" method="POST">
+			<form name="frm" >	
 				<input type="hidden" id="giidx" name="giidx" value="${giidx}"><!-- 모임 정보 -->
 				<section class="gContainer gSetContainer">
 					<div>
@@ -256,7 +298,7 @@
 							<h3>일정 위치</h3><!-- 지도 api사용 -->
 							<div>일정 위치를 지정해주세요.</div>
 				            <div id="map" ></div>
-				            <input class="gInput"  type="text" id="scheduleLocation" name="scheduleLocation" placeholder="일정 주소"> 
+				            <input class="gInput"  type="text" id="scheduleLocation" name="scheduleLocation" placeholder="일정 주소" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)" maxlength="100">   
 							<input class="gInput"  type="button" onclick="openAddressPopup()" value="주소 검색"> 
 				            <input type="hidden" id="latitude" name="gScheduleLatitude" value=""><!-- 위도 -->
 				            <input type="hidden" id="longitude" name="gScheduleLongitude" value=""><!-- 경도 -->
@@ -266,7 +308,9 @@
 						</div>
 						<div>
 							<h3>모임비</h3>
-							<input class="gInput" type="number" name="gScheduleFee" placeholder="가격을 적어주세요.">		
+								<input class="gInput" type="number" name="gScheduleFee" placeholder="가격을 적어주세요(10만원 이하)." max="100000" oninput="if (this.value > 100000) this.value = 100000; var formattedPrice = this.value >= 10000 ? (Math.floor(this.value / 10000) + '만' + this.value.toString().substr(-4) + '원') : this.value + '원'; document.getElementById('formattedPrice').textContent = formattedPrice;">
+								<p id="formattedPrice"></p><!-- 숫자변환후 만추가 -->
+
 						</div>
 						<div>
 							<h3>준비물</h3>
@@ -278,11 +322,11 @@
 							<div>
 								<h3>정원(최대 100명)</h3>
 							</div>
-							<input class="gInput" type="number" name="gScheduleCapacity" placeholder="예:5">	
+							<input class="gInput" type="number" name="gScheduleCapacity" placeholder="예:5" max="100" oninput="if (this.value > 100) this.value = 100;"> 	
 						</div>
 					</div><!-- 끝-->
 					<div>
-						<button class="gBtn2">일정추가</button>				 
+						<button type="button"  class="gBtn2" onclick="fnWrite();">일정추가</button>				 
 					</div>
 				</section>
 			</form>

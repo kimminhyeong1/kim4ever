@@ -96,14 +96,14 @@ function updateCharacterCount(inputName) {
 							<div>
 								<h3>게시글 제목</h3>
 							</div>
-							<input class="gInput" type="text" name="gBoardTitle" placeholder="내용을 입력해주세요" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)" maxlength="20" oninput="updateCharacterCount('gBoardTitle')">
-							          <span id="gBoardTitle"></span>
+      					  <input class="gInput" type="text" name="gBoardTitle" placeholder="내용을 입력해주세요" oninput="updateCharacterCount('gBoardTitle')" maxlength="20" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)" >
+       					 <span id="gBoardTitleCount"></span>
 																		
 						</div>
 						<div>
 							<h3>게시글 내용</h3>
-							<textarea rows="5" cols="5" name="gBoardContents" placeholder="글자제한:500자이내" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"  maxlength="500" oninput="updateCharacterCount('gBoardContents')"></textarea>
-								 <span id="gBoardContents"></span>
+       						 <textarea rows="5" cols="5" name="gBoardContents" placeholder="글자제한:500자이내" oninput="updateCharacterCount('gBoardContents')" maxlength="500" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)" ></textarea>
+      						  <span id="gBoardContentsCount"></span>
 									
 						</div>
 					</div><!-- 끝-->
