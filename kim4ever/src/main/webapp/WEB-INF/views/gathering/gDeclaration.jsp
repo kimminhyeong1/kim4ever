@@ -15,9 +15,6 @@
 		 	/*헤더영역 메뉴*/
 			header #menu{display: none;}
 		 	/*수정하기 부분*/
-			#main section h1{display:inline-block;font-size: 37px; margin-bottom:20px; }
-			#main section h3{display:inline-block; font-weight:bold; font-size: 27px; margin-top:20px; }
-			#main section p{font-family: 'omyu_pretty'; display:inline-block; font-size:21px; }
 			#main section>div:nth-child(1){margin: 20px 0px 20px 100px;}
 			#main section>div:nth-child(2){text-align: center;}
 			#main section>div>div{margin: 20px 0px 20px 0px;}
@@ -25,6 +22,13 @@
 			#main section textarea {display: block; width:500px ;height:200px; font-size:23px; margin-top:20px; }
 			#main section button{text-align: center; margin-top:20px; }  
 			#main section img{width: 100px;height: 100px;}  
+			/*테이블*/
+			table {width:100%;height:auto;text-align:center;border:1px solid #000;border-collapse:collapse;font-family:'omyu_pretty';}
+			table th {border:1px solid #000;padding:10px;background-color:#f0f0f0;margin:5px 0; text-algin:center;font-size:34px;}
+			table td {border:1px solid #000;padding:10px;text-align:left;font-size:24px;}
+			table td textarea {width:100%;height:100%;box-sizing:border-box;resize: vertical;}
+			.button-container {margin-top:20px;text-align:center;}
+			.button-container button {margin-right:10px;}
 				/*************************모바일****************************************/
 				/*****모바일 넓이***/
 				@media (min-width: 300px) and (max-width: 940px)  {
@@ -42,8 +46,9 @@
 			#main section button{text-align: center; margin-top:20px; float:right; margin-left:5px;}   
 			#main section img{width: 100px;height: 100px;}  
 				}
-		
-		 </style>
+
+	
+</style>
 	</head>
 	<body>
 		<%@include file="../header2.jsp" %>
@@ -51,32 +56,35 @@
 		<main id="main">
 			<section class="gContainer gSetContainer">
 				<form name="frm" id="frm" action="${pageContext.request.contextPath}/gathering/gDeclarationAction.do" method="POST">
-				<div>
-						<div>
-							<h1>모임 신고하기</h1>
-						</div>
-
-						<div>
-							<h3>모임명</h3> : <p>${gjvlist[0].gInfoName}</p>	
-						</div>
-						
-						<div>
-							<h3>지역</h3> : <p>${gjvlist[0].gInfoArea}</p>	
-						</div>
-						<div>
-							<h3>모임장</h3> : <p>${gjvlist[0].memberName}</p>	
-						</div>
-						
-						<div>
-							<h3>신고 내용</h3>
-							<textarea id="gatheringReportContent" name="gatheringReportContent" rows="5" cols="5" placeholder="글자제한:500자이내"></textarea>		
-						</div>
+				<table>
+					<tr>
+						<th colspan="2" style="text-align: center;">모임 신고하기</th>
+					</tr>
+					<tr>
+						<th>모임명</th>
+						<td>${gjvlist[0].gInfoName}</td>
+					</tr>
+					<tr>
+						<th>지역</th>
+						<td>${gjvlist[0].gInfoArea}</td>
+					</tr>
+					<tr>
+						<th>모임장</th>
+						<td>${gjvlist[0].memberName}</td>
+					</tr>
+					<tr>
+						<th>신고 내용</th>
+						<td><textarea id="gatheringReportContent" name="gatheringReportContent" rows="5" cols="5" placeholder="글자 제한: 500자 이내"></textarea></td>
+					</tr>
 					
-				</div>
-				<div>
-					<button type="submit"class="gBtn2">신고하기</button>				 
-					<button class="gBtn2" onclick="history.back()">돌아가기</button>				 
-				</div>
+					<tr>
+						<td colspan='2' class="button-container">
+						<button type="submit"class="gBtn2">신고하기</button>				 
+						<button class="gBtn2" onclick="history.back()">돌아가기</button>
+						</td>
+					</tr>
+				</table>
+
 				</form>
 			</section>
 		</main>
