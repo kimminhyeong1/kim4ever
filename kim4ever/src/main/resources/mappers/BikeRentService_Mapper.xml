@@ -140,10 +140,14 @@ LIMIT 1;		<!-- FETCH FIRST 1 ROW ONLY를 MySQL에서 사용하는 LIMIT 1로 변
         INSERT INTO error1234(ridx,bkidx,errorContent,errorLatitude,errorLongitude,errorLocation,errorImage) 
 		VALUES(#{ridx},#{bkidx},#{errorContent},#{errorLatitude},#{errorLongitude},#{errorLocation},#{errorImage}) <!-- eidx 시퀀스 제거 -->
     </insert>
-    <update id="bikeRentStateE" parameterType="int">
-	UPDATE BIKE1234
-	SET BIKESTATE = 'E'
-	WHERE BKIDX = #{0}
+    <update id="bikeRentStateE" parameterType="com.myezen.myapp.domain.BikeJoinVo">
+	 UPDATE BIKE1234
+  SET BIKESTATE = 'E'
+  WHERE BKIDX = #{bkidx} AND BKIDX NOT IN (
+    SELECT bkidx
+    FROM error1234
+    WHERE eidx = #{eidx}
+  )
 	</update>
     
     <select id="bikeRentReturnCheck" resultType="com.myezen.myapp.domain.BikeJoinVo">
