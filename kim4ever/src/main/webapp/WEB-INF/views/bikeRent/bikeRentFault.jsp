@@ -230,8 +230,8 @@
 		                <div>
 				            <h3>고장내용</h3>
 				            <div>아래의 사진을 보시고 고장 난 부위를 설명해 주세요.</div>
-				            <img src="../resources/bikeimg/bikeDetail2.GIF" alt="bikeDetail">
-							<textarea cols="100" rows="15" name="errorContent"></textarea>
+				            <img src="../resources/bikeimg/bikeDetail.GIF" alt="bikeDetail">
+							<textarea style="width:100%"cols="100" rows="15" name="errorContent"></textarea>
 				        </div>
 				       <div><button type="button" id="btn3">작성하기</button></div>
 					</form>
