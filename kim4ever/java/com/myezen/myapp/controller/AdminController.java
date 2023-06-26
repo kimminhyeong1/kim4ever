@@ -287,15 +287,20 @@ public class AdminController {
 	//관리자 모임 리스트 페이지	
 		@RequestMapping(value="/admingatheringList.do")
 		public String admingatheringList(
-				Model model,
+				Model md,
 				HttpServletRequest request,
 				SearchCriteria scri
 				) {
 			
+			int totalCount = as.gatheringListSelectAll(scri);
 			
 			ArrayList<GatheringJoinVo> gjlist = as.gatheringList(scri);
-					
-			model.addAttribute("gjlist", gjlist);	
+			
+			pm.setScri(scri);
+	    	pm.setTotalCount(totalCount);
+					   	
+	    	md.addAttribute("pm", pm);
+			md.addAttribute("gjlist", gjlist);	
 			
 				return "admin/admingatheringList";
 			}	
@@ -310,11 +315,20 @@ public class AdminController {
 	//관리자 모임 신고 내역 페이지	
 		@RequestMapping(value="/adminGReportList.do")
 		public String adminGReportList(
-				Model model,
+				Model md,
 				HttpServletRequest request,
 				SearchCriteria scri) {
-			ArrayList<GatheringJoinVo> gdlist = as.gatheringDeclaration(scri);					
-			model.addAttribute("gdlist", gdlist);
+			
+			int totalCount = as.gatheringDeclarationSelectAll(scri);
+			
+			
+			ArrayList<GatheringJoinVo> gdlist = as.gatheringDeclaration(scri);
+
+			pm.setScri(scri);
+	    	pm.setTotalCount(totalCount);
+	    	
+	    	md.addAttribute("pm", pm);
+			md.addAttribute("gdlist", gdlist);
 			
 				return "admin/adminGReportList";
 					}	

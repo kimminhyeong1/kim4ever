@@ -282,8 +282,8 @@ public class MemberServiceImpl implements MemberService {
 	public String getAccessToken(String authorize_code) throws Throwable {
 		
 		String kakaoClientId ="76703a8d13e15a9a7deb9a931b73de9e"; //REST API
-		//String kakaoRedirectUri ="http://localhost:8080/myapp/member/login/oauth2/code/kakao.do";
-		String kakaoRedirectUri ="http://jjezen.cafe24.com/kim4ever/member/login/oauth2/code/kakao.do";
+		String kakaoRedirectUri ="http://localhost:8080/myapp/member/login/oauth2/code/kakao.do";
+		//String kakaoRedirectUri ="http://jjezen.cafe24.com/kim4ever/member/login/oauth2/code/kakao.do";
 		String access_Token = "";
 		String refresh_Token = "";
 		String id_token = "";
@@ -338,7 +338,6 @@ public class MemberServiceImpl implements MemberService {
 
 			System.out.println("access_token : " + access_Token);
 			System.out.println("refresh_token : " + refresh_Token);
-
 			br.close();
 			bw.close();
 		} catch (IOException e) {
@@ -385,6 +384,7 @@ public class MemberServiceImpl implements MemberService {
 						});
 
 						System.out.println(jsonMap.get("properties"));
+						System.out.println(jsonMap.get("id"));
 
 						Map<String, Object> properties = (Map<String, Object>) jsonMap.get("properties");
 						Map<String, Object> kakao_account = (Map<String, Object>) jsonMap.get("kakao_account");
@@ -393,13 +393,14 @@ public class MemberServiceImpl implements MemberService {
 						// System.out.println(kakao_account.get("email"));
 
 						String nickname = new String(properties.get("nickname").toString().getBytes(),"utf-8");
-						
 						System.out.println("##############nicName##########  ::::"+nickname);
 						
-						String email = kakao_account.get("email").toString();
-
+						//String email = kakao_account.get("email").toString();
+						
+						
+						userInfo.put("id", jsonMap.get("id"));
 						userInfo.put("nickname", nickname);
-						userInfo.put("email", email);
+						//userInfo.put("email", email);
 
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -415,6 +416,55 @@ public class MemberServiceImpl implements MemberService {
 	public int kakaoMemberInsert(String memberId, String memberPwd, String memberName) {
 		int value = msm.kakaoMemberInsert(memberId,memberPwd,memberName);
 		return value;
+	}
+	@Override
+	//카카오 회원탈퇴
+	public HashMap<String, Object> kakaoWithdrawMember(String access_Token) throws Throwable {
+		// 요청하는 클라이언트마다 가진 정보가 다를 수 있기에 HashMap타입으로 선언
+				HashMap<String, Object> userlogout = new HashMap<String, Object>();
+				String reqURL = "https://kapi.kakao.com/v1/user/unlink";
+
+				try { 
+					System.out.println("access_Token::::"+access_Token);
+					URL url = new URL(reqURL);
+					HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+					conn.setRequestMethod("GET");
+					conn.setRequestProperty("charset","utf-8");
+					// 요청에 필요한 Header에 포함될 내용
+					conn.setRequestProperty("Authorization", "Bearer " + access_Token);
+
+					int responseCode = conn.getResponseCode();
+					System.out.println("responseCode : " + responseCode);
+
+					BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+					String line = "";
+					String result = "";
+
+					while ((line = br.readLine()) != null) {
+						result += line;
+					}
+					System.out.println("response body : " + result);
+					System.out.println("result type" + result.getClass().getName()); // java.lang.String
+
+					try {
+						// jackson objectmapper 객체 생성
+						ObjectMapper objectMapper = new ObjectMapper();
+						// JSON String -> Map
+						Map<String, Object> jsonMap = objectMapper.readValue(result, new TypeReference<Map<String, Object>>() {
+						});
+
+						System.out.println(jsonMap.get("id"));
+						userlogout.put("id", jsonMap.get("id"));
+
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				return userlogout;
 	}
 	//내가 쓴 게시글
 	@Override
@@ -468,6 +518,18 @@ public class MemberServiceImpl implements MemberService {
 	public String memberPhoneCheck(int midx) {
 		String memberPhone = msm.memberPhoneCheck(midx);
 		return memberPhone;
+	}
+	@Override
+	//카카오로그인
+	public MemberVo kakaoMemberLogin(String memberId) {
+		MemberVo mv = msm.kakaoMemberLogin(memberId);
+		return mv;
+	}
+	@Override
+	//구글로그인
+	public MemberVo googleMemberLogin(String memberId) {
+		MemberVo mv = msm.googleMemberLogin(memberId);
+		return mv;
 	}
 
 

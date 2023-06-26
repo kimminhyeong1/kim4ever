@@ -276,7 +276,12 @@ msg = (String)request.getAttribute("msg");
 							</div>
 						</div>
 					
-						     <a class="kakao" href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=76703a8d13e15a9a7deb9a931b73de9e&redirect_uri=http://jjezen.cafe24.com/kim4ever/member/login/oauth2/code/kakao.do">
+<%-- 						     <a class="kakao" href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=76703a8d13e15a9a7deb9a931b73de9e&redirect_uri=http://jjezen.cafe24.com/kim4ever/member/login/oauth2/code/kakao.do">
+						      	<div class="kakao_i"></div>
+						      	<div class="kakao_txt"><img  alt="카카오톡 로그인 버튼" src="${pageContext.request.contextPath}/resources/btn/kakao_login_medium_wide.png"></div>
+						   	</a> --%>
+						   	
+						    <a class="kakao" href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=76703a8d13e15a9a7deb9a931b73de9e&redirect_uri=http://localhost:8080/myapp/member/login/oauth2/code/kakao.do">
 						      	<div class="kakao_i"></div>
 						      	<div class="kakao_txt"><img  alt="카카오톡 로그인 버튼" src="${pageContext.request.contextPath}/resources/btn/kakao_login_medium_wide.png"></div>
 						   	</a>

@@ -68,30 +68,79 @@ function confirmWithdrawal() {
 	<div id="content">
 		<h2>회원정보</h2>
 		<div id="box">
-	        <div class="section">
-	            <div class="section-header">아이디</div>
-	            <div class="section-content">${memberId}</div>
-	        </div>
-	        <div class="section">
-	            <div class="section-header">비밀번호</div>
-	            <div class="section-content">${memberPwd}</div>
-	        </div>
-	        <div class="section">
-	            <div class="section-header">이름</div>
-	              <div class="section-content">${memberName}</div>
-	        </div>
-	        <div class="section">
-	            <div class="section-header">나이</div>
-	            <div class="section-content">${memberAge}</div>
-	        </div>
-	        <div class="section">
-	            <div class="section-header">휴대폰번호</div>
-	            <div class="section-content">${memberPhone}</div>
-	        </div>
-	        <div class="section">
-	            <div class="section-header">이메일</div>
-	            <div class="section-content">${memberEmail}</div>
-	        </div>
+			<c:choose>
+				<c:when test="${memberLoginType eq '카카오'}">
+			        <div class="section">
+			            <div class="section-header">아이디</div>
+			            <div class="section-content">카카오 로그인 중</div>
+			        </div>
+			        <div class="section">
+			            <div class="section-header">이름</div>
+			              <div class="section-content">${memberName}</div>
+			        </div>
+			        <div class="section">
+			            <div class="section-header">나이</div>
+			            <div class="section-content">${memberAge}</div>
+			        </div>
+			        <div class="section">
+			            <div class="section-header">휴대폰번호</div>
+			            <div class="section-content">${memberPhone}</div>
+			        </div>
+			        <div class="section">
+			            <div class="section-header">이메일</div>
+			            <div class="section-content">${memberEmail}</div>
+			        </div>
+				</c:when>
+				<c:when test="${memberLoginType eq '구글'}">
+					
+					<div class="section">
+			            <div class="section-header">아이디</div>
+			            <div class="section-content">구글 로그인 중</div>
+			        </div>
+			        <div class="section">
+			            <div class="section-header">이름</div>
+			              <div class="section-content">${memberName}</div>
+			        </div>
+			        <div class="section">
+			            <div class="section-header">나이</div>
+			            <div class="section-content">${memberAge}</div>
+			        </div>
+			        <div class="section">
+			            <div class="section-header">휴대폰번호</div>
+			            <div class="section-content">${memberPhone}</div>
+			        </div>
+			        <div class="section">
+			            <div class="section-header">이메일</div>
+			            <div class="section-content">${memberEmail}</div>
+			        </div>
+				</c:when>
+				<c:otherwise>
+			        <div class="section">
+			            <div class="section-header">아이디</div>
+			            <div class="section-content">${memberId}</div>
+			        </div>
+			        <div class="section">
+			            <div class="section-header">비밀번호</div>
+			            <div class="section-content">${memberPwd}</div>
+			        </div>
+			        <div class="section">
+			            <div class="section-header">이름</div>
+			              <div class="section-content">${memberName}</div>
+			        </div>
+			        <div class="section">
+			            <div class="section-header">나이</div>
+			            <div class="section-content">${memberAge}</div>
+			        </div>
+			        <div class="section">
+			            <div class="section-header">휴대폰번호</div>
+			            <div class="section-content">${memberPhone}</div>
+			        </div>
+			        <div class="section">
+			            <div class="section-header">이메일</div>
+			            <div class="section-content">${memberEmail}</div>
+			        </div>
+				</c:otherwise>
+			</c:choose>
 	        <div>
 	            <button type="button" onclick="location.href='<%=request.getContextPath()%>/member/memberCheckPwd.do'">회원정보 수정하기</button>
 	            <button type="button" onclick="confirmWithdrawal();">회원 탈퇴하기</button>
@@ -100,13 +149,7 @@ function confirmWithdrawal() {
 	</div>
 	
 	<div id="bottom">	
-	
 	</div>
-
-
-
-
-
 </div>
 
 </body>

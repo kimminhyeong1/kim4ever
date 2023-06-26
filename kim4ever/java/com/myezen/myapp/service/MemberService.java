@@ -71,11 +71,16 @@ public interface MemberService {
 	public int kakaoMemberInsert(String memberId,String memberPwd,String memberName);
 	//소셜 아이디있는지 확인
 	public int socialMemberCheck(String memberId);
-	
 	//카카오로그인
 	public String getAccessToken(String authorize_code) throws Throwable;
 	//카카오유저정보
 	public HashMap<String, Object> getUserInfo(String access_Token) throws Throwable;
+	//카카오 로그인 확인
+	public MemberVo kakaoMemberLogin(String memberId);
+	//구글 로그인 확인
+	public MemberVo googleMemberLogin(String memberId);
+	//카카오 회원탈퇴
+	public HashMap<String, Object> kakaoWithdrawMember(String access_Token) throws Throwable;
 	//내가 쓴 게시글
 	public ArrayList<BikeJoinVo> getMyPosts(String memberName);
 	

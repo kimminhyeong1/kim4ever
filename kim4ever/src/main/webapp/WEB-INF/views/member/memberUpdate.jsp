@@ -68,10 +68,16 @@ function fnSubmit() {
 		<form action="memberUpdateAction.do" method="post" onsubmit="fnSubmit()">
 		<h2>회원정보</h2>
 		<div id="box">
-	        <div class="section">
-	            <div class="section-header">아이디</div>
-	            <div class="section-content"> <img src="../resources/icon/check.png" alt="이미지">${memberId}</div>
-	        </div>
+			<c:choose>
+				<c:when test="${mv.memberLoginType eq '구글' or mv.memberLoginType eq '카카오'}">
+				</c:when>
+				<c:otherwise>
+			        <div class="section">
+			            <div class="section-header">아이디</div>
+			            <div class="section-content"> <img src="../resources/icon/check.png" alt="이미지">${memberId}</div>
+			        </div>	
+				</c:otherwise>
+			</c:choose>
 			<c:choose>
 				<c:when test="${mv.memberLoginType eq '구글' or mv.memberLoginType eq '카카오'}">
 				</c:when>

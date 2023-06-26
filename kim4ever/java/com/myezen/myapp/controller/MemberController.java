@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
@@ -152,7 +153,7 @@ public class MemberController {
 		            if (value == 1) {
 		            	//로그인 메소드
 		            	System.out.println("들어옴");
-		            	MemberVo mv = ms.memberLogin(memberId);
+		            	MemberVo mv = ms.googleMemberLogin(memberId);
 		            	
 		            	if(mv!=null && bcryptPasswordEncoder.matches(userId, mv.getMemberPwd()) ) {
 		            		session.setAttribute("midx", mv.getMidx());
@@ -192,12 +193,10 @@ public class MemberController {
 				// 3번
 				HashMap<String, Object> userInfo = ms.getUserInfo(access_Token);
 				System.out.println("###nickname#### : " + userInfo.get("nickname"));
-				System.out.println("###email#### : " + userInfo.get("email"));
-				
 				System.out.println("userinfo::::"+userInfo);
 				
 				//변수선언
-	            String memberId = (String) userInfo.get("email");
+	            String memberId = String.valueOf(userInfo.get("id"));
 				String memberPwd = bcryptPasswordEncoder.encode(memberId);
 				String memberName = (String) userInfo.get("nickname");
 				
@@ -213,13 +212,15 @@ public class MemberController {
 	            if (value == 1) {
 	            	//로그인 메소드
 	            	System.out.println("들어옴");
-	            	MemberVo mv = ms.memberLogin(memberId);
+	            	MemberVo mv = ms.kakaoMemberLogin(memberId);
 	            	
 	            	if(mv!=null && bcryptPasswordEncoder.matches(memberId, mv.getMemberPwd()) ) {
 	            		session.setAttribute("midx", mv.getMidx());
 	            		session.setAttribute("memberId", mv.getMemberId());
 	            		session.setAttribute("memberName", mv.getMemberName());
 	            		session.setAttribute("memberType", mv.getMemberType());
+	            		session.setAttribute("memberLoginType", mv.getMemberLoginType());
+	            		session.setAttribute("access_Token", access_Token);
 	            	}
 	            
 	            	
@@ -596,7 +597,20 @@ public class MemberController {
 	
 	//마이페이지
 	@RequestMapping("/memberMypage.do")
-	public String memberMypage() {   
+	public String memberMypage(
+			HttpServletRequest request,
+			Model md) { 
+		
+		HttpSession session = request.getSession();
+	    Object omidx = session.getAttribute("midx");
+	    if (omidx != null) {
+	    int midx = (int)omidx;
+		MemberVo mv = ms.getMemberInfo(midx);
+		//프로필
+		md.addAttribute("memberProfile", mv.getMemberProfile());
+		//간단소개
+		md.addAttribute("memberIntro", mv.getMemberIntro());
+	    }
 	    return "member/memberMypage";
 	}
 	
@@ -630,23 +644,26 @@ public class MemberController {
 	//회원정보수정
 	@PostMapping("/memberUpdateAction.do")
 	public String memberUpdateAction( 
-	        @RequestParam("memberPwd") String memberPwd,
+	        @RequestParam(value = "memberPwd", required=false) String memberPwd,
 	        @RequestParam("memberName") String memberName,
 	        @RequestParam("memberAge") String memberAge,
 	        @RequestParam("memberPhone") String memberPhone,
 	        @RequestParam("memberEmail") String memberEmail,
 	        Model model,
 	        HttpSession session) {
-
-	    // 비밀번호 암호화
-	    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-	    String encryptedPassword = passwordEncoder.encode(memberPwd);
+		
+		
 
 	    MemberVo mv = (MemberVo) session.getAttribute("mv");
 
-	    
+	    if (memberPwd == null) {
+			memberPwd = "";
+		}
 	    // 비밀번호 변경 여부 확인 후 업데이트
 	    if (!memberPwd.isEmpty()) {
+	    	// 비밀번호 암호화
+	    	BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+	    	String encryptedPassword = passwordEncoder.encode(memberPwd);
 	        mv.setMemberPwd(encryptedPassword);
 	    }
 	    
@@ -689,10 +706,19 @@ public class MemberController {
 	
 	//회원탈퇴
 	@RequestMapping(value = "/memberWithdrawal.do", method = RequestMethod.GET)
-	public String memberWithdrawal(HttpServletRequest request, HttpSession session) {
+	public String memberWithdrawal(HttpServletRequest request, HttpSession session) throws Throwable {
 	   
 		String memberId = (String) session.getAttribute("memberId");
-
+		String memberLoginType = (String) session.getAttribute("memberLoginType");
+		if (memberLoginType.equals("카카오")) {
+			//카카오에 요청보내기
+			String access_Token = (String) session.getAttribute("access_Token");
+			HashMap<String, Object> hm = ms.kakaoWithdrawMember(access_Token); 
+				ms.withdrawMember(String.valueOf(hm.get("id")));
+				
+			session.invalidate(); 
+			return "redirect:/";
+		}
 		ms.withdrawMember(memberId);
 		
 		session.invalidate(); //회원탈퇴니까 세션에 담겨진 정보 싹 날려보냄
