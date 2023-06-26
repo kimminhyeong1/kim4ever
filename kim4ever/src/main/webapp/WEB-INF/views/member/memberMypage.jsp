@@ -38,30 +38,29 @@ li{list-style:none;}
 }
 
 #main{width:1440px; margin:35px auto 70px; text-align:center;}
-#main #content{width:1440px; height:2400px;}
-#main #bottom{width:1440px; height:300px;}
-#content table h2{margin-top:40px; font-size:40px; font-family:'GangwonEdu_OTFBoldA'; }
+#main #content{width:1440px; height:auto;}
+#main #bottom{width:1440px; height:auto;}
+#content table h2{margin-top:40px; font-size:40px; font-weight: normal; }
 #content table {position:relative; width:60%; height:20%; border-collapse:collapse; border:1px solid #ddd; margin: 60px auto 0; font-family:'omyu_pretty'; }
 #content table th{width:200px; text-align:center; border:1px solid #ddd; padding:8px;}
 #content table td {border:1px solid #bbb;padding:20px;text-align:left;vertical-align:middle;height:100px; font-size:30px;}
 #content table .top{position:relative;}
-#content table img{width:60px; height:50px; float:right; margin: 0 auto; vertical-align:middle;}
-#content table td a {display:flex;  color:#333;}
-#content table td a.logout-btn {display:inline-block;padding:10px 20px;background-color:#ff9800;color:#fff;text-decoration:none;border-radius:5px;transition:background-color 0.3s ease;}
-#content table td a.logout-btn:hover {background-color: #FF6600;}
+#content table img{width:60px; height:50px; float:right; margin: 0 auto; vertical-align:middle;} 
+#content table td .logout-btn {margin-left: 700px;display:inline-block;font-size: 20px;font-family: 'omyu_pretty';width: 100px;height: 40px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;border: 1px solid;}
+#content table td .logout-btn:hover {background-color: #FF6600;}
 #content table .image-container {width:180px;height:180px;}  
 #content table #imagePreview {position:absolute; width:122px;  height:122px; border:1px solid #bbb; border-radius:100px;object-fit:cover;top: 43px;left: 65px;}
 #content table .button-container {width:200px; margin-left:20px; position:absolute; bottom:680px; left:0; align-items:center; }
 #content table .intro-container {width:550px;height:auto; float:right; border-radius:50px; display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:20px;}
-#content table .intro-container h3 {font-size:40px;margin-bottom:10px;border-bottom:1px solid #000;}
+#content table .intro-container h3 {font-size:40px;margin-bottom:10px;border-bottom:1px solid #000;font-weight: normal;}
 #content table input[type="text"] {font-family:'omyu_pretty';font-size:24px;box-sizing:border-box;width:100%;padding:10px;margin-bottom:10px;border:1px solid #ccc;border-radius:4px;}
 #content table .intro-container .button-container2 {display:flex;justify-content:flex-end;gap:10px;margin-top:10px;margin-left:430px;}
 #content table .button-container2 button{width: 100px;height: 30px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;border: 1px solid;}
 #formImg{float: left;}  
-#editImgBtn{position: absolute;top: 628px;right:-480px;width: 100px;height: 30px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;border: 1px solid;}
-#editIntroBtn{position: absolute;top: 168px;right: 39px; z-index:5; width: 100px;height: 30px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;border: 1px solid;}
+#editImgBtn{font-size: 20px; font-family: 'omyu_pretty'; position: absolute;top: 628px;right:-480px;width: 100px;height: 40px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;border: 1px solid;}
+#content #editIntroBtn{font-size: 20px; font-family: 'omyu_pretty'; position: absolute;top: 168px;right: 39px; z-index:5; width: 100px;height: 40px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;border: 1px solid;}
 #content table #memberProfile{position:absolute; width:160px; height:160px;top: 28px;left: 58px; border:1px solid #bbb; border-radius:100px;object-fit:cover;} 
-#UploadImgBtn{position: absolute;top: 628px;right:-480px; width: 100px;height: 30px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;}
+#UploadImgBtn{font-size: 20px; font-family: 'omyu_pretty'; position: absolute;top: 628px;right:-480px; width: 100px;height: 40px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;}
 #introText{margin-bottom:0px;}
 
 /**************************모바일****************************************/
@@ -76,9 +75,9 @@ li{list-style:none;}
 #content table th{width:200px; text-align:center; border:1px solid #ddd; padding:8px;}
 #content table td {border:1px solid #bbb;padding:10px;text-align:left;vertical-align:middle;height:90px; font-size:15px;}
 #content table img{width:20%; height:20%; float:right; margin: 0 auto; vertical-align:middle;}
-#content table td a {display:flex;  color:#333;}
-#content table td a.logout-btn {display:inline-block;padding:10px 20px;background-color:#ff9800;color:#fff;text-decoration:none;border-radius:5px;transition:background-color 0.3s ease;}
-#content table td a.logout-btn:hover {background-color: #FF6600;}
+#content table td a {display:flex;  color:#333;} 
+#content table td .logout-btn {display:inline-block;padding:10px 20px;background-color:#ff9800;color:#fff;text-decoration:none;border-radius:5px;transition:background-color 0.3s ease;}
+#content table td .logout-btn:hover {background-color: #FF6600;}
 #content table .image-container {position:absolute; width:100px;height:100px;}
 #content table #imagePreview {float:center; width:100px; height:100px; border:1px solid #bbb; border-radius:100px;object-fit:cover;}
 #content table .button-container { position: relative;width:70%; margin-left:10px;  bottom:10px; left:10px; align-items:center;  font-size:10px;}
@@ -212,7 +211,15 @@ function previewImage(event) {
             <tr>
                 <td  colspan="2">
 					<h2><%= session.getAttribute("memberName") %>님 환영합니다.</h2>
-					<a class="logout-btn" style="float:right;  " href="${pageContext.request.contextPath}/member/memberLogOut.do">로그아웃</a>
+	                <c:choose>
+     					<c:when test="${memberLoginType eq '구글' or memberLoginType eq '카카오'}"> 
+				            <button class="logout-btn" type="button" onclick="location.href='https://kauth.kakao.com/oauth/logout?client_id=76703a8d13e15a9a7deb9a931b73de9e&logout_redirect_uri=http://localhost:8080/myapp/member/memberLogOut.do'">로그아웃</button>
+				            <!-- <button class="logout-btn" type="button" onclick="location.href='https://kauth.kakao.com/oauth/logout?client_id=76703a8d13e15a9a7deb9a931b73de9e&logout_redirect_uri=http://jjezen.cafe24.com/kim4ever/member/memberLogOut.do'">로그아웃</button> -->
+						</c:when>
+						<c:otherwise>
+				            <button class="logout-btn" type="button" onclick="location.href='${pageContext.request.contextPath}/member/memberLogOut.do'">로그아웃</button>
+						</c:otherwise>
+					</c:choose>
 				</td>
 			</tr>
 			
