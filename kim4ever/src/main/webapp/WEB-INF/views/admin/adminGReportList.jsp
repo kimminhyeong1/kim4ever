@@ -79,7 +79,7 @@ li{list-style:none;}
 				<option value="gInfoName">모임명</option> 
 				<option value="memberName">모임장</option>
 				<option value="reporterName">신고자</option>
-				<option value="gatheringReportContent">내용</option>
+				<option value="gatheringReportContent">신고내용</option>
 			</select>
 			<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요"/>
 			<button type="submit" id="searchBtn">검색</button>
@@ -106,25 +106,27 @@ li{list-style:none;}
 					</tr>
 			</c:forEach> 
 		</table>
+			
 		<table>
 			<tr>
 				<td>
-					<c:if test="${ pm.prev == true }">
-					<a href="${pageContext.request.contextPath }/admin/adminmemberList.do?page=${pm.startPage-1}&searchType=${ pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } "> ◀</a>
+					<c:if test="${pm.prev == true}">
+						<a href="${pageContext.request.contextPath}/admin/adminGReportList.do?page=${pm.startPage-1}&searchType=${pm.scri.searchType}&keyword=${scri.keyword}">◀</a>
 					</c:if>
 				</td>
 				<td>
-					<c:forEach var="i"  begin="${pm.startPage}" end="${pm.endPage}"  step="1" >
-						<a href="${pageContext.request.contextPath }/admin/adminmemberList.do?page=${ i }&searchType=${pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">${ i }</a>
-					</c:forEach>	
+					<c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}" step="1">
+						<a href="${pageContext.request.contextPath}/admin/adminGReportList.do?page=${i}&searchType=${pm.scri.searchType}&keyword=${scri.keyword}">${i}</a>
+					</c:forEach>
 				</td>
-					<td>
-					<c:if test="${pm.next&&pm.endPage >0 }">
-					<a href="${pageContext.request.contextPath }/admin/adminmemberList.do?page=${pm.endPage+1}&searchType=${pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">▶</a>
+				<td>
+					<c:if test="${pm.next && pm.endPage > 0}">
+						<a href="${pageContext.request.contextPath}/admin/adminGReportList.do?page=${pm.endPage+1}&searchType=${pm.scri.searchType}&keyword=${scri.keyword}">▶</a>
 					</c:if>
 				</td>
 			</tr>
 		</table>
+		
 		
 	</div>
 	

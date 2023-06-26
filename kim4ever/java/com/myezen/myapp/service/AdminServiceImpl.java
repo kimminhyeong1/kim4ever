@@ -227,6 +227,11 @@ public class AdminServiceImpl implements AdminService {
 		return gjlist;
 	}
 	
+	@Override
+	public int gatheringListSelectAll(SearchCriteria scri) {
+		return asm.gatheringListSelectAll(scri);
+	}
+	
 	//모임 상세 보기
 	@Override
 	public GatheringJoinVo gatheringDetail(int giidx) {
@@ -242,6 +247,12 @@ public class AdminServiceImpl implements AdminService {
 		ArrayList<GatheringJoinVo> gdlist = asm.gatheringDeclaration(scri);
 		return gdlist;
 	}
+	
+	
+	@Override
+	public int gatheringDeclarationSelectAll(SearchCriteria scri) {
+		return asm.gatheringDeclarationSelectAll(scri);
+	}
 
 	//모임 신고 내역 상세 보기
 	@Override
@@ -250,6 +261,10 @@ public class AdminServiceImpl implements AdminService {
 	
 		return asm.DeclarationDetail(gdix);
 	}
+
+
+
+
 
 
 
