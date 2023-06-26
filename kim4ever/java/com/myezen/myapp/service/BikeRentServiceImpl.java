@@ -216,8 +216,10 @@ public class BikeRentServiceImpl implements BikeRentService {
 
 	        //고장테이블에 고장정보 삽입
 	        value = brsm.bikeRentErrorInsert(ev);
+	        System.out.println("고장정보삽입"+value);
 	        //자전거테이블에 자전거 상태 E로 변환
 	        value = brsm.bikeRentStateE(ev.getBkidx()); 
+	        System.out.println("자전거상태E변환"+value);
 	        
 	    } catch (IOException e) {
 	        e.printStackTrace();
