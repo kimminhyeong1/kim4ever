@@ -199,7 +199,7 @@ else{
 
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
 	    mapOption = { 
-	        center: new kakao.maps.LatLng(35.82379981948935, 127.14761432056453), // 지도의 중심좌표
+	        center: new kakao.maps.LatLng(35.82379981948935, 127.13042445589289), // 지도의 중심좌표
 	        level: 7 // 지도의 확대 레벨
 	    };
 	
