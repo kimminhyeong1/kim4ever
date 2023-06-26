@@ -60,10 +60,17 @@ public interface AdminService {
 		public BikeJoinVo getMemberByMemberId(String memberId);
 	//모임 리스트
 		public ArrayList<GatheringJoinVo> gatheringList(SearchCriteria scri);
+	//모임 리스트 총갯수
+		public int gatheringListSelectAll(SearchCriteria scri);
 	//모임 리스트 상세 보기
 		public GatheringJoinVo gatheringDetail(int giidx);
 	//모임 신고 내역 리스트
 		public ArrayList<GatheringJoinVo> gatheringDeclaration(SearchCriteria scri);
+	//모임 신고 내역 리스트 총갯수	
+		public int gatheringDeclarationSelectAll(SearchCriteria scri);
 	//모임 신고 내역 상세 보기	
 		public GatheringJoinVo DeclarationDetail(int gdix);
+		
+		
+		
 }

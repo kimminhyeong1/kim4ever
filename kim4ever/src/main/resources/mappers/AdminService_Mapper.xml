@@ -445,19 +445,33 @@ OFFSET #{offset};
 	
 	<!-- 모임 리스트 -->
 	<select id="gatheringList" parameterType="com.myezen.myapp.domain.SearchCriteria" resultType="com.myezen.myapp.domain.GatheringJoinVo">
+		SELECT *
+	FROM (
 		SELECT
-			g.giidx, 
-			i.ginfoName,
-			m.memberName,
-			i.gInfoCreationDay,
-			i.gInfoParticipating
+		g.giidx, 
+		i.ginfoName,
+		m.memberName,
+		i.gInfoCreationDay,
+		i.gInfoParticipating,
+		ROW_NUMBER() OVER (ORDER BY i.gInfoCreationDay DESC) AS rnum
+		FROM GATHERING1234 g
+		JOIN member1234 m ON m.midx = g.midx
+		JOIN gathering_info1234 i ON i.giidx = g.giidx
+		WHERE gatheringMemberType = 'TL'
+		<include refid="search6" />
+	) c
+	WHERE c.rnum BETWEEN ((#{page}-1)*#{perPageNum}+1) AND (#{page}*#{perPageNum})
+	</select>
+	
+		<!-- 모임 리스트 총 갯수 -->
+	<select id="gatheringListSelectAll" parameterType="com.myezen.myapp.domain.SearchCriteria" resultType="int">
+			SELECT count(*) as cnt
 			FROM GATHERING1234 g
 			JOIN member1234 m ON m.midx = g.midx
 			JOIN gathering_info1234 i ON i.giidx = g.giidx
 			WHERE gatheringMemberType = 'TL'
 			<include refid="search6" />
-			ORDER BY
-   			i.gInfoCreationDay DESC
+   			
 	</select>
 	
 	<!-- 모임 상세 리스트 -->
@@ -507,26 +521,41 @@ OFFSET #{offset};
 	
 	<!-- 모임 신고 내역 리스트 -->
 	<select id="gatheringDeclaration" resultType="com.myezen.myapp.domain.GatheringJoinVo" parameterType="com.myezen.myapp.domain.SearchCriteria"> 
-       SELECT gi.giidx,
-	       gi.GINFONAME,
-	       gi.ginfoarea,
-	       m.memberName AS reporterName,
-	       gi.gInfoCreationDay,
-	       gi.gInfoParticipating,
-	       gd.gdix,
-	       gd.gatheringReportContent,
-	       gd.gatheringDeclarationDay,
-	       ml.memberName AS TL
+		SELECT *
+	FROM (
+		SELECT gi.giidx,
+			gi.GINFONAME,
+			gi.ginfoarea,
+			m.memberName AS reporterName,
+			gi.gInfoCreationDay,
+			gi.gInfoParticipating,
+			gd.gdix,
+			gd.gatheringReportContent,
+			gd.gatheringDeclarationDay,
+			ml.memberName AS TL
 		FROM GATHERING_DECLARATION1234 gd
 		JOIN GATHERING_info1234 gi ON gi.giidx = gd.giidx
 		JOIN member1234 m ON m.midx = gd.midx -- 신고자 정보를 가져오기 위한 조인
 		JOIN GATHERING1234 g ON g.giidx = gd.giidx -- 모임 정보를 가져오기 위한 조인
 		JOIN member1234 ml ON ml.midx = g.midx -- 모임장 정보를 가져오기 위한 조인
-		WHERE  g.gatheringMemberType = 'TL'
+		WHERE g.gatheringMemberType = 'TL'
 		<include refid="search7" />
-		ORDER BY
-		gd.gatheringDeclarationDay DESC
+		ORDER BY gd.gatheringDeclarationDay DESC
+		LIMIT #{startRow}, #{perPageNum}
+	) AS temp
    </select>
+   
+   <!-- 모임 신고 내역 리스트 총갯수 -->
+   <select id="gatheringDeclarationSelectAll" parameterType="com.myezen.myapp.domain.SearchCriteria" resultType="int">
+		SELECT count(*) as cnt
+	FROM GATHERING_DECLARATION1234 gd
+	JOIN GATHERING_info1234 gi ON gi.giidx = gd.giidx
+	JOIN member1234 m ON m.midx = gd.midx -- 신고자 정보를 가져오기 위한 조인
+	JOIN GATHERING1234 g ON g.giidx = gd.giidx -- 모임 정보를 가져오기 위한 조인
+	JOIN member1234 ml ON ml.midx = g.midx -- 모임장 정보를 가져오기 위한 조인
+	WHERE g.gatheringMemberType = 'TL'
+	<include refid="search7" />
+	</select>
 	
 	<!-- 모임 신고 내역 상세 보기 -->
 	<select id="DeclarationDetail" parameterType="int" resultType="com.myezen.myapp.domain.GatheringJoinVo">
