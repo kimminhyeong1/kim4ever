@@ -99,7 +99,7 @@
 	</select>
 	<!-- 회원로그인 -->
 	<select id="memberLogin" parameterType="String" resultType="mv">
-	select * from member1234 where memberdelyn='N' and memberId=#{memberId}
+	select * from member1234 where memberdelyn='N' and memberId=#{memberId} and memberLoginType = '일반'
 	</select>
 	<!-- 로그인 에서 이용중인 내역 가져오기 -->
 	<select id="bikeRentUsing" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
@@ -153,10 +153,16 @@
 		INSERT INTO member1234(memberId,memberPwd,memberName,memberEmail,memberLoginType,memberProfile,memberIntro, writeDay)
 		VALUES(#{0},#{1},#{2},#{0},'구글','/profile.jpg','안녕하세요.', NOW())
 	</insert>
+	<select id="googleMemberLogin" parameterType="String" resultType="mv">
+		select * from member1234 where memberdelyn='N' and memberId=#{memberId} and memberLoginType = '구글'
+	</select>
 	<insert id="kakaoMemberInsert" parameterType="String">
-		INSERT INTO member1234(memberId,memberPwd,memberName,memberEmail,memberLoginType,memberProfile,memberIntro, writeDay)
-		VALUES(#{0},#{1},#{2},#{0},'카카오','/profile.jpg','안녕하세요.', NOW())
+		INSERT INTO member1234(memberId,memberPwd,memberName,memberLoginType,memberProfile,memberIntro, writeDay)
+		VALUES(#{0},#{1},#{2},'카카오','/profile.jpg','안녕하세요.', NOW())
 	</insert>
+	<select id="kakaoMemberLogin" parameterType="String" resultType="mv">
+		select * from member1234 where memberdelyn='N' and memberId=#{memberId} and memberLoginType = '카카오'
+	</select>
 	<!--소셜 멤버 확인 -->
 	<select id="socialMemberCheck" parameterType="String" resultType="int">
 		select count(*) from member1234 where MEMBERDELYN='N' and memberId=#{0}

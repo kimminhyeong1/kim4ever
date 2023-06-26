@@ -152,7 +152,7 @@ public class MemberController {
 		            if (value == 1) {
 		            	//로그인 메소드
 		            	System.out.println("들어옴");
-		            	MemberVo mv = ms.memberLogin(memberId);
+		            	MemberVo mv = ms.googleMemberLogin(memberId);
 		            	
 		            	if(mv!=null && bcryptPasswordEncoder.matches(userId, mv.getMemberPwd()) ) {
 		            		session.setAttribute("midx", mv.getMidx());
@@ -192,12 +192,10 @@ public class MemberController {
 				// 3번
 				HashMap<String, Object> userInfo = ms.getUserInfo(access_Token);
 				System.out.println("###nickname#### : " + userInfo.get("nickname"));
-				System.out.println("###email#### : " + userInfo.get("email"));
-				
 				System.out.println("userinfo::::"+userInfo);
 				
 				//변수선언
-	            String memberId = (String) userInfo.get("email");
+	            String memberId = String.valueOf(userInfo.get("id"));
 				String memberPwd = bcryptPasswordEncoder.encode(memberId);
 				String memberName = (String) userInfo.get("nickname");
 				
@@ -213,7 +211,7 @@ public class MemberController {
 	            if (value == 1) {
 	            	//로그인 메소드
 	            	System.out.println("들어옴");
-	            	MemberVo mv = ms.memberLogin(memberId);
+	            	MemberVo mv = ms.kakaoMemberLogin(memberId);
 	            	
 	            	if(mv!=null && bcryptPasswordEncoder.matches(memberId, mv.getMemberPwd()) ) {
 	            		session.setAttribute("midx", mv.getMidx());

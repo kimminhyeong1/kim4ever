@@ -282,8 +282,8 @@ public class MemberServiceImpl implements MemberService {
 	public String getAccessToken(String authorize_code) throws Throwable {
 		
 		String kakaoClientId ="76703a8d13e15a9a7deb9a931b73de9e"; //REST API
-		//String kakaoRedirectUri ="http://localhost:8080/myapp/member/login/oauth2/code/kakao.do";
-		String kakaoRedirectUri ="http://jjezen.cafe24.com/kim4ever/member/login/oauth2/code/kakao.do";
+		String kakaoRedirectUri ="http://localhost:8080/myapp/member/login/oauth2/code/kakao.do";
+		//String kakaoRedirectUri ="http://jjezen.cafe24.com/kim4ever/member/login/oauth2/code/kakao.do";
 		String access_Token = "";
 		String refresh_Token = "";
 		String id_token = "";
@@ -338,7 +338,6 @@ public class MemberServiceImpl implements MemberService {
 
 			System.out.println("access_token : " + access_Token);
 			System.out.println("refresh_token : " + refresh_Token);
-
 			br.close();
 			bw.close();
 		} catch (IOException e) {
@@ -385,6 +384,7 @@ public class MemberServiceImpl implements MemberService {
 						});
 
 						System.out.println(jsonMap.get("properties"));
+						System.out.println(jsonMap.get("id"));
 
 						Map<String, Object> properties = (Map<String, Object>) jsonMap.get("properties");
 						Map<String, Object> kakao_account = (Map<String, Object>) jsonMap.get("kakao_account");
@@ -393,13 +393,14 @@ public class MemberServiceImpl implements MemberService {
 						// System.out.println(kakao_account.get("email"));
 
 						String nickname = new String(properties.get("nickname").toString().getBytes(),"utf-8");
-						
 						System.out.println("##############nicName##########  ::::"+nickname);
 						
-						String email = kakao_account.get("email").toString();
-
+						//String email = kakao_account.get("email").toString();
+						
+						
+						userInfo.put("id", jsonMap.get("id"));
 						userInfo.put("nickname", nickname);
-						userInfo.put("email", email);
+						//userInfo.put("email", email);
 
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -468,6 +469,18 @@ public class MemberServiceImpl implements MemberService {
 	public String memberPhoneCheck(int midx) {
 		String memberPhone = msm.memberPhoneCheck(midx);
 		return memberPhone;
+	}
+	@Override
+	//카카오로그인
+	public MemberVo kakaoMemberLogin(String memberId) {
+		MemberVo mv = msm.kakaoMemberLogin(memberId);
+		return mv;
+	}
+	@Override
+	//구글로그인
+	public MemberVo googleMemberLogin(String memberId) {
+		MemberVo mv = msm.googleMemberLogin(memberId);
+		return mv;
 	}
 
 

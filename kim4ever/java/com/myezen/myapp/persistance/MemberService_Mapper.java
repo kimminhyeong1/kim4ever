@@ -68,6 +68,10 @@ public interface MemberService_Mapper {
 	public int googleMemberInsert(String memberId,String memberPwd,String memberName);
 	//카카오로그인
 	public int kakaoMemberInsert(String memberId,String memberPwd,String memberName);
+	//카카오 로그인 확인
+	public MemberVo kakaoMemberLogin(String memberId);
+	//구글 로그인 확인
+	public MemberVo googleMemberLogin(String memberId);
 	//소셜 아이디있는지 확인
 	public int socialMemberCheck(String memberId);
 	//내가 쓴 게시글 조회
