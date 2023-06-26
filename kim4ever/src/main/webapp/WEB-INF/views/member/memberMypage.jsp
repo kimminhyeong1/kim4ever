@@ -52,16 +52,16 @@ li{list-style:none;}
 #content table .image-container {width:180px;height:180px;}  
 #content table #imagePreview {position:absolute; width:122px;  height:122px; border:1px solid #bbb; border-radius:100px;object-fit:cover;top: 43px;left: 65px;}
 #content table .button-container {width:200px; margin-left:20px; position:absolute; bottom:680px; left:0; align-items:center; }
-#content table .intro-container {width:550px;height:auto; float:right;border:1px solid #ddd; border-radius:50px; display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:20px;margin-top: 25px;}
-#content table .intro-container h3 {font-size:24px;margin-bottom:10px;border-bottom:1px solid #000;}
+#content table .intro-container {width:550px;height:auto; float:right; border-radius:50px; display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:20px;}
+#content table .intro-container h3 {font-size:40px;margin-bottom:10px;border-bottom:1px solid #000;}
 #content table input[type="text"] {font-family:'omyu_pretty';font-size:24px;box-sizing:border-box;width:100%;padding:10px;margin-bottom:10px;border:1px solid #ccc;border-radius:4px;}
 #content table .intro-container .button-container2 {display:flex;justify-content:flex-end;gap:10px;margin-top:10px;margin-left:430px;}
 #content table .button-container2 button{width: 100px;height: 30px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;border: 1px solid;}
 #formImg{float: left;}  
-#editImgBtn{position: absolute;top: 569px;right:-500px;width: 100px;height: 30px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;border: 1px solid;}
-#editIntroBtn{position: absolute;top: 110px;right: 45px; z-index:5; width: 100px;height: 30px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;border: 1px solid;}
-#content table #memberProfile{position:absolute; width:122px; height:122px;top: 43px;left: 65px; border:1px solid #bbb; border-radius:100px;object-fit:cover;} 
-#UploadImgBtn{position: absolute;top: 569px;right:-500px; width: 100px;height: 30px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;}
+#editImgBtn{position: absolute;top: 628px;right:-480px;width: 100px;height: 30px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;border: 1px solid;}
+#editIntroBtn{position: absolute;top: 168px;right: 39px; z-index:5; width: 100px;height: 30px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;border: 1px solid;}
+#content table #memberProfile{position:absolute; width:160px; height:160px;top: 28px;left: 58px; border:1px solid #bbb; border-radius:100px;object-fit:cover;} 
+#UploadImgBtn{position: absolute;top: 628px;right:-480px; width: 100px;height: 30px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;}
 #introText{margin-bottom:0px;}
 
 /**************************모바일****************************************/
