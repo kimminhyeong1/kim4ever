@@ -545,6 +545,7 @@ OFFSET #{offset};
 	) AS temp
    </select>
    
+   <!-- 모임 신고 내역 리스트 총갯수 -->
    <select id="gatheringDeclarationSelectAll" parameterType="com.myezen.myapp.domain.SearchCriteria" resultType="int">
 		SELECT count(*) as cnt
 	FROM GATHERING_DECLARATION1234 gd

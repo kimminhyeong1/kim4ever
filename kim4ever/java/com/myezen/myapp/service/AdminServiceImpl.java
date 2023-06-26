@@ -227,6 +227,7 @@ public class AdminServiceImpl implements AdminService {
 		return gjlist;
 	}
 	
+	//모임 리스트 총갯수
 	@Override
 	public int gatheringListSelectAll(SearchCriteria scri) {
 		return asm.gatheringListSelectAll(scri);
@@ -248,7 +249,7 @@ public class AdminServiceImpl implements AdminService {
 		return gdlist;
 	}
 	
-	
+	//모임 신고 내역 리스트 총갯수
 	@Override
 	public int gatheringDeclarationSelectAll(SearchCriteria scri) {
 		return asm.gatheringDeclarationSelectAll(scri);
