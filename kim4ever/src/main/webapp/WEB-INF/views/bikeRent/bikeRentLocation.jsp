@@ -15,15 +15,15 @@
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20f538f14cf29a1eb30d2f9dbaa4e1fb"></script>
 		<style>
 			#main{width:1250px; margin:35px auto 70px; text-align:center;}
-			#main #content{width:1250px; height:2400px;text-align:center;}
+			#main #content{width:1250px; height:auto;text-align:center;}
 			#main #bottom{width:1250px; height:300px;}
-			#main #content #map{margin-top:50px; width:80%; height:700px; margin-left:130px;}
-			#main #content table {border-collapse: collapse; margin:50px auto; width:1000px; background-color:white; box-shadow:0px 0px 10px rgba(0, 0, 0, 0.1); line-height:40px; font-size:24px;  font-family: 'omyu_pretty';}
-			#main #content table th {padding: 10px;text-align:center; border-bottom: 1px solid #ddd;background-color: #f2f2f2;}
-			#main #content table td:nth-child(1){padding: 10px; text-align:center; border-bottom:1px solid #ddd;}
+			#main #content #map{margin-top:10px; width:80%; height:700px; margin-left:130px; border-radius:20px}
+			#main #content table {border-collapse: collapse; margin:0 auto; margin-top:20px; width:1000px; background-color:white; box-shadow:0px 0px 10px rgba(0, 0, 0, 0.1); line-height:40px; font-size:24px;  font-family: 'omyu_pretty'; }
+			#main #content table th {padding: 10px;text-align:center; border-bottom: 1px solid #ddd;background-color: #ff9833;}
+			#main #content table td:nth-child(1){padding: 10px; text-align:center; border-bottom:1px solid #ddd; }
 			#main #content table td:nth-child(2){padding: 10px; text-align:left; border-bottom:1px solid #ddd;}
-			#main #content h1 {font-size:35px; padding-top:10px;  text-align:center; color:#333; margin-top:40px; margin-bottom:20px; font-family:'KCC-Ganpan'; font-weight:bold; letter-spacing:-1px; text-shadow:1px 1px #fff; background-color:#fff; border:none;padding-bottom:10px;}
-			#main #content h2{margin-top:20px; font-family: 'KCC-Ganpan';}
+			#main #content h1 {font-size:35px;   text-align:center; color:#333; margin-top:40px; margin-bottom:10px; font-family:'KCC-Ganpan'; font-weight:bold; letter-spacing:-1px; text-shadow:1px 1px #fff; background-color:#fff; border:none;padding-bottom:10px;}
+			#main #content h2{margin-top:40px; font-size:35px; font-family: 'KCC-Ganpan';}
 			
 			/*마커 폰트 변경*/
 			/*마커 글씨 크기 변경*/
@@ -38,9 +38,9 @@
 			#main{width:auto; margin:0 auto; text-align:center;}
 			#main #content{width:auto; height:auto;text-align:center;}
 			#main #bottom{width:auto; height:10px;}
-			#main #content #map{margin-top:50px; width:200px; height:200px; margin-right:50px;}
+			#main #content #map{margin-top:10px; width:200px; height:200px; margin-right:50px;}
 			#main #content table {border-collapse: collapse; margin:20px auto; width:90%; background-color:white; box-shadow:0px 0px 10px rgba(0, 0, 0, 0.1); line-height:11px; font-size:11px;  font-family: 'omyu_pretty'; }
-			#main #content table th {padding: 3px;text-align:center; border-bottom: 1px solid #ddd;background-color: #f2f2f2; width:45px; line-height:12px;}
+			#main #content table th {padding: 3px;text-align:center; border-bottom: 1px solid #ddd;background-color: #ff9833; width:45px; line-height:12px;}
 			#main #content table td:nth-child(1){padding: 5px; text-align:center; border-bottom:1px solid #ddd;}
 			#main #content table td:nth-child(2){padding: 5px; text-align:left; border-bottom:1px solid #ddd;}
 			
@@ -104,10 +104,10 @@
 			    </tr>
 		  	</table>
 		</div>
-	<div id="bottom">
-	</div>
-	<%@include file="../footer.jsp" %>
+
+
 </div>
+	<%@include file="../footer.jsp" %>
 <script>
 
 /* 모바일스크립트*/

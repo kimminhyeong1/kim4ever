@@ -14,7 +14,7 @@ li{list-style:none;}
 body {width: 100vw;   height: 100vh; }
 #main{width:1440px; margin:35px auto; text-align:center; border:1px solid #white;      font-family: 'IM_Hyemin-Bold';
 }
-#main #content{width:1440px; height: auto !important;/*우선권*/}
+#main #content{width:1440px; height: auto !important;/*우선권*/ margin-top: 10px;}
 #main #content img{width:1440x; height:800px;}
 @font-face {
     font-family: 'GangwonEdu_OTFBoldA';
@@ -59,8 +59,12 @@ opacity:1;padding:5px; border-radius:50px;font-size:50px;}
 .slider-1 >.side-btns > div:last-child > span {left:auto;right:20px; }
 
 /*날씨*/
-#ww_73df1f3b67ed7 {display:block;}
-#ww_8d73add77d5ae {display:none;}
+#ww_73df1f3b67ed7 {display:block; font-family: 'omyu_pretty' !important;}
+#ww_8d73add77d5ae {display:none; font-family: 'omyu_pretty' !important;}
+#ww_73df1f3b67ed7 .day-forecast{font-family: 'omyu_pretty' !important;}
+#ww_73df1f3b67ed7 .ww_col1 {font-family: 'omyu_pretty' !important;}
+
+
 
 /*메인2*/
 #main2{width:auto; height:500px; margin:0 auto; text-align:center; 
@@ -89,9 +93,9 @@ border-radius:20px;  float:left; }
 #main3{width:1440px; margin:150px auto; text-align:center;  justify-content: center; margin-bottom:0px;
 }
 .container {margin-top:20px;display:flex; flex-wrap:wrap; justify-content:center;  opacity: 0; }
-.item {position:relative; width:calc(27% - 10px); margin-bottom: 20px; margin-right:20px; height:300px;   box-shadow: 4px 0px 4px 0px rgba(0, 0, 0, 0.5); border-radius: 5px;}
-.item img {width:100%; height:70%; transition:opacity 1s ease-in-out, transform 0.5s ease-in-out; border-bottom-left-radius: 50px;}
-.item img:hover{transform:scale(1.03); }
+.item {position:relative; width:calc(27% - 10px); margin-bottom: 20px; margin-right:20px; height:300px;   box-shadow:0 2px 4px rgba(0, 0, 0, 0.4); border-radius: 20px;}
+.item img {width:100%; height:70%; border-radius: 20px 20px 0 0; }
+
 
 .item .text {position:absolute; bottom: 0; left:0; width:89.5%; padding:10px; color:black; text-align: center;}
 .item .text h2 {font-size:25px; margin:0 0 5px;     font-family: 'omyu_pretty';}
@@ -130,7 +134,7 @@ margin: 0;   font-family: 'omyu_pretty';}
 /*****모바일 넓이***/
 @media (min-width: 300px) and (max-width: 940px)  {
 #main{width:auto; heigh:50vh; margin:0 auto;  border:1px solid #white; font-family: 'IM_Hyemin-Bold';}
-#main #content{width:auto; height: auto !important;/*우선권*/}
+#main #content{width:auto; height: auto !important;/*우선권*/     margin-top: 10px;}
 #main #content img{width:auto; height:600px;}
 
 /* 메인베너 */
@@ -159,9 +163,8 @@ opacity:1;padding:5px; border-radius:50px;font-size:20px;}
 .slider-1 >.side-btns > div:last-child > span {left:auto;right:30px; }
 
 /*날씨*/
-#ww_73df1f3b67ed7 {display:none;  font-family: 'omyu_pretty' !important;}
-#ww_8d73add77d5ae {display:block;  font-family: 'omyu_pretty'!important;}
-
+#ww_73df1f3b67ed7 {display:none; }
+#ww_8d73add77d5ae {display:block;  }
 
 
 /*메인2*/
@@ -171,11 +174,11 @@ opacity:1;padding:5px; border-radius:50px;font-size:20px;}
 #main3{width:auto; margin:20px auto; text-align:center;  justify-content: center;  
 }
 .container {margin-top:20px;display:flex; flex-wrap:wrap; justify-content:center;  opacity: 0; }
-.item {position:relative; width:calc(27% - 1px); margin-bottom: 20px; margin-right:10px; height:100px;   box-shadow: 4px 0px 4px 0px rgba(0, 0, 0, 0.5); border-radius: 5px;}
-.item img {width:100%; height:70%; transition:opacity 1s ease-in-out, transform 0.5s ease-in-out; border-bottom-left-radius: 50px;}
-.item img:hover{transform:scale(1.03); }
+.item {position:relative; width:calc(30% - 1px); margin-bottom: 20px; margin-right:5px; margin-left: 5px; height:110px;   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); border-radius: 20px;}
+.item img {width:100%; height:75%; }
 
-.item .text {position:absolute; bottom: 0; left:0; width:89.5%; padding:10px; color:black; text-align: center; margin-top:20px;}
+
+.item .text {position:absolute; bottom: -8px; left:-3px; width:89.5%; padding:10px; color:black; text-align: center; margin-top:20px;}
 .item .text h2 {font-size:14px; margin:30px 0 5px;     font-family: 'omyu_pretty';}
 .item .text p {display:none;}
 

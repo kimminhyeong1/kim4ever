@@ -20,12 +20,13 @@ ArrayList<BikeJoinVo> bikeList = (ArrayList<BikeJoinVo>)request.getAttribute("bi
 		
 		<style type="text/css">
 		 	/*소개부분*/
-			#bikeIntro{margin:40px auto;width:70%; padding: 20px;background-color:#f1f1f1; border-radius:10px;} 
+		 	#main{margin:0 auto !important;}
+			#bikeIntro{margin:40px auto; margin-top:10px; width:1000px; padding: 20px;background-color:#FAFAFA; border-radius:20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);} 
 			#bikeIntro h2{font-family:'KCC-Ganpan'; text-align:center; font-size:35px; color:#333; margin-bottom: 20px;}
 			#bikeIntro p{font-family:'omyu_pretty'; text-align:left; margin-left:40px; font-size:24px; padding:15px 15px; letter-spacing:3px;}
 			#bikeNotice{text-align:center;}
 			#bikeNotice button{width:400px; height:50px; border-radius:10px; border:0px solid #ff9933; font-family:'omyu_pretty'; font-size:30px; background:#ff9933; margin-top:20px;}
-			#bikeNotice p{margin-top:40px; font-size:30px;}
+			#bikeNotice p{margin:40px; font-size:30px;}
 			#bcontent .deleteBtn {display:none; position: absolute;top:0;right:0;width:30px;height:30px;background-color:#ff0000;color:#fff;font-size:20px;border:none;border-radius:50%;cursor:pointer;}
 			#bcontent .card:hover .deleteBtn {display:block;}
 
@@ -33,12 +34,12 @@ ArrayList<BikeJoinVo> bikeList = (ArrayList<BikeJoinVo>)request.getAttribute("bi
 /**********************모바일****************/
 @media (min-width: 300px) and (max-width: 940px)  {
 /*소개부분*/
-			#bikeIntro{margin:0 auto; width:320px; background-color:#f1f1f1; border-radius:10px; padding:10px; margin-bottom:30px;} 
+			#bikeIntro{margin:0 auto; margin-top: 10px; width:320px; background-color:#FAFAFA; border-radius:20px; padding:10px; margin-bottom:30px;} 
 			#bikeIntro h2{font-family:'KCC-Ganpan'; text-align:center; font-size:15px; color:#333; margin-bottom: 20px;}
 			#bikeIntro p{font-family:'omyu_pretty'; text-align:left; margin-left:10px; font-size:10px; padding:5px 5px; letter-spacing:3px;}
 			#bikeNotice{text-align:center;}
 			#bikeNotice button{width:200px; height:30px; border-radius:10px; border:0px solid #ff9933; font-family:'omyu_pretty'; font-size:14px; background:#ff9933; margin-top:10px;}
-			#bikeNotice p{margin-top:40px; font-size:10px; }
+			#bikeNotice p{margin:20px; font-size:10px; }
 			.cardInfo {height:33px; }			
 			#bcontent .deleteBtn {display:none; position: absolute;top:0;right:0;width:30px;height:20px;background-color:#ff0000;color:#fff;font-size:20px;border:none;border-radius:50%;cursor:pointer;}
 			#bcontent .card:hover .deleteBtn {display:block;}

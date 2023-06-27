@@ -17,13 +17,13 @@ li{list-style:none;}
 
 #main{width:1440px; margin:35px auto 70px; text-align:center; }
 #main #content{width:1440px; height:2400px;}
-#main #content img{width:60%; height:auto; margin-top:20px; border-radius:10px;}
+#main #content img{width:70%; height:auto;  border-radius:20px;}
 #main #bottom{width:1440px; height:300px; }
 #main #content h1 {
   font-size: 35px;
   text-align: center;
   color: #333;
-  margin-top: 40px;
+  margin-top: 10px;
   margin-bottom: 20px;
   font-family: 'KCC-Ganpan';
   letter-spacing: -1px;
@@ -34,26 +34,25 @@ li{list-style:none;}
 }
 #courseList a{
   font-family: 'omyu_pretty';
-  font-size: 32px;
+  font-size: 35px;
   display: inline-block;
   padding: 5px 10px;
-  background-color: #f0f0f0;
-  border-radius: 5px;
-  margin: 50px 10px 0 0;
-  color: #333;
+  background-color: rgba(255, 152, 51, 0.5);;
+  border-radius: 20px;
+  margin: 40px 10px 0 0;
+  color: gray;
   text-decoration: none;
 }
 /*active 가상 클래스 선택자 사용했음*/
 #courseList a:focus,
 #courseList a:active {
-  background-color: #333;
-  color: #fff;
-  border: 1px solid #333;
+  background-color: #ff9833;;
+  color: black;
   outline: none;
 }
 
-#course{width: 100%; height: 1200px; margin-top:20px;border: none;}
-#main #content h1{margin-top:30px; text-align:center;}
+#course{width: 100%; height: 1200px; border: none;}
+#main #content h1{margin-top:10px; text-align:center;}
 
 
 
