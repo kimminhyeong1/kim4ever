@@ -82,6 +82,7 @@ a{color:inherit; text-decoration:none;}
 	<form action="${pageContext.request.contextPath}/admin/adminmemberList.do" method="get">
 		<div class="search">
 			<select id="searchType" name="searchType">
+				<option value="">검색조건</option>
 				<option value="memberId">아이디</option> 
 				<option value="memberName">이름</option>
 				<option value="memberType">등급</option>
