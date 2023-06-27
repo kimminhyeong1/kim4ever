@@ -263,6 +263,12 @@ public class AdminServiceImpl implements AdminService {
 		return asm.DeclarationDetail(gdix);
 	}
 
+	@Override
+	public void deleteGathering(int giidx) {
+		asm.deleteGathering(giidx);
+		
+	}
+
 
 
 

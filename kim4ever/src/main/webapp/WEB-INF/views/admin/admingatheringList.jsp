@@ -46,11 +46,14 @@ li{list-style:none;}
 #content table {width:70%; border-collapse:collapse; margin:0 auto; line-height:50px; font-size:20px;font-family:'omyu_pretty'; font-size:24px;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
-#content table tr th:nth-child(1){width:60px;}
-#content table tr th:nth-child(2){width:70px;}
-#content table tr th:nth-child(3){width:95px;}
+#content table tr th:nth-child(1){width:80px;}
+#content table tr th:nth-child(2){width:60px;}
+#content table tr th:nth-child(3){width:110px;}
 #content table tr th:nth-child(4){width:60px;}
-#content table tr th:nth-child(5){width:40px;}
+#content table tr th:nth-child(5){width:60px;}
+#content table tr th:nth-child(6){width:40px;}
+#content table .report-count {display:inline-block;vertical-align:middle;margin-right:5px;}
+#content table .icon-image {height:30px;vertical-align:middle;}
 #content #gatheringList{color: #ff7700; margin-right:10px;} 
 #content #GReportList{color: #000;} 
 #content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
@@ -70,6 +73,13 @@ li{list-style:none;}
 			location.href='<%=request.getContextPath()%>/admin/adminmemberDelete.do?memberId='+memberId;
 		}
 	}
+	
+	function confirmDelete(giidx) {
+		  if (confirm("해당 모임을 삭제하시겠습니까?")) {
+		    window.location.href = "${pageContext.request.contextPath}/admin/adminGatheringDelete.do?giidx=" + giidx;
+		  }
+		}
+
 </script>
 </head>
 
@@ -99,6 +109,8 @@ li{list-style:none;}
 		    <th>모임장</th>
 		    <th>생성일</th>
 		    <th>모임 인원</th>
+		    <th>신고횟수</th>
+		    <th></th>
 		  </tr>
 		  
 		 <c:forEach var="gjv" items="${gjlist}">
@@ -107,6 +119,22 @@ li{list-style:none;}
 		    <td>${gjv.memberName}</td>
 		    <td>${gjv.gInfoCreationDay.substring(0, 16)}</td>
 		    <td>${gjv.gInfoParticipating}</td>
+		    <td>
+				<span class="report-count">${gjv.REPORTCNT}번</span>
+			  	<c:choose>
+				    <c:when test="${gjv.REPORTCNT >= 5}">
+				    	<img src="../resources/btn/warn.png" alt="Warn" class="icon-image" />
+				    </c:when>
+				    <c:when test="${gjv.REPORTCNT >= 3}">
+				      	<img src="../resources/btn/caution.png" alt="Caution" class="icon-image" />
+				    </c:when>
+			  </c:choose>
+			</td>
+			<td>
+				<c:if test="${gjv.REPORTCNT >= 5}">
+			    	<button type="button" onclick="confirmDelete('${gjv.giidx}')">모임삭제</button>
+		  		</c:if>
+			</td>
 		  </tr>	
 		 </c:forEach> 	  
 		</table>

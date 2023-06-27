@@ -336,6 +336,18 @@ public class AdminController {
 		    model.addAttribute("gdtv", gdtv);
 			return "admin/adminGReportDetail";
 		}
+		
+	 // 모임 삭제 요청 처리
+	  @RequestMapping(value = "/adminGatheringDelete.do", method = RequestMethod.GET)
+	  public String deleteGathering(@RequestParam("giidx") int giidx) {
+	    // 모임 삭제 로직 구현
+	    as.deleteGathering(giidx);
+	    
+	    // 삭제 후 리다이렉트할 페이지로 이동
+	    return "redirect:/admin/admingatheringList.do";
+	    
+	  }
+		
 	
 ////////////////	 		게시글 관리			///////////////// 	
 	

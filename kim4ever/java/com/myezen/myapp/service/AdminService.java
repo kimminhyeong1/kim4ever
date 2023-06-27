@@ -70,8 +70,8 @@ public interface AdminService {
 		public int gatheringDeclarationSelectAll(SearchCriteria scri);
 	//모임 신고 내역 상세 보기	
 		public GatheringJoinVo DeclarationDetail(int gdix);
-		
-		
+	//모임 신고 내역으로 인해 모임 삭제
+		public void deleteGathering(int giidx);
 		
 		
 }

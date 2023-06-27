@@ -46,9 +46,9 @@ li{list-style:none;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
 #content table tr th:nth-child(1){width:60px;}
-#content table tr th:nth-child(2){width:70px;}
-#content table tr th:nth-child(3){width:80px;}
-#content table tr th:nth-child(4){width:70px;}
+#content table tr th:nth-child(2){width:50px;}
+#content table tr th:nth-child(3){width:100px;}
+#content table tr th:nth-child(4){width:50px;}
 #content table tr th:nth-child(5){width:130px;}
 #content #gatheringList{color: #000; margin-right:10px;} 
 #content #GReportList{color: #ff7700;} 
@@ -101,7 +101,7 @@ li{list-style:none;}
 					<tr>
 						<td>${gdv.gInfoName}</td>
 						<td>${gdv.TL}</td>
-						<td>${gdv.gatheringDeclarationDay}</td>
+						<td>${gdv.gatheringDeclarationDay.substring(0, 16)}</td>
 						<td>${gdv.reporterName}</td>
 						<td><a href="adminGReportDetail.do?gdix=${gdv.gdix}">${gdv.gatheringReportContent}</a></td>						
 					</tr>
