@@ -91,7 +91,8 @@ public interface BikeRentService_Mapper {
     //대여소 자전거 남은 갯수
     public ArrayList<BikeJoinVo>availableStations();
 
-	
+	//리뷰 작성
+    public int reviewInsert(String reviewContent);
 	
 	
 }

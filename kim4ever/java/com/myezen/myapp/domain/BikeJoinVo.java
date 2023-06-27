@@ -99,6 +99,13 @@ public class BikeJoinVo {
 	private int depth;
 	private int level_;
 	
+	
+	
+	//ReviewVo
+	private int rvidx;
+	private String reviewContent;
+	private String reviewWriteDay;
+	
 	public int getBidx() {
 		return bidx;
 	}
@@ -505,5 +512,26 @@ public class BikeJoinVo {
 		this.dayago = dayago;
 	}
 	
+		
+	public int getRvidx() {
+		return rvidx;
+	}
+	public void setRvidx(int rvidx) {
+		this.rvidx = rvidx;
+	}
+	public String getReviewContent() {
+		return reviewContent;
+	}
+	public void setReviewContent(String reviewContent) {
+		this.reviewContent = reviewContent;
+	}
+	public String getReviewWriteDay() {
+		return reviewWriteDay;
+	}
+	public void setReviewWriteDay(String reviewWriteDay) {
+		this.reviewWriteDay = reviewWriteDay;
+	}
 	
+	
+
 }
