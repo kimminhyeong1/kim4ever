@@ -74,6 +74,8 @@ public interface BikeRentService_Mapper {
     //1. 자전거테이블에 자전거 상태 반납(N)으로 바꾸기
     //   자전거테이블에 자전거 위치 바꾸기
     public int bikeRentBikeUpdate(int bkidx, String bikeLocation);
+    //1.2 대여 테이블 대여상태 Y
+    public int bikeRentUpdate(int ridx);   
 	//2. 반납테이블에 컬럼 생성하기
     public int bikeRentReturnInsert(String RentalshopName,int ridx);
 
