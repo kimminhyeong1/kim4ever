@@ -34,7 +34,7 @@ button{cursor:pointer;}
 .sub-menu-list li p{color:#000; text-decoration:none; font-weight:bold; font-size: 25px;}
 .sub-menu-list li:hover a {color:#999;text-shadow:none;}
 .sub-menu-list li:first-child {width:450px;border-bottom: 2px solid #ff9933; }
-.sub-menu-list li:nth-child(6){width:450px; border-bottom:2px solid #99CC99; }
+.sub-menu-list li:nth-child(5){width:450px; border-bottom:2px solid #99CC99; }
 
 
 /*사이드바 내부 상단 로그인,회원가입*/

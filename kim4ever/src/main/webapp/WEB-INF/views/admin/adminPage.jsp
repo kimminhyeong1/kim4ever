@@ -36,7 +36,7 @@
 						<p class="pcontent">${bkidxCount}대</p>
 					</div>	
 					
-					<div class="abox" onclick="openPopup('${pageContext.request.contextPath}/admin/adminbikeList.do')">
+					<div class="abox" onclick="location.href='${pageContext.request.contextPath}/admin/adminbikeList.do'">
 						<h3 class="cardTitle">대여 중인 자전거</h3>
 						<p class="pcontent">${ridxCount}대</p>
 					</div>	

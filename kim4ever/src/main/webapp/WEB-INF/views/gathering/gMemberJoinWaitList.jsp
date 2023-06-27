@@ -9,93 +9,32 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">
 		<link rel="stylesheet" media="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_gathering_mo.css">
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<style type="text/css">
-			li{list-style:none;}
-	a { text-decoration:none; color: inherit;} 
-.menu {
-  width: 500px;
-  text-align: left;
-  margin-top: 50px;
-  margin-left: 460px;
-  font-size: 25px;
-}
-
-.gProfileimage img {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
-.gMemberList {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  font-size: 20px;
-  margin: 40px 40px;
-}
-
-.gMemberList > div {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  position: relative;
-}
-
-.gMemberList > div::after {
-  content: "";
-  position: absolute;
-  bottom: -5px; /* 선의 위치 조정 */
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: #ccc;
-}
-
-.gMemberList > div > div:nth-child(1) {
-  width: 50px;
-  height: 50px;
-  float: left;
-}
-
-.gMemberList > div > div:nth-child(2) {
-  height: 25px;
-  margin-left: 10px;
-}
-
-.gMemberList > div > div:nth-child(2) > div,
-.gMemberList > div > div:nth-child(3) > div {
-  display: inline-block;
-  margin-top: 5px;
-  font-size: 20px;
-  margin-left: 10px;
-}
-
-.gmemberName {
-  width: 150px;
-}
-
-.gmemberInfo {
-  width: 350px;
-}
-	
-.gmemberAddr {
-  width: 250px;
-}
-
-.checkboxWrapper {
-  width: 50px;
-}	
-	
-.buttonContainer {
-display: flex; justify-content: flex-end;}	
-
-.buttonContainer button {width:10%; height:40px; margin-top:10px; margin-left:5px; text-align:center; font-family:'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}	
-.buttonContainer button:active{background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
-	</style>  
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		li{list-style:none;}
+		a { text-decoration:none; color: inherit;} 
+		.menu {width:500px;text-align:left;margin-top:50px;margin-left:460px;font-size:25px;}
+		.gProfileimage img {width:50px;height:50px;object-fit:cover;border-radius:50%;}
+		.gMemberList {display:flex;flex-direction:column;align-items:flex-start;text-align:left;font-size:20px;margin:40px 40px;}
+		.gMemberList > div {display:flex;align-items:center;margin-bottom:10px;position:relative;}
+		.gMemberList > div::after {content:"";position:absolute;bottom:-5px; /* 선의 위치 조정 */left:0;width:100%;height:1px;background-color:#ccc;}
+		.gMemberList > div > div:nth-child(1) {width:50px;height:50px;float:left;}
+		.gMemberList > div > div:nth-child(2) {height:25px;margin-left:10px;}
+		.gMemberList > div > div:nth-child(2) > div,
+		.gMemberList > div > div:nth-child(3) > div {display:inline-block;margin-top:5px;font-size:20px;margin-left:10px;}
+		.gmemberName {width:150px;}
+		.gmemberInfo {width:350px;}
+		.gmemberAddr {width:250px;}
+		.checkboxWrapper {width:50px;}	
+		.buttonContainer {display: flex;justify-content: flex-end;}	
+		.buttonContainer button {width:10%; height:40px; margin-top:10px; margin-left:5px; text-align:center; font-family:'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}	
+		.buttonContainer button:active{background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+		.menu #gMemberListLink {color:#bbb}
+		.menu #gMemberJoinWaitListLink {color:#228B22}
+		.menu #gPowerEntrustListLink {color:#bbb}
+		</style>  
+		
 	</head>
 	<body>
 		<%@include file="../header2.jsp" %>

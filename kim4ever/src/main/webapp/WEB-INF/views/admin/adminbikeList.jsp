@@ -41,6 +41,10 @@ li{list-style:none;}
 #main{width:1250px; margin:35px auto 70px; text-align:center; }
 #main #content{width:1250px; height:2400px;text-align:center;}
 #main #bottom{width:1250px; height:300px; }
+#content table .status-available { color:green; }
+#content table .status-rented { color:orange; }
+#content table .status-error { color:red; }
+
 #main #content h2{text-align:left; margin-top:50px; margin-left:200px;font-family: 'GangwonEdu_OTFBoldA'; font-size:30px;}
 #content p{text-align:right; margin-right:200px;}
 #content table {width:70%; border-collapse:collapse; margin:0 auto; line-height:50px; font-size:20px;font-family:'omyu_pretty'; font-size:24px;}
@@ -80,14 +84,11 @@ li{list-style:none;}
 						<option value="bikeCode">번호</option> 
 						<option value="bikeType">종류</option>
 						<option value="bikeLocation">위치</option>
-						<option value="bikeState">상태</option>
 					</select>
 					<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요"/>
 					<button type="submit" id="searchBtn">검색</button>
 				</div>
 			</form>
-		
-		
 		
 		<table>
 			<tr>
@@ -105,13 +106,13 @@ li{list-style:none;}
 				<td>
 				<c:choose>
 								<c:when test="${kv.bikeState eq 'Y'}">  
-									대여 가능
+									 <span class="status-available">대여 가능</span>
 								</c:when>
 								<c:when test="${kv.bikeState eq 'N'}">  
-									대여 중
+									 <span class="status-rented">대여 중</span>
 								</c:when>
 								<c:when test="${kv.bikeState eq 'E'}">  
-									고장
+									 <a href="${pageContext.request.contextPath }/admin/adminbikeError.do" class="status-error">고장</a>
 								</c:when>
 				</c:choose>				
 				</td>
@@ -137,7 +138,7 @@ li{list-style:none;}
 				</td>
 					<td>
 					<c:if test="${pm.next&&pm.endPage >0 }">
-					<a href="${pageContext.request.contextPath }/adminadminbikeList.do?page=${pm.endPage+1}&searchType=${pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">▶</a>
+					<a href="${pageContext.request.contextPath }/admin/adminbikeList.do?page=${pm.endPage+1}&searchType=${pm.scri.searchType}&keyword=${ pm.encoding(pm.scri.keyword) } ">▶</a>
 					</c:if>
 				</td>
 			</tr>
