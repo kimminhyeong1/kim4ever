@@ -92,8 +92,9 @@ li{list-style:none;}
 			<form name="frm" action="${pageContext.request.contextPath}/admin/adminboardList.do" method="post">
 			<div class="search">
 				<select name="searchType">
-						<option value="subject">제목</option>
-						<option value="writer">작성자</option>
+					<option value="">검색조건</option>
+					<option value="subject">제목</option>
+					<option value="writer">작성자</option>
 				</select>
 				<input type="text" name="keyword" size="10">
 				<button type="submit" id="searchBtn">검색</button>

@@ -504,7 +504,7 @@ OFFSET #{offset};
 		</if>
 		
 		<if test="searchType != null and searchType.equals('reporterName')">
-		    AND reporterName LIKE CONCAT('%', #{keyword}, '%')
+		    AND  m.memberName LIKE CONCAT('%', #{keyword}, '%')
 		</if>
 		
 		<if test="searchType != null and searchType.equals('gatheringReportContent')">

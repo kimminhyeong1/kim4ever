@@ -76,6 +76,7 @@ li{list-style:none;}
 			<form action="${pageContext.request.contextPath}/admin/adminbikeList.do" method="get">
 				<div class="search">
 					<select id="searchType" name="searchType">
+						<option value="">검색조건</option>
 						<option value="bikeCode">번호</option> 
 						<option value="bikeType">종류</option>
 						<option value="bikeLocation">위치</option>
