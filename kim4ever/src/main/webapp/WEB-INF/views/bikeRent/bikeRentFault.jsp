@@ -203,8 +203,8 @@
 
 				<div class="container A">
 					<div><h2>안내사항</h2></div>
-					<div>고장/신고는 자전거가 움직이지 않거나 사고가 일어났을 때 접수가 가능한 페이지입니다,</div>
-					<div><span>다른 잔고장인 경우에는</span>반납이 끝나고 나오는 이용 리뷰 페이지를 이용해 주시길 바랍니다.</div>
+					<div>고장/신고는 자전거가 움직이지 않거나 사고가 일어났을 때 접수가 가능한 페이지입니다</div>
+					
 					<div><button type="button" id="btn1">자전거가 움직이지 않나요?[고장/신고]</button></div>
 					<div><button type="button" id="btn2">돌아가기</button></div>
 				</div>
