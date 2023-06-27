@@ -111,9 +111,13 @@ h2{text-align: center; margin-top:20px;}
 					<td>${ejv.errorContent}</td>
 				</tr>
 				<tr>
-					<td colspan="2">
-						<button type="button" onclick="sendToRepairCenter(${ejv.eidx})">수리센터 보내기</button>
-					</td>		
+					  <td colspan="2">
+				        <c:choose>
+				            <c:when test="${ejv.bikeState ne 'Y'}">
+				                <button type="button" onclick="location.href='<%=request.getContextPath()%>/admin/adminbikeRepairAction.do?eidx=${ejv.eidx}'">수리센터 보내기</button>
+				            </c:when>
+				        </c:choose>
+				    </td>					
 				</tr>
 		</table>
 				
@@ -168,15 +172,7 @@ h2{text-align: center; margin-top:20px;}
 		}
 		
 		
-	    function sendToRepairCenter(eidx) {
-	        var bikeState = '${ejv.bikeState}';
-	        if (bikeState === 'Y') {
-	            alert("이미 수리 처리된 자전거입니다.");
-	            location.href = '<%=request.getContextPath()%>/admin/adminbikeError.do';
-	        } else {
-	            location.href = '<%=request.getContextPath()%>/admin/adminbikeRepairAction.do?eidx=' + eidx;
-	        }
-	    }
+	   
 	
 	</script> 		
 				

@@ -83,6 +83,7 @@ li{list-style:none;}
 	<form action="${pageContext.request.contextPath}/admin/admingatheringList.do" method="get">
 		<div class="search">
 			<select id="searchType" name="searchType">
+				<option value="">검색조건</option>
 				<option value="gInfoName">모임명</option> 
 				<option value="memberName">모임장</option>
 			</select>

@@ -41,6 +41,9 @@ li{list-style:none;}
 #main #content h2{text-align:left; margin-top:50px; margin-left:200px;font-family: 'GangwonEdu_OTFBoldA'; font-size:30px; }
 #content #bikeError{color: #ff7700; margin-right:10px;} 
 #content #bikeRepair{color: #000;} 
+#content table .status-error { color:red; }
+#content table .status-repair { color:orange; }
+#content table .status-complete { color:green; }
 #content table {width:70%; border-collapse:collapse; margin:0 auto; line-height:50px; font-size:20px;font-family:'omyu_pretty'; font-size:24px;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
@@ -70,6 +73,7 @@ li{list-style:none;}
 		<form action="${pageContext.request.contextPath }/admin/adminbikeError.do" method="get">
 		<div class="search">
 			<select id="searchType" name="searchType">
+				<option value="">검색조건</option>
 				<option value="memberName">고객명</option> 
 				<option value="rentPlace">대여소</option>
 				<option value="errorContent">내용</option>
@@ -110,17 +114,14 @@ li{list-style:none;}
 				 <td>
 			        <c:choose>
 			            <c:when test="${ejv.errorState eq 'E'}">
-							고장접수
+							<span class="status-error">고장접수</span>
 						</c:when>
 						<c:when test="${ejv.errorState eq 'Y'}">
-							수리완료
+							<span class="status-complete">수리완료</span>
 						</c:when>
 						<c:when test="${ejv.errorState eq 'R'}">
-							수리중
+							<span class="status-repair">수리중</span>
 						</c:when>
-			             <c:when test="${ejv.errorState eq 'N'}">  
-		                	이용중
-			            </c:when>
 			            <c:otherwise>
 			                ${ejv.errorState}
 			            </c:otherwise>
