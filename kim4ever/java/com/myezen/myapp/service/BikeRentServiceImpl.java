@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.ErrorVo;
 import com.myezen.myapp.domain.MemberVo;
+import com.myezen.myapp.domain.SearchCriteria;
 import com.myezen.myapp.persistance.BikeRentService_Mapper;
 import com.myezen.myapp.util.AESUtil;
 import com.myezen.myapp.util.QRCodeUtil;
@@ -263,13 +264,23 @@ public class BikeRentServiceImpl implements BikeRentService {
 
 			return value2;			
 	}
-
+	
+	@Override
+	//대여이력보기 총갯수
+	public int bikeRentHistoryListTotal(int midx,SearchCriteria scri) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("midx", midx);
+		hm.put("scri", scri);
+		int totalCount = brsm.bikeRentHistoryListTotal(hm);
+		return totalCount;
+	}
 	@Override
 	//대여이력보기
-	public ArrayList<BikeJoinVo> bikeRentHistoryList(int midx) {
-		
-		ArrayList<BikeJoinVo> bjvlist = brsm.bikeRentHistoryList(midx);
-
+	public ArrayList<BikeJoinVo> bikeRentHistoryList(int midx,SearchCriteria scri) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("midx", midx);
+		hm.put("scri", scri);
+		ArrayList<BikeJoinVo> bjvlist = brsm.bikeRentHistoryList(hm);
 		return bjvlist;
 	}
 

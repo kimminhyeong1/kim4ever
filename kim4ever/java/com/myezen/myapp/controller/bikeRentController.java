@@ -39,6 +39,8 @@ import com.myezen.myapp.domain.BikeInfoVo;
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.ErrorVo;
 import com.myezen.myapp.domain.MemberVo;
+import com.myezen.myapp.domain.PageMaker;
+import com.myezen.myapp.domain.SearchCriteria;
 import com.myezen.myapp.service.BikeRentService;
 import com.myezen.myapp.service.MemberService;
 import com.myezen.myapp.util.AESUtil;
@@ -456,6 +458,8 @@ public class bikeRentController {
 	/*사용자가 대여이력보기*/
 	@RequestMapping(value="/bikeRentHistory.do")
 	public String bikeRentHistory(
+			PageMaker pm,
+			SearchCriteria scri,
 			HttpSession session,
 			Model md
 			) {
@@ -465,14 +469,26 @@ public class bikeRentController {
 		}
 	    int midx = (int)omidx;
 		//로그인한 회원번호를 담아서 대여이력을 보여준다
+	    
+	    
+	    scri.setPerPageNum(10);//게시물갯수
+	    int totalCount = bs.bikeRentHistoryListTotal(midx,scri); //총 게시물 갯수 꺼내오기
+	    
+		System.out.println("midx는:"+midx);
 		 
-		 System.out.println("midx는:"+midx);
+		ArrayList<BikeJoinVo> bjvlist = bs.bikeRentHistoryList(midx,scri);
 		 
-		 ArrayList<BikeJoinVo> bjvlist = bs.bikeRentHistoryList(midx);
+		System.out.println("결과는"+bjvlist);
 		 
-		 System.out.println("결과는"+bjvlist);
+		md.addAttribute("bjvlist", bjvlist);
 		 
-		 md.addAttribute("bjvlist", bjvlist);
+		 
+		pm.setScri(scri);
+    	pm.setTotalCount(totalCount);
+    	md.addAttribute("pm", pm);
+		 
+		 
+		 
 			return "bikeRent/bikeRentHistory";
 		}
 		

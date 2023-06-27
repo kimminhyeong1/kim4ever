@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.ErrorVo;
 import com.myezen.myapp.domain.MemberVo;
+import com.myezen.myapp.domain.SearchCriteria;
 import com.myezen.myapp.util.QRCodeUtil;
 
 public interface BikeRentService {
@@ -73,9 +74,10 @@ public interface BikeRentService {
     public BikeJoinVo bikeRentReturnCheck(int ridx, int rsidx);
 	//반납하기 체크하고 최종반납하기 메소드
     public int bikeRentReturn(int ridx, int rsidx);
-
+    //대여이력 총 리스트 가져오기 
+    public int bikeRentHistoryListTotal(int midx,SearchCriteria scri);
 	//대여이력보기
-    public ArrayList<BikeJoinVo> bikeRentHistoryList(int midx);
+    public ArrayList<BikeJoinVo> bikeRentHistoryList(int midx,SearchCriteria scri);
 	
     //대여소 자전거 남은 갯수
     public ArrayList<BikeJoinVo>availableStations();

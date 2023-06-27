@@ -13,8 +13,8 @@
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script> 
 		<style>
 		#main{width:1250px; margin:35px auto 70px; text-align:center;}
-		#main #content{width:1250px; height:2400px; text-align:center;}
-		#main #bottom{width:1250px; height:300px; }
+		#main #content{width:1250px; height: auto; text-align:center;}
+		#main #bottom{width:1250px;  height: auto; }
 		#main #content h2{text-align:left; margin-top:50px; margin-left:200px;font-family: 'GangwonEdu_OTFBoldA'; font-size:30px;}
 		#content table {width:70%; border-collapse:collapse; margin:60px auto 0; line-height:50px; ;font-family:'omyu_pretty'; font-size:24px;}
 		#content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
@@ -30,6 +30,8 @@
 
 		#content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 		#content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+		.Paging{text-align: center;font-size: 30px;margin-top: 30px;padding: 10px;}
+		.Paging a{padding: 5px;}
 		</style>
 		<script type="text/javascript">
 			function fnReturn() {
@@ -85,12 +87,21 @@
 								</tr>
 							</c:forEach>
 						</table>
-					
+						<div class="Paging">
+							<c:if test="${pm.prev == true}">
+								<a href="${pageContext.request.contextPath}/bikeRent/bikeRentHistory.do?page=${pm.startPage-1}&serchType=${pm.scri.searchType}&keyword=${pm.encoding(pm.scri.keyword)}">◀</a>
+							</c:if><!--if문-end-->
+							<c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}" step="1">
+							<a href="${pageContext.request.contextPath}/bikeRent/bikeRentHistory.do?page=${i}&serchType=${pm.scri.searchType}&keyword=${pm.encoding(pm.scri.keyword)}">${i}</a>
+							</c:forEach><!--for문-end-->
+							<c:if test="${pm.next && pm.endPage > 0}">
+								<a href="${pageContext.request.contextPath}/bikeRent/bikeRentHistory.do?page=${pm.endPage+1}&serchType=${pm.scri.searchType}&keyword=${pm.encoding(pm.scri.keyword)}">▶</a>
+							</c:if><!--if문-end-->
+						</div><!-- 페이징 -->
 					</c:otherwise>
 				</c:choose>
 			</div>
-			
-			<div id="bottom"></div>
+		
 		</div>
 		<%@include file="../footer.jsp" %>
 	</body>
