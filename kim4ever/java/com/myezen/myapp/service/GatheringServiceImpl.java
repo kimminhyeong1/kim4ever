@@ -225,11 +225,19 @@ public class GatheringServiceImpl implements GatheringService {
       }
        //모임 검색 리스트
        if (URI.equals(gSearch)) {
+    	   Object omidx = session.getAttribute("midx");
+	   		Integer midx =null;
+	   		if (omidx != null) {
+	   			midx = (Integer)omidx;
+	   		}else {
+	   			midx = (Integer)omidx;			
+	   		}
           scri.setSearchType("GINFONAME"); // 검색 유형 설정
           System.out.println(scri.getKeyword());
           HashMap<String, Object> hm = new HashMap<>();
           hm.put("offset", offset);
           hm.put("scri", scri);
+          hm.put("midx", midx);
           ArrayList<GatheringJoinVo> moreGjvList = gsm.getMoreSearchGatherings(hm);
           return moreGjvList;
       }
@@ -336,11 +344,15 @@ public class GatheringServiceImpl implements GatheringService {
    }
    //모임 검색하기
    @Override
-   public ArrayList<GatheringJoinVo> searchGatherings(SearchCriteria scri) {
+   public ArrayList<GatheringJoinVo> searchGatherings(SearchCriteria scri,Integer midx) {
       if (scri.getKeyword() == null) {
            scri.setKeyword(""); // null인 경우 빈 문자열로 설정
        }
-      ArrayList<GatheringJoinVo> gjvmylist = gsm.searchGatherings(scri);
+      HashMap<String, Object> hm = new HashMap<>();
+      hm.put("midx", midx);
+      hm.put("scri", scri);
+      
+      ArrayList<GatheringJoinVo> gjvmylist = gsm.searchGatherings(hm);
       
       return gjvmylist;
    }

@@ -80,7 +80,7 @@ public interface GatheringService {
 	//모임 나의찜리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringMyWishListSelect(int midx);	
 	//모임검색
-	public ArrayList<GatheringJoinVo> searchGatherings(SearchCriteria scri);
+	public ArrayList<GatheringJoinVo> searchGatherings(SearchCriteria scri,Integer midx);
 
 	//모임일정만들기
 	public int gatheringScheduleMake(Gathering_ScheduleVO gsv);

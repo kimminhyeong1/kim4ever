@@ -213,6 +213,7 @@
 		                    	    "<p class='attend'>(참여멤버 " + gjv.gInfoParticipating + "/" + gjv.gInfoCapacity + ")</p>" +
 		                    	    "<button class='gBtn' onclick=\"location.href='${pageContext.request.contextPath}/gathering/gSimpleInfo.do?giidx=" + gjv.giidx + "'\">구경하기</button>" +
 		                    	    "</div>";
+		                    	    
 		                        $(".gContentB").append(card);
 		                        excludedData.push(gjv.giidx);
 	                    	}

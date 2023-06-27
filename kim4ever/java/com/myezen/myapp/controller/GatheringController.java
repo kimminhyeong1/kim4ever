@@ -1025,9 +1025,17 @@ public class GatheringController {
 	}
 //모임 검색
 	@RequestMapping(value="/gSearch.do")
-	public String gSearch(SearchCriteria scri, Model model) {
+	public String gSearch(SearchCriteria scri, Model model,HttpServletRequest request) {
 		scri.setSearchType("GINFONAME"); // 검색 유형 설정
-	    ArrayList<GatheringJoinVo> gjvlist = gs.searchGatherings(scri);
+		HttpSession session = request.getSession();
+	    Object omidx = session.getAttribute("midx");
+	    Integer midx =null;
+	    if (omidx != null) {
+	    	midx = (Integer)omidx;
+		}else {
+			midx = (Integer)omidx;			
+		}
+	    ArrayList<GatheringJoinVo> gjvlist = gs.searchGatherings(scri,midx);
 	    model.addAttribute("gjvlist", gjvlist);
 	    return "gathering/gSearch";
 	}
