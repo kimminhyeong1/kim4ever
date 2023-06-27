@@ -24,7 +24,7 @@ ArrayList<BikeJoinVo> bikeList = (ArrayList<BikeJoinVo>)request.getAttribute("bi
 			#bikeIntro h2{font-family:'KCC-Ganpan'; text-align:center; font-size:35px; color:#333; margin-bottom: 20px;}
 			#bikeIntro p{font-family:'omyu_pretty'; text-align:left; margin-left:40px; font-size:24px; padding:15px 15px; letter-spacing:3px;}
 			#bikeNotice{text-align:center;}
-			#bikeNotice button{width:400px; height:50px; border-radius:10px; border:0px solid #ff9933; font-family:'omyu_pretty'; font-size:30px; background:#ff9933;}
+			#bikeNotice button{width:400px; height:50px; border-radius:10px; border:0px solid #ff9933; font-family:'omyu_pretty'; font-size:30px; background:#ff9933; margin-top:20px;}
 			#bikeNotice p{margin-top:40px; font-size:30px;}
 			#bcontent .deleteBtn {display:none; position: absolute;top:0;right:0;width:30px;height:30px;background-color:#ff0000;color:#fff;font-size:20px;border:none;border-radius:50%;cursor:pointer;}
 			#bcontent .card:hover .deleteBtn {display:block;}

@@ -336,9 +336,6 @@ OFFSET #{offset};
 		        <when test="searchType == 'bikeLocation'">
 		            AND bikeLocation LIKE CONCAT('%', #{keyword}, '%')
 		        </when>
-		        <when test="searchType == 'bikeState'">
-		            AND bikeState LIKE CONCAT('%', #{keyword}, '%')
-		        </when>
 		    </choose>
 		</if>		
 	</sql>
@@ -349,7 +346,7 @@ OFFSET #{offset};
 	SELECT *
 	FROM (
 	  SELECT bikeCode, bikeType, bikeLocation, bikeState,
-	         ROW_NUMBER() OVER (ORDER BY bikeCode DESC) AS row_num
+	            ROW_NUMBER() OVER (ORDER BY bikeState ASC, LENGTH(bikeCode), bikeCode) AS row_num
 	  FROM bike1234
 	   WHERE 1=1
 	<include refid="search5" />

@@ -92,7 +92,9 @@
 	
 .EntrustBtn {width:70px; height:40px; margin-top:-10px; margin-left:5px; text-align:center; font-family:'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}	
 .EntrustBtn:active{background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}	
-	
+	.menu #gMemberListLink {color:#bbb}
+  	.menu #gMemberJoinWaitListLink {color:#bbb}
+  	.menu #gPowerEntrustListLink {color:#228B22}
 	</style> 
 
 
