@@ -96,10 +96,10 @@ a{color:inherit; text-decoration:none;}
 						<td>
 							 <c:choose>
 						        <c:when test="${ejv.errorState == 'R'}">
-						          <button type="button" onclick="confirmRepair(${ejv.eidx},'${ejv.bikeCode}', '${ejv.bikeType}')">수리 완료</button>
+						          <button type="button" onclick="confirmRepair(${ejv.eidx},'${ejv.bikeCode}', '${ejv.bikeType}')">수리하기</button>
 						        </c:when>
 						        <c:when test="${ejv.errorState == 'Y'}">
-						        		  처리 완료
+						        		  처리완료
 						        </c:when>
 						      </c:choose>
 						</td>			

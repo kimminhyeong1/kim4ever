@@ -76,6 +76,7 @@ li{list-style:none;}
 	<form action="${pageContext.request.contextPath}/admin/adminGReportList.do" method="get">
 		<div class="search">
 			<select id="searchType" name="searchType">
+				<option value="">검색조건</option>
 				<option value="gInfoName">모임명</option> 
 				<option value="memberName">모임장</option>
 				<option value="reporterName">신고자</option>
@@ -100,7 +101,7 @@ li{list-style:none;}
 					<tr>
 						<td>${gdv.gInfoName}</td>
 						<td>${gdv.TL}</td>
-						<td>${gdv.gatheringDeclarationDay.substring(0, 10)}</td>
+						<td>${gdv.gatheringDeclarationDay}</td>
 						<td>${gdv.reporterName}</td>
 						<td><a href="adminGReportDetail.do?gdix=${gdv.gdix}">${gdv.gatheringReportContent}</a></td>						
 					</tr>

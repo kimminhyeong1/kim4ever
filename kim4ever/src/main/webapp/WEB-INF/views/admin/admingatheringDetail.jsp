@@ -20,21 +20,36 @@
 
  <style type="text/css">
 		 	/*만들기 부분*/
-			#main section h3{display: inline-block;font-size: 45px;}
-			#main section p{display: inline-block; color: #f14242; padding-left: 10px; }
-			#main section>div:nth-child(1){margin: 20px 0px 20px 100px;}
-			#main section>div:nth-child(2){text-align: center;}
-			#main section>div>div{margin: 20px 0px 20px 0px;}
-			#main section input {display: block;}
-			#main section button{text-align: center;}  
-			#main section img{width: 100px;height: 100px;}   
-			#main section span{font-size: 20px;} 
-			#main section .gInfoName{font-size: 25px;}
-			#main section .gatheringMemberType{font-size: 25px;}	
-			#main section .gInfoCapacity{font-size: 25px;}
-			#main section .gInfoCreationDay{font-size: 25px;}
-			#main section .gInfoAreaIntroduction{font-size: 25px;}
-			#main section .ReportCount{font-size: 25px; color:red;}
+
+#main section table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  table-layout: fixed;
+}
+
+#main section th,
+#main section td {
+  padding: 10px;
+  border: 1px solid #ccc;
+ 
+  
+}
+
+#main section th {
+  background-color: #f1f1f1;
+  font-size: 36px;
+  text-align: center;
+}
+
+#main section td {
+  font-size: 25px;
+  padding-left: 20px;
+  text-align: left;
+}
+
+
+
 			
 			/*************************모바일****************************************/
 				/*****모바일 넓이***/
@@ -63,53 +78,35 @@
 <main id="main">
 		
 		<section class="gContainer gSetContainer">
-			<div class= contents>
-				<div> 
-					<div>	
-						<h3>모임 이름</h3>
-					</div>
-					<div class="gInfoName">${gtrdv.gInfoName}</div>
-				</div>
-				<div>
-					<div>
-						<h3>모임장</h3>
-					</div>
-					<div class="gatheringMemberType">${gtrdv.memberName}</div>							
-				</div>
-				<div>
-					<h3>모임 인원</h3>
-					<div class="gInfoCapacity">${gtrdv.gInfoParticipating}명</div>				
-				</div>
-				<div>
-					<h3>모임 생성일</h3>
-					<div class="gInfoCreationDay">${gtrdv.gInfoCreationDay.substring(0, 16)}</div>	
-				</div>
-				<div>
-					<h3>모임 소개글</h3>
-					<div class="gInfoAreaIntroduction">${gtrdv.gInfoAreaIntroduction}</div>	
-				</div>
-				 <div>
-	                <h3>모임 신고 접수</h3>
-	                <div class="ReportCount">
-						${gtrdv.REPORTCNT}번
-	                </div>
-	            </div>
-	        </div>
-	        
-	        <div class= contents>
 			
-	        	        
-	        <c:if test="${empty gtrdv.imageName}">
-    <div>모임 이미지 없음</div>
-</c:if>
-<c:if test="${not empty gtrdv.imageName}">
-    <div>
-        <div><img alt="" src="../resources/GTImages/${gtrdv.imageName}"></div>
-    </div>
-</c:if>
+				<table>
+					<tr>
+						<th>모임 이름</th>
+						<td>${gtrdv.gInfoName}</td>
+					</tr>
+					<tr>
+						<th>모임장</th>
+						<td>${gtrdv.memberName}</td>
+					</tr>
+					<tr>
+						<th>모임 인원</th>
+						<td>${gtrdv.gInfoParticipating}명</td>
+					</tr>
+					<tr>
+						<th>모임 생성일</th>
+						<td>${gtrdv.gInfoCreationDay.substring(0, 16)}</td>
+					</tr>
+					<tr>
+						<th>모임 소개글</th>
+						<td>${gtrdv.gInfoAreaIntroduction}</td>
+					</tr>
+					<tr>
+						<th>모임 신고 접수</th>
+						<td><span style="color: red">${gtrdv.REPORTCNT}번</span></td>
+					</tr>
+				</table>
+	       
 	        
-	        </div>
-			
 		</section>
 		
 	</main>

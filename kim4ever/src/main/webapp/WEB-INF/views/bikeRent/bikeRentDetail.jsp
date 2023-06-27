@@ -152,7 +152,7 @@
 		<main id="main">
 			<section class="container">
 			<div id="content">
-				<form id="frm" name="frm"  method="post">
+				<form id="frm" name="frm"  method="post" action="${pageContext.request.contextPath}/bikeRent/bikeRentUpdate.do">
 				
 			    <input type="hidden" name="bkidx" value="${bjv.bkidx}">
 			
@@ -188,7 +188,7 @@
 				
 				<tr>
 				  <td colspan="2">
-				    <input id="phone" type="text" name="phone" maxlength="11" title="전화번호 입력" required/>
+				    <input id="phone" type="text" name="phone" maxlength="11" title="전화번호 입력" />
 				  </td>
 				  <td width="200px;">
 				    <span id="phoneChk" class="doubleChk">인증번호 보내기</span>
@@ -203,7 +203,7 @@
 				
 				<tr>
 				  <td colspan="2">
-				    <input id="phone2" type="text" name="phone2" maxlength="6" title="인증번호 입력" disabled required/>
+				    <input id="phone2" type="text" name="phone2" maxlength="6" title="인증번호 입력" />
 				  </td>
 				  
 				  <td width="200px;">
@@ -215,8 +215,14 @@
 				  
 				<tr>
 				  <td colspan="3">
-					<button id="rentButton" class="rentButton" type="button" onclick="requestPay()" disabled>대여하기</button>
+					<button id="rentButton" class="rentButton" type="button" onclick="requestPay()" >대여하기</button>
 				  </td>
+				</tr>
+				<tr>
+				<td>
+				<button>테스트</button>
+				</td>
+				
 				</tr>
 			</table>
 			</form>
