@@ -58,8 +58,10 @@
 						<h3>모임 이름</h3>
 						<p>필수</p>
 					</div>
-					<input id="gInfoName" class="gInput" type="text" placeholder="내용을 입력해주세요" name="gInfoName" maxlength='8'>
+					<input id="gInfoName" class="gInput" type="text" placeholder="내용을 입력해주세요" name="gInfoName" maxlength='8' onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"  oninput="updateCharacterCount('gInfoName')">
 					<p id="nameMsg" class="ability_chk" style="display:none;">사용가능한 모임명 입니다.</p>
+				   <span id="gInfoNameCount"></span>
+				
 				</div>
 				<div>
 					<div>
@@ -114,18 +116,21 @@
 				</div>
 				<div>
 					<h3>모임 간단 소개글</h3>
-					<input id="gInfoBriefIntroduction" class="gInput" type="text" placeholder="맨 앞에 노출되는 간단 소개글입니다." name="gInfoBriefIntroduction" maxlength='100'>		
+					<input id="gInfoBriefIntroduction" class="gInput" type="text" placeholder="맨 앞에 노출되는 간단 소개글입니다." name="gInfoBriefIntroduction" maxlength='50' onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"  oninput="updateCharacterCount('gInfoBriefIntroduction')">
+					 <span id="gInfoBriefIntroductionCount"></span>		
 				</div>
 				<div>
 					<h3>모임 소개글</h3>
-					<textarea id="gInfoAreaIntroduction" rows="5" cols="5" placeholder="글자제한:500자이내" name="gInfoAreaIntroduction" maxlength='500'></textarea>		
+					<textarea id="gInfoAreaIntroduction" rows="5" cols="5" placeholder="100자이내" name="gInfoAreaIntroduction" maxlength='100' onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"  oninput="updateCharacterCount('gInfoAreaIntroduction')"></textarea>
+					 <span id="gInfoAreaIntroductionCount"></span>		
+							
 				</div>
 				<div>
 					<div>
 						<h3>모임 정원(최대 100명)</h3>
 						<p>필수</p>
 					</div>
-					<input class="gInput" type="number" placeholder="예:5" name="gInfoCapacity" id="gInfoCapacity" maxlength='3'>	
+					<input class="gInput" type="number" placeholder="예:5" name="gInfoCapacity" id="gInfoCapacity" max="100" oninput="if (this.value > 100) this.value = 100;">	
 				</div>
 				<div>
 					<div>
@@ -214,7 +219,29 @@
 			});
 		});		
 
-	
+		function characterCheck(obj){
+			var regExp = /[\{\}\[\]\/|\)*`^\_┼<>@\#$%&\'\"\\(\=]/gi;
+		    if(regExp.test(obj.value)){
+		        alert("특수문자는 입력할 수 없습니다.");
+		        obj.value = obj.value.substring( 0 , obj.value.length - 1 );
+		    }
+		}
+		function updateCharacterCount(inputName) {
+			  var input = document.getElementsByName(inputName)[0];
+			  var maxLength = parseInt(input.getAttribute('maxlength'));
+			  var currentLength = input.value.length;
+			  var countElement = document.getElementById(inputName + 'Count');
+			  
+			  countElement.textContent = currentLength + '/' + maxLength;
+			}
+
+			// 초기 로딩 시 글자 수 업데이트
+			window.addEventListener('DOMContentLoaded', function() {
+			  updateCharacterCount('gInfoName');
+			  updateCharacterCount('gInfoBriefIntroduction');
+			  updateCharacterCount('gInfoAreaIntroduction');
+			  
+			});
 	</script>
 	
 	
