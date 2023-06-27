@@ -39,26 +39,17 @@ function characterCheck(obj){
 function fnWrite() {
     var fm = document.frm;
     
-    // 특수문자 검사 정규식
-    var specialChars =/[\{\}\[\]\/|\)*`^\_┼<>@\#$%&\'\"\\(\=]/gi;
+  
     
     if (fm.subject.value == "") {
         alert("제목을 입력하세요");
-        fm.subject.focus();
-        return;
-    } else if (specialChars.test(fm.subject.value)) {
-        alert("제목에 특수문자를 포함할 수 없습니다.");
         fm.subject.focus();
         return;
     } else if (fm.content.value == "") {
         alert("내용을 입력하세요");
         fm.content.focus();
         return;
-    } else if (specialChars.test(fm.content.value)) {
-        alert("내용에 특수문자를 포함할 수 없습니다.");
-        fm.content.focus();
-        return;
-    } else if (fm.writer.value == "") {
+    }  else if (fm.writer.value == "") {
         alert("작성자를 입력하세요");
         fm.writer.focus();
         return;
@@ -77,10 +68,9 @@ function updateCharacterCount(inputName) {
 
 	// 초기 로딩 시 글자 수 업데이트
 	window.addEventListener('DOMContentLoaded', function() {
-	  updateCharacterCount('subject');
-	  updateCharacterCount('content');
+	  updateCharacterCount('gBoardTitle');
+	  updateCharacterCount('gBoardContents');
 	});
-
 </script>
 	
 	<body>
@@ -111,22 +101,11 @@ function updateCharacterCount(inputName) {
 								<h3>게시글 제목</h3>
 							</div>
 							<input class="gInput" type="text" name="gBoardTitle" placeholder="내용을 입력해주세요" value="${gbv.gBoardTitle}" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)" maxlength="20" oninput="updateCharacterCount('subject')">											
-							 <span id="subjectCount"></span>						
+       					 <span id="gBoardTitleCount"></span>
 						</div>
 						<div>
 							<h3>게시글 내용</h3>
-							<textarea rows="5" cols="5" name="gBoardContents" placeholder="글자제한:500자이내"onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"  maxlength="500" oninput="updateCharacterCount('content')" >${gbv.gBoardContents}
-							
-							<c:if test="${not empty bv.filename}">
-							    <c:set var="exp" value="${fn:substring(bv.filename, fn:length(bv.filename) - 3, fn:length(bv.filename))}" />
-							    <c:choose>
-							        <c:when test="${exp eq 'jpg' or exp eq 'gif' or exp eq 'png'}">
-							            <img src="${pageContext.request.contextPath}/board/displayFile.do?fileName=${bv.filename}"
-							                width="30%" height="30%" />
-							        </c:when>
-							    </c:choose>
-							</c:if>
-							 </textarea>		
+							<textarea rows="5" cols="5" name="gBoardContents" placeholder="글자제한:500자이내"onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"  maxlength="500" oninput="updateCharacterCount('content')" >${gbv.gBoardContents}</textarea>		
 							 <span id="contentCount"></span>
 							
 						</div>

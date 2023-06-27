@@ -23,12 +23,12 @@
 			#searchCategory>div>input{width: 300px; height: 26px; font-size: 18px;vertical-align: top;} 
 			#searchCategory>div>button{width: 100px; height: 30px; margin-top: 0px;margin-bottom: 0px;} 
 			/*공지사항부분*/
-			.gNotice{text-align: left; font-size: 20px; margin: 40px 60px;}
+			.gNotice{text-align: left; font-size: 20px; margin: 40px 60px; white-space: nowrap; overflow: hidden;  text-overflow: ellipsis;} 
 			.gNotice>div>div{display: inline-block; font-size: 25px; font-weight: bold;}
 			.gNotice>div>div:nth-child(1){color: #f00; margin-right: 20px;}
-			.gNotice>div:nth-child(2){border-bottom: 2px solid #bbb; padding-bottom: 10px; margin-top: 10px;}/* 끝나는바*/
+			.gNotice>div:nth-child(2){border-bottom: 2px solid #bbb; padding-bottom: 10px; margin-top: 10px; white-space: nowrap; overflow: hidden;  text-overflow: ellipsis; }/* 끝나는바*/
 			/*게시글 부분*/
-			.gBoard{text-align: left; font-size: 20px; margin: 40px 60px;} 
+			.gBoard{text-align: left; font-size: 20px; margin: 40px 60px; } 
 			.gBoard>div>div:nth-child(1){width: 50px; height: 50px; float: left;}/*프로필*/ 
 			.gProfileimage img{width: 50px; height: 50px; object-fit: cover; border-radius: 50%;}/*프로필이미지*/
 			.gBoard>div>div:nth-child(2){height: 25px; margin-left: 70px;}/*모임장,이름*/ 
@@ -36,7 +36,7 @@
 			.gBoard>div>div:nth-child(3)>div:nth-child(1){height: 25px; margin-left: 70px; font-size: 15px; margin-top: 5px;}/*날짜 카테고리*/ 
 			.gBoard>div:nth-child(2){clear: both;margin-top: 10px; font-weight: bold;}/*게시글제목*/
 			.gBoard>div:nth-child(2)>span{font-size: 18px;}/*게시글 카테고리*/
-			.gBoard>div:nth-child(3){font-size: 18px; margin-top: 10px; border-bottom: 2px solid #bbb; padding-bottom: 10px; margin-top: 10px;}/*게시글 내용*/
+			.gBoard>div:nth-child(3){font-size: 18px; margin-top: 10px; border-bottom: 2px solid #bbb; padding-bottom: 10px; margin-top: 10px; }/*게시글 내용*/
 			/*버튼 부분*/
 			#writeBtn{text-align: right;}	
 			/*페이징 부분*/

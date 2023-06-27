@@ -34,17 +34,84 @@
 		 .imagePreview { max-width: 300px; max-height: 300px; width: auto; height: auto;}	 
       </style>
    </head>
+   
+   	<script type="text/javascript">
+
+function characterCheck(obj){
+	var regExp = /[\{\}\[\]\/|\)*`^\_┼<>@\#$%&\'\"\\(\=]/gi;
+    if(regExp.test(obj.value)){
+        alert("특수문자는 입력할 수 없습니다.");
+        obj.value = obj.value.substring( 0 , obj.value.length - 1 );
+    }
+}
+function fnWrite() {
+    var fm = document.frm;
+    
+    // 특수문자 검사 정규식
+   
+    
+    if (fm.gPhotoAlbumTitle.value == "") {
+        alert("제목을 입력하세요");
+        fm.gPhotoAlbumTitle.focus();
+        return;
+    }
+        else if (fm.image.value == "") {
+            alert("대표이미지를 입력하세요");
+            fm.image.focus();
+            return;   
+        }
+	    var additionalImages = document.getElementsByClassName("image");
+	    for (var i = 0; i < additionalImages.length; i++) {
+	        if (additionalImages[i].value.trim() === "") {
+	            alert("이미지를 입력하세요");
+	            additionalImages[i].focus();
+	            return;
+	        }
+	    }    
+	    var contentsInputs = document.getElementsByClassName("content");
+	    for (var j = 0; j < contentsInputs.length; j++) {
+	        if (contentsInputs[j].value.trim() === "") {
+	            alert("내용을 입력하세요");
+	            contentsInputs[j].focus();
+	            return;
+	        }
+	    }
+    fm.action = "<%=request.getContextPath()%>/gathering/gPhotoAlbumWriteAction.do";
+    fm.enctype = "multipart/form-data";
+    fm.method = "post";
+    fm.submit();
+    }
+
+function updateCharacterCount(inputName) {
+	  var input = document.getElementsByName(inputName)[0];
+	  var maxLength = parseInt(input.getAttribute('maxlength'));
+	  var currentLength = input.value.length;
+	  var countElement = document.getElementById(inputName + 'Count');
+	  
+	  countElement.textContent = currentLength + '/' + maxLength;
+	}
+
+	// 초기 로딩 시 글자 수 업데이트
+	window.addEventListener('DOMContentLoaded', function() {
+	  updateCharacterCount('gPhotoAlbumTitle');
+	  updateCharacterCount('gPhotoAlbumContents0');
+	});
+
+</script>
    <body>
       <%@include file="../header2.jsp" %>
       <%@include file="header3.jsp" %>
  	<main id="main">
-    <form action="${pageContext.request.contextPath}/gathering/gPhotoAlbumWriteAction.do" method="POST" enctype="multipart/form-data">
+			<form name="frm" >
 	    <section class="gContainer">
 	        <div class="gContent">
 	            <table>
 	                <tr>
 	                    <th>제목</th>
-	                    <td><input type="text" id="gPhotoAlbumTitle" name="gPhotoAlbumTitle"></td>
+	                    <td><input type="text" id="gPhotoAlbumTitle"  placeholder="20자이내" name="gPhotoAlbumTitle" oninput="updateCharacterCount('gPhotoAlbumTitle')" maxlength="20" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)">
+	                     <span id="gPhotoAlbumTitleCount"></span>	                    
+	                    </td>
+	                    
 	                </tr>
 	                <tr>
 	                    <th>대표 이미지</th>
@@ -55,7 +122,7 @@
 	                    <tr>
 	                        <th>이미지1</th>
 	                        <td>
-	                        <input type="file" class="image" name="GAImg" onchange="previewImage(event)" required multiple />
+	                        <input type="file" class="image" name="GAImg" id="image2"onchange="previewImage(event)" required multiple />
 	                         <img class="imagePreview" id="imagePreview0" />
 	                        </td>
 	                    </tr>
@@ -63,7 +130,9 @@
 	                    <tr>
 	                        <th>내용글1</th>
 	                        <td>
-	                            <input type="text" class="content" name="gPhotoAlbumContents0"> 
+	                            <input type="text"  name="gPhotoAlbumContents0"  class="content" name="gPhotoAlbumContents0" placeholder="100자이내" oninput="updateCharacterCount('gPhotoAlbumContents0')" maxlength="100" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)" >
+	                         	<span id="gPhotoAlbumContents0Count"></span>
+	                             
 	                        </td>
 	                    </tr>
 	                </tbody>
@@ -72,7 +141,7 @@
 	        
 	        <div id="createBtn">
 		        <button type="button" class="gBtn2" onclick="addRow()">이미지 추가 업로드+</button>
-		        <button type="submit" class="gBtn2">작성하기</button>  
+		        <button type="button" class="gBtn2" onclick="fnWrite();">작성하기</button>  
 		        <button class="gBtn2">취소하기</button>
 	        </div>
 	    </section>
@@ -129,12 +198,31 @@
     contentInput.type = "text";
     contentInput.className = "content";
     contentInput.name = "gPhotoAlbumContents" + rowCount;
+    contentInput.placeholder = "100자 이내"; //유효성검사한 필요한요소 추가
+    contentInput.setAttribute("oninput", "updateCharacterCount('gPhotoAlbumContents" + rowCount + "')");
+    contentInput.setAttribute("maxlength", "100");
+    contentInput.setAttribute("onkeyup", "characterCheck(this)");
+    contentInput.setAttribute("onkeydown", "characterCheck(this)");//여기까지
     contentTd.appendChild(contentInput);
+    contentRow.appendChild(contentTh);
+    contentRow.appendChild(contentTd);
+    
+    dynamicRows.appendChild(imageRow);
+    dynamicRows.appendChild(contentRow);
+    
+    // 글자 수 업데이트를 표시하는 요소 생성
+    var countElement = document.createElement("span");
+    countElement.id = "gPhotoAlbumContents" + rowCount + "Count";
+    contentTd.appendChild(countElement);
+
     contentRow.appendChild(contentTh);
     contentRow.appendChild(contentTd);
 
     dynamicRows.appendChild(imageRow);
     dynamicRows.appendChild(contentRow);
+
+    // 글자 수 업데이트 초기화
+    updateCharacterCount("gPhotoAlbumContents" + rowCount);
 
     //이미지 미리보기 초기화
     var newImageInput = imageTd.querySelector(".image");

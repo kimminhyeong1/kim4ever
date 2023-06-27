@@ -25,7 +25,7 @@
 			#content button{width:20%; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}
 			#content button:active {background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 			#content img{width:500px; height:500px;}
-			#content #gatherCon p{font-family:'omyu_pretty'; font-size:27px;}
+			#content #gatherCon p{font-family:'omyu_pretty'; font-size:27px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; word-wrap: break-word; margin:20px;}
 			#content #gatherCon{width:80%; height:400px; border-collapse:collapse; border:1px solid #ddd; margin:10px auto 0; text-align:center;  line-height:100px;}
 			/*모임슬라이더부분*/
 			#gather{vertical-align: top;margin-left:42px; display: inline-block; width: 800px; height: 500px; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;}

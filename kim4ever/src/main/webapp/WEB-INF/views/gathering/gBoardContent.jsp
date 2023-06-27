@@ -16,7 +16,7 @@
 			a{text-decoration: none; color: #000;}	
 			.gContainer{border: 1px solid #0000;}
 			/*게시글 틀*/ 
-			.gBoardList { width: 100%; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;position: relative;}
+			.gBoardList { width: 100%; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;position: relative; }
 			/*게시글 멤버 부분*/
 			.gBoardMember{text-align: left; font-size: 20px; margin: 40px 60px; position: relative;} 
 			.gBoardMember .gBoardMember_box{display: inline-block;} 
@@ -27,7 +27,7 @@
 			.gBoardMember>div>div:nth-child(3)>div{height: 25px; margin-left: 70px; font-size: 15px; margin-top: 5px;}/*날짜*/
 			.gBoardMember>div>div:nth-child(4){font-size: 18px; margin-top: 20px;  padding-bottom: 20px;width: 950px;word-wrap: break-word;}/*게시글 내용*/
 			/*게시글 글 부분*/
-			.gBoardView{text-align: left; font-size: 20px; margin: 40px 60px;} 
+			.gBoardView{text-align: left; font-size: 20px; margin: 40px 60px;  word-wrap:break-word; white-space: pre-line;} 
 			.gBoardView>div:nth-child(1){font-size: 30px; clear: both;margin-top: 10px; font-weight: bold;}/*게시글제목*/
 			.gBoardView>div:nth-child(1)>span{font-size: 18px;margin-left: 10px;}/*게시글 카테고리*/
 			.gBoardView>div:nth-child(2){font-size: 18px; margin-top: 100px; border-bottom: 2px solid #bbb; padding-bottom: 100px;}/*게시글 내용*/
