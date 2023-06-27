@@ -132,7 +132,7 @@ public class bikeRentController {
 		    	HashMap<String, Object> position = new HashMap<>();
 		        String content = "<div id=\"marker"+bikeJoinVo.getRsidx()+"\" class=\"infowindow\">";
 		        content += "<span class=\"rs1\">" + bikeJoinVo.getRentalshopName() + "대여소</span></br>";
-		        content += "<span class=\"rs2\">남은 갯수: " + bikeJoinVo.getRentalshopCnt() + "</span></div>";
+		        content += "<span class=\"rs2\">남은 개수: " + bikeJoinVo.getRentalshopCnt() + "</span></div>";
 		        
 		        String latitude = bikeJoinVo.getRentalshopLatitude();
         		String longitude = bikeJoinVo.getRentalshopLongitude();
@@ -392,7 +392,15 @@ public class bikeRentController {
 		session.removeAttribute("ridx");
 		session.removeAttribute("bkidx");
 		
-		return "redirect:/bikeRent/bikeRentHistory.do";
+		return "redirect:/bikeRent/bikeRentReview.do";
+	}
+	
+	//리뷰 작성 페이지
+	@RequestMapping(value="/bikeRentReview.do")
+	public String bikeRentReview() {
+		System.out.println("리뷰페이지 접속");
+		
+		return "bikeRent/bikeRentReview";
 	}
 	
 	/*자전거 고장/신고 접수*/
