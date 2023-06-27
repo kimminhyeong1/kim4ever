@@ -504,13 +504,25 @@ public class MemberServiceImpl implements MemberService {
 		//배포했을때
         String savedMemberProfileImgPath = request.getSession().getServletContext().getRealPath("/resources/MemberProfile");
 		//String savedMemberProfileImgPath = "D://threekim//threeKim//src//main//webapp//resources/MemberProfile";//회원 프로필 이미지
-		//회원 프로필 이미지
-		String uploadedMemberProfileImgName  = UploadFileUtiles.uploadFile(savedMemberProfileImgPath, memberProfile.getOriginalFilename(), memberProfile.getBytes());
-		MemberVo mv = new MemberVo();
-		mv.setMidx(midx);
-		mv.setMemberProfile(uploadedMemberProfileImgName);
-		int value = msm.memberUpdateMemberProfile(mv);
-		String profile = msm.getMemberProfile(midx);
+		
+        String profile = "/profile.jpg";
+        
+        if (memberProfile.isEmpty()) {
+            System.out.println(memberProfile);
+         } else {
+        	 //회원 프로필 이미지
+        	 String uploadedMemberProfileImgName  = UploadFileUtiles.uploadFile(savedMemberProfileImgPath, memberProfile.getOriginalFilename(), memberProfile.getBytes());
+        	 MemberVo mv = new MemberVo();
+        	 mv.setMidx(midx);
+        	 mv.setMemberProfile(uploadedMemberProfileImgName);
+        	 int value = msm.memberUpdateMemberProfile(mv);
+        	 profile = msm.getMemberProfile(midx);
+        	 return profile;
+        	 
+         }
+		
+		
+		
 		return profile;
 	}
 	@Override

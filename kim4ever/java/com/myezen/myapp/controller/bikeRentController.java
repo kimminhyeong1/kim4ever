@@ -403,6 +403,27 @@ public class bikeRentController {
 		return "bikeRent/bikeRentReview";
 	}
 	
+	//리뷰 작성
+	@RequestMapping(value="/bikeRentReviewAction.do")
+	public String bikeRentReviewAction(
+	    @RequestParam("reviewContent") String reviewContent	
+	) {
+	    int value = bs.reviewInsert(reviewContent);
+	    System.out.println("리뷰내용" + reviewContent);
+	    return "redirect:/"; // 
+	}
+	
+	
+	//잔고장 작성 페이지
+	@RequestMapping(value="/bikeRentMinorError.do")
+	public String bikeRentMinorError() {
+		System.out.println("잔고장 작성 페이지 접속");
+		
+		return "bikeRent/bikeRentMinorError";
+	}
+	
+	
+	
 	/*자전거 고장/신고 접수*/
 	/*자전거 고장/신고페이지*/
 	@RequestMapping(value="/bikeRentFault.do")

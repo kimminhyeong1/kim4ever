@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>리뷰 작성하기</title>
+		<title>잔고장 작성하기</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent.css">
@@ -20,10 +20,10 @@
 			.container{border: 1px solid #bbb;margin: 40px auto;width: 55%;padding: 20px;background-color: #f1f1f1;border-radius: 10px;}
 			.container>div{padding: 20px; text-align: left;}
 			.container>div>p{display: inline-block; } 
-			.container>div>p:nth-child(1){width: 60%; margin-left: 60px;} 
-			.container>div>p:nth-child(2){width: 5%;} 
+			.container>div>p:nth-child(1){width: 60%; margin-left: 60px; margin-bottom:15px;} 
+			.container>div>p:nth-child(2){width: 40%; margin-left: 60px;} 
 			.container{font-size: 24px;}
-			.container h1{font-size: 50px; text-align: center;}
+			.container h1{font-size: 40px; text-align: center;}
 			.container h2{font-size: 40px; text-align: center;}
 			.container button{display:inline-block; width:45%; height:55px; margin-top:0px;text-align:center; font-family:'omyu_pretty'; font-size:25px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 			.container button:active{background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
@@ -69,24 +69,17 @@
 		<main id="main">
 			<section id="content">
 				<div class="container">
-					<div><h1>이용 후기</h1></div>
-					<div><p>※후기 작성은 필수가 아닙니다</p><a href="bikeRentMinorError.do" style="text-decoration: underline;" >잔고장 접수하기</a></div>		
-					<div><p>※이용 후기는 타바에 큰 도움이 됩니다!</p></div>
-					
-					<form name="frm" action="${pageContext.request.contextPath}/bike/bikerentReviewAction.do" method="post" enctype="multipart/form-data">					
+					<h1>고장 내역</h1>
 					<div>
-					  <textarea style="width: 100%" cols="100" rows="15" name="reviewContent" oninput="validateAndCountCharacters(this)" maxlength="100"></textarea>
-					  <span id="characterCount"></span>
-					</div>
-
-
-					<div id="useListBtn">
-						<button onclick="fnWrite()">작성 완료</button>
-						<button onclick="location.href='<%=request.getContextPath()%>/'">나가기</button>						
-					</div>
-					</form>
+						<p>자전거 종류: </p>
+						<p>자전거 번호: </p>
+					</div>		
+										
+				<div>
+					<textarea style="width: 100%" cols="100" rows="15" name="Content" oninput="validateAndCountCharacters(this)" maxlength="100"></textarea>
+					<span id="characterCount"></span>
 				</div>
-				
+
 <script>
 function validateAndCountCharacters(textarea) {
   var text = textarea.value;
@@ -105,23 +98,14 @@ function validateAndCountCharacters(textarea) {
   var maxLength = parseInt(textarea.getAttribute('maxlength'));
   characterCountSpan.textContent += "/" + maxLength;
 }
+</script>
 
+					
 
-function fnWrite() {
-    var fm = document.frm;
-    
-
-
-    fm.action = "<%=request.getContextPath()%>/bikeRent/bikeRentReviewAction.do";
-    fm.enctype = "multipart/form-data";
-    fm.method = "post";
-    fm.submit();
-}
-</script>				
-				
-				
-				
-				
+					<div id="useListBtn">
+						<button>작성 완료</button>					
+					</div>
+				</div>
 			</section>
 		</main>
 	</body>

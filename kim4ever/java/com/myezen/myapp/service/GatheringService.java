@@ -42,12 +42,10 @@ public interface GatheringService {
 	//모임명 중복체크
 	public int gInfoNameCheck(String gInfoName);
 	//모임 리스트 가져오기
-	public ArrayList<GatheringJoinVo> gatheringListSelect();
+	public ArrayList<GatheringJoinVo> gatheringListSelect(Integer midx);
 	//모임 리스트 더보기 
-
-	public ArrayList<GatheringJoinVo> getMoreGjvList(int offset);
 	// 이전 데이터를 제외한 새로운 데이터 가져오기
-	public ArrayList<GatheringJoinVo> getNewData(ArrayList<Integer> excludedData,int offset);
+	public ArrayList<GatheringJoinVo> getNewData(ArrayList<Integer> excludedData,int offset,HttpServletRequest request);
 
 	public ArrayList<GatheringJoinVo> getMoreGjvList(int offset,HttpServletRequest request,String URI,SearchCriteria scri);
 
@@ -82,7 +80,7 @@ public interface GatheringService {
 	//모임 나의찜리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringMyWishListSelect(int midx);	
 	//모임검색
-	public ArrayList<GatheringJoinVo> searchGatherings(SearchCriteria scri);
+	public ArrayList<GatheringJoinVo> searchGatherings(SearchCriteria scri,Integer midx);
 
 	//모임일정만들기
 	public int gatheringScheduleMake(Gathering_ScheduleVO gsv);

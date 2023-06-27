@@ -52,10 +52,8 @@ public interface GatheringService_Mapper {
 	//모임수정리스트가져오기 
 	public ArrayList<GatheringJoinVo> gatheringModifyList(int giidx);
 	//모임 리스트 가져오기
-	public ArrayList<GatheringJoinVo> gatheringListSelect();
+	public ArrayList<GatheringJoinVo> gatheringListSelect(Integer midx);
 	//모임 리스트 더보기 
-	public ArrayList<GatheringJoinVo> getMoreGatheringList(int offset);
-
 	// 이전 데이터를 제외한 새로운 데이터 가져오기
 	public ArrayList<GatheringJoinVo> getNewData(HashMap<String, Object> hm);
 
@@ -104,7 +102,7 @@ public interface GatheringService_Mapper {
 	//모임 나의찜리스트 가져오기
 	public ArrayList<GatheringJoinVo> gatheringMyWishListSelect(int midx);		
 	//모임 검색하기
-	public ArrayList<GatheringJoinVo> searchGatherings(SearchCriteria scri);
+	public ArrayList<GatheringJoinVo> searchGatherings(HashMap<String, Object> hm);
 
 	//모임일정만들기
 	public int gatheringScheduleMake(Gathering_ScheduleVO gsv);
