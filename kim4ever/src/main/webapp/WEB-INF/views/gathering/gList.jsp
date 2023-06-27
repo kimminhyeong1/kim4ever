@@ -59,15 +59,16 @@
 						<c:if test="${loop.index lt 8}">
 							<div class="card" >
 								<img class="cardImg" src="../resources/GTImages/${gjv.imageName}">
-								<c:choose>
-									<c:when test="${gjv.gwidx != 0}">
-									<img class="cardWish" src="../resources/icon/fullheart.png" onclick="handleHeartClick(${gjv.giidx}, ${midx}, this)">
-									</c:when>
-									<c:otherwise>
-										<button ><img class="cardWish" src="../resources/icon/heart.png" onclick="handleHeartClick(${gjv.giidx}, ${midx}, this)"></button>
-									</c:otherwise>
-								</c:choose>
-							
+								<c:if test="${not empty midx}">
+									<c:choose>
+										<c:when test="${gjv.gwidx != 0}">
+										<img class="cardWish" src="../resources/icon/fullheart.png" onclick="handleHeartClick(${gjv.giidx}, ${midx}, this)">
+										</c:when>
+										<c:otherwise>
+											<button ><img class="cardWish" src="../resources/icon/heart.png" onclick="handleHeartClick(${gjv.giidx}, ${midx}, this)"></button>
+										</c:otherwise>
+									</c:choose>
+								</c:if>
 								<h3 class="cardTitle">${gjv.gInfoName}</h3>
 								<p class="cardInfo" id="textContainer">${gjv.gInfoBriefIntroduction}</p>
 								<p class="attend">(참여멤버${gjv.gInfoParticipating}/${gjv.gInfoCapacity})</p> 
@@ -195,15 +196,23 @@
 		             // 가져온 데이터를 gContent에 추가
 	                    $.each(data, function(index, gjv) {
 	                    	if (index !== 8) {
-		                        var card = "<div class='card'>"
-		                            + "<img class='cardImg' src='../resources/GTImages/" + gjv.imageName + "'>"
-		                            + "<img class='cardWish' src='../resources/icon/" + (gjv.gwidx != 0 ? "fullheart.png" : "heart.png") + "' onclick='handleHeartClick(" + gjv.giidx + ", " + ${midx} + ", this)'>"
-		                            + "<h3 class='cardTitle'>" + gjv.gInfoName + "</h3>"
-		                            + "<p class='cardInfo'>" + gjv.gInfoBriefIntroduction + "</p>"
-		                            + "<p class='attend'>(참여멤버 " + gjv.gInfoParticipating + "/" + gjv.gInfoCapacity + ")</p>" 
-		                            + "<button class='gBtn' onclick=\"location.href='${pageContext.request.contextPath}/gathering/gSimpleInfo.do?giidx="+gjv.giidx+"'\">구경하기</button>"
-		
-		                            + "</div>";
+	                    		
+	                    		var card = "<div class='card'>" +
+	                    	    "<img class='cardImg' src='../resources/GTImages/" + gjv.imageName + "'>";
+
+		                    	if (${midx != null}) {
+		                    	    if (gjv.gwidx != 0) {
+		                    	        card += "<img class='cardWish' src='../resources/icon/fullheart.png' onclick='handleHeartClick(" + gjv.giidx + ", " + ${midx} + ", this)'>";
+		                    	    } else {
+		                    	        card += "<button><img class='cardWish' src='../resources/icon/heart.png' onclick='handleHeartClick(" + gjv.giidx + ", " + ${midx} + ", this)'></button>";
+		                    	    }
+		                    	}
+	
+		                    	card += "<h3 class='cardTitle'>" + gjv.gInfoName + "</h3>" +
+		                    	    "<p class='cardInfo'>" + gjv.gInfoBriefIntroduction + "</p>" +
+		                    	    "<p class='attend'>(참여멤버 " + gjv.gInfoParticipating + "/" + gjv.gInfoCapacity + ")</p>" +
+		                    	    "<button class='gBtn' onclick=\"location.href='${pageContext.request.contextPath}/gathering/gSimpleInfo.do?giidx=" + gjv.giidx + "'\">구경하기</button>" +
+		                    	    "</div>";
 		                        $(".gContentB").append(card);
 		                        excludedData.push(gjv.giidx);
 	                    	}

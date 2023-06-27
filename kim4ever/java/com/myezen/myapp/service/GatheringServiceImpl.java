@@ -173,24 +173,27 @@ public class GatheringServiceImpl implements GatheringService {
    
    @Override
    //모임 리스트 가져오기
-   public ArrayList<GatheringJoinVo> gatheringListSelect() {
+   public ArrayList<GatheringJoinVo> gatheringListSelect(Integer midx) {
       
-      ArrayList<GatheringJoinVo> gjvlist = gsm.gatheringListSelect();
+      ArrayList<GatheringJoinVo> gjvlist = gsm.gatheringListSelect(midx);
       return gjvlist;
    }
 
 
-	@Override
-	//모임 리스트 더보기 
-	public ArrayList<GatheringJoinVo> getMoreGjvList(int offset) {
-		ArrayList<GatheringJoinVo> moreGjvList = gsm.getMoreGatheringList(offset);
-		return moreGjvList;
-	}
 	// 이전 데이터를 제외한 새로운 데이터 가져오기
-    public ArrayList<GatheringJoinVo> getNewData(ArrayList<Integer> excludedData,int offset) {
+    public ArrayList<GatheringJoinVo> getNewData(ArrayList<Integer> excludedData,int offset,HttpServletRequest request) {
+    	HttpSession session = request.getSession();
+		Object omidx = session.getAttribute("midx");
+		Integer midx =null;
+		if (omidx != null) {
+			midx = (Integer)omidx;
+		}else {
+			midx = (Integer)omidx;			
+		}
     	  HashMap<String, Object> hm = new HashMap<>();
     	  hm.put("excludedData", excludedData);
     	  hm.put("offset", offset);
+    	  hm.put("midx", midx);
         return gsm.getNewData(hm);
     }
 
@@ -198,16 +201,14 @@ public class GatheringServiceImpl implements GatheringService {
    //모임 리스트 더보기 
    public ArrayList<GatheringJoinVo> getMoreGjvList(int offset,HttpServletRequest request,String URI,SearchCriteria scri) {
       
-       String gList = request.getContextPath() + "/gathering/gList.do";
+      // String gList = request.getContextPath() + "/gathering/gList.do";
        String gMyPage = request.getContextPath() + "/gathering/gMyPage.do";
        String gMyWish = request.getContextPath() + "/gathering/gMyWish.do";
        String gSearch = request.getContextPath() + "/gathering/gSearch.do";
        HttpSession session = request.getSession();
        //모임 메인 리스트
-       if (URI.equals(gList)) {
-          ArrayList<GatheringJoinVo> moreGjvList = gsm.getMoreGatheringList(offset);
-          return moreGjvList;
-      }
+       //if (URI.equals(gList)) {
+      //}
        //모임 나의 리스트
        if (URI.equals(gMyPage)) {
            Object omidx = session.getAttribute("midx");
