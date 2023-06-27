@@ -160,6 +160,11 @@ public class MemberController {
 		            		session.setAttribute("memberId", mv.getMemberId());
 		            		session.setAttribute("memberName", mv.getMemberName());
 		            		session.setAttribute("memberType", mv.getMemberType());
+		            		BikeJoinVo bjv = ms.bikeRentUsing(mv.getMidx());
+		        			if (bjv != null) {//이용중인내역 유지
+		        				session.setAttribute("ridx", bjv.getRidx());//세션값에 저장
+		        				session.setAttribute("bkidx", bjv.getBkidx());//세션값에 저장
+		        			}
 		            	}
 		            
 		            	
@@ -221,6 +226,11 @@ public class MemberController {
 	            		session.setAttribute("memberType", mv.getMemberType());
 	            		session.setAttribute("memberLoginType", mv.getMemberLoginType());
 	            		session.setAttribute("access_Token", access_Token);
+	            		BikeJoinVo bjv = ms.bikeRentUsing(mv.getMidx());
+	        			if (bjv != null) {//이용중인내역 유지
+	        				session.setAttribute("ridx", bjv.getRidx());//세션값에 저장
+	        				session.setAttribute("bkidx", bjv.getBkidx());//세션값에 저장
+	        			}
 	            	}
 	            
 	            	

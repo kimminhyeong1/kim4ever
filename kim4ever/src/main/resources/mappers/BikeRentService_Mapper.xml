@@ -145,6 +145,13 @@ LIMIT 1;		<!-- FETCH FIRST 1 ROW ONLY를 MySQL에서 사용하는 LIMIT 1로 변
 	SET BIKESTATE = 'E'
 	WHERE BKIDX = #{bkidx}
 	</update>
+	<update id="bikeRentStateY" parameterType="int">
+		UPDATE rent1234
+		SET
+		bikeState='Y' 
+		WHERE
+		ridx = #{0}
+	</update>
     
     <select id="bikeRentReturnCheck" resultType="com.myezen.myapp.domain.BikeJoinVo">
 		SELECT * FROM rent1234
