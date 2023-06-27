@@ -381,6 +381,18 @@ public class BikeRentServiceImpl implements BikeRentService {
 	}
 
 
+
+	@Override
+	public int reviewInsert(String reviewContent) {
+		int value = brsm.reviewInsert(reviewContent);
+		return value;
+	}
+
+
+
+
+
+
 	
 
 

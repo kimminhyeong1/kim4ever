@@ -214,4 +214,16 @@ LIMIT 1;		<!-- FETCH FIRST 1 ROW ONLY를 MySQL에서 사용하는 LIMIT 1로 변
 	</select>
 
 
+	<!-- 리뷰 작성 -->
+		<insert id="reviewInsert" parameterType="com.myezen.myapp.domain.BikeJoinVo" >
+			INSERT INTO review1234 (reviewContent)
+			VALUES (#{reviewContent})
+		</insert>
+
+
+
+	
+
+
+
 </mapper>
