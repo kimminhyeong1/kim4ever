@@ -63,7 +63,9 @@ public interface BikeRentService_Mapper {
     //고장/신고 작성 메소드
     public int bikeRentErrorInsert(ErrorVo ev);
     //자전거 상태 E로 변경
-    public int bikeRentStateE(int ridx);
+    public int bikeRentStateE(int bkidx);
+    //자전거 대여 상태 Y로 변경
+    public int bikeRentStateY(int ridx);
 
     //대여소 QR을 찍고 반납하기 메소드
     public BikeJoinVo bikeRentReturnCheck(int ridx, int rsidx);
@@ -74,6 +76,8 @@ public interface BikeRentService_Mapper {
     //1. 자전거테이블에 자전거 상태 반납(N)으로 바꾸기
     //   자전거테이블에 자전거 위치 바꾸기
     public int bikeRentBikeUpdate(int bkidx, String bikeLocation);
+    //1.2 대여 테이블 대여상태 Y
+    public int bikeRentUpdate(int ridx);   
 	//2. 반납테이블에 컬럼 생성하기
     public int bikeRentReturnInsert(String RentalshopName,int ridx);
 

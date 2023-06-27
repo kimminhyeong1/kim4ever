@@ -38,8 +38,8 @@
 
 <!-- bike1234에서 대여하기버튼을 누르면 대여테이블인 rent1234로 데이터삽입 쿼리 -->
 <insert id="insertRentInfo" parameterType="com.myezen.myapp.domain.BikeJoinVo">
-	  INSERT INTO rent1234 (rentDay, rentPlace, bkidx, rsidx, midx)
-	  VALUES(NOW(), #{rentPlace}, #{bkidx}, #{rsidx}, #{midx})
+	  INSERT INTO rent1234 (rentDay, rentPlace, bkidx, rsidx, midx,bikeState)
+	  VALUES(NOW(), #{rentPlace}, #{bkidx}, #{rsidx}, #{midx},'N')
 	  <selectKey resultType="int" keyProperty="ridx" order="AFTER">
 	    SELECT LAST_INSERT_ID() AS ridx
 	  </selectKey>
@@ -145,6 +145,13 @@ LIMIT 1;		<!-- FETCH FIRST 1 ROW ONLY를 MySQL에서 사용하는 LIMIT 1로 변
 	SET BIKESTATE = 'E'
 	WHERE BKIDX = #{bkidx}
 	</update>
+	<update id="bikeRentStateY" parameterType="int">
+		UPDATE rent1234
+		SET
+		bikeState='Y' 
+		WHERE
+		ridx = #{0}
+	</update>
     
     <select id="bikeRentReturnCheck" resultType="com.myezen.myapp.domain.BikeJoinVo">
 		SELECT * FROM rent1234
@@ -169,6 +176,13 @@ LIMIT 1;		<!-- FETCH FIRST 1 ROW ONLY를 MySQL에서 사용하는 LIMIT 1로 변
 		bikeLocation = #{1}, bikeState='Y' 
 		WHERE
 		bkidx = #{0}
+	</update>
+	<update id="bikeRentUpdate" parameterType="int">
+		UPDATE rent1234
+		SET
+		bikeState='Y' 
+		WHERE
+		ridx = #{0}
 	</update>
 	<insert id="bikeRentReturnInsert" parameterType="com.myezen.myapp.domain.BikeJoinVo">
 		 INSERT INTO RETURN1234

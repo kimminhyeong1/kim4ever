@@ -220,6 +220,7 @@ public class BikeRentServiceImpl implements BikeRentService {
 	        System.out.println("고장정보삽입"+value);
 	        //자전거테이블에 자전거 상태 E로 변환
 	        value = brsm.bikeRentStateE(ev.getBkidx()); 
+	        value = brsm.bikeRentStateY(ev.getRidx()); 
 	        System.out.println("자전거상태E변환"+value);
 	        
 	    } catch (IOException e) {
@@ -260,9 +261,10 @@ public class BikeRentServiceImpl implements BikeRentService {
 		BikeJoinVo bjv = brsm.bikeRentOneSelect(ridx, rsidx);
 		System.out.println(""+bjv.getBkidx()+""+bjv.getBikeLocation()+""+bjv.getBikeState()+""+bjv.getRentalshopName()+""+bjv.getRidx());
 		int value1 =brsm.bikeRentBikeUpdate(bjv.getBkidx(),bjv.getRentalshopName()); //자전거 업데이트
-		int value2 =brsm.bikeRentReturnInsert(bjv.getRentalshopName(),bjv.getRidx());//자전거 반납
+		int value2 =brsm.bikeRentUpdate(ridx); //대여 업데이트 
+		int value3 =brsm.bikeRentReturnInsert(bjv.getRentalshopName(),bjv.getRidx());//자전거 반납
 
-			return value2;			
+			return value3;			
 	}
 	
 	@Override
