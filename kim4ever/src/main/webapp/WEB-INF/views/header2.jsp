@@ -167,7 +167,7 @@ header{width:auto;margin:0 auto;}
 			</div>
 	</div>
 		<div class="logo" style="display:inline-block;">
-		<h1><img src="${pageContext.request.contextPath}/resources/logo/logo7.jpg" alt="타:바" onclick="location.href='${pageContext.request.contextPath}/gathering/gList.do'"></h1>
+		<h1><img src="${pageContext.request.contextPath}/resources/logo/logo7.png" alt="타:바" onclick="location.href='${pageContext.request.contextPath}/gathering/gList.do'"></h1>
 		</div>
 			<div class="change"  onclick="location.href='<%=request.getContextPath()%>/index.jsp'">	
 			  <img src="${pageContext.request.contextPath}/resources/mobile/change3_1.png" alt="전환버튼" >	 

@@ -190,7 +190,7 @@ header{width:auto;margin:0 auto; }
 	</div>
 	
 		<div class="logo" style="display:inline-block;">
-		<h1><img src="${pageContext.request.contextPath}/resources/logo/logo6.jpg" alt="타:바" onclick="location.href='<%=request.getContextPath()%>/index.jsp'"/></h1>
+		<h1><img src="${pageContext.request.contextPath}/resources/logo/logo6.png" alt="타:바" onclick="location.href='<%=request.getContextPath()%>/index.jsp'"/></h1>
 		</div>
 		<div class="change"  onclick="location.href='<%=request.getContextPath()%>/gathering/gList.do'">	
 			  <img src="${pageContext.request.contextPath}/resources/mobile/change3.png" alt="전환버튼" >	
