@@ -15,16 +15,18 @@
 		   
 		<style type="text/css">
 		 	/*검색부분*/
-			#SearchPart{margin: 30px 0 30px 0; position: relative;}
-			#SearchPart button{position: absolute;width: 50px; height: 50px;border: 0px;background: 0px; top: 3px; right: 225px;}
+			#SearchPart{margin: 0 0 20px 0; position: relative;}
+			#SearchPart button{position: absolute;width: 50px; height: 50px;border: 0px;background: 0px; top: 3px; right: 240px;}
 			#SearchPart img{width: 40px; height: 40px;}
 			#keywordMark p{font-size:21px;}
+			.gInput {width:640px;}
+			.gBtn2 {margin-bottom:0px}
 			/*************************모바일****************************************/
 			/*****모바일 넓이***/
 			@media (min-width: 300px) and (max-width: 940px)  {
 			#SearchPart button{position: absolute;width: 50px; height: 30px;border: 0px;background: 0px; top: 3px; right: 0px;}
 			#SearchPart img{width: 25px; height: 25px; margin-top:30px; margin-right:10%;}
-			#keywordMark p{font-size:21px;}
+			#keywordMark p{font-size:21px; }
 				}
 		</style>
 	</head>
@@ -32,6 +34,9 @@
 	<%@include file="../header2.jsp" %>
 	<main id="main">
 		<section class="gContainer">
+			<div class="gContentTitle" >
+				<h2>전주 모임 보기</h2>
+			</div>
 			<form action="<%=request.getContextPath()%>/gathering/gSearch.do" method="GET">
 			<div id="SearchPart">
 		        <input class="gInput" type="text" id="keyword" name="keyword" value="${empty scri.keyword ? '' : scri.keyword}" placeholder="검색하세요.">
@@ -50,9 +55,7 @@
 			%>
 			</div>
 			
-			<div class="gContentTitle" >
-				<h2>전주 모임 보기</h2>
-			</div>
+		
 				<div class="gContent gContentB" >
 					<c:forEach var="gjv" items="${gjvlist}" varStatus="loop">
 						<c:if test="${loop.index lt 8}">

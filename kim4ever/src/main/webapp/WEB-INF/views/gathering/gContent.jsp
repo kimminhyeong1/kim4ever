@@ -21,7 +21,7 @@
 		 	.gContainer{border: 1px solid #0000;}
 		 	/*모임이름부분*/
 		 	#gIntro_gThumbnail{text-align:left;}
-			#gIntro{display: inline-block; width: 400px; height: 500px; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;}
+			#gIntro{display: inline-block; width: 400px; height: 500px; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 10px;}
 			#gIntro>div:nth-child(1){font-size: 40px; font-weight: bold; display: inline-block; margin: 20px 0px 20px 20px;}
 			#gIntro>div:nth-child(2){font-size: 20px; width: 150px; display: inline-block;}
 			#gIntro>div:nth-child(3){width: 90%; height: 50%; margin: 20px 20px 20px 20px; border: 1px solid #bbb;}
@@ -29,7 +29,7 @@
 			#gIntro>div:nth-child(4){font-size: 20px; width: 90%; height: 4%; margin: 20px 20px 20px 20px;}
 			#gIntro>div:nth-child(5){width: 90%; height: 13%; margin: 20px 20px;  overflow: hidden; text-overflow: ellipsis; word-wrap: break-word;}
 			/*모임슬라이더부분*/
-			#gThumbnail{vertical-align: top;margin-left:42px; display: inline-block; width: 790px; height: 500px; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;}
+			#gThumbnail{vertical-align: top;margin-left:42px; display: inline-block; width: 790px; height: 500px; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 10px;}
 			#gThumbnail>div>div:nth-child(1){font-size: 20px;font-weight: bold;margin 0 auto;}
 			/* 슬라이더 1 시작 */
 			.slider-1 {height:470px;position:relative; margin: 15px auto; width: 750px;}
@@ -51,7 +51,7 @@
 			opacity:1;padding:5px; border-radius:50px;font-size:50px;}
 			.slider-1 >.side-btns > div:last-child > span {left:auto;right:20px; }
 			/*모임멤버부분*/
-			#gMembers{margin-top:30px; width: 100%; height: 130px; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px; text-align: left;}
+			#gMembers{margin-top:30px; width: 100%; height: 130px; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 10px; text-align: left;}
 			#gMembers>div:nth-child(1){font-size: 20px;font-weight: bold;margin-left: 17px;margin-top: 17px;}
 			#gMembers>div:nth-child(1)>span{color: #f00;} 
 			#gMembers>div:nth-child(2){width: 80%; display: inline-block;margin: 10px 20px; }
@@ -61,25 +61,27 @@
 			#gMembers>div:nth-child(3){width: 15%;  display: inline-block;vertical-align: top;margin-top: -32px;}
 			#gMembers>div:nth-child(4){width: 7%; display: inline-block;vertical-align: top; margin-top: 20px; margin-left: 10px;}
 			/*모임일정부분*/
-			#gSchedule{margin-top:30px;width: 100%; height: 1110px; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;text-align: left;}
+			#gSchedule{margin-top:30px;width: 100%; height: 1110px; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 10px;text-align: left;}
 			#gSchedule>div:nth-child(1){font-size: 20px;font-weight: bold;margin-top: 15px;margin-left: 20px;} 
 			#calendar {margin: 20px 20px;}
 			#gSchedule>div:nth-child(3){text-align: right;margin-right: 20px;}
 			#gSchedule>div:nth-child(3)>button{width: 150px; height: 50px;} 
 			/*모임공지사항부분*/
-			#gNotice{margin-top:30px;width: 100%;  border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;}
+			#gNotice{margin-top:30px;width: 100%;  border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 10px;}
 			/*공지사항부분*/
 			.gNotice{text-align: left; font-size: 20px; margin: 40px 60px;}
 			.gNotice>div>div{display: inline-block; font-size: 25px; font-weight: bold;}
 			.gNotice>div>div:nth-child(1){color: #f00; margin-right: 20px;}
 			.gNotice>div:nth-child(2){border-bottom: 2px solid #bbb; padding-bottom: 10px; margin-top: 10px; white-space: nowrap; overflow: hidden;  text-overflow: ellipsis;}/* 끝나는바*/
 			/*모임기타버튼부분*/
-			#gReportExit{margin-top:30px;width: 100%; height: 100px; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;text-align: right;}
+			#gReportExit{margin-top:30px;width: 100%; height: 100px; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 10px;text-align: right;}
 			#gReportExit>button{color: rgb(149, 165, 166);margin-top: 30px;margin-left: 10px;margin-right: 20px;width: 132px;height: 40px;font-size: 25px;border: 1px solid #0000;}
 			#gReportExit>button:active{color: #000;} 
 			/*캘린더*/
 			.fc-daygrid-event {white-space: break-spaces;}
 			.gBtn {margin-top: 12px;}
+		.fc .fc-button-primary {background:#05d100; border-color:white;} /*달력*/
+		.fc .fc-button-primary:disabled{background:#05d100; border-color:white; }
 		
 			/*************************모바일****************************************/
 				/*****모바일 넓이***/

@@ -13,13 +13,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">		
 		 <style type="text/css">
 		 	/*만들기 부분*/
-			#main section h3{display: inline-block;font-size: 18px;}
+			#main section h3{display: inline-block;font-size: 24px;}
 			#main section p{display: inline-block; color: #f14242; padding-left: 10px;}
 			#main section>div:nth-child(1){margin: 10px 0px 10px 100px;}
 			#main section>div:nth-child(2){text-align: center;}
 			#main section>div>div{margin: 20px 0px 20px 0px;}
 			#main section input {display: block;}
-			#main section textarea {display: block; width: 86%; height: 200px;font-size: 23px; border-radius: 20px; border: 1px solid #ccc; resize: none;}
+			#main section textarea {display: block; width: 86%; height: 200px;font-size: 20px; border-radius: 20px; border: 1px solid #ccc; resize: none;}
 			#main section button{text-align: center;}  
 			#main section img{width: 100px;height: 100px;}   
 			#main section .radio{display: inline-block;width: 4%; margin-top: 10px; } 
