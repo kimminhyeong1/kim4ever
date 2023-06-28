@@ -36,12 +36,12 @@
 						<p class="pcontent">${bkidxCount}대</p>
 					</div>	
 					
-					<div class="abox" onclick="location.href='${pageContext.request.contextPath}/admin/adminbikeList.do'">
+					<div class="abox">
 						<h3 class="cardTitle">대여 중인 자전거</h3>
 						<p class="pcontent">${ridxCount}대</p>
 					</div>	
 					
-					<div class="abox" onclick="location.href='${pageContext.request.contextPath}/admin/adminbikeError.do'">
+					<div class="abox">
 						<h3 class="cardTitle">고장난 자전거</h3>
 						<p class="pcontent">${errorCount}대</p>
 					</div>	

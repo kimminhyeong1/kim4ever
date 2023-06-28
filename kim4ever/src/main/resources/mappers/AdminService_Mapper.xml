@@ -400,7 +400,7 @@ OFFSET #{offset};
 	
 	<!-- 관리자 메인페이지 고장 난 자전거  -->
 	<select id="getTotalErrorCount" resultType="java.lang.Integer">
-        SELECT COUNT(*) FROM bike1234 WHERE bikeState = 'R' and bikeState = 'E'
+        SELECT COUNT(*) FROM bike1234 WHERE  bikeState = 'E'
     </select>
 	
 	<!-- 관리자 메인페이지 대여 가능한 자전거  -->
