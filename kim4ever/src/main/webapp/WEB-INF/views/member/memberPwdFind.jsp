@@ -12,15 +12,18 @@
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 		<style>
 			main{width:1250px; margin:35px auto 70px; text-align:center;}
-			section{border: 1px solid #bbb;margin: 40px auto;width: 55%;padding: 20px;background-color: #f1f1f1;border-radius: 10px;}
-			input{font-family: 'omyu_pretty';font-size: 24px;box-sizing: border-box;width: 430px;padding: 10px;margin: 2px 0;border: 1px solid #ccc;border-radius: 4px;}
+			section{border: 1px solid #bbb;margin: 40px auto;width: 38%;padding: 20px;background-color: #fdfcfa;border-radius: 20px;padding-top: 45px;}
+			input{font-family: 'omyu_pretty';font-size: 21px;box-sizing: border-box;width: 300px;padding: 10px;margin: 2px 0;border: 1px solid #ccc;border-radius: 20px;}
 			section>form>div{margin-top: 35px;} 
 			section div>div>div{padding: 8px;}
-			section button{width: 430px;height: 60px;text-align: center;font-family: 'omyu_pretty';font-size: 30px;border-radius: 10px;border: 0px solid #ff9933;background: #ff9933;}
+			section button{width: 300px;height: 45px;text-align: center;font-family: 'omyu_pretty';font-size: 21px;border-radius: 20px;border: 0px solid #ff9933;background: #ff9933; cursor: pointer;}
 			/* section #auth{height: 50px; font-size: 24px;}  */
 			 .memberTitle{position: relative;}
-			 #loginIdFindTitle{position:absolute; color: #ddd;  text-decoration-line: none; top: -100px; left: 0px; font-size: 30px;} 
-			 #loginPwdFindTitle{position:absolute; color: #ff9933; text-decoration-line: none; top: -100px; left: 140px; font-size: 30px;} 
+			 #loginIdFindTitle{position:absolute; color: #ddd;  text-decoration-line: none; top: -120px; left: 0px; font-size: 30px;} 
+			 #loginPwdFindTitle{position:absolute; color: #ff9933; text-decoration-line: none; top: -120px; left: 140px; font-size: 30px;} 
+			 /*로고*/
+			.logo h1 img{position: relative;top: 133px;width: 90px; cursor: pointer;}
+			#auth{ cursor: pointer;}
 		</style>
 		<script>
             $(document).ready(function(){
@@ -93,8 +96,10 @@
         </script>
 	</head>
 	<body>
-	<%@include file="../header.jsp" %> 
 		<main>
+			<div class="logo">
+				<h1><img src="${pageContext.request.contextPath}/resources/logo/logo6.png" alt="타:바" onclick="location.href='<%=request.getContextPath()%>/index.jsp'"/></h1>
+			</div>
 	        <section id="loginPwdFind" class="memberOut">
 		        <form id="frm" name="frm">
 		            <div>
@@ -123,6 +128,5 @@
 		        </form>
 	        </section>
 	    </main>
-	<%@include file="../footer.jsp" %>
 	</body>
 </html>

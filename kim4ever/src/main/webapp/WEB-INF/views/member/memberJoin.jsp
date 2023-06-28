@@ -36,12 +36,12 @@
 		#main #content{width:1440px; }
 		#main #bottom{width:1440px; height:100px; }
 		/*로그인 외각선*/
-		#login_out{border: 1px solid #bbb;margin: 40px auto;width: 50%;padding: 20px;background-color: #f1f1f1;border-radius: 10px;}
+		#login_out{border: 1px solid #bbb;margin: 40px auto;width: 38%;padding: 20px;background-color: #fdfcfa;border-radius: 20px;padding-top: 45px;}
 		/*알림*/
 		.alarm{color: #f00;text-align: left;line-height: 10px;padding-left: 5px;padding-top: 15px;} 
 		
 		h2{text-align: center; margin-top:0px;margin-bottom: 20px;}   
-		#content table {width:60%;border-collapse:collapse;  margin:10px auto 0; text-align:center;  line-height:10px; font-family:'omyu_pretty'; font-size:21px;}
+		#content table {width:60%;border-collapse:collapse;  margin:50px auto 0; text-align:center;  line-height:10px; font-family:'omyu_pretty'; font-size:21px;} 
 		#content table th{width:150px; text-align:center;  padding:8px;}   
 		#content table td{padding:8px;text-align:left;}  
 		#content table td:nth-child(1){width:120px;text-align:center;}
@@ -54,21 +54,27 @@
 		#content table 
 		input{
 		  font-family: 'omyu_pretty';
-		  font-size:24px;
+		  font-size:21px;
 		  box-sizing: border-box;
-		  width: 100%;
+		  width: 300px;
 		  padding: 10px;
 		  margin: 2px 0;
 		  border: 1px solid #ccc;
-		  border-radius: 4px;
+		  border-radius: 20px; 
 		  
 		}
 		
-		#content table button{width:430px; height:60px; text-align:center; font-family: 'omyu_pretty'; font-size:30px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
-		#content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+		#content table button{width:300px; height:45px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:20px; border:0px solid #ccc; background:#f0f0f0; cursor: pointer;}
+		#content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px); cursor: pointer;} 
 		
-		#main #findbutton{width:100%; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
-		#main #findbutton:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+		#main #findbutton{width:100%; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933; cursor: pointer;}
+		#main #findbutton:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px); cursor: pointer;}
+		
+		button{font-family: 'omyu_pretty';font-size: 21px;box-sizing: border-box;width: 300px;padding: 10px;margin: 2px 0;border: 1px solid #ccc;border-radius: 20px; cursor: pointer;} 
+		/*로고*/
+		.logo h1 img{position: relative;top: 133px;width: 90px;  cursor: pointer;}   
+		/*회원가입 버튼*/
+		#content table #signup{background:#ff9933;} 
 	
 		
 	/*****************************************모바일***************************************************************/
@@ -806,8 +812,10 @@
 		
 	</head>
 	<body>
-		<%@include file="../header.jsp" %>
 		<main id="main">
+			<div class="logo">
+				<h1><img src="${pageContext.request.contextPath}/resources/logo/logo6.png" alt="타:바" onclick="location.href='<%=request.getContextPath()%>/index.jsp'"/></h1>
+			</div>
 			<div id="content">
 	
 			<form name="frm" id="frm" method="post">
@@ -900,7 +908,7 @@
 						</tr> 
 						<tr>
 							<td colspan="2">
-								<button type="button" onclick="Signup();">회원가입</button>
+								<button id="signup" type="button" onclick="Signup();">회원가입</button>
 							</td>
 						</tr>
 					</tbody>
@@ -908,7 +916,6 @@
 			</div> 
 		</form>
 		</div>
-		<div id="bottom"></div>
 	</main>
 	</body>
 </html>
