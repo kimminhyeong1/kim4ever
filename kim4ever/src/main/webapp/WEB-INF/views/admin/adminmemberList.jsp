@@ -107,7 +107,14 @@ a{color:inherit; text-decoration:none;}
 						<td><a href="adminmemberListProfile.do?memberId=${bjv.memberId}">${bjv.memberId}</a></td>
 						<td>${bjv.memberName}</td>
 						<td>${bjv.writeDay.substring(0, 10)}</td>
-						<td>${bjv.memberType}</td>
+						<td>
+						  <c:if test="${bjv.memberType == 'M'}">
+						    일반 회원
+						  </c:if>
+						  <c:if test="${bjv.memberType != 'M'}">
+						    ${bjv.memberType}
+						  </c:if>
+						</td>
 						<td>
 							<c:choose>
 								<c:when test="${bjv.memberType eq '관리자'}">  

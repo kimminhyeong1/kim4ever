@@ -44,7 +44,7 @@ a{color:inherit; text-decoration:none;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
 #content table tr th:nth-child(1){width:30px;}
-#content table tr th:nth-child(2){width:40px;}
+#content table tr th:nth-child(2){width:60px;}
 #content table tr th:nth-child(3){width:40px;}
 #content table tr th:nth-child(4){width:120px;}
 #content #bikeError{color: #000; margin-right:10px;} 
@@ -140,7 +140,15 @@ function confirmRepair(eidx, bikeCode, bikeType) {
 }
 </script>
 
-
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var tdElement = document.querySelector('#content table td:nth-child(4)'); // 네 번째 열(인덱스 3)의 테이블 셀을 선택합니다.
+  var textContent = tdElement.textContent;
+  if (textContent.length > 15) {
+    tdElement.textContent = textContent.substring(0, 15) + '...';
+  }
+});
+</script>
 
 </div>
 </body>
