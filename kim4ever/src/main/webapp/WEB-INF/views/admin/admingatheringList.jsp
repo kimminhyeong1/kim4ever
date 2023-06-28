@@ -48,6 +48,8 @@ li{list-style:none;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
 #content table tr th:nth-child(1){width:80px;}
 #content table tr th:nth-child(2){width:50px;}
+#content table tr th:nth-child(1){width:110px;}
+#content table tr th:nth-child(2){width:60px;}
 #content table tr th:nth-child(3){width:110px;}
 #content table tr th:nth-child(4){width:50px;}
 #content table tr th:nth-child(5){width:60px;}
@@ -167,6 +169,15 @@ li{list-style:none;}
 			
 	</div>
 	
+	<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var tdElement = document.querySelector('#content table td:nth-child(4)'); // 네 번째 열(인덱스 3)의 테이블 셀을 선택합니다.
+  var textContent = tdElement.textContent;
+  if (textContent.length > 15) {
+    tdElement.textContent = textContent.substring(0, 15) + '...';
+  }
+});
+</script>
 	
 		
 </div>

@@ -49,12 +49,12 @@ li{list-style:none;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
 #content table tr th:nth-child(1){width:50px;}
 #content table tr th:nth-child(2){width:70px;}
-#content table tr th:nth-child(3){width:70px;}
+#content table tr th:nth-child(3){width:80px;}
 #content table tr th:nth-child(4){width:50px;}
 #content table tr th:nth-child(5){width:80px;}
-#content table tr th:nth-child(6){width:210px;}
+#content table tr th:nth-child(6){width:220px;}
 #content table tr th:nth-child(7){width:220px;}
-#content table tr th:nth-child(8){width:150px;}
+#content table tr th:nth-child(8){width:130px;}
 #content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 #content .search {text-align:right; margin-right:185px; margin-bottom:40px;}
@@ -156,7 +156,15 @@ li{list-style:none;}
 	</div>
 </div>
 
-
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var tdElement = document.querySelector('#content table td > a'); // 해당 테이블 셀을 선택합니다.
+  var textContent = tdElement.textContent;
+  if (textContent.length > 10) {
+    tdElement.textContent = textContent.substring(0, 10) + '...';
+  }
+});
+</script>
 
 </body>
 
