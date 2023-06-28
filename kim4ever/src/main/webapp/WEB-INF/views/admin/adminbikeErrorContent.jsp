@@ -128,53 +128,50 @@ h2{text-align: center; margin-top:20px;}
 		<div id="bottom"></div>
 		
 		<script>
-		var map;
-		var marker;
-
-		function initMap() {
-			var latitude = '${ejv.errorLatitude}'; 
-			var longitude = '${ejv.errorLongitude}'; 
-
-			var mapOptions = {
-				center: new kakao.maps.LatLng(latitude, longitude),
-				level: 4,
-				zoomable: false, // 지도 확대/축소 비활성화
-				  scrollwheel: false // 마우스 휠 스크롤 비활성화
-			};
-
-			// 지도 생성
-			map = new kakao.maps.Map(document.getElementById('map'), mapOptions);
-
-			// 마커 생성
-			marker = new kakao.maps.Marker({
-				position: map.getCenter()
-			});
-			marker.setMap(map);
-
-			// 주소 정보를 표시할 인포윈도우 생성
-			var infowindow = new kakao.maps.InfoWindow({
-				content: '${ejv.errorLocation}',
-			    removable: true,
-				
-			});
-				
-			var content = '<div style="font-family: omyu_pretty; font-size: 18px;">' + '${ejv.errorLocation}' + '</div>';
-			infowindow.setContent(content);
-			
-			// 마커 클릭 시 인포윈도우 표시
-			kakao.maps.event.addListener(marker, 'click', function() {
-				infowindow.open(map, marker);
-			});
-		
-
-		// HTML 로딩 완료 후 initMap 함수 호출
-		document.addEventListener('DOMContentLoaded', initMap);
-		}
-		
-		
-	   
+			var map;
+			var marker;
 	
-	</script> 		
+			function initMap() {
+				var latitude = '${ejv.errorLatitude}'; 
+				var longitude = '${ejv.errorLongitude}'; 
+	
+				var mapOptions = {
+					center: new kakao.maps.LatLng(latitude, longitude),
+					level: 4,
+					zoomable: false, // 지도 확대/축소 비활성화
+					scrollwheel: false // 마우스 휠 스크롤 비활성화
+				};
+	
+				// 지도 생성
+				map = new kakao.maps.Map(document.getElementById('map'), mapOptions);
+	
+				// 마커 생성
+				marker = new kakao.maps.Marker({
+					position: map.getCenter()
+				});
+				marker.setMap(map);
+	
+				// 주소 정보를 표시할 인포윈도우 생성
+				var infowindow = new kakao.maps.InfoWindow({
+					content: '${ejv.errorLocation}',
+				    removable: true //텍스트 마커창 닫기 기능 
+					
+				});
+					
+				var content = '<div style="font-family: omyu_pretty; font-size: 17px; width:260px; height:40px; display: flex; align-items: center; justify-content: center;">' + '${ejv.errorLocation}' + '</div>';
+				infowindow.setContent(content);
+				
+				// 마커 클릭 시 인포윈도우 표시
+				kakao.maps.event.addListener(marker, 'click', function() {
+					infowindow.open(map, marker);
+				});
+		
+			}
+				// HTML 로딩 완료 후 initMap 함수 호출
+				document.addEventListener('DOMContentLoaded', initMap);
+			
+		
+		</script> 		
 				
 	</div>
 		
