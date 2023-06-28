@@ -16,9 +16,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		 <style type="text/css">
 		 	/*소개부분*/
-			#gatheringIntro{width:100%; height:350px; background-color:#F8F8F8;} 
-			#gatheringIntro h2{text-align:center; margin-top:20px; font-family: 'GangwonEdu_OTFBoldA'; font-size:27px; padding:20px; text-shadow: 2px 2px 0 #99CC99, -2px -2px 0 #99CC99, 2px -2px 0 #99CC99, -2px 2px 0 #99CC99;}
-			#gatheringIntro p{text-align:center; padding:5px; font-family:'GangwonEdu_OTFBoldA'; font-size:20px; margin-top:20px;}
+			#gatheringIntro{width:100%; height:350px; background-color:#fbfdfa; border-radius:20px; border: 1px solid #ccc;} 
+			#gatheringIntro h2{text-align:center; margin-top:20px;  font-size:35px; padding:20px;}
+			#gatheringIntro p{text-align:center; padding:5px; font-size:24px; margin-top:20px;}
 			#gatheringList{width:100%; display:flex; flex-wrap:wrap;justify-content:center; align-items:center;}
 			#gatheringList h2{text-align:center; font-family: 'GangwonEdu_OTFBoldA'; font-size:33px; padding:20px;}
 			
@@ -28,9 +28,8 @@
 								/*소개부분*/
 			
 			#gatheringIntro{width:100%; height:auto; background-color:#F8F8F8;  border-radius:10px;  }  
-			#gatheringIntro h2{text-align:center; margin-top:20px;  font-family: 'GangwonEdu_OTFBoldA';  font-size:16px; padding:10px;
-			 text-shadow: 3px 1px 1px #99CC99, 1px 1px 1px #669966, 2px 2px 1px #99CC99, 2px 2px 1px;}
-			#gatheringIntro p{text-align:center; padding:5px; font-family:'GangwonEdu_OTFBoldA'; font-size:10px; margin-top:1px;  overflow: hidden;}
+			#gatheringIntro h2{text-align:center; margin-top:20px; font-size:16px; padding:10px;}
+			#gatheringIntro p{text-align:center; padding:5px;  font-size:10px; margin-top:1px;  overflow: hidden;}
 			#gatheringList{width:100%; display:flex; flex-wrap:wrap;justify-content:center; align-items:center;}
  			#gatheringList h2 {text-align:center; font-family: 'GangwonEdu_OTFBoldA'; font-size: 14px;  padding:10px;}
  			 footer{margin-top: 0px !important;}
