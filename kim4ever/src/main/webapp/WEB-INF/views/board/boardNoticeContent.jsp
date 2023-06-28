@@ -46,7 +46,7 @@ li{list-style:none;}
 #content table td { white-space: pre-line;}
 #content table th:nth-child(4) {border: 1px solid #ddd; }/* 4번째 셀에 외곽선*/
 #content #btn{text-align:right; margin-top:20px; margin-right:144px; }
-#content #btn button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+#content #btn button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:20px; border:0px solid #ff9933; background:#ff9933;}
 #content #btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 .maintext{height: auto;  min-height: 200px; width: 1800px; text-align:left; clear:both;  border: 1px solid #ddd;}
 
@@ -66,7 +66,7 @@ li{list-style:none;}
 #content table tr th {width:50px; text-align:center;  }
 #content table td { white-space: pre-line;}
 #content #btn{text-align:right; margin-top:20px; margin-right:10%; }
-#content #btn button{width:50px; height:25px; margin:0 auto; text-align:center; font-family: 'omyu_pretty'; font-size:14px; border-radius:10px; border:0px solid #ff9933; background:#ff9933; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
+#content #btn button{width:50px; height:25px; margin:0 auto; text-align:center; font-family: 'omyu_pretty'; font-size:14px; border-radius:20px; border:0px solid #ff9933; background:#ff9933; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
 #content #btn button:active {background:#f fcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 .maintext{height: 200px; width: auto; text-align:left;}
 }
