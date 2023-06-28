@@ -47,13 +47,14 @@ li{list-style:none;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
 #content table tr th:nth-child(1){width:80px;}
-#content table tr th:nth-child(2){width:60px;}
+#content table tr th:nth-child(2){width:50px;}
 #content table tr th:nth-child(3){width:110px;}
-#content table tr th:nth-child(4){width:60px;}
+#content table tr th:nth-child(4){width:50px;}
 #content table tr th:nth-child(5){width:60px;}
-#content table tr th:nth-child(6){width:40px;}
+#content table tr th:nth-child(6){width:40px; font-size:18px;}
 #content table .report-count {display:inline-block;vertical-align:middle;margin-right:5px;}
 #content table .icon-image {height:30px;vertical-align:middle;}
+#content table .th-image {height:20px;vertical-align:middle;}
 #content #gatheringList{color: #ff7700; margin-right:10px;} 
 #content #GReportList{color: #000;} 
 #content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
@@ -110,7 +111,10 @@ li{list-style:none;}
 		    <th>생성일</th>
 		    <th>모임 인원</th>
 		    <th>신고횟수</th>
-		    <th></th>
+		    <th>
+		    <img src="../resources/btn/caution.png" alt="Warn" class="th-image" /> : 주의
+		    <img src="../resources/btn/warn.png" alt="Caution" class="th-image" /> : 경고
+		    </th>
 		  </tr>
 		  
 		 <c:forEach var="gjv" items="${gjlist}">
