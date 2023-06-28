@@ -18,20 +18,20 @@ msg = (String)request.getAttribute("msg");
 			#main #content{width:1250px; height:200px;}
 			#main #bottom{width:1250px; height:300px;}
 			#content table{width:30%;border-collapse:collapse;  margin: 60px auto 0; text-align:center;  line-height:30px; font-family:'omyu_pretty'; font-size:21px;}
-			#content table th{width:240px; text-align:center; border:1px solid #fff; padding:8px;}
+			#content table th{width:240px; text-align:center; border:1px solid #bbb; padding:8px;}
 			#content table td{padding:8px;text-align:left;}
 			#content table td:nth-child(1){width:240px;text-align:center;}
 			/*로그인 외각선*/
-			#login_out{border: 1px solid #bbb; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); margin: 40px auto;width: 55%;padding: 20px;background-color: #f1f1f1;border-radius: 10px;}
+			#login_out{border: 1px solid #bbb;margin: 40px auto;width: 38%;padding: 20px;background-color: #fdfcfa;border-radius: 20px;}
 			/*경고문*/
 			#content table tr:nth-child(3) td{padding: 0px;}
 			#content table tr:nth-child(3) td div{width: 240px;text-align: left; padding-left: 10px; color: #f00;}
 			/*아이디저장 부분*/
-			#content table tr:nth-child(4) td{text-align: left;}
+			#content table tr:nth-child(4) td{text-align: left; padding: 0px;padding-left: 10px;}
 			#content table tr:nth-child(4) td input{display: inline-block; width: 10%; height: 18px;vertical-align: middle;}
 			#content table tr:nth-child(4) td span{display: inline-block;}
 			/*아이찾기.비밀번호재설정.회원가입부분*/
-			#Login_submenu p{display: inline-block;}
+			#Login_submenu p{display: inline-block; font-size: 20px;}
 			#Login_submenu p a{text-decoration-line: none; color: #5e5e5e;}
 			 
 			#content table tr:last-child td input{display: inline-block; width:120px; height:50px;}
@@ -40,23 +40,32 @@ msg = (String)request.getAttribute("msg");
 			/*인풋부분*/
 			#content table input{
 			  font-family: 'omyu_pretty';
-			  font-size:24px;
+			  font-size:21px;
 			  box-sizing: border-box;
-			  width: 100%;
+			  width: 300px;
 			  padding: 10px;
 			  margin: 2px 0;
 			  border: 1px solid #ccc;
-			  border-radius: 4px;
+			  border-radius: 20px;
 			}
 			/*버튼부분*/
-			#content table button{width:430px; height:60px; text-align:center; font-family: 'omyu_pretty'; font-size:30px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+			#content table button{width:300px; height:45px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:20px; border:0px solid #ff9933; background:#ff9933;}
 			#content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 			/*구글로그인부분*/
 			.g_id_signin{display: inline-block; margin-top: 20px;}
-			
+			/*아이디저장*/
+			#checkId{cursor: pointer;}
+			label{cursor: pointer;font-size: 20px;} 
+			/*로고*/
+			.logo h1 img{position: relative;top: 133px;width: 90px;}
+			/*카카오로그인*/
+			.kakao_txt img{border-radius: 20px;}
+			/*구글로그인*/
+			.nsm7Bb-HzV7m-LgbsSe{border-radius: 20px;}
+			#buttonDiv{width: 40%;margin: 0 auto;}
 			
 			/**************************모바일****************************************/
-/*****모바일 넓이***/
+/*****모바일 넓이***/ 
 
 @media (min-width: 300px) and (max-width: 940px)  {
 	#main{width:auto; margin:0 auto; text-align:center;}
@@ -67,7 +76,7 @@ msg = (String)request.getAttribute("msg");
 			#content table td{padding:8px;text-align:left;}
 			#content table td:nth-child(1){width:10%;text-align:center;}
 			/*로그인 외각선*/
-			#login_out{ border: none; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); margin: 40px auto;width: 270px; height:200px;padding: 20px;background-color: #f1f1f1;border-radius: 10px;}
+			#login_out{ border: 1px solid #bbb; margin: 40px auto;width: 270px; height:200px;padding: 20px;background-color: #fdfcfa;border-radius: 20px;}
 			/*경고문*/
 			#content table tr:nth-child(3) td{padding: 0px;}
 			#content table tr:nth-child(3) td div{width: 240px;text-align: left; padding-left: 10px; color: #f00;}
@@ -76,6 +85,7 @@ msg = (String)request.getAttribute("msg");
 			#content table tr:nth-child(4) td input{display: inline-block; width: 10%; height: 10px;vertical-align: middle;}
 			#content table tr:nth-child(4) td span{display: inline-block;}
 			/*아이찾기.비밀번호재설정.회원가입부분*/
+			#Login_submenu{margin-bottom: 40px;}
 			#Login_submenu p{display: inline-block;}
 			#Login_submenu p a{text-decoration-line: none; color: #5e5e5e;}
 			 
@@ -84,9 +94,9 @@ msg = (String)request.getAttribute("msg");
 			h2{text-align: center; margin-top:20px;}
 			/*인풋부분*/
 			#content table input{font-family: 'omyu_pretty'; font-size:15px; box-sizing: border-box; width: 80%;
-			  padding: 5px; margin: 2px 0; border: 1px solid #ccc; border-radius: 4px;}
+			  padding: 5px; margin: 2px 0; border: 1px solid #ccc; border-radius: 20px;}
 			/*버튼부분*/
-			#content table button{width:170px; height:30px; text-align:center; font-family: 'omyu_pretty'; font-size:20px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+			#content table button{width:170px; height:30px; text-align:center; font-family: 'omyu_pretty'; font-size:20px; border-radius:20px; border:0px solid #ff9933; background:#ff9933;}
 			#content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 			/*구글로그인부분*/
 			.g_id_signin{display: inline-block; margin-top: 20px;  data-width: 130; }
@@ -210,9 +220,12 @@ msg = (String)request.getAttribute("msg");
     </script>
 	</head>
 	<body>
-		<%@include file="../header.jsp" %> 
+
 		<main id="main">
 			<div id="content">
+				<div class="logo">
+					<h1><img src="${pageContext.request.contextPath}/resources/logo/logo6.png" alt="타:바" onclick="location.href='<%=request.getContextPath()%>/index.jsp'"/></h1>
+				</div>
 				<form id="frm" name="frm">
 					<div id="login_out" >
 						<table>
@@ -249,6 +262,14 @@ msg = (String)request.getAttribute("msg");
 							<p><a href="${pageContext.request.contextPath}/member/memberJoin.do">회원가입</a></p>
 						</div>
 						<div>
+						    <a class="kakao" href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=76703a8d13e15a9a7deb9a931b73de9e&redirect_uri=http://localhost:8080/myapp/member/login/oauth2/code/kakao.do">
+						      	<div class="kakao_i"></div>
+						      	<div class="kakao_txt"><img  alt="카카오톡 로그인 버튼" src="${pageContext.request.contextPath}/resources/btn/kakao_login_medium_wide.png"></div>
+						   	</a>
+<%-- 						     <a class="kakao" href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=76703a8d13e15a9a7deb9a931b73de9e&redirect_uri=http://jjezen.cafe24.com/kim4ever/member/login/oauth2/code/kakao.do">
+						      	<div class="kakao_i"></div>
+						      	<div class="kakao_txt"><img  alt="카카오톡 로그인 버튼" src="${pageContext.request.contextPath}/resources/btn/kakao_login_medium_wide.png"></div>
+						   	</a> --%>
 							<!-- <div id="g_id_onload"
 							     data-client_id="225367376527-0b4amsji9p7soai6hnhnt2bkbp4ma82p.apps.googleusercontent.com"
 							     data-context="signin"
@@ -261,30 +282,22 @@ msg = (String)request.getAttribute("msg");
 							     data-client_id="225367376527-0b4amsji9p7soai6hnhnt2bkbp4ma82p.apps.googleusercontent.com"
 							     data-context="signin"
 							     data-ux_mode="popup"
-							     data-login_uri="http://jjezen.cafe24.com/kim4ever/member/login/oauth2/code/google.do"
+							     data-login_uri="http://localhost:8080/myapp/member/login/oauth2/code/google.do"
 							     data-auto_prompt="false">
 							</div>
 							
 							<div class="g_id_signin"
 							     data-type="standard"
-							     data-shape="rectangular"
+							     data-shape="pill"
 							     data-theme="outline"
 							     data-text="signin_with"
 							     data-width="300"
-							     data-height="50"
+							     data-height="45"
 							     data-logo_alignment="left">
 							</div>
 						</div>
 					
-<%-- 						     <a class="kakao" href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=76703a8d13e15a9a7deb9a931b73de9e&redirect_uri=http://jjezen.cafe24.com/kim4ever/member/login/oauth2/code/kakao.do">
-						      	<div class="kakao_i"></div>
-						      	<div class="kakao_txt"><img  alt="카카오톡 로그인 버튼" src="${pageContext.request.contextPath}/resources/btn/kakao_login_medium_wide.png"></div>
-						   	</a> --%>
 						   	
-						    <a class="kakao" href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=76703a8d13e15a9a7deb9a931b73de9e&redirect_uri=http://localhost:8080/myapp/member/login/oauth2/code/kakao.do">
-						      	<div class="kakao_i"></div>
-						      	<div class="kakao_txt"><img  alt="카카오톡 로그인 버튼" src="${pageContext.request.contextPath}/resources/btn/kakao_login_medium_wide.png"></div>
-						   	</a>
 						   	
 						      <script>
 						        function handleCredentialResponse(response) {
@@ -306,10 +319,6 @@ msg = (String)request.getAttribute("msg");
 					</div>
 				</form>
 			</div>
-			<div id="bottom"></div>
 		</main>
-		<%@include file="../footer.jsp" %>
-
-
 	</body>
 </html>
