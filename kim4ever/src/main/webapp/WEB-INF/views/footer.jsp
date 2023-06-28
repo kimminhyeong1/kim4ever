@@ -26,17 +26,17 @@
 footer {width:100%;background-color:#eeeeee; height:200px; display:flex; justify-content:center; align-items:center; 	font: inherit;   flex-shrink: 0;
 }
 .foot {display: flex; align-items: center;}
-.footer_L, .footer_R{font-family:'GangwonEdu_OTFBoldA'; font-size: 15px;   margin-right:50px; margin-left:50px;}
-.footer_L h1{font-size: 40px;font-family: 'KCC-Ganpan';}
+.footer_L, .footer_R{ font-size: 15px;   margin-right:50px; margin-left:50px;}
+.footer_L h1{font-size: 40px;}
 .footer_R h2{text-align:left;}
 @media (max-width: 1500px) {
   footer{width: 1500px;}}
 @media (min-width: 300px) and (max-width: 940px)  {
  footer {background-color:#eeeeee; height:130px; display:flex; justify-content:center; align-items:center; width: auto; margin-top:7%;}
 .foot {display: flex; align-items: center;}
-.footer_L{font-family:'GangwonEdu_OTFBoldA'; font-size: 10px;   margin-right:10px; margin-left:10px;   word-break: keep-all;}
-.footer_R{font-family:'GangwonEdu_OTFBoldA'; font-size: 10px; margin-right:10px; margin-left:10px;   word-break: keep-all;}
-.footer_L h1{font-size: 10px;font-family: 'KCC-Ganpan'; }
+.footer_L{ font-size: 10px;   margin-right:10px; margin-left:10px;   word-break: keep-all;}
+.footer_R{ font-size: 10px; margin-right:10px; margin-left:10px;   word-break: keep-all;}
+.footer_L h1{font-size: 10px; }
 .footer_R h2{text-align:left; }
 .hide{display:none;}
 }    

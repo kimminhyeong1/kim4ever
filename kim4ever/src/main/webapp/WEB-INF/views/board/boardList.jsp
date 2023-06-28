@@ -60,7 +60,7 @@ li{list-style:none;}
   background-color: #f8f8f8;
   padding: 10px 20px;
   cursor: pointer;
-  margin-top:30px;
+  margin-top:10px;
   font-family: 'omyu_pretty';
   font-size:21px;
   border-radius:5px;

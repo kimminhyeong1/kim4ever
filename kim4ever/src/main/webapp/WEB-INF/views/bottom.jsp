@@ -3,12 +3,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-#main{width:1250px; margin:35px auto 70px; text-align:center;}
+#main{width:1250px; margin:35px auto 0px; text-align:center;}
 #main #content{width:1250px;}
 #main #bottom{width:1250px; height:300px;justify-content:center; align-items:center;}
-#main #bottom h2{font-family: 'KCC-Ganpan'; font-size:35px;}
+#main #bottom h2{font-size:35px;}
 #main #bottom table {width: 80%; border-collapse: collapse;  margin: 20px auto 0; font-family: 'omyu_pretty'; font-size:24px;}
-#main #bottom table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000; background-color: #ff9833;}
+#main #bottom table th{width:100px;padding: 10px;text-align: center; background-color: #ff9833;}
 #main #bottom table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
 
 /**********************모바일****************/
@@ -16,9 +16,9 @@
 #main{width:100%; margin:0 auto;}
 #main #content{width:auto;}
 #main #bottom{width:auto; height:100px;justify-content:center; align-items:center; margin-bottom:2%;}
-#main #bottom h2{font-family: 'KCC-Ganpan'; font-size:15px;}
+#main #bottom h2{ font-size:15px;}
 #main #bottom table {width: 80%; border-collapse: collapse;  margin: 10px auto 0; font-family: 'omyu_pretty'; font-size:12px;}
-#main #bottom table th{width:100px;padding: 2px;text-align: center; border-top:1px solid #000 ;border-bottom:1px solid #000; background-color: #ff9833;}
+#main #bottom table th{width:100px;padding: 2px;text-align: center; background-color: #ff9833;}
 #main #bottom table td{padding: 2px; text-align:center;border-bottom:1px solid #CCCCCC;}
 }
 

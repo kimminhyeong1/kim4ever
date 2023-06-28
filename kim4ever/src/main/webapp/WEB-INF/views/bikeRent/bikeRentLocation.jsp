@@ -14,7 +14,7 @@
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script> 
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20f538f14cf29a1eb30d2f9dbaa4e1fb"></script>
 		<style>
-			#main{width:1250px; margin:35px auto 70px; text-align:center;}
+			#main{width:1250px; margin:10px auto; text-align:center;}
 			#main #content{width:1250px; height:auto;text-align:center;}
 			#main #bottom{width:1250px; height:300px;}
 			#main #content #map{margin-top:10px; width:80%; height:700px; margin-left:130px; border-radius:20px}
@@ -22,8 +22,8 @@
 			#main #content table th {padding: 10px;text-align:center; border-bottom: 1px solid #ddd;background-color: #ff9833;}
 			#main #content table td:nth-child(1){padding: 10px; text-align:center; border-bottom:1px solid #ddd; }
 			#main #content table td:nth-child(2){padding: 10px; text-align:left; border-bottom:1px solid #ddd;}
-			#main #content h1 {font-size:35px;   text-align:center; color:#333; margin-top:40px; margin-bottom:10px; font-family:'KCC-Ganpan'; font-weight:bold; letter-spacing:-1px; text-shadow:1px 1px #fff; background-color:#fff; border:none;padding-bottom:10px;}
-			#main #content h2{margin-top:40px; font-size:35px; font-family: 'KCC-Ganpan';}
+			#main #content h1 {font-size:35px;   text-align:center; color:#333; margin-bottom:10px;  font-weight:bold; letter-spacing:-1px; text-shadow:1px 1px #fff; background-color:#fff; border:none;padding-bottom:10px;}
+			#main #content h2{margin-top:40px; font-size:35px; }
 			
 			/*마커 폰트 변경*/
 			/*마커 글씨 크기 변경*/
@@ -44,8 +44,8 @@
 			#main #content table td:nth-child(1){padding: 5px; text-align:center; border-bottom:1px solid #ddd;}
 			#main #content table td:nth-child(2){padding: 5px; text-align:left; border-bottom:1px solid #ddd;}
 			
-			#main #content h1 {font-size:15px; text-align:center; color:#333; margin-top:10px; margin-bottom:20px; font-family:'KCC-Ganpan'; font-weight:bold; letter-spacing:-1px; text-shadow:1px 1px #fff; background-color:#fff; border:none;padding-bottom:10px;}
-			#main #content h2{font-size:15px; margin-top:20px; font-family: 'KCC-Ganpan';}
+			#main #content h1 {font-size:15px; text-align:center; color:#333; margin-top:20px; margin-bottom:10px;  font-weight:bold; letter-spacing:-1px; text-shadow:1px 1px #fff; background-color:#fff; border:none;padding-bottom:10px;}
+			#main #content h2{font-size:15px; margin-top:20px; }
 #main #content #map{width:80%;height:40vh; margin-left:10%;}
 			/*마커 폰트 변경*/
 			/*마커 글씨 크기 변경*/

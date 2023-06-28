@@ -16,7 +16,7 @@ li{list-style:none;}
 
 
 #main{width:1440px; margin:35px auto 70px; text-align:center; }
-#main #content{width:1440px; height:2400px;}
+#main #content{width:1440px; height:1600px;}
 #main #content img{width:70%; height:auto;  border-radius:20px;}
 #main #bottom{width:1440px; height:300px; }
 #main #content h1 {
@@ -25,7 +25,6 @@ li{list-style:none;}
   color: #333;
   margin-top: 10px;
   margin-bottom: 20px;
-  font-family: 'KCC-Ganpan';
   letter-spacing: -1px;
   text-shadow: 1px 1px #fff;
   background-color: #fff;
@@ -63,7 +62,7 @@ li{list-style:none;}
 #main #content{width:auto; height:auto;}
 #main #content img{width:80%; height:auto; margin-top:20px; border-radius:10px;}
 #main #bottom{width:auto; height:10px; }
-#main #content h1 {font-size: 15px; text-align: center; color: #333; margin-top: 40px; margin-bottom: 20px; font-family: 'KCC-Ganpan'; letter-spacing: -1px; text-shadow: 1px 1px #fff; background-color: #fff; border: none; padding-bottom: 10px;}
+#main #content h1 {font-size: 15px; text-align: center; color: #333; margin-top: 40px; margin-bottom: 20px;  letter-spacing: -1px; text-shadow: 1px 1px #fff; background-color: #fff; border: none; padding-bottom: 10px;}
 #courseList a{font-family: 'omyu_pretty'; font-size: 11px; display: inline-block; padding: 3px 3px; background-color: #f0f0f0; border-radius: 5px; margin: 10px 1px 0 0; color: #333; text-decoration: none;}
 /*active 가상 클래스 선택자 사용했음*/
 #courseList a:focus,

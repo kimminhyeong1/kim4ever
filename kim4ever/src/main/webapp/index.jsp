@@ -12,8 +12,7 @@
 *{margin:0;padding:0;word-break:keep-all;}
 li{list-style:none;}
 body {width: 100vw;   height: 100vh; }
-#main{width:1440px; margin:35px auto; text-align:center; border:1px solid #white;      font-family: 'IM_Hyemin-Bold';
-}
+#main{width:1440px; margin:35px auto 0px;  text-align:center; border:1px solid #white;    }
 #main #content{width:1440px; height: auto !important;/*우선권*/ margin-top: 10px;}
 #main #content img{width:1440x; height:800px;}
 @font-face {
@@ -93,7 +92,7 @@ border-radius:20px;  float:left; }
 #main3{width:1440px; margin:150px auto; text-align:center;  justify-content: center; margin-bottom:0px;
 }
 .container {margin-top:20px;display:flex; flex-wrap:wrap; justify-content:center;  opacity: 0; }
-.item {position:relative; width:calc(27% - 10px); margin-bottom: 20px; margin-right:20px; height:300px;   box-shadow:0 2px 4px rgba(0, 0, 0, 0.4); border-radius: 20px;}
+.item {position:relative; width:calc(27% - 10px); margin-bottom: 20px; margin-right:20px; height:300px;  border: 1px solid #bbb; border-radius: 20px;}
 .item img {width:100%; height:70%; border-radius: 20px 20px 0 0; }
 
 
@@ -174,7 +173,7 @@ opacity:1;padding:5px; border-radius:50px;font-size:20px;}
 #main3{width:auto; margin:20px auto; text-align:center;  justify-content: center;  
 }
 .container {margin-top:20px;display:flex; flex-wrap:wrap; justify-content:center;  opacity: 0; }
-.item {position:relative; width:calc(30% - 1px); margin-bottom: 20px; margin-right:5px; margin-left: 5px; height:110px;   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); border-radius: 20px;}
+.item {position:relative; width:calc(30% - 1px); margin-bottom: 20px; margin-right:5px; margin-left: 5px; height:110px;   border: 1px solid #bbb; border-radius: 20px;}
 .item img {width:100%; height:75%; }
 
 

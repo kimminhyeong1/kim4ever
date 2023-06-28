@@ -9,22 +9,28 @@
 
 <style>
 /*리셋코드*/
-*{margin:0;padding:0;}
+@font-face {
+    font-family: 'omyu_pretty';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+*{margin:0;padding:0; font-family: 'omyu_pretty';}
 li{list-style:none;}
-
 #main{width:1000px; height:1000px; margin:35px auto 70px; text-align:center; background:#ffffff;}
 #main #restaurant{display:flex; justify-content:center; align-items:center;font-family: 'omyu_pretty'; margin-left:10px;}
 #main #restaurant table{ height:300px; border:1; margin-top:40px; background:white;}
-#main #restaurant table td{border:1px solid #ddd;   max-width: 230px; border-radius: 10px;;
+#main #restaurant table td{border:1px solid #ddd;   max-width: 230px; border-radius: 10px;
 transition: transform 0.1s ease-in-out; background-color:#ffff; margin-right:10px;}
 #main #restaurant table td:hover {transform: scale(1.1); z-index: 3; background:white; box-shadow:none; border:1px solid orange;}
-#main #restaurant table h3,p{border-bottom:1px solid #000;}
+#main #restaurant table h3,p{border-bottom:1px solid #bbb;}
 #main #restaurant table p:last-child {border-bottom: none; }
 #main #restaurant img{width:230px; height:300px; border-radius: 10px 10px 0 0; z-index:1; } 
-#main h2{color:#333; font-family: 'KCC-Ganpan'; font-size:30px; margin-top:15px; text-align:center; border-bottom:2px solid #333;
+#main h2{color:#333;  font-size:30px; margin-top:40px; text-align:center; border-bottom:2px solid #333;
 padding-bottom:10px;}
 table td {margin: 10px;}
-#map{width:1000px;height:500px;}
+#map{width:1000px;height:500px;border-radius: 20px;}
+
 
 	/*****************************************모바일***************************************************************/
 		
@@ -34,16 +40,16 @@ table td {margin: 10px;}
 #main #restaurant table{ width: 90%; height:100px; border:1; margin-top:40px; background:white;}
 #main #restaurant table td{border:1px solid #ddd;   max-width: 20%; border-radius: 10px;
 transition: transform 0.1s ease-in-out; background-color:#ffff; margin-right:10px;}
-#main #restaurant table h3,p{border-bottom:1px solid #000; font-size:10px;}
+#main #restaurant table h3,p{border-bottom:1px solid #bbb; font-size:10px;}
 #main #restaurant table p:last-child {border-bottom: none; }
 #main #restaurant img{width:100%; height:auto; border-radius: 10px 10px 0 0; z-index:1; } 
-#main h2{color:#333; font-family: 'KCC-Ganpan'; font-size:10px; margin-top:15px; text-align:center; border-bottom:2px solid #333;
+#main h2{color:#333; font-family: 'KCC-Ganpan'; font-size:10px; margin-top:40px; text-align:center; border-bottom:2px solid #333;
 padding-bottom:10px;}
 table td {margin: 10px;}
-#map{width:80%;height:300px; margin-left:10%;}
+#map{width:80%;height:300px; margin-left:10%; border-radius: 20px;}
 
+	
 	}
-
 </style>
 </head>
 <body>
