@@ -22,12 +22,12 @@
 		 	/*모임이름부분*/
 		 	#gIntro_gThumbnail{text-align:left;}
 			#gIntro{display: inline-block; width: 400px; height: 500px; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 10px;}
-			#gIntro>div:nth-child(1){font-size: 40px; font-weight: bold; display: inline-block; margin: 20px 0px 20px 20px;}
-			#gIntro>div:nth-child(2){font-size: 20px; width: 150px; display: inline-block;}
-			#gIntro>div:nth-child(3){width: 90%; height: 50%; margin: 20px 20px 20px 20px; border: 1px solid #bbb;}
-			#gIntro>div:nth-child(3)>img{width: 100%; height: 100%;}
-			#gIntro>div:nth-child(4){font-size: 20px; width: 90%; height: 4%; margin: 20px 20px 20px 20px;}
-			#gIntro>div:nth-child(5){width: 90%; height: 13%; margin: 20px 20px;  overflow: hidden; text-overflow: ellipsis; word-wrap: break-word;}
+			#gIntro>div:nth-child(1){font-size: 35px;  display: inline-block; margin: 20px 0px 20px 20px;}
+			#gIntro>div:nth-child(2){font-size: 24px; width: 100px; display: inline-block; margin-left:20px;}
+			#gIntro>div:nth-child(3){width: 90%; height: 50%; margin: 20px 20px 20px 20px;  border-radius:20px;}
+			#gIntro>div:nth-child(3)>img{width: 100%; height: 100%;border-radius:20px;}
+			#gIntro>div:nth-child(4){font-size: 24px; width: 90%; height: 4%; margin: 20px 20px 20px 20px;}
+			#gIntro>div:nth-child(5){font-size: 24px; width: 90%; height: 13%; margin: 20px 20px;  overflow: hidden; text-overflow: ellipsis; word-wrap: break-word;}
 			/*모임슬라이더부분*/
 			#gThumbnail{vertical-align: top;margin-left:42px; display: inline-block; width: 790px; height: 500px; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 10px;}
 			#gThumbnail>div>div:nth-child(1){font-size: 20px;font-weight: bold;margin 0 auto;}
@@ -36,9 +36,9 @@
 			/* 슬라이더 1 - 페이지 버튼 */
 			.slider-1 > .page-btns {text-align:center; position:absolute; bottom:20px; left:0; width:100%;}
 			
-			.slider-1 > .page-btns > div {width:50px; height:6px; background-color:rgb(255,255,255); border-radius:4px;   
+			.slider-1 > .page-btns > div {width:50px; height:6px; background-color:#05d100; border-radius:4px;   
 			 display:inline-block; cursor:pointer; border: none;}
-			.slider-1 > .page-btns > div.active {background-color:rgb(255, 160, 0); border: none;}
+			.slider-1 > .page-btns > div.active {background-color:#05d100; border: none;}
 			/* 1 - 슬라이드 */
 			.slider-1 > .slides > div {position:absolute; top:0; left:0; right:0; bottom:0; opacity:0; transition:opacity 1.5s;
 			background-position:center; background-size:cover; background-repeat:no-repeat; border-radius:20px;  }
@@ -52,7 +52,7 @@
 			.slider-1 >.side-btns > div:last-child > span {left:auto;right:20px; }
 			/*모임멤버부분*/
 			#gMembers{margin-top:30px; width: 100%; height: 130px; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 10px; text-align: left;}
-			#gMembers>div:nth-child(1){font-size: 20px;font-weight: bold;margin-left: 17px;margin-top: 17px;}
+			#gMembers>div:nth-child(1){font-size: 24px;margin-left: 17px;margin-top: 17px;}
 			#gMembers>div:nth-child(1)>span{color: #f00;} 
 			#gMembers>div:nth-child(2){width: 80%; display: inline-block;margin: 10px 20px; }
 			#gMembers>div:nth-child(2)>div{width: 60px; height: 60px;display: inline-block; margin-left: 20px; vertical-align: bottom; }
@@ -62,26 +62,28 @@
 			#gMembers>div:nth-child(4){width: 7%; display: inline-block;vertical-align: top; margin-top: 20px; margin-left: 10px;}
 			/*모임일정부분*/
 			#gSchedule{margin-top:30px;width: 100%; height: 1110px; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 10px;text-align: left;}
-			#gSchedule>div:nth-child(1){font-size: 20px;font-weight: bold;margin-top: 15px;margin-left: 20px;} 
+			#gSchedule>div:nth-child(1){font-size: 35px;margin-top: 15px;margin-left: 20px;} 
 			#calendar {margin: 20px 20px;}
 			#gSchedule>div:nth-child(3){text-align: right;margin-right: 20px;}
 			#gSchedule>div:nth-child(3)>button{width: 150px; height: 50px;} 
 			/*모임공지사항부분*/
 			#gNotice{margin-top:30px;width: 100%;  border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 10px;}
 			/*공지사항부분*/
-			.gNotice{text-align: left; font-size: 20px; margin: 40px 60px;}
-			.gNotice>div>div{display: inline-block; font-size: 25px; font-weight: bold;}
+			.gNotice{text-align: left; font-size: 20px; margin: 20px 60px;}
+			.gNotice>div>div{display: inline-block; font-size: 25px;}
 			.gNotice>div>div:nth-child(1){color: #f00; margin-right: 20px;}
-			.gNotice>div:nth-child(2){border-bottom: 2px solid #bbb; padding-bottom: 10px; margin-top: 10px; white-space: nowrap; overflow: hidden;  text-overflow: ellipsis;}/* 끝나는바*/
+			.gNotice>div:nth-child(2){border-bottom: 2px solid #bbb; font-size:24px; padding-bottom: 10px; margin-top: 10px; white-space: nowrap; overflow: hidden;  text-overflow: ellipsis;}/* 끝나는바*/
 			/*모임기타버튼부분*/
-			#gReportExit{margin-top:30px;width: 100%; height: 100px; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 10px;text-align: right;}
-			#gReportExit>button{color: rgb(149, 165, 166);margin-top: 30px;margin-left: 10px;margin-right: 20px;width: 132px;height: 40px;font-size: 25px;border: 1px solid #0000;}
+			#gReportExit{margin-top:40px;width: 100%; height: 100px; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 10px;text-align: right;}
+			#gReportExit>button{font-size:21px; border-radius:20px; border:0px solid #99CC99; background:#05d100; color:white;margin-top: 30px;margin-left: 10px;margin-right: 20px;width: 132px;height: 40px;font-size: 21px;}
 			#gReportExit>button:active{color: #000;} 
 			/*캘린더*/
 			.fc-daygrid-event {white-space: break-spaces;}
 			.gBtn {margin-top: 12px;}
-		.fc .fc-button-primary {background:#05d100; border-color:white;} /*달력*/
-		.fc .fc-button-primary:disabled{background:#05d100; border-color:white; }
+		.fc .fc-button-primary {background:#05d100; border-color:white;font-size:20px} /*달력*/
+		.fc .fc-button-primary:disabled{background:#05d100; border-color:white;font-size:20px }
+		.fc .fc-toolbar-title {font-size:35px; font-weight:normal; margin-left:40px;}
+		.fc .fc-scrollgrid {font-size: 20px;}
 		
 			/*************************모바일****************************************/
 				/*****모바일 넓이***/

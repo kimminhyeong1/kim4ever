@@ -15,32 +15,34 @@
 		<style type="text/css">
 			.gContainer{border: 1px solid #0000;}
 			/*게시글 틀*/ 
-			.gBoardList { width: 100%; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;}
+			.gBoardList { width: 100%; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 10px;}
 			/*검색하기 부분*/
-			#searchCategory{text-align: right; font-size: 20px; margin: 40px 60px; height: 30px; font-family: 'omyu_pretty';} 
+			#searchCategory{text-align: right; font-size: 20px; margin: 20px 20px; height: 30px; font-family: 'omyu_pretty'; border-radius:20px;} 
 			#searchCategory>div{display: inline-block; vertical-align: top;} 
-			#searchCategory>div>select{width: 80px; height: 30px; font-size: 18px; font-family: 'omyu_pretty';vertical-align: top;} 
-			#searchCategory>div>input{width: 300px; height: 26px; font-size: 18px;vertical-align: top;} 
-			#searchCategory>div>button{width: 100px; height: 30px; margin-top: 0px;margin-bottom: 0px;} 
+			#searchCategory>div>select{width: 100px; height: 40px; font-size: 24px; font-family: 'omyu_pretty';vertical-align: top; border-radius:20px; text-align: center;} 
+			#searchCategory>div>input{width: 300px; height: 40px; font-size: 24px;vertical-align: top; border-radius:20px;} 
+			#searchCategory>div>button{width: 100px; height: 40px; margin-top: 0px;margin-bottom: 0px; border-radius:20px;} 
 			/*공지사항부분*/
-			.gNotice{text-align: left; font-size: 20px; margin: 40px 60px; white-space: nowrap; overflow: hidden;  text-overflow: ellipsis;} 
-			.gNotice>div>div{display: inline-block; font-size: 25px; font-weight: bold;}
-			.gNotice>div>div:nth-child(1){color: #f00; margin-right: 20px;}
-			.gNotice>div:nth-child(2){border-bottom: 2px solid #bbb; padding-bottom: 10px; margin-top: 10px; white-space: nowrap; overflow: hidden;  text-overflow: ellipsis; }/* 끝나는바*/
+			.gNotice{text-align: left; font-size: 20px; margin: 20px 40px; white-space: nowrap; overflow: hidden;  text-overflow: ellipsis;} 
+			.gNotice>div>div{display: inline-block; font-size: 24px; }
+			.gNotice>div>div:nth-child(1){color: #f00; margin-right: 20px; font-size:35px; font-weight:normal;}
+			.gNotice>div:nth-child(2){border-bottom: 2px solid #bbb; font-size:24px; padding-bottom: 10px; margin-top: 20px;margin-bottom: 20px; white-space: nowrap; overflow: hidden;  text-overflow: ellipsis; }/* 끝나는바*/
 			/*게시글 부분*/
-			.gBoard{text-align: left; font-size: 20px; margin: 40px 60px; } 
+			.gBoard{text-align: left; font-size: 24px; margin: 20px 40px; } 
 			.gBoard>div>div:nth-child(1){width: 50px; height: 50px; float: left;}/*프로필*/ 
 			.gProfileimage img{width: 50px; height: 50px; object-fit: cover; border-radius: 50%;}/*프로필이미지*/
-			.gBoard>div>div:nth-child(2){height: 25px; margin-left: 70px;}/*모임장,이름*/ 
-			.gBoard>div>div:nth-child(2)>div{display: inline-block; margin-top: 5px;} 
-			.gBoard>div>div:nth-child(3)>div:nth-child(1){height: 25px; margin-left: 70px; font-size: 15px; margin-top: 5px;}/*날짜 카테고리*/ 
-			.gBoard>div:nth-child(2){clear: both;margin-top: 10px; font-weight: bold;}/*게시글제목*/
-			.gBoard>div:nth-child(2)>span{font-size: 18px;}/*게시글 카테고리*/
-			.gBoard>div:nth-child(3){font-size: 18px; margin-top: 10px; border-bottom: 2px solid #bbb; padding-bottom: 10px; margin-top: 10px; }/*게시글 내용*/
+			.gBoard>div>div:nth-child(2){height: 25px; margin-left: 100px; font-size:24px;}/*모임장,이름*/ 
+			.gBoard>div>div:nth-child(2)>div{display: inline-block; } 
+			.gBoard>div>div:nth-child(3)>div:nth-child(1){height: 25px; margin-left: 70px; font-size: 24px; text-align: right;}/*날짜 카테고리*/ 
+			.gBoard>div:nth-child(2){clear: both;margin-top: 20px; }/*게시글제목*/
+			.gBoard>div:nth-child(2)>span{font-size: 24px;}/*게시글 카테고리*/
+			.gBoard>div:nth-child(3){font-size: 20px; margin-top: 10px; border-bottom: 2px solid #bbb; padding-bottom: 10px; margin-top: 10px; }/*게시글 내용*/
+			.gBoard>div:nth-child(3) a{margin-left:20px;}
 			/*버튼 부분*/
 			#writeBtn{text-align: right;}	
 			/*페이징 부분*/
-			.gPaging{font-size: 25px;}
+			.gPaging{font-size: 24px; margin: 20px}
+			.gPaging a{padding:10px;}
 			/*a태그*/
 			a{text-decoration: none; color: #000;}					
 			
