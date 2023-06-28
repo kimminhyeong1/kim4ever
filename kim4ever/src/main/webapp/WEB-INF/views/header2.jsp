@@ -62,7 +62,7 @@ header{width:auto;margin:0 auto; }
 /*사이드메뉴바, 로고, 로그인버튼*/
 #top_logo{width:auto; height:80px; text-align:center; position:relative; margin-top:15px;}
 #top_logo .logo{display:inline-block; text-align:center; position:absolute; transform:translate(-50%, -50%);}
-#top_logo .logo img{width:75px; height:85px; margin-left:24%; cursor:pointer;transition: all 0.3s ease-in-out;}
+#top_logo .logo img{width:55px; margin-left:24%; cursor:pointer;transition: all 0.3s ease-in-out;}
 #top_logo .login {display:flex;justify-content:flex-end;float:right; margin-right:3%}
 #top_logo .login ul {display:flex;list-style:none;margin-top:-5px; padding:0;   flex-direction: column; margin-bottom:5px;}
 #top_logo .login li {margin-left:5px; font-size:10px;}
