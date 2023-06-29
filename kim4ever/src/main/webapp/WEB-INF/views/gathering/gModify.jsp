@@ -123,12 +123,12 @@
 				</div>
 				<div>
 					<h3>모임 간단 소개글</h3>
-					<input class="gInput" type="text" placeholder="맨 앞에 노출되는 간단 소개글입니다." name="gInfoBriefIntroduction" value="${gjvlist[0].gInfoBriefIntroduction}" maxlength='50' onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"  oninput="updateCharacterCount('gInfoBriefIntroduction')">		
+					<input class="gInput" type="text" placeholder="맨 앞에 노출되는 간단 소개글입니다." name="gInfoBriefIntroduction" value="${gjvlist[0].gInfoBriefIntroduction}" maxlength='20' onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"  oninput="updateCharacterCount('gInfoBriefIntroduction')">		
 					<span id="gInfoBriefIntroductionCount"></span>				
 				</div>
 				<div>
 					<h3>모임 소개글</h3>
-					<textarea  id="gInfoAreaIntroduction" rows="5" cols="5" placeholder="100자이내" name="gInfoAreaIntroduction" placeholder=" 100자이내" name="gInfoAreaIntroduction" maxlength='100' onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"  oninput="updateCharacterCount('gInfoAreaIntroduction')">${gjvlist[0].gInfoAreaIntroduction}</textarea>
+					<textarea  id="gInfoAreaIntroduction" rows="5" cols="5" placeholder="100자이내" name="gInfoAreaIntroduction" placeholder=" 70자이내" name="gInfoAreaIntroduction" maxlength='70' onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"  oninput="updateCharacterCount('gInfoAreaIntroduction')">${gjvlist[0].gInfoAreaIntroduction}</textarea>
 					 <span id="gInfoAreaIntroductionCount"></span>				
 				</div>
 				<div>

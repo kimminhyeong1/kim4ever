@@ -10,7 +10,7 @@ header{width:1250px; margin:35px auto 0px; text-align:center;}
 /*틀부분*/
     /*박스전체틀*/
     
-   	.gContainer{width: 1250px;text-align: center; margin: 0 auto; margin-top:10px; min-height:69.9vh; }/*최소높이*/
+   	.gContainer{width: 1250px;text-align: center; margin: 0 auto; margin-top:10px; }
     
     /*박스작은틀*/
     .gContent{width:100%; display:flex; flex-wrap:wrap;justify-content:center; align-items:center;}

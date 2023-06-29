@@ -23,7 +23,7 @@
     font-style: normal;
 }
 
-footer {width:100%;background-color:#eeeeee; height:200px; display:flex; justify-content:center; align-items:center; 	font: inherit;   flex-shrink: 0;
+footer {width:100%;background-color:#f5f7f8; height:200px; display:flex; justify-content:center; align-items:center; 	font: inherit;   flex-shrink: 0;
  margin-top: 50px}
 .foot {display: flex; align-items: center;}
 .footer_L, .footer_R{ font-size: 15px;   margin-right:50px; margin-left:50px;}

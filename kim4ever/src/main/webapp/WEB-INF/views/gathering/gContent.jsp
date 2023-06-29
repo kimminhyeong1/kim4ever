@@ -29,7 +29,7 @@
 			#gIntro>div:nth-child(3){width: 90%; height: 50%; margin: 20px 20px 20px 20px;  border-radius:20px;}
 			#gIntro>div:nth-child(3)>img{width: 100%; height: 100%;border-radius:20px;}
 			#gIntro>div:nth-child(4){font-size: 24px; width: 90%; height: 4%; margin: 20px 20px 20px 20px;}
-			#gIntro>div:nth-child(5){font-size: 24px; width: 90%; height: 13%; margin: 20px 20px;  overflow: hidden; text-overflow: ellipsis; word-wrap: break-word;}
+			#gIntro>div:nth-child(5){font-size: 20px; width: 90%; height: 13%; margin: 20px 20px;  overflow: hidden; text-overflow: ellipsis; word-wrap: break-word;}
 			/*모임슬라이더부분*/
 			#gThumbnail{vertical-align: top;margin-left:20px; display: inline-block; width: 790px; height: 500px; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 10px;}
 			#gThumbnail>div>div:nth-child(1){font-size: 20px;font-weight: bold;margin 0 auto;}

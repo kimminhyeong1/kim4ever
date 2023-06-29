@@ -18,7 +18,7 @@ button{cursor:pointer;}
 #top_logo .login {display:flex;justify-content:flex-end;float:right;}
 #top_logo .login ul {display:flex;list-style:none;margin:0;padding:0;}
 #top_logo .login li {margin-left:20px;  font-size:21px;}
-#top_logo .login a {width:83px; display:block;padding:6px 10px;background-color: #05d100;color:#fff;border-radius:20px;text-decoration:none;transition:background-color 0.3s ease;}
+#top_logo .login a {width:90px; display:block;padding:9px 10px;background-color: #05d100;color:#fff;border-radius:20px;text-decoration:none;transition:background-color 0.3s ease;}
 #top_logo .login a:hover {background-color: #2bd727b5;}
 
 /*사이드바*/
@@ -231,7 +231,7 @@ header{width:auto;margin:0 auto; }
 	   		<ul>
 		   		<c:choose>
 		   			<c:when test="${not empty sessionScope.memberName}">
-		   				<li style="margin-top:6px;">${memberName}님</li>
+		   				<li style="margin-top:10px;">${memberName}님</li>
 			            <li><a href="${pageContext.request.contextPath}/member/memberLogOut.do">로그아웃</a></li>
 	   		            <c:if test="${not empty sessionScope.midx && not empty sessionScope.ridx}"> 
 	   		            	<li><a href="${pageContext.request.contextPath}/bikeRent/bikeRentUseList.do">이용중인내역</a></li>			
