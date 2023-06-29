@@ -4,12 +4,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <style>
+ .midmenu:hover p{color:#05d100; cursor:pointer;}
+
 /****************************모바일**************************/
 @media (min-width: 300px) and (max-width: 940px)  {
 #gMenu{clear:both;}
- .midmenu:hover p {color:#ff9900; cursor:pointer;}
+
  .midmenu{height:70px; align-items: center; margin:10px;}
+
+ .midmenu{cursor:pointer; height:70px; align-items: center; margin:10px;}
+ .midmenu:hover p {color:#ff9900; cursor:pointer;}
+
  .midmenu p{margin:0 auto;}
+
+ 
 
 *{caret-color: transparent;}
 a{color:inherit; text-decoration:none;} 

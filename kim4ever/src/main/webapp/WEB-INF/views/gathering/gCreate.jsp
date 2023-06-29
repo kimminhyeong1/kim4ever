@@ -25,7 +25,7 @@
 			#main section .radio{display: inline-block;width: 4%; margin-top: 10px; } 
 			#main section span{font-size: 20px;} 
 			#gInfoArea{font-family: 'omyu_pretty';font-size: 24px;box-sizing: border-box;width: 16%;padding: 10px;margin: 2px 0;border: 1px solid #ccc;border-radius: 20px;}
-			
+			.gBtn2{margin-bottom:20px;}
 			/*************************모바일****************************************/
 				/*****모바일 넓이***/
 				@media (min-width: 300px) and (max-width: 940px)  {

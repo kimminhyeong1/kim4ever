@@ -15,29 +15,31 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
 		<style>
-			#main{width:1440px; margin:35px auto 70px; text-align:center;}
-			#main #content{width:1440px; height:2400px;}
+			#main{width:1440px; margin:0 auto; text-align:center;}
+			#main #content{width:1440px; auto; margin-top:10px;}
 			#main #bottom{width:1440px; height:300px; }
 			#main #content h2{text-align: center; margin-top:20px;}
-			#content #gather{width:80%; height:600px; border-collapse:collapse; border:1px solid #ddd; margin: 60px auto 0; text-align:center;  line-height:100px;}
+			#content #gather{width:80%; height:auto; border-collapse:collapse; border:1px solid #ddd; margin: 0 auto; text-align:center;  }
 			#content #gather label{font-family:'omyu_pretty'; font-size:30px; margin-left:10px;}
 			#content #gather input{box-sizing: border-box; width:100%;padding:20px; border:1px solid #ccc; border-radius:4px;}
-			#content button{width:20%; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}
-			#content button:active {background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+			#content button{width:20%; height:40px; color:white; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:20px; border:0px solid #99CC99; background:#05d100; margin-bottom:20px;}
+			#content button:active {background:#2bd727b5;  transform:translateY(2px);}
 			#content img{width:500px; height:500px;}
-			#content #gatherCon p{font-family:'omyu_pretty'; font-size:27px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; word-wrap: break-word; margin:20px;}
-			#content #gatherCon{width:80%; height:400px; border-collapse:collapse; border:1px solid #ddd; margin:10px auto 0; text-align:center;  line-height:100px;}
+			#content #gatherCon p{font-family:'omyu_pretty'; font-size:24px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; word-wrap: break-word; margin:20px;}
+			#content #gatherCon{width:80%; height:auto; border-collapse:collapse; border:1px solid #ddd; margin:40px auto 0; text-align:center;}
 			/*모임슬라이더부분*/
-			#gather{vertical-align: top;margin-left:42px; display: inline-block; width: 800px; height: 500px; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;}
-			#gatherCon{vertical-align: top;margin-left:42px; display: inline-block; width: 800px; height: 500px; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;}
+			#gather{vertical-align: top;margin-left:42px; display: inline-block; width: 800px; height: 500px; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 20px;}
+			#gatherCon{vertical-align: top;margin-left:42px; display: inline-block; width: 800px; height: 500px; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 20px;}
+			#gather h1{margin-top:20px; font-size:35px;}
+			#gatherCon h1{margin-top:20px; font-size:35px;}
 			/* 슬라이더 1 시작 */
-			.slider-1 {height:420px;position:relative; margin: 15px auto; width: 700px;}
+			.slider-1 {height:420px;position:relative; margin: 20px auto; width: 700px;}
 			/* 슬라이더 1 - 페이지 버튼 */
 			.slider-1 > .page-btns {text-align:center; position:absolute; bottom:20px; left:0; width:100%;}
 			
 			.slider-1 > .page-btns > div {width:50px; height:6px; background-color:rgb(255,255,255); border-radius:4px;   
 			 display:inline-block; cursor:pointer; border: none;}
-			.slider-1 > .page-btns > div.active {background-color:rgb(255, 160, 0); border: none;}
+			.slider-1 > .page-btns > div.active {background-color:#05d100 ; border: none;}
 			/* 1 - 슬라이드 */
 			.slider-1 > .slides > div {position:absolute; top:0; left:0; right:0; bottom:0; opacity:0; transition:opacity 1.5s;
 			background-position:center; background-size:cover; background-repeat:no-repeat; border-radius:20px;  }
@@ -59,14 +61,14 @@
 			#main #content{width:auto; height:auto; background-color:#F8F8F8;}
 			#bottom{width:auto; height:100px; } 
 			#main #content h2{text-align: center; margin-top:20px; font-size:20px;}
-			#content #gather{width:90%; height:auto; border-collapse:collapse; border:1px solid #ddd; margin: 30px auto 0; text-align:center;  line-height:100px; font-size:18px;}
+			#content #gather{width:90%; height:auto; border-collapse:collapse; border:1px solid #ddd; margin: 30px auto 0; text-align:center;  font-size:35px;}
 			#content #gather label{font-family:'omyu_pretty'; font-size:20px; margin-left:10px;}
 			#content #gather input{box-sizing: border-box; width:100%;padding:20px; border:1px solid #ccc; border-radius:4px;}
 			#content button{width:20%; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:18px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}
 			#content button:active {background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 			#content img{width:80%; height:50%;}
 			#content #gatherCon p{font-family:'omyu_pretty'; font-size:20px;}
-			#content #gatherCon{width:90%; height:auto; border-collapse:collapse; border:1px solid #ddd; margin:10px auto 30px; text-align:center;  line-height:100px;}
+			#content #gatherCon{width:90%; height:auto; border-collapse:collapse; border:1px solid #ddd; margin:10px auto 30px; text-align:center; }
 			/*모임슬라이더부분*/
 			#gather{vertical-align: top;margin-left:42px; display: inline-block; width: 800px; height: 500px; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;}
 			#gatherCon{vertical-align: top;margin-left:42px; display: inline-block; width: 800px; height: 500px; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;}
@@ -78,7 +80,7 @@
 		
 		.slider-1 > .page-btns > div {width:10px; height:3px; background-color:rgb(255,255,255); border-radius:4px;   
 		 display:inline-block; cursor:pointer; border: none; top:1}
-		.slider-1 > .page-btns > div.active {background-color:rgb(255, 160, 0); border: none;}
+		.slider-1 > .page-btns > div.active {background-color:#05d100 ; border: none;}
 		/* 1 - 슬라이드 */
 		.slider-1 > .slides > div {position:absolute; top:0; left:0; right:0; bottom:0; opacity:0; transition:opacity 1.5s;
 		background-position:center; background-size:cover; background-repeat:no-repeat; border-radius:20px;  }
