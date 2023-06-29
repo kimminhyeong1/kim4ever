@@ -17,10 +17,11 @@
 		 <style type="text/css">
 		 	/*소개부분*/
 			#gatheringIntro{width:100%; height:350px; background-color:#fbfdfa; border-radius:20px; border: 1px solid #ccc;} 
-			#gatheringIntro h2{text-align:center; margin-top:20px;  font-size:35px; padding:20px;}
+			#gatheringIntro h2{text-align:center; margin-top:20px;  font-size:35px; padding:20px; margin-top }
+			.gContentTitle h2 {margin-top:40px;}
 			#gatheringIntro p{text-align:center; padding:5px; font-size:24px; margin-top:20px;}
 			#gatheringList{width:100%; display:flex; flex-wrap:wrap;justify-content:center; align-items:center;}
-			#gatheringList h2{text-align:center; font-family: 'GangwonEdu_OTFBoldA'; font-size:33px; padding:20px;}
+			#gatheringList h2{text-align:center;  font-size:33px; padding:20px;}
 			
 			/*************************모바일****************************************/
 				/*****모바일 넓이***/
@@ -31,7 +32,7 @@
 			#gatheringIntro h2{text-align:center; margin-top:20px; font-size:16px; padding:10px;}
 			#gatheringIntro p{text-align:center; padding:5px;  font-size:10px; margin-top:1px;  overflow: hidden;}
 			#gatheringList{width:100%; display:flex; flex-wrap:wrap;justify-content:center; align-items:center;}
- 			#gatheringList h2 {text-align:center; font-family: 'GangwonEdu_OTFBoldA'; font-size: 14px;  padding:10px;}
+ 			#gatheringList h2 {text-align:center;  font-size: 14px;  padding:10px;}
  			 footer{margin-top: 0px !important;}
  			 }
 		 </style>
@@ -203,7 +204,7 @@
 		                    	    if (gjv.gwidx != 0) {
 		                    	        card += "<img class='cardWish' src='../resources/icon/fullheart.png' onclick='handleHeartClick(" + gjv.giidx + ", " + ${midx} + ", this)'>";
 		                    	    } else {
-		                    	        card += "<button><img class='cardWish' src='../resources/icon/heart.png' onclick='handleHeartClick(" + gjv.giidx + ", " + ${midx} + ", this)'></button>";
+		                    	        card += "<img class='cardWish' src='../resources/icon/heart.png' onclick='handleHeartClick(" + gjv.giidx + ", " + ${midx} + ", this)'>";
 		                    	    }
 		                    	}
 	
