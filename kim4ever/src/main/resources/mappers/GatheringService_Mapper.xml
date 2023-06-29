@@ -565,11 +565,10 @@
 	    	DELETE FROM GATHERING1234 WHERE giidx = #{0} AND midx = #{1}
 		</delete>
 		
-	
-	<!-- 모임 나가기 (midx,giidx에 해당하는 값 삭제)-->
-	  <delete id="exitGathering" parameterType="int">
+	<!-- 모임 나가기 (giidx에 해당하는 값 삭제)-->
+	<delete id="exitGathering" parameterType="int">
 	   DELETE FROM gathering1234 WHERE midx = #{0} AND giidx = #{1} 
-	  </delete>
+	</delete>
 	
 	<!-- 모임 가입 참여멤버 수(-)업데이트 -->
 	<update id="gatheringParticipatingUpdate1" parameterType="int">
@@ -578,6 +577,21 @@
 	  WHERE GIIDX = #{0}
 	</update>
 	
+	<!-- 남아있는 모임원 수 조회 -->
+	<select id="getGatheringParticipatingCount" resultType="int">
+	  SELECT COUNT(*) FROM gathering_info1234 WHERE giidx = #{giidx}
+	</select>
+		
+	<!-- 모임정보 삭제 -->
+	<delete id="deleteGathering" parameterType="int">
+	  DELETE FROM GATHERING_INFO1234 WHERE giidx = #{giidx}
+	</delete>
+	
+	<!-- 모임에 연관된 포토앨범 정보들 삭제 -->
+	<delete id="deleteGatheringPhotoAlbum" parameterType="int">
+	  DELETE FROM GATHERING_PhotoAlbum1234 WHERE giidx = #{giidx}
+	</delete>
+		
 	<!-- 사진첩 작성 -->
 	<insert  id="gatheringPhotoAlbumWrite" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >
 		INSERT INTO gathering_photoalbum1234 (giidx,midx,gPhotoAlbumTitle,gPhotoAlbumLikeCNT,gPhotoAlbumContents0,gPhotoAlbumContents1,gPhotoAlbumContents2,gPhotoAlbumWriteDay,gPhotoAlbumDelYN)

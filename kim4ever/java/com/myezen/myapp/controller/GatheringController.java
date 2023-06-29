@@ -1358,13 +1358,16 @@ public class GatheringController {
 	    System.out.println("giidx는?"+giidx);
 	    System.out.println("midx는?"+midx);
 	    
+	    //모임의 권한 조회(TL=모임장, TLD=부모임장 , TM=모임원)
 	    GatheringVo gmt = gs.gatheringMemberType(giidx,midx);
 	    session.setAttribute("midx", midx);
 	    session.setAttribute("giidx", giidx);
 	  
 		System.out.println("컨트롤러 들어옴 exit");
 
+		//모임에서 나가기
 		boolean success = gs.exitGathering(midx, giidx);
+		
 		return success;
 	}
 }
