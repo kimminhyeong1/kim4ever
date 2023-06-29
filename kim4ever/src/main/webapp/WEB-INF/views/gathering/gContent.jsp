@@ -21,7 +21,7 @@
 		 	.gContainer{border: 1px solid #0000;}
 		 	/*모임이름부분*/
 		 	#gIntro_gThumbnail{text-align:left;}
-			#gIntro{display: inline-block; width: 400px; height: 500px; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 10px;}
+			#gIntro{display: inline-block; width: 430px; height: 500px; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 10px;}
 			#gIntro>div:nth-child(1){font-size: 35px;  display: inline-block; margin: 20px 0px 20px 20px;}
 			#gIntro>div:nth-child(2){font-size: 24px; width: 100px; display: inline-block; margin-left:20px;}
 			#gIntro>div:nth-child(3){width: 90%; height: 50%; margin: 20px 20px 20px 20px;  border-radius:20px;}
@@ -29,7 +29,7 @@
 			#gIntro>div:nth-child(4){font-size: 24px; width: 90%; height: 4%; margin: 20px 20px 20px 20px;}
 			#gIntro>div:nth-child(5){font-size: 24px; width: 90%; height: 13%; margin: 20px 20px;  overflow: hidden; text-overflow: ellipsis; word-wrap: break-word;}
 			/*모임슬라이더부분*/
-			#gThumbnail{vertical-align: top;margin-left:42px; display: inline-block; width: 790px; height: 500px; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 10px;}
+			#gThumbnail{vertical-align: top;margin-left:20px; display: inline-block; width: 790px; height: 500px; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 10px;}
 			#gThumbnail>div>div:nth-child(1){font-size: 20px;font-weight: bold;margin 0 auto;}
 			/* 슬라이더 1 시작 */
 			.slider-1 {height:470px;position:relative; margin: 15px auto; width: 750px;}
@@ -61,7 +61,7 @@
 			#gMembers>div:nth-child(3){width: 15%;  display: inline-block;vertical-align: top;margin-top: -32px;}
 			#gMembers>div:nth-child(4){width: 7%; display: inline-block;vertical-align: top; margin-top: 20px; margin-left: 10px;}
 			/*모임일정부분*/
-			#gSchedule{margin-top:30px;width: 100%; height: 1110px; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 10px;text-align: left;}
+			#gSchedule{margin-top:30px;width: 100%; height: 1140px; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 10px;text-align: left;}
 			#gSchedule>div:nth-child(1){font-size: 35px;margin-top: 15px;margin-left: 20px;} 
 			#calendar {margin: 20px 20px;}
 			#gSchedule>div:nth-child(3){text-align: right;margin-right: 20px;}

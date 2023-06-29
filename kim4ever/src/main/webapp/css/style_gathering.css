@@ -43,7 +43,7 @@ header{width:1250px; margin:35px auto 0px; text-align:center;}
     .gBtn{width:100%; height:40px; margin-top:0px;text-align:center; font-family:'omyu_pretty'; font-size:21px; border-radius:20px; border:0px solid #99CC99; background:#05d100; color:white;}
     .gBtn:active{background:#2bd727b5; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 	/*모임 더보기버튼양식*/
-	.gBtn2{width:18%; height:40px; margin-top:10px; margin-bottom:0px; text-align:center; font-family:'omyu_pretty'; font-size:21px; border-radius:20px; border:0px solid #99CC99; background:#05d100; color:white; margin-bottom:20px;}
+	.gBtn2{width:18%; height:40px; margin-top:10px; margin-bottom:0px; text-align:center; font-family:'omyu_pretty'; font-size:21px; border-radius:20px; border:0px solid #99CC99; background:#05d100; color:white;}
 	.gBtn2:active{background:#2bd727b5; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 /*인풋부분*/
 	.gInput{font-family: 'omyu_pretty';font-size: 24px;box-sizing: border-box;width: 86%;padding: 10px;margin: 2px 0;border: 1px solid #ccc;border-radius: 20px;}	

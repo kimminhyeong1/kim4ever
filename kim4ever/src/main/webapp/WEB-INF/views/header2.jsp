@@ -18,7 +18,7 @@ button{cursor:pointer;}
 #top_logo .login {display:flex;justify-content:flex-end;float:right;}
 #top_logo .login ul {display:flex;list-style:none;margin:0;padding:0;}
 #top_logo .login li {margin-left:20px;  font-size:21px;}
-#top_logo .login a {display:block;padding:6px 10px;background-color: #05d100;color:#fff;border-radius:20px;text-decoration:none;transition:background-color 0.3s ease;}
+#top_logo .login a {width:83px; display:block;padding:6px 10px;background-color: #05d100;color:#fff;border-radius:20px;text-decoration:none;transition:background-color 0.3s ease;}
 #top_logo .login a:hover {background-color: #2bd727b5;}
 
 /*사이드바*/
@@ -47,7 +47,7 @@ button{cursor:pointer;}
  .topmenu{}
 #menu {width: 1250px;height: 100px; text-align:center; display:flex; justify-content:center; align-items:center; box-sizing:border-box;}
 #menu p {font-size: 25px; margin: 20px 40px; margin-top:20px;}
-  .topmenu:hover p {color:#ff9900; cursor:pointer;}
+  .topmenu:hover p {color:#05d100; cursor:pointer;}
     .topmenu{height:70px; align-items: center; }
 
 #content{width:1250px; height:1200px;}

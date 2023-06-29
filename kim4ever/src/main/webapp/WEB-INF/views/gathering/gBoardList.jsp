@@ -44,7 +44,8 @@
 			.gPaging{font-size: 24px; margin: 20px}
 			.gPaging a{padding:10px;}
 			/*a태그*/
-			a{text-decoration: none; color: #000;}					
+			a{text-decoration: none; color: #000;}			
+			.gBtn2 {margin-top:20px;}		
 			
 			/*************************모바일****************************************/
 				/*****모바일 넓이***/
