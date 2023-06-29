@@ -35,16 +35,16 @@ li{list-style:none;}
 }
 
 #main{width:1440px; margin:35px auto 70px; text-align:center;}
-#main #content{max-width: 800px;margin:40px auto;background-color:#fff;padding:30px;border-radius:5px;box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);}
+#main #content{max-width: 500px;margin:40px auto;background-color:#fdfcfa;padding:30px;border-radius:20px;border: 1px solid #bbb;}
 #main #bottom{width:1440px; height:300px;}
 h2{text-align:left; margin-top: 20px; padding-bottom:10px; border-bottom:2px solid #000;}
 #main #box{margin-top:30px;}
 #main #box img{width:30px; height:20px; float:left; margin: 0 auto; vertical-align:middle;}
-#main #box .section {margin-bottom:20px;padding:20px;background-color:#f9f9f9;border:1px solid #ccc;border-radius:5px;text-align:left;}
-#main #box .section-header {margin-bottom:10px;font-size:21px;font-weight:bold;} 
-#main #box .section-content {font-size:18px;margin-top:30px;}
+#main #box .section {margin-bottom:20px;padding:20px;text-align:left;}
+#main #box .section-header {margin-bottom:10px;font-size:24px;font-weight:bold;} 
+#main #box .section-content {font-size:21px;margin-top:40px;}
 input{font-family:'omyu_pretty';font-size:24px;box-sizing:border-box;width:100%;padding:10px;margin:2px 0;border:1px solid #ccc;border-radius:4px;}
-#content button{width:150px; height:50px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+#content button{width:150px; height:35px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:20px; border:0px solid #ff9933; background:#ff9933;}
 #content button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 </style>
 <script type="text/javascript">

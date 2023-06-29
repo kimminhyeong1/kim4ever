@@ -17,14 +17,13 @@
 			/*헤더영역 메뉴*/
 			header #menu{display: none;}
 			/*틀부분*/
-			.container{border: 1px solid #bbb;margin: 40px auto;width: 55%;padding: 20px;background-color: #fdfcfa;border-radius: 20px;}
+			.container{font-size: 24px;border: 1px solid #bbb;margin: 40px auto;width: 55%;padding: 20px;background-color: #fdfcfa;border-radius: 20px;}
 			.container>div{padding: 20px; text-align: left;}
 			.container>div>p{display: inline-block; } 
-			.container>div>p:nth-child(1){width: 60%; margin-left: 60px;} 
-			.container>div>p:nth-child(2){width: 5%;} 
-			.container{font-size: 24px;}
+			
 			.container h1{font-size: 50px; text-align: center;}
 			.container h2{font-size: 40px; text-align: center;}
+			.container img{width: 30px; height:30px;vertical-align:middle;margin-left:5px;}
 			.container button{display:inline-block; width:45%; height:55px; margin-top:0px;text-align:center; font-family:'omyu_pretty'; font-size:25px; border-radius:20px; border:0px solid #ff9933; background:#ff9933;}
 			.container button:active{background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 			/*이용내역 내용*/
@@ -59,10 +58,27 @@
 			
 			.dot img{width:20px; height:20px; background:none;  box-shadow: none;}
 			
-}
-			  
-		</style>  
-
+}		  
+</style>  
+	<script>
+	function validateAndCountCharacters(textarea) {
+	  var text = textarea.value;
+	  var characterCount = text.length;
+	
+	  // 특수 문자 도배 검사
+	  var specialCharacters = /[\^\$\\.*+?()[\]{}|]/g;
+	  if (specialCharacters.test(text)) {
+	    textarea.value = text.replace(specialCharacters, '');
+	    return;
+	  }
+	
+	  var characterCountSpan = document.getElementById("characterCount");
+	  characterCountSpan.textContent = characterCount;
+	
+	  var maxLength = parseInt(textarea.getAttribute('maxlength'));
+	  characterCountSpan.textContent += "/" + maxLength;
+	}
+	</script>
 	</head>
 	<body>
 		<%@include file="../header.jsp" %>
@@ -70,58 +86,22 @@
 			<section id="content">
 				<div class="container">
 					<div><h1>이용 후기</h1></div>
-					<div><p>※후기 작성은 필수가 아닙니다</p><a href="bikeRentMinorError.do" style="text-decoration: underline;" >잔고장 접수하기</a></div>		
-					<div><p>※이용 후기는 타바에 큰 도움이 됩니다!</p></div>
+					<div><p>후기 작성은 선택이지만, 타바의 발전에 큰 도움이 됩니다 !</p></div>
+					<div><p>이용하시면서 불편한 사항이나, 개선 사항 등을 말씀해주세요 !</p></div>
+					<div><p>당신의 소중한 후기를 기다리고 있겠습니다<img src="../resources/icon/fullheart.png" /></p></div>
 					
-					<form name="frm" action="${pageContext.request.contextPath}/bike/bikerentReviewAction.do" method="post" enctype="multipart/form-data">					
+					<form name="frm" action="${pageContext.request.contextPath}/bikeRent/bikeRentReviewAction.do" method="post" enctype="multipart/form-data">					
 					<div>
 					  <textarea style="width: 100%" cols="100" rows="15" name="reviewContent" oninput="validateAndCountCharacters(this)" maxlength="100"></textarea>
 					  <span id="characterCount"></span>
 					</div>
-
 
 					<div id="useListBtn">
 						<button onclick="fnWrite()">작성 완료</button>
 						<button onclick="location.href='<%=request.getContextPath()%>/'">나가기</button>						
 					</div>
 					</form>
-				</div>
-				
-<script>
-function validateAndCountCharacters(textarea) {
-  var text = textarea.value;
-  var characterCount = text.length;
-
-  // 특수 문자 도배 검사
-  var specialCharacters = /[\^\$\\.*+?()[\]{}|]/g;
-  if (specialCharacters.test(text)) {
-    textarea.value = text.replace(specialCharacters, '');
-    return;
-  }
-
-  var characterCountSpan = document.getElementById("characterCount");
-  characterCountSpan.textContent = characterCount;
-
-  var maxLength = parseInt(textarea.getAttribute('maxlength'));
-  characterCountSpan.textContent += "/" + maxLength;
-}
-
-
-function fnWrite() {
-    var fm = document.frm;
-    
-
-
-    fm.action = "<%=request.getContextPath()%>/bikeRent/bikeRentReviewAction.do";
-    fm.enctype = "multipart/form-data";
-    fm.method = "post";
-    fm.submit();
-}
-</script>				
-				
-				
-				
-				
+				</div>		
 			</section>
 		</main>
 	</body>

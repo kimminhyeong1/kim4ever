@@ -81,7 +81,7 @@ li{list-style:none;}
 	
 	<div id="content">
 	<h1>타:바 자전거 추천 코스 소개</h1>
-	<img src="../resources/map/courseIntro.PNG" alt="코스소개"/>
+	<!--<img src="../resources/map/courseIntro.PNG" alt="코스소개"/>-->
 		
 	
 	<div id="courseList">
