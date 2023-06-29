@@ -314,7 +314,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
       });
       // 탭 변경 시 고정 URL로 이동
-      const url = "/myapp/board/boardList.do";
+      const url = "${pageContext.request.contextPath}/board/boardList.do";
       window.location.href = url;
       // 선택된 탭을 로컬 스토리지에 저장
       localStorage.setItem("selectedTab", listOrder);
