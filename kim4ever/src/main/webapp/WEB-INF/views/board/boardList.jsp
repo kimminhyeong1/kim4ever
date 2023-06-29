@@ -63,7 +63,7 @@ li{list-style:none;}
   margin-top:10px;
   font-family: 'omyu_pretty';
   font-size:21px;
-  border-radius:5px;
+  border-radius:20px;
 }
 .tab__list__item.active {background-color:#ff9933;color:#fff;border:1px solid #bbb;}
 
@@ -92,9 +92,9 @@ li{list-style:none;}
 
 /*메뉴바 테이블*/
 .tab__contents {display:none;}
-.show {display: block;}
+.show {display: block;} 
 .tab__list{margin-top:5%;}
-.tab__list li{ display: inline-block; border: none; background-color: #f8f8f8; padding: 5px 7px; cursor: pointer;  font-family: 'omyu_pretty'; font-size:12px; border-radius:5px; margin-top:10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);}
+.tab__list li{ display: inline-block; border: none; background-color: #f8f8f8; padding: 5px 7px; cursor: pointer;  font-family: 'omyu_pretty'; font-size:12px; border-radius:20px; margin-top:10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);}
 .tab__list__item.active {background-color:#ff9933; color:#fff; border:none ;}
 
  a {color: inherit; text-decoration: none;}

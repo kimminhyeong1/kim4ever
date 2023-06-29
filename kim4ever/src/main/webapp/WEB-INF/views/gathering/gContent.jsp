@@ -212,7 +212,7 @@
 			                if (response === false) {
 			                	alert("모임장은 나가실 수 없습니다. 권한을 넘겨주세요.");
 			                } else {
-			                	alert("모임에서 나갔습니다."); 
+			                	alert("모임에서 나가셨습니다."); 
 			                	 window.location.href = "${pageContext.request.contextPath}/gathering/gList.do";
 			                }
 			            },

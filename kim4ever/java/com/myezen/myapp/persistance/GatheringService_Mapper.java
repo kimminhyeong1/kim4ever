@@ -246,6 +246,8 @@ public interface GatheringService_Mapper {
 	public void deleteGathering(int giidx);
 	//모임에 연관된 포토앨범 정보 삭제
 	public void deleteGatheringPhotoAlbum(int giidx);
+	//모임에 연관된 게시판 정보 삭제
+	public void deleteGatheringBoard(int giidx);
 	
 	
 }

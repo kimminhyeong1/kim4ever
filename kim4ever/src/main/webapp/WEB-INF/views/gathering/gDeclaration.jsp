@@ -23,12 +23,13 @@
 			#main section button{text-align: center; margin-top:20px; }  
 			#main section img{width: 100px;height: 100px;}  
 			/*테이블*/
-			table {width:100%;height:auto;text-align:center;border:1px solid #000;border-collapse:collapse;font-family:'omyu_pretty';}
-			table th {border:1px solid #000;padding:10px;background-color:#f0f0f0;margin:5px 0; text-algin:center;font-size:34px;}
-			table td {border:1px solid #000;padding:10px;text-align:left;font-size:24px;}
+			table {width:100%;height:auto;text-align:center;border-collapse:collapse;font-family:'omyu_pretty';}
+			table th {padding:10px;margin:5px 0; text-algin:center;font-size:25px;}
+			table td {padding:10px;text-align:left;font-size:24px;}
 			table td textarea {width:100%;height:100%;box-sizing:border-box;resize: vertical;}
 			.button-container {margin-top:20px;text-align:center;}
 			.button-container button {margin-right:10px;}
+			textarea {resize: none;border-radius: 20px; padding: 20px;}
 				/*************************모바일****************************************/
 				/*****모바일 넓이***/
 				@media (min-width: 300px) and (max-width: 940px)  {
