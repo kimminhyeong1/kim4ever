@@ -161,7 +161,7 @@ function updateCharacterCount(inputName) {
 
 				</table>
 				<div id="btn">
-					<button type="button" onclick="check();">답변하기</button>
+					<button type="button" onclick="fnWrite();">답변하기</button>
 					<button type="button"
 						onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">취소</button>
 
