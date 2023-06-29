@@ -282,7 +282,7 @@ msg = (String)request.getAttribute("msg");
 							     data-client_id="225367376527-0b4amsji9p7soai6hnhnt2bkbp4ma82p.apps.googleusercontent.com"
 							     data-context="signin"
 							     data-ux_mode="popup"
-							     data-login_uri="http://localhost:8080/myapp/member/login/oauth2/code/google.do"
+							     data-login_uri="${pageContext.request.contextPath}/member/login/oauth2/code/google.do"
 							     data-auto_prompt="false">
 							</div>
 							
@@ -296,26 +296,6 @@ msg = (String)request.getAttribute("msg");
 							     data-logo_alignment="left">
 							</div>
 						</div>
-					
-						   	
-						   	
-						      <script>
-						        function handleCredentialResponse(response) {
-						          console.log("Encoded JWT ID token: " + response.credential);
-						        }
-						        window.onload = function () {
-						          google.accounts.id.initialize({
-						            client_id: "225367376527-0b4amsji9p7soai6hnhnt2bkbp4ma82p.apps.googleusercontent.com",
-						            callback: handleCredentialResponse
-						          });
-						          google.accounts.id.renderButton(
-						            document.getElementById("buttonDiv"),
-						            { theme: "outline", size: "large" }  // customization attributes
-						          );
-						          google.accounts.id.prompt(); // also display the One Tap dialog
-						        }
-						    </script>
-						    <div id="buttonDiv"></div>
 					</div>
 				</form>
 			</div>
