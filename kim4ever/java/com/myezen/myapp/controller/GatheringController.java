@@ -209,27 +209,32 @@ public class GatheringController {
 		return "gathering/gSimpleInfo";
 	}
 	//모임간단소개페이지에서 모임 가입하기
-		@RequestMapping(value="/gSimpleInfoAction.do")
-		public String gSimpleInfoAction(
-				@RequestParam("giidx") int giidx,
-				HttpServletRequest request
-				) {
-			HttpSession session = request.getSession();
-		    Object omidx = session.getAttribute("midx");
-		    if (omidx == null) {//midx가 없으면 진입불가
-		    	return "redirect:/member/memberLogin.do";
-			}
-		    int midx = (int)omidx;
-		    //모임 정원수 확인
-		    int CapacityCheck = gs.gatheringJoinCheck(giidx);
-		    if (CapacityCheck == 0) {
-				return "redirect:/gathering/gList.do";
-			}else {	
-				//모임가입하기
-				int value = gs.gatheringJoin(giidx,midx);
-			}
-			return "redirect:/gathering/gList.do";
-		}
+	@RequestMapping(value="/gSimpleInfoAction.do")
+	public ResponseEntity<String> gSimpleInfoAction(
+	        @RequestParam("giidx") int giidx,
+	        HttpServletRequest request,
+	        Model model
+	) {
+	    HttpSession session = request.getSession();
+	    Object omidx = session.getAttribute("midx");
+	    if (omidx == null) {
+	        return ResponseEntity.ok("redirect:/member/memberLogin.do");
+	    }
+	    int midx = (int) omidx;
+	    
+	    int capacityCheck = gs.gatheringJoinCheck(giidx);
+	    if (capacityCheck == 0) {
+	        model.addAttribute("message", "모임 인원수가 꽉 찼습니다.");
+	        return ResponseEntity.ok("redirect:/gathering/gList.do");
+	    } else {
+	        int value = gs.gatheringJoin(giidx, midx);
+	        if (value > 0) {
+	            return ResponseEntity.ok("success");
+	        } else {
+	            return ResponseEntity.ok("error");
+	        }
+	    }
+	}
 //모임상세보기체크
 	@RequestMapping(value="/gContentCheck.do")
 	public String gContentCheck(
