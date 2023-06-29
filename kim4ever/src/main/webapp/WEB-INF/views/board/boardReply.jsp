@@ -92,7 +92,7 @@ function fnWrite() {
         return;
     }
 
-    fm.action = "<%=request.getContextPath()%>/board/boardWriteAction2.do";
+    fm.action = "<%=request.getContextPath()%>/board/boardReplyAction.do";
     fm.enctype = "multipart/form-data";
     fm.method = "post";
     fm.submit();
