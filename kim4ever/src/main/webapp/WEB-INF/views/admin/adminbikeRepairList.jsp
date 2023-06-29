@@ -142,12 +142,15 @@ function confirmRepair(eidx, bikeCode, bikeType) {
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  var tdElement = document.querySelector('#content table td:nth-child(4)'); // 네 번째 열(인덱스 3)의 테이블 셀을 선택합니다.
-  var textContent = tdElement.textContent;
-  if (textContent.length > 15) {
-    tdElement.textContent = textContent.substring(0, 15) + '...';
-  }
-});
+	  var tdElements = document.querySelectorAll('#content table td:nth-child(4)'); // 네 번째 열(인덱스 3)의 모든 테이블 셀을 선택합니다.
+
+	  tdElements.forEach(function(tdElement) {
+	    var textContent = tdElement.textContent;
+	    if (textContent.length > 15) {
+	      tdElement.textContent = textContent.substring(0, 15) + '...';
+	    }
+	  });
+	});
 </script>
 
 </div>

@@ -158,12 +158,18 @@ li{list-style:none;}
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  var tdElement = document.querySelector('#content table td > a'); // 해당 테이블 셀을 선택합니다.
-  var textContent = tdElement.textContent;
-  if (textContent.length > 10) {
-    tdElement.textContent = textContent.substring(0, 10) + '...';
-  }
-});
+	  var tdElements = document.querySelectorAll('#content table td'); // 해당 테이블 셀을 선택합니다.
+
+	  tdElements.forEach(function(tdElement) {
+	    var anchorElement = tdElement.querySelector('a'); // td 안에 있는 첫 번째 a 요소를 선택합니다.
+	    if (anchorElement) {
+	      var textContent = anchorElement.textContent;
+	      if (textContent.length > 10) {
+	        anchorElement.textContent = textContent.substring(0, 10) + '...';
+	      }
+	    }
+	  });
+	});
 </script>
 
 </body>
