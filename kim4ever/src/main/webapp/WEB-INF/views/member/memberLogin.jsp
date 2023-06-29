@@ -31,6 +31,7 @@ msg = (String)request.getAttribute("msg");
 			#content table tr:nth-child(4) td input{display: inline-block; width: 10%; height: 18px;vertical-align: middle;}
 			#content table tr:nth-child(4) td span{display: inline-block;}
 			/*아이찾기.비밀번호재설정.회원가입부분*/
+			#Login_submenu{margin-bottom: 25px;}
 			#Login_submenu p{display: inline-block; font-size: 20px;}
 			#Login_submenu p a{text-decoration-line: none; color: #5e5e5e;}
 			 
