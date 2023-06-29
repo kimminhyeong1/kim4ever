@@ -58,6 +58,44 @@ header{width: 1250px;margin: 35px auto 0px;text-align: center;}
  .hidden_img {display: none; }
  .change{width: 85px; height: 45px; margin: 0 auto; position: absolute; top: 48px; right:0;  cursor:pointer}
 .change img{width:100%; height:100%;  cursor:pointer}
+
+/*토글버튼*/
+:root {
+  /** 타다 side **/
+  --blue-border: #ff9833; /*토글외각*/
+  --blue-color: #ff9833; /*토글외각백그라운드*/
+  --yellow-background: #fff;
+  --yellow-border: #ffcc66;
+  /** 모임 side **/
+
+  --indigo-border: #05d100;
+  --indigo-color: #05d100;
+  --gray-border: #2bd727b5;
+  /** general **/
+  --white: #fff;
+}
+.background {position: absolute;left: 0;top: 0;background: var(--blue-background);z-index: -1;width: 100%;height: 100%;transition: all 250ms ease-in;}
+.toggle--checkbox {display: none;}
+.toggle--checkbox:checked ~ .background {background: var(--indigo-background);}
+.toggle--checkbox:checked + .toggle--label {background: var(--indigo-color);border-color: var(--indigo-border);}
+.toggle--checkbox:checked + .toggle--label .toggle--label-background {left: 60px;width: 5px;}
+.toggle--checkbox:checked + .toggle--label .toggle--label-background:before {width: 5px;height: 5px;top: -25px;}
+.toggle--checkbox:checked + .toggle--label .toggle--label-background:after {width: 5px;height: 5px;left: -30px;top: 20px;}
+.toggle--checkbox:checked + .toggle--label:before {background: var(--white);border-color: var(--gray-border);animation-name: switch;animation-duration: 350ms;animation-fill-mode: forwards;}
+.toggle--checkbox:checked + .toggle--label:after {transition-delay: 350ms;opacity: 1;}
+.toggle--label {width: 70px;height: 35px;background: var(--blue-color);border-radius: 100px;display: flex;position: relative;transition: all 350ms ease-in;}
+.toggle--label:before {animation-name: reverse;animation-duration: 350ms;animation-fill-mode: forwards;transition: all 350ms ease-in;content: "";width: 25px;height: 25px;border: 3px solid var(--yellow-border);top: 2px;left: 4px;position: absolute;border-radius: 82px;background: var(--yellow-background);}
+.toggle--label:after {transition-delay: 0ms;transition: all 250ms ease-in;position: absolute;content: "";box-shadow: var(--gray-dots) -13px 0 0 2px, var(--gray-dots) -24px 14px 0 -2px;left: 143px;top: 23px;width: 10px;height: 10px;background: transparent;border-radius: 50%;opacity: 0;}
+@keyframes switch {
+  0% {left: 4px;}
+  60% {left: 4px;width: 35px;}
+  100% {left: 35px;width: 25px;}
+}
+@keyframes reverse {
+  0% {left: 35px;width: 25px;} 
+  60% {left: 20px;width: 35px;}
+  100% {left: 4px;}
+}
  
 /****************************모바일**************************/
 @media (min-width: 300px) and (max-width: 940px)  {
@@ -192,8 +230,13 @@ header{width:auto;margin:0 auto; }
 		<div class="logo" style="display:inline-block;">
 		<h1><img src="${pageContext.request.contextPath}/resources/logo/logo6.png" alt="타:바" onclick="location.href='<%=request.getContextPath()%>/index.jsp'"/></h1>
 		</div>
-		<div class="change"  onclick="location.href='<%=request.getContextPath()%>/gathering/gList.do'">	
-			  <img src="${pageContext.request.contextPath}/resources/mobile/change3.png" alt="전환버튼" >	
+		<div class="change" onclick="location.href='<%=request.getContextPath()%>/gathering/gList.do'" >	
+			  <!-- <img src="${pageContext.request.contextPath}/resources/mobile/change3.png" alt="전환버튼" >	-->
+	      	<input type="checkbox" id="toggle" class="toggle--checkbox"> 
+		    <label for="toggle" class="toggle--label">
+		    <span class="toggle--label-background"></span>
+		    </label>
+		    <div class="background"></div>
 		 </div>	 
 		<div class="login">
 	   		<ul>
