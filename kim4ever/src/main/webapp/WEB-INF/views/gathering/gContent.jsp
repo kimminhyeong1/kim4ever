@@ -19,6 +19,8 @@
 		 	/*부분*/
 		 	/* *{outline: 1px solid #f00;} */
 		 	.gContainer{border: 1px solid #0000;}
+		 	.midmenu:nth-child(1) {color: #05d100 ;} /* 메뉴글자색*/
+		 	
 		 	/*모임이름부분*/
 		 	#gIntro_gThumbnail{text-align:left;}
 			#gIntro{display: inline-block; width: 430px; height: 500px; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 10px;}

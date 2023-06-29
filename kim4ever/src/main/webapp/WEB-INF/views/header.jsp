@@ -261,7 +261,7 @@ header{width:auto;margin:0 auto; }
 						</c:otherwise>
 					</c:choose>
    		            <c:if test="${not empty sessionScope.midx && not empty sessionScope.ridx}"> 
-   		            	<li><a href="<%=request.getContextPath() %>/bikeRent/bikeRentUseList.do">이용중인내역</a></li>			
+   		            	<li><a href="<%=request.getContextPath() %>/bikeRent/bikeRentUseList.do">🚲대여중</a></li>			
 					</c:if>
 		            <!--<li><a href="<%=request.getContextPath() %>/bikeRent/bikeRentReturn.do">반납하기</a></li>-->
 		        <% } else { %>

@@ -198,7 +198,7 @@
 			                    	    if (gjv.gwidx != 0) {
 			                    	        card += "<img class='cardWish' src='../resources/icon/fullheart.png' onclick='handleHeartClick(" + gjv.giidx + ", " + ${midx} + ", this)'>";
 			                    	    } else {
-			                    	        card += "<button><img class='cardWish' src='../resources/icon/heart.png' onclick='handleHeartClick(" + gjv.giidx + ", " + ${midx} + ", this)'></button>";
+			                    	        card += "<img class='cardWish' src='../resources/icon/heart.png' onclick='handleHeartClick(" + gjv.giidx + ", " + ${midx} + ", this)'>";
 			                    	    }
 			                    	}
 		

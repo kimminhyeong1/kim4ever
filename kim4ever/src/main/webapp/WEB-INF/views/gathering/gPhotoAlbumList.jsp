@@ -15,22 +15,22 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">		  
 		<style type="text/css">
 			.gContainer{border: 1px solid #0000;}
-			/*사진첩 틀*/ 
-			.gContent{ width: 100%; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px; position: relative; padding-top: 40px;  padding-bottom: 40px;}
-			/*사진첩 부분*/
-			.card{height:320px; background-color: #d2dfcc; margin-top:100px;}
-			.cardTitle{font-size:23px; }
-			.cardImg{height: 80%;}
+		
+		.midmenu:nth-child(3) {color: #05d100 ;} /* 메뉴글자색*/
+	 	.card{width: 390px;  height: 420px; cursor:pointer;}
+	 	.cardImg{height:77%}
 			/*버튼 부분*/
 			#createBtn{text-align: right;}	
 			/*페이징 부분*/
-			.gPaging{font-size: 25px; margin-top:20px;}		
+			.gPaging{font-size: 25px; margin-top:30px;}	
+			.gPaging a{padding:10px;}
+			.cardTitle {margin-bottom:20px;}	
 			/*검색부분*/
-			#searchCategory{ position: absolute; top:-10px; right:-20px; text-align: right; font-size: 20px; margin: 40px 60px; height: 30px; font-family: 'omyu_pretty'; vertical-align: top;} 
+			#searchCategory{ width: 100%;text-align: right; font-size: 20px; margin: 20px 30px; height: 30px; font-family: 'omyu_pretty'; border-radius:20px; margin-bottom:40px;} 
 			#searchCategory>div{display: inline-block; vertical-align: top;} 
-			#searchCategory>div>select{width: 80px; height: 30px; font-size: 18px; font-family: 'omyu_pretty';vertical-align: top;} 
-			#searchCategory>div>input{width: 300px; height: 26px; font-size: 18px;vertical-align: top;} 
-			#searchCategory>div>button{width: 100px; height: 30px; margin-top: 0px;margin-bottom: 0px;} 
+			#searchCategory>div>select{width: 100px; height: 40px; font-size: 24px; font-family: 'omyu_pretty';vertical-align: top; border-radius:20px; text-align: center;} 
+			#searchCategory>div>input{width: 300px; height: 40px; font-size: 24px;vertical-align: top; border-radius:20px;} 
+			#searchCategory>div>button{width: 100px; height: 40px; margin-top: 0px;margin-bottom: 0px; border-radius:20px;} 
 
 			
 		</style>

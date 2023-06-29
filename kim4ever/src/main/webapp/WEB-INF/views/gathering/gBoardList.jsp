@@ -15,6 +15,8 @@
 		<style type="text/css">
 			.gContainer{border: 1px solid #0000;}
 			/*게시글 틀*/ 
+			.midmenu:nth-child(2) {color: #05d100 ;} /* 메뉴글자색*/
+			
 			.gBoardList { width: 100%; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 10px;}
 			/*검색하기 부분*/
 			#searchCategory{text-align: right; font-size: 20px; margin: 20px 20px; height: 30px; font-family: 'omyu_pretty'; border-radius:20px;} 

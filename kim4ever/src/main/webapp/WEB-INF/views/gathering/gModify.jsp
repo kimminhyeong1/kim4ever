@@ -13,19 +13,19 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">		
 		 <style type="text/css">
 		 	/*만들기 부분*/
-			#main section h3{display: inline-block;font-size: 18px;}
+		#main section h3{display: inline-block;font-size: 24px; margin-bottom: 10px;}
 			#main section p{display: inline-block; color: #f14242; padding-left: 10px;}
-			#main section>div:nth-child(1){margin: 20px 0px 20px 100px;}
+			#main section>div:nth-child(1){margin: 10px 0px 10px 100px;}
 			#main section>div:nth-child(2){text-align: center;}
 			#main section>div>div{margin: 20px 0px 20px 0px;}
 			#main section input {display: block;}
-			#main section textarea {display: block; width: 80%; height: 200px;font-size: 23px;}
+			#main section textarea {display: block; width: 86%; height: 200px; padding: 5px; font-size: 20px; border-radius: 20px; border: 1px solid #ccc; resize: none;}
 			#main section button{text-align: center;}  
-			#main section img{width: 100px;height: 100px;}   
+			#main section img{width: 100px;height: 100px; border-radius: 10px;}    
 			#main section .radio{display: inline-block;width: 4%; margin-top: 10px; } 
 			#main section span{font-size: 20px;} 
-			#gInfoArea{font-family: 'omyu_pretty';font-size: 24px;box-sizing: border-box;width: 40%;padding: 10px;margin: 2px 0;border: 1px solid #ccc;border-radius: 4px;}
-			
+			#gInfoArea{font-family: 'omyu_pretty';font-size: 24px;box-sizing: border-box;width: 16%;padding: 10px;margin: 2px 0;border: 1px solid #ccc;border-radius: 20px;}
+			.gBtn2{margin-bottom:20px;}
 			/*************************모바일****************************************/
 				/*****모바일 넓이***/
 				@media (min-width: 300px) and (max-width: 940px)  {
@@ -128,7 +128,7 @@
 				</div>
 				<div>
 					<h3>모임 소개글</h3>
-					<textarea rows="5" cols="5" placeholder="100자이내" name="gInfoAreaIntroduction" >${gjvlist[0].gInfoAreaIntroduction}</textarea>
+					<textarea  id="gInfoAreaIntroduction" rows="5" cols="5" placeholder="100자이내" name="gInfoAreaIntroduction" placeholder=" 100자이내" name="gInfoAreaIntroduction" maxlength='100' onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"  oninput="updateCharacterCount('gInfoAreaIntroduction')">${gjvlist[0].gInfoAreaIntroduction}</textarea>
 					 <span id="gInfoAreaIntroductionCount"></span>				
 				</div>
 				<div>
