@@ -7,8 +7,8 @@
 /****************************모바일**************************/
 @media (min-width: 300px) and (max-width: 940px)  {
 #gMenu{clear:both;}
+ .midmenu{cursor:pointer; height:70px; align-items: center; margin:10px;}
  .midmenu:hover p {color:#ff9900; cursor:pointer;}
- .midmenu{height:70px; align-items: center; margin:10px;}
  .midmenu p{margin:0 auto;}
 
 *{caret-color: transparent;}

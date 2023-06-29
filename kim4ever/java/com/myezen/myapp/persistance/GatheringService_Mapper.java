@@ -189,11 +189,6 @@ public interface GatheringService_Mapper {
 	public int gatheringBoardLike(Gathering_BoardVO gbv);
 	
 	
-	
-	
-	
-	
-	
 	/*모임 더보기 */
 	//모임 더보기 현재 사용자 멤버타입 가져오기 
 	public GatheringVo gatheringMemberType(int giidx,int midx);
@@ -213,8 +208,6 @@ public interface GatheringService_Mapper {
 	public int updateDownTLD(int midx,int giidx);
 	//모임 더보기 부모임장 > 모임장으로 위임
 	public int updateTL(int midx,int giidx);
-	
-	
 	//모임사진첩작성
 	public int gatheringPhotoAlbumWrite(GatheringJoinVo gjv);
 	//모임사진첩대표이미지
@@ -235,7 +228,6 @@ public interface GatheringService_Mapper {
 	public int gatheringPhotoAlbumLikeInsert(GatheringJoinVo gjv);
 	//좋아요 업데이트
 	public int gatheringPhotoAlbumLike(GatheringJoinVo gjv);
-	
 	//모임사진첩 수정하기
 	public int gatheringPhotoAlbumModifyUpdate(GatheringJoinVo gjv);
 	//모임사진첩 수정하기(대표이미지 업데이트)
@@ -248,6 +240,12 @@ public interface GatheringService_Mapper {
 	public void deletePhotoAlbum(int midx, int gpaidx);
 	//모임 gpaidx 꺼내오기
 	public int gatheringPhotoAlbumGetGpaidx(GatheringJoinVo gjv);
+	//모임에 남아있는 모임원 수 조회
+	public int getGatheringParticipatingCount(int giidx);
+	//모임정보 삭제
+	public void deleteGathering(int giidx);
+	//모임에 연관된 포토앨범 정보 삭제
+	public void deleteGatheringPhotoAlbum(int giidx);
 	
 	
 }

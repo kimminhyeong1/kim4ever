@@ -747,15 +747,32 @@ public class GatheringServiceImpl implements GatheringService {
          GatheringVo gmt = gsm.gatheringMemberType(giidx, midx);
          System.out.println("멤버타입은?"+gmt.getGatheringMemberType());
          
-          if (gmt.getGatheringMemberType().equals("TL")) {
-                 System.out.println("모임장은 나가실 수 없습니다. 권한을 넘겨주세요.");
-                 return false; // 실패 시 false 반환
-             } else {
-                 gsm.exitGathering(midx, giidx);
-                 gsm.gatheringParticipatingUpdate1(giidx);//-1
-                 System.out.println("모임에서 나가셨습니다.");
-                 return true; // 성공 시 true 반환
-             }
+         int participatingCount = gsm.getGatheringParticipatingCount(giidx);
+         System.out.println("남은  모임원 수는?"+participatingCount);
+         
+         if (gmt.getGatheringMemberType().equals("TL")) {
+        	    if (participatingCount == 1) {
+        	        System.out.println("모임장은 혼자 남아있어 모임을 나가고 모임이 삭제됩니다.");
+        	        //모임에서 나가기(혼자 남았을 경우 해당 행을 삭제하더라도 영향 X)
+        	        gsm.exitGathering(midx, giidx);
+        	        //모임과 연관된 포토앨범 정보들 삭제
+        	        gsm.deleteGatheringPhotoAlbum(giidx);
+        	        //모임정보 삭제
+        	        gsm.deleteGathering(giidx);
+        	        System.out.println("모임삭제");
+        	        System.out.println("모임에서 나가고 모임이 삭제되었습니다.");
+        	        return true; // 성공 시 true 반환
+        	    } else {
+        	        System.out.println("모임장은 모임에 혼자 남아있어서 모임을 나갈 수 없습니다.");
+        	        return false; // 실패 시 false 반환
+        	    }
+        	} else {
+        	    System.out.println("모임장이 아니므로 모임에서 나갈 수 있습니다.");
+        	    gsm.exitGathering(midx, giidx);
+        	    gsm.gatheringParticipatingUpdate1(giidx); // -1
+        	    System.out.println("모임에서 나가셨습니다.");
+        	    return true; // 성공 시 true 반환
+        	}
    }
    
    //모임사진첩 조회
