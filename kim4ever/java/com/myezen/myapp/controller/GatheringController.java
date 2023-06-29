@@ -213,7 +213,7 @@ public class GatheringController {
 	public ResponseEntity<String> gSimpleInfoAction(
 	        @RequestParam("giidx") int giidx,
 	        HttpServletRequest request,
-	        Model model
+	        Model md
 	) {
 	    HttpSession session = request.getSession();
 	    Object omidx = session.getAttribute("midx");
@@ -224,7 +224,6 @@ public class GatheringController {
 	    
 	    int capacityCheck = gs.gatheringJoinCheck(giidx);
 	    if (capacityCheck == 0) {
-	        model.addAttribute("message", "모임 인원수가 꽉 찼습니다.");
 	        return ResponseEntity.ok("redirect:/gathering/gList.do");
 	    } else {
 	        int value = gs.gatheringJoin(giidx, midx);
