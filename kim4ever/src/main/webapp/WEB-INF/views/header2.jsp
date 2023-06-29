@@ -50,7 +50,7 @@ button{cursor:pointer;}
   .topmenu:hover p {color:#05d100; cursor:pointer;}
     .topmenu{height:70px; align-items: center; }
 
-#content{width:1250px; height:1200px;}
+#content{width:1250px; }
 #bottom{width:1250px; height:300px; }
  .hidden_img {display: none; }
  .change{width: 85px; height: 45px; margin: 0 auto; position: absolute; top: 48px; right:0;  cursor:pointer}
