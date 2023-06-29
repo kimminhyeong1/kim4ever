@@ -744,7 +744,9 @@ public class GatheringServiceImpl implements GatheringService {
          //GatheringMemberType 문자열비교
          System.out.println("서비스단에서 midx는?"+midx);
          System.out.println("서비스단에서 giidx는?"+giidx);
+         //모임 권한 조회
          GatheringVo gmt = gsm.gatheringMemberType(giidx, midx);
+         //남은 모임원 조회
          System.out.println("멤버타입은?"+gmt.getGatheringMemberType());
          
          int participatingCount = gsm.getGatheringParticipatingCount(giidx);
@@ -755,15 +757,19 @@ public class GatheringServiceImpl implements GatheringService {
         	        System.out.println("모임장은 혼자 남아있어 모임을 나가고 모임이 삭제됩니다.");
         	        //모임에서 나가기(혼자 남았을 경우 해당 행을 삭제하더라도 영향 X)
         	        gsm.exitGathering(midx, giidx);
+        	        System.out.println("모임에서 나갔습니다");
         	        //모임과 연관된 포토앨범 정보들 삭제
         	        gsm.deleteGatheringPhotoAlbum(giidx);
+        	        System.out.println("모임과 연관된 사진첩을 삭제하였습니다");
+        	        //모임과 연관된 게시판 정보들 삭제
+        	        gsm.deleteGatheringBoard(giidx);
+        	        System.out.println("모임과 연관된 게시판을 삭제하였습니다");
         	        //모임정보 삭제
         	        gsm.deleteGathering(giidx);
-        	        System.out.println("모임삭제");
-        	        System.out.println("모임에서 나가고 모임이 삭제되었습니다.");
+        	        System.out.println("모임삭제 하였습니다");
         	        return true; // 성공 시 true 반환
         	    } else {
-        	        System.out.println("모임장은 모임에 혼자 남아있어서 모임을 나갈 수 없습니다.");
+        	        System.out.println("모임장은  모임을 나갈 수 없습니다.");
         	        return false; // 실패 시 false 반환
         	    }
         	} else {

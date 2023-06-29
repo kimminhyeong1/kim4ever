@@ -630,10 +630,7 @@
 						return false;
 					}
 			
-					if (!phoneFlag) {
-						alert("휴대폰 입력이 잘못 되었습니다.");
-						return false;
-					}
+					
 					
 					if (!emailFlag) {
 						alert("이메일 입력이 잘못 되었습니다.");

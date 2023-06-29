@@ -86,7 +86,6 @@ a{color:inherit; text-decoration:none;}
 				<option value="">검색조건</option>
 				<option value="memberId">아이디</option> 
 				<option value="memberName">이름</option>
-				<option value="memberType">등급</option>
 			</select>
 			<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요"/>
 			<button type="submit" id="searchBtn">검색</button>

@@ -579,7 +579,7 @@
 	
 	<!-- 남아있는 모임원 수 조회 -->
 	<select id="getGatheringParticipatingCount" resultType="int">
-	  SELECT COUNT(*) FROM gathering_info1234 WHERE giidx = #{giidx}
+	  SELECT gInfoParticipating FROM gathering_info1234 WHERE giidx = #{giidx}
 	</select>
 		
 	<!-- 모임정보 삭제 -->
@@ -590,6 +590,11 @@
 	<!-- 모임에 연관된 포토앨범 정보들 삭제 -->
 	<delete id="deleteGatheringPhotoAlbum" parameterType="int">
 	  DELETE FROM GATHERING_PhotoAlbum1234 WHERE giidx = #{giidx}
+	</delete>
+	
+	<!-- 모임에 연관된 게시판 정보들 삭제 -->
+	<delete id="deleteGatheringBoard" parameterType="int">
+	  DELETE FROM GATHERING_Board1234 WHERE giidx = #{giidx}
 	</delete>
 		
 	<!-- 사진첩 작성 -->

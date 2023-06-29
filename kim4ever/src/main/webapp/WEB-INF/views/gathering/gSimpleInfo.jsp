@@ -134,7 +134,7 @@
 							<button>승인대기중</button>
 						</c:when>
 						<c:otherwise>
-							<button onclick="location.href='${pageContext.request.contextPath}/gathering/gSimpleInfoAction.do?giidx=${giidx}'">가입하기</button>
+							<button onclick="joinGathering(${giidx})">가입하기</button>
 						</c:otherwise>
 					</c:choose>			
 					<button onclick="location.href='${pageContext.request.contextPath}/gathering/gList.do'">돌아가기</button>
@@ -203,6 +203,30 @@
 
 		// 페이지 로드 후 스크롤 중간으로 이동
 		window.addEventListener('load', scrollToMiddle);
+	</script>
+	
+	<script>
+	function joinGathering(giidx) {
+	    $.ajax({
+	        url: "${pageContext.request.contextPath}/gathering/gSimpleInfoAction.do?giidx=" + giidx,
+	        type: "GET",
+	        success: function(response) {
+	            if (response === "redirect:/member/memberLogin.do") {
+	                window.location.href = response;
+	            } else if (response === "redirect:/gathering/gList.do") {
+	                alert("모임 인원수가 꽉 찼습니다.");
+	                window.location.href = "${pageContext.request.contextPath}/gathering/gList.do";
+	            } else if (response === "success") {
+	                window.location.href = "${pageContext.request.contextPath}/gathering/gMyPage.do";
+	            } else {
+	                alert("모임 가입에 실패했습니다.");
+	            }
+	        },
+	        error: function() {
+	            alert("모임 가입에 실패했습니다.");
+	        }
+	    });
+	}
 	</script>
 	</body>
 </html>
