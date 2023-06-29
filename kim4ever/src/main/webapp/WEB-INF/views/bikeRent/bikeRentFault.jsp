@@ -17,19 +17,20 @@
 			/*헤더영역 메뉴*/
 			header #menu{display: none;}
 			/*틀부분*/
-			.container{border: 1px solid #bbb; margin: 0 auto; width: 900px; padding: 40px;background-color: #fdfcfa;border-radius: 20px; 
-			\display: flex;  justify-content: center;  align-items: center;}
-			.container>div{padding: 20px; text-align: left; }
-			.container>div>p{display: inline-block;} 
-			.container>div>p:nth-child(1){width: 40%; margin-left: 60px;} 
-			.container>div>p:nth-child(2){width: 5%;} 
-			.container{font-size: 24px;}
+			/*container A*/
+			.container{font-size: 24px;border: 1px solid #bbb;margin: 40px auto;width: 900px; padding: 40px;background-color: #fdfcfa;border-radius: 20px;}
+			.container>div{padding: 20px; text-align: center;}
+			.container>div>p{display: inline-block; } 
 			.container h1{font-size: 50px; text-align: center; margin:5px; }
 			.container h2{font-size: 40px; text-align: center;}
 			.container h3{margin:5px; margin-top:15px; font-weight:bold;}
-			
-			.container button{display:inline-block; width:45%; height:55px; margin-top:0px;text-align:center; font-family:'omyu_pretty'; font-size:25px; border-radius:20px; border:0px solid #ff9933; background:#ff9933;}
+			.container button{display:inline-block; width:30%; height:55px; margin-top:40px; text-align:center; font-family:'omyu_pretty'; font-size:25px; border-radius:20px; border:0px solid #ff9933; background:#ff9933;}
 			.container button:active{background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+			
+			/*container B*/
+			.container h3{margin-top:20px;}
+			.container #bikeLocation {margin:20px; 0};
+			
 			/*이용내역 내용*/
 			#useInfo{width:80%; font-size:22px; line-height:35px;}
 			/*이용내역 내용 버튼*/
@@ -53,9 +54,9 @@
 			.container h1{font-size: 20px; text-align: center;}
 			.container h2{font-size: 20px; text-align: center;}
 			.container h3{font-size: 20px; text-align: center; margin-top:10px;}
-			
 			.container button{display:inline-block; width:100%; height:55px; margin-top:0px;text-align:center; font-family:'omyu_pretty'; font-size:17px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 			.container button:active{background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+			
 			/*이용내역 내용*/
 			#useInfo{width:80%; font-size:22px; line-height:35px;}
 			/*이용내역 내용 버튼*/
@@ -164,7 +165,7 @@
 	            if (status === kakao.maps.services.Status.OK) {
 	              if (result.length > 0) {
 	                var address = result[0].address.address_name;
-	                document.getElementById('address2').innerHTML = '현재 주소: ' + address;
+	                document.getElementById('address2').innerHTML = '<h3>위치</h3> ' + address;
 	                document.getElementById('position').innerHTML = '위치: ' + latitude + ', ' + longitude;
 	             // 인풋 값 설정
 	                document.getElementById('latitude').value = latitude;
@@ -180,7 +181,7 @@
 	          if (status === kakao.maps.services.Status.OK) {
 	            if (result.length > 0) {
 	              var address = result[0].address.address_name;
-	              document.getElementById('address2').innerHTML = '현재 주소: ' + address;
+	              document.getElementById('address2').innerHTML = '<h3>위치</h3> ' + address;
 	              document.getElementById('position').innerHTML = '위치: ' + latitude + ', ' + longitude;
 		             // 인풋 값 설정
 	                document.getElementById('latitude').value = latitude;
@@ -203,24 +204,33 @@
 
 				<div class="container A">
 					<div><h2>안내사항</h2></div>
-					<div>고장/신고는 자전거가 움직이지 않거나 사고가 일어났을 때 접수가 가능한 페이지입니다</div>
-					
-					<div><button type="button" id="btn1">자전거가 움직이지 않나요?[고장/신고]</button></div>
-					<div><button type="button" id="btn2">돌아가기</button></div>
+					<div><p>자전거가 움직이지 않거나 사고가 일어났을 때 접수가 가능한 페이지입니다</p></div>
+					<div><p>불편한 사항이나 문제 상황을 알려주시면 신속히 처리해 드리겠습니다.</p></div>
+					<div>
+						<button type="button" id="btn1">고장/신고 접수</button>
+						<button type="button" id="btn2">돌아가기</button>
+					</div>
 				</div>
 				<div class="container B" style="display: none;">
 					<form name="frm" id="frm" enctype="multipart/form-data">
 						<h2>자전거 고장/신고</h2>
 						<div>
-				            <h3>위치</h3>
-				            <div>지금 자전거 위치를 지정해주세요.</div>
+				            <div id="bikeLocation">
+			              
+				            <p>
+				            <img src="../resources/icon/arrow.png" style="width: 30px;height: 30px; vertical-align: middle;margin-right:5px;">
+				            	현재 자전거 위치를 지정해주세요
+				            <img src="../resources/icon/arrow.png" style="width: 30px;height: 30px; vertical-align: middle;margin-left: 5px;">
+				            <p>
+				            </div>
 				            <div id="map" ></div>
 				            <input type="hidden" id="latitude" name="errorLatitude" value=""><!-- 위도 -->
 				            <input type="hidden" id="longitude" name="errorLongitude" value=""><!-- 경도 -->
 				            <input type="hidden" id="address" name="errorLocation" value=""><!-- 주소 -->
 				        </div>
-						<p id="address2">현재 주소: </p>
-						<p id="position">위치: </p>
+			        
+						<p id="address2"></p>
+						
 	
 				        <div>
 				            <h3>사진</h3>
@@ -230,7 +240,7 @@
 		                <div>
 				            <h3>고장내용</h3>
 				            <div>아래의 사진을 보시고 고장 난 부위를 설명해 주세요.</div>
-				            <img src="../resources/bikeimg/bikeDetail.GIF" alt="bikeDetail">
+				            <img src="../resources/bikeimg/bikeDetail.GIF" style=" margin-top:20px;"alt="bikeDetail">
 							<textarea style="width:100%"cols="100" rows="15" name="errorContent"></textarea>
 				        </div>
 				       <div><button type="button" id="btn3">작성하기</button></div>

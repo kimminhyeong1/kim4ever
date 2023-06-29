@@ -452,12 +452,20 @@
         var code2 = "";
         $("#phoneChk").click(function(event) {
             event.preventDefault(); // 폼의 전송 방지
-
-            alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호를 확인해 주세요.");
-
-            // 휴대폰 번호 저장
+			          
+           // 휴대폰 번호 저장
             var phoneValue = $("#phone").val();
 
+            // 입력값 유효성 검사
+            if (phoneValue === "") {
+              alert("휴대폰 번호를 입력해주세요.");
+              $("#phone").focus();
+              return; // 함수 종료
+            }
+
+            alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호를 확인해 주세요.");
+            
+            
             var phone = phoneValue;
             $.ajax({
                 type: "GET",
@@ -486,6 +494,8 @@
             });
         });
 		
+     
+        
       //휴대폰 인증번호 대조
         $("#phoneChk2").click(function(){
         	var phoneNumber = $("#phone").val();
@@ -528,6 +538,12 @@
         		var authBar = $("#authBar");
         		
         		var email = $("#memberEmail").val();
+        		
+        		if (email === '') {
+        	        alert("이메일을 입력해주세요.");
+        	        return;
+        	    }
+        		
         		var url = '${pageContext.request.contextPath}/member/memberJoinMailAuth.do';
 		        var param = { memberEmail: email };
 				
@@ -614,11 +630,17 @@
 						return false;
 					}
 			
+					if (!phoneFlag) {
+						alert("휴대폰 입력이 잘못 되었습니다.");
+						return false;
+					}
+					
 					if (!emailFlag) {
 						alert("이메일 입력이 잘못 되었습니다.");
 						return false;
 					}
-
+					
+					
 					
 					 if ($("#phoneDoubleChk").val() !== "true") {
 					        alert("휴대폰 인증을 완료해주세요.");
