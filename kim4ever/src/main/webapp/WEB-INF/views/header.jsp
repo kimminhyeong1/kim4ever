@@ -92,8 +92,8 @@ header{width: 1250px;margin: 35px auto 0px;text-align: center;}
   100% {left: 35px;width: 25px;}
 }
 @keyframes reverse {
-  0% {left: 35px;width: 25px;} 
-  60% {left: 20px;width: 35px;}
+  0% {left: 4px;width: 25px;} 
+  60% {left: 4px;width: 25px;}
   100% {left: 4px;}
 }
  
@@ -230,7 +230,15 @@ header{width:auto;margin:0 auto; }
 		<div class="logo" style="display:inline-block;">
 		<h1><img src="${pageContext.request.contextPath}/resources/logo/logo6.png" alt="타:바" onclick="location.href='<%=request.getContextPath()%>/index.jsp'"/></h1>
 		</div>
-		<div class="change" onclick="location.href='<%=request.getContextPath()%>/gathering/gList.do'" >	
+		<div class="change" onclick="delayedRedirect('${pageContext.request.contextPath}/gathering/gList.do',350)" >
+		<script type="text/javascript">
+		/* 버튼 딜레이*/
+		  function delayedRedirect(url, delay) {
+			    setTimeout(function() {
+			      window.location.href = url;
+			    }, delay);
+			  }
+		</script>	
 			  <!-- <img src="${pageContext.request.contextPath}/resources/mobile/change3.png" alt="전환버튼" >	-->
 	      	<input type="checkbox" id="toggle" class="toggle--checkbox"> 
 		    <label for="toggle" class="toggle--label">
