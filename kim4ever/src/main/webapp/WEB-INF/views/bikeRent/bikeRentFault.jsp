@@ -37,7 +37,8 @@
 			#useListBtn{text-align:center;}
 			img{height:100%; width:100%;}
 			
-			#map{width: 100%; height: 500px;}
+			#map{width: 100%; height: 500px;border-radius: 20px;}
+			textarea {resize: none;border-radius: 20px;} 
 			
 						/****************************모바일**************************/
 @media (min-width: 300px) and (max-width: 940px)  {
