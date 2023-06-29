@@ -46,8 +46,8 @@ li{list-style:none;}
 #content table td {border:1px solid #bbb;padding:20px;text-align:left;vertical-align:middle;height:100px; font-size:30px;}
 #content table .top{position:relative;}
 #content table img{width:60px; height:50px; float:right; margin: 0 auto; vertical-align:middle;} 
-#content table td .logout-btn {margin-left: 700px;display:inline-block;font-size: 20px;font-family: 'omyu_pretty';width: 100px;height: 40px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;border: 1px solid;}
-#content table td .logout-btn:hover {background-color: #FF6600;}
+#content table td .logout-btn {margin-left: 700px;display:inline-block;font-size: 20px;font-family: 'omyu_pretty';width: 100px;height: 40px;background-color: #ff9800;color: #000;text-decoration: none;border-radius: 20px;transition: background-color 0.3s ease;border: 1px solid #fff;} 
+#content table td .logout-btn:hover {background-color: #ffcc66;}
 #content table .image-container {width:180px;height:180px;}  
 #content table #imagePreview {position:absolute; width:122px;  height:122px; border:1px solid #bbb; border-radius:100px;object-fit:cover;top: 43px;left: 65px;}
 #content table .button-container {width:200px; margin-left:20px; position:absolute; bottom:680px; left:0; align-items:center; }
@@ -55,13 +55,19 @@ li{list-style:none;}
 #content table .intro-container h3 {font-size:40px;margin-bottom:10px;border-bottom:1px solid #000;font-weight: normal;}
 #content table input[type="text"] {font-family:'omyu_pretty';font-size:24px;box-sizing:border-box;width:100%;padding:10px;margin-bottom:10px;border:1px solid #ccc;border-radius:4px;}
 #content table .intro-container .button-container2 {display:flex;justify-content:flex-end;gap:10px;margin-top:10px;margin-left:430px;}
-#content table .button-container2 button{width: 100px;height: 30px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;border: 1px solid;}
+#content table .button-container2 button{width: 100px;height: 30px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 20px;transition: background-color 0.3s ease;border: 1px solid;}
 #formImg{float: left;}  
-#editImgBtn{font-size: 20px; font-family: 'omyu_pretty'; position: absolute;top: 628px;right:-480px;width: 100px;height: 40px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;border: 1px solid;}
-#content #editIntroBtn{font-size: 20px; font-family: 'omyu_pretty'; position: absolute;top: 168px;right: 39px; z-index:5; width: 100px;height: 40px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;border: 1px solid;}
+#editImgBtn{font-size: 20px; font-family: 'omyu_pretty'; position: absolute;top: 628px;right:-480px;width: 100px;height: 40px;background-color: #ff9800;color: #000;text-decoration: none;border-radius: 20px;transition: background-color 0.3s ease;border: 1px solid #fff;}
+#content #editIntroBtn{font-size: 20px; font-family: 'omyu_pretty'; position: absolute;top: 168px;right: 39px; z-index:5; width: 100px;height: 40px;background-color: #ff9800;color: #000;text-decoration: none;border-radius: 20px;transition: background-color 0.3s ease;border: 1px solid #fff;}
 #content table #memberProfile{position:absolute; width:160px; height:160px;top: 28px;left: 58px; border:1px solid #bbb; border-radius:100px;object-fit:cover;} 
-#UploadImgBtn{font-size: 20px; font-family: 'omyu_pretty'; position: absolute;top: 628px;right:-480px; width: 100px;height: 40px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;}
+#UploadImgBtn{font-size: 20px; font-family: 'omyu_pretty'; position: absolute;top: 628px;right:-480px; width: 100px;height: 40px;background-color: #ff9800;color: #000;text-decoration: none;border-radius: 20px;transition: background-color 0.3s ease; border: 1px solid #fff;}
 #introText{margin-bottom:0px;}
+#content table tr:nth-child(3) {cursor: pointer;} 
+#content table tr:nth-child(4) {cursor: pointer;} 
+#content table tr:nth-child(5) {cursor: pointer;} 
+#editImgBtn:hover{background-color: #ffcc66;}
+#content #editIntroBtn:hover{background-color: #ffcc66;}
+#UploadImgBtn:hover{background-color: #ffcc66;}
 
 /**************************모바일****************************************/
 
@@ -137,7 +143,7 @@ function editIntro() {
                     '<h3>내 간단 소개</h3>' +
                     '<span id="introText">' + intro + '</span>' +
                     '<div class="button-container2">' +
-                    '<button id="editIntroBtn" onclick="editIntro()">편집하기</button>' +
+                    '<button id="editIntroBtn" onclick="editIntro()">소개편집</button>' +
                     '</div>'
                 );
             },
@@ -202,7 +208,7 @@ function previewImage(event) {
 			                </c:otherwise>
 			            </c:choose>
 			            <div class="button-container2">
-			              	<button id="editIntroBtn" onclick="editIntro()">편집하기</button>    
+			              	<button id="editIntroBtn" onclick="editIntro()">소개편집</button>    
 			            </div> 
 					</div>
 					
