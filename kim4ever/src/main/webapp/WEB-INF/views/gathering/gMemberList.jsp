@@ -13,6 +13,7 @@
 	<style type="text/css">
 	li{list-style:none;}
 	a{ text-decoration:none; color: inherit;} 
+	#main{margin: 0 auto;  width: 1250px;}
 	.menu{width:auto; text-align:left; margin: 0 auto; font-size:35px; text-align: center; margin:10px;}
 	.gProfileimage img {width:50px;height:50px;object-fit:cover;border-radius:50%;}
 	.gMemberList {display:flex;flex-direction:column;align-items:flex-start;text-align:left;font-size:24px;margin:40px 20px;}
@@ -24,13 +25,13 @@
 	.gMemberList > div > div:nth-child(3) > div {display:inline-block; font-size:24px;margin-left:10px;}
 	.gmemberName {width:100px;}
 	.gmemberInfo {width:350px;}	
-	.gmemberAddr {width:500px;}	
+	.gmemberAddr {width:470px;}	
 	.gmemberType {width:62px;}
 	.menu a{margin:10px;}
 	.gBtn2 {margin:20px;}
 	.gSetContainer h2{font-size:35px; margin-left:20px;}
-	.DeleteBtn {width:70px; height:40px; margin-top:-10px; margin-left:5px; text-align:center; font-family:'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}	
-	.DeleteBtn:active{background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+	.DeleteBtn {width:80px; height:40px; text-align:center; position: relative; bottom: 25px; font-family:'omyu_pretty'; font-size:21px; border-radius:20px; border:0px solid #99CC99; background:#05d100; color:white;}	
+	.DeleteBtn:active{background:#2bd727b5; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 	.menu #gMemberListLink {color:#05d100; }
   	.menu #gMemberJoinWaitListLink {color:#bbb}
   	.menu #gPowerEntrustListLink {color:#bbb}

@@ -13,26 +13,30 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<style type="text/css">
 		li{list-style:none;}
-		a { text-decoration:none; color: inherit;} 
-		.menu {width:500px;text-align:left;margin-top:50px;margin-left:460px;font-size:25px;}
+		a { text-decoration:none; color: inherit;}
+		#main{margin: 0 auto;  width: 1250px;}
+		.menu{width:auto; text-align:left; margin: 0 auto; font-size:35px; text-align: center; margin:10px;}
 		.gProfileimage img {width:50px;height:50px;object-fit:cover;border-radius:50%;}
-		.gMemberList {display:flex;flex-direction:column;align-items:flex-start;text-align:left;font-size:20px;margin:40px 40px;}
-		.gMemberList > div {display:flex;align-items:center;margin-bottom:10px;position:relative;}
-		.gMemberList > div::after {content:"";position:absolute;bottom:-5px; /* 선의 위치 조정 */left:0;width:100%;height:1px;background-color:#ccc;}
-		.gMemberList > div > div:nth-child(1) {width:50px;height:50px;float:left;}
-		.gMemberList > div > div:nth-child(2) {height:25px;margin-left:10px;}
+		.gMemberList {display:flex;flex-direction:column;align-items:flex-start;text-align:left;font-size:24px;margin:40px 20px;}
+		.gMemberList > div {display:flex;align-items:center;margin-bottom:20px;position:relative;}
+		.gMemberList > div::after {content:"";position:absolute;bottom:-20px; /* 선의 위치 조정 */left:0;width:100%;height:1px;background-color:#ccc;}
+		.gMemberList > div > div:nth-child(1) {width:50px; height:50px;float:left;}
+		.gMemberList > div > div:nth-child(2) {height: 25px;margin-left: 10px;}
 		.gMemberList > div > div:nth-child(2) > div,
-		.gMemberList > div > div:nth-child(3) > div {display:inline-block;margin-top:5px;font-size:20px;margin-left:10px;}
-		.gmemberName {width:150px;}
-		.gmemberInfo {width:350px;}
-		.gmemberAddr {width:250px;}
-		.checkboxWrapper {width:50px;}	
+		.gMemberList > div > div:nth-child(3) > div {display:inline-block; font-size:24px;margin-left:10px;}
+		.gmemberName {width:100px;}
+		.gmemberInfo {width:350px;}	
+		.gmemberAddr {width:500px;}	
+		.gmemberType {width:62px;}
+		.menu a{margin:10px;}
+		.gBtn2 {margin:20px;}
+		.gSetContainer h2{font-size:35px; margin-left:20px;}		
 		.buttonContainer {display: flex;justify-content: flex-end;}	
-		.buttonContainer button {width:10%; height:40px; margin-top:10px; margin-left:5px; text-align:center; font-family:'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #99CC99; background:#99CC99;}	
-		.buttonContainer button:active{background:#339933; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
-		.menu #gMemberListLink {color:#bbb}
-		.menu #gMemberJoinWaitListLink {color:#228B22}
-		.menu #gPowerEntrustListLink {color:#bbb}
+		.buttonContainer button {width:100px; height:40px; margin: 5px 10px 20px 0; text-align:center; font-family:'omyu_pretty'; font-size:21px; border-radius:20px; border:0px solid #99CC99; background:#05d100 ; color:white;}	
+		.buttonContainer button:active{background:#2bd727b5; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+		.menu #gMemberListLink {color:#bbb; }
+  		.menu #gMemberJoinWaitListLink {color:#05d100;}
+  		.menu #gPowerEntrustListLink {color:#bbb}
 		</style>  
 		
 	</head>
