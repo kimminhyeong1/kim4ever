@@ -176,13 +176,13 @@
 		<script type="text/javascript">
 			function fnEntrustTLD(gatheringMemberType, bmidx, bgiidx) {
 				// 모임원을 부모임장으로 위임
-			    if (confirm("정말 위임하시겠습니까?")) {
+			    if (confirm("권한을 위임하시겠습니까?")) {
 			        location.href = "<%=request.getContextPath()%>/gathering/gMemberEntrust.do?gatheringMemberType=${gatheringMemberType}&midx="+bmidx+"&giidx="+bgiidx+"";
 			    }
 			}
 			
 			function fnEntrustTL(gatheringMemberType, bmidx, bgiidx) {
-				  if (confirm("정말 모임장으로 위임하시겠습니까?\n확인을 누르시면 부모임장으로 되며 멤버 목록페이지로 이동합니다")) {
+				  if (confirm("부모임장을 모임장으로 권한위임 하시겠습니까?\n확인을 누르면 모임장님은 부모임장으로 권한이 변경됩니다 !")) {
 				    // 첫 번째 리다이렉트 수행
 				    fetch('<%=request.getContextPath()%>/gathering/gMemberDownTLD.do?gatheringMemberType=' + gatheringMemberType + '&midx=' + bmidx + '&giidx=' + bgiidx)
 				      .then(function(response) {
@@ -198,7 +198,7 @@
 			
 			function fnDownTM(gatheringMemberType, bmidx, bgiidx) {
 				// 부모임장을 모임원으로 강등시킴
-			    if (confirm("정말 모임원으로 강등 시키겠습니까?")) {
+			    if (confirm("모임원으로 강등 시키겠습니까?")) {
 			        location.href = "<%=request.getContextPath()%>/gathering/gMemberDownTM.do?gatheringMemberType=${gatheringMemberType}&midx="+bmidx+"&giidx="+bgiidx+"";
 			    }
 			}
