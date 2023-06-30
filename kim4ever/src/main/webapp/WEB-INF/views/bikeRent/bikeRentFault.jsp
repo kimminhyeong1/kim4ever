@@ -73,7 +73,7 @@
 		    	
 				// 자전거가 움직이지 않나요? 버튼 클릭 시
 				  $("#btn1").click(function() {
-				    // container A 비활성화
+				    // container A 비활성화				   	
 				    $(".container.A").css("display", "none");
 				    // container B 활성화
 				    $(".container.B").css("display", "block");
@@ -90,14 +90,23 @@
 				
 				
 				
-				$("#btn3").click(function(){
-		
-		            var fm = document.frm;		
-		      			 fm.action ="${pageContext.request.contextPath}/bikeRent/bikeRentFaultAction.do";   
-		      			 fm.method = "POST";
-		      			 fm.submit();
-		
-		       });//$("#btn1").click(function(){-----end
+				  $("#btn3").click(function() {
+					    var errorContent = $("#errorContent").val(); // errorContent 텍스트 영역의 값을 가져옴
+					    var fileInput = document.getElementById("errorImg"); // 파일 첨부(input 태그)의 ID에 맞게 변경
+					    var files = fileInput.files;
+
+					    if (errorContent.trim() === "") {
+					        alert("내용을 입력해주세요."); // 내용이 비어있을 경우 알림 메시지 표시
+					    } else if (files.length === 0 || files[0] === null) {
+					        alert("사진을 등록해주세요."); // 파일이 선택되지 않았을 경우 알림 메시지 표시
+					    } else {
+					        var fm = document.frm;
+					        fm.action = "${pageContext.request.contextPath}/bikeRent/bikeRentFaultAction.do";
+					        fm.method = "POST";
+					        fm.submit();
+					    }
+					});
+
 				
 			});
 		</script>
@@ -236,13 +245,13 @@
 				        <div>
 				            <h3>사진</h3>
 				            <div>자전거가 위치한 사진을 찍어주세요.</div>
-				            <input type="file" name="errorImg"> 
+				            <input type="file" name="errorImg" id="errorImg"> 
 				        </div>
 		                <div>
 				            <h3>고장내용</h3>
 				            <div>아래의 사진을 보시고 고장 난 부위를 설명해 주세요.</div>
 				            <img src="../resources/bikeimg/bikeDetail.GIF" style=" margin-top:20px;"alt="bikeDetail">
-							<textarea style="width:100%"cols="100" rows="15" name="errorContent"></textarea>
+							<textarea id ="errorContent" style="width:100%"cols="100" rows="15" name="errorContent"></textarea>
 				        </div>
 				       <div><button type="button" id="btn3">작성하기</button></div>
 					</form>
