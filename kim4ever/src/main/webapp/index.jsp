@@ -12,7 +12,7 @@
 *{margin:0;padding:0;word-break:keep-all;}
 li{list-style:none;}
 body {width: 100vw;   height: 100vh; }
-#main{width:1440px; margin:35px auto 0px;  text-align:center; border:1px solid #white;    }
+#main{width:1440px; margin: 0 auto;  text-align:center; border:1px solid #white;    }
 #main #content{width:1440px; height: auto !important;/*우선권*/ margin-top: 10px;}
 #main #content img{width:1440x; height:800px;}
 @font-face {
