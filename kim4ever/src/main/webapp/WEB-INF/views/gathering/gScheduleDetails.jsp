@@ -66,7 +66,7 @@
 					</div>
 					<div>
 						<div><h3>일정 위치</h3></div><!-- 지도 api사용 -->
-						<div id="map" style="width: 800px; height: 500px;"></div>
+						<div id="map" style="width: 500px; height: 350px;"></div>
 						<div id="address" class="boxContent" style="width: 500px;">주소: ${gsv.gScheduleLocation}</div>		
 					</div>
 					<div>
