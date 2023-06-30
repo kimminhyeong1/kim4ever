@@ -1296,7 +1296,35 @@ public class GatheringController {
 		}	
 	
 	
-//모임 신고	
+		
+		
+		//모임 사진첩작성
+	@RequestMapping(value="/gDeclarationCheck.do")
+	public String gDeclarationCheck(
+			 RedirectAttributes redirectAttributes,
+			 HttpServletRequest request,
+			 Model md) {
+		
+		System.out.println("check 컨트롤러 들어옴");
+		HttpSession session = request.getSession();
+	    int midx = (int) session.getAttribute("midx");
+	    int giidx = (int) session.getAttribute("giidx");
+	    
+	    System.out.println("midx는?"+midx);
+	    System.out.println("giidx는?"+giidx);
+	    GatheringVo gmt = gs.gatheringMemberType(giidx, midx); 
+	    String gatheringMemberType = gmt.getGatheringMemberType();
+	    System.out.println("멤버타입은?"+gmt.getGatheringMemberType());
+	    
+	    if (gatheringMemberType.equals("TL")) {
+	    	redirectAttributes.addFlashAttribute("alertMessage", "모임장님은 자기 모임에 대해 신고할 수 없습니다.");
+	    	return "redirect:/gathering/gContent.do";
+	    } else {
+	    	return "redirect:/gathering/gDeclaration.do";
+	    }
+	}
+				
+	//모임 신고	
 	@RequestMapping(value="/gDeclaration.do")
 	public String gDeclaration(
 			HttpServletRequest request,
