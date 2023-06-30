@@ -160,7 +160,7 @@ WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPag
 		      e.errorDay,
 		      e.errorContent,
 		      e.errorState,
-		      ROW_NUMBER() OVER (ORDER BY e.errorDay DESC) AS rnum
+		      ROW_NUMBER() OVER (ORDER BY e.errorState ASC,e.errorDay DESC) AS rnum
 		    FROM rent1234 r
 		    JOIN member1234 m ON m.midx = r.midx
 		    JOIN bike1234 b ON b.bkidx = r.bkidx
@@ -268,7 +268,7 @@ WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPag
 		        e.errorDay,
 		        e.errorContent,
 		        e.errorState,
-		        ROW_NUMBER() OVER (ORDER BY e.errorDay DESC) AS rnum
+		        ROW_NUMBER() OVER (ORDER BY e.errorState ASC, e.errorDay DESC) AS rnum
 		    FROM rent1234 r
 		    JOIN member1234 m ON m.midx = r.midx
 		    JOIN bike1234 b ON b.bkidx = r.bkidx

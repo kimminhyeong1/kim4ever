@@ -39,10 +39,13 @@ a{color:inherit; text-decoration:none;}
 #main{width:1250px; margin:35px auto 70px; text-align:center; }
 #main #content{width:1250px; height:2400px;text-align:center;}
 #main #bottom{width:1250px; height:300px; }
+
 #main #content h2{text-align:left; margin-top:50px; margin-left:200px;font-family: 'GangwonEdu_OTFBoldA'; font-size:30px; }
 #content table {width:70%; border-collapse:collapse; margin:0 auto; line-height:50px; font-size:20px;font-family:'omyu_pretty'; font-size:24px;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
+#content table .status-error { color:red; }
+#content table .status-complete { color:green; }
 #content table tr th:nth-child(1){width:30px;}
 #content table tr th:nth-child(2){width:60px;}
 #content table tr th:nth-child(3){width:40px;}
@@ -99,7 +102,10 @@ a{color:inherit; text-decoration:none;}
 						          <button type="button" onclick="confirmRepair(${ejv.eidx},'${ejv.bikeCode}', '${ejv.bikeType}')">수리하기</button>
 						        </c:when>
 						        <c:when test="${ejv.errorState == 'Y'}">
-						        		  처리완료
+						        	<span class="status-complete"> 처리완료</span>
+						        </c:when>
+						         <c:when test="${ejv.errorState == 'E'}">
+									<span class="status-error"> 고장</span>
 						        </c:when>
 						      </c:choose>
 						</td>			

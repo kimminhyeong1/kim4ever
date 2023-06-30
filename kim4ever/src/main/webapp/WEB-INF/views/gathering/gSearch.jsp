@@ -39,7 +39,7 @@
 			</div>
 			<form action="<%=request.getContextPath()%>/gathering/gSearch.do" method="GET">
 			<div id="SearchPart">
-		        <input class="gInput" type="text" id="keyword" name="keyword" value="${empty scri.keyword ? '' : scri.keyword}" placeholder="검색하세요.">
+		        <input class="gInput" type="text" id="keyword" name="keyword" value="${empty scri.keyword ? '' : scri.keyword}" placeholder="모임 이름을 검색하세요.">
 		        <button type="submit"><img src="../resources/icon/loupe.png"></button>
    			</div>
 			</form>

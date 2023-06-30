@@ -19,18 +19,19 @@
 			/*틀부분*/
 			/*container A*/
 			.container{font-size: 24px;border: 1px solid #bbb;margin: 40px auto;width: 900px; padding: 40px;background-color: #fdfcfa;border-radius: 20px;}
-			.container>div{padding: 20px; text-align: center;}
-			.container>div>p{display: inline-block; } 
+            .container>div{padding: 20px; text-align: center;}
+            .container>div>p{display: inline-block; } 
 			.container h1{font-size: 50px; text-align: center; margin:5px; }
 			.container h2{font-size: 40px; text-align: center;}
 			.container h3{margin:5px; margin-top:15px; font-weight:bold;}
-			.container button{display:inline-block; width:30%; height:55px; margin-top:40px; text-align:center; font-family:'omyu_pretty'; font-size:25px; border-radius:20px; border:0px solid #ff9933; background:#ff9933;}
+			
+            .container button{display:inline-block; width:30%; height:55px; margin-top:40px; text-align:center; font-family:'omyu_pretty'; font-size:25px; border-radius:20px; border:0px solid #ff9933; background:#ff9933;}
 			.container button:active{background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
-			
-			/*container B*/
-			.container h3{margin-top:20px;}
-			.container #bikeLocation {margin:20px; 0};
-			
+			            
+            /*container B*/
+            .container h3{margin-top:20px;}
+            .container #bikeLocation {margin:20px; 0};
+            
 			/*이용내역 내용*/
 			#useInfo{width:80%; font-size:22px; line-height:35px;}
 			/*이용내역 내용 버튼*/
@@ -73,7 +74,7 @@
 		    	
 				// 자전거가 움직이지 않나요? 버튼 클릭 시
 				  $("#btn1").click(function() {
-				    // container A 비활성화
+				    // container A 비활성화				   	
 				    $(".container.A").css("display", "none");
 				    // container B 활성화
 				    $(".container.B").css("display", "block");
@@ -90,14 +91,23 @@
 				
 				
 				
-				$("#btn3").click(function(){
-		
-		            var fm = document.frm;		
-		      			 fm.action ="${pageContext.request.contextPath}/bikeRent/bikeRentFaultAction.do";   
-		      			 fm.method = "POST";
-		      			 fm.submit();
-		
-		       });//$("#btn1").click(function(){-----end
+				  $("#btn3").click(function() {
+					    var errorContent = $("#errorContent").val(); // errorContent 텍스트 영역의 값을 가져옴
+					    var fileInput = document.getElementById("errorImg"); // 파일 첨부(input 태그)의 ID에 맞게 변경
+					    var files = fileInput.files;
+
+					    if (errorContent.trim() === "") {
+					        alert("내용을 입력해주세요."); // 내용이 비어있을 경우 알림 메시지 표시
+					    } else if (files.length === 0 || files[0] === null) {
+					        alert("사진을 등록해주세요."); // 파일이 선택되지 않았을 경우 알림 메시지 표시
+					    } else {
+					        var fm = document.frm;
+					        fm.action = "${pageContext.request.contextPath}/bikeRent/bikeRentFaultAction.do";
+					        fm.method = "POST";
+					        fm.submit();
+					    }
+					});
+
 				
 			});
 		</script>
@@ -166,8 +176,8 @@
 	            if (status === kakao.maps.services.Status.OK) {
 	              if (result.length > 0) {
 	                var address = result[0].address.address_name;
-	                document.getElementById('address2').innerHTML = '<h3>위치</h3> ' + address;
-	                document.getElementById('position').innerHTML = '위치: ' + latitude + ', ' + longitude;
+	                document.getElementById('address2').innerHTML = '현재주소 :' + address;
+	                document.getElementById('position').innerHTML = '위치 : ' + latitude + ', ' + longitude;
 	             // 인풋 값 설정
 	                document.getElementById('latitude').value = latitude;
 	                document.getElementById('longitude').value = longitude;
@@ -182,8 +192,8 @@
 	          if (status === kakao.maps.services.Status.OK) {
 	            if (result.length > 0) {
 	              var address = result[0].address.address_name;
-	              document.getElementById('address2').innerHTML = '<h3>위치</h3> ' + address;
-	              document.getElementById('position').innerHTML = '위치: ' + latitude + ', ' + longitude;
+	              document.getElementById('address2').innerHTML = '현재주소 :' + address;
+	              document.getElementById('position').innerHTML = '위치 : ' + latitude + ', ' + longitude;
 		             // 인풋 값 설정
 	                document.getElementById('latitude').value = latitude;
 	                document.getElementById('longitude').value = longitude;
@@ -230,19 +240,19 @@
 				            <input type="hidden" id="address" name="errorLocation" value=""><!-- 주소 -->
 				        </div>
 			        
-						<p id="address2"></p>
-						
+						<p id="address2">현재 주소 :</p>
+						<p id="position">위치 : </p>
 	
 				        <div>
 				            <h3>사진</h3>
 				            <div>자전거가 위치한 사진을 찍어주세요.</div>
-				            <input type="file" name="errorImg"> 
+				            <input type="file" name="errorImg" id="errorImg"> 
 				        </div>
 		                <div>
 				            <h3>고장내용</h3>
 				            <div>아래의 사진을 보시고 고장 난 부위를 설명해 주세요.</div>
 				            <img src="../resources/bikeimg/bikeDetail.GIF" style=" margin-top:20px;"alt="bikeDetail">
-							<textarea style="width:100%"cols="100" rows="15" name="errorContent"></textarea>
+							<textarea id ="errorContent" style="width:100%"cols="100" rows="15" name="errorContent"></textarea>
 				        </div>
 				       <div><button type="button" id="btn3">작성하기</button></div>
 					</form>
