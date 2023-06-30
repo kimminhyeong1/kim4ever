@@ -47,7 +47,7 @@ button{cursor:pointer;}
  .topmenu{}
 #menu {width: 1250px;height: 100px; text-align:center; display:flex; justify-content:center; align-items:center; box-sizing:border-box;}
 #menu p {font-size: 25px; margin: 20px 40px; margin-top:20px;}
-  .topmenu:hover p {color:#05d100; cursor:pointer;}
+  .topmenu:hover p {cursor:pointer;}
     .topmenu{height:70px; align-items: center; }
 
 #content{width:1250px; }
@@ -104,8 +104,7 @@ header{width:auto;margin:0 auto; overflow-x: hidden;}
 #top_logo .login {display:flex;justify-content:flex-end;float:right; margin-right:3%}
 #top_logo .login ul {display:flex;list-style:none;margin-top:-5px; padding:0;   flex-direction: column; margin-bottom:5px;}
 #top_logo .login li {margin-left:5px; font-size:10px;}
-#top_logo .login a {display:block;padding:3px 5px;margin-top:5px;background-color:orange;color:black;border-radius:20px;text-decoration:none;transition:background-color 0.3s ease; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); }
-#top_logo .login a:hover {background-color: #666;}
+#top_logo .login a {display:block;padding:3px 5px;margin-top:5px; ;border-radius:20px;text-decoration:none;transition:background-color 0.3s ease; }
 
 /*사이드바*/
 .top-menu img {width: 30px; height:auto; float:left; margin-left:3%}
@@ -136,7 +135,7 @@ header{width:auto;margin:0 auto; overflow-x: hidden;}
 #menu p { height:17px; font-size: 10px; font-weight: bold;  margin: 2px 2px auto;  word-wrap: break-word; text-align:center;
   display: inline-block; white-space: nowrap;   border-radius:20px;  display: flex; align-items: center;}  
 
- .topmenu:hover p {color:#ff9900; cursor:pointer;}
+ .topmenu:hover p {color:#05d100; cursor:pointer;}
  .topmenu{height:70px; align-items: center; margin:7px;}
 
 #content{width:auto; height:1200px;}
