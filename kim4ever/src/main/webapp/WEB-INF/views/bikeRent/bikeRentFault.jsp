@@ -30,8 +30,9 @@
 			            
             /*container B*/
             .container h3{margin-top:20px;}
-            .container #bikeLocation {margin:20px; 0};
-            
+            .container #bikeLocation {margin:20px; }
+            .container #bikeAddress {margin:20px; display: inline-flex; font-size:18px;} 
+            .container #address{}
 			/*이용내역 내용*/
 			#useInfo{width:80%; font-size:22px; line-height:35px;}
 			/*이용내역 내용 버튼*/
@@ -176,7 +177,7 @@
 	            if (status === kakao.maps.services.Status.OK) {
 	              if (result.length > 0) {
 	                var address = result[0].address.address_name;
-	                document.getElementById('address2').innerHTML = '현재주소 :' + address;
+	                document.getElementById('address2').innerHTML = '현재주소 : ' + address;
 	                document.getElementById('position').innerHTML = '위치 : ' + latitude + ', ' + longitude;
 	             // 인풋 값 설정
 	                document.getElementById('latitude').value = latitude;
@@ -192,7 +193,7 @@
 	          if (status === kakao.maps.services.Status.OK) {
 	            if (result.length > 0) {
 	              var address = result[0].address.address_name;
-	              document.getElementById('address2').innerHTML = '현재주소 :' + address;
+	              document.getElementById('address2').innerHTML = '현재주소 : ' + address;
 	              document.getElementById('position').innerHTML = '위치 : ' + latitude + ', ' + longitude;
 		             // 인풋 값 설정
 	                document.getElementById('latitude').value = latitude;
@@ -226,8 +227,7 @@
 					<form name="frm" id="frm" enctype="multipart/form-data">
 						<h2>자전거 고장/신고</h2>
 						<div>
-				            <div id="bikeLocation">
-			              
+				            <div id="bikeLocation">      
 				            <p>
 				            <img src="../resources/icon/arrow.png" style="width: 30px;height: 30px; vertical-align: middle;margin-right:5px;">
 				            	현재 자전거 위치를 지정해주세요
@@ -239,13 +239,15 @@
 				            <input type="hidden" id="longitude" name="errorLongitude" value=""><!-- 경도 -->
 				            <input type="hidden" id="address" name="errorLocation" value=""><!-- 주소 -->
 				        </div>
-			        
-						<p id="address2">현재 주소 :</p>
-						<p id="position">위치 : </p>
-	
+			        	
+			        	<div id="bikeAddress">
+						<p id="address2"></p>&nbsp&nbsp&nbsp&nbsp
+						<p id="position"></p>
+						</div>
+						
 				        <div>
 				            <h3>사진</h3>
-				            <div>자전거가 위치한 사진을 찍어주세요.</div>
+				            <div>자전거의 문제가 있는 부분을 찍어주세요.</div>
 				            <input type="file" name="errorImg" id="errorImg"> 
 				        </div>
 		                <div>
