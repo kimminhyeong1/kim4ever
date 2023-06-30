@@ -121,7 +121,10 @@ function updateCharacterCount(inputName) {
 							
 						<tr>
 							<th>대표 이미지</th>
-							<td><input type="file" id="image" name="GATImg"/></td>
+							<td>
+							<img class="imagePreview" src="../resources/GATImages/${gjv.imageName}">
+							<input type="file" id="image2" name="GATImg" onchange="previewImage(event)"/>
+							</td>
 						</tr>
 					</c:if>
 					

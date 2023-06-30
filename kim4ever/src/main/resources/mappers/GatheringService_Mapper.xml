@@ -539,31 +539,31 @@
 		DELETE from GATHERING1234 WHERE giidx = #{0} and midx = #{1} and gatheringApprovalType = 'W'
 	</delete>
 	<!--  모임 더 보기 모임원 > 부모임장으로 권한 위임 (승격) -->	
-		<update id="updateTLD" parameterType="int"> 
-		UPDATE GATHERING1234 SET GATHERINGMEMBERTYPE = 'TLD' WHERE giidx = #{1} and midx = #{0}
-		</update>
+	<update id="updateTLD" parameterType="int"> 
+	UPDATE GATHERING1234 SET GATHERINGMEMBERTYPE = 'TLD' WHERE giidx = #{1} and midx = #{0}
+	</update>
 
-	<!--  모임 더 보기 부모임장 > 모임원으로 위임 (강등) -->	
-		<update id="updateTM" parameterType="int"> 
-		UPDATE GATHERING1234 SET GATHERINGMEMBERTYPE = 'TM' WHERE giidx = #{1} and midx = #{0}
-		</update>
+<!--  모임 더 보기 부모임장 > 모임원으로 위임 (강등) -->	
+	<update id="updateTM" parameterType="int"> 
+	UPDATE GATHERING1234 SET GATHERINGMEMBERTYPE = 'TM' WHERE giidx = #{1} and midx = #{0}
+	</update>
 	
 	<!--  모임 더 보기 모임장 >부모임장, 선택 된 부모임장 > 모임장으로 변경 -->
 	
-		<!-- 모임장 > 부모임장 -->	
-		<update id="updateDownTLD" parameterType="int"> 
-		UPDATE GATHERING1234 SET GATHERINGMEMBERTYPE = 'TLD' WHERE giidx = #{1} AND GATHERINGMEMBERTYPE = 'TL'
-		</update>
+	<!-- 모임장 > 부모임장 -->	
+	<update id="updateDownTLD" parameterType="int"> 
+	UPDATE GATHERING1234 SET GATHERINGMEMBERTYPE = 'TLD' WHERE giidx = #{1} AND GATHERINGMEMBERTYPE = 'TL'
+	</update>
 
-		<!-- 부모임장 > 모임장 -->	
-		<update id="updateTL" parameterType="int"> 
-		UPDATE GATHERING1234 SET GATHERINGMEMBERTYPE = 'TL' WHERE giidx = #{1} AND midx = #{0}
-		</update>
-		
-	<!--  모임 더보기 모임원 추방으로 변경 -->
-		<delete id="updateMemberDELYN" parameterType="int">
-	    	DELETE FROM GATHERING1234 WHERE giidx = #{1} AND midx = #{0}
-		</delete>
+	<!-- 부모임장 > 모임장 -->	
+	<update id="updateTL" parameterType="int"> 
+	UPDATE GATHERING1234 SET GATHERINGMEMBERTYPE = 'TL' WHERE giidx = #{1} AND midx = #{0}
+	</update>
+	
+<!--  모임 더보기 모임원 추방으로 변경 -->
+	<delete id="updateMemberDELYN" parameterType="int">
+    	DELETE FROM GATHERING1234 WHERE giidx = #{1} AND midx = #{0}
+	</delete>
 		
 	<!-- 모임 나가기 (giidx에 해당하는 값 삭제)-->
 	<delete id="exitGathering" parameterType="int">
@@ -694,11 +694,11 @@
 	
 	<!--  사진첩  게시글 수정 조회 -->
 	<select id="gatheringPhotoAlbumModify" resultType="com.myezen.myapp.domain.GatheringJoinVo">
-    	SELECT a.gpaidx, a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, a.GPHOTOALBUMCONTENTS0 ,a.GPHOTOALBUMCONTENTS1,a.GPHOTOALBUMCONTENTS2, b.imgtype, b.imageName
-		FROM gathering_photoalbum1234 a
-		JOIN image1234 b ON a.giidx = b.GIIDX AND a.gpaidx = b.gpaidx
-		WHERE b.imgtype = 'GA'
-		AND a.gpaidx = #{gpaidx}
+    	 SELECT a.gpaidx, a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, a.GPHOTOALBUMCONTENTS0, a.GPHOTOALBUMCONTENTS1, a.GPHOTOALBUMCONTENTS2, b.imgtype, b.imageName, c.imageName AS gatImageName
+	    FROM gathering_photoalbum1234 a
+	    LEFT JOIN image1234 b ON a.gpaidx = b.gpaidx AND b.imgtype = 'GA'
+	    LEFT JOIN image1234 c ON a.gpaidx = c.gpaidx AND c.imgtype = 'GAT'
+	    WHERE a.gpaidx = #{gpaidx}
 	</select>
 	
 	<!--  사진첩 게시글 수정 작성 -->
