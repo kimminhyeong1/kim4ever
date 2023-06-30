@@ -67,7 +67,7 @@ ArrayList<BikeJoinVo> bikeList = (ArrayList<BikeJoinVo>)request.getAttribute("bi
 			 <h2>자전거 이용 수칙</h2>
 	           <p>1. 자전거 이용시간은 오전9시부터 오후10시까지입니다.</p>
 	           <p>2. 자전거 이용 시 안전수칙을 준수하시고 음주 시 이용이 불가합니다. </p>
-	           <p>3. 대여는 5개의 대여소에서 가능하며, 반납은 빌린곳과 무관하게 <br>어느 대여소에서든 가능합니다.</p>
+	           <p>3. 대여는 5개의 대여소에서 가능하며, 반납은 빌린곳과 무관하게 <br>&nbsp&nbsp&nbsp어느 대여소에서든 가능합니다.</p>
 	           <p>4. 자전거 고장/신고 문의는 대여내역에서 신고 접수 부탁드립니다! </p>
 			</div>
 			<div id="bcontent">
