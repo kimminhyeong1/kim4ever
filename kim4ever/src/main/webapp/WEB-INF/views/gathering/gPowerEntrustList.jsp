@@ -32,7 +32,7 @@
 		.gBtn2 {margin:20px;}
 		.gSetContainer h2{font-size:35px; margin-left:20px;}		
 		.buttonContainer {display: flex;justify-content: flex-end;}	
-.EntrustBtn{width:80px; height:40px; text-align:center; position: relative; bottom: 25px; font-family:'omyu_pretty'; font-size:21px; border-radius:20px; border:0px solid #99CC99; background:#05d100; color:white;}	
+.EntrustBtn{width:80px; height:40px; text-align:center; position: relative; bottom: 30px; font-family:'omyu_pretty'; font-size:21px; border-radius:20px; border:0px solid #99CC99; background:#05d100; color:white; float:right;}	
 .EntrustBtn:active{background:#2bd727b5; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}	
 	.menu #gMemberListLink {color:#bbb;}
   	.menu #gMemberJoinWaitListLink {color:#bbb;}
