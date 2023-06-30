@@ -13,7 +13,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1">		
 		 <style type="text/css">
-		 	
+		 	#empty{font-size: 30px;line-height: 250px;}
 		 </style>
 	</head>
 	<body>
@@ -25,6 +25,9 @@
 				<h2>내 모임 찜보기</h2>
 			</div>
 			<div class="gContent gContentB" >
+				<c:if test="${empty gjvmywishlist}">
+					<div id="empty">찜한 모임이 없습니다.</div>
+				</c:if>	
 				<c:if test="${not empty midx}">
 					<c:forEach var="gjvmy" items="${gjvmywishlist}" varStatus="loop">
 						<c:if test="${loop.index lt 4}">
@@ -48,7 +51,7 @@
 									<c:otherwise>
 										<button class="gBtn">승인대기중</button><!-- 버튼딜레이 -->						
 									</c:otherwise>
-								</c:choose>		
+								</c:choose>	
 							</div>
 						</c:if>
 		               	<c:if test="${loop.index eq 4 and loop.last}">

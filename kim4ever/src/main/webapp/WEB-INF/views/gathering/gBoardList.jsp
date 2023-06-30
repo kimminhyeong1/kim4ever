@@ -21,8 +21,8 @@
 			/*검색하기 부분*/
 			#searchCategory{text-align: right; font-size: 20px; margin: 20px 20px; height: 30px; font-family: 'omyu_pretty'; border-radius:20px;} 
 			#searchCategory>div{display: inline-block; vertical-align: top;} 
-			#searchCategory>div>select{width: 100px; height: 40px; font-size: 24px; font-family: 'omyu_pretty';vertical-align: top; border-radius:20px; text-align: center;} 
-			#searchCategory>div>input{width: 300px; height: 40px; font-size: 24px;vertical-align: top; border-radius:20px;} 
+			#searchCategory>div>select{width: 100px; height: 40px; font-size: 24px; font-family: 'omyu_pretty';vertical-align: top; border-radius:20px; text-align: center;border: 1px solid #bbb;} 
+			#searchCategory>div>input{width: 300px; height: 38px; font-size: 24px;vertical-align: top; border-radius:20px;border: 1px solid #bbb;} 
 			#searchCategory>div>button{width: 100px; height: 40px; margin-top: 0px;margin-bottom: 0px; border-radius:20px;} 
 			/*공지사항부분*/
 			.gNotice{text-align: left; font-size: 20px; margin: 20px 40px; white-space: nowrap; overflow: hidden;  text-overflow: ellipsis;} 
@@ -48,6 +48,7 @@
 			/*a태그*/
 			a{text-decoration: none; color: #000;}			
 			.gBtn2 {margin-top:20px;}		
+			#empty{line-height: 300px;font-size: 24px;}
 			
 			/*************************모바일****************************************/
 				/*****모바일 넓이***/
@@ -104,6 +105,9 @@
 							<button type="submit" id="searchBtn" class="gBtn2">검색</button>
 						</div>
 					</form>
+					<c:if test="${empty gjvblist}">
+						<div id="empty">게시글이 없습니다.</div>
+					</c:if>	
 					<c:forEach var="gjvb" items="${gjvblist}">
 			    		<c:if test="${gjvb.gBoardCategory.equals('공지사항')}">
 							<div class="gNotice">

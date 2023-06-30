@@ -24,7 +24,7 @@
 			#main section textarea {display: block; width: 500px;height: 200px;font-size: 23px;}
 			#main section button{text-align: center;}  
 			#main section img{width: 100px;height: 100px;}  
-			.gBtn2{margin-right: 10px; margin-left: 10px;}
+			.gBtn2{margin-right: 10px; margin-left: 10px; margin-bottom: 30px;}
 			.boxContent {display: inline-block;}
 		</style>
 		<script type="text/javascript">

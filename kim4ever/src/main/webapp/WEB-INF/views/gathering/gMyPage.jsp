@@ -16,6 +16,7 @@
 		 <style type="text/css">
 		 	/*틀부분*/
 			#myImg{width: 100px;height: 100px;}
+			#empty{font-size: 30px;line-height: 250px;}
 			
 			/**************************모바일****************************************/
 
@@ -35,7 +36,10 @@
 			<div class="gContentTitle" >
 				<h2>내 모임 보기</h2>
 			</div>
-			<div class="gContent gContentB" >	 
+			<div class="gContent gContentB" >
+				<c:if test="${empty gjvmylist}">
+					<div id="empty">가입한 모임이 없습니다.</div>
+				</c:if>	 
 				<c:if test="${not empty midx}">
 					<c:forEach var="gjvmy" items="${gjvmylist}" varStatus="loop">
 					  <c:if test="${loop.index lt 4}">
