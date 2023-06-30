@@ -85,7 +85,7 @@ button{cursor:pointer;}
 .toggle--label:after {transition-delay: 0ms;transition: all 250ms ease-in;position: absolute;content: "";box-shadow: var(--gray-dots) -13px 0 0 2px, var(--gray-dots) -24px 14px 0 -2px;left: 143px;top: 23px;width: 10px;height: 10px;background: transparent;border-radius: 50%;opacity: 0;}
 @keyframes switch {
   0% {left: 55px;}
-  60% {left: 50px;width: 40px;}
+  60% {left: 15px;width: 40px;}
   100% {left: 10px;width: 40px;}
 }
 @keyframes reverse {
