@@ -181,7 +181,7 @@
 	        var excludedData = [];
 		    function fetchNewData() {
 		        <c:forEach var="gjv" items="${gjvlist}">
-		            excludedData.push(${gjv.giidx});
+		            excludedData.push('${gjv.giidx}');
 		        </c:forEach>
 		
 		        $.ajax({
@@ -218,7 +218,7 @@
 		                        excludedData.push(gjv.giidx);
 	                    	}
 	                    });
-	                    offset2 += 8;
+	                    //offset2 += 8;
 	                    
 	                  	//데이터가 없으면 
                         if (data.length < 8) {
