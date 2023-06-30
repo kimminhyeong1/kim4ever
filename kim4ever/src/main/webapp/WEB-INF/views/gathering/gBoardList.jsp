@@ -47,13 +47,13 @@
 			/*a태그*/
 			a{text-decoration: none; color: #000;}			
 			.gBtn2 {margin-top:20px;}		
-<<<<<<< HEAD
+
 			#empty{line-height: 300px;font-size: 24px;}
-=======
+
 
 
 		
->>>>>>> 김지원
+
 			
 			/*************************모바일****************************************/
 				/*****모바일 넓이***/
@@ -119,14 +119,14 @@
 							<button type="submit" id="searchBtn" class="gBtn2">검색</button>
 						</div>
 					</form>
-<<<<<<< HEAD
+
 					<c:if test="${empty gjvblist}">
 						<div id="empty">게시글이 없습니다.</div>
 					</c:if>	
-=======
+
 				<div class="gBoardList">
 		
->>>>>>> 김지원
+
 					<c:forEach var="gjvb" items="${gjvblist}">
 			    		<c:if test="${gjvb.gBoardCategory.equals('공지사항')}">
 							<div class="gNotice">
