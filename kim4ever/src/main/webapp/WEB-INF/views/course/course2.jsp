@@ -43,7 +43,7 @@ transition: transform 0.1s ease-in-out; background-color:#ffff; margin-right:10p
 #main #restaurant table h3,p{border-bottom:1px solid #bbb; font-size:10px;}
 #main #restaurant table p:last-child {border-bottom: none; }
 #main #restaurant img{width:100%; height:auto; border-radius: 10px 10px 0 0; z-index:1; } 
-#main h2{color:#333; font-family: 'KCC-Ganpan'; font-size:10px; margin-top:40px; text-align:center; border-bottom:2px solid #333;
+#main h2{color:#333; font-size:15px; margin-top:40px; text-align:center; border-bottom:2px solid #333;
 padding-bottom:10px;}
 table td {margin: 10px;}
 #map{width:80%;height:300px; margin-left:10%; border-radius: 20px;}

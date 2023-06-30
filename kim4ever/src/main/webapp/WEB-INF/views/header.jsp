@@ -99,9 +99,9 @@ header{width: 1250px;margin: 35px auto 0px;text-align: center;}
  
 /****************************모바일**************************/
 @media (min-width: 300px) and (max-width: 940px)  {
-header{width:auto;margin:0 auto; }
+header{width:auto;margin:0 auto; overflow-x: hidden;}
 /*사이드메뉴바, 로고, 로그인버튼*/
-#top_logo{width:auto; height:80px; text-align:center; position:relative; margin-top:15px;}
+#top_logo{width:auto; height:80px; text-align:center; position:relative; margin-top:10px;}
 #top_logo .logo{display:inline-block; text-align:center; position:absolute; transform:translate(-50%, -50%);}
 #top_logo .logo img{width:55px; margin-left:24%; cursor:pointer;transition: all 0.3s ease-in-out;}
 #top_logo .login {display:flex;justify-content:flex-end;float:right; margin-right:3%}
@@ -136,7 +136,7 @@ header{width:auto;margin:0 auto; }
 
 /*메뉴*/
 #menu {width:auto; height: 60px; text-align:center; display:flex; justify-content:center; align-items:center; box-sizing:border-box;}
-#menu p { height:17px; font-size: 10px; font-weight: bold;  margin: 2px 2px auto;  word-wrap: break-word; text-align:center;
+#menu p {    justify-content: center; height:17px; font-size: 10px; font-weight: bold;  margin: 2px 2px auto;  word-wrap: break-word; text-align:center;
   display: inline-block; white-space: nowrap;   border-radius:20px;  display: flex; align-items: center;}  
 
  .topmenu:hover p {color:#ff9900; cursor:pointer;}
@@ -299,7 +299,7 @@ header{width:auto;margin:0 auto; }
 		</div>
 		<div class="topmenu"  onclick="location.href='<%=request.getContextPath()%>/board/boardList.do'">
 			 <img src=" ${pageContext.request.contextPath}/resources/mobile/edit-code.png" alt="게시판" class="hidden_img">
-			 <p>&nbsp;&nbsp;게 시 판</p>	
+			 <p>게 시 판</p>	
 		 </div>
 		 <div  class="topmenu"  onclick="location.href='<%=request.getContextPath()%>/gathering/gList.do'">		
 			  <img src="${pageContext.request.contextPath}/resources/mobile/friendship.png" alt="자전거모임" class="hidden_img">		 
