@@ -280,8 +280,51 @@
 					<div><span>...</span></div>						
 				</div>
 				<div class="gBox">
-				<div><button class="gBtn">초대하기</button></div>
-				<div><button class="gBtn" onclick="location.href='${pageContext.request.contextPath}/gathering/gMemberList.do?giidx=${gjvmy.giidx}'">더보기</button></div>
+				<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.2.0/kakao.min.js"integrity="sha384-x+WG2i7pOR+oWb6O5GV5f1KN2Ko6N7PTGPS7UlasYWNxZMKQA63Cj/B2lbUmUfuC" crossorigin="anonymous"></script>
+				<script>
+				  Kakao.init('20f538f14cf29a1eb30d2f9dbaa4e1fb'); // 사용하려는 앱의 JavaScript 키 입력
+				</script>
+				
+				<a id="kakaotalk-sharing-btn"  href="javascript:shareMessage()">
+				 <button class="gBtn">초대하기</button>
+				</a>
+				
+				<script>
+				  function shareMessage() {
+				    Kakao.Share.sendDefault({
+				      objectType: 'feed',
+				      content: {
+				        title: '${gjvlist[0].gInfoName}',
+				        description: '#타바 모임초대 #타바 자전거모임',
+				        imageUrl:
+				          'http://jjezen.cafe24.com/kim4ever/resources/MemberProfile/${gjvlist[0].memberProfile}',
+				        link: {
+				          // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
+				          mobileWebUrl: 'http://jjezen.cafe24.com/kim4ever/',
+				          webUrl: 'http://jjezen.cafe24.com/kim4ever/',
+				        },
+				      },
+				      buttons: [
+				        {
+				          title: '웹으로 보기',
+				          link: {
+				            mobileWebUrl: 'http://jjezen.cafe24.com/kim4ever/gathering/gSimpleInfo.do?giidx=${giidx}',
+				            webUrl: 'http://jjezen.cafe24.com/kim4ever/gathering/gSimpleInfo.do?giidx=${giidx}',
+				          },
+				        },
+				        {
+				          title: '앱으로 보기',
+				          link: {
+				            mobileWebUrl: 'http://jjezen.cafe24.com/kim4ever/gathering/gSimpleInfo.do?giidx=${giidx}',
+				            webUrl: 'http://jjezen.cafe24.com/kim4ever/gathering/gSimpleInfo.do?giidx=${giidx}',
+				          },
+				        },
+				      ],
+				    });
+				  }
+				</script>
+				
+				<div><button class="gBtn" onclick="location.href='${pageContext.request.contextPath}/gathering/gMemberList.do'">더보기</button></div>
 				</div>			
 			</div>
 			<div id="gSchedule">
