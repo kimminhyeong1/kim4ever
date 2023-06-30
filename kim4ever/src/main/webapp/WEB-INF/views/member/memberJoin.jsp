@@ -509,7 +509,6 @@
 	                        $("#phoneChk").attr("style","display:none;");
 	                        $("#phoneChk2").attr("style","display:none;");
 	
-	                        document.getElementById('rentButton').disabled = false;
 	                        phoneChkFlag=true;
 	                    } else {
 	                        $(".successPhoneChk").text("인증번호가 일치하지 않습니다.");
@@ -517,7 +516,6 @@
 	                        $("#phoneDoubleChk").val("false");
 	                        $("#phone2").focus();
 	
-	                        document.getElementById('rentButton').disabled = true;
 	
 	        
 	
@@ -589,6 +587,7 @@
 		                        $(".successEmailChk").css("color", "green");
 		                        $("#auth").attr("style","display:none;");
 		                        $("#emailCheck").attr("style","display:none;");
+		                        $(".successEmailChk").css("padding","15px 30px");
 	        	                emailChkFlag=true;
 	        	            } else {
 	        	                alert("인증번호가 일치하지 않습니다. 다시 확인해주세요.");
@@ -696,7 +695,7 @@
 						</tr>
 						<tr>
 							<td>
-								<input id="memberPhone" type="text" name="phone" maxlength="11" title="전화번호 입력" placeholder="휴대폰 번호" required/>
+								<input id="memberPhone" type="text" name="memberPhone" maxlength="11" title="전화번호 입력" placeholder="휴대폰 번호" required/>
 								<p id="phoneMsg" class="ability_chk" style="display:none">전화번호를 정확히 입력해주세요.</p> 							
 							</td>
 						</tr>
