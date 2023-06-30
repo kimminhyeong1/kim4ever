@@ -759,14 +759,20 @@ public class GatheringServiceImpl implements GatheringService {
         	        gsm.exitGathering(midx, giidx);
         	        System.out.println("모임에서 나갔습니다");
         	        //모임과 연관된 포토앨범 정보들 삭제
-        	        gsm.deleteGatheringPhotoAlbum(giidx);
+        	        gsm.updateGatheringPhotoAlbum(giidx);
         	        System.out.println("모임과 연관된 사진첩을 삭제하였습니다");
         	        //모임과 연관된 게시판 정보들 삭제
-        	        gsm.deleteGatheringBoard(giidx);
+        	        gsm.updateGatheringBoard(giidx);
         	        System.out.println("모임과 연관된 게시판을 삭제하였습니다");
+        	        //모임과 연관된 스케쥴 정보들 삭제
+        	        gsm.updateGatheringSchedule(giidx);
+        	        System.out.println("모임과 연관된 스케쥴을 삭제하였습니다");
+        	        //모임과 연관된 신고정보들 삭제
+        	        gsm.updateGatheringDeclaration(giidx);
+        	        System.out.println("모임과 연관된 신고내역을 삭제하였습니다");
         	        //모임정보 삭제
-        	        gsm.deleteGathering(giidx);
-        	        System.out.println("모임삭제 하였습니다");
+        	        gsm.updateGathering(giidx);
+        	        System.out.println("모임에서 나가셨습니다");
         	        return true; // 성공 시 true 반환
         	    } else {
         	        System.out.println("모임장은  모임을 나갈 수 없습니다.");
