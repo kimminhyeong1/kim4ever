@@ -124,6 +124,10 @@ li{list-style:none;}
 				<button onclick="location.href='${pageContext.request.contextPath}/bikeRent/bikeRentInfo.do'">자전거 종류 등록/삭제</button>
 			</div>
 			
+			<div id="bikeAddBtn">
+				<button onclick="location.href='${pageContext.request.contextPath}/admin/adminbikeRegister.do'">자전거 추가 등록/삭제</button>
+			</div>
+		
 			<table>
 			<tr>
 				<td>

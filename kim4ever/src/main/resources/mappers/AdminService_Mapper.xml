@@ -565,5 +565,18 @@ WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPag
         DELETE FROM GATHERING1234 WHERE giidx = #{giidx}
     </delete>
 	
+	
+	<!-- 자전거 추가 등록 -->
+	<insert id="bikeInsert" parameterType="bv">
+		INSERT INTO BIKE1234 (bikeCode, bikeType, bikeLocation)
+		VALUES (#{bikeCode}, #{bikeType}, #{bikeLocation} )
+	</insert>
+	
+		<!-- 자전거 등록 페이지 이름 중복체크-->
+	<select id="bikeCodeCheck" parameterType="String" resultType="int">
+		select count(*) from bike1234 where bikeCode=#{bikeCode}
+	</select>
+	
+	
 </mapper>
 

@@ -49,6 +49,10 @@ public interface AdminService_Mapper {
 	//자전거 리스트
 	public ArrayList<BikeJoinVo> bikeList(SearchCriteria scri);
 	public int bikeListCount (SearchCriteria scri);
+	//자전거 추가 등록
+	public int bikeInsert(String bikeCode, String bikeType, String bikeLocation);
+	//자전거 코드번호 중복 체크
+	public int bikeCodeCheck(String bikeCode);
 	//대여소 리스트
 	public ArrayList<BikeJoinVo> rentalshopList();
 	//대여소 등록

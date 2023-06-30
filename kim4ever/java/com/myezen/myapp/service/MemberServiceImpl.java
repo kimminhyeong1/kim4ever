@@ -23,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.MemberVo;
@@ -30,7 +31,6 @@ import com.myezen.myapp.persistance.MemberService_Mapper;
 import com.myezen.myapp.util.MailHandler;
 import com.myezen.myapp.util.TempKey;
 import com.myezen.myapp.util.UploadFileUtiles;
-
 @Service("MemberServiceImpl")
 public class MemberServiceImpl implements MemberService {
 
@@ -365,7 +365,7 @@ public class MemberServiceImpl implements MemberService {
 					int responseCode = conn.getResponseCode();
 					System.out.println("responseCode : " + responseCode);
 
-					BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+					BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
 
 					String line = "";
 					String result = "";
@@ -378,7 +378,7 @@ public class MemberServiceImpl implements MemberService {
 
 					try {
 						// jackson objectmapper 객체 생성
-						ObjectMapper objectMapper = new ObjectMapper();
+						ObjectMapper objectMapper = new ObjectMapper();	
 						// JSON String -> Map
 						Map<String, Object> jsonMap = objectMapper.readValue(result, new TypeReference<Map<String, Object>>() {
 						});
@@ -392,7 +392,7 @@ public class MemberServiceImpl implements MemberService {
 						// System.out.println(properties.get("nickname"));
 						// System.out.println(kakao_account.get("email"));
 
-						String nickname = new String(properties.get("nickname").toString().getBytes(),"utf-8");
+						String nickname = properties.get("nickname").toString(); 
 						System.out.println("##############nicName##########  ::::"+nickname);
 						
 						//String email = kakao_account.get("email").toString();

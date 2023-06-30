@@ -9,19 +9,19 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_admin.css">  
 		<style type="text/css"> 
-	.aContainer{height:800px; }
+	.aContainer{height:800px; border:0px;}
 	.aContent{height:200px; flex-wrap:nowrap; width:100%;}
 	.aContent2{display: flex;}	   
-    .abox{width:265px; height:150px; margin:20px; padding:30px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:10px; }	
-	.abox2{width:570px; height:auto; margin:0 20px 40px 35px; padding:-5px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:10px;}
-	.abox3{width:570px; height:auto; margin:0 20px 40px 20px; padding:-5px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:10px;}
+    .abox{width:265px; height:150px; margin:20px; padding:30px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:20px;     background-color: #fdfcfa;}	
+	.abox2{width:570px; height:auto; margin:0 20px 40px 35px; padding:-5px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:20px;    background-color: #fdfcfa;}
+	.abox3{width:570px; height:auto; margin:0 20px 40px 20px; padding:-5px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:20px;    background-color: #fdfcfa;}
 	/* .abox3{width:570px; margin:20px; padding:5px; box-sizing:border-box; border:1px solid #ccc; text-align:center; border-radius:10px;} */
-	.cardTitle{margin-bottom:40px; border-bottom:1px solid #ddd;}	
+	.cardTitle{margin-bottom:20px; border-bottom:1px solid #ddd;}	
 	.abox2 table, .abox3 table {width: 60%; border-collapse: collapse;margin: 15px 	83.703px ;line-height: 60px;font-size: 18px;font-family: 'omyu_pretty';}
-	.pcontent {font-size:32px;}	
-	.abox2 th{font-size:35px;}
-	.abox3 th{font-size:35px;}
-	h2{margin-top:20px; padding-bottom:20px; border-bottom:1px solid #ddd;}
+	.pcontent {font-size:32px;}	 
+	.abox2 th{font-size:35px; font-weight: normal;}
+	.abox3 th{font-size:35px; font-weight: normal;}
+	h2{margin-top:20px; padding-bottom:20px; border-bottom:1px solid #ddd;font-weight: normal;}
 		
 		</style>
 	</head>
