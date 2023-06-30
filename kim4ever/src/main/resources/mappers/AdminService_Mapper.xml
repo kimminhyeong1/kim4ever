@@ -567,14 +567,20 @@ WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPag
 	
 	
 	<!-- 자전거 추가 등록 -->
-	<insert id="bikeInsert" parameterType="bv">
-		INSERT INTO BIKE1234 (bikeCode, bikeType, bikeLocation)
-		VALUES (#{bikeCode}, #{bikeType}, #{bikeLocation} )
+	<insert id="bikeInsert" parameterType="String">
+		INSERT INTO BIKE1234 (bikeCode, bikeType, bikeLocation,bikeState)
+		VALUES (#{0}, #{1}, #{2},'Y' )
 	</insert>
 	
 		<!-- 자전거 등록 페이지 이름 중복체크-->
 	<select id="bikeCodeCheck" parameterType="String" resultType="int">
 		select count(*) from bike1234 where bikeCode=#{bikeCode}
+	</select>
+	<select id="bikeInfoList" resultType="com.myezen.myapp.domain.BikeInfoVo">
+		select * from bikeinfo1234 
+	</select>
+	<select id="bikeshopList" resultType="com.myezen.myapp.domain.RentalshopVo">
+		select * from rentalshop1234
 	</select>
 	
 	

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.myezen.myapp.domain.BikeInfoVo;
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.BoardVo;
 import com.myezen.myapp.domain.GatheringJoinVo;
@@ -24,6 +25,7 @@ import com.myezen.myapp.domain.Gathering_BoardVO;
 import com.myezen.myapp.domain.Gathering_ScheduleVO;
 import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.domain.PageMaker;
+import com.myezen.myapp.domain.RentalshopVo;
 import com.myezen.myapp.domain.SearchCriteria;
 import com.myezen.myapp.service.AdminService;
 import com.myezen.myapp.service.BoardService;
@@ -137,8 +139,18 @@ public class AdminController {
 		
 	//자전거 등록페이지	
 	@RequestMapping(value="/adminbikeRegister.do")
-	public String adminbikeRegister() {
-			 
+	public String adminbikeRegister(
+			Model md
+			) {
+		
+		
+		//자전거 정보 리스트 가져오기
+		ArrayList<BikeInfoVo> blist = as.bikeInfoList(); 
+		md.addAttribute("blist", blist);
+		//대여소 정보 리스트 가져오기
+		ArrayList<RentalshopVo> slist = as.bikeshopList(); 
+		md.addAttribute("slist", slist);
+		
 			return "admin/adminbikeRegister";
 		}
 	
@@ -159,7 +171,7 @@ public class AdminController {
 		public String adminbikeRegisterAction(
 			@RequestParam("bikeCode") String bikeCode,// 자전거 고유 번호
 			@RequestParam("bikeType") String bikeType,//자전거 종류
-			@RequestParam("bikeLocation") String bikeLocation //위도
+			@RequestParam("bikeLocation") String bikeLocation //대여소 위치
 
 			) {
 			int value = as.bikeInsert(bikeCode, bikeType, bikeLocation);

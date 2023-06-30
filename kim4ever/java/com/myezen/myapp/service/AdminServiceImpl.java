@@ -12,9 +12,11 @@ import org.springframework.security.config.annotation.web.configurers.Expression
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.myezen.myapp.domain.BikeInfoVo;
 import com.myezen.myapp.domain.BikeJoinVo;
 import com.myezen.myapp.domain.GatheringJoinVo;
 import com.myezen.myapp.domain.MemberVo;
+import com.myezen.myapp.domain.RentalshopVo;
 import com.myezen.myapp.domain.SearchCriteria;
 import com.myezen.myapp.persistance.AdminService_Mapper;
 import com.myezen.myapp.persistance.MemberService_Mapper;
@@ -283,6 +285,18 @@ public class AdminServiceImpl implements AdminService {
 		int value = asm.bikeCodeCheck(bikeCode);
 		return value;
 	}
+	//자전거 정보 리스트 가져오기
+	@Override	
+	public ArrayList<BikeInfoVo> bikeInfoList() {
+		ArrayList<BikeInfoVo> blist = asm.bikeInfoList(); 
+		return blist;
+	}
+	//대여소 정보 리스트 가져오기
+	@Override
+	public ArrayList<RentalshopVo> bikeshopList() {
+		ArrayList<RentalshopVo> slist = asm.bikeshopList(); 
+		return slist;
+	} 
 
 
 

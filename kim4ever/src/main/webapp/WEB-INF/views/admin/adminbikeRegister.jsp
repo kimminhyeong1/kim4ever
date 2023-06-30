@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -70,81 +71,12 @@
 		</style>
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 		<script type="text/javascript">
-				//!전역변수!								
-				var nameFlag;
 
-				
-			 	
-			$(document).ready(function(){
-				
-				
-				//자전거 코드 중복 체크
-				/*
-				$("#bikeCode").blur(function(){//blur input값에 쓰고 다른데로 갈때 발동
-					var name = document.getElementById("bikeCode").value;
-					var oMsg = document.getElementById("bikeCodeMsg");
-					var oMsgC = document.getElementById("bikeCodeMsgCheck");
-
-					nameFlag = false;
-
-				
-					
-					 try {
-						// 성공 Api  바이크로 변경
-						var url = '${pageContext.request.contextPath}/admin/adminbikeCodeCheck.do';
-						var param = [{ name: "bikeCode", value: name }];
-
-						$.ajax({
-							url: url,
-							data: param,
-							type: "GET",
-							contentType: "application/json;",
-							dataType: "json",
-							success: function (data) {
-								if (data.value == 1) {
-									oMsg.style.display = "block";
-									oMsg.style.color = "red";
-									oMsg.style.padding = "15px 0px 0px 5px";
-									oMsg.style.textAlign = "left";
-									oMsg.className = "ability_chk";
-									oMsg.innerHTML = "이미 사용중인 번호입니다.";
-									return false;
-								} else {
-									oMsg.style.display = "block";
-									oMsg.style.color = "red";
-									oMsg.style.padding = "15px 0px 0px 5px";
-									oMsg.style.textAlign = "left";
-									oMsg.className = "ability_chk submit";
-									oMsg.innerHTML = "사용가능합니다.";
-								}
-								nameFlag = true;
-								return true;
-							},
-							error: function (error) {
-								alert("Error");
-							}
-						});
-					} catch (e) {
-						if (window.bridgeGotTime) {
-							throw e;
-						 } else {
-							//page reload?
-						 }
-					}
-					return true; 
-				});
-				//!이름!end	
-
-					*/		
-			});//$(document).ready(function(){ !end!
 
  				/// 자전거  등록 ///
 				function Signup() {
 
-					if (!nameFlag) {	
-						alert("자전거 번호를 올바르게 입력해주세요.");
-						return false;
-					}
+				
 			
 					
 					$('#frm').attr('action', 'adminbikeRegisterAction.do').submit();
@@ -155,14 +87,7 @@
 		</script>
 		
 		
-		<script type="text/javascript">
-		function autoHyphen2(target) {
-			  target.value = target.value
-			    .replace(/[^0-9]/g, '')
-			    .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3")
-			    .replace(/(\-{1,2})$/g, "");
-			}
-		</script>
+
 		
 	</head>
 	<body>
@@ -172,17 +97,28 @@
 	
 			<form name="frm" id="frm" method="post">
 			<div id="login_out">
+			
 				<table>
 					<tbody> 
 					  	<tr>
 	    					<th colspan="3"><h2>자전거 등록</h2></th>
 	  					</tr>
+	  					<tr>
+							<td>
+								<select name="bikeCode">
+									<c:forEach var="b" items="${blist}">
+										<option value="${b.bikeCode}">${b.bikeCode}</option>
+									</c:forEach>	
+								</select>
+							</td>
+						</tr>
 						
 						<tr>
 							<td>
 								<select name="bikeType">
-									<option value="NOR">일반 자전거</option>	
-									<option value="ELE">전기 자전거</option>	
+									<c:forEach var="b" items="${blist}">
+										<option value="${b.bikeType}">${b.bikeType}</option>
+									</c:forEach>	
 								</select>
 							</td>
 						</tr>
@@ -191,20 +127,12 @@
 						<tr>
 							<td>
 								<select name="bikeLocation">
-									<option value="Location1">일반 자전거</option>	
-									<option value="ELE">전기 자전거</option>	
+								<c:forEach var="s" items="${slist}">
+									<option value="${s.rentalshopName}">${s.rentalshopName}</option>	
+								</c:forEach>		
 								</select>
 							</td>
 						</tr>
-
-						<tr>
-							<td>
-								<input type="text" id="bikeCodeName" name="bikeCodeName" placeholder="자전거 코드 번호" value="">
-								<p id="bikeCodeNameMsg" class="ability_chk" style="display:none">제대로 입력.</p>
-							</td>
-						</tr>
-
-
 						<tr>
 							<td colspan="2">
 								<button type="button" onclick="Signup();">등록하기</button>
@@ -212,7 +140,7 @@
 						</tr>
 					</tbody>
 				</table>
-						
+				
 			</div> 
 		</form>
 		</div>
