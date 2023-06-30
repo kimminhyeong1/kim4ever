@@ -16,7 +16,7 @@ li{list-style:none;}
 
 
 #main{width:1440px; margin:35px auto 70px; text-align:center; }
-#main #content{width:1440px; height:1600px;}
+#main #content{width:1440px;}
 #main #content img{width:70%; height:auto;  border-radius:20px;}
 #main #bottom{width:1440px; height:300px; }
 #main #content h1 {
@@ -101,9 +101,6 @@ li{list-style:none;}
 	
 	
 	
-	<div id="bottom">
-	
-	</div>
 
 </div>
 

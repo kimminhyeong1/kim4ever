@@ -53,7 +53,7 @@
 			opacity:1;padding:5px; border-radius:50px;font-size:50px;}
 			.slider-1 >.side-btns > div:last-child > span {left:auto;right:20px; }
 			/*모임멤버부분*/
-			#gMembers{margin-top:30px; width: 100%; height: 130px; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 10px; text-align: left;}
+			#gMembers{margin-top:30px; width: 100%; height: 130px; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 20px; text-align: left;}
 			#gMembers>div:nth-child(1){font-size: 24px;margin-left: 17px;margin-top: 17px;}
 			#gMembers>div:nth-child(1)>span{color: #f00;} 
 			#gMembers>div:nth-child(2){width: 80%; display: inline-block;margin: 10px 20px; }
