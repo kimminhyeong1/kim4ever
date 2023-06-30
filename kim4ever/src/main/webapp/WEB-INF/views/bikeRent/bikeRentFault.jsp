@@ -117,10 +117,10 @@
 	    var marker;
 
 	    function initMap() {
-	      // 사용자의 현재 위치를 가져오기 위한 Geolocation API
-	      navigator.geolocation.getCurrentPosition(function(position) {
-	        var latitude = position.coords.latitude;
-	        var longitude = position.coords.longitude;
+	      
+	       
+	        var latitude = 35.84027500058197;
+	        var longitude = 127.13196055769883;
 
 	        var initialLatLng = new kakao.maps.LatLng(latitude, longitude);
 
@@ -202,7 +202,7 @@
 	            }
 	          }
 	        });
-	      });
+	      
 	    }
 
 	    
