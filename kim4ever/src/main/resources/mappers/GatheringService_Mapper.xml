@@ -562,7 +562,7 @@
 		
 	<!--  모임 더보기 모임원 추방으로 변경 -->
 		<delete id="updateMemberDELYN" parameterType="int">
-	    	DELETE FROM GATHERING1234 WHERE giidx = #{0} AND midx = #{1}
+	    	DELETE FROM GATHERING1234 WHERE giidx = #{1} AND midx = #{0}
 		</delete>
 		
 	<!-- 모임 나가기 (giidx에 해당하는 값 삭제)-->

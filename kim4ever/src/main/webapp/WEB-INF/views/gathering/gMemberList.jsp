@@ -69,7 +69,7 @@
 <script type="text/javascript">
 function fnDelete(midx, giidx) {
 	if (confirm("정말 추방하시겠습니까?")) {
-	location.href = '<%=request.getContextPath()%>/gathering/gMemberDelete.do?gatheringMemberDelYN=N&midx=' + midx + '&giidx=' + giidx;
+	location.href = '<%=request.getContextPath()%>/gathering/gMemberDelete.do?midx='+midx+'';
 
 	}
 }

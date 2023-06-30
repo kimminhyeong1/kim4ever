@@ -1114,7 +1114,7 @@ public class GatheringController {
 		    	return "redirect:/member/memberLogin.do";
 			}
 		    int giidx = (int)Ogiidx;
-			gs.updateMemberDELYN(giidx, midx); 
+			int value = gs.updateMemberDELYN(midx, giidx); 
 			return "redirect:/gathering/gMemberList.do"; 
 		}	
 	
