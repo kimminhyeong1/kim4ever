@@ -86,6 +86,8 @@
 		.fc .fc-button-primary:disabled{background:#05d100; border-color:white;font-size:20px }
 		.fc .fc-toolbar-title {font-size:35px; font-weight:normal; margin-left:40px;}
 		.fc .fc-scrollgrid {font-size: 20px;}
+			/*#empty*/
+			#empty{line-height: 100px;font-size: 24px;text-align: left;margin-left: 20px;}
 		
 			/*************************모바일****************************************/
 				/*****모바일 넓이***/
@@ -335,6 +337,9 @@
 				</c:if>
 			</div>
 			<div id="gNotice">
+				<c:if test="${empty gbvlist}">
+					<div id="empty">공지사항이 없습니다.</div>
+				</c:if>
 				<c:forEach var="gbv" items="${gbvlist}">
 					<div class="gNotice">
 						<div>

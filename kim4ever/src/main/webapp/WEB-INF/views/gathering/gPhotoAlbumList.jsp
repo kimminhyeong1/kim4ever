@@ -28,11 +28,11 @@
 			/*검색부분*/
 			#searchCategory{ width: 100%;text-align: right; font-size: 20px; margin: 20px 30px; height: 30px; font-family: 'omyu_pretty'; border-radius:20px; margin-bottom:40px;} 
 			#searchCategory>div{display: inline-block; vertical-align: top;} 
-			#searchCategory>div>select{width: 100px; height: 40px; font-size: 24px; font-family: 'omyu_pretty';vertical-align: top; border-radius:20px; text-align: center;} 
-			#searchCategory>div>input{width: 300px; height: 40px; font-size: 24px;vertical-align: top; border-radius:20px;} 
+			#searchCategory>div>select{width: 100px; height: 40px; font-size: 24px; font-family: 'omyu_pretty';vertical-align: top; border-radius:20px; text-align: center;border: 1px solid #bbb;} 
+			#searchCategory>div>input{width: 300px; height: 38px; font-size: 24px;vertical-align: top; border-radius:20px;border: 1px solid #bbb;} 
 			#searchCategory>div>button{width: 100px; height: 40px; margin-top: 0px;margin-bottom: 0px; border-radius:20px;} 
 
-			
+			#empty{line-height: 300px;font-size: 24px;}
 		</style>
 
  <script>
@@ -61,7 +61,9 @@
 							<button type="submit" id="searchBtn" class="gBtn2">검색</button>
 						</div>
 				</form>
-				
+				<c:if test="${empty gPhotoList}">
+					<div id="empty">사진첩이 없습니다.</div>
+				</c:if>	
 				<c:if test="${not empty midx}">
 					<c:forEach var="gpv" items="${gPhotoList}">
 						<div class="card" onclick="window.location.href='<%=request.getContextPath() %>/gathering/gPhotoAlbumContent.do?gpaidx=${gpv.gpaidx}'" >				
