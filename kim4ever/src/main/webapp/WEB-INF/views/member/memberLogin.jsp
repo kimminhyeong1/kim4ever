@@ -218,6 +218,16 @@ msg = (String)request.getAttribute("msg");
         		return unescape(cookieValue);
         	}
     
+        	 // Enter 키를 눌렀을 때 동작
+        	document.addEventListener('keydown', function(event) {
+        		  if (event.keyCode === 13) {        		   
+        		    var loginButton = document.querySelector('button[type="button"]');
+        		    if (loginButton) {
+        		      loginButton.click();
+        		    }
+        		  }
+        		});
+
     </script>
 	</head>
 	<body>
