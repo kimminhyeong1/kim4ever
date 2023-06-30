@@ -55,19 +55,34 @@
 		  font-family: 'omyu_pretty';
 		  font-size:24px;
 		  box-sizing: border-box;
-		  width: 100%;
+		  width: 200px;
+		  height: 40px;
 		  padding: 10px;
 		  margin: 2px 0;
-		  border: 1px solid #ccc;
-		  border-radius: 4px;
+		  border: 1px solid #bbb;
+		  border-radius: 20px;
+		  text-align: center;
 		}
 		
-		#content table button{width:430px; height:60px; text-align:center; font-family: 'omyu_pretty'; font-size:30px; cursor:pointer; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+		#content table button{width:200px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:24px; cursor:pointer; border-radius:20px; border:0px solid #ff9933; background:#ff9933;}
 		#content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 		
 		#main #findbutton{width:100%; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; cursor:pointer; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 		#main #findbutton:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
-		
+		select{
+					width:200px;
+					height: 40px;
+				    font-size: 24px;
+				    font-family: 'omyu_pretty';
+				    vertical-align: top;
+				    border-radius: 20px;
+				    text-align: center;
+				    padding: 0px 10px;
+				    border: 1px solid #bbb;
+				}
+		input{
+			
+			}
 		</style>
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 		<script type="text/javascript">
@@ -131,6 +146,11 @@
 									<option value="${s.rentalshopName}">${s.rentalshopName}</option>	
 								</c:forEach>		
 								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="number" name="cnt">
 							</td>
 						</tr>
 						<tr>

@@ -54,8 +54,10 @@ public interface AdminService_Mapper {
 	public ArrayList<BikeInfoVo> bikeInfoList(); 
 	//대여소 정보 리스트 가져오기
 	public ArrayList<RentalshopVo> bikeshopList(); 
+	//MAX자전거코드 가져오기
+	public int maxBikeCode(String bikeCode);
 	//자전거 추가 등록
-	public int bikeInsert(String bikeCode, String bikeType, String bikeLocation);
+	public int bikeInsert(String bikeCode,String maxbikecode, String bikeType, String bikeLocation);
 	//자전거 코드번호 중복 체크
 	public int bikeCodeCheck(String bikeCode);
 	//대여소 리스트

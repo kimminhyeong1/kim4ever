@@ -274,8 +274,12 @@ public class AdminServiceImpl implements AdminService {
 
 	//자전거 추가 등록
 	@Override
+	@Transactional
 	public int bikeInsert(String bikeCode, String bikeType, String bikeLocation) {
-		int value = asm.bikeInsert(bikeCode, bikeType, bikeLocation);
+		int maxbikecode =asm.maxBikeCode(bikeCode);
+		maxbikecode += 1;
+		String stringMaxBikeCode = String.valueOf(maxbikecode);
+		int value = asm.bikeInsert(bikeCode,stringMaxBikeCode, bikeType, bikeLocation);
 		return value;
 	}
 	

@@ -564,12 +564,16 @@ WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPag
 	 <delete id="deleteGathering" parameterType="int">
         DELETE FROM GATHERING1234 WHERE giidx = #{giidx}
     </delete>
-	
-	
+	<!-- max자전거코드 구하기 -->
+	<select id="maxBikeCode" parameterType="String" resultType="int">
+		SELECT MAX(CAST(SUBSTRING(bikeCode, 4) AS SIGNED)) AS maxbikecode
+		FROM bike1234
+		WHERE bikeCode LIKE CONCAT(SUBSTRING(#{0}, 1, 3), '%')
+	</select>
 	<!-- 자전거 추가 등록 -->
 	<insert id="bikeInsert" parameterType="String">
 		INSERT INTO BIKE1234 (bikeCode, bikeType, bikeLocation,bikeState)
-		VALUES (#{0}, #{1}, #{2},'Y' )
+		VALUES (CONCAT(#{0},#{1}), #{2}, #{3},'Y' )
 	</insert>
 	
 		<!-- 자전거 등록 페이지 이름 중복체크-->
