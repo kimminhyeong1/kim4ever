@@ -70,14 +70,14 @@ msg = (String)request.getAttribute("msg");
 
 @media (min-width: 300px) and (max-width: 940px)  {
 	#main{width:auto; margin:0 auto; text-align:center;}
-			#main #content{width:auto; height:350px;}
+			#main #content{width: 100%;  height: 100%;  overflow: hidden;}
 			#main #bottom{width:auto; height:20px;}
 			#content table{width:30%;border-collapse:collapse;  margin: 0 auto; text-align:center;  line-height:30px; font-family:'omyu_pretty'; font-size:21px;}
 			#content table th{width:240px; text-align:center; border:1px solid #fff; padding:8px;}
 			#content table td{padding:8px;text-align:left;}
 			#content table td:nth-child(1){width:10%;text-align:center;}
 			/*로그인 외각선*/
-			#login_out{ border: 1px solid #bbb; margin: 40px auto;width: 270px; height:200px;padding: 20px;background-color: #fdfcfa;border-radius: 20px;}
+			#login_out{ border: 1px solid #bbb; margin: 0 auto;width: 270px; height:340px;padding: 20px;background-color: #fdfcfa;border-radius: 20px; padding-top:80px;}
 			/*경고문*/
 			#content table tr:nth-child(3) td{padding: 0px;}
 			#content table tr:nth-child(3) td div{width: 240px;text-align: left; padding-left: 10px; color: #f00;}
@@ -89,19 +89,24 @@ msg = (String)request.getAttribute("msg");
 			#Login_submenu{margin-bottom: 40px;}
 			#Login_submenu p{display: inline-block;}
 			#Login_submenu p a{text-decoration-line: none; color: #5e5e5e;}
-			 
+			 #Login_submenu p {font-size:18px;}
 			#content table tr:last-child td input{display: inline-block; width:120px; height:40px;}
-			
+			.kakao_txt img{width:250px; }
 			h2{text-align: center; margin-top:20px;}
 			/*인풋부분*/
-			#content table input{font-family: 'omyu_pretty'; font-size:15px; box-sizing: border-box; width: 80%;
+			#content table input{font-family: 'omyu_pretty'; font-size:15px; box-sizing: border-box; width: 250px;height:37.5px;
 			  padding: 5px; margin: 2px 0; border: 1px solid #ccc; border-radius: 20px;}
 			/*버튼부분*/
-			#content table button{width:170px; height:30px; text-align:center; font-family: 'omyu_pretty'; font-size:20px; border-radius:20px; border:0px solid #ff9933; background:#ff9933;}
+			#content table button{width:250px; height:37.5px; text-align:center; font-family: 'omyu_pretty'; font-size:20px; border-radius:20px; border:0px solid #ff9933; background:#ff9933;}
 			#content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 			/*구글로그인부분*/
-			.g_id_signin{display: inline-block; margin-top: 20px;  data-width: 130; }
+			.g_id_signin{display: inline-block; margin-top: 10px;  data-width: 130; height: 37.5px; margin-left:16px;}
+			.S9gUrf-YoZ4jf{margin-left: 10px}
 			
+			
+			.logo h1{height:70px;}
+			label {font-size:18px}
+			.logo h1 img {top:70px;}
 }
 
 
