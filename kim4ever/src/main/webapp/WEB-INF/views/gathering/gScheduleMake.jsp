@@ -14,17 +14,17 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">		
 		<style type="text/css">
 		 	/*일정만들기 부분*/
-			#main section h3{display: inline-block;font-size: 27px;}
+			#main section h3{display: inline-block;font-size: 27px; margin-bottom:10px;}
 			#main section p{display: inline-block; color: #f14242; padding-left: 10px;}
 			#main section>div:nth-child(1){margin: 20px 0px 20px 100px;}
 			#main section>div:nth-child(2){text-align: center;}
 			#main section>div>div{margin: 20px 0px 20px 0px;}
 			#main section input {display: block;}
-			#main section textarea {display: block; width: 500px;height: 200px;font-size: 23px;}
+			#main section textarea {display: block; width: 500px;height: 200px;font-size: 23px; border-radius:20px; padding:5px; resize:none;}
 			#main section button{text-align: center;}  
 			#main section img{width: 100px;height: 100px;}  
-			#map{width: 500px; height: 500px;}
-								
+			#map{width: 500px; height: 500px; border-radius:20px;}
+			.gBtn2{margin-bottom:20px;}					
 			/*************************모바일****************************************/
 				/*****모바일 넓이***/
 				@media (min-width: 300px) and (max-width: 940px)  {

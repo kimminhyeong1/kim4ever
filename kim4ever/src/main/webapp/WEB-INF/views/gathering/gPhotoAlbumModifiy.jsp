@@ -12,7 +12,7 @@
 		<style type="text/css">
 			.gContainer{border: 1px solid #0000;}
 			/*사진첩 틀*/ 
-			.gContent{width:97%; border:1px solid #bbb;background-color:#f1f1f1;border-radius:10px; padding: 20px;box-sizing border-box;display:flex;flex-direction:column;align-items:flex-start;}
+			.gContent{width:97%; border:1px solid #bbb;background-color:#fbfdfa;border-radius:10px; padding: 20px;box-sizing border-box;display:flex;flex-direction:column;align-items:flex-start; margin-bottom:20px;}
 			/*사진첩 부분*/
 			.card{height: 320px; background-color: #d2dfcc;}
 			.cardImg{height: 80%;}
@@ -30,16 +30,83 @@
 			.gContent table th{width:140px;padding: 10px;text-align: center;}
 			.gContent table td{padding:10px; text-align:left; border-left:1px solid #ddd;}
 			.gContent table tr{border:1px solid #ddd;}
-			.gContent table input[type="text"],textarea{box-sizing:border-box;width:100%;padding:10px;margin:2px 0;border:1px solid #ccc;border-radius:4px;}
-			.gContent table textarea{font-size:21px;}
-			.imagePreview {max-width:300px;max-height:300px;width:auto;height:auto;}	
+			.gContent table input[type="text"],textarea{box-sizing:border-box;width:100%;padding:10px;margin:2px 0;border:1px solid #ccc;border-radius:20px;}
+			.gContent table textarea{font-size:21px; border-radius:20px; resize:none;}
+			.imagePreview {max-width:300px;max-height:300px;width:auto;height:auto; }	
 		</style>
 	</head>
+	
+		<script type="text/javascript">
+
+function characterCheck(obj){
+	var regExp = /[\{\}\[\]\/|\)*`^\_┼<>@\#$%&\'\"\\(\=]/gi;
+    if(regExp.test(obj.value)){
+        alert("특수문자는 입력할 수 없습니다.");
+        obj.value = obj.value.substring( 0 , obj.value.length - 1 );
+    }
+}
+function fnWrite() {
+    var fm = document.frm;
+    
+    // 특수문자 검사 정규식
+   
+    
+    if (fm.gPhotoAlbumTitle.value == "") {
+        alert("제목을 입력하세요");
+        fm.gPhotoAlbumTitle.focus();
+        return;
+    }
+        else if (fm.image.value == "") {
+            alert("대표이미지를 입력하세요");
+            fm.image.focus();
+            return;   
+        }
+	    var additionalImages = document.getElementsByClassName("image");
+	    for (var i = 0; i < additionalImages.length; i++) {
+	        if (additionalImages[i].value.trim() === "") {
+	            alert("이미지를 입력하세요");
+	            additionalImages[i].focus();
+	            return;
+	        }
+	    }    
+	    var contentsInputs = document.getElementsByClassName("content");
+	    for (var j = 0; j < contentsInputs.length; j++) {
+	        if (contentsInputs[j].value.trim() === "") {
+	            alert("내용을 입력하세요");
+	            contentsInputs[j].focus();
+	            return;
+	        }
+	    }
+    fm.action = "<%=request.getContextPath()%>/gathering/gPhotoAlbumModifyAction.do?gpaidx=${gpaidx}";
+    fm.enctype = "multipart/form-data";
+    fm.method = "post";
+    fm.submit();
+    }
+
+function updateCharacterCount(inputName) {
+	  var input = document.getElementsByName(inputName)[0];
+	  var maxLength = parseInt(input.getAttribute('maxlength'));
+	  var currentLength = input.value.length;
+	  var countElement = document.getElementById(inputName + 'Count');
+	  
+	  countElement.textContent = currentLength + '/' + maxLength;
+	}
+
+	// 초기 로딩 시 글자 수 업데이트
+	window.addEventListener('DOMContentLoaded', function() {
+	  updateCharacterCount('gPhotoAlbumTitle');
+	  updateCharacterCount('gPhotoAlbumContents0');
+	  updateCharacterCount('gPhotoAlbumContents1');
+	  updateCharacterCount('gPhotoAlbumContents2');
+
+	});
+
+</script>
 	<body>
 		<%@include file="../header2.jsp" %>
 		<%@include file="header3.jsp" %>
 		<main id="main">
-			<form action="${pageContext.request.contextPath}/gathering/gPhotoAlbumModifyAction.do?gpaidx=${gpaidx}" method="POST" enctype="multipart/form-data">
+			<form name="frm" >
 			<section class="gContainer">
 			<c:forEach var="gjv" items="${gmist}" varStatus="status">
 				<div class="gContent" >
@@ -47,7 +114,9 @@
 					 <c:if test="${status.index == 0}">
 						<tr>
 							<th>제목</th>
-							<td><input style="font-size:26px;"type="text" id="gPhotoAlbumTitle" name="gPhotoAlbumTitle" value="${gjv.gPhotoAlbumTitle }"></td>
+							<td><input style="font-size:26px;"type="text" id="gPhotoAlbumTitle" name="gPhotoAlbumTitle" value="${gjv.gPhotoAlbumTitle }"  placeholder="20자이내" name="gPhotoAlbumTitle" oninput="updateCharacterCount('gPhotoAlbumTitle')" maxlength="20" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)">
+							 <span id="gPhotoAlbumTitleCount"></span>   
+							</td>
 						</tr>
 							
 						<tr>
@@ -60,28 +129,34 @@
 							<th>첨부파일</th>
 							<td>
 							<img class="imagePreview" src="../resources/GAImages/${gjv.imageName}">
-							<input type="file" id="image" name="GAImg" onchange="previewImage(event)"/>
+							<input type="file" id="image2" name="GAImg" onchange="previewImage(event)"/>
 							</td>
 						</tr>
 						
 						<c:if test="${status.index == 0}">
 						<tr>
 							<th>내용</th>
-							<td><textarea id="gPhotoAlbumContents0" name="gPhotoAlbumContents0">${gjv.gPhotoAlbumContents0 }</textarea></td>
+							<td><textarea id="gPhotoAlbumContents0" name="gPhotoAlbumContents0"  class="content" name="gPhotoAlbumContents0" placeholder="100자이내" oninput="updateCharacterCount('gPhotoAlbumContents0')" maxlength="100" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)" >${gjv.gPhotoAlbumContents0 }</textarea>
+								<span id="gPhotoAlbumContents0Count"></span>							
+							</td>
 						</tr>
 						</c:if>
 						
 						<c:if test="${status.index == 1}">
 						<tr>
 							<th>내용</th>
-							<td><textarea id="gPhotoAlbumContents1" name="gPhotoAlbumContents1">${gjv.gPhotoAlbumContents1 }</textarea></td>
+							<td><textarea id="gPhotoAlbumContents1" name="gPhotoAlbumContents1"  class="content" name="gPhotoAlbumContents0" placeholder="100자이내" oninput="updateCharacterCount('gPhotoAlbumContents0')" maxlength="100" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)">${gjv.gPhotoAlbumContents1 }</textarea>
+							<span id="gPhotoAlbumContents1Count"></span>
+							</td>
 						</tr>
 						</c:if>
 						
 						<c:if test="${status.index == 2}">
 						<tr>
 							<th>내용</th>
-							<td><textarea id="gPhotoAlbumContents2" name="gPhotoAlbumContents2">${gjv.gPhotoAlbumContents2 }</textarea></td>
+							<td><textarea id="gPhotoAlbumContents2" name="gPhotoAlbumContents2"  class="content" name="gPhotoAlbumContents0" placeholder="100자이내" oninput="updateCharacterCount('gPhotoAlbumContents0')" maxlength="100" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)">${gjv.gPhotoAlbumContents2 }</textarea>
+							<span id="gPhotoAlbumContents2Count"></span>							
+							</td>
 						</tr>
 						</c:if>
 					</table>
@@ -89,7 +164,7 @@
 				</div>
 			</c:forEach>
 				<div id="createBtn">
-					<button type="submit" class="gBtn2">작성하기</button>
+					<button type="button" class="gBtn2" onclick="fnWrite();">작성하기</button>
 					<button class="gBtn2">취소하기</button>
 				</div>
 			</section>

@@ -12,25 +12,25 @@
 		<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script><!-- 풀캘린더 라이브러리 -->  
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<style type="text/css">
-			.gContainer{border: 1px solid #bbb;}
+		
 			/*사진첩 틀*/ 
-			.gContent{width:97%; background-color:#f1f1f1;border-radius:10px; padding: 20px;}
+			.gContent{width:97%; background-color:#fbfdfa;border-radius:20px; padding: 20px; border: 1px solid #bbb; margin-bottom: 20px;}
 			/*버튼 부분*/
 			#createBtn{text-align: right; margin-top:20px; }	
 			/*페이징 부분*/
 			.gPaging{font-size: 25px;}	
 			/*사진첩 헤더*/   
-			.albumHeader {display:flex;align-items:center;justify-content:space-between;border:1px solid #bbb; border-radius:10px;width:100%;height:80px;padding:0 20px;}
+			.albumHeader {display:flex;align-items:center;justify-content:space-between;border:1px solid #bbb; border-radius:20px;width:100%;height:80px;padding:0 20px;}
 			.albumHeader h2 {font-size:35px;font-weight:bold;margin:0;}
 			.albumHeader button {font-size:16px;padding:10px 20px;}
 			/*사진첩 제목 */
-			.albumTitle {width:100%;text-align:left;border:1px solid #bbb; border-radius:10px; padding:20px;margin-top:20px;}
+			.albumTitle {width:100%;text-align:left;border:0px solid #bbb; border-radius:20px; padding:20px;margin-top:20px;}
 			.albumTitle p {font-size:31px;margin:0;}
 			/*사진첩 이미지 */
-			.albumImage {width:100%;height:400px; border-radius:10px;padding:20px;margin-top:20px;display:flex;justify-content:center;align-items:center;}
+			.albumImage {width:100%;height:400px; border-radius:20px;padding:20px;margin-top:20px;display:flex;justify-content:center;align-items:center;}
 			.albumImage img {max-width:100%;max-height:100%;}
 			/*사진첩 내용글 */
-			.albumContent {width:100%; border-radius:10px;padding:20px;margin-top:20px;}
+			.albumContent {width:100%; border-radius:20px;padding:20px;margin-top:20px;}
 			.albumContent p {font-size:27px;line-height:1.5;margin:0;}
 			/*좋아요버튼*/
 			.gPhotoAlbumLike {position:relative;}
