@@ -47,21 +47,21 @@ footer {width:100%;background-color:#f5f7f8; height:200px; display:flex; justify
 <footer>
   <div class="foot">
 	<div class="footer_L">
-		<h1><strong>타:바 taba</strong></h1><hr/><br/>
+		<h1><strong>타 : 바 TABA</strong></h1><hr/><br/>
 		<p>법인(상호)TABA | 사업자등록번호 000-11-111111</p>
 		<p>주소: 전라북도 전주시 전주동 전주로123 빌딩00층 00호</p>
-		<p>대표이사:김가네 | 개인정보보호책임자:김가네</p>
+		<p>대표이사:Kim4ever| 개인정보보호책임자:Kim4ever</p>
 		<p>대표전화:063-000-0000</p> 
 	</div>
   
 	<div class="footer_R"> 
-		<h2 class="hide">-타:바 소개</h2>      
-		<p>타:바는 공영자전거 대여 서비스를 제공하는 플랫폼입니다.</p>
-		<p class="hide">타:바는 "타다 바이크"와 "이거 한번 타봐"라는 의미를 가졌습니다.</p>
-		<p>타:바를 통해 쉽고 편리하게 공영 자전거를 대여하고 타보세요!</p><br/>
-		<h2  class="hide">-타:바 이용안내</h2>
+		<h2 class="hide">-타 : 바 소개</h2>      
+		<p>타 : 바는 공영자전거 대여 서비스를 제공하는 플랫폼입니다.</p>
+		<p class="hide">타 : 바는 "타다 바이크"와 "이거 한번 타봐"라는 의미를 가졌습니다.</p>
+		<p>타 : 바를 통해 쉽고 편리하게 공영 자전거를  이용해보세요!</p><br/>
+		<h2 class="hide">-타 : 바 이용안내</h2>
 		<p class="hide">자전거는 여러종류로 운용중이며 대여료는 일반자전거 기준 1회 대여 시 1,000원입니다.</p>   
-		<p>2023 TABA/ThreeKim. All rights reserved.</p>
+		<p>2023 TABA/Kim4ever. All rights reserved.</p>
 		<p>Designed by 아이콘: flaticon.com</p>
 	</div>
   </div>

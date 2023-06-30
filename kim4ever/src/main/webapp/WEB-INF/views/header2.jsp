@@ -175,7 +175,7 @@ header{width:auto;margin:0 auto; }
 					</li>
 					
 					<li>
-						<a href="#"><span class = "title" onclick="location.href='${pageContext.request.contextPath}/bikerent/bikeRentHistory.do'">대여내역</span></a>
+						<a href="#"><span class = "title" onclick="location.href='${pageContext.request.contextPath}/bikeRent/bikeRentHistory.do'">대여내역</span></a>
 					</li>
 					
 					
