@@ -8,7 +8,7 @@ header{width:1250px; margin:35px auto 70px; text-align:center;}
 /*공통 부분*/
 /*틀부분*/
     /*박스전체틀*/
-    .aContainer{width:1250px; margin:35px auto 70px; text-align:center; border:1px solid #000;}
+    .aContainer{width:1250px; margin:35px auto 70px; text-align:center; }  
     /*박스작은틀*/
     .aContent{ display:flex; justify-content:center; align-items:center;}
  
@@ -18,14 +18,14 @@ header{width:1250px; margin:35px auto 70px; text-align:center;}
 /*사이드 부분*/
 .list{width:300px; border:1px solid #000;}			
 .menu_list {display: flex;flex-direction: column;align-items: flex-start;margin-left: 30px;clear: both;}
-.menu_list li {width: 100%;	border-bottom: 1px solid #f5f5f5;padding-top: 40px;font-family: 'GangwonEdu_OTFBoldA';}
+.menu_list li {width: 100%;	border-bottom: 1px solid #f5f5f5;padding-top: 40px;}
 .menu_list li a {color: #000;text-decoration: none;font-weight: bold;font-size: 21px;}
 
 
 /*관리자 안내*/
 	/*페이지리스트 틀*/
 .menu_list {display:flex; flex-direction:column; align-items:left; margin-left:30px; clear:both; width:300px;}
-.menu_list li {width:100px; border-bottom:1px solid #f5f5f5; padding-top:40px; font-family:'GangwonEdu_OTFBoldA';}
+.menu_list li {width:100px; border-bottom:1px solid #f5f5f5; padding-top:40px; }
 .menu_list li a{color:#000; text-decoration:none; font-weight:bold; font-size:21px;}
 	
 	

@@ -31,7 +31,6 @@ import com.myezen.myapp.persistance.MemberService_Mapper;
 import com.myezen.myapp.util.MailHandler;
 import com.myezen.myapp.util.TempKey;
 import com.myezen.myapp.util.UploadFileUtiles;
-import com.fasterxml.jackson.core.JsonParser;
 @Service("MemberServiceImpl")
 public class MemberServiceImpl implements MemberService {
 
@@ -380,11 +379,8 @@ public class MemberServiceImpl implements MemberService {
 					try {
 						// jackson objectmapper 객체 생성
 						ObjectMapper objectMapper = new ObjectMapper();	
-						objectMapper.configure(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, true);
-						objectMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
-						objectMapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS, true);
 						// JSON String -> Map
-						Map<String, Object> jsonMap = objectMapper.readValue(result.getBytes("UTF-8"), new TypeReference<Map<String, Object>>() {
+						Map<String, Object> jsonMap = objectMapper.readValue(result, new TypeReference<Map<String, Object>>() {
 						});
 
 						System.out.println(jsonMap.get("properties"));
@@ -396,7 +392,7 @@ public class MemberServiceImpl implements MemberService {
 						// System.out.println(properties.get("nickname"));
 						// System.out.println(kakao_account.get("email"));
 
-						String nickname = new String(properties.get("nickname").toString().getBytes(),"utf-8");
+						String nickname = properties.get("nickname").toString(); 
 						System.out.println("##############nicName##########  ::::"+nickname);
 						
 						//String email = kakao_account.get("email").toString();
