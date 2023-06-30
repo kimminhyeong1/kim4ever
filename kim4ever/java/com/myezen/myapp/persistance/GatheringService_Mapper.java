@@ -243,11 +243,15 @@ public interface GatheringService_Mapper {
 	//모임에 남아있는 모임원 수 조회
 	public int getGatheringParticipatingCount(int giidx);
 	//모임정보 삭제
-	public void deleteGathering(int giidx);
+	public void updateGathering(int giidx);
 	//모임에 연관된 포토앨범 정보 삭제
-	public void deleteGatheringPhotoAlbum(int giidx);
+	public void updateGatheringPhotoAlbum(int giidx);
 	//모임에 연관된 게시판 정보 삭제
-	public void deleteGatheringBoard(int giidx);
+	public void updateGatheringBoard(int giidx);
+	//모임에 연관된 스케쥴 정보 삭제
+	public void updateGatheringSchedule(int giidx);
+	//모임에 연관된 신고 정보 삭제
+	public void updateGatheringDeclaration(int giidx);
 	
 	
 }

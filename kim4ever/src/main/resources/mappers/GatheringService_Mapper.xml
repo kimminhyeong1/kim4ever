@@ -582,19 +582,39 @@
 	  SELECT gInfoParticipating FROM gathering_info1234 WHERE giidx = #{giidx}
 	</select>
 		
-	<!-- 모임정보 삭제 -->
-	<delete id="deleteGathering" parameterType="int">
-	  DELETE FROM GATHERING_INFO1234 WHERE giidx = #{giidx}
-	</delete>
-	
 	<!-- 모임에 연관된 포토앨범 정보들 삭제 -->
-	<delete id="deleteGatheringPhotoAlbum" parameterType="int">
-	  DELETE FROM GATHERING_PhotoAlbum1234 WHERE giidx = #{giidx}
-	</delete>
+	<update id="updateGatheringPhotoAlbum" parameterType="int">
+	  UPDATE GATHERING_PhotoAlbum1234
+	  SET gPhotoAlbumDelYN = 'Y'
+	  WHERE giidx = #{giidx}
+	</update>
 	
 	<!-- 모임에 연관된 게시판 정보들 삭제 -->
-	<delete id="deleteGatheringBoard" parameterType="int">
-	  DELETE FROM GATHERING_Board1234 WHERE giidx = #{giidx}
+	<delete id="updateGatheringBoard" parameterType="int">
+	  UPDATE gathering_board1234
+	  SET gBoardDelYN = 'Y'
+	  WHERE giidx = #{giidx}
+	</delete>
+	
+	<!-- 모임에 연관된 스케쥴 정보들 삭제 -->
+	<delete id="updateGatheringSchedule" parameterType="int">
+	  UPDATE gathering_schedule1234
+	  SET gScheduleDelYN = 'Y'
+	  WHERE giidx = #{giidx}
+	</delete>
+	
+	<!-- 모임에 연관된 신고 정보들 삭제 -->
+	<delete id="updateGatheringDeclaration" parameterType="int">
+	  UPDATE gathering_declaration1234
+	  SET gDeclarationDelYN = 'Y'
+	  WHERE giidx = #{giidx}
+	</delete>
+	
+	<!-- 모임정보 삭제 -->
+	<delete id="updateGathering" parameterType="int">
+	  UPDATE GATHERING_info1234
+	  SET gInfoDelYN = 'Y'
+	  WHERE giidx = #{giidx}
 	</delete>
 		
 	<!-- 사진첩 작성 -->
@@ -628,7 +648,7 @@
 	      SELECT a.gpaidx, a.giidx, a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, b.imgtype, b.imageName
 	      FROM gathering_photoalbum1234 a
 	      JOIN image1234 b ON a.giidx = b.giidx AND a.gpaidx = b.gpaidx
-	      WHERE b.imgtype = 'GAT'  AND a.GIIDX = #{giidx}
+	      WHERE b.imgtype = 'GAT'  AND a.GIIDX = #{giidx} AND gPhotoAlbumDelYn = 'N'
 	      <if test="scri.keyword != null">
 	        AND a.GPHOTOALBUMTITLE LIKE CONCAT('%', #{scri.keyword}, '%')
 	      </if>
