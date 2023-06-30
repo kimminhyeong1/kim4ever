@@ -252,8 +252,8 @@ header{width:auto;margin:0 auto; overflow-x: hidden;}
 		            <li style="margin-top:10px;"><%= session.getAttribute("memberName") %>님</li>
 		            
 		           <c:choose>
-						<c:when test="${memberLoginType eq '구글' or memberLoginType eq '카카오'}">
-				            <li><a href="https://kauth.kakao.com/oauth/logout?client_id=76703a8d13e15a9a7deb9a931b73de9e&logout_redirect_uri=http://localhost:8080/myapp/member/memberLogOut.do">로그아웃</a></li>
+						<c:when test="${memberLoginType eq '카카오'}">
+				            <li><a href="https://kauth.kakao.com/oauth/logout?client_id=76703a8d13e15a9a7deb9a931b73de9e&logout_redirect_uri=http://jjezen.cafe24.com/kim4ever/member/memberLogOut.do">로그아웃</a></li>
 				            <!-- <li><a href="https://kauth.kakao.com/oauth/logout?client_id=76703a8d13e15a9a7deb9a931b73de9e&logout_redirect_uri=http://jjezen.cafe24.com/kim4ever/member/memberLogOut.do">로그아웃</a></li> -->
 						</c:when>
 						<c:otherwise>

@@ -232,7 +232,15 @@ header{width:auto;margin:0 auto; overflow-x: hidden;}
 		   		<c:choose>
 		   			<c:when test="${not empty sessionScope.memberName}">
 		   				<li style="margin-top:10px;">${memberName}님</li>
-			            <li><a href="${pageContext.request.contextPath}/member/memberLogOut.do">로그아웃</a></li>
+			            <c:choose>
+							<c:when test="${memberLoginType eq '카카오'}">
+					            <li><a href="https://kauth.kakao.com/oauth/logout?client_id=76703a8d13e15a9a7deb9a931b73de9e&logout_redirect_uri=http://jjezen.cafe24.com/kim4ever/member/memberLogOut.do">로그아웃</a></li>
+					            <!-- <li><a href="https://kauth.kakao.com/oauth/logout?client_id=76703a8d13e15a9a7deb9a931b73de9e&logout_redirect_uri=http://jjezen.cafe24.com/kim4ever/member/memberLogOut.do">로그아웃</a></li> -->
+							</c:when>
+							<c:otherwise>
+					            <li><a href="${pageContext.request.contextPath}/member/memberLogOut.do">로그아웃</a></li>
+							</c:otherwise>
+					    </c:choose>
 	   		            <c:if test="${not empty sessionScope.midx && not empty sessionScope.ridx}"> 
 	   		            	<li><a href="${pageContext.request.contextPath}/bikeRent/bikeRentUseList.do">이용중인내역</a></li>			
 						</c:if>
