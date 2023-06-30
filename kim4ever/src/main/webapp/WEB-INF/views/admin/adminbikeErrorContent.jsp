@@ -107,6 +107,12 @@ h2{text-align: center; margin-top:20px;}
 						</td>  
 				</tr>
 				<tr>
+					<th>고장 사진</th>
+					<td>
+					<img src="D:\dev1230\spring-workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\kim4ever\resources\bikeError/${ejv.errorImage}">
+					</td>
+				</tr>
+				<tr>
 					<th>고장 내용</th>
 					<td>${ejv.errorContent}</td>
 				</tr>
