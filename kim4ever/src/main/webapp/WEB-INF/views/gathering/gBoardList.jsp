@@ -58,7 +58,7 @@
 			/*************************모바일****************************************/
 				/*****모바일 넓이***/
 				@media (min-width: 300px) and (max-width: 940px)  {
-			.gBoardList { width: 100%; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;}
+			.gBoardList { width: 100%;}
 				
 			/*검색하기 부분*/
 			#searchCategory{text-align: right; font-size: 18px; margin: 20px 10px; height: 30px; font-family: 'omyu_pretty';} 
@@ -69,8 +69,8 @@
 			/*공지사항부분*/
 			.gNotice{text-align: left; font-size: 20px; margin: 40px 60px;}
 			.gNotice>div>div{display: inline-block; font-size: 25px; font-weight: bold;}
-			.gNotice>div>div:nth-child(1){color: #f00; margin-right: 20px;}
-			.gNotice>div:nth-child(2){border-bottom: 2px solid #bbb; padding-bottom: 10px; margin-top: 10px;}/* 끝나는바*/
+			.gNotice>div>div:nth-child(1){margin-right: 20px;}
+			.gNotice>div:nth-child(2){margin-top: 10px;}/* 끝나는바*/
 			/*게시글 부분*/
 			.gBoard{text-align: left; font-size: 20px; margin: 40px 60px;} 
 			.gBoard>div>div:nth-child(1){width: 50px; height: 50px; float: left;}/*프로필*/ 
@@ -80,13 +80,13 @@
 			.gBoard>div>div:nth-child(3)>div:nth-child(1){height: 25px; margin-left: 70px; font-size: 15px; margin-top: 5px;}/*날짜 카테고리*/ 
 			.gBoard>div:nth-child(2){clear: both;margin-top: 10px; font-weight: bold;}/*게시글제목*/
 			.gBoard>div:nth-child(2)>span{font-size: 18px;}/*게시글 카테고리*/
-			.gBoard>div:nth-child(3){font-size: 18px; margin-top: 10px; border-bottom: 2px solid #bbb; padding-bottom: 10px; margin-top: 10px;}/*게시글 내용*/
+			.gBoard>div:nth-child(3){font-size: 18px; margin-top: 10px;  padding-bottom: 10px; margin-top: 10px;}/*게시글 내용*/
 			/*버튼 부분*/
 			#writeBtn{text-align: right;}	
 			/*페이징 부분*/
 			.gPaging{font-size: 25px;}
 			/*a태그*/
-			a{text-decoration: none; color: #000;}		
+			a{text-decoration: none; }		
 			.search{width:80%}
 				}
 		</style>

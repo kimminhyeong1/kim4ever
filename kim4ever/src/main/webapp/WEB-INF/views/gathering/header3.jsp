@@ -13,7 +13,7 @@
  .midmenu{height:70px; align-items: center; margin:10px;}
 
  .midmenu{cursor:pointer; height:70px; align-items: center; margin:10px;}
- .midmenu:hover p {color:#ff9900; cursor:pointer;}
+ .midmenu:hover p { cursor:pointer;}
 
  .midmenu p{margin:0 auto;}
 

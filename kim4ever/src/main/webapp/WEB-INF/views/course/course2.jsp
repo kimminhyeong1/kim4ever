@@ -31,19 +31,18 @@ padding-bottom:10px;}
 table td {margin: 10px;}
 #map{width:1000px;height:500px;border-radius: 20px;}
 
-
 	/*****************************************모바일***************************************************************/
 		
 	@media (min-width: 300px) and (max-width: 940px)  {	
-	#main{width:auto; height:auto; margin:0 auto; text-align:center; background:#ffffff;}
+	#main{width:auto; height:auto; margin:0 auto; text-align:center;}
 #main #restaurant{display:flex; justify-content:center; align-items:center;font-family: 'omyu_pretty'; margin-left:10px;}
-#main #restaurant table{ width: 90%; height:100px; border:1; margin-top:40px; background:white;}
-#main #restaurant table td{border:1px solid #ddd;   max-width: 20%; border-radius: 10px;
-transition: transform 0.1s ease-in-out; background-color:#ffff; margin-right:10px;}
-#main #restaurant table h3,p{border-bottom:1px solid #bbb; font-size:10px;}
+#main #restaurant table{ width: 90%; height:100px; border:1; margin-top:40px; }
+#main #restaurant table td{  max-width: 20%; 
+transition: transform 0.1s ease-in-out;  margin-right:10px;}
+#main #restaurant table h3,p{ font-size:10px;}
 #main #restaurant table p:last-child {border-bottom: none; }
-#main #restaurant img{width:100%; height:auto; border-radius: 10px 10px 0 0; z-index:1; } 
-#main h2{color:#333; font-size:15px; margin-top:40px; text-align:center; border-bottom:2px solid #333;
+#main #restaurant img{width:100%; height:auto;  z-index:1; } 
+#main h2{color:#333; font-size:15px; margin-top:40px; text-align:center;
 padding-bottom:10px;}
 table td {margin: 10px;}
 #map{width:80%;height:300px; margin-left:10%; border-radius: 20px;}
