@@ -21,8 +21,8 @@ header{width: 1250px;margin: 35px auto 0px;text-align: center;}
 #top_logo .login {display:flex;justify-content:flex-end;float:right;}
 #top_logo .login ul {display:flex;list-style:none;margin:0;padding:0;}
 #top_logo .login li {margin-left:20px;  font-size:21px;}
-#top_logo .login a {width:90px; display:block;padding:9px 10px;background-color: #05d100;color:#fff;border-radius:20px;text-decoration:none;transition:background-color 0.3s ease;}
-#top_logo .login a:hover {background-color: #2bd727b5;}
+#top_logo .login a {width:90px; display:block;padding:9px 10px;background-color: #ff9833;color:white;border-radius:20px;text-decoration:none;transition:background-color 0.3s ease;}
+#top_logo .login a:hover {background-color: #ffcc66;}
 
 /*사이드바*/
 .top-menu img {width: 50px; height:auto; float:left;}
