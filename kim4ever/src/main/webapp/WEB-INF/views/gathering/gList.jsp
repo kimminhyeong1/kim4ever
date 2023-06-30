@@ -27,7 +27,7 @@
 				/*****모바일 넓이***/
 				@media (min-width: 300px) and (max-width: 940px)  {
 								/*소개부분*/
-			
+			.gContentTitle h2{margin-top:0px;}
 			#gatheringIntro{width:99.5%; height:auto; background-color:#F8F8F8;  border-radius:10px;  }  
 			#gatheringIntro h2{text-align:center; margin-top:20px; font-size:16px; padding:10px;}
 			#gatheringIntro p{text-align:center; padding:5px;  font-size:10px; margin-top:1px;  overflow: hidden;}

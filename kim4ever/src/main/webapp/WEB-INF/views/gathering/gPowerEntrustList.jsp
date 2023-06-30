@@ -14,14 +14,14 @@
 	<style type="text/css">
 		li{list-style:none;}
 	a { text-decoration:none; color: inherit;} 
-	#main{margin: 0 auto;  width: 1250px;}
+		#main{margin: 0 auto;  width: 1250px;}
 		.menu{width:auto; text-align:left; margin: 0 auto; font-size:35px; text-align: center; margin:10px;}
-		.gProfileimage img {width:50px;height:50px;object-fit:cover;border-radius:50%;}
+		.gProfileimage img {width:60px;height:60px;object-fit:cover;border-radius:50%; margin-top: 6px;}
 		.gMemberList {display:flex;flex-direction:column;align-items:flex-start;text-align:left;font-size:24px;margin:40px 20px;}
 		.gMemberList > div {display:flex;align-items:center;margin-bottom:20px;position:relative;}
 		.gMemberList > div::after {content:"";position:absolute;bottom:-20px; /* 선의 위치 조정 */left:0;width:100%;height:1px;background-color:#ccc;}
 		.gMemberList > div > div:nth-child(1) {width:50px; height:50px;float:left;}
-		.gMemberList > div > div:nth-child(2) {height: 25px;margin-left: 10px;}
+		.gMemberList > div > div:nth-child(2) {height: 25px;     margin-top: 25px; margin-left: 20px;}
 		.gMemberList > div > div:nth-child(2) > div,
 		.gMemberList > div > div:nth-child(3) > div {display:inline-block; font-size:24px;margin-left:10px;}
 		.gmemberName {width:100px;}
@@ -79,8 +79,7 @@
 										</c:choose>									
 										</div>
 										<div class="gmemberName">${smv.memberName}</div>
-										<div class="gmemberInfo">${smv.memberIntro}</div>
-										<div class="gmemberAddr">${smv.memberAddr}</div>
+										<div class="gmemberInfo">${smv.memberIntro}</div>									
 										<c:if test="${gmt.gatheringMemberType eq 'TL' || gmt.gatheringMemberType eq 'TLD'}">
 											<c:choose>
 											    <c:when test="${smv.gatheringMemberType eq 'TL'}">

@@ -67,7 +67,7 @@
 			<div><button id="moreButton" class="gBtn2" style="display: none;">더보기</button></div>
 		</section>
 	</main>
-	<%@include file="../footer.jsp" %>
+	
 		<script>
 			function handleHeartClick(giidx, midx ,element) {
 				 
@@ -201,4 +201,5 @@
 	            });
     </script>
 	</body>
+	<%@include file="../footer.jsp" %>
 </html>
