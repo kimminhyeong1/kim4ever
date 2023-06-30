@@ -574,7 +574,7 @@ public class GatheringServiceImpl implements GatheringService {
    //모임 더 보기 멤버 추방
    public int updateMemberDELYN(int midx, int giidx) {      
       int value= gsm.updateMemberDELYN(midx,giidx);
-      gsm.gatheringParticipatingUpdate1(giidx);//참여멤버수 -1
+      int value2=gsm.gatheringParticipatingUpdate1(giidx);//참여멤버수 -1
       
       return value; 
    }
