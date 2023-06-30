@@ -17,19 +17,21 @@
 			/*헤더영역 메뉴*/
 			header #menu{display: none;}
 			/*틀부분*/
-			.container{border: 1px solid #bbb; margin: 0 auto; width: 900px; padding: 40px;background-color: #fdfcfa;border-radius: 20px; 
-			\display: flex;  justify-content: center;  align-items: center;}
-			.container>div{padding: 20px; text-align: left; }
-			.container>div>p{display: inline-block;} 
-			.container>div>p:nth-child(1){width: 40%; margin-left: 60px;} 
-			.container>div>p:nth-child(2){width: 5%;} 
-			.container{font-size: 24px;}
+			/*container A*/
+			.container{font-size: 24px;border: 1px solid #bbb;margin: 40px auto;width: 900px; padding: 40px;background-color: #fdfcfa;border-radius: 20px;}
+            .container>div{padding: 20px; text-align: center;}
+            .container>div>p{display: inline-block; } 
 			.container h1{font-size: 50px; text-align: center; margin:5px; }
 			.container h2{font-size: 40px; text-align: center;}
 			.container h3{margin:5px; margin-top:15px; font-weight:bold;}
 			
-			.container button{display:inline-block; width:45%; height:55px; margin-top:0px;text-align:center; font-family:'omyu_pretty'; font-size:25px; border-radius:20px; border:0px solid #ff9933; background:#ff9933;}
+            .container button{display:inline-block; width:30%; height:55px; margin-top:40px; text-align:center; font-family:'omyu_pretty'; font-size:25px; border-radius:20px; border:0px solid #ff9933; background:#ff9933;}
 			.container button:active{background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+			            
+            /*container B*/
+            .container h3{margin-top:20px;}
+            .container #bikeLocation {margin:20px; 0};
+            
 			/*이용내역 내용*/
 			#useInfo{width:80%; font-size:22px; line-height:35px;}
 			/*이용내역 내용 버튼*/
@@ -174,8 +176,8 @@
 	            if (status === kakao.maps.services.Status.OK) {
 	              if (result.length > 0) {
 	                var address = result[0].address.address_name;
-	                document.getElementById('address2').innerHTML = '<h3>위치</h3> ' + address;
-	                document.getElementById('position').innerHTML = '위치: ' + latitude + ', ' + longitude;
+	                document.getElementById('address2').innerHTML = '현재주소 :' + address;
+	                document.getElementById('position').innerHTML = '위치 : ' + latitude + ', ' + longitude;
 	             // 인풋 값 설정
 	                document.getElementById('latitude').value = latitude;
 	                document.getElementById('longitude').value = longitude;
@@ -190,8 +192,8 @@
 	          if (status === kakao.maps.services.Status.OK) {
 	            if (result.length > 0) {
 	              var address = result[0].address.address_name;
-	              document.getElementById('address2').innerHTML = '<h3>위치</h3> ' + address;
-	              document.getElementById('position').innerHTML = '위치: ' + latitude + ', ' + longitude;
+	              document.getElementById('address2').innerHTML = '현재주소 :' + address;
+	              document.getElementById('position').innerHTML = '위치 : ' + latitude + ', ' + longitude;
 		             // 인풋 값 설정
 	                document.getElementById('latitude').value = latitude;
 	                document.getElementById('longitude').value = longitude;
@@ -238,8 +240,8 @@
 				            <input type="hidden" id="address" name="errorLocation" value=""><!-- 주소 -->
 				        </div>
 			        
-						<p id="address2"></p>
-						
+						<p id="address2">현재 주소 :</p>
+						<p id="position">위치 : </p>
 	
 				        <div>
 				            <h3>사진</h3>
