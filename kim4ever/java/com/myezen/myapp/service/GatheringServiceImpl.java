@@ -781,7 +781,12 @@ public class GatheringServiceImpl implements GatheringService {
         	} else {
         	    System.out.println("모임장이 아니므로 모임에서 나갈 수 있습니다.");
         	    gsm.exitGathering(midx, giidx);
-        	    gsm.gatheringParticipatingUpdate1(giidx); // -1
+        	    //게시판에 쓴 글들 나가면서 delYN=Y로 변경
+        	    gsm.updateGatheringBoardOne(midx,giidx);
+        	    //신고내역 나가면서 delYN=Y로 변경
+        	    gsm.updateGatheringDeclarationOne(midx,giidx);
+        	    //모임원수 -1
+        	    gsm.gatheringParticipatingUpdate1(giidx);
         	    System.out.println("모임에서 나가셨습니다.");
         	    return true; // 성공 시 true 반환
         	}

@@ -590,32 +590,46 @@
 	</update>
 	
 	<!-- 모임에 연관된 게시판 정보들 삭제 -->
-	<delete id="updateGatheringBoard" parameterType="int">
+	<update id="updateGatheringBoard" parameterType="int">
 	  UPDATE gathering_board1234
 	  SET gBoardDelYN = 'Y'
 	  WHERE giidx = #{giidx}
-	</delete>
+	</update>
+	
+	<!-- 모임에 연관된 게시판 정보들 삭제 -->
+	<update id="updateGatheringBoardOne" parameterType="int">
+	  UPDATE gathering_board1234
+	  SET gBoardDelYN = 'Y'
+	  WHERE midx = #{0} and giidx = #{1}
+	</update>
 	
 	<!-- 모임에 연관된 스케쥴 정보들 삭제 -->
-	<delete id="updateGatheringSchedule" parameterType="int">
+	<update id="updateGatheringSchedule" parameterType="int">
 	  UPDATE gathering_schedule1234
 	  SET gScheduleDelYN = 'Y'
 	  WHERE giidx = #{giidx}
-	</delete>
+	</update>
 	
 	<!-- 모임에 연관된 신고 정보들 삭제 -->
-	<delete id="updateGatheringDeclaration" parameterType="int">
+	<update id="updateGatheringDeclaration" parameterType="int">
 	  UPDATE gathering_declaration1234
 	  SET gDeclarationDelYN = 'Y'
 	  WHERE giidx = #{giidx}
-	</delete>
+	</update>
+	
+	<!-- 모임에 연관된 신고 정보들 삭제 -->
+	<update id="updateGatheringDeclarationOne" parameterType="int">
+	  UPDATE gathering_declaration1234
+	  SET gDeclarationDelYN = 'Y'
+	  WHERE midx = #{0} and giidx = #{1}
+	</update>
 	
 	<!-- 모임정보 삭제 -->
-	<delete id="updateGathering" parameterType="int">
+	<update id="updateGathering" parameterType="int">
 	  UPDATE GATHERING_info1234
 	  SET gInfoDelYN = 'Y'
 	  WHERE giidx = #{giidx}
-	</delete>
+	</update>
 		
 	<!-- 사진첩 작성 -->
 	<insert  id="gatheringPhotoAlbumWrite" parameterType="com.myezen.myapp.domain.GatheringJoinVo" >

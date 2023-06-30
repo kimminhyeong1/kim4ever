@@ -143,12 +143,7 @@ public interface GatheringService_Mapper {
 	//모임 게시글 삭제
 	public int gatheringBoardDelete(int gbidx, int midx);
 	
-	//모임신고하기
-	public int insertDeclaration(GatheringJoinVo gjv);
-	//모임나가기
-	public void exitGathering(int midx, int giidx);
-	//모임 가입시 모임 참여멤버 수 1마이너스
-	public int gatheringParticipatingUpdate1(int giidx);
+	
 	
 	//1. 총게시글 가져오기
 	public int gatheringBoardTotal(HashMap<String, Object> hm);
@@ -238,6 +233,14 @@ public interface GatheringService_Mapper {
 	public int gatheringPhotoGAUpdate(GatheringJoinVo gjv);
 	//모임사진첩 삭제하기
 	public void deletePhotoAlbum(int midx, int gpaidx);
+	
+	/*모임 신고 , 나가기*/
+	//모임신고하기
+	public int insertDeclaration(GatheringJoinVo gjv);
+	//모임나가기
+	public void exitGathering(int midx, int giidx);
+	//모임 가입시 모임 참여멤버 수 1마이너스
+	public int gatheringParticipatingUpdate1(int giidx);
 	//모임 gpaidx 꺼내오기
 	public int gatheringPhotoAlbumGetGpaidx(GatheringJoinVo gjv);
 	//모임에 남아있는 모임원 수 조회
@@ -248,10 +251,15 @@ public interface GatheringService_Mapper {
 	public void updateGatheringPhotoAlbum(int giidx);
 	//모임에 연관된 게시판 정보 삭제
 	public void updateGatheringBoard(int giidx);
+	//모임에 연관된 게시판 정보 삭제(모임원이 나갔을 경우 나가면서 delYN=Y)
+	public void updateGatheringBoardOne(int midx, int giidx);
 	//모임에 연관된 스케쥴 정보 삭제
 	public void updateGatheringSchedule(int giidx);
 	//모임에 연관된 신고 정보 삭제
 	public void updateGatheringDeclaration(int giidx);
+	//모임에 연관된 신고 정보 삭제(모임원이 나갔을 경우 나가면서 delYN=Y)
+	public void updateGatheringDeclarationOne(int midx, int giidx);
+	
 	
 	
 }
