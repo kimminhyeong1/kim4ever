@@ -76,7 +76,7 @@ li{list-style:none;}
 	/*****************************************모바일***************************************************************/
 		
 	@media (min-width: 300px) and (max-width: 940px)  {	
-	#main{width:auto; min-height:640px; margin:0 auto; text-align:center;}
+	#main{width:auto; min-height:87vh; margin:0 auto; text-align:center;}
 #main #content{width:auto; height:auto;}
 #main #content h2{text-align:left; margin-top:50px; margin-left:16px; margin-left:10%;font-family: 'GangwonEdu_OTFBoldA'; font-size:15px; }
 #main #bottom{width:auto; height:10px;}
@@ -84,7 +84,7 @@ li{list-style:none;}
 #content table th{padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 5px; text-align:center;border-bottom:1px solid #CCCCCC; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 #content #btn{text-align:right; margin-top:20px; margin-right:5%; }
-#content #btn button{width:50px; height:25px; text-align:center; font-family: 'omyu_pretty'; font-size:12px;  border-radius:20px; border:0px solid #ff9933; background:#ff9933;  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
+#content #btn button{width:50px; height:25px; text-align:center; font-family: 'omyu_pretty'; font-size:12px;  border-radius:20px; border:0px solid #ff9933; background:#ff9933; }
 #content #btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 .cell-content {width: 25vw; overflow: hidden; text-overflow: ellipsis;}
 
@@ -93,8 +93,8 @@ li{list-style:none;}
 /*메뉴바 테이블*/
 .tab__contents {display:none;}
 .show {display: block;} 
-.tab__list{margin-top:5%;}
-.tab__list li{ display: inline-block; border: none; background-color: #f8f8f8; padding: 5px 7px; cursor: pointer;  font-family: 'omyu_pretty'; font-size:12px; border-radius:20px; margin-top:10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);}
+.tab__list{margin-top:3%;}
+.tab__list li{ display: inline-block; border: none; background-color: #f8f8f8; padding: 5px 7px; cursor: pointer;  font-family: 'omyu_pretty'; font-size:12px; border-radius:20px; margin-top:10px;0.4);}
 .tab__list__item.active {background-color:#ff9933; color:#fff; border:none ;}
 
  a {color: inherit; text-decoration: none;}
