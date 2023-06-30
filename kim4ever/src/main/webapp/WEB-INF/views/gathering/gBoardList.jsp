@@ -17,7 +17,7 @@
 			/*게시글 틀*/ 
 			.midmenu:nth-child(2) {color: #05d100 ;} /* 메뉴글자색*/
 			
-			.gBoardList { width: 100%; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 10px;}
+			.gBoardList { width: 100%; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 20px;}
 			/*검색하기 부분*/
 			#searchCategory{text-align: right; font-size: 20px; margin: 20px 20px; height: 30px; font-family: 'omyu_pretty'; border-radius:20px;} 
 			#searchCategory>div{display: inline-block; vertical-align: top;} 
@@ -32,14 +32,13 @@
 			/*게시글 부분*/
 			.gBoard{text-align: left; font-size: 24px; margin: 20px 40px; } 
 			.gBoard>div>div:nth-child(1){width: 50px; height: 50px; float: left;}/*프로필*/ 
-			.gProfileimage img{width: 50px; height: 50px; object-fit: cover; border-radius: 50%;}/*프로필이미지*/
-			.gBoard>div>div:nth-child(2){height: 25px; margin-left: 100px; font-size:24px;}/*모임장,이름*/ 
+			.gProfileimage img{width: 60px; height: 60px; object-fit: cover; border-radius: 50%;}/*프로필이미지*/
+			.gBoard>div>div:nth-child(2){height: 25px; margin-left: 70px; font-size:28px;}/*모임장,이름*/ 
 			.gBoard>div>div:nth-child(2)>div{display: inline-block; } 
-			.gBoard>div>div:nth-child(3)>div:nth-child(1){height: 25px; margin-left: 70px; font-size: 24px; text-align: right;}/*날짜 카테고리*/ 
-			.gBoard>div:nth-child(2){clear: both;margin-top: 20px; }/*게시글제목*/
+			.gBoard>div>div:nth-child(3)>div:nth-child(1){height: 25px; margin-left: 70px; font-size: 18px;}/*날짜 카테고리*/ 
+			.gBoard>div:nth-child(2){clear: both;margin-top: 20px; font-size:24px; font-weight:bold;}/*게시글제목*/
 			.gBoard>div:nth-child(2)>span{font-size: 24px;}/*게시글 카테고리*/
 			.gBoard>div:nth-child(3){font-size: 20px; margin-top: 10px; border-bottom: 2px solid #bbb; padding-bottom: 10px; margin-top: 10px; }/*게시글 내용*/
-			.gBoard>div:nth-child(3) a{margin-left:20px;}
 			/*버튼 부분*/
 			#writeBtn{text-align: right;}	
 			/*페이징 부분*/

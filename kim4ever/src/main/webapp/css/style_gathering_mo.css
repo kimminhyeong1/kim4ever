@@ -36,7 +36,7 @@ header{width:auto; margin:0 auto; text-align:center;}
     /*박스작은틀*/
     .gContent{width:auto; display:flex; flex-wrap:wrap;justify-content:center; align-items:center;}
     /*박스제목*/
-    .gContentTitle h2{width:auto; text-align:center; font-size:20px; margin-top:5px; margin-bottom:20px; padding-top:5%;}
+    .gContentTitle h2{width:auto; text-align:center; font-size:25px; margin-top:5px; margin-bottom:10px; padding-top:5%;}
 /*카드부분*/
     /*모임카드박스*/ 
     .card{position:relative; width:170px; height:170px;  
@@ -78,11 +78,7 @@ header{width:auto; margin:0 auto; text-align:center;}
     /*모임설명*/
     .cardInfo{font-size: 14px; width: auto; height: 20px; margin-top: 10px; margin-bottom: 10px; overflow: hidden; float:right; 
   }
-  	/* 움직이는 텍스트 */
-.cardInfo {  overflow: hidden; position: relative;  -webkit-line-clamp: 1; top: 6px;}
-.cardInfo {display: block;   position: relative; overflow: hidden; animation: marquee 5s linear infinite;}
-.cardInfo p {float: right; width: 50%;   white-space: nowrap;  text-align: right; font-size:10px;}
-@keyframes marquee {0% { left: 0; } 100% { left: -100%; }}	}
+
 
   
       /*참여멤버*/

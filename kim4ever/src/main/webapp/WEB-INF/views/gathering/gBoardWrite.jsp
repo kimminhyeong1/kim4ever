@@ -16,10 +16,10 @@
 			#main section>div:nth-child(2){text-align: center;}
 			#main section>div>div{margin: 20px 0px 20px 0px;}
 			#main section input {display: block; width: 100%;}
-			#main section textarea {display: block; width: 100%;height: 200px;font-size: 23px;}
+			#main section textarea {display: block; width: 100%;height: 200px;font-size: 23px; border-radius:20px; resize:none; padding:5px;}
 			#main section button{text-align: center;}  
 			#main section img{width: 100px;height: 100px;}
-			#main section select{width: 100px; height: 40px; font-size: 18px; font-family: 'omyu_pretty';} 	
+			#main section select{width: 100px; height: 40px; font-size: 18px; font-family: 'omyu_pretty'; border-radius:20px;} 	
 			.gBtn2 {margin-bottom:20px;}	
 		</style>
 	</head>
