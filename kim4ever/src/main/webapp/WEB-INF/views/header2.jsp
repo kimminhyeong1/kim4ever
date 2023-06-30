@@ -80,23 +80,23 @@ button{cursor:pointer;}
 .toggle--checkbox:checked + .toggle--label .toggle--label-background:after {width: 5px;height: 5px;left: -30px;top: 20px;}
 .toggle--checkbox:checked + .toggle--label:before {background: var(--white);border-color: var(--gray-border);animation-name: switch;animation-duration: 350ms;animation-fill-mode: forwards;}
 .toggle--checkbox:checked + .toggle--label:after {transition-delay: 350ms;opacity: 1;}
-.toggle--label {width: 70px;height: 35px;background: var(--blue-color);border-radius: 100px;display: flex;position: relative;transition: all 350ms ease-in;}
-.toggle--label:before {animation-name: reverse;animation-duration: 350ms;animation-fill-mode: forwards;transition: all 350ms ease-in;content: "";width: 25px;height: 25px;border: 3px solid var(--yellow-border);top: 2px;left: 4px;position: absolute;border-radius: 82px;background: var(--yellow-background);}
+.toggle--label {width: 110px;height: 40px;right:25px; margin-top:10px; background: var(--blue-color);border-radius: 100px;display: flex;position: relative;transition: all 350ms ease-in;}
+.toggle--label:before {animation-name: reverse;animation-duration: 350ms;animation-fill-mode: forwards;transition: all 350ms ease-in;content: "";width: 40px;height: 25px;border: 3px solid var(--yellow-border);top: 4px;left: 4px;position: absolute;border-radius: 82px;background: var(--yellow-background);}
 .toggle--label:after {transition-delay: 0ms;transition: all 250ms ease-in;position: absolute;content: "";box-shadow: var(--gray-dots) -13px 0 0 2px, var(--gray-dots) -24px 14px 0 -2px;left: 143px;top: 23px;width: 10px;height: 10px;background: transparent;border-radius: 50%;opacity: 0;}
 @keyframes switch {
-  0% {left: 35px;}
-  60% {left: 20px;width: 35px;}
-  100% {left: 4px;width: 25px;}
+  0% {left: 55px;}
+  60% {left: 15px;width: 40px;}
+  100% {left: 10px;width: 40px;}
 }
 @keyframes reverse {
-  0% {left: 35px;width: 25px;} 
-  60% {left: 35px;width: 25px;}
-  100% {left: 35px;}
+  0% {left: 55px;width: 40px;} 
+  60% {left: 55px;width: 40px;}
+  100% {left: 55px;}
 }
  
 /****************************모바일**************************/
 @media (min-width: 300px) and (max-width: 940px)  {
-header{width:auto;margin:0 auto; }
+header{width:auto;margin:0 auto; overflow-x: hidden;}
 /*사이드메뉴바, 로고, 로그인버튼*/
 #top_logo{width:auto; height:80px; text-align:center; position:relative; margin-top:15px;}
 #top_logo .logo{display:inline-block; text-align:center; position:absolute; transform:translate(-50%, -50%);}
