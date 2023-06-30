@@ -19,7 +19,7 @@
 			#main section>div:nth-child(2){text-align: center;}
 			#main section>div>div{margin: 20px 0px 20px 0px;}
 			#main section input {display: block;}
-			#main section textarea {display: block; width: 86%; height: 200px; padding: 5px; font-size: 20px; border-radius: 20px; border: 1px solid #ccc; resize: none;}
+			#main section textarea {display: block; width: 86%; height: 100px; padding: 5px; font-size: 20px; border-radius: 20px; border: 1px solid #ccc; resize: none;}
 			#main section button{text-align: center;}  
 			#main section img{width: 100px;height: 100px; border-radius: 10px;}   
 			#main section .radio{display: inline-block;width: 4%; margin-top: 10px; } 
