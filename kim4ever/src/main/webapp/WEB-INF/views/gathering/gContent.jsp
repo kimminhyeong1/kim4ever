@@ -351,7 +351,7 @@
 				</c:forEach>
 			</div>
 			<div id="gReportExit">
-				<button onclick="location.href='${pageContext.request.contextPath}/gathering/gDeclaration.do?giidx=${giidx}'">모임 신고하기</button> 
+				<button onclick="location.href='${pageContext.request.contextPath}/gathering/gDeclarationCheck.do?giidx=${giidx}'">모임 신고하기</button> 
 				<button type="button" onclick="exitGathering(${midx}, ${giidx})">모임 나가기</button>
 			</div>
 			
@@ -409,5 +409,14 @@
 		
 		setInterval(function(){ $('.slider-1 > .side-btns > div').eq(1).click();}, 3000);
 	</script>
+	
+	<script>
+	window.onload = function() {
+	    var alertMessage = "${alertMessage}"; //알림 메시지를 가져옴
+	    if (alertMessage) {
+	        alert(alertMessage); //알림 메시지를 출력
+	    }
+	}
+</script>
 	</body>
 </html>
