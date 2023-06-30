@@ -19,7 +19,7 @@
 			
 			.gBoardList { width: 100%; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 20px;}
 			/*검색하기 부분*/
-			#searchCategory{text-align: right; font-size: 20px; margin: 20px 20px; height: 30px; font-family: 'omyu_pretty'; border-radius:20px;} 
+			#searchCategory{text-align: right; font-size: 20px; margin: 20px 20px; height: 30px; font-family: 'omyu_pretty'; border-radius:20px; margin-bottom:40px;} 
 			#searchCategory>div{display: inline-block; vertical-align: top;} 
 			#searchCategory>div>select{width: 100px; height: 40px; font-size: 24px; font-family: 'omyu_pretty';vertical-align: top; border-radius:20px; text-align: center;} 
 			#searchCategory>div>input{width: 300px; height: 40px; font-size: 24px;vertical-align: top; border-radius:20px;} 
@@ -47,6 +47,9 @@
 			/*a태그*/
 			a{text-decoration: none; color: #000;}			
 			.gBtn2 {margin-top:20px;}		
+
+
+		
 			
 			/*************************모바일****************************************/
 				/*****모바일 넓이***/
@@ -83,14 +86,23 @@
 			.search{width:80%}
 				}
 		</style>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>		
+		<script>
+		$(document).ready(function() {
+			  var gBoardListHeight = $('.gBoardList').height();
+			  if (gBoardListHeight <= 100) {
+			    $('.gBoardList').hide();
+			  }
+			});
+
+		</script>
 	</head>
 	<body>
 		<%@include file="../header2.jsp" %>
 		<%@include file="header3.jsp" %>
 		<main id="main">
 			<section class="gContainer">
-				<div class="gBoardList">
-					<form id="searchCategory" name="frm" action="${pageContext.request.contextPath}/gathering/gBoardList.do" method="post">
+						<form id="searchCategory" name="frm" action="${pageContext.request.contextPath}/gathering/gBoardList.do" method="post">
 						<div class="search">
 							<select name="searchType">
 									<option value="daily">일상</option>	
@@ -103,6 +115,8 @@
 							<button type="submit" id="searchBtn" class="gBtn2">검색</button>
 						</div>
 					</form>
+				<div class="gBoardList">
+		
 					<c:forEach var="gjvb" items="${gjvblist}">
 			    		<c:if test="${gjvb.gBoardCategory.equals('공지사항')}">
 							<div class="gNotice">

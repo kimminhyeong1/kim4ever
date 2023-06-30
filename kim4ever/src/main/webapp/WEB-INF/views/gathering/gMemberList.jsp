@@ -22,11 +22,11 @@
 	.gMemberList > div > div:nth-child(1) {width:50px; height:50px;float:left;}
 	.gMemberList > div > div:nth-child(2) {height: 25px;     margin-top: 25px; margin-left: 20px;}
 	.gMemberList > div > div:nth-child(2) > div,
-	.gMemberList > div > div:nth-child(3) > div {display:inline-block; font-size:24px;margin-left:10px;}
+	.gMemberList > div > div:nth-child(3) > div {display:inline-block; font-size:24px;}
 	.gmemberName {width:100px;}
 	.gmemberInfo {width:350px;}	
 	.gmemberAddr {width:470px;}	
-	.gmemberType {width:62px;}
+	.gmemberType {width:80px;}
 	.menu a{margin:10px;}
 	.gBtn2 {margin:20px;}
 	.gSetContainer h2{font-size:35px; margin-left:20px;}

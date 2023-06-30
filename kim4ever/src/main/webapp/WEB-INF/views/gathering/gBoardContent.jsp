@@ -16,9 +16,9 @@
 			a{text-decoration: none; color: #000;}	
 			.gContainer{border: 1px solid #0000;}
 			/*게시글 틀*/ 
-			.gBoardList { width: 100%; border: 1px solid #bbb;background-color: #f1f1f1;border-radius: 10px;position: relative; }
+			.gBoardList { width: 100%; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 10px;position: relative;  border-radius:20px;}
 			/*게시글 멤버 부분*/
-			.gBoardMember{text-align: left; font-size: 20px; margin: 40px 60px; position: relative;} 
+			.gBoardMember{text-align: left; font-size: 20px; margin: 20px 60px; position: relative;} 
 			.gBoardMember .gBoardMember_box{display: inline-block;} 
 			.gBoardMember>div>div:nth-child(1){width: 50px; height: 50px; float: left;}/*프로필*/ 
 			.gProfileimage img{width: 50px; height: 50px;  object-fit: cover; border-radius: 50%;border: 1px solid #bbb;}/*프로필이미지*/
@@ -32,14 +32,14 @@
 			.gBoardView>div:nth-child(1)>span{font-size: 18px;margin-left: 10px;}/*게시글 카테고리*/
 			.gBoardView>div:nth-child(2){font-size: 18px; margin-top: 100px; border-bottom: 2px solid #bbb; padding-bottom: 100px;}/*게시글 내용*/
 			/*버튼 부분*/
-			.writeBtn{width: 10%; height: 50px;margin-top: 14px;text-align: center;font-family: 'omyu_pretty';font-size: 21px;border-radius: 10px;border: 0px solid #99CC99;background: #99CC99; vertical-align: top;}
-			.writeBtn:active {background: #339933;box-shadow: 0 2px 2px rgba(0,0,0,0.1);transform: translateY(2px);}
-			.modifyBtn{width: 10%; height: 50px;margin-top: 14px;text-align: center;font-family: 'omyu_pretty';font-size: 21px;border-radius: 10px;border: 0px solid #99CC99;background: #99CC99; vertical-align: top;}
-			.modifyBtn:active {background: #339933;box-shadow: 0 2px 2px rgba(0,0,0,0.1);transform: translateY(2px);}
-			.replyBtn{width: 8%; height: 35px; position: absolute;right: 35px;top: 50px;margin-top: 14px;text-align: center;font-family: 'omyu_pretty';font-size: 21px;border-radius: 10px;border: 0px solid #99CC99;background: #99CC99; vertical-align: top;}
-			.replyBtn:active {background: #339933;box-shadow: 0 2px 2px rgba(0,0,0,0.1);transform: translateY(2px);}
-			.replyCommentBtn{width: 10%; height: 50px;margin-top: 14px;text-align: center;font-family: 'omyu_pretty';font-size: 21px;border-radius: 10px;border: 0px solid #99CC99;background: #99CC99; vertical-align: top;}
-			.replyCommentBtn:active {background: #339933;box-shadow: 0 2px 2px rgba(0,0,0,0.1);transform: translateY(2px);}
+			.writeBtn{width: 10%; height: 50px;margin-top: 14px;text-align: center;font-family: 'omyu_pretty';font-size: 21px;border-radius: 20px;border: 0px solid #99CC99;background: #05d100; vertical-align: top; color:white;}
+			.writeBtn:active {background: #2bd727b5;box-shadow: 0 2px 2px rgba(0,0,0,0.1);transform: translateY(2px);}
+			.modifyBtn{width: 10%; height: 50px;margin-top: 14px;text-align: center;font-family: 'omyu_pretty';font-size: 21px;border-radius: 20px;border: 0px solid #99CC99;background: #05d100; vertical-align: top; color:white;}
+			.modifyBtn:active {background: #2bd727b5;box-shadow: 0 2px 2px rgba(0,0,0,0.1);transform: translateY(2px);}
+			.replyBtn{width: 8%; height: 35px; position: absolute;right: 35px;top: 50px;margin-top: 14px;text-align: center;font-family: 'omyu_pretty';font-size: 21px;border-radius: 20px;border: 0px solid #99CC99;background: #05d100; vertical-align: top; color:white;}
+			.replyBtn:active {background: #2bd727b5;box-shadow: 0 2px 2px rgba(0,0,0,0.1);transform: translateY(2px);}
+			.replyCommentBtn{width: 10%; height: 50px;margin-top: 14px;text-align: center;font-family: 'omyu_pretty';font-size: 21px;border-radius: 20px;border: 0px solid #99CC99;background: #05d100; vertical-align: top; color:white;}
+			.replyCommentBtn:active {background: #2bd727b5;box-shadow: 0 2px 2px rgba(0,0,0,0.1);transform: translateY(2px);}
 			.hidden {display: none; }
 		    .fade-in {
 		      animation: fadeIn 0.2s ease-in;
@@ -54,7 +54,7 @@
 		      }
 		    }
 			/*페이징 부분*/
-			.gPaging{font-size: 25px;}
+			.gPaging{font-size: 24px; margin-top:40px;  margin-bottom:20px;}
 			/*댓글타이틀*/		
 			.gBoardCommentTitle{text-align: left;margin-left: 60px;margin-top: 30px;font-size: 25px;font-weight: bold;}
 			/*좋아요 부분*/
@@ -62,15 +62,16 @@
 			/*설정 부분*/
 			.gBoardSettingBtn{position: absolute; right: 0px;top: 0px; width: 100px; z-index: 5;}	
 			.gBoardSettingBtn img{width: 35px;}
-			.gBoardSettingBtn ul{background: #d5d5d5;border-radius: 5px;width: 110px;padding: 20px;}
-			.gBoardSettingBtn li{margin: 5px; border-bottom: 1px solid #bbb; cursor: pointer;}
+			.gBoardSettingBtn ul{background: #05d100;border-radius: 20px;width: 110px;padding: 20px; color:white; font-size:24px; }
+			.gBoardSettingBtn ul a:hover{color:black;}
+			.gBoardSettingBtn li{margin: 5px;  cursor: pointer;}
 			/*댓글 쓰는 부분*/
 			.gBoardCommentWrite{position: relative;}
-			.gBoardCommentWrite textarea{resize: none;padding: 20px;font-size: 18px; width: 580px; height: 40px;}
+			.gBoardCommentWrite textarea{resize: none;padding: 20px;font-size: 18px; width: 580px; height: 40px; border-radius:20px;}
 			.modifycommentForm{position: relative; text-align: center;width: 1120px;}
-			.modifycommentForm textarea{resize: none;padding: 20px;font-size: 18px; width: 580px; height: 40px;margin-right: 5px;}
+			.modifycommentForm textarea{resize: none;padding: 20px;font-size: 18px; width: 580px; height: 40px;margin-right: 5px; border-radius:20px;}
 			.ReplyCommentForm{position: relative; text-align: center;width: 1120px;}
-			.ReplyCommentForm textarea{resize: none;padding: 20px;font-size: 18px; width: 580px; height: 40px;margin-right: 5px;}
+			.ReplyCommentForm textarea{resize: none;padding: 20px;font-size: 18px; width: 580px; height: 40px;margin-right: 5px; border-radius:20px;}
 			#characterCount{position: absolute;top: 60px;right: 390px;} /*댓글카운터*/
 			#replyCharacterCount{position: absolute;top: 60px;right: 320px;}
 			.modifycommentForm span{position: absolute;top: 60px;right: 320px;}
@@ -78,6 +79,7 @@
 			.reply_ba{display: inline-block;vertical-align: top;}
 			.reply_ba img{width: 40px;}
 			.under_ba{border-bottom: 2px solid #bbb;}
+			.gPaging a{padding:10px;}
 			
 							/*************************모바일****************************************/
 				/*****모바일 넓이***/
@@ -477,8 +479,8 @@
 		                            submitUpdatedComment(Pgbidx, Pgcidx, gCommentContentsTextarea.value);
 		                        });
 		                        
-
-		                    alert("코드 생성이 완료되었습니다.");
+		                        console.log("코드생성이 완료되었습니다")
+		                  /*  alert("코드 생성이 완료되었습니다.");*/
 		                } else {
 		                    alert("댓글을 가져오지 못했습니다.");
 		                }
@@ -583,9 +585,9 @@
 		                            submitReplyComment(Pgbidx, Pgcidx, gCommentContentsTextarea.value);
 		                        });
 		                        
-
-		                    alert("코드 생성이 완료되었습니다.");
-
+		                        console.log("코드생성이 완료되었습니다")
+		                  /*  alert("코드 생성이 완료되었습니다.");*/
+		                        
 		    }
 		    
 		    function updateReplyCharacterCount(textarea) {
