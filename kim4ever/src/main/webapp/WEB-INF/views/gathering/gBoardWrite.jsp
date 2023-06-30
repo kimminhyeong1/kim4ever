@@ -19,7 +19,7 @@
 			#main section textarea {display: block; width: 100%;height: 200px;font-size: 23px; border-radius:20px; resize:none; padding:5px;}
 			#main section button{text-align: center;}  
 			#main section img{width: 100px;height: 100px;}
-			#main section select{width: 100px; height: 40px; font-size: 18px; font-family: 'omyu_pretty'; border-radius:20px;} 	
+			#main section select{width: 100px; height: 40px; font-size: 18px; font-family: 'omyu_pretty'; border-radius:20px;text-align: center;} 	
 			.gBtn2 {margin-bottom:20px;}	
 		</style>
 	</head>

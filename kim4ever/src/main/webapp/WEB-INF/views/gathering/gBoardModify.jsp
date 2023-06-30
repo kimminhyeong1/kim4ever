@@ -21,10 +21,11 @@
 			#main section>div:nth-child(2){text-align: center;}
 			#main section>div>div{margin: 20px 0px 20px 0px;}
 			#main section input {display: block; width: 100%;}
-			#main section textarea {display: block; width: 100%;height: 200px;font-size: 23px;}
+			#main section textarea {display: block; width: 100%;height: 200px;font-size: 23px; border-radius:20px; resize:none; padding:5px;}
 			#main section button{text-align: center;}  
 			#main section img{width: 100px;height: 100px;}
-			#main section select{width: 100px; height: 40px; font-size: 18px; font-family: 'omyu_pretty';} 		
+			#main section select{width: 100px; height: 40px; font-size: 18px; font-family: 'omyu_pretty'; border-radius:20px;text-align: center;} 	
+			.gBtn2 {margin-bottom:20px;}		
 		</style>
 	</head>
 	<script type="text/javascript">
@@ -39,24 +40,25 @@ function characterCheck(obj){
 function fnWrite() {
     var fm = document.frm;
     
-  
+    // 특수문자 검사 정규식
+   
     
-    if (fm.subject.value == "") {
+    if (fm.gBoardTitle.value == "") {
         alert("제목을 입력하세요");
-        fm.subject.focus();
+        fm.gBoardTitle.focus();
         return;
-    } else if (fm.content.value == "") {
+    
+    } else if (fm.gBoardContents.value == "") {
         alert("내용을 입력하세요");
         fm.content.focus();
         return;
-    }  else if (fm.writer.value == "") {
-        alert("작성자를 입력하세요");
-        fm.writer.focus();
-        return;
+    } 
+    fm.action = "${pageContext.request.contextPath}/gathering/gBoardModifyAction.do";
+    fm.enctype = "multipart/form-data";
+    fm.method = "post";
+    fm.submit();
     }
 
-
-}
 function updateCharacterCount(inputName) {
 	  var input = document.getElementsByName(inputName)[0];
 	  var maxLength = parseInt(input.getAttribute('maxlength'));
@@ -71,13 +73,14 @@ function updateCharacterCount(inputName) {
 	  updateCharacterCount('gBoardTitle');
 	  updateCharacterCount('gBoardContents');
 	});
+
 </script>
 	
 	<body>
 		<%@include file="../header2.jsp" %>
 		<%@include file="header3.jsp" %>
 		<main id="main">
-			<form name="frm" action="${pageContext.request.contextPath}/gathering/gBoardModifyAction.do" method="POST" enctype="multipart/form-data">
+			<form name="frm" >
 			
 				<input id="gbidx" type="hidden" name="gbidx" value="${gbv.gbidx}">
 				<section class="gContainer gSetContainer">

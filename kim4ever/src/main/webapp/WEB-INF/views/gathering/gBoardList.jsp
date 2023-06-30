@@ -27,16 +27,16 @@
 			/*공지사항부분*/
 			.gNotice{text-align: left; font-size: 20px; margin: 20px 40px; white-space: nowrap; overflow: hidden;  text-overflow: ellipsis;} 
 			.gNotice>div>div{display: inline-block; font-size: 24px; }
-			.gNotice>div>div:nth-child(1){color: #f00; margin-right: 20px; font-size:35px; font-weight:normal;}
+			.gNotice>div>div:nth-child(1){color: #f00; margin-right: 20px; font-size:30px; font-weight:normal;}
 			.gNotice>div:nth-child(2){border-bottom: 2px solid #bbb; font-size:24px; padding-bottom: 10px; margin-top: 20px;margin-bottom: 20px; white-space: nowrap; overflow: hidden;  text-overflow: ellipsis; }/* 끝나는바*/
 			/*게시글 부분*/
 			.gBoard{text-align: left; font-size: 24px; margin: 20px 40px; } 
 			.gBoard>div>div:nth-child(1){width: 50px; height: 50px; float: left;}/*프로필*/ 
 			.gProfileimage img{width: 60px; height: 60px; object-fit: cover; border-radius: 50%;}/*프로필이미지*/
-			.gBoard>div>div:nth-child(2){height: 25px; margin-left: 70px; font-size:28px;}/*모임장,이름*/ 
+			.gBoard>div>div:nth-child(2){height: 25px; margin-left: 70px; font-size:24px;}/*모임장,이름*/ 
 			.gBoard>div>div:nth-child(2)>div{display: inline-block; } 
-			.gBoard>div>div:nth-child(3)>div:nth-child(1){height: 25px; margin-left: 70px; font-size: 18px;}/*날짜 카테고리*/ 
-			.gBoard>div:nth-child(2){clear: both;margin-top: 20px; font-size:24px; font-weight:bold;}/*게시글제목*/
+			.gBoard>div>div:nth-child(3)>div:nth-child(1){height: 25px; margin-left: 70px; font-size: 18px;margin-top: 10px;}/*날짜 카테고리*/ 
+			.gBoard>div:nth-child(2){clear: both;margin-top: 20px; font-size:24px;}/*게시글제목*/
 			.gBoard>div:nth-child(2)>span{font-size: 24px;}/*게시글 카테고리*/
 			.gBoard>div:nth-child(3){font-size: 20px; margin-top: 10px; border-bottom: 2px solid #bbb; padding-bottom: 10px; margin-top: 10px; }/*게시글 내용*/
 			/*버튼 부분*/
