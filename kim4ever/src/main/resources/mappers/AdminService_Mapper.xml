@@ -165,7 +165,7 @@ WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPag
 		    JOIN member1234 m ON m.midx = r.midx
 		    JOIN bike1234 b ON b.bkidx = r.bkidx
 		    JOIN error1234 e ON e.ridx = r.ridx
-		    WHERE 1=1
+		    WHERE memberDelYN='N'
 		      <include refid="search1" />
 			) AS c
 			WHERE c.rnum BETWEEN ((#{page}-1)*#{perPageNum}+1) AND (#{page}*#{perPageNum});
@@ -273,7 +273,7 @@ WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPag
 		    JOIN member1234 m ON m.midx = r.midx
 		    JOIN bike1234 b ON b.bkidx = r.bkidx
 		    JOIN error1234 e ON e.ridx = r.ridx
-		    WHERE 1=1
+		    WHERE memberDelYN='N'
 		        <include refid="search2" />
 		) AS B
 		WHERE B.rnum BETWEEN ((#{page}-1)*#{perPageNum}+1) AND (#{page}*#{perPageNum});
@@ -448,7 +448,7 @@ WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPag
 		JOIN member1234 m ON m.midx = g.midx
 		JOIN gathering_info1234 i ON i.giidx = g.giidx
 		LEFT JOIN GATHERING_DECLARATION1234 d ON d.giidx = g.giidx
-		WHERE gatheringMemberType = 'TL'
+		WHERE gatheringMemberType = 'TL' and gInfoDelYN='N'
 		<include refid="search6" />
 		GROUP BY g.giidx, i.ginfoName, m.memberName, i.gInfoCreationDay, i.gInfoParticipating
 	) c
