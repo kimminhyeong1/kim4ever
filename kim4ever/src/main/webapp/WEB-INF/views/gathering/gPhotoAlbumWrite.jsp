@@ -12,7 +12,7 @@
       <style type="text/css">
          .gContainer{border: 1px solid #0000;}
          /*사진첩 틀*/ 
-         .gContent{width:97%; border:1px solid #bbb;background-color:#f1f1f1;border-radius:10px; padding: 20px;box-sizing border-box;display:flex;flex-direction:column;align-items:flex-start;}
+         .gContent{width:97%; border:1px solid #bbb;background-color:#fbfdfa;border-radius:20px; padding: 20px;box-sizing border-box;display:flex;flex-direction:column;align-items:flex-start;}
          /*사진첩 부분*/
          .card{height: 320px; background-color: #d2dfcc;}
          .cardImg{height: 80%;}
@@ -24,13 +24,13 @@
          .albumHeader {margin-bottom:20px;text-align:left;    }
          /* 사진첩 내용 */
          .albumContent {width:1000px;height:auto;font-size:24px;line-height:2;border:1px solid #000;}
-         .albumContent img {max-width:100%;height:auto;margin-bottom:10px;border-radius:5px;}
+         .albumContent img {max-width:100%;height:auto;margin-bottom:10px;border-radius:20px;}
          /* 글 작성 테이블 */
          .gContent table {width:100%; border-collapse:collapse; margin: 60px auto 0; line-height:100px; font-size:24px; font-family: 'omyu_pretty';}
          .gContent table th{width:140px;padding: 10px;text-align: center;}
          .gContent table td{padding:10px; text-align:left; border-left:1px solid #ddd;}
          .gContent table tr{border:1px solid #ddd;}
-         .gContent table input[type="text"],textarea{box-sizing:border-box;width:100%;padding:10px;margin:2px 0;border:1px solid #ccc;border-radius:4px; font-size:21px;}
+         .gContent table input[type="text"],textarea{box-sizing:border-box;width:100%;padding:10px;margin:2px 0;border:1px solid #ccc;border-radius:20px; font-size:21px;}
 		 .imagePreview { max-width: 300px; max-height: 300px; width: auto; height: auto;}	 
       </style>
    </head>
