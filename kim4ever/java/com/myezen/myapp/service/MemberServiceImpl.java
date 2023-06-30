@@ -282,8 +282,8 @@ public class MemberServiceImpl implements MemberService {
 	public String getAccessToken(String authorize_code) throws Throwable {
 		
 		String kakaoClientId ="76703a8d13e15a9a7deb9a931b73de9e"; //REST API
-		String kakaoRedirectUri ="http://localhost:8080/myapp/member/login/oauth2/code/kakao.do";
-		//String kakaoRedirectUri ="http://jjezen.cafe24.com/kim4ever/member/login/oauth2/code/kakao.do";
+		//String kakaoRedirectUri ="http://localhost:8080/myapp/member/login/oauth2/code/kakao.do";
+		String kakaoRedirectUri ="http://jjezen.cafe24.com/kim4ever/member/login/oauth2/code/kakao.do";
 		String access_Token = "";
 		String refresh_Token = "";
 		String id_token = "";

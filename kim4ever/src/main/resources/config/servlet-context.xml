@@ -59,6 +59,7 @@
 			<mapping path="/gathering/gMyPage.do"/> <!-- 나의 소모임 페이지 -->
 			<mapping path="/gathering/gMyWish.do"/> <!-- 찜한 소모임 페이지 -->
 			<mapping path="/gathering/gCreate.do"/> <!-- 모임 만들기 페이지 -->
+			<mapping path="/gathering/gSimpleInfo.do"/> <!-- 모임 소개 페이지 -->
 			<mapping path="/gathering/gContent.do"/> <!-- 모임 상세보기 페이지 -->
 			<mapping path="/board/boardQnaWrite.do"/> <!-- qna쓰기 페이지 -->
 			<mapping path="/board/boardNoticeWrite.do"/> <!-- 공지쓰기 페이지 -->
@@ -73,8 +74,7 @@
 			<mapping path="/admin/adminGReportList.do"/> <!-- 관리자 모임신고 -->
 						
 			
-			
-			
+
 			
 			
 			<beans:ref bean="authInterceptor"/>
