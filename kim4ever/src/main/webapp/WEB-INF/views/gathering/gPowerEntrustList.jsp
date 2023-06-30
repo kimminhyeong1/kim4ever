@@ -110,7 +110,7 @@
 				
 							
 				<div>				
-					<button class="gBtn2">돌아가기</button>			 	 
+					<button class="gBtn2" onclick="location.href='${pageContext.request.contextPath}/gathering/gContent.do'">돌아가기</button>			 	 
 				</div>
 			</section>
 		</main>
