@@ -204,6 +204,7 @@ public class AdminServiceImpl implements AdminService {
 		return value;
 	}
 
+	
 	//대여소 이름 중복
 	@Override
 	public int adminrentalshopNameCheck(String rentalshopName) {
@@ -267,6 +268,20 @@ public class AdminServiceImpl implements AdminService {
 	public void deleteGathering(int giidx) {
 		asm.deleteGathering(giidx);
 		
+	}
+
+	//자전거 추가 등록
+	@Override
+	public int bikeInsert(String bikeCode, String bikeType, String bikeLocation) {
+		int value = asm.bikeInsert(bikeCode, bikeType, bikeLocation);
+		return value;
+	}
+	
+	//자전거 코드번호 중복 체크
+	@Override
+	public int bikeCodeCheck(String bikeCode) {
+		int value = asm.bikeCodeCheck(bikeCode);
+		return value;
 	}
 
 

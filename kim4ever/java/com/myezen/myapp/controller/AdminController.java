@@ -138,10 +138,36 @@ public class AdminController {
 	//자전거 등록페이지	
 	@RequestMapping(value="/adminbikeRegister.do")
 	public String adminbikeRegister() {
-			
+			 
 			return "admin/adminbikeRegister";
 		}
+	
+	//자전거 코드번호 중복페이지	
+		@ResponseBody
+		@RequestMapping(value = "/adminbikeCodeCheck.do")
+		public HashMap<String, Object> adminbikeCodeCheck(@RequestParam("bikeCode") String bikeCode) {
+			HashMap<String, Object> hm = new HashMap<String, Object>();
+			System.out.println("코드번호 체크"+bikeCode);
+			int value = as.bikeCodeCheck(bikeCode);
+			System.out.println(value);
+			hm.put("value",value);//0은 거짓 1은 참
+			return hm; 
+		}
+	
+	//자전거 등록	
+		@RequestMapping(value="/adminbikeRegisterAction.do", method = RequestMethod.POST)
+		public String adminbikeRegisterAction(
+			@RequestParam("bikeCode") String bikeCode,// 자전거 고유 번호
+			@RequestParam("bikeType") String bikeType,//자전거 종류
+			@RequestParam("bikeLocation") String bikeLocation //위도
 
+			) {
+			int value = as.bikeInsert(bikeCode, bikeType, bikeLocation);
+				
+			return "redirect:/admin/adminbikeList.do";	
+			}	
+		
+		
 	// 자전거 관리 페이지
 	@RequestMapping(value="/adminbikeList.do")
 	public String adminbikeList(SearchCriteria scri,Model model) {
