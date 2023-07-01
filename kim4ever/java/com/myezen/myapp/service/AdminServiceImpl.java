@@ -300,6 +300,12 @@ public class AdminServiceImpl implements AdminService {
 	public ArrayList<RentalshopVo> bikeshopList() {
 		ArrayList<RentalshopVo> slist = asm.bikeshopList(); 
 		return slist;
+	}
+	//자전거 삭제
+	@Override
+	public void deleteBikeDelete(int bkidx) {
+		asm.deleteBikeDelete(bkidx);
+		
 	} 
 
 

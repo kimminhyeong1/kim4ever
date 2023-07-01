@@ -177,7 +177,13 @@ public class AdminController {
 			int value = as.bikeInsert(bikeCode, bikeType, bikeLocation);
 				
 			return "redirect:/admin/adminbikeList.do";	
-			}	
+			}
+	//자전거 삭제
+		@RequestMapping(value="/adminBikeDelete.do")
+		public String adminBikeDelete(@RequestParam("bkidx") int bkidx) {
+			as.deleteBikeDelete(bkidx);
+			return "redirect:/admin/adminbikeList.do"; 
+		}
 		
 		
 	// 자전거 관리 페이지

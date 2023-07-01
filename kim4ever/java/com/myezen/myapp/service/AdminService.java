@@ -56,6 +56,8 @@ public interface AdminService {
 		public ArrayList<RentalshopVo> bikeshopList();  
 	//자전거 추가 등록
 		public int bikeInsert(String bikeCode, String bikeType, String bikeLocation);
+	//자전거 삭제
+		public void deleteBikeDelete(int bkidx);
 	//자전거 코드번호 중복 체크
 		public int bikeCodeCheck(String bikeCode);	
 	//대여소 리스트
