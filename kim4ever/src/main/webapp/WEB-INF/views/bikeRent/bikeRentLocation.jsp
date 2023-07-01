@@ -39,20 +39,20 @@
 			#main #content{width:auto; height:auto;text-align:center;}
 			#main #bottom{width:auto; height:10px;}
 			#main #content #map{margin-top:10px; width:200px; height:200px; margin-right:50px;}
-			#main #content table {border-collapse: collapse; margin:20px auto; width:90%; background-color:white; box-shadow:0px 0px 10px rgba(0, 0, 0, 0.1); line-height:11px; font-size:11px;  font-family: 'omyu_pretty'; }
-			#main #content table th {padding: 3px;text-align:center; border-bottom: 1px solid #ddd;background-color: #ff9833; width:45px; line-height:12px;}
+			#main #content table {border-collapse: collapse; margin:10px auto; width:90%; background-color:white; box-shadow:0px 0px 10px rgba(0, 0, 0, 0.1); line-height:11px; font-size:12px;  font-family: 'omyu_pretty'; word-break: keep-all;}
+			#main #content table th {padding: 3px;text-align:center; border-bottom: 1px solid #ddd;background-color: #ff9833; width:45px; line-height:12px; font-size:14px;}
 			#main #content table td:nth-child(1){padding: 5px; text-align:center; border-bottom:1px solid #ddd;}
 			#main #content table td:nth-child(2){padding: 5px; text-align:left; border-bottom:1px solid #ddd;}
 			
-			#main #content h1 {font-size:15px; text-align:center; color:#333; margin-top:20px; margin-bottom:10px;  font-weight:bold; letter-spacing:-1px; text-shadow:1px 1px #fff; background-color:#fff; border:none;padding-bottom:10px;}
-			#main #content h2{font-size:15px; margin-top:20px; }
+			#main #content h1 {font-size:25px; text-align:center; color:#333; margin-top:20px; margin-bottom:10px;  font-weight:bold; letter-spacing:-1px; text-shadow:1px 1px #fff; background-color:#fff; border:none;padding-bottom:10px;}
+			#main #content h2{font-size:18px; margin-top:20px; }
 #main #content #map{width:80%;height:40vh; margin-left:10%;}
 			/*마커 폰트 변경*/
 			/*마커 글씨 크기 변경*/
 			.rs1{font-size:13px; margin-left:3px; font-family:'omyu_pretty'; padding-top:2px;}
 			.rs2{font-size:13px; margin-left:2px; font-family:'omyu_pretty';}
 .infowindow {display: block;  background:#238CFA;  color: #fff;  text-align: center;  width: 70px; height: 30px;  line-height:22px;  border-radius:4px; margin:0; line-height:10px;}
-
+.infowindow {padding-top:5px}
 }
 		</style>
 	</head>

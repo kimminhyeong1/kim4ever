@@ -16,9 +16,9 @@
 #main{width:100%; margin:0 auto;}
 #main #content{width:auto;}
 #main #bottom{width:auto; height:100px;justify-content:center; align-items:center; margin-bottom:2%;}
-#main #bottom h2{ font-size:15px;}
+#main #bottom h2{ font-size:20px;}
 #main #bottom table {width: 80%; border-collapse: collapse;  margin: 10px auto 0; font-family: 'omyu_pretty'; font-size:12px;}
-#main #bottom table th{width:100px;padding: 2px;text-align: center; background-color: #ff9833;}
+#main #bottom table th{width:100px;padding: 2px;text-align: center; font-size:14px;}
 #main #bottom table td{padding: 2px; text-align:center;border-bottom:1px solid #CCCCCC;}
 }
 

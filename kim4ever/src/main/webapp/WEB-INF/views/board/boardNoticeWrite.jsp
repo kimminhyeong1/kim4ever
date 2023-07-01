@@ -37,7 +37,7 @@ li{list-style:none;}
 #main{width:1440px; margin:35px auto 70px; text-align:center;}
 #main #content{width:1440px; height:auto;}
 #main #bottom{width:1440px; height:300px;}
-#main #content h2{text-align:left; margin-top:50px; margin-left:160px; font-family: 'GangwonEdu_OTFBoldA'; font-size:25px;}
+#main #content h2{text-align:left; margin-top:50px; margin-left:160px;  font-size:25px;}
 #content table {width:80%; border-collapse:collapse; margin: 60px auto 0; line-height:30px; font-size:24px; font-family: 'omyu_pretty';}
 #content table th{width:140px;padding: 10px;text-align: center;}
 #content table td{padding: 10px; text-align:left; border-left:1px solid #ddd;}
@@ -68,7 +68,7 @@ li{list-style:none;}
 #content table tr th {width:50px; text-align:center;  }
 #content table td { white-space: pre-line;}
 #content #btn{text-align:right; margin-top:20px; margin-right:10%; }
-#content #btn button{width:50px; height:25px; margin:0 auto; text-align:center; font-family: 'omyu_pretty'; font-size:14px; }
+#content #btn button{width:60px; height:30px; margin:0 auto; text-align:center; font-family: 'omyu_pretty'; font-size:15px; border-radius:20px; border:0px solid #ff9933; background:#ff9933; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
 .maintext{height: 200px; width: auto; text-align:left;}
 
 </style>

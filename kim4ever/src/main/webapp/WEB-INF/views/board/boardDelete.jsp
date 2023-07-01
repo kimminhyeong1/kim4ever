@@ -61,9 +61,9 @@ li{list-style:none;}
 @media (min-width: 300px) and (max-width: 940px)  {
 #main{width:400px; margin:35px auto 70px; text-align:center;}
 #main #content{width:100%; height:auto;}
-#main #content h2{text-align:left; margin-top:50px; margin-left:160px; font-size:20px;}
+#main #content h2{text-align:left; font-size:25px; margin:40px;}
 #main #bottom{width:auto; height:300px;}
-#content table {width:250px; border-collapse:collapse; margin: 60px auto 0; line-height:30px; font-size:24px; font-family: 'omyu_pretty';}
+#content table {width:250px; border-collapse:collapse; margin: 60px auto 0; line-height:30px; font-size:18px; font-family: 'omyu_pretty';}
 #content table th{width:140px;padding: 10px;text-align: center;}
 #content table td{padding: 10px; text-align:left;}
 #content table tr{border:1px solid #ddd;}
@@ -76,7 +76,7 @@ li{list-style:none;}
 
 }
 #btn{text-align:right; margin-top:20px; margin-right:19%; }
-#btn button{width:80px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px;}
+#btn button{width:80px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:15px;}
 
 
 }

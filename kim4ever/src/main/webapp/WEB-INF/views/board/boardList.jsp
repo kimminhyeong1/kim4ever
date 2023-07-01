@@ -84,8 +84,8 @@ li{list-style:none;}
 #content table th{padding: 10px;text-align: center;}
 #content table td{padding: 5px; text-align:center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 #content #btn{text-align:right; margin-top:20px; margin-right:5%; }
-#content #btn button{width:50px; height:25px; text-align:center; font-family: 'omyu_pretty'; font-size:12px;  border-radius:20px; border:0px solid #ff9933; }
-#content #btn button:active { box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+#content #btn button{width:60px; height:30px; text-align:center; font-family: 'omyu_pretty'; font-size:15px;  border-radius:20px; border:0px solid #ff9933; }
+
 .cell-content {width: 25vw; overflow: hidden; text-overflow: ellipsis;}
 
 
@@ -94,7 +94,7 @@ li{list-style:none;}
 .tab__contents {display:none;}
 .show {display: block;} 
 .tab__list{margin-top:3%;}
-.tab__list li{ display: inline-block; border: none; background-color: #f8f8f8; padding: 5px 7px; cursor: pointer;  font-family: 'omyu_pretty'; font-size:12px; border-radius:20px; margin-top:10px;0.4);}
+.tab__list li{ display: inline-block; border: none; background-color: #f8f8f8; padding: 5px 7px; cursor: pointer;  font-family: 'omyu_pretty'; font-size:15px; border-radius:20px; margin-top:10px;0.4);}
 .tab__list__item.active {background-color:#ff9933; color:#fff; border:none ;}
 
  a {color: inherit; text-decoration: none;}

@@ -34,15 +34,16 @@ ArrayList<BikeJoinVo> bikeList = (ArrayList<BikeJoinVo>)request.getAttribute("bi
 /**********************모바일****************/
 @media (min-width: 300px) and (max-width: 940px)  {
 /*소개부분*/
-			#bikeIntro{margin:0 auto; margin-top: 10px; width:320px; background-color:#fdfcfa; border-radius:20px; padding:10px; margin-bottom:30px; border: 1px solid #bbb;} 
-			#bikeIntro h2{text-align:center; font-size:15px; color:#333; margin-bottom: 20px;}
-			#bikeIntro p{font-family:'omyu_pretty'; text-align:left; margin-left:10px; font-size:10px; padding:5px 5px; letter-spacing:3px;}
+			#bikeIntro{margin:0 auto; margin-top: 20px; width:320px; background-color:#fdfcfa; border-radius:20px; padding:10px; margin-bottom:30px; border: 1px solid #bbb;} 
+			#bikeIntro h2{text-align:center; font-size:25px; color:#333; margin-bottom: 20px;}
+			#bikeIntro p{font-family:'omyu_pretty'; text-align:left; margin-left:10px; font-size:12px; padding:5px 5px; letter-spacing:3px; word-break: keep-all;}
 			#bikeNotice{text-align:center;}
-			#bikeNotice button{width:200px; height:30px; border-radius:10px; border:0px solid #ff9933; font-family:'omyu_pretty'; font-size:14px; background:#ff9933; margin-top:10px;}
-			#bikeNotice p{margin:20px; font-size:10px; }
+			#bikeNotice button{width:200px; height:40px; border:0px solid #ff9933; font-family:'omyu_pretty'; font-size:18px; background:#ff9933; margin-top:10px;}
+			#bikeNotice p{margin:20px; font-size:12px;  }
 			.cardInfo {height:33px; }			
 			#bcontent .deleteBtn {display:none; position: absolute;top:0;right:0;width:30px;height:20px;background-color:#ff0000;color:#fff;font-size:20px;border:none;border-radius:50%;cursor:pointer;}
 			#bcontent .card:hover .deleteBtn {display:block;}
+			.card{ word-break: keep-all;}
 }
 
 
@@ -65,7 +66,7 @@ ArrayList<BikeJoinVo> bikeList = (ArrayList<BikeJoinVo>)request.getAttribute("bi
 			<section id="container">
 			<div id="bikeIntro">
 			 <h2>자전거 이용 수칙</h2>
-	           <p>1. 자전거 이용시간은 오전9시부터 오후10시까지입니다.</p>
+	           <p>1. 자전거 이용시간은 오전9시부터 오후 10시까지 입니다.</p>
 	           <p>2. 자전거 이용 시 안전수칙을 준수하시고 음주 시 이용이 불가합니다. </p>
 	           <p>3. 대여는 5개의 대여소에서 가능하며, 반납은 빌린곳과 무관하게 <br>&nbsp&nbsp&nbsp어느 대여소에서든 가능합니다.</p>
 	           <p>4. 자전거 고장/신고 문의는 대여내역에서 신고 접수 부탁드립니다! </p>

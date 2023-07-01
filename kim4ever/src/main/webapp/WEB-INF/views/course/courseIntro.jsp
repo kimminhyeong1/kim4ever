@@ -60,15 +60,15 @@ li{list-style:none;}
 	@media (min-width: 300px) and (max-width: 940px)  {	
 	#main{width:auto; margin:0 auto; text-align:center; }
 #main #content{width:auto; height:auto;}
-#main #content img{width:80%; height:auto; margin-top:20px; border-radius:10px;}
+#main #content img{width:80%; height:auto; margin-top:20px;}
 #main #bottom{width:auto; height:10px; }
-#main #content h1 {font-size: 15px; text-align: center; color: #333; margin-top: 15px; margin-bottom: 20px;  letter-spacing: -1px; text-shadow: 1px 1px #fff; background-color: #fff; border: none; padding-bottom: 10px;}
-#courseList a{font-family: 'omyu_pretty';     width: 60px; font-size: 15px; display: inline-block; padding: 4px 0px; background-color: #f0f0f0; border-radius: 5px; margin: 10px 1px 0 0; color: #333; text-decoration: none;}
+#main #content h1 {font-size: 25px; text-align: center; color: #333; margin-top: 20px; margin-bottom: 20px;  letter-spacing: -1px;  border: none; padding-bottom: 10px;}
+#courseList a{font-family: 'omyu_pretty';     width: 60px; font-size: 15px; display: inline-block; padding: 4px 0px;   margin: 10px 1px 0 0;  text-decoration: none;}
 /*active 가상 클래스 선택자 사용했음*/
 
 
 #course{width: 100%; height:600px ; margin-top:20px;border: none;}
-#main #content h1{margin-top:15px; text-align:center; margin-bottom:0px;}
+#main #content h1{margin-top:20px; text-align:center; margin-bottom:0px;}
 	}
 </style>
 
