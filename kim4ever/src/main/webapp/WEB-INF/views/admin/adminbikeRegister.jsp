@@ -83,6 +83,7 @@
 		input{
 			
 			}
+		.bikeCode{display: none;}
 		</style>
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 		<script type="text/javascript">
@@ -120,9 +121,9 @@
 	  					</tr>
 	  					<tr>
 							<td>
-								<select name="bikeCode">
+								<select name="bikeCode" class="bikeCode">
 									<c:forEach var="b" items="${blist}">
-										<option value="${b.bikeCode}">${b.bikeCode}</option>
+										<option class="bikeCode" value="${b.bikeCode}">${b.bikeCode}</option>
 									</c:forEach>	
 								</select>
 							</td>
@@ -150,7 +151,7 @@
 						</tr>
 						<tr>
 							<td>
-								<input type="number" name="cnt">
+								<input type="number" name="cnt" value="1">
 							</td>
 						</tr>
 						<tr>
@@ -200,7 +201,6 @@
 			</div> 
 		</form>
 		</div>
-		<div id="bottom"></div>
 	</main>
 	</body>
 	<%@include file="../footer.jsp" %>
