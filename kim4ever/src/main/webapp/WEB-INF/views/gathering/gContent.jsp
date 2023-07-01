@@ -34,11 +34,11 @@
 			#gThumbnail{vertical-align: top;margin-left:20px; display: inline-block; width: 780px; height: 500px; border: 1px solid #bbb;background-color: #fbfdfa;border-radius: 20px; float:right;}
 			#gThumbnail>div>div:nth-child(1){font-size: 20px;font-weight: bold;margin 0 auto;}
 			/* 슬라이더 1 시작 */
-			.slider-1 {height:470px;position:relative; margin: 15px auto; width: 750px;}
+			.slider-1 {height:100%;position:relative; margin:0 auto; width: 100%;}
 			/* 슬라이더 1 - 페이지 버튼 */
 			.slider-1 > .page-btns {text-align:center; position:absolute; bottom:20px; left:0; width:100%;}
 			
-			.slider-1 > .page-btns > div {width:50px; height:6px; background-color:#05d100; border-radius:4px;   
+			.slider-1 > .page-btns > div {width:50px; height:6px; background-color:#ffff; border-radius:4px;   
 			 display:inline-block; cursor:pointer; border: none;}
 			.slider-1 > .page-btns > div.active {background-color:#05d100; border: none;}
 			/* 1 - 슬라이드 */
@@ -96,43 +96,23 @@
 		 	.gContainer{border: 1px solid #0000; padding-top:5%;}
 		 	#main{width:auto; height:auto; }
 		 	/*모임슬라이더부분*/
-			#gThumbnail{vertical-align: top; width: 62%; height:99%; margin-left:0px; margin-top: 0px; position: absolute;}
+			#gThumbnail{vertical-align: top; width: 62%; height:99%; margin-left:1%; margin-top: 0px; position: absolute;}
 			#gThumbnail>div>div:nth-child(1){font-size: 20px;font-weight: bold; margin 0 auto;}
 			
 		 	/*모임이름부분*/
 		 	#gIntro_gThumbnail{text-align:left; position: relative; overflow:hidden;}
 			#gIntro{display: inline-block; width: 37%; height: auto;  margin: 0 auto;}
-			#gIntro>div:nth-child(1){font-size: 20px;  display: inline-block;}
+			#gIntro>div:nth-child(1){font-size: 20px;  display: inline-block; margin:10px; margin-bottom:0px;}
 			#gIntro>div:nth-child(2){font-size: 15px; width: 150px; display: inline-block; margin-left: 70%;}
-			#gIntro>div:nth-child(3){width: 90%; height: 50%; margin: 0 auto; border: 0px solid #bbb;}
-			#gIntro>div:nth-child(3)>img{width: 100%; height: 100%;}
-			#gIntro>div:nth-child(4){font-size: 20px; width: 90%; height: 4%; margin: 10px;}
-			#gIntro>div:nth-child(5){width: 90%; height: 13%; margin: 10px;}
-			
-				/* 슬라이더 1 시작 */
-						/* 슬라이더 1 시작 */
-			/* 슬라이더 1 시작 */
-			.slider-1 { height: 100%; width:90%; position:relative; float:left; min-height:200px; background-size: contain;}
-			/* 슬라이더 1 - 페이지 버튼 */
-			.slider-1 > .page-btns {text-align:center; position:absolute; bottom:10px; left:0; width:100%;}
-			
-			.slider-1 > .page-btns > div {width:10px; height:3px; background-color:rgb(255,255,255); border-radius:4px;   
-			 display:inline-block; cursor:pointer; border: none; top:1}
-			.slider-1 > .page-btns > div.active {background-color:rgb(255, 160, 0); border: none;}
-			/* 1 - 슬라이드 */
-			.slider-1 > .slides > div {position:absolute; top:0; left:0; right:0; bottom:0; opacity:0; transition:opacity 1.5s;
-			background-position:center; background-size:cover; background-repeat:no-repeat; border-radius:20px;  }
-			.slider-1 > .slides > div.active {opacity:1;}
-			/*  좌우 버튼 */
-			.slider-1 > .side-btns > div {position:absolute; top:0; left:0; width:25%;
-			height:100%; cursor:pointer; color:white;}
-			.slider-1 > .side-btns > div:last-child {left:auto; right:0;}
-			.slider-1 >.side-btns > div > span {position:absolute;top:30%;left:20px;transform:translatey(-10%);
-			opacity:1;padding:5px; border-radius:50px;font-size:20px;}
-			.slider-1 >.side-btns > div:last-child > span {left:auto;right:30px; }
+			#gIntro>div:nth-child(3){width: 70%; height: 50%; margin: 0 auto; border: 0px solid #bbb;}
+			#gIntro>div:nth-child(3)>img{width: 100%; height: 80%;  text-align: center;}
+			#gIntro>div:nth-child(4){font-size: 18px; width: 90%;  margin: 5px;}
+			#gIntro>div:nth-child(5){width: 90%; height: 13%; margin: 5px; font-size:15px;}
+	
+		
 			/*모임멤버부분*/
-			#gMembers{margin-top:10px; width: 100%; height: 130px;  text-align: left;}
-			#gMembers>div:nth-child(1){font-size: 20px;font-weight: bold;margin-top: 0px;margin-left: 0px;}
+			#gMembers{margin-top:10px; width: 100%; height: 110px;  text-align: left;}
+			#gMembers>div:nth-child(1){font-size: 20px;margin-top: 5px;margin-left: 10px;}
 			#gMembers>div:nth-child(1)>span{color: #f00;} 
 			#gMembers>div:nth-child(2){width: 80%; display: inline-block;margin: 10px 20px;}
 			#gMembers>div:nth-child(2)>div{width: 60px; height: 60px;display: inline-block; margin-left: 20px; vertical-align: bottom;}
@@ -142,27 +122,38 @@
 			#gMembers>div:nth-child(4){width: 7%; display: inline-block;vertical-align: top; margin-top: 20px; margin-left: 10px;}
 			/*모임일정부분*/
 			#gSchedule{margin-top:10px;width: 100%; height: auto; text-align: left;}
-			#gSchedule>div:nth-child(1){font-size: 20px;font-weight: bold;margin-top: 15px;margin-left: 20px;} 
+			#gSchedule>div:nth-child(1){font-size: 20px; margin-top: 15px;margin-left: 20px;} 
 			#calendar {margin: 20px 20px;}
 			#gSchedule>div:nth-child(3){text-align: right;margin-right: 20px;}
-			#gSchedule>div:nth-child(3)>button{width: 150px; height: 50px;}
+			#gSchedule>div:nth-child(3)>button{width: 100px; height: 30px;}
 			/*모임공지사항부분*/
 			#gNotice{margin-top:0px;width: 100%;}
-			
-			
+			/* 슬라이더*/
+			.slider-1 > .page-btns > div {width: 20px; height: 6px;  background-color: #ffffff; border-radius: 4px; display: inline-block; cursor: pointer; border: none;}
+			.slider-1 >.side-btns > div > span {position: absolute; top: 40%; left: 20px; transform: translatey(-10%); opacity: 1; padding: 5px;    border-radius: 50px; font-size: 50px;}
 			/*공지사항부분*/
 			.gNotice{text-align: left; font-size: 20px; margin: 0 30px;}
-			.gNotice>div>div{display: inline-block; font-size: 25px;}
+			.gNotice>div>div{display: inline-block; font-size: 20px;}
 			.gNotice>div>div:nth-child(1){ margin-right: 20px;}
 			.gNotice>div:nth-child(2){padding-bottom: 10px; margin-top: 10px; }/* 끝나는바*/
 			/*모임기타버튼부분*/
 			#gReportExit{margin-top:30px;width: 100%; height: 40px; text-align: right; margin-bottom:30px; margin-top:2px;}
-			#gReportExit>button{margin-top: 0px;margin-left: 10px;margin-right: 20px;width: 132px;height: 40px;font-size: 25px;}
+			#gReportExit>button{margin-top: 0px;margin-left: 10px;margin-right: 20px;width: 100px;height: 30px;font-size: 18px;}
 			
 			#calendar{min-height:450px;}
 			.gbox{width:200px}
 			.gBtn{position: relative; bottom:100px; margin-top:14px;  left: 235%;}
 			}
+						/*캘린더*/
+			.fc-daygrid-event {white-space: break-spaces;}
+			.gBtn {margin-top: 12px;}
+		.fc .fc-button-primary {background:#05d100; border-color:white;font-size:15px; border-radius:20px;} /*달력*/
+		.fc .fc-button-primary:disabled{background:#05d100; border-color:white;font-size:15px }
+		.fc .fc-toolbar-title {font-size:20px; font-weight:normal; margin-left:40px;}
+		.fc .fc-scrollgrid {font-size: 15px;}
+			/*#empty*/
+			#empty{line-height: 100px;font-size: 20px;text-align: left;margin-left: 20px;}
+		
 			
 		 </style>
 
@@ -244,7 +235,6 @@
 					<div>${gjvlist[0].gInfoAreaIntroduction} </div>
 				</div>
 				<div id="gThumbnail">
-					<div>
 						<div class="slider-1">
 						    <div class="slides">
 						    	<c:set var="GImages" value="${gjvlist}" />
@@ -265,7 +255,6 @@
 							            <span><i class="fas fa-angle-right"></i></span>
 							        </div>
 							    </div>
-							</div>
 					</div>
 				</div>
 			</div>
