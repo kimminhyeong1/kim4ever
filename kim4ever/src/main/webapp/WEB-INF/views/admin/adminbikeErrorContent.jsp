@@ -51,7 +51,7 @@ h2{text-align: center; margin-top:20px;}
 #content table tr:last-child td input{display: inline-block; width:120px; height:50px;}
 #content table button{width:160px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
-
+#content table img{width:100%; height:auto;}
 
 </style>
 
@@ -109,7 +109,7 @@ h2{text-align: center; margin-top:20px;}
 				<tr>
 					<th>고장 사진</th>
 					<td>
-					<img src="D:\dev1230\spring-workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\kim4ever\resources\bikeError/${ejv.errorImage}">
+					<img src="${pageContext.request.contextPath}/resources/bikeError/${ejv.errorImage}">
 					</td>
 				</tr>
 				<tr>
