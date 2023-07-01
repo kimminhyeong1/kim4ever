@@ -43,7 +43,7 @@
 		#content table {width:60%;border-collapse:collapse;  margin:10px auto 0; text-align:center;  line-height:0px; font-family:'omyu_pretty'; font-size:21px;}
 		#content table th{width:150px; text-align:center;  padding:8px;}   
 		#content table td{padding:8px;text-align:left;line-height: 30px;}  
-		#content table td:nth-child(1){width:120px;text-align:center;}
+		#content table td:nth-child(1){width:100%;text-align:center;font-size: 24px;}
 		#content table td:nth-child(2){width:400px; text-align:left;}
 		#content table td:nth-child(3){width:100px; border:0;}
 		#content table tr:last-child td{text-align:center;}
@@ -83,6 +83,7 @@
 		input{
 			
 			}
+		.bikeCode{display: none;}
 		</style>
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 		<script type="text/javascript">
@@ -120,15 +121,16 @@
 	  					</tr>
 	  					<tr>
 							<td>
-								<select name="bikeCode">
+								<select name="bikeCode" class="bikeCode">
 									<c:forEach var="b" items="${blist}">
-										<option value="${b.bikeCode}">${b.bikeCode}</option>
+										<option class="bikeCode" value="${b.bikeCode}">${b.bikeCode}</option>
 									</c:forEach>	
 								</select>
 							</td>
 						</tr>
 						
 						<tr>
+							<td>자전거 종류</td>
 							<td>
 								<select name="bikeType">
 									<c:forEach var="b" items="${blist}">
@@ -140,6 +142,7 @@
 						
 						
 						<tr>
+							<td>대여소 종류</td>
 							<td>
 								<select name="bikeLocation">
 								<c:forEach var="s" items="${slist}">
@@ -149,8 +152,9 @@
 							</td>
 						</tr>
 						<tr>
+							<td>갯수</td>
 							<td>
-								<input type="number" name="cnt">
+								<input type="number" name="cnt" value="1">
 							</td>
 						</tr>
 						<tr>
@@ -161,10 +165,45 @@
 					</tbody>
 				</table>
 				
+<script>
+  var bikeTypeSelect = document.querySelector('select[name="bikeType"]');
+  var bikeCodeSelect = document.querySelector('select[name="bikeCode"]');
+  var previousSelectedIndex = bikeTypeSelect.selectedIndex;
+
+  // 첫 번째 옵션 선택
+  bikeTypeSelect.value = bikeTypeSelect.options[0].value;
+  bikeCodeSelect.value = bikeCodeSelect.options[0].value;
+
+  bikeTypeSelect.addEventListener('change', function() {
+    var selectedIndex = this.selectedIndex;
+    bikeCodeSelect.selectedIndex = selectedIndex;
+
+    var selectedOption = this.options[selectedIndex];
+    var bikeType = selectedOption.value;
+    var bikeCode = bikeCodeSelect.options[selectedIndex].value;
+
+    if (selectedIndex !== previousSelectedIndex) {
+      console.log("Selected bikeType: " + bikeType);
+      console.log("Selected bikeCode: " + bikeCode);
+      previousSelectedIndex = selectedIndex;
+    }
+  });
+
+  // 첫 번째 옵션의 값을 콘솔에 출력
+  console.log("First bikeType: " + bikeTypeSelect.value);
+  console.log("First bikeCode: " + bikeCodeSelect.value);
+
+  // 두 번째 옵션부터 마지막 옵션까지의 값을 콘솔에 출력
+  for (var i = 1; i < bikeTypeSelect.options.length; i++) {
+    var bikeCode = bikeCodeSelect.options[i].value;
+    console.log("BikeCode at index " + i + ": " + bikeCode);
+  }
+</script>
+				
+				
 			</div> 
 		</form>
 		</div>
-		<div id="bottom"></div>
 	</main>
 	</body>
 	<%@include file="../footer.jsp" %>

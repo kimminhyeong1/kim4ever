@@ -67,7 +67,13 @@ li{list-style:none;}
 
 
 </style>
-
+<script type="text/javascript">
+	function Delete(bkidx) {
+		if(confirm(bkidx + " 자전거를 삭제하시겠습니까?")) {
+			location.href='${pageContext.request.contextPath}/admin/adminBikeDelete.do?bkidx='+bkidx;
+		}
+	}
+</script>
 </head>
 
 <body>
@@ -96,6 +102,7 @@ li{list-style:none;}
 				<th>종류</th>
 				<th>위치</th>
 				<th>상태</th>
+				<th></th>
 			</tr>
 	
 		<c:forEach var="kv" items="${klist}">
@@ -116,6 +123,7 @@ li{list-style:none;}
 								</c:when>
 				</c:choose>				
 				</td>
+				<td><button type="button" id="Delbtn"onclick="Delete('${kv.bkidx}');">삭제</button></td>
 			</tr>
 		</c:forEach>		
 		</table>

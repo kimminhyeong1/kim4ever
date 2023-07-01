@@ -171,13 +171,20 @@ public class AdminController {
 		public String adminbikeRegisterAction(
 			@RequestParam("bikeCode") String bikeCode,// 자전거 고유 번호
 			@RequestParam("bikeType") String bikeType,//자전거 종류
-			@RequestParam("bikeLocation") String bikeLocation //대여소 위치
-
+			@RequestParam("bikeLocation") String bikeLocation, //대여소 위치
+			@RequestParam("cnt") int cnt //대여소 위치
 			) {
-			int value = as.bikeInsert(bikeCode, bikeType, bikeLocation);
+			System.out.println("!고유번호: "+bikeCode+"!자전거 종류: "+bikeType+"!대여소: "+bikeLocation+"!갯수: "+cnt);
+			int value = as.bikeInsert(bikeCode, bikeType, bikeLocation,cnt);
 				
 			return "redirect:/admin/adminbikeList.do";	
-			}	
+			}
+	//자전거 삭제
+		@RequestMapping(value="/adminBikeDelete.do")
+		public String adminBikeDelete(@RequestParam("bkidx") int bkidx) {
+			as.deleteBikeDelete(bkidx);
+			return "redirect:/admin/adminbikeList.do"; 
+		}
 		
 		
 	// 자전거 관리 페이지

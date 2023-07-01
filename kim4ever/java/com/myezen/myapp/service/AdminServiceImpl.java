@@ -275,11 +275,16 @@ public class AdminServiceImpl implements AdminService {
 	//자전거 추가 등록
 	@Override
 	@Transactional
-	public int bikeInsert(String bikeCode, String bikeType, String bikeLocation) {
+	public int bikeInsert(String bikeCode, String bikeType, String bikeLocation,int cnt) {
+		int value =0;
+		
+		for (int i = 0; i < cnt; i++) {
 		int maxbikecode =asm.maxBikeCode(bikeCode);
 		maxbikecode += 1;
 		String stringMaxBikeCode = String.valueOf(maxbikecode);
-		int value = asm.bikeInsert(bikeCode,stringMaxBikeCode, bikeType, bikeLocation);
+		value = asm.bikeInsert(bikeCode,stringMaxBikeCode, bikeType, bikeLocation);
+		}
+		
 		return value;
 	}
 	
@@ -300,6 +305,12 @@ public class AdminServiceImpl implements AdminService {
 	public ArrayList<RentalshopVo> bikeshopList() {
 		ArrayList<RentalshopVo> slist = asm.bikeshopList(); 
 		return slist;
+	}
+	//자전거 삭제
+	@Override
+	public void deleteBikeDelete(int bkidx) {
+		asm.deleteBikeDelete(bkidx);
+		
 	} 
 
 

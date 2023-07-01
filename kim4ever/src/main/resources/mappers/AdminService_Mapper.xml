@@ -343,7 +343,7 @@ WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPag
 	<select id="bikeList" resultType="com.myezen.myapp.domain.BikeJoinVo" parameterType="com.myezen.myapp.domain.SearchCriteria">
 	SELECT *
 	FROM (
-	  SELECT bikeCode, bikeType, bikeLocation, bikeState,
+	  SELECT bkidx,bikeCode, bikeType, bikeLocation, bikeState,
 	            ROW_NUMBER() OVER (ORDER BY bikeState ASC, LENGTH(bikeCode), bikeCode) AS row_num
 	  FROM bike1234
 	   WHERE 1=1
@@ -575,6 +575,10 @@ WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPag
 		INSERT INTO BIKE1234 (bikeCode, bikeType, bikeLocation,bikeState)
 		VALUES (CONCAT(#{0},#{1}), #{2}, #{3},'Y' )
 	</insert>
+	<!-- 자전거 삭제 -->
+	<delete id="deleteBikeDelete" parameterType="int"> 	
+		delete from bike1234 WHERE bkidx=#{bkidx}
+	</delete>
 	
 		<!-- 자전거 등록 페이지 이름 중복체크-->
 	<select id="bikeCodeCheck" parameterType="String" resultType="int">
