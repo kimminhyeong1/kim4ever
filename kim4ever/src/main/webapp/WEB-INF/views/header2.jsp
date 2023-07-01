@@ -18,7 +18,7 @@ button{cursor:pointer;}
 #top_logo .login {display:flex;justify-content:flex-end;float:right;}
 #top_logo .login ul {display:flex;list-style:none;margin:0;padding:0;}
 #top_logo .login li {margin-left:20px;  font-size:21px;}
-#top_logo .login a {width:90px; display:block;padding:9px 10px;background-color: #05d100;color:#fff;border-radius:20px;text-decoration:none;transition:background-color 0.3s ease;}
+#top_logo .login a {width:95px; display:block;padding:9px 10px;background-color: #05d100;color:#fff;border-radius:20px;text-decoration:none;transition:background-color 0.3s ease;}
 #top_logo .login a:hover {background-color: #2bd727b5;}
 
 /*사이드바*/
@@ -81,7 +81,7 @@ button{cursor:pointer;}
 .toggle--checkbox:checked + .toggle--label:before {background: var(--white);border-color: var(--gray-border);animation-name: switch;animation-duration: 350ms;animation-fill-mode: forwards;}
 .toggle--checkbox:checked + .toggle--label:after {transition-delay: 350ms;opacity: 1;}
 .toggle--label {width: 110px;height: 40px;right:25px; margin-top:10px; background: var(--blue-color);border-radius: 100px;display: flex;position: relative;transition: all 350ms ease-in;}
-.toggle--label:before {animation-name: reverse;animation-duration: 350ms;animation-fill-mode: forwards;transition: all 350ms ease-in;content: "";width: 40px;height: 25px;border: 3px solid var(--yellow-border);top: 4px;left: 4px;position: absolute;border-radius: 82px;background: var(--yellow-background);}
+.toggle--label:before {animation-name: reverse;animation-duration: 350ms;animation-fill-mode: forwards;transition: all 350ms ease-in;content: "";width: 40px;height: 25px;border: 3px solid var(--yellow-border);top: 5px;left: 4px;position: absolute;border-radius: 82px;background: var(--yellow-background);}
 .toggle--label:after {transition-delay: 0ms;transition: all 250ms ease-in;position: absolute;content: "";box-shadow: var(--gray-dots) -13px 0 0 2px, var(--gray-dots) -24px 14px 0 -2px;left: 143px;top: 23px;width: 10px;height: 10px;background: transparent;border-radius: 50%;opacity: 0;}
 @keyframes switch {
   0% {left: 55px;}
@@ -93,6 +93,9 @@ button{cursor:pointer;}
   60% {left: 55px;width: 40px;}
   100% {left: 55px;}
 }
+
+.icon-text{display: flex; width:100%;  justify-content: center; align-items: center; font-size: 21px; color: white;}
+
  
 /****************************모바일**************************/
 @media (min-width: 300px) and (max-width: 940px)  {
@@ -104,7 +107,7 @@ header{width:auto;margin:0 auto; overflow-x: hidden; overflow-y: hidden;}
 #top_logo .login {display:flex;justify-content:flex-end;float:right; margin-right:3%}
 #top_logo .login ul {display:flex;list-style:none;margin-top:-5px; padding:0;   flex-direction: column; margin-bottom:5px;}
 #top_logo .login li {margin-left:5px; font-size:10px;}
-#top_logo .login a {display:block;padding:3px 5px;margin-top:5px; ;border-radius:20px;text-decoration:none;transition:background-color 0.3s ease; }
+#top_logo .login a {width: 50px; display:block;padding:3px 5px;margin-top:5px; ;border-radius:20px;text-decoration:none;transition:background-color 0.3s ease; }
 
 /*사이드바*/
 .top-menu img {width: 30px; height:auto; float:left; margin-left:3%}
@@ -221,6 +224,9 @@ header{width:auto;margin:0 auto; overflow-x: hidden; overflow-y: hidden;}
   	      	<input type="checkbox" id="toggle" class="toggle--checkbox"> 
 		    <label for="toggle" class="toggle--label">
 		    <span class="toggle--label-background"></span>
+		    <span class="icon-text">모임&nbsp;&nbsp;&nbsp;대여</span>
+		    
+		    
 		    </label>
 		    <div class="background"></div>
 		 </div>
