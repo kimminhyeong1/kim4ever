@@ -161,6 +161,42 @@
 					</tbody>
 				</table>
 				
+<script>
+  var bikeTypeSelect = document.querySelector('select[name="bikeType"]');
+  var bikeCodeSelect = document.querySelector('select[name="bikeCode"]');
+  var previousSelectedIndex = bikeTypeSelect.selectedIndex;
+
+  // 첫 번째 옵션 선택
+  bikeTypeSelect.value = bikeTypeSelect.options[0].value;
+  bikeCodeSelect.value = bikeCodeSelect.options[0].value;
+
+  bikeTypeSelect.addEventListener('change', function() {
+    var selectedIndex = this.selectedIndex;
+    bikeCodeSelect.selectedIndex = selectedIndex;
+
+    var selectedOption = this.options[selectedIndex];
+    var bikeType = selectedOption.value;
+    var bikeCode = bikeCodeSelect.options[selectedIndex].value;
+
+    if (selectedIndex !== previousSelectedIndex) {
+      console.log("Selected bikeType: " + bikeType);
+      console.log("Selected bikeCode: " + bikeCode);
+      previousSelectedIndex = selectedIndex;
+    }
+  });
+
+  // 첫 번째 옵션의 값을 콘솔에 출력
+  console.log("First bikeType: " + bikeTypeSelect.value);
+  console.log("First bikeCode: " + bikeCodeSelect.value);
+
+  // 두 번째 옵션부터 마지막 옵션까지의 값을 콘솔에 출력
+  for (var i = 1; i < bikeTypeSelect.options.length; i++) {
+    var bikeCode = bikeCodeSelect.options[i].value;
+    console.log("BikeCode at index " + i + ": " + bikeCode);
+  }
+</script>
+				
+				
 			</div> 
 		</form>
 		</div>
