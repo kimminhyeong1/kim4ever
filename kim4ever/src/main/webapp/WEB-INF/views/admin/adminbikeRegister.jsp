@@ -43,7 +43,7 @@
 		#content table {width:60%;border-collapse:collapse;  margin:10px auto 0; text-align:center;  line-height:0px; font-family:'omyu_pretty'; font-size:21px;}
 		#content table th{width:150px; text-align:center;  padding:8px;}   
 		#content table td{padding:8px;text-align:left;line-height: 30px;}  
-		#content table td:nth-child(1){width:120px;text-align:center;}
+		#content table td:nth-child(1){width:100%;text-align:center;font-size: 24px;}
 		#content table td:nth-child(2){width:400px; text-align:left;}
 		#content table td:nth-child(3){width:100px; border:0;}
 		#content table tr:last-child td{text-align:center;}
@@ -130,6 +130,7 @@
 						</tr>
 						
 						<tr>
+							<td>자전거 종류</td>
 							<td>
 								<select name="bikeType">
 									<c:forEach var="b" items="${blist}">
@@ -141,6 +142,7 @@
 						
 						
 						<tr>
+							<td>대여소 종류</td>
 							<td>
 								<select name="bikeLocation">
 								<c:forEach var="s" items="${slist}">
@@ -150,6 +152,7 @@
 							</td>
 						</tr>
 						<tr>
+							<td>갯수</td>
 							<td>
 								<input type="number" name="cnt" value="1">
 							</td>
