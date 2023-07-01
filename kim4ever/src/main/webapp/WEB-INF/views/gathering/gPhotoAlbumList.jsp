@@ -33,6 +33,22 @@
 			#searchCategory>div>button{width: 100px; height: 40px; margin-top: 0px;margin-bottom: 0px; border-radius:20px;} 
 
 			#empty{line-height: 300px;font-size: 24px;}
+			
+			
+					
+			/*************************모바일****************************************/
+				/*****모바일 넓이***/
+				@media (min-width: 300px) and (max-width: 940px)  {
+			/*검색하기 부분*/
+			#searchCategory{text-align: right; font-size: 18px; margin: 20px 10px; height: 30px; font-family: 'omyu_pretty';} 
+			#searchCategory>div{display: inline-block; vertical-align: top;} 
+			#searchCategory>div>select{width:70px; height: 30px; font-size: 15px; font-family: 'omyu_pretty';vertical-align: top;} 
+			#searchCategory>div>input{width: 130px; max-width:300px; height: 26px; font-size: 15px;vertical-align: top;} 
+			#searchCategory>div>button{width: 50px; height: 30px; margin-top: 0px;margin-bottom: 0px;} 
+			
+			.gBtn2 {width:100px}
+			
+			}
 		</style>
 
  <script>

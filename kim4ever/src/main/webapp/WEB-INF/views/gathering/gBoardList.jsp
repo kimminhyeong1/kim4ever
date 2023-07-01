@@ -63,9 +63,9 @@
 			/*검색하기 부분*/
 			#searchCategory{text-align: right; font-size: 18px; margin: 20px 10px; height: 30px; font-family: 'omyu_pretty';} 
 			#searchCategory>div{display: inline-block; vertical-align: top;} 
-			#searchCategory>div>select{width: 21%; height: 30px; font-size: 15px; font-family: 'omyu_pretty';vertical-align: top;} 
-			#searchCategory>div>input{width: 53%; max-width:300px; height: 26px; font-size: 15px;vertical-align: top;} 
-			#searchCategory>div>button{width: 18%; height: 30px; margin-top: 0px;margin-bottom: 0px;} 
+			#searchCategory>div>select{width:70px; height: 30px; font-size: 15px; font-family: 'omyu_pretty';vertical-align: top;} 
+			#searchCategory>div>input{width: 130px; max-width:300px; height: 26px; font-size: 15px;vertical-align: top;} 
+			#searchCategory>div>button{width: 50px; height: 30px; margin-top: 0px;margin-bottom: 0px;} 
 			/*공지사항부분*/
 			.gNotice{text-align: left; font-size: 20px; margin: 40px 60px;}
 			.gNotice>div>div{display: inline-block; font-size: 25px; font-weight: bold;}
