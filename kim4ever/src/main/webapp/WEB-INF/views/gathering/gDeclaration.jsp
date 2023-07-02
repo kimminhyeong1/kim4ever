@@ -47,6 +47,10 @@
 			#main section textarea {display: block; width:100% ;height:200px; font-size:18px; margin-top:20px; }
 			#main section button{text-align: center; margin-top:20px; float:right; margin-left:5px;}   
 			#main section img{width: 100px;height: 100px;}  
+			table {width:100%;height:auto;text-align:center;border-collapse:collapse;font-family:'omyu_pretty';}
+			table th {padding:10px;margin:5px 0; text-algin:center;font-size:20px;}
+			table td {padding:10px;text-align:left;font-size:18px;}
+			table td textarea {width:100%;height:100%;box-sizing:border-box;resize: vertical; resize: none;}
 				}
 
 	

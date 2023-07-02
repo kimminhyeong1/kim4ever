@@ -132,10 +132,10 @@
 			.slider-1 > .page-btns > div {width: 20px; height: 6px;  background-color: #ffffff; border-radius: 4px; display: inline-block; cursor: pointer; border: none;}
 			.slider-1 >.side-btns > div > span {position: absolute; top: 40%; left: 20px; transform: translatey(-10%); opacity: 1; padding: 5px;    border-radius: 50px; font-size: 50px;}
 			/*공지사항부분*/
-			.gNotice{text-align: left; font-size: 20px; margin: 0 30px;}
+			.gNotice{text-align: left; font-size: 20px; margin: 15px 30px;}
 			.gNotice>div>div{display: inline-block; font-size: 20px;}
 			.gNotice>div>div:nth-child(1){ margin-right: 20px;}
-			.gNotice>div:nth-child(2){padding-bottom: 10px; margin-top: 10px; }/* 끝나는바*/
+			.gNotice>div:nth-child(2){padding-bottom: 10px; margin-top: 10px; font-size:18px;}/* 끝나는바*/
 			/*모임기타버튼부분*/
 			#gReportExit{margin-top:30px;width: 99%; height: 40px; text-align: right; margin-bottom:30px; margin-top:10px;}
 			#gReportExit>button{margin-top: 5px;margin-left: 10px;margin-right: 20px;width: 100px;height: 30px;font-size: 18px;}

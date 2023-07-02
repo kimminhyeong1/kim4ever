@@ -28,7 +28,7 @@
 				@media (min-width: 300px) and (max-width: 940px)  {
 								/*소개부분*/
 			.gContentTitle h2{margin-top:0px;}
-			#gatheringIntro{width:99.5%; height:auto; margin:0 auto; margin-top:20px; max-width:550px; padding: 5px;}  
+			#gatheringIntro{width:99.5%; height:auto; margin:0 auto; margin-top:20px; max-width:550px; }  
 			#gatheringIntro h2{text-align:center; margin-top:0px; font-size:25px; padding:15px;}
 			#gatheringIntro p{text-align:center; padding:5px;  font-size:12px; margin-top:1px;  overflow: hidden;}
 			#gatheringList{width:99%; display:flex; flex-wrap:wrap;justify-content:center; align-items:center;}

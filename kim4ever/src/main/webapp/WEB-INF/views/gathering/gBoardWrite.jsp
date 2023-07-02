@@ -7,6 +7,8 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering_mo.css">
+		
 		<meta name="viewport" content="width=device-width, initial-scale=1">		
 		<style type="text/css">
 		 	/*모임 게시판 글쓰기 부분*/
@@ -21,6 +23,16 @@
 			#main section img{width: 100px;height: 100px;}
 			#main section select{width: 100px; height: 40px; font-size: 18px; font-family: 'omyu_pretty'; border-radius:20px;text-align: center;} 	
 			.gBtn2 {margin-bottom:20px;}	
+			/*************************모바일****************************************/
+				/*****모바일 넓이***/
+				@media (min-width: 300px) and (max-width: 940px)  {
+							#main section h3{display: inline-block;font-size: 20px; }
+				#main section input{width:90%;}
+					#main section>div:nth-child(1){margin: 20px 0px 20px 35px;}
+					#main section textarea{font-size:18px;     width: 90%;}
+					#main section select{width:70px; height: 30px; font-size: 15px; font-family: 'omyu_pretty';vertical-align: top;} 
+				
+				}
 		</style>
 	</head>
 	<script type="text/javascript">
