@@ -32,7 +32,7 @@ header{width:auto; margin:0 auto; text-align:center;}
 /*공통 부분*/
 /*틀부분*/
     /*박스전체틀*/
-    .gContainer{width:auto; margin:0 auto; text-align:center; border:none; padding:0px; overflow-x: hidden;}
+    .gContainer{width:auto; margin:0 auto; text-align:center; border:none; padding:0px; overflow-x: hidden;max-width:500px; }
     /*박스작은틀*/
     .gContent{width:auto; display:flex; flex-wrap:wrap;justify-content:center; align-items:center;}
     /*박스제목*/
@@ -47,7 +47,6 @@ header{width:auto; margin:0 auto; text-align:center;}
     /*찜이미지*/
     .cardWish{position: absolute; width: 20%; bottom: 50%; right: 5%;   z-index: 100;} 
     
-    .gInput { width: 280px !important;}
     
     /*사진첩카드부분*/
     /*모임카드박스*/ 
@@ -85,25 +84,25 @@ header{width:auto; margin:0 auto; text-align:center;}
     .attend{white-space: nowrap;  width:auto; margin-bottom:5px;   position: absolute; left: 50%; transform: translateX(-50%); font-size:13px; padding-bottom:5px; }
      .cardJoinMem{white-space: nowrap;  text-align: center; margin-right:: 10px;}
     /*수정하거나 설정부분에 틀*/
-    .gSetContainer{text-align:left;  min-width:100px;margin: 0 auto;width: 98%;padding: 2px; border: 1px solid #ccc;}
+    .gSetContainer{text-align:left;  min-width:100px;margin: 0 auto;width: 98%; max-width:500px; padding: 2px; border: 1px solid #ccc; margin-bottom:20px; margin-top:20px;}
 /*메뉴부분*/
 	#gMenu{width: auto;text-align: center;margin: 0px auto 0px;}
 	#gMenu #menu{height:60px;}
 	#gMenu #menu p{margin: 0px 40px; }
 /*버튼부분*/
     /*모임기본버튼양식*/
-    .gBtn{position: absolute;  left: 18px; width:80%; height:25px; margin-top:0px;text-align:center; font-family:'omyu_pretty'; font-size:15px; border:0px solid #99CC99;  bottom : 8px;   z-index:100;}
+    .gBtn{position: absolute;  left: 18px; width:80%; height:30px; margin-top:0px;text-align:center; font-family:'omyu_pretty'; font-size:15px; border:0px solid #99CC99;  bottom : 8px;   z-index:100;}
     .gBtn:active{ box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 	/*모임 더보기버튼양식*/
-	.gBtn2{width:18%; height:30px; margin-top:12px; margin-bottom:20px; text-align:center; font-family:'omyu_pretty'; font-size:18px; border:0px solid #99CC99; }
+	.gBtn2{width:20%; height:30px; margin-top:12px; margin-bottom:20px; text-align:center; font-family:'omyu_pretty'; font-size:18px; border:0px solid #99CC99; }
 	.gBtn2:active{box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 /*인풋부분*/
-	.gInput{font-family: 'omyu_pretty';font-size: 18px;box-sizing: border-box;width: 75%;padding: 5px;margin: 10px;border: 1px solid #ccc; margin-top:30px;}	
+	.gInput{font-family: 'omyu_pretty';font-size: 18px;box-sizing: border-box;width: 90%;padding: 5px;border: 1px solid #ccc; margin-top:5px;}	
 /*보기부분*/
 	/*보기부분에 인풋박스처럼 박스부분*/
 	.boxContent{font-family: 'omyu_pretty';font-size: 24px;box-sizing: border-box;width: 40%;padding: 10px;margin: 2px 0;border: 1px solid #ccc;}	 
 	
-	 footer{margin-top: 0px !important;}
+	 footer{margin-top: 20px !important;}
 	
 	
 	

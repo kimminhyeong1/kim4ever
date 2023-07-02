@@ -15,17 +15,37 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">		
 		<style type="text/css">
 		 	/*일정만들기 부분*/
-			#main section h3{display: inline-block;font-size: 27px;}
+			#main section h3{display: inline-block;font-size: 27px; margin-bottom:10px;}
 			#main section p{display: inline-block; color: #f14242; padding-left: 10px;}
 			#main section>div:nth-child(1){margin: 20px 0px 20px 100px;}
 			#main section>div:nth-child(2){text-align: center;}
 			#main section>div>div{margin: 20px 0px 20px 0px;}
 			#main section input {display: block;}
-			#main section textarea {display: block; width: 500px;height: 200px;font-size: 23px;}
+			#main section textarea {display: block; width: 500px;height: 200px;font-size: 23px; border-radius:20px; padding:5px; resize:none;}
 			#main section button{text-align: center;}  
 			#main section img{width: 100px;height: 100px;}  
-			.gBtn2{margin-right: 10px; margin-left: 10px; margin-bottom: 30px;}
-			.boxContent {display: inline-block;}
+			#map{width: 500px; height: 500px; border-radius:20px;}
+			.gBtn2{margin-bottom:20px;}			
+			.boxContent {width:500px}
+			
+				/*************************모바일****************************************/
+				/*****모바일 넓이***/
+				@media (min-width: 300px) and (max-width: 940px)  {
+			/*일정만들기 부분*/
+			#main section h3{display: inline-block;font-size: 20px;}
+			#main section p{display: inline-block; color: #f14242; padding-left: 10px;}
+			#main section>div:nth-child(1){margin: 20px 0px 20px 25px;}
+			#main section>div:nth-child(2){text-align: center;}
+			#main section>div>div{margin: 20px 0px 20px 0px;}
+			#main section input {display: block;}
+			#main section textarea {display: block; width: 90%;height: 200px;font-size: 23px;}
+			#main section button{text-align: center;}  
+			#main section img{width: 100px;height: 100px;}  
+			#map{width:90%;height:40vh;}
+			.boxContent {width:200px}
+			
+		
+		}
 		</style>
 		<script type="text/javascript">
 			$(document).ready(function(){
@@ -66,8 +86,8 @@
 					</div>
 					<div>
 						<div><h3>일정 위치</h3></div><!-- 지도 api사용 -->
-						<div id="map" style="width: 500px; height: 350px;"></div>
-						<div id="address" class="boxContent" style="width: 500px;">주소: ${gsv.gScheduleLocation}</div>		
+						<div id="map"></div>
+						<div id="address" class="boxContent">주소: ${gsv.gScheduleLocation}</div>		
 					</div>
 					<div>
 						<div><h3>모임비</h3></div>
@@ -75,7 +95,7 @@
 					</div>
 					<div>
 						<div><h3>준비물</h3></div>
-						<div class="boxContent" style="width: 80%">
+						<div class="boxContent">
 						${gsv.gScheduleArrangements}					
 						</div>	
 					</div>

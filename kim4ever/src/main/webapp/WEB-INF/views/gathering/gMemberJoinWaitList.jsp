@@ -49,14 +49,14 @@
 			.menu{width:auto; text-align:left; margin: 0 auto; font-size:20px; text-align: center; margin:20px;}
 	.gProfileimage img {width:50px;height:50px;object-fit:cover;border-radius:50%; margin-top: 15px;}
 	.gMemberList {display:flex;flex-direction:column;align-items:flex-start;text-align:left;font-size:24px;margin:40px 20px;}
-	.gMemberList > div {display:flex;align-items:center;margin-bottom:20px;position:relative;}
+	.gMemberList > div {margin-bottom:20px; width:90%}
 	.gMemberList > div::after {content:"";position:absolute;bottom:-20px; /* 선의 위치 조정 */left:0;width:100%;height:1px;background-color:#ccc;}
 	.gMemberList > div > div:nth-child(1) {width:50px; height:50px;float:left;}
 	.gMemberList > div > div:nth-child(2) {height: 25px;     margin-top: 5px; margin-left:10px;}
 	.gMemberList > div > div:nth-child(2) > div,
 	.gMemberList > div > div:nth-child(3) > div {display:inline-block; font-size:18px;}
 	.gmemberName {width:100px;}
-	.gmemberInfo {width:200px;  white-space: nowrap;  overflow: hidden; text-overflow: ellipsis;}	
+	.gmemberInfo {width:width:70%;  white-space: nowrap;  overflow: hidden; text-overflow: ellipsis;}	
 	.gmemberAddr {width:470px;}	
 	.gmemberType {width:80px;}
 	.menu a{margin:10px;}

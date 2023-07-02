@@ -13,6 +13,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">		
 		 <style type="text/css">
 		 	/*만들기 부분*/
+		 	#main{width: 1250px;     margin: 0 auto;}
 			#main section h3{display: inline-block;font-size: 24px; margin-bottom: 10px;}
 			#main section p{display: inline-block; color: #f14242; padding-left: 10px;}
 			#main section>div:nth-child(1){margin: 10px 0px 10px 100px;}
@@ -30,6 +31,7 @@
 				/*****모바일 넓이***/
 				@media (min-width: 300px) and (max-width: 940px)  {
 					/*만들기 부분*/
+							 	#main{width: auto;}
 					
 			#main section h3{display: inline-block;font-size: 20px;}
 			#main section p{display: inline-block; color: #f14242; padding-left: 10px;}
@@ -37,11 +39,12 @@
 			#main section>div:nth-child(2){text-align: center;}
 			#main section>div>div{margin: 20px 0px 20px 0px;}
 			#main section input {display: block;}
-			#main section textarea {display: block; width: 80%; height: 200px;font-size: 20px;}
+			#main section textarea {display: block; width: 90%; height: 200px;font-size: 20px;}
 			#main section button{text-align: center;}  
 			#main section img{width: 50px;height: 50px;}  
 			#main section .radio{display: inline-block;width: 4%; margin-top: 10px; } 
 			#main section span{font-size: 20px;} 
+			#gInfoArea {font-size:18px; width:80px; padding:5px;}
 				}
 		 </style>
 	

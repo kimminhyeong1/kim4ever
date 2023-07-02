@@ -58,16 +58,16 @@
 				/*****모바일 넓이***/
 				@media (min-width: 300px) and (max-width: 940px)  {
 		#main{width:auto; margin:0 auto; text-align:center;}
-			#main #content{width:auto; height:auto;}
+			#main #content{width:auto; height:auto; max-width:500px; margin:0 auto;}
 			#bottom{width:auto; height:100px; } 
 			#main #content h2{text-align: center; margin-top:20px; font-size:20px;}
 			#content #gather{width:90%; height:auto; border-collapse:collapse; margin: 30px auto 0; text-align:center;  font-size:35px;}
 			#content #gather label{font-family:'omyu_pretty'; font-size:20px; margin-left:10px;}
 			#content #gather input{box-sizing: border-box; width:100%;padding:20px; }
-			#content button{width:20%; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:18px;}
+			#content button{width:20%; height:30px; text-align:center; font-family: 'omyu_pretty'; font-size:18px;}
 			#content img{width:80%; height:50%;}
-			#content #gatherCon p{font-family:'omyu_pretty'; font-size:20px;}
-			#content #gatherCon{width:90%; height:auto; border-collapse:collapse; margin:10px auto 30px; text-align:center; }
+			#content #gatherCon p{font-family:'omyu_pretty'; font-size:18px;}
+			#content #gatherCon{width:90%; height:auto; border-collapse:collapse;  margin:10px auto 30px; text-align:center; }
 			/*모임슬라이더부분*/
 			#gather{vertical-align: top;margin-left:42px; display: inline-block; width: 800px; height: 500px; border: 1px solid #bbb;}
 			#gatherCon{vertical-align: top;margin-left:42px; display: inline-block; width: 800px; height: 500px;}
@@ -91,6 +91,9 @@
 		.slider-1 >.side-btns > div > span {position:absolute;top:30%;left:20px;transform:translatey(-10%);
 		opacity:1;padding:5px; border-radius:50px;font-size:20px;}
 		.slider-1 >.side-btns > div:last-child > span {left:auto;right:30px; }
+		
+		#gather h1 {font-size:25px}
+		#gatherCon h1 {font-size:25px;}
 				}
 		</style>
 	</head>

@@ -58,7 +58,7 @@
 			/*************************모바일****************************************/
 				/*****모바일 넓이***/
 				@media (min-width: 300px) and (max-width: 940px)  {
-			.gBoardList { width: 100%;}
+			.gBoardList { width: 99%;}
 				
 			/*검색하기 부분*/
 			#searchCategory{text-align: right; font-size: 18px; margin: 20px 10px; height: 30px; font-family: 'omyu_pretty';} 
