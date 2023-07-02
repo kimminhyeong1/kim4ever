@@ -115,7 +115,7 @@
 			#gMembers>div:nth-child(1){font-size: 20px;margin-top: 5px;margin-left: 20px;}
 			#gMembers>div:nth-child(1)>span{color: #f00;} 
 			#gMembers>div:nth-child(2){width: 80%; display: inline-block;margin: 10px 20px;}
-			#gMembers>div:nth-child(2)>div{width: 50px; height: 50px;display: inline-block; margin-left: 0px; vertical-align: bottom;}
+			#gMembers>div:nth-child(2)>div{width: 45px; height: 45px;display: inline-block; margin-left: 0px; vertical-align: bottom;}
 			#gMembers>div:nth-child(2)>div>img{width: 100%; height: 100%; border-radius: 30px; }
 			#gMembers>div:nth-child(2)>div>span{width: 100%; height: 100%;color:#bbb;text-align: center;line-height: 50px;font-size: 50px;}
 			#gMembers>div:nth-child(3){width: 30%;  display: inline-block;vertical-align: top;margin-top: 20px;}
