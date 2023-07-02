@@ -136,7 +136,7 @@ header{width:auto;margin:0 auto; overflow-x: hidden;}
 
 
 /*메뉴*/
-#menu {width:auto; height: 60px; text-align:center; display:flex; justify-content:center; align-items:center; box-sizing:border-box;}
+#menu {width:auto; height: 70px; text-align:center; display:flex; justify-content:center; align-items:center; box-sizing:border-box;}
 #menu p {    justify-content: center; height:17px; font-size: 10px; font-weight: bold;  margin: 2px 2px auto;  word-wrap: break-word; text-align:center;
   display: inline-block; white-space: nowrap;   border-radius:20px;  display: flex; align-items: center;}  
 

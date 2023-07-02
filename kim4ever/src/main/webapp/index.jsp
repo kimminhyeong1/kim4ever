@@ -133,7 +133,7 @@ margin: 0;   font-family: 'omyu_pretty';}
 /*****모바일 넓이***/
 @media (min-width: 300px) and (max-width: 940px)  {
 #main{width:auto; heigh:50vh; margin:0 auto;  border:1px solid #white; font-family: 'IM_Hyemin-Bold';}
-#main #content{width:auto; height: auto !important;/*우선권*/     margin-top: 10px;}
+#main #content{width:auto; height: auto !important;/*우선권*/     margin-top: 20px;}
 #main #content img{width:auto; height:600px;}
 
 /* 메인베너 */
