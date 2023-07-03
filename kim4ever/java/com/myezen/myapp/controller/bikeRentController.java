@@ -410,7 +410,7 @@ public class bikeRentController {
 	) {
 	    int value = bs.reviewInsert(reviewContent);
 	    System.out.println("리뷰내용" + reviewContent);
-	    return "redirect:/"; // 
+	    return "redirect:/bikeRent/bikeRentHistory.do"; // 
 	}
 	
 	

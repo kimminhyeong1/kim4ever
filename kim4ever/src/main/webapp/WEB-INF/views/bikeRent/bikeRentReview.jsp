@@ -98,7 +98,7 @@
 
 					<div id="useListBtn">
 						<button onclick="fnWrite()">작성 완료</button>
-						<button onclick="location.href='<%=request.getContextPath()%>/'">나가기</button>						
+						<button onclick="location.href='<%=request.getContextPath()%>/bikeRent/bikeRentHistory.do'">나가기</button>						
 					</div>
 					</form>
 				</div>		
