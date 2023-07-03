@@ -48,8 +48,11 @@
 									<c:when test="${gjvmy.gatheringApprovalType eq 'Y'}">
 										<button class="gBtn" onclick="delayedRedirect('${pageContext.request.contextPath}/gathering/gContentCheck.do?giidx=${gjvmy.giidx}', 700)">들어가기</button><!-- 버튼딜레이 -->						
 									</c:when>
-									<c:otherwise>
+									<c:when test="${gjvmy.gatheringApprovalType eq 'W'}">
 										<button class="gBtn">승인대기중</button><!-- 버튼딜레이 -->						
+									</c:when>
+									<c:otherwise>
+										<button class="gBtn" onclick="delayedRedirect('${pageContext.request.contextPath}/gathering/gSimpleInfo.do?giidx=${gjvmy.giidx}', 50)">구경하기</button><!-- 버튼딜레이 -->							
 									</c:otherwise>
 								</c:choose>	
 							</div>
