@@ -49,39 +49,27 @@ function fnWrite() {
     var fm = document.frm;
     
     // 특수문자 검사 정규식
-   
-    
-    if (fm.gPhotoAlbumTitle.value == "") {
+
+    if (fm.gPhotoAlbumTitle.value.trim() === "") {
         alert("제목을 입력하세요");
         fm.gPhotoAlbumTitle.focus();
         return;
     }
-        else if (fm.image.value == "") {
-            alert("대표이미지를 입력하세요");
-            fm.image.focus();
-            return;   
+
+    var contentsInputs = document.getElementsByClassName("content");
+    for (var j = 0; j < contentsInputs.length; j++) {
+        if (contentsInputs[j].value.trim() === "") {
+            alert("내용을 입력하세요");
+            contentsInputs[j].focus();
+            return;
         }
-	    var additionalImages = document.getElementsByClassName("image");
-	    for (var i = 0; i < additionalImages.length; i++) {
-	        if (additionalImages[i].value.trim() === "") {
-	            alert("이미지를 입력하세요");
-	            additionalImages[i].focus();
-	            return;
-	        }
-	    }    
-	    var contentsInputs = document.getElementsByClassName("content");
-	    for (var j = 0; j < contentsInputs.length; j++) {
-	        if (contentsInputs[j].value.trim() === "") {
-	            alert("내용을 입력하세요");
-	            contentsInputs[j].focus();
-	            return;
-	        }
-	    }
+    }
+
     fm.action = "<%=request.getContextPath()%>/gathering/gPhotoAlbumModifyAction.do?gpaidx=${gpaidx}";
     fm.enctype = "multipart/form-data";
     fm.method = "post";
     fm.submit();
-    }
+}
 
 function updateCharacterCount(inputName) {
 	  var input = document.getElementsByName(inputName)[0];
@@ -122,8 +110,7 @@ function updateCharacterCount(inputName) {
 						<tr>
 							<th>대표 이미지</th>
 							<td>
-							<img class="imagePreview" src="../resources/GATImages/${gjv.imageName}">
-							<input type="file" id="image2" name="GATImg" onchange="previewImage(event)"/>
+   			 				<input type="file" id="image" name="GATImg" onchange="uploadRepresentativeImage(event)"/>
 							</td>
 						</tr>
 					</c:if>
@@ -177,6 +164,41 @@ function updateCharacterCount(inputName) {
 		
 		
 <script type="text/javascript">
+
+//대표 이미지 미리보기
+	function previewImage(event) {
+	    var input = event.target;
+	    var imagePreview = document.querySelector('.cardImg');
+	
+	    if (input.files && input.files[0]) {
+	        var reader = new FileReader();
+	        reader.onload = function (e) {
+	            imagePreview.src = e.target.result;
+	        };
+	        reader.readAsDataURL(input.files[0]);
+	    } else {
+	        imagePreview.src = '';
+	    }
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	//미리보기 이미지
 	function previewImage(event) {
 	    var input = event.target;
