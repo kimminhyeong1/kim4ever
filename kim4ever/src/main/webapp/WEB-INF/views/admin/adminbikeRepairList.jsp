@@ -49,7 +49,7 @@ a{color:inherit; text-decoration:none;}
 #content table tr th:nth-child(1){width:30px;}
 #content table tr th:nth-child(2){width:60px;}
 #content table tr th:nth-child(3){width:40px;}
-#content table tr th:nth-child(4){width:120px;}
+#content table tr th:nth-child(4){width:160px;}
 #content #bikeError{color: #000; margin-right:10px;} 
 #content #bikeRepair{color: #ff7700;} 
 #content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
@@ -152,8 +152,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	  tdElements.forEach(function(tdElement) {
 	    var textContent = tdElement.textContent;
-	    if (textContent.length > 15) {
-	      tdElement.textContent = textContent.substring(0, 15) + '...';
+	    if (textContent.length > 10) {
+	      tdElement.textContent = textContent.substring(0, 10) + '...';
 	    }
 	  });
 	});
