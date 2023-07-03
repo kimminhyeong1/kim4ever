@@ -62,6 +62,8 @@ public interface AdminService {
 		public ArrayList<BikeJoinVo> reviewList(SearchCriteria scri);
 	//리뷰 총 개수
 		public int reviewListCount (SearchCriteria scri);
+	//리뷰 상세 내역 페이지
+		public BikeJoinVo reviewDetail(int rvidx);	
 	//자전거 코드번호 중복 체크
 		public int bikeCodeCheck(String bikeCode);	
 	//대여소 리스트

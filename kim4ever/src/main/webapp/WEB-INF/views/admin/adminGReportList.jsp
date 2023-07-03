@@ -131,10 +131,24 @@ li{list-style:none;}
 		
 	</div>
 	
+	<script>
+document.addEventListener('DOMContentLoaded', function() {
+	  var tdElements = document.querySelectorAll('#content table td'); // 해당 테이블 셀을 선택합니다.
+
+	  tdElements.forEach(function(tdElement) {
+	    var anchorElement = tdElement.querySelector('a'); // td 안에 있는 첫 번째 a 요소를 선택합니다.
+	    if (anchorElement) {
+	      var textContent = anchorElement.textContent;
+	      if (textContent.length > 10) {
+	        anchorElement.textContent = textContent.substring(0, 10) + '...';
+	      }
+	    }
+	  });
+	});
+</script>
 	
 	
-	
-	</div>
+</div>
 	
 	<div id="bottom">
 	</div>
