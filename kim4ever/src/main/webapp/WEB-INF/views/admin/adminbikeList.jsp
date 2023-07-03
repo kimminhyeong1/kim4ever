@@ -52,8 +52,9 @@ li{list-style:none;}
 #content table {width:70%; border-collapse:collapse; margin:0 auto; line-height:50px; font-size:20px;font-family:'omyu_pretty'; font-size:24px;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
-#content #bikeAddBtn button{width:250px; height:40px; margin-top:20px; margin-left:630px; text-align:center; cursor:pointer; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
-#content #bikeAddBtn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+#content #bikeAddBtn {display:table;flex-direction:row;justify-content:space-between;margin-top:20px;margin-bottom:20px;margin-left:650px;}
+#content #bikeAddBtn button {width:200px;height:40px;margin-right:10px;text-align:center;cursor:pointer;font-family:'omyu_pretty';font-size:21px;border-radius:10px;border:0px solid #ff9933;background:#ff9933;}
+#content #bikeAddBtn button:active {background:#ffcc66;box-shadow:0 2px 2px rgba(0, 0, 0, 0.1);transform:translateY(2px);}
 #content table tr th:nth-child(1){width:50px;}
 #content table tr th:nth-child(2){width:50px;}
 #content table tr th:nth-child(3){width:50px;}
@@ -65,8 +66,6 @@ li{list-style:none;}
 #content .search input[type="text"] {width:200px;height:17px;font-size:14px;padding:5px;}
 #content .search #searchBtn{width:80px;height:30px;font-size:14px;padding:5px;text-align:center; font-family:'omyu_pretty'; font-size:21px; cursor:pointer; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content .search #searchBtn:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px}
-
-
 
 </style>
 <script type="text/javascript">
@@ -149,9 +148,6 @@ li{list-style:none;}
 		
 			<div id="bikeAddBtn">
 				<button onclick="location.href='${pageContext.request.contextPath}/bikeRent/bikeRentInfo.do'">자전거 종류 등록/삭제</button>
-			</div>
-			
-			<div id="bikeAddBtn">
 				<button onclick="location.href='${pageContext.request.contextPath}/admin/adminbikeRegister.do'">자전거 추가 등록</button>
 			</div>
 		
