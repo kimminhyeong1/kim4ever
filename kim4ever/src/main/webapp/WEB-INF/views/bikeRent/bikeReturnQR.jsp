@@ -23,15 +23,15 @@
 					<div class="containerFlex">
 						<div class="QRcard">
 							<a href="${pageContext.request.contextPath}/bikeRent/bikeRentReturn/${ersidx1}/view.do"><img class="QRImg"src="data:image/png;base64,${QRCode1}" alt=""></a>
-						<p>송천대여소</p>
+						<p>오목대여소</p>
 						</div>
 						<div class="QRcard">
 							<a href="${pageContext.request.contextPath}/bikeRent/bikeRentReturn/${ersidx2}/view.do"><img class="QRImg" src="data:image/png;base64,${QRCode2}" alt=""></a>
-						<p>효자대여소</p>
+						<p>송천대여소</p>
 						</div>
 						<div class="QRcard">
 							<a href="${pageContext.request.contextPath}/bikeRent/bikeRentReturn/${ersidx3}/view.do"><img class="QRImg" src="data:image/png;base64,${QRCode3}" alt=""></a>
-						<p>덕진대여소</p>
+						<p>효자대여소</p>
 						</div>
 					</div>
 				

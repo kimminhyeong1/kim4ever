@@ -45,8 +45,8 @@ li{list-style:none;}
 #content table .status-rented { color:orange; }
 #content table .status-disuse { color:red; }
 #content table .status-error { color:red; }
-#content #reviewList{color: #ff7700; margin-right:10px;} 
-#content #bikeList{color:#000;}
+#content #reviewList{color: #ff7700; } 
+#content #bikeList{color:#000; margin-right:10px;}
 #main #content h2{text-align:left; margin-top:50px; margin-left:200px;font-family: 'GangwonEdu_OTFBoldA'; font-size:30px;}
 #content p{text-align:right; margin-right:200px;}
 #content table {width:70%; border-collapse:collapse; margin:0 auto; line-height:50px; font-size:20px;font-family:'omyu_pretty'; font-size:24px;}
@@ -55,8 +55,8 @@ li{list-style:none;}
 #content #bikeAddBtn button{width:250px; height:40px; margin-top:20px; margin-left:630px; text-align:center; cursor:pointer; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content #bikeAddBtn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 #content table tr th:nth-child(1){width:40px;}
-#content table tr th:nth-child(2){width:50px;}
-#content table tr th:nth-child(3){width:50px;}
+#content table tr th:nth-child(2){width:90px;}
+#content table tr th:nth-child(3){width:130px;}
 
 #content table button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px;  border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
@@ -99,15 +99,17 @@ li{list-style:none;}
 		<table>
 			<tr>
 				<th>번호</th>
-				<th>내용</th>
 				<th>작성일</th>
+				<th>내용</th>
 			</tr>
 	
 		<c:forEach var="rv" items="${rvlist}">
 			<tr>
 				<td>${rv.rvidx}</td>
-				<td>${rv.reviewContent}</td>
-				<td>${rv.reviewWriteDay}</td>							
+				<td>${rv.reviewWriteDay}</td>		
+				<td>					
+				  <a href="adminreviewDetail.do?rvidx=${rv.rvidx}" class="review-content">${rv.reviewContent}</a>
+				</td>					
 			</tr>
 		</c:forEach>		
 		</table>
@@ -139,10 +141,25 @@ li{list-style:none;}
 	
 	</div>
 	
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var tdElements = document.querySelectorAll('.review-content');
+
+  tdElements.forEach(function(tdElement) {
+    var textContent = tdElement.textContent;
+
+    if (textContent.length > 15) {
+      tdElement.textContent = textContent.substring(0, 15) + '...';
+    }
+  });
+});
+</script>
+
 	
 	
 	
-	</div>
+	
+</div>
 	
 	<div id="bottom">
 	</div>

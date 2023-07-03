@@ -632,6 +632,10 @@ WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPag
   ORDER BY rvidx DESC;
 	</select>
 	
+	<!-- 리뷰 상세 내역 페이지 -->
+	<select id="reviewDetail" parameterType="int" resultType="com.myezen.myapp.domain.BikeJoinVo">
+  	SELECT * from review1234 where rvidx = #{rvidx}	
+	</select>
 	
 	
 </mapper>
