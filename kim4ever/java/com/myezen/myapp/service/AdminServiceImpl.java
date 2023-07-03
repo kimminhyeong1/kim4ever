@@ -308,8 +308,8 @@ public class AdminServiceImpl implements AdminService {
 	}
 	//자전거 삭제
 	@Override
-	public void deleteBikeDelete(int bkidx) {
-		asm.deleteBikeDelete(bkidx);
+	public void updateBikeStateD(int bkidx) {
+		asm.updateBikeStateD(bkidx);
 		
 	} 
 
