@@ -88,7 +88,7 @@
 		.fc .fc-scrollgrid {font-size: 20px;}
 			/*#empty*/
 			#empty{line-height: 100px;font-size: 24px;text-align: left;margin-left: 20px;}
-		
+		.fc-daygrid-block-event .fc-event-time, .fc-daygrid-block-event .fc-event-title {cursor:pointer; font-size:15px;}
 			/*************************모바일****************************************/
 				/*****모바일 넓이***/
 				@media (min-width: 300px) and (max-width: 940px)  {
@@ -153,6 +153,10 @@
 		.fc .fc-scrollgrid {font-size: 15px;}
 		.fc .fc-toolbar.fc-header-toolbar {margin-bottom: 0.5em;}
 			#empty{width:99%; font-size:20px;}
+				.fc-direction-ltr .fc-daygrid-event .fc-event-time {margin-right: 3px;  width: 50px;  white-space: nowrap;  overflow: initial;}
+.fc-daygrid-block-event .fc-event-time, .fc-daygrid-block-event .fc-event-title { padding: 1px;  white-space: nowrap;  overflow: hidden;  text-overflow: ellipsis;}
+
+	
 }
 			/*#empty*/
 			#empty{line-height: 100px;font-size: 20px;text-align: left;margin-left: 20px;}
