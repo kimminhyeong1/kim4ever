@@ -188,6 +188,23 @@ public class AdminServiceImpl implements AdminService {
 		return asm.bikeListCount(scri);
 	}
 	
+	//리뷰 리스트
+	@Override
+	public ArrayList<BikeJoinVo> reviewList(SearchCriteria scri) {
+		
+		ArrayList<BikeJoinVo> rvlist = asm.reviewList(scri);	
+		return rvlist;
+	}
+
+	//리뷰 총 개수
+	@Override
+	public int reviewListCount(SearchCriteria scri) {
+		
+		return asm.reviewListCount(scri);
+	} 
+	
+	
+	
 	
 	//대여소 리스트
 	@Override
@@ -311,7 +328,9 @@ public class AdminServiceImpl implements AdminService {
 	public void updateBikeStateD(int bkidx) {
 		asm.updateBikeStateD(bkidx);
 		
-	} 
+	}
+
+
 
 
 
