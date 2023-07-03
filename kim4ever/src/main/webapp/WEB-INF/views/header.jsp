@@ -110,7 +110,7 @@ header{width:auto;margin:0 auto; overflow-x: hidden;}
 #top_logo .login ul {display:flex;list-style:none;margin-top:-5px; padding:0;   flex-direction: column; margin-bottom:5px;}
 #top_logo .login li {margin-left:5px; font-size:12px;} 
 #top_logo .login a {width: 55px; height:15px;display:block; font-size: 12px; padding:3px 5px;margin-top:5px; border-radius:20px;text-decoration:none;transition:background-color 0.3s ease;   position:relative;}
- .user_name{margin-top: -6px; right: 90px;   position: absolute;}
+ .user_name{margin-top: -2px; right: 90px;   position: absolute;}
  .user_name2{display: inline-block;    width: 30px;
     overflow: hidden;
     white-space: nowrap;
