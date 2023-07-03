@@ -80,18 +80,18 @@ button{cursor:pointer;}
 .toggle--checkbox:checked + .toggle--label .toggle--label-background:after {width: 5px;height: 5px;left: -30px;top: 20px;}
 .toggle--checkbox:checked + .toggle--label:before {background: var(--white);border-color: var(--gray-border);animation-name: switch;animation-duration: 350ms;animation-fill-mode: forwards;}
 .toggle--checkbox:checked + .toggle--label:after {transition-delay: 350ms;opacity: 1;}
-.toggle--label {width: 115px;height: 41px; right: -216px; margin-top:59px; background: var(--blue-color);border-radius: 100px;display: flex;position: relative;transition: all 350ms ease-in;}
+.toggle--label {width: 115px;height: 41px; right: 0px; margin-top:0px; background: var(--blue-color);border-radius: 100px;display: flex;position: relative;transition: all 350ms ease-in;}
 .toggle--label:before {animation-name: reverse;animation-duration: 350ms;animation-fill-mode: forwards;transition: all 350ms ease-in;content: "";width: 40px;height: 25px;border: 3px solid var(--yellow-border);top: 5px;left: 4px;position: absolute;border-radius: 82px;background: var(--yellow-background);}
 .toggle--label:after {transition-delay: 0ms;transition: all 250ms ease-in;position: absolute;content: "";box-shadow: var(--gray-dots) -13px 0 0 2px, var(--gray-dots) -24px 14px 0 -2px;left: 143px;top: 23px;width: 10px;height: 10px;background: transparent;border-radius: 50%;opacity: 0;}
 @keyframes switch {
-  0% {left: 35px;}
+  0% {left: 62px;}
   60% {left: 15px;width: 40px;}
   100% {left: 10px;width: 40px;}
 }
 @keyframes reverse {
-  0% {left: 35px;width: 40px;} 
-  60% {left: 35px;width: 40px;}
-  100% {left: 35px;}
+  0% {left: 62px;width: 40px;} 
+  60% {left: 62px;width: 40px;}
+  100% {left: 62px;}
 }
 
 .icon-text{display: flex; width:100%;  justify-content: center; align-items: center; font-size: 21px; color: white;}
@@ -154,7 +154,7 @@ header{width:auto;margin:0 auto; overflow-x: hidden; overflow-y: hidden;}
  .hidden_img {display: block; width:35px; height :35px; margin:0 auto; border-radius: 10px; padding:5px;   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); }
   .change{width: 41px; height: 23px; margin: 0 auto; position: absolute; top: -1px; right: 16%;  cursor:pointer}
 .change img{width:100%; height:100%;  cursor:pointer}
- .toggle--label {width: 65px;height: 21px; right: 0px; margin-top:0px; background: var(--blue-color);border-radius: 100px;display: flex;position: relative;transition: all 350ms ease-in;}
+ .toggle--label {width: 65px;height: 21px; right: 0px; margin-top:5px; background: var(--blue-color);border-radius: 100px;display: flex;position: relative;transition: all 350ms ease-in;}
  .icon-text {font-size:12px;}
   .toggle--label:before {animation-name: reverse;animation-duration: 350ms;animation-fill-mode: forwards;transition: all 350ms ease-in;content: "";width: 20px;height: 11px;top: 2px;left: 4px;position: absolute;border-radius: 82px;}
 .toggle--label:after {transition-delay: 0ms;transition: all 250ms ease-in;position: absolute;content: "";left: 143px;top: 23px;width: 10px;height: 10px;background: transparent;border-radius: 50%;opacity: 0;}
@@ -249,14 +249,7 @@ header{width:auto;margin:0 auto; overflow-x: hidden; overflow-y: hidden;}
 		 	 
 		<div class="login">
 	   		<ul>
-	   		 	     <li> 	<input type="checkbox" id="toggle" class="toggle--checkbox" onclick="delayedRedirect('${pageContext.request.contextPath}/index.jsp',350)" > 
-		    <label for="toggle" class="toggle--label">
-		    <span class="toggle--label-background"></span>
-		    <span class="icon-text">모임&nbsp;&nbsp;&nbsp;대여</span>
-		    </label>
-		    <div class="background"></div>
-		    </li>
-		
+	 
 		 
 		   		<c:choose>
 		   			<c:when test="${not empty sessionScope.memberName}">
@@ -279,6 +272,16 @@ header{width:auto;margin:0 auto; overflow-x: hidden; overflow-y: hidden;}
 			            <li><a href="${pageContext.request.contextPath}/member/memberJoin.do">회원가입</a></li>  
 		   			</c:otherwise>
 		   		</c:choose>
+		   		
+					   	<li> 	<input type="checkbox" id="toggle" class="toggle--checkbox" onclick="delayedRedirect('${pageContext.request.contextPath}/index.jsp',350)" > 
+						    <label for="toggle" class="toggle--label">
+						    <span class="toggle--label-background"></span>
+						    <span class="icon-text">모임&nbsp;&nbsp;&nbsp;대여</span>
+						    </label>
+						    <div class="background"></div>
+					    </li>
+					
+		   		
 	   		</ul>
 		</div>
 	</div>
