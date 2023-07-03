@@ -436,6 +436,18 @@
 		                    gCommentContentsTextarea.name = 'gCommentContents';
 		                    gCommentContentsTextarea.maxLength = '200';
 		                    gCommentContentsTextarea.textContent = data.gCommentContents;
+		                    
+		                    gCommentContentsTextarea.addEventListener('input', function(){
+		                        characterCheck(this);
+		                    });
+
+		                    function characterCheck(obj){
+		                        var regExp = /[\{\}\[\]\/|\)*`^\_┼<>@\#$%&\'\"\\(\=]/gi;
+		                        if(regExp.test(obj.value)){
+		                            alert("특수문자는 입력할 수 없습니다.");
+		                            obj.value = obj.value.substring(0, obj.value.length - 1);
+		                        }
+		                    }
 
 		                 	// 글자 수를 표시할 요소 생성
 		                    var characterCount = document.createElement('span');
@@ -547,6 +559,19 @@
 		                    var characterCount = document.createElement('span');
 		                    characterCount.id = 'replyCharacterCount';
 		                    characterCount.textContent = '0/200';
+		                    
+		                    
+		                    function characterCheck(obj) {
+		                    	var regExp =/[\{\}\[\]\/|\)*`^\_┼<>@\#$%&\'\"\\(\=]/gi;
+		                        if (regExp.test(obj.value)) {
+		                            alert("특수문자는 입력할 수 없습니다.");
+		                            obj.value = obj.value.substring(0, obj.value.length - 1);
+		                        }
+		                    }
+		                    gCommentContentsTextarea.addEventListener('input', function() {
+		                        updateReplyCharacterCount(gCommentContentsTextarea);
+		                        characterCheck(gCommentContentsTextarea);
+		                    });
 		                    
 		                    var replyCommentBtn = document.createElement('button');
 		                    replyCommentBtn.classList.add('replyCommentBtn');
