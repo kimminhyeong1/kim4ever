@@ -33,7 +33,7 @@
 			#gather h1{margin-top:20px; font-size:35px;}
 			#gatherCon h1{margin-top:20px; font-size:35px;}
 			/* 슬라이더 1 시작 */
-			.slider-1 {height:420px;position:relative; margin: 20px auto; width: 700px;}
+			.slider-1 {height:420px;position:relative; margin: 20px auto; width: 700px; border-radius:20px;}
 			/* 슬라이더 1 - 페이지 버튼 */
 			.slider-1 > .page-btns {text-align:center; position:absolute; bottom:20px; left:0; width:100%;}
 			

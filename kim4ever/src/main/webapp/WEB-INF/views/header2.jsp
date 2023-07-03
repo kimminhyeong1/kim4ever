@@ -80,21 +80,22 @@ button{cursor:pointer;}
 .toggle--checkbox:checked + .toggle--label .toggle--label-background:after {width: 5px;height: 5px;left: -30px;top: 20px;}
 .toggle--checkbox:checked + .toggle--label:before {background: var(--white);border-color: var(--gray-border);animation-name: switch;animation-duration: 350ms;animation-fill-mode: forwards;}
 .toggle--checkbox:checked + .toggle--label:after {transition-delay: 350ms;opacity: 1;}
-.toggle--label {width: 110px;height: 40px;right:25px; margin-top:10px; background: var(--blue-color);border-radius: 100px;display: flex;position: relative;transition: all 350ms ease-in;}
+.toggle--label {width: 115px;height: 41px; right: -351px; margin-top:59px; background: var(--blue-color);border-radius: 100px;display: flex;position: relative;transition: all 350ms ease-in;}
 .toggle--label:before {animation-name: reverse;animation-duration: 350ms;animation-fill-mode: forwards;transition: all 350ms ease-in;content: "";width: 40px;height: 25px;border: 3px solid var(--yellow-border);top: 5px;left: 4px;position: absolute;border-radius: 82px;background: var(--yellow-background);}
 .toggle--label:after {transition-delay: 0ms;transition: all 250ms ease-in;position: absolute;content: "";box-shadow: var(--gray-dots) -13px 0 0 2px, var(--gray-dots) -24px 14px 0 -2px;left: 143px;top: 23px;width: 10px;height: 10px;background: transparent;border-radius: 50%;opacity: 0;}
 @keyframes switch {
-  0% {left: 55px;}
+  0% {left: 35px;}
   60% {left: 15px;width: 40px;}
   100% {left: 10px;width: 40px;}
 }
 @keyframes reverse {
-  0% {left: 55px;width: 40px;} 
-  60% {left: 55px;width: 40px;}
-  100% {left: 55px;}
+  0% {left: 35px;width: 40px;} 
+  60% {left: 35px;width: 40px;}
+  100% {left: 35px;}
 }
 
 .icon-text{display: flex; width:100%;  justify-content: center; align-items: center; font-size: 21px; color: white;}
+  .user_name2{display: inline-block; margin-top: 10px; }
 
  
 /****************************모바일**************************/
@@ -106,9 +107,15 @@ header{width:auto;margin:0 auto; overflow-x: hidden; overflow-y: hidden;}
 #top_logo .logo img{width:55px; margin-left:24%; cursor:pointer;transition: all 0.3s ease-in-out;}
 #top_logo .login {display:flex;justify-content:flex-end;float:right; margin-right:3%}
 #top_logo .login ul {display:flex;list-style:none;margin-top:-5px; padding:0;   flex-direction: column; margin-bottom:5px;}
-#top_logo .login li {margin-left:5px; font-size:10px;}
-#top_logo .login a {width: 50px; display:block;padding:3px 5px;margin-top:5px; ;border-radius:20px;text-decoration:none;transition:background-color 0.3s ease; }
-
+#top_logo .login li {margin-left:5px; font-size:12px;}
+#top_logo .login a {width: 55px; height:15px; display:block;padding:3px 5px;margin-top:5px; ;border-radius:20px;text-decoration:none;transition:background-color 0.3s ease;  position:relative; }
+ .user_name{margin-top: -6px; right: 90px;   position: absolute;}
+  .user_name2{display: inline-block;    width: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: bottom;}
 /*사이드바*/
 .top-menu img {width: 30px; height:auto; float:left; margin-left:3%}
 .sub-menu{position: fixed; z-index: 9999; width: 50px; height: 150px; transition:0.5s; border-top-right-radius:20px; border-bottom-right-radius:20px;}
@@ -147,10 +154,35 @@ header{width:auto;margin:0 auto; overflow-x: hidden; overflow-y: hidden;}
  .hidden_img {display: block; width:35px; height :35px; margin:0 auto; border-radius: 10px; padding:5px;   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); }
   .change{width: 41px; height: 23px; margin: 0 auto; position: absolute; top: -1px; right: 16%;  cursor:pointer}
 .change img{width:100%; height:100%;  cursor:pointer}
+ .toggle--label {width: 65px;height: 21px; right: 0px; margin-top:0px; background: var(--blue-color);border-radius: 100px;display: flex;position: relative;transition: all 350ms ease-in;}
+ .icon-text {font-size:12px;}
+  .toggle--label:before {animation-name: reverse;animation-duration: 350ms;animation-fill-mode: forwards;transition: all 350ms ease-in;content: "";width: 20px;height: 11px;top: 2px;left: 4px;position: absolute;border-radius: 82px;}
+.toggle--label:after {transition-delay: 0ms;transition: all 250ms ease-in;position: absolute;content: "";left: 143px;top: 23px;width: 10px;height: 10px;background: transparent;border-radius: 50%;opacity: 0;}
  
  
+ @keyframes switch {
+  0% {left: 35px;}
+  60% {left: 15px;width: 20px;}
+  100% {left: 5px;width: 20px;}
+}
+@keyframes reverse {
+  0% {left: 35px;width: 20px;} 
+  60% {left: 35px;width: 20px;}
+  100% {left: 35px;}
+}
+
+
+
  }
 </style>
+<script type="text/javascript">
+			/* 버튼 딜레이*/
+			  function delayedRedirect(url, delay) {
+				    setTimeout(function() {
+				      window.location.href = url;
+				    }, delay);
+				  }
+			</script>
 <header>
 	<div id="top_logo">
 	<div class = main-nav-left> 
@@ -211,32 +243,24 @@ header{width:auto;margin:0 auto; overflow-x: hidden; overflow-y: hidden;}
 		<div class="logo" style="display:inline-block;">
 		<h1><img src="${pageContext.request.contextPath}/resources/logo/logo7.png" alt="타:바" onclick="location.href='${pageContext.request.contextPath}/gathering/gList.do'"></h1>
 		</div>
-			<div class="change" onclick="delayedRedirect('${pageContext.request.contextPath}/index.jsp',350)" >	
-			<script type="text/javascript">
-			/* 버튼 딜레이*/
-			  function delayedRedirect(url, delay) {
-				    setTimeout(function() {
-				      window.location.href = url;
-				    }, delay);
-				  }
-			</script>
+			
 			<!-- <img src="${pageContext.request.contextPath}/resources/mobile/change3_1.png" alt="전환버튼" >	  -->
-  	      	<input type="checkbox" id="toggle" class="toggle--checkbox"> 
-		    <label for="toggle" class="toggle--label">
-		    <span class="toggle--label-background"></span>
-		    <span class="icon-text">모임&nbsp;&nbsp;&nbsp;대여</span>
-		    
-		    
-		    </label>
-		    <div class="background"></div>
-		 </div>
-		 
+ 
 		 	 
 		<div class="login">
 	   		<ul>
+	   		 	     <li> 	<input type="checkbox" id="toggle" class="toggle--checkbox" onclick="delayedRedirect('${pageContext.request.contextPath}/index.jsp',350)" > 
+		    <label for="toggle" class="toggle--label">
+		    <span class="toggle--label-background"></span>
+		    <span class="icon-text">모임&nbsp;&nbsp;&nbsp;대여</span>
+		    </label>
+		    <div class="background"></div>
+		    </li>
+		
+		 
 		   		<c:choose>
 		   			<c:when test="${not empty sessionScope.memberName}">
-		   				<li style="margin-top:10px;">${memberName}님</li>
+		           <li class="user_name" ><div class="user_name2"><%= session.getAttribute("memberName") %></div><span>님</span></li>
 			            <c:choose>
 							<c:when test="${memberLoginType eq '카카오'}">
 					            <li><a href="https://kauth.kakao.com/oauth/logout?client_id=76703a8d13e15a9a7deb9a931b73de9e&logout_redirect_uri=http://jjezen.cafe24.com/kim4ever/member/memberLogOut.do">로그아웃</a></li>
