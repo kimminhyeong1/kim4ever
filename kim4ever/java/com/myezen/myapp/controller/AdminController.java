@@ -201,11 +201,27 @@ public class AdminController {
 		
 		model.addAttribute("klist",klist);
 		model.addAttribute("pm", pm);
-		
-
 			
-		
 		return "admin/adminbikeList";
+	}
+	
+	//리뷰 페이지
+	@RequestMapping(value="/adminreviewList.do") 
+	public String reviewList(SearchCriteria scri, Model model) {
+		
+		int totalCount = as.reviewListCount(scri); //전체 게시물 갯수 조회
+	    
+		pm.setScri(scri); //
+	    pm.setTotalCount(totalCount); 
+	    
+  
+		ArrayList<BikeJoinVo> rvlist = as.reviewList(scri);
+		pm.setScri(scri);
+  
+		model.addAttribute("rvlist",rvlist); //(model=requestsetattribute)에 담아서 가지고 간다
+		model.addAttribute("pm", pm);
+  
+		return "admin/adminreviewList";
 	}
 	
 	//관리자 대여소 관리 페이지

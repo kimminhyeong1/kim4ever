@@ -351,7 +351,7 @@ WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPag
 	) AS numbered_rows
 	WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPageNum};
 	</select>
-	
+	 
 	<!-- 회원 상세 정보 보기 -->
 	<select id="getMemberByMemberId" parameterType="string" resultType="com.myezen.myapp.domain.BikeJoinVo">
   	SELECT * FROM member1234 where memberId = #{memberId}
@@ -578,11 +578,8 @@ WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPag
 	<!-- 자전거 삭제기능 (bikeState D로 변경) -->
 	<update id="updateBikeStateD" parameterType="int"> 	
 		update bike1234 set bikeState = 'D' WHERE bkidx=#{bkidx}
-	</update>
-	
-	
-	
-		<!-- 자전거 등록 페이지 이름 중복체크-->
+	</update>		
+	<!-- 자전거 등록 페이지 이름 중복체크-->
 	<select id="bikeCodeCheck" parameterType="String" resultType="int">
 		select count(*) from bike1234 where bikeCode=#{bikeCode}
 	</select>
@@ -592,6 +589,49 @@ WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPag
 	<select id="bikeshopList" resultType="com.myezen.myapp.domain.RentalshopVo">
 		select * from rentalshop1234
 	</select>
+
+
+	<sql id="search9">
+		 <if test="searchType != null and searchType != ''">
+		    <choose>
+		        <when test="searchType == 'rvidx'">
+		            AND rvidx LIKE CONCAT('%', #{keyword}, '%')
+		        </when>
+		        <when test="searchType == 'reviewContent'">
+		            AND reviewContent LIKE CONCAT('%', #{keyword}, '%')
+		        </when>
+		        <when test="searchType == 'reviewWriteDay'">
+		            AND reviewWriteDay LIKE CONCAT('%', #{keyword}, '%')
+		        </when>
+		    </choose>
+		</if>		
+	</sql>
+	
+	<select id="reviewListCount" resultType="int" parameterType="com.myezen.myapp.domain.SearchCriteria">
+	  SELECT count(*) as cnt
+	  FROM review1234
+	  WHERE 1=1
+	  <include refid="search9" />
+	</select>
+
+	
+	<!-- 리뷰 내역 리스트 -->
+	<select id="reviewList" resultType="com.myezen.myapp.domain.BikeJoinVo" parameterType="com.myezen.myapp.domain.SearchCriteria">
+		 SELECT *
+  FROM (
+    SELECT rvidx, reviewContent, reviewWriteDay,
+          ROW_NUMBER() OVER (ORDER BY reviewWriteDay DESC) AS row_num
+    FROM review1234
+    WHERE 1=1
+    <!-- 추가된 검색 조건 -->
+    <if test="keyword != null and keyword != ''">
+      AND reviewContent LIKE CONCAT('%', #{keyword}, '%')
+    </if>
+  ) AS numbered_rows
+  WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPageNum}
+  ORDER BY rvidx DESC;
+	</select>
+	
 	
 	
 </mapper>
