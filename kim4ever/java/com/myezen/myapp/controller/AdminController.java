@@ -222,7 +222,16 @@ public class AdminController {
 		model.addAttribute("pm", pm);
   
 		return "admin/adminreviewList";
+	}	
+	
+	//리뷰 상세 내역 페이지
+	@RequestMapping(value="/adminreviewDetail.do")
+	public String adminreviewDetail(Model model, int rvidx) {
+		BikeJoinVo rev = as.reviewDetail(rvidx);		
+	    model.addAttribute("rev", rev);
+		return "admin/adminreviewDetail";
 	}
+	
 	
 	//관리자 대여소 관리 페이지
 	@RequestMapping(value="/adminrentalshopList.do")

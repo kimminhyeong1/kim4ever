@@ -97,9 +97,22 @@
 					</div>
 
 					<div id="useListBtn">
-						<button onclick="fnWrite()">작성 완료</button>
+						 <button onclick="validateForm()" type="button">작성 완료</button>
 						<button onclick="location.href='<%=request.getContextPath()%>/'">나가기</button>						
 					</div>
+					
+					<script>
+					function validateForm() {
+					  var reviewContent = document.getElementsByName('reviewContent')[0].value.trim();
+					  
+					  if (reviewContent === '') {
+					    alert('리뷰를 작성하시려면 \n내용을 입력해주세요.');
+					  } else {
+					    document.forms['frm'].submit();
+					  }
+					}
+					</script>
+					
 					</form>
 				</div>		
 			</section>

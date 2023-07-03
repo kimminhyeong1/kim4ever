@@ -203,7 +203,12 @@ public class AdminServiceImpl implements AdminService {
 		return asm.reviewListCount(scri);
 	} 
 	
-	
+	//리뷰 상세 내역 	
+	@Override
+	public BikeJoinVo reviewDetail(int rvidx) {
+		
+		return asm.reviewDetail(rvidx);
+	}
 	
 	
 	//대여소 리스트
@@ -329,6 +334,8 @@ public class AdminServiceImpl implements AdminService {
 		asm.updateBikeStateD(bkidx);
 		
 	}
+
+
 
 
 
