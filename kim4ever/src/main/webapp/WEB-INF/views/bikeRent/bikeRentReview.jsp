@@ -85,11 +85,22 @@
 	}
 	function fnWrite() {
 	    var fm = document.frm;
-		alert("리뷰가 작성되었습니다.");
-	    fm.action = "${pageContext.request.contextPath}/bikeRent/bikeRentReviewAction.do";
-	    fm.enctype = "multipart/form-data";
-	    fm.method = "post";
-	    fm.submit();
+		var reviewContent = document.getElementsByName('reviewContent')[0].value.trim();
+		  
+		  if (reviewContent === '') {
+		    alert('리뷰를 작성하시려면 \n내용을 입력해주세요.');
+		  } else {
+		  	alert("리뷰가 작성되었습니다.");
+		    fm.action = "${pageContext.request.contextPath}/bikeRent/bikeRentReviewAction.do";
+		    fm.enctype = "multipart/form-data";
+		    fm.method = "post";
+		    fm.submit();
+		  }
+	    
+	    
+	    
+	    
+		
 	    
 	}
 	</script>
@@ -111,21 +122,10 @@
 					</div>
 
 					<div id="useListBtn">					
-						<button onclick="validateForm()" type="button">작성 완료</button>
+						<button onclick="fnWrite()" type="button">작성 완료</button>
 						<button onclick="location.href='<%=request.getContextPath()%>/'">나가기</button>						
 					</div>
 					
-					<script>
-					function validateForm() {
-					  var reviewContent = document.getElementsByName('reviewContent')[0].value.trim();
-					  
-					  if (reviewContent === '') {
-					    alert('리뷰를 작성하시려면 \n내용을 입력해주세요.');
-					  } else {
-					    document.forms['frm'].submit();
-					  }
-					}
-					</script>
 					
 					</form>
 				</div>		
