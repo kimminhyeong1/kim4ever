@@ -46,21 +46,21 @@ li{list-style:none;}
 #content table td {border:1px solid #bbb;padding:20px;text-align:left;vertical-align:middle;height:100px; font-size:30px;}
 #content table .top{position:relative;}
 #content table img{width:60px; height:50px; float:right; margin: 0 auto; vertical-align:middle;} 
-#content table td .logout-btn {margin-left: 700px;display:inline-block;font-size: 20px;font-family: 'omyu_pretty';width: 100px;height: 40px;background-color: #ff9800;color: #000;text-decoration: none;border-radius: 20px;transition: background-color 0.3s ease;border: 1px solid #fff;} 
+#content table td .logout-btn {margin-left: 700px;display:inline-block;font-size: 20px;font-family: 'omyu_pretty';width: 100px;height: 40px;background-color: #ff9800;color: white;text-decoration: none;border-radius: 20px;transition: background-color 0.3s ease;border: 1px solid #fff;} 
 #content table td .logout-btn:hover {background-color: #ffcc66;}
 #content table .image-container {width:180px;height:180px;}  
 #content table #imagePreview {position:absolute; width:122px;  height:122px; border:1px solid #bbb; border-radius:100px;object-fit:cover;top: 43px;left: 65px;}
 #content table .button-container {width:200px; margin-left:20px; position:absolute; bottom:680px; left:0; align-items:center; }
-#content table .intro-container {width:550px;height:auto; float:right; border-radius:50px; display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:20px;}
+#content table .intro-container {width:550px;height:auto; float:right; border-radius:20px; display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:20px;}
 #content table .intro-container h3 {font-size:40px;margin-bottom:10px;border-bottom:1px solid #000;font-weight: normal;}
 #content table input[type="text"] {font-family:'omyu_pretty';font-size:24px;box-sizing:border-box;width:100%;padding:10px;margin-bottom:10px;border:1px solid #ccc;border-radius:4px;}
 #content table .intro-container .button-container2 {display:flex;justify-content:flex-end;gap:10px;margin-top:10px;margin-left:430px;}
 #content table .button-container2 button{width: 100px;height: 30px;background-color: #ff9800;color: #fff;text-decoration: none;border-radius: 20px;transition: background-color 0.3s ease;border: 1px solid;}
 #formImg{float: left;}  
-#editImgBtn{font-size: 20px; font-family: 'omyu_pretty'; position: absolute;top: 628px;right:-480px;width: 100px;height: 40px;background-color: #ff9800;color: #000;text-decoration: none;border-radius: 20px;transition: background-color 0.3s ease;border: 1px solid #fff;}
-#content #editIntroBtn{font-size: 20px; font-family: 'omyu_pretty'; position: absolute;top: 168px;right: 39px; z-index:5; width: 100px;height: 40px;background-color: #ff9800;color: #000;text-decoration: none;border-radius: 20px;transition: background-color 0.3s ease;border: 1px solid #fff;}
+#editImgBtn{font-size: 20px; font-family: 'omyu_pretty'; position: absolute;top: 628px;right:-480px;width: 100px;height: 40px;background-color: #ff9800;color: white;text-decoration: none;border-radius: 20px;transition: background-color 0.3s ease;border: 1px solid #fff;}
+#content #editIntroBtn{font-size: 20px; font-family: 'omyu_pretty'; position: absolute;top: 168px;right: 39px; z-index:5; width: 100px;height: 40px;background-color: #ff9800;color: white;text-decoration: none;border-radius: 20px;transition: background-color 0.3s ease;border: 1px solid #fff;}
 #content table #memberProfile{position:absolute; width:160px; height:160px;top: 28px;left: 58px; border:1px solid #bbb; border-radius:100px;object-fit:cover;} 
-#UploadImgBtn{font-size: 20px; font-family: 'omyu_pretty'; position: absolute;top: 628px;right:-480px; width: 100px;height: 40px;background-color: #ff9800;color: #000;text-decoration: none;border-radius: 20px;transition: background-color 0.3s ease; border: 1px solid #fff;}
+#UploadImgBtn{font-size: 20px; font-family: 'omyu_pretty'; position: absolute;top: 628px;right:-480px; width: 100px;height: 40px;background-color: #ff9800;color: white;text-decoration: none;border-radius: 20px;transition: background-color 0.3s ease; border: 1px solid #fff;}
 #introText{margin-bottom:0px;}
 #content table tr:nth-child(3) {cursor: pointer;} 
 #content table tr:nth-child(4) {cursor: pointer;} 
@@ -82,27 +82,27 @@ li{list-style:none;}
 #content table td {border:1px solid #bbb;padding:10px;text-align:left;vertical-align:middle;height:90px; font-size:15px;}
 #content table img{width:20%; height:20%; float:right; margin: 0 auto; vertical-align:middle;}
 #content table td a {display:flex;  color:#333;} 
-#content table td .logout-btn {display:inline-block;padding:10px 20px;background-color:#ff9800;color:#fff;text-decoration:none;border-radius:5px;transition:background-color 0.3s ease;}
+#content table td .logout-btn {display:inline-block;padding:10px 20px;background-color:#ff9800;color:#fff;text-decoration:none;border-radius:20px;transition:background-color 0.3s ease;margin-left: 71%;width:60px; height:21px;font-size: 12px;padding: 0px;}
 #content table td .logout-btn:hover {background-color: #FF6600;}
 #content table .image-container {position:absolute; width:100px;height:100px;}
-#content table #imagePreview {float:center; width:100px; height:100px; border:1px solid #bbb; border-radius:100px;object-fit:cover;}
+#content table #imagePreview {float:center; width:100px; height:100px; border:1px solid #bbb; border-radius:100px;object-fit:cover;top: -1px;left: -3px;}
 #content table .button-container { position: relative;width:70%; margin-left:10px;  bottom:10px; left:10px; align-items:center;  font-size:10px;}
-#content table .intro-container {width:50%;height:20px; margin-top: 8px; float:right;border:1px solid #ddd; border-radius:50px; padding-top:0px; }
+#content table .intro-container {width:50%;height:20px; margin-top: 8px; float:right; border-radius:20px; padding-top:0px; }
 #content table .intro-container h3 {font-size:14px;margin-bottom:5px;border-bottom:1px solid #000;}
 #content table input[type="text"] {margin-top: -20px;  font-family:'omyu_pretty';font-size:13px;width:105%;padding:11px;margin-left:-7px; margin-bottom:-63px;border:1px solid #ccc;border-radius:4px;}
 #content table .intro-container {display:flex;justify-content:normal;gap:0px;margin-bottom:50px;margin-left:10px; transform: translate(0%, 60%)}
  .button-container2 {display:flex;justify-content:flex-end;gap:10px;margin-bottom:50px;margin-left:50px; transform: translate(0%, 160%)}
  #content table .intro-container .button-container2 {position:absolute; display:flex;justify-content:flex-end;gap:10px;margin-top:-25px;margin-left:55%;}
  
-#content table .button-container2 button{position: absolute; border:0px solid; font-family:'omyu_pretty';  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); border-radius:50px; width:70px; height:20px; margin-top: 70px; right: -45px;}
+#content table .button-container2 button{position: absolute; border:0px solid; font-family:'omyu_pretty';  border-radius:20px; width:70px; height:20px; margin-top: 70px; right: -45px;}
 .intro-container{height:170px; width:50px; }
 #content table .top{height:100px;}
-#editImgBtn{border:0px;top: 0px;right:0px; font-family:'omyu_pretty';  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); border-radius:50px; width:70px; height:20px;text-decoration: none;transition: background-color 0.3s ease; margin-top: 88px; 
-    margin-right: 25px; }
-#content table #memberProfile{position:absolute; width:100px; height:100px; border:1px solid #bbb; border-radius:100px;object-fit:cover;} 
-#UploadImgBtn{border:0px;top: 0px;right:0px; font-family:'omyu_pretty';  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); border-radius:50px; width:70px; height:20px;text-decoration: none;transition: background-color 0.3s ease; margin-top: 88px; 
-    margin-right: 25px;}
- #formImg{float: none;}  
+#editImgBtn{color: white;font-size: 12px;border:0px;top: 3px;right:0px; font-family:'omyu_pretty';   border-radius:20px; width:60px; height:21px;text-decoration: none;transition: background-color 0.3s ease; margin-top: 88px;  margin-right: 25px; }
+#content table #memberProfile{top: -1px;left: -3px;absolute; width:100px; height:100px; border:1px solid #bbb; border-radius:100px;object-fit:cover;} 
+#UploadImgBtn{font-size: 12px;color: white;top: 3px;right:0px;border:0px; font-family:'omyu_pretty';   border-radius:20px; width:60px; height:21px;text-decoration: none;transition: background-color 0.3s ease; margin-top: 88px; margin-right: 25px;}
+#formImg{float: none;}  
+
+#content #editIntroBtn{width: 60px;height: 21px;top: 4px;right: -40px;font-size: 12px; border: 0px; color: white;}
  
 
 }
