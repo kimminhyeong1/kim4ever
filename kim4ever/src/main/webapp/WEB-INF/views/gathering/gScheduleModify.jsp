@@ -175,12 +175,91 @@
 			
 			
 			</script>
+			<script>
+			function characterCheck(obj){
+				var regExp =/[\{\}\[\]\/|\)*`^\_┼<>@\#$%&\'\"\\(\=]/gi;
+			    if(regExp.test(obj.value)){
+			        alert("특수문자는 입력할 수 없습니다.");
+			        obj.value = obj.value.substring( 0 , obj.value.length - 1 );
+			    }
+			}
+			function fnWrite() {
+			    var fm = document.frm;
+			    if (fm.gScheduleTitle.value == "") {
+			        alert("제목을 입력하세요");
+			        fm.gScheduleTitle.focus();
+			        return;		 
+				}
+			    else if (fm.gScheduleStartDay.value == "") {
+				    alert("시작일을 입력하세요");
+				    fm.gScheduleStartDay.focus();
+				    return;
+				  } 
+				else if (fm.gScheduleEndDay.value == "") {
+				    alert("종료일을 입력하세요");
+				    fm.gScheduleEndDay.focus();
+				    return;
+				  } 
+				else if (fm.gScheduleEndDay.value <= fm.gScheduleStartDay.value) {
+					  alert("종료일은 시작일보다 크거나 같아야 합니다.");
+					  fm.gScheduleEndDay.focus();
+					  return;
+					}
+				 else if (fm.scheduleLocation.value == "") {
+				        alert("주소를 입력하세요");
+				        fm.scheduleLocation.focus();
+				        return;
+				  }
+				  else if (fm.gScheduleFee.value == "") {
+				        alert("모임비를 입력하세요");
+				        fm.gScheduleFee.focus();
+				        return;
+				  }
+				  else if (fm.gScheduleArrangements.value == "") {
+				        alert("준비물을 입력하세요");
+				        fm.gScheduleArrangements.focus();
+				        return;
+				  }
+				  else if (fm.gScheduleCapacity.value == "") {
+				        alert("정원을 입력하세요");
+				        fm.gScheduleCapacity.focus();
+				        return;
+				  }
+				  else if (fm.gScheduleCapacity.value < "${gsv.gScheduleCapacity}") {
+					  	alert("모임 참여하고있는 인원보다 설정한 모임 정원이 더 작습니다. 더 늘려주세요.");
+				        fm.gScheduleCapacity.focus();
+				        return;
+				  }
+				 
+					    fm.action = "${pageContext.request.contextPath}/gathering/gScheduleModifyAction.do";
+					    fm.enctype = "multipart/form-data";
+					    fm.method = "post";
+					    fm.submit();
+					    }
+		
+			function updateCharacterCount(inputName) {
+				  var input = document.getElementsByName(inputName)[0];
+				  var maxLength = parseInt(input.getAttribute('maxlength'));
+				  var currentLength = input.value.length;
+				  var countElement = document.getElementById(inputName + 'Count');
+				  
+				  countElement.textContent = currentLength + '/' + maxLength;
+				}
+
+				// 초기 로딩 시 글자 수 업데이트
+				window.addEventListener('DOMContentLoaded', function() {
+				  updateCharacterCount('gScheduleTitle');
+				  updateCharacterCount('gScheduleArrangements');
+				});
+				
+			
+			</script>
 	</head>
 	<body>
 		<%@include file="../header2.jsp" %>
 		<%@include file="header3.jsp" %>
 		<main id="main">
-			<form action="${pageContext.request.contextPath}/gathering/gScheduleModifyAction.do" method="POST">
+			<form  name="frm">
 				<input type="hidden" id="gsidx" name="gsidx" value="${gsv.gsidx}"><!-- 모임 일정 번호 -->
 				<section class="gContainer gSetContainer">
 					<div>
@@ -227,7 +306,7 @@
 						</div>
 					</div><!-- 끝-->
 					<div>
-						<button class="gBtn2">일정수정하기</button>				 
+						<button type="button" class="gBtn2" onclick="fnWrite();">일정수정하기</button>				 
 					</div>
 				</section>
 			</form>

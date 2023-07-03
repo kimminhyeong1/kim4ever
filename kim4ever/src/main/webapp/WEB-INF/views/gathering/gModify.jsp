@@ -313,6 +313,10 @@
             alert("모임 정원을 입력해주세요.");
             return false; // 양식 제출을 중지합니다.
         }
+        if (gInfoCapacity < "${gjvlist[0].gInfoParticipating}") {
+        	alert("모임 참여하고있는 인원보다 설정한 모임 정원이 더 작습니다. 더 늘려주세요.");
+            return false; // 양식 제출을 중지합니다.
+		}
 
         return true; // 양식을 제출합니다.
     }
