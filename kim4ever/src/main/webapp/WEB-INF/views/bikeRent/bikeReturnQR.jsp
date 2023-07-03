@@ -22,7 +22,7 @@
 					<div class="containerFlex">
 						<c:forEach var="qrRentalShop" items="${QRList}">
 								<div class="QRcard">
-		                            <a href="${pageContext.request.contextPath}/bikeRent/bikeRentDetail/${qrRentalShop.ersidx}/view.do"><img class="QRImg" src="data:image/png;base64,${qrRentalShop.QRrentalshop}" alt=""></a>
+		                            <a href="${pageContext.request.contextPath}/bikeRent/bikeRentReturn/${qrRentalShop.ersidx}/view.do"><img class="QRImg" src="data:image/png;base64,${qrRentalShop.QRrentalshop}" alt=""></a>
 		                            <p>${qrRentalShop.rentalshopName}</p>
 		                        </div>
 						</c:forEach> 
