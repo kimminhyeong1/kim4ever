@@ -6,6 +6,8 @@ public class BikeVo {
 	private String bikeType; //자전거종류
 	private String bikeLocation; //자전거위치
 	private String bikeState; //자전거상태 디폴트값 = 'Y' <대여가능 Y , 대여중  N , 고장 E>
+	private String QRbike; //QR코드
+	private String ebkidx; //bkidx암호화
  	
 	
 	public int getBkidx() {
@@ -37,6 +39,18 @@ public class BikeVo {
 	}
 	public void setBikeState(String bikeState) {
 		this.bikeState = bikeState;
+	}
+	public String getQRbike() {
+		return QRbike;
+	}
+	public void setQRbike(String qRbike) {
+		QRbike = qRbike;
+	}
+	public String getEbkidx() {
+		return ebkidx;
+	}
+	public void setEbkidx(String ebkidx) {
+		this.ebkidx = ebkidx;
 	}
  
 	

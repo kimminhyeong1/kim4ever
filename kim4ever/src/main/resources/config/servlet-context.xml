@@ -52,6 +52,7 @@
 			<mapping path="/member/memberUpdate.do"/> <!-- 회원정보 수정 페이지 업데이트 페이지 -->
 			<mapping path="/bikeRent/bikeRentHistory.do"/> <!-- 대여이력 페이지 -->
 			<mapping path="/bikeRent/bikeRentQR.do"/> <!-- 자전거 QR 페이지 -->
+			<mapping path="/bikeRentDetail/{key}/view.do"/> <!-- 자전거 QR 페이지 -->
 			<mapping path="/bikeRent/bikeRentDetail.do"/> <!-- 대여하기 페이지 -->
 			<mapping path="/bikeRent/bikeRentUseList.do"/> <!-- 이용내역 페이지 -->
 			<mapping path="/bikeRent/bikeReturnQR.do"/> <!-- 대여소 QR 페이지 -->

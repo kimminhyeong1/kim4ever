@@ -6,6 +6,9 @@ public class RentalshopVo {
 	private String rentalshopLocation; //대여소위치
 	private String rentalshopLatitude; //대여소위도
 	private String rentalshopLongitude; //대여소경도
+	private String QRrentalshop; //QR코드
+	private String ersidx; //rsidx암호화
+	
 	
 	public int getRsidx() {
 		return rsidx;
@@ -36,6 +39,18 @@ public class RentalshopVo {
 	}
 	public void setRentalshopLongitude(String rentalshopLongitude) {
 		this.rentalshopLongitude = rentalshopLongitude;
+	}
+	public String getQRrentalshop() {
+		return QRrentalshop;
+	}
+	public void setQRrentalshop(String qRrentalshop) {
+		QRrentalshop = qRrentalshop;
+	}
+	public String getErsidx() {
+		return ersidx;
+	}
+	public void setErsidx(String ersidx) {
+		this.ersidx = ersidx;
 	}
 	
 	

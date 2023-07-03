@@ -37,9 +37,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.myezen.myapp.domain.BikeInfoVo;
 import com.myezen.myapp.domain.BikeJoinVo;
+import com.myezen.myapp.domain.BikeVo;
 import com.myezen.myapp.domain.ErrorVo;
 import com.myezen.myapp.domain.MemberVo;
 import com.myezen.myapp.domain.PageMaker;
+import com.myezen.myapp.domain.RentalshopVo;
 import com.myezen.myapp.domain.SearchCriteria;
 import com.myezen.myapp.service.BikeRentService;
 import com.myezen.myapp.service.MemberService;
@@ -158,35 +160,13 @@ public class bikeRentController {
 			Model md
 			)throws Exception {
 		
-		/*암호화부분*/
-        /*URL파라미터값 암호화*/
-        String ebkidx1 = AESUtil.encrypt("1");
-        String ebkidx2 = AESUtil.encrypt("2");
-        String ebkidx3 = AESUtil.encrypt("3");
-        String ebkidx71 = AESUtil.encrypt("71");
-        String ebkidx81 = AESUtil.encrypt("81");
-        String ebkidx91 = AESUtil.encrypt("91");
-        
-        // 모델로 전달
-        md.addAttribute("ebkidx1", ebkidx1);
-        md.addAttribute("ebkidx2", ebkidx2); 
-        md.addAttribute("ebkidx3", ebkidx3);
-        md.addAttribute("ebkidx71", ebkidx71);
-        md.addAttribute("ebkidx81", ebkidx81);
-        md.addAttribute("ebkidx91", ebkidx91);
-        
         /*QR생성부분*/
         /*QR생성부분 서비스부분에서 실행*/
-        ArrayList<String> QRList = bs.QRBikeCode();  
+        ArrayList<BikeVo> QRList = bs.QRBikeCode(request);  
 
         // 모델로 전달
-        md.addAttribute("QRCode1", QRList.get(0));
-        md.addAttribute("QRCode2", QRList.get(1));
-        md.addAttribute("QRCode3", QRList.get(2));
-        md.addAttribute("QRCode71", QRList.get(3));
-        md.addAttribute("QRCode81", QRList.get(4));
-        md.addAttribute("QRCode91", QRList.get(5));
-        
+        md.addAttribute("QRList", QRList);
+
 	    return "bikeRent/bikeRentQR";
 	}
 
@@ -203,8 +183,11 @@ public class bikeRentController {
 		 int bkidx = Integer.parseInt(dbkidx);
 		 System.out.println("복호화한키"+bkidx);
 		 HttpSession session = request.getSession();
-		 int midx = (int) session.getAttribute("midx");
-		 
+	     Object Omidx = session.getAttribute("midx");
+		    if (Omidx == null) {//midx가 없으면 진입불가
+		    	return "redirect:/member/memberLogin.do";
+			}
+		    int midx = (int)Omidx;
 		 //사용자테이블에 휴대폰번호가없으면 
 		 String memberPhone = ms.memberPhoneCheck(midx);
 		 if (memberPhone.equals("0")) {
@@ -295,34 +278,15 @@ public class bikeRentController {
 			) throws Exception {
 		//세션값가져오기
 		HttpSession session = request.getSession();
-		int ridx = (int) session.getAttribute("ridx");
-		
-		/*암호화부분*/
-        /*URL파라미터값 암호화*/
-        String ersidx1 = AESUtil.encrypt("1");
-        String ersidx2 = AESUtil.encrypt("2");
-        String ersidx3 = AESUtil.encrypt("3");
-        
-        // 모델로 전달
-        md.addAttribute("ersidx1", ersidx1);
-        md.addAttribute("ersidx2", ersidx2); 
-        md.addAttribute("ersidx3", ersidx3);
-       
-		
-		
-		
-		
+	     Object Oridx = session.getAttribute("ridx");
+		    if (Oridx == null) {//midx가 없으면 진입불가
+		    	return "redirect:/member/memberLogin.do";
+			}
         /*QR생성부분*/
         /*QR생성부분 서비스부분에서 실행*/
-        ArrayList<String> QRList = bs.QRRentalShopCode();  
-
-        // JSP로 전달할 데이터 설정
-        md.addAttribute("QRCode1", QRList.get(0));
-        md.addAttribute("QRCode2", QRList.get(1));
-        md.addAttribute("QRCode3", QRList.get(2));
-       
-        
-        md.addAttribute("ridx", ridx);
+        ArrayList<RentalshopVo> QRList = bs.QRRentalShopCode(request);  
+        // 모델로 전달
+        md.addAttribute("QRList", QRList);
         
 	    return "bikeRent/bikeReturnQR";
 	}
@@ -348,7 +312,11 @@ public class bikeRentController {
 		 System.out.println("복호화한키"+rsidx);
 		
 		HttpSession session = request.getSession();
-		int ridx = (int) session.getAttribute("ridx");//대여번호
+	     Object Oridx = session.getAttribute("ridx");
+		    if (Oridx == null) {//midx가 없으면 진입불가
+		    	return "redirect:/member/memberLogin.do";
+			}
+	    int ridx = (int) Oridx;//대여번호
 		System.out.println("반납하기 자전거번호"+ridx+"반납소 번호"+rsidx);
 	
 

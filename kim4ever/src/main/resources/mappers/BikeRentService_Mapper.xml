@@ -234,8 +234,14 @@ LIMIT 1;		<!-- FETCH FIRST 1 ROW ONLY를 MySQL에서 사용하는 LIMIT 1로 변
 			VALUES (#{reviewContent})
 		</insert>
 
-
-
+	<!-- 자전거QR코드가져오기 -->
+	<select id="bikeRentQRbkidx" resultType="com.myezen.myapp.domain.BikeVo">
+		select * from bike1234 a
+	</select>
+	<!-- 대여소QR코드가져오기 -->
+	<select id="bikeRentQRrsidx" resultType="com.myezen.myapp.domain.RentalshopVo">
+		select * from rentalshop1234 a
+	</select>
 	
 
 

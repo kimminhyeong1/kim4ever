@@ -15,17 +15,19 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.myezen.myapp.domain.BikeJoinVo;
+import com.myezen.myapp.domain.BikeVo;
 import com.myezen.myapp.domain.ErrorVo;
 import com.myezen.myapp.domain.MemberVo;
+import com.myezen.myapp.domain.RentalshopVo;
 import com.myezen.myapp.domain.SearchCriteria;
 import com.myezen.myapp.util.QRCodeUtil;
 
 public interface BikeRentService {
 	
 	//QR자전거생성
-	public ArrayList<String> QRBikeCode() throws Exception;
+	public ArrayList<BikeVo> QRBikeCode(HttpServletRequest request) throws Exception;
 	//QR대여소생성
-	public ArrayList<String> QRRentalShopCode() throws Exception;
+	public ArrayList<RentalshopVo> QRRentalShopCode(HttpServletRequest request) throws Exception;
 	
 	//자전거상세보기
 	public BikeJoinVo RentDetail(int bkidx);

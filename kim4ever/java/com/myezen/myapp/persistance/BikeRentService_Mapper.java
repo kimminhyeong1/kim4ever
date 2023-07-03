@@ -11,8 +11,10 @@ import java.util.HashMap;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.myezen.myapp.domain.BikeJoinVo;
+import com.myezen.myapp.domain.BikeVo;
 import com.myezen.myapp.domain.ErrorVo;
 import com.myezen.myapp.domain.MemberVo;
+import com.myezen.myapp.domain.RentalshopVo;
 import com.myezen.myapp.domain.SearchCriteria;
 
 public interface BikeRentService_Mapper {
@@ -94,5 +96,8 @@ public interface BikeRentService_Mapper {
 	//리뷰 작성
     public int reviewInsert(String reviewContent);
 	
-	
+	//QR자전거 코드 가져오기
+    public ArrayList<BikeVo> bikeRentQRbkidx();
+    //QR대여소 코드 가져오기
+    public ArrayList<RentalshopVo> bikeRentQRrsidx();
 }

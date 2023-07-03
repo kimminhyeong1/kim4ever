@@ -18,25 +18,15 @@
 		<%@include file="../header.jsp" %>
 		<main id="main">
 			<section id="content">
-			
 			<h2 class="QRTitle">대여소QR</h2>	
 					<div class="containerFlex">
-						<div class="QRcard">
-							<a href="${pageContext.request.contextPath}/bikeRent/bikeRentReturn/${ersidx1}/view.do"><img class="QRImg"src="data:image/png;base64,${QRCode1}" alt=""></a>
-						<p>오목대여소</p>
-						</div>
-						<div class="QRcard">
-							<a href="${pageContext.request.contextPath}/bikeRent/bikeRentReturn/${ersidx2}/view.do"><img class="QRImg" src="data:image/png;base64,${QRCode2}" alt=""></a>
-						<p>송천대여소</p>
-						</div>
-						<div class="QRcard">
-							<a href="${pageContext.request.contextPath}/bikeRent/bikeRentReturn/${ersidx3}/view.do"><img class="QRImg" src="data:image/png;base64,${QRCode3}" alt=""></a>
-						<p>효자대여소</p>
-						</div>
+						<c:forEach var="qrRentalShop" items="${QRList}">
+								<div class="QRcard">
+		                            <a href="${pageContext.request.contextPath}/bikeRent/bikeRentDetail/${qrRentalShop.ersidx}/view.do"><img class="QRImg" src="data:image/png;base64,${qrRentalShop.QRrentalshop}" alt=""></a>
+		                            <p>${qrRentalShop.rentalshopName}</p>
+		                        </div>
+						</c:forEach> 
 					</div>
-				
-			 
-			
 			</section>
 		</main>
 		<%@include file="../footer.jsp" %>

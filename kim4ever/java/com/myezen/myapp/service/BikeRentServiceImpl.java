@@ -23,8 +23,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.myezen.myapp.domain.BikeJoinVo;
+import com.myezen.myapp.domain.BikeVo;
 import com.myezen.myapp.domain.ErrorVo;
 import com.myezen.myapp.domain.MemberVo;
+import com.myezen.myapp.domain.RentalshopVo;
 import com.myezen.myapp.domain.SearchCriteria;
 import com.myezen.myapp.persistance.BikeRentService_Mapper;
 import com.myezen.myapp.util.AESUtil;
@@ -289,85 +291,59 @@ public class BikeRentServiceImpl implements BikeRentService {
 	
 	@Override
 	//자전거QR생성
-	public ArrayList<String> QRBikeCode() throws Exception {
-		
-		/*URL파라미터값 암호화*/
-        String ebkidx1 = AESUtil.encrypt("1");
-        String ebkidx2 = AESUtil.encrypt("2");
-        String ebkidx3 = AESUtil.encrypt("3");
-        String ebkidx71 = AESUtil.encrypt("71");
-        String ebkidx81 = AESUtil.encrypt("81");
-        String ebkidx91 = AESUtil.encrypt("91");
-        
-		// QR 코드 설정
-		String url1 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail/"+ebkidx1+"/view.do"; // QR 코드에 포함될 URL
-		String url2 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail/"+ebkidx2+"/view.do"; // QR 코드에 포함될 URL
-		String url3 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail/"+ebkidx3+"/view.do"; // QR 코드에 포함될 URL
-		String url71 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail/"+ebkidx71+"/view.do"; // QR 코드에 포함될 URL
-		String url81 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail/"+ebkidx81+"/view.do"; // QR 코드에 포함될 URL
-		String url91 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail/"+ebkidx91+"/view.do"; // QR 코드에 포함될 URL
-		
+	public ArrayList<BikeVo> QRBikeCode(HttpServletRequest request) throws Exception {
+
 		int width = 300; // 원하는 가로 크기
 		int height = 300; // 원하는 세로 크기
-		
-		// QR 코드 생성
-		QRCodeUtil qrCodeUtil1 = new QRCodeUtil();
-		String qrCode1 = qrCodeUtil1.generateQRCode(url1, width, height);
-		QRCodeUtil qrCodeUtil2 = new QRCodeUtil();
-		String qrCode2 = qrCodeUtil2.generateQRCode(url2, width, height);
-		QRCodeUtil qrCodeUtil3 = new QRCodeUtil();
-		String qrCode3 = qrCodeUtil3.generateQRCode(url3, width, height);
-		QRCodeUtil qrCodeUtil71 = new QRCodeUtil();
-		String qrCode71 = qrCodeUtil71.generateQRCode(url71, width, height);
-		QRCodeUtil qrCodeUtil81 = new QRCodeUtil();
-		String qrCode81 = qrCodeUtil81.generateQRCode(url81, width, height);
-		QRCodeUtil qrCodeUtil91 = new QRCodeUtil();
-		String qrCode91 = qrCodeUtil91.generateQRCode(url91, width, height);
-		
-		// QR 코드 담기
-		ArrayList<String> QRList = new ArrayList<>();
-		QRList.add(qrCode1);
-		QRList.add(qrCode2);
-		QRList.add(qrCode3);
-		QRList.add(qrCode71);
-		QRList.add(qrCode81);
-		QRList.add(qrCode91);
-		
-		return QRList;
+		String contextpath="";
+		if (request.getContextPath().equals("/myapp")) {
+			contextpath ="http://localhost:8080/myapp";//로컬
+		}else {
+			contextpath ="http://jjezen.cafe24.com/kim4ever";//서버
+		}
+		ArrayList<BikeVo> QRbkidx = brsm.bikeRentQRbkidx();
+		for (BikeVo QR:QRbkidx) {
+			/*URL파라미터값 암호화*/
+			String ebkidx = AESUtil.encrypt(""+QR.getBkidx());
+			// QR 코드 설정
+			String url = contextpath+"/bikeRent/bikeRentDetail/"+ebkidx+"/view.do"; // QR 코드에 포함될 URL
+			// QR 코드 생성
+			QRCodeUtil qrCodeUtil = new QRCodeUtil();
+			String qrCode = qrCodeUtil.generateQRCode(url, width, height);
+			// QR 코드 담기
+			 QR.setQRbike(qrCode);
+			 QR.setEbkidx(ebkidx); 
+		}
+		return QRbkidx;
 	}
 
 
 	@Override
 	//대여소QR생성
-	public ArrayList<String> QRRentalShopCode() throws Exception {
-		
-		/*URL파라미터값 암호화*/
-        String ersidx1 = AESUtil.encrypt("1");
-        String ersidx2 = AESUtil.encrypt("2");
-        String ersidx3 = AESUtil.encrypt("3");
-		
-		// QR 코드 설정
-		String url1 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail/"+ersidx1+"/view.do"; // QR 코드에 포함될 URL
-		String url2 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail/"+ersidx2+"/view.do"; // QR 코드에 포함될 URL
-		String url3 = "http://localhost:8080/myapp/bikeRent/bikeRentDetail/"+ersidx3+"/view.do"; // QR 코드에 포함될 URL
+	public ArrayList<RentalshopVo> QRRentalShopCode(HttpServletRequest request) throws Exception {
+		 
 		int width = 300; // 원하는 가로 크기
 		int height = 300; // 원하는 세로 크기
-		
-		// QR 코드 생성
-		QRCodeUtil qrCodeUtil1 = new QRCodeUtil();
-		String qrCode1 = qrCodeUtil1.generateQRCode(url1, width, height);
-		QRCodeUtil qrCodeUtil2 = new QRCodeUtil();
-		String qrCode2 = qrCodeUtil2.generateQRCode(url2, width, height);
-		QRCodeUtil qrCodeUtil3 = new QRCodeUtil();
-		String qrCode3 = qrCodeUtil3.generateQRCode(url3, width, height);
-		
-		// QR 코드 담기
-		ArrayList<String> QRList = new ArrayList<>();
-		QRList.add(qrCode1);
-		QRList.add(qrCode2);
-		QRList.add(qrCode3);
-		
-		return QRList;
+		String contextpath="";
+		if (request.getContextPath().equals("/myapp")) {
+			contextpath ="http://localhost:8080/myapp";//로컬
+		}else {
+			contextpath ="http://jjezen.cafe24.com/kim4ever";//서버
+		}
+		ArrayList<RentalshopVo> QRrsidx = brsm.bikeRentQRrsidx();
+		for (RentalshopVo QR:QRrsidx) {
+			/*URL파라미터값 암호화*/
+			String ersidx = AESUtil.encrypt(""+QR.getRsidx());
+			// QR 코드 설정
+			String url = contextpath+"/bikeRent/bikeRentReturn/"+ersidx+"/view.do"; // QR 코드에 포함될 URL
+			// QR 코드 생성
+			QRCodeUtil qrCodeUtil = new QRCodeUtil();
+			String qrCode = qrCodeUtil.generateQRCode(url, width, height);
+			// QR 코드 담기
+			 QR.setQRrentalshop(qrCode);
+			 QR.setErsidx(ersidx); 
+		}
+		return QRrsidx;
 	}
 
 

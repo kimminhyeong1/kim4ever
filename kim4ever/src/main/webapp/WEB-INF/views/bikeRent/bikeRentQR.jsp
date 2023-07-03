@@ -30,33 +30,29 @@
 			<h2 class="QRTitle">일반 자전거QR</h2>
 				<div class="container">
 					<div class="containerFlex">
-                        <div class="QRcard">
-                            <a href="${pageContext.request.contextPath}/bikeRent/bikeRentDetail/${ebkidx1}/view.do"><img class="QRImg" src="data:image/png;base64,${QRCode1}" alt=""></a>
-                            <p>NOR1</p>
-                        </div>
-                         <div class="QRcard">
-                            <a href="${pageContext.request.contextPath}/bikeRent/bikeRentDetail/${ebkidx2}/view.do"><img class="QRImg" src="data:image/png;base64,${QRCode2}" alt=""></a>
-                            <p>NOR2</p>
-                        </div>
-                         <div class="QRcard">
-                            <a href="${pageContext.request.contextPath}/bikeRent/bikeRentDetail/${ebkidx3}/view.do"><img class="QRImg" src="data:image/png;base64,${QRCode3}" alt=""></a>
-                            <p>NOR3</p>
-                        </div>                         
+						<c:set var="count1" value="0" scope="page" />
+						<c:forEach var="qrbike" items="${QRList}">
+							<c:if test="${qrbike.bikeType == '일반자전거' && count1 < 3}">
+								<div class="QRcard">
+		                            <a href="${pageContext.request.contextPath}/bikeRent/bikeRentDetail/${qrbike.ebkidx}/view.do"><img class="QRImg" src="data:image/png;base64,${qrbike.QRbike}" alt=""></a>
+		                            <p>${qrbike.bikeCode}</p>
+		                        </div>
+		                        <c:set var="count1" value="${count1 + 1}" scope="page" />
+	                        </c:if>
+						</c:forEach>                    					
 					</div>
 			<h2 class="QRTitle" style="margin-top: 35px;">전기 자전거QR</h2>		
 					<div class="containerFlex">
-                        <div class="QRcard">
-                            <a href="${pageContext.request.contextPath}/bikeRent/bikeRentDetail/${ebkidx71}/view.do"><img class="QRImg" src="data:image/png;base64,${QRCode71}" alt=""></a>
-                            <p>ELE21</p>
-                        </div>
-                        <div class="QRcard">
-                            <a href="${pageContext.request.contextPath}/bikeRent/bikeRentDetail/${ebkidx81}/view.do"><img class="QRImg" src="data:image/png;base64,${QRCode81}" alt=""></a>
-                            <p>ELE31</p>
-                        </div>
-                        <div class="QRcard">
-                            <a href="${pageContext.request.contextPath}/bikeRent/bikeRentDetail/${ebkidx91}/view.do"><img class="QRImg" src="data:image/png;base64,${QRCode91}" alt=""></a>
-                            <p>ELE41</p>
-                        </div>					
+						<c:set var="count2" value="0" scope="page" />
+						<c:forEach var="qrbike" items="${QRList}">
+								<c:if test="${qrbike.bikeType == '전기자전거' && count2 < 3}">
+									<div class="QRcard">
+			                            <a href="${pageContext.request.contextPath}/bikeRent/bikeRentDetail/${qrbike.ebkidx}/view.do"><img class="QRImg" src="data:image/png;base64,${qrbike.QRbike}" alt=""></a>
+			                            <p>${qrbike.bikeCode}</p>
+			                        </div>
+			                        <c:set var="count2" value="${count2 + 1}" scope="page" />
+		                        </c:if>
+						</c:forEach>  				
                       </div>
 				</div>				
 			</section>	
