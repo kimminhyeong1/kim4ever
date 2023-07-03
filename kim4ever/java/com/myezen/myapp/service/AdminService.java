@@ -58,6 +58,10 @@ public interface AdminService {
 		public int bikeInsert(String bikeCode, String bikeType, String bikeLocation,int cnt);
 	//자전거 삭제
 		public void updateBikeStateD(int bkidx);
+	//리뷰 리스트
+		public ArrayList<BikeJoinVo> reviewList(SearchCriteria scri);
+	//리뷰 총 개수
+		public int reviewListCount (SearchCriteria scri);
 	//자전거 코드번호 중복 체크
 		public int bikeCodeCheck(String bikeCode);	
 	//대여소 리스트
