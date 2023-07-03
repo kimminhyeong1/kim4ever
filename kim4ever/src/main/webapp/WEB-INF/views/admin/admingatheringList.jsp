@@ -46,14 +46,13 @@ li{list-style:none;}
 #content table {width:70%; border-collapse:collapse; margin:0 auto; line-height:50px; font-size:20px;font-family:'omyu_pretty'; font-size:24px;}
 #content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 #content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
-#content table tr th:nth-child(1){width:80px;}
-#content table tr th:nth-child(2){width:50px;}
+
 #content table tr th:nth-child(1){width:110px;}
-#content table tr th:nth-child(2){width:60px;}
+#content table tr th:nth-child(2){width:50px;}
 #content table tr th:nth-child(3){width:110px;}
 #content table tr th:nth-child(4){width:50px;}
-#content table tr th:nth-child(5){width:60px;}
-#content table tr th:nth-child(6){width:40px; font-size:18px;}
+#content table tr th:nth-child(5){width:50px;}
+#content table tr th:nth-child(6){width:100px; font-size:18px;}
 #content table .report-count {display:inline-block;vertical-align:middle;margin-right:5px;}
 #content table .icon-image {height:30px;vertical-align:middle;}
 #content table .th-image {height:20px;vertical-align:middle;}
