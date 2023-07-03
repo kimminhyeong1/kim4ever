@@ -46,7 +46,8 @@ li{list-style:none;}
   padding: 10px;
   margin: 2px 0;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 20px;
+  resize:none;
 }
 textarea {
   word-break: break-all;
