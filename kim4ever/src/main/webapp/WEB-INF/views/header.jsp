@@ -99,6 +99,10 @@ header{width: 1250px;margin: 35px auto 0px;text-align: center;}
 
 .icon-text{display: flex; width:100%;  justify-content: center; align-items: center;   font-size: 21px; color: white;}
   .user_name2{display: inline-block; margin-top: 10px; }
+  
+  
+
+  
 /****************************모바일**************************/
 @media (min-width: 300px) and (max-width: 940px)  {
 header{width:auto;margin:0 auto; overflow-x: hidden;}
