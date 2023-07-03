@@ -257,7 +257,8 @@ public interface GatheringService_Mapper {
 	public void updateGatheringSchedule(int giidx);
 	//모임에 연관된 신고 정보 삭제
 	public void updateGatheringDeclaration(int giidx);
-	
+	//모임장,부모임장이 모임에서 나가면서 작성했던 포토앨범들 delYn변경
+	public void updateGatheringPhotoAlbumOne(int midx, int giidx);
 	
 	
 	

@@ -783,6 +783,8 @@ public class GatheringServiceImpl implements GatheringService {
         	    gsm.exitGathering(midx, giidx);
         	    //게시판에 쓴 글들 나가면서 delYN=Y로 변경
         	    gsm.updateGatheringBoardOne(midx,giidx);
+        	    //모임장,부모임장이 작성했던 포토앨범을 나가면서 delYn값 변경
+        	    gsm.updateGatheringPhotoAlbumOne(midx,giidx);
         	    //모임원수 -1
         	    gsm.gatheringParticipatingUpdate1(giidx);
         	    System.out.println("모임에서 나가셨습니다.");

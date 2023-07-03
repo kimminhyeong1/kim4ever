@@ -617,6 +617,13 @@
 	  WHERE giidx = #{giidx}
 	</update>
 	
+	<!-- 모임에 연관된 신고 정보들 삭제 -->
+	<update id="updateGatheringPhotoAlbumOne" parameterType="int">
+	  UPDATE gathering_photoalbum1234
+	  SET gPhotoAlbumDelYN = 'Y'
+	   WHERE midx = #{0} and giidx = #{1}
+	</update>
+	
 	<!-- 모임정보 삭제 -->
 	<update id="updateGathering" parameterType="int">
 	  UPDATE GATHERING_info1234
