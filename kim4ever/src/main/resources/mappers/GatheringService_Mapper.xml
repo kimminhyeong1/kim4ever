@@ -708,7 +708,7 @@
 	
 	<!--  사진첩  게시글 수정 조회 -->
 	<select id="gatheringPhotoAlbumModify" resultType="com.myezen.myapp.domain.GatheringJoinVo">
-    	 SELECT a.gpaidx, a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, a.GPHOTOALBUMCONTENTS0, a.GPHOTOALBUMCONTENTS1, a.GPHOTOALBUMCONTENTS2, b.imgtype, b.imageName, c.imageName AS gatImageName
+    	SELECT a.gpaidx, a.GPHOTOALBUMWRITEDAY, a.GPHOTOALBUMTITLE, a.GPHOTOALBUMCONTENTS0, a.GPHOTOALBUMCONTENTS1, a.GPHOTOALBUMCONTENTS2, b.imgtype, b.imageName, c.imageName AS gatImageName
 	    FROM gathering_photoalbum1234 a
 	    LEFT JOIN image1234 b ON a.gpaidx = b.gpaidx AND b.imgtype = 'GA'
 	    LEFT JOIN image1234 c ON a.gpaidx = c.gpaidx AND c.imgtype = 'GAT'
