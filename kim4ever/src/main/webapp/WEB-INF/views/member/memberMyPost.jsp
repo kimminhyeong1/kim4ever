@@ -7,7 +7,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>타바-내가 쓴 글</title>
 
 <style>
 /*리셋코드*/ 
@@ -15,20 +16,8 @@
 li{list-style:none;}
 
 @font-face {
-    font-family:'GangwonEdu_OTFBoldA';
-    src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
-    font-weight:normal;
-    font-style:normal;
-}
-@font-face {
     font-family:'omyu_pretty';
     src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
-    font-weight:normal;
-    font-style:normal;
-}
-@font-face {
-    font-family: KCC-Ganpan';
-    src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2') format('woff2');
     font-weight:normal;
     font-style:normal;
 }
@@ -43,6 +32,34 @@ li{list-style:none;}
 #content #btn{text-align:right; margin-top:20px; margin-right:144px; }
 #content #btn button{width:100px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
 #content #btn button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+/****************************모바일**************************/
+@media (min-width: 300px) and (max-width: 940px)  {
+	#main{width:auto; min-height:87vh; margin:0 auto; text-align:center;}
+	#main #content{width:auto; height:auto;}
+	#main #content h2{text-align:left; margin-top:50px; margin-left:16px; margin-left:10%; font-size:15px; }
+	#main #bottom{width:auto; height:10px;}
+	#content table {width:80vw; border-collapse:collapse; margin:10px auto 0; line-height:13px; font-size:14px; font-family: 'omyu_pretty'; cursor:pointer; }
+	#content table th{padding: 10px;text-align: center;}
+	#content table td{padding: 5px; text-align:center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+	#content #btn{text-align:right; margin-top:20px; margin-right:5%; }
+	#content #btn button{width:60px; height:30px; text-align:center; font-family: 'omyu_pretty'; font-size:15px;  border-radius:20px; border:0px solid #ff9933; }
+	
+	.cell-content {width: 25vw; overflow: hidden; text-overflow: ellipsis;}
+	
+	
+	
+	/*메뉴바 테이블*/
+	.tab__contents {display:none;}
+	.show {display: block;} 
+	.tab__list{margin-top:3%;}
+	.tab__list li{ display: inline-block; border: none; background-color: #f8f8f8; padding: 5px 7px; cursor: pointer;  font-family: 'omyu_pretty'; font-size:15px; border-radius:20px; margin-top:10px;0.4);}
+	.tab__list__item.active {background-color:#ff9933; color:#fff; border:none ;}
+	
+	 a {color: inherit; text-decoration: none;}
+	 .pageing{font-size:20px !important;} 
+	 
+
+}
 </style>
 </head>
 <body>
@@ -57,7 +74,7 @@ li{list-style:none;}
 					    <c:choose>
 					        <c:when test="${empty blist}">
 					            <tr>
-					                <td colspan="5" style="text-align: center; font-family: 'GangwonEdu_OTFBoldA'; font-size: 27px;">작성한 게시글이 없습니다.</td>
+					                <td colspan="5" style="text-align: center;  font-size: 25px;">작성한 게시글이 없습니다.</td>
 					            </tr>
 					        </c:when>
 					        <c:otherwise>
@@ -89,9 +106,6 @@ li{list-style:none;}
 				</div>
 			</div>
 		</div>
-
-
-		<div id="bottom"></div>
 </body>
 <%@include file="../footer.jsp"%>
 </html>

@@ -21,11 +21,11 @@
 		.gMemberList > div {display:flex;align-items:center;margin-bottom:20px;position:relative;}
 		.gMemberList > div::after {content:"";position:absolute;bottom:-20px; /* 선의 위치 조정 */left:0;width:100%;height:1px;background-color:#ccc;}
 		.gMemberList > div > div:nth-child(1) {width:50px; height:50px;float:left;}
-		.gMemberList > div > div:nth-child(2) {height: 25px;margin-left: 10px;}
+		.gMemberList > div > div:nth-child(2) {height: 29px;  margin-top: 10px;  margin-left: 10px;  justify-content: center;    display: inherit;}
 		.gMemberList > div > div:nth-child(2) > div,
 		.gMemberList > div > div:nth-child(3) > div {display:inline-block; font-size:24px;margin-left:10px;}
 		.gmemberName {width:100px;}
-		.gmemberInfo {width:350px;}	
+		.gmemberInfo {width:420px;  white-space: nowrap;  overflow: hidden; text-overflow: ellipsis;}	
 		.gmemberAddr {width:500px;}	
 		.gmemberType {width:62px;}
 		.menu a{margin:10px;}
@@ -37,28 +37,32 @@
 		.menu #gMemberListLink {color:#bbb; }
   		.menu #gMemberJoinWaitListLink {color:#05d100;}
   		.menu #gPowerEntrustListLink {color:#bbb}
+  			.buttonContainer {justify-content: center; margin-top:10px;}
   		
   		
   		
   		/*************************모바일****************************************/
 				/*****모바일 넓이***/
-		@media (min-width: 300px) and (max-width: 940px)  {
+	@media (min-width: 300px) and (max-width: 940px)  {
 			#main{margin: 0 auto;  width: auto;}
 		
 		
 			.menu{width:auto; text-align:left; margin: 0 auto; font-size:20px; text-align: center; margin:20px;}
-	.gProfileimage img {width:50px;height:50px;object-fit:cover;border-radius:50%; margin-top: 15px;}
-	.gMemberList {display:flex;flex-direction:column;align-items:flex-start;text-align:left;font-size:24px;margin:40px 20px;}
-	.gMemberList > div {margin-bottom:20px; width:90%}
-	.gMemberList > div::after {content:"";position:absolute;bottom:-20px; /* 선의 위치 조정 */left:0;width:100%;height:1px;background-color:#ccc;}
-	.gMemberList > div > div:nth-child(1) {width:50px; height:50px;float:left;}
-	.gMemberList > div > div:nth-child(2) {height: 25px;     margin-top: 5px; margin-left:10px;}
-	.gMemberList > div > div:nth-child(2) > div,
-	.gMemberList > div > div:nth-child(3) > div {display:inline-block; font-size:18px;}
+			.gProfileimage img{width: 45px; height: 45px; object-fit: cover; border-radius: 50%;}/*프로필이미지*/
+.gMemberList {text-align: left; font-size: 20px; margin: 10px 20px;} 
+			.gMemberList >div>div:nth-child(1){width: 50px; height: 50px; float: left;}/*프로필*/ 
+			.gProfileimage img {width: 45px; height: 45px; object-fit: cover; border-radius: 50%; margin-top: 17px;}/*프로필이미지*/
+		.gMemberList >div>div:nth-child(2){height: 25px; margin-left: 0px; margin-top:0px; display:inline-block;}/*모임장,이름*/ 
+	.gMemberList >div>div:nth-child(2)>div{display: inline-block; margin-top: 5px; font-size:20px; width: 240px;} 
+		.gMemberList >div>div:nth-child(3)>div:nth-child(1){height: 25px; margin-left: 60px; font-size: 12px; margin-top: 5px;}/*날짜 카테고리*/ 
+		.gMemberList >div:nth-child(2){clear: both;margin-top: 0px; font-size:20px;}/*게시글제목*/
+		.gMemberList >div:nth-child(2)>span{font-size: 18px;}/*게시글 카테고리*/
+			.gMemberList >div:nth-child(3){font-size: 18px; margin-top: 10px;  padding-bottom: 5px; margin-top: 0px;}/*게시글 내용*/
 	.gmemberName {width:100px;}
 	.gmemberInfo {width:width:70%;  white-space: nowrap;  overflow: hidden; text-overflow: ellipsis;}	
 	.gmemberAddr {width:470px;}	
 	.gmemberType {width:80px;}
+	.gmemberInfo{font-size:18px;}
 	.menu a{margin:10px;}
 	.gBtn2 {margin:20px;}
 	.gSetContainer h2{font-size:25px; margin:10px 20px;}
@@ -69,7 +73,9 @@
   	.deport{text-align:right;}
   	.gSetContainer {margin-bottom:20px}
 	
+
 					}
+				
 				
 		</style>  
 		
@@ -113,7 +119,6 @@
 									<div>							
 										<div class="gmemberName">${smv.memberName}</div>
 										<div class="gmemberInfo">${smv.memberIntro}</div>
-										<div class="gmemberAddr">${smv.memberAddr}</div>
 										<input type="checkbox" id="checkbox" name="selectedMembers" value="${smv.midx}">
 									</div>													
 								</div>																			
