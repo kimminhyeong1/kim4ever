@@ -257,8 +257,7 @@ public interface GatheringService_Mapper {
 	public void updateGatheringSchedule(int giidx);
 	//모임에 연관된 신고 정보 삭제
 	public void updateGatheringDeclaration(int giidx);
-	//모임에 연관된 신고 정보 삭제(모임원이 나갔을 경우 나가면서 delYN=Y)
-	public void updateGatheringDeclarationOne(int midx, int giidx);
+	
 	
 	
 	

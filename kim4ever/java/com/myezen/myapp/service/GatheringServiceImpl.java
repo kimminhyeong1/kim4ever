@@ -753,7 +753,7 @@ public class GatheringServiceImpl implements GatheringService {
          System.out.println("남은  모임원 수는?"+participatingCount);
          
          if (gmt.getGatheringMemberType().equals("TL")) {
-        	    if (participatingCount == 1) {
+        	    if (participatingCount <= 1) {
         	        System.out.println("모임장은 혼자 남아있어 모임을 나가고 모임이 삭제됩니다.");
         	        //모임에서 나가기(혼자 남았을 경우 해당 행을 삭제하더라도 영향 X)
         	        gsm.exitGathering(midx, giidx);
@@ -783,8 +783,6 @@ public class GatheringServiceImpl implements GatheringService {
         	    gsm.exitGathering(midx, giidx);
         	    //게시판에 쓴 글들 나가면서 delYN=Y로 변경
         	    gsm.updateGatheringBoardOne(midx,giidx);
-        	    //신고내역 나가면서 delYN=Y로 변경
-        	    gsm.updateGatheringDeclarationOne(midx,giidx);
         	    //모임원수 -1
         	    gsm.gatheringParticipatingUpdate1(giidx);
         	    System.out.println("모임에서 나가셨습니다.");
