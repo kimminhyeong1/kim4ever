@@ -73,7 +73,7 @@
 		#main #content{width:auto; height:auto;}
 		#main #bottom{width:auto; height:10px; }
 		/*로그인 외각선*/
-		#login_out{border: 1px solid #bbb;margin: 20px auto;width: 260px; ;padding: 20px;background-color: #f1f1f1;border-radius: 10px;}
+		#login_out{border: 1px solid #bbb;margin: 20px auto;width: 260px; ;padding: 20px;;}
 		/*알림*/
 		.alarm{color: #f00;text-align: left;line-height: 0px;padding-left: 5px;padding: 10px; font-size:10px;} 
 		
@@ -92,15 +92,11 @@
 		  width: 230px;
 		  padding: 10px;
 		  margin: 2px 0;
-		  border: 1px solid #ccc;
-		  border-radius: 4px;
 		}
 		
-		#content table button{width:230px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:18px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
-		#content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+		#content table button{width:230px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:18px; ;}
 		
-		#main #findbutton{width:230px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
-		#main #findbutton:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+		#main #findbutton{width:230px; height:40px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; }
 		
 		    #authBar, #emailCheck {
 		        display: inline-block; padding:10px;
