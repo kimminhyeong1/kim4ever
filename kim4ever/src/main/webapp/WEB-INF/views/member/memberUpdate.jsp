@@ -7,33 +7,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>타바-회원정보수정</title>
 <style>
 /*리셋코드*/
 
 *{margin:0;padding:0;}
 li{list-style:none;}
 @font-face {
-    font-family: 'GangwonEdu_OTFBoldA';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
     font-family: 'omyu_pretty';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
-
-@font-face {
-    font-family: 'KCC-Ganpan';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-
 #main{width:1440px; margin:35px auto 70px; text-align:center;}
 #main #content{max-width: 500px;margin:40px auto;background-color:#fdfcfa;padding:30px;border-radius:20px;border: 1px solid #bbb;}
 #main #bottom{width:1440px; height:300px;}
@@ -43,9 +28,18 @@ h2{text-align:left; margin-top: 20px; padding-bottom:10px; border-bottom:2px sol
 #main #box .section {margin-bottom:20px;padding:20px;text-align:left;}
 #main #box .section-header {margin-bottom:10px;font-size:24px;font-weight:bold;} 
 #main #box .section-content {font-size:21px;margin-top:40px;}
-input{font-family:'omyu_pretty';font-size:24px;box-sizing:border-box;width:100%;padding:10px;margin:2px 0;border:1px solid #ccc;border-radius:4px;}
+input{font-family:'omyu_pretty';font-size:24px;box-sizing:border-box;width:100%;padding:10px;margin:2px 0;border:1px solid #ccc;border-radius:20px;}
 #content button{width:150px; height:35px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:20px; border:0px solid #ff9933; background:#ff9933;}
 #content button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+/****************************모바일**************************/
+@media (min-width: 300px) and (max-width: 940px)  {
+	#main{width:100%; margin:35px auto 70px; text-align:center;}
+	#main #box .section {padding: 10px;text-align: left;margin-bottom: 0px;}
+	#main #box .section-content {margin-top: 10px;}
+	#content{height: 100% !important;} 
+	#content button {margin: 10px;}
+
+} 
 </style>
 <script type="text/javascript">
 
@@ -122,16 +116,6 @@ function fnSubmit() {
         </div>
 		</form>
 	</div>
-	
-	
-	<div id="bottom">	
-	
-	</div>
-
-
-
-
-
 </div>
 
 </body>
