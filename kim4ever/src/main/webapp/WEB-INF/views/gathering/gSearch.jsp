@@ -16,14 +16,21 @@
 		<style type="text/css">
 		 	/*검색부분*/
 			#SearchPart{margin: 0 0 20px 0; position: relative;}
-			#SearchPart button{position: absolute;width: 50px; height: 50px;border: 0px;background: 0px; top: 3px; right: 240px;}
+			#SearchPart button{position: absolute;width: 50px; height: 50px;border: 0px;background: 0px; top: 3px; right: 320px;}
 			#SearchPart img{width: 40px; height: 40px;}
 			#keywordMark p{font-size:21px;}
 			.gInput {width:640px;}
 			.gBtn2 {margin-bottom:0px}
 			/*************************모바일****************************************/
 			/*****모바일 넓이***/
-	
+			@media (min-width: 300px) and (max-width: 940px)  {
+			.gInput{width: 100%;}
+			#SearchPart button{position: absolute;width: 50px; height: 50px;border: 0px;background: 0px; top: -5%; right: 1%;}
+			#SearchPart img{width: 25px; height: 25px;}
+			#keywordMark p{font-size:21px;}
+			 footer{margin-top: 0px !important;}
+			
+			}
 		</style>
 	</head>
 	<body>
