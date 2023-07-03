@@ -35,7 +35,7 @@
 		#main #content{width:1440px; }
 		#main #bottom{width:1440px; height:100px; }
 		/*로그인 외각선*/
-		#login_out{border: 1px solid #bbb;margin: 40px auto;width: 50%;padding: 20px;background-color: #f1f1f1;border-radius: 10px;}
+		#login_out{border: 1px solid #bbb;margin: 40px auto;width: 50%;padding: 20px;background-color: #fdfcfa;border-radius: 10px;}
 		/*알림*/
 		.alarm{color: #f00;text-align: left;line-height: 0px;padding-left: 5px;padding-top: 15px;} 
 		
