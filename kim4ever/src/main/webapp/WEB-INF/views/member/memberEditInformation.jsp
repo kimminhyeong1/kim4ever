@@ -8,33 +8,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>타바-회원정보수정</title>
 <style>
 /*리셋코드*/
 
 *{margin:0;padding:0;}
 li{list-style:none;}
 @font-face {
-    font-family: 'GangwonEdu_OTFBoldA';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
     font-family: 'omyu_pretty';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
-
-@font-face {
-    font-family: 'KCC-Ganpan';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-
 #main{width:1440px; margin:35px auto 70px; text-align:center;}
 #main #content{max-width: 500px;margin:40px auto;padding:30px;border-radius:20px;background-color: #fdfcfa;border: 1px solid #bbb;}
 #main #bottom{width:1440px; height:300px;}
@@ -45,6 +31,15 @@ h2 {text-align:left; margin-top:20px; padding-bottom:10px; border-bottom:2px sol
 #main .section-content {font-size:21px;margin-top:40px; border-bottom:1px solid #ddd;}
 #content button{width:150px; height:35px; text-align:center; font-family: 'omyu_pretty'; font-size:21px; border-radius:20px; border:0px solid #ff9933; background:#ff9933; margin: 0px 10px;} 
 #content button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
+/****************************모바일**************************/
+@media (min-width: 300px) and (max-width: 940px)  {
+	#main{width:100%; margin:35px auto 70px; text-align:center;}
+	#main .section {padding: 10px;text-align: left;margin-bottom: 0px;}
+	#main .section-content {margin-top: 10px;}
+	#content{height: 100% !important;} 
+	#content button {margin: 10px;}
+
+}
 </style>
 
 <script>
@@ -121,7 +116,7 @@ function confirmWithdrawal() {
 			        </div>
 			        <div class="section">
 			            <div class="section-header">비밀번호</div>
-			            <div class="section-content">${memberPwd}</div>
+			            <div class="section-content">******</div>
 			        </div>
 			        <div class="section">
 			            <div class="section-header">이름</div>
@@ -147,9 +142,7 @@ function confirmWithdrawal() {
 	        </div>
         </div>
 	</div>
-	
-	<div id="bottom">	
-	</div>
+
 </div>
 
 </body>

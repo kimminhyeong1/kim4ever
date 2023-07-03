@@ -68,12 +68,13 @@
 	/*****************************************모바일***************************************************************/
 		
 	@media (min-width: 300px) and (max-width: 940px)  {		
+			.logo h1 img{top: 0px;}   
 	
 		#main{width:auto; margin:35px auto 70px; text-align:center;}
 		#main #content{width:auto; height:auto;}
 		#main #bottom{width:auto; height:10px; }
 		/*로그인 외각선*/
-		#login_out{border: 1px solid #bbb;margin: 20px auto;width: 260px; ;padding: 20px;;}
+		#login_out{border: 1px solid #bbb;margin: 0 auto;width: 260px; ;padding: 20px;;}
 		/*알림*/
 		.alarm{color: #f00;text-align: left;line-height: 0px;padding-left: 5px;padding: 10px; font-size:10px;} 
 		
