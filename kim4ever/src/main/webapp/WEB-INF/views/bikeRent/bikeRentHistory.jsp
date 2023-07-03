@@ -6,7 +6,8 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>타다-대여 이력 보기</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>타바-대여 이력 보기</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent.css">
@@ -15,7 +16,7 @@
 		#main{width:1250px; margin:35px auto 70px; text-align:center;}
 		#main #content{width:1250px; height: auto; text-align:center;}
 		#main #bottom{width:1250px;  height: auto; }
-		#main #content h2{text-align:left; margin-top:50px; margin-left:200px;font-family: 'GangwonEdu_OTFBoldA'; font-size:30px;}
+		#main #content h2{text-align:left; margin-top:50px; margin-left:200px; font-weight:normal; font-size:30px;}
 		#content table {width:70%; border-collapse:collapse; margin:60px auto 0; line-height:50px; ;font-family:'omyu_pretty'; font-size:24px;}
 		#content table th{width:100px;padding: 10px;text-align: center; border-top:3px solid #000 ;border-bottom:3px solid #000;}
 		#content table td{padding: 10px; text-align:center;border-bottom:1px solid #CCCCCC;}
@@ -32,6 +33,34 @@
 		#content table button:active {background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 		.Paging{text-align: center;font-size: 30px;margin-top: 30px;padding: 10px;}
 		.Paging a{padding: 5px;}
+		/****************************모바일**************************/
+		@media (min-width: 300px) and (max-width: 940px)  {
+			#main{width:auto; min-height:87vh; margin:0 auto; text-align:center;}
+			#main #content{width:auto; height:auto;}
+			#main #content h2{text-align:left; margin-top:50px; margin-left:16px; margin-left:10%; font-size:15px; }
+			#main #bottom{width:auto; height:10px;}
+			#content table {width:80vw; border-collapse:collapse; margin:10px auto 0; line-height:13px; font-size:14px; font-family: 'omyu_pretty'; cursor:pointer; }
+			#content table th{padding: 10px;text-align: center;}
+			#content table td{padding: 5px; text-align:center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+			#content #btn{text-align:right; margin-top:20px; margin-right:5%; }
+			#content #btn button{width:60px; height:30px; text-align:center; font-family: 'omyu_pretty'; font-size:15px;  border-radius:20px; border:0px solid #ff9933; }
+			
+			.cell-content {width: 25vw; overflow: hidden; text-overflow: ellipsis;}
+			
+			
+			
+			/*메뉴바 테이블*/
+			.tab__contents {display:none;}
+			.show {display: block;} 
+			.tab__list{margin-top:3%;}
+			.tab__list li{ display: inline-block; border: none; background-color: #f8f8f8; padding: 5px 7px; cursor: pointer;  font-family: 'omyu_pretty'; font-size:15px; border-radius:20px; margin-top:10px;0.4);}
+			.tab__list__item.active {background-color:#ff9933; color:#fff; border:none ;}
+			
+			 a {color: inherit; text-decoration: none;}
+			 .pageing{font-size:20px !important;} 
+			 
+		
+		}
 		</style>
 		<script type="text/javascript">
 			function fnReturn() {
