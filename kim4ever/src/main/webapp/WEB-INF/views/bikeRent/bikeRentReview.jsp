@@ -24,7 +24,7 @@
 			.container h1{font-size: 50px; text-align: center;}
 			.container h2{font-size: 40px; text-align: center;}
 			.container img{width: 30px; height:30px;vertical-align:middle;margin-left:5px;}
-			.container button{display:inline-block; width:45%; height:55px; margin-top:0px;text-align:center; font-family:'omyu_pretty'; font-size:25px; border-radius:20px; border:0px solid #ff9933; background:#ff9933;}
+			.container button{margin: 30px auto;display:inline-block; width:45%; height:55px;text-align:center; font-family:'omyu_pretty'; font-size:25px; border-radius:20px; border:0px solid #ff9933; background:#ff9933;}
 			.container button:active{background:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 			/*이용내역 내용*/
 			#useInfo{width:80%; font-size:22px; line-height:35px;}
@@ -34,19 +34,24 @@
 			.stateimg img{width:100px; height:100px; background:white;  border-radius: 10px; padding:5px;   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);}
 			.using img{border:5px solid #90EE90; box-shadow: 0 5px 22px rgb(13 254 106 / 70%);}
 			.dot img{width:50px; height:50px; background:none;  box-shadow: none;}
+			#characterCount{position: absolute;top: 370px;right: 18px;}
+
+			
+			
 			/****************************모바일**************************/
 @media (min-width: 300px) and (max-width: 940px)  {
 		header #menu{display: none;}
 			/*틀부분*/
-			.container{border: 1px solid #bbb;margin: 0 px;width: 90%;padding: 5px ;background-color: #f1f1f1;border-radius: 10px;}
+			.container{border: 1px solid #bbb;margin: 0 px;width: 90%;padding: 5px ;background-color: #f1f1f1;border-radius: 20px;}
 			.container>div{padding: 5px; text-align: left;}
 			.container>div>p{display: inline-block; } 
-			.container>div>p:nth-child(1){width: 40%; margin-left: 20px;} 
+			.container>div>p:nth-child(1){width: 100%; margin-left: 0px; font-size: 12px;} 
 			.container>div>p:nth-child(2){width: 5%;} 
+			.container img{width: 10px; height:10px;vertical-align:middle;margin-left:5px;}
 			.container{font-size: 14px;}
 			.container h1{font-size: 20px; text-align: center;}
 			.container h2{font-size: 20px; text-align: center;}
-			.container button{display:inline-block; width:40%; height:40px; margin-top:0px;text-align:center; font-family:'omyu_pretty'; font-size:15px; border-radius:10px; border:0px solid #ff9933; background:#ff9933;}
+			.container button{display:inline-block; width:40%; height:30px;text-align:center; font-family:'omyu_pretty'; font-size:15px; border-radius:20px; border:0px solid #ff9933; background:#ff9933;}
 			.container button:active{backgrbound:#ffcc66; box-shadow:0 2px 2px rgba(0,0,0,0.1); transform:translateY(2px);}
 			/*이용내역 내용*/
 			#useInfo{width:80%; font-size:12px; line-height:15px;}
@@ -57,13 +62,14 @@
 			.using img{border:3px solid #90EE90;}
 			
 			.dot img{width:20px; height:20px; background:none;  box-shadow: none;}
-			
+			#characterCount{position: absolute;top: 225px;right: 18px;}
 }		  
 </style>  
 	<script>
 	function validateAndCountCharacters(textarea) {
 	  var text = textarea.value;
 	  var characterCount = text.length;
+	  textarea.focus();
 	
 	  // 특수 문자 도배 검사
 	  var specialCharacters = /[\^\$\\.*+?()[\]{}|]/g;
@@ -78,6 +84,15 @@
 	  var maxLength = parseInt(textarea.getAttribute('maxlength'));
 	  characterCountSpan.textContent += "/" + maxLength;
 	}
+	function fnWrite() {
+	    var fm = document.frm;
+		alert("리뷰가 작성되었습니다.");
+	    fm.action = "${pageContext.request.contextPath}/bikeRent/bikeRentReviewAction.do";
+	    fm.enctype = "multipart/form-data";
+	    fm.method = "post";
+	    fm.submit();
+	    
+	}
 	</script>
 	</head>
 	<body>
@@ -90,9 +105,9 @@
 					<div><p>이용하시면서 불편한 사항이나, 개선 사항 등을 말씀해주세요 !</p></div>
 					<div><p>당신의 소중한 후기를 기다리고 있겠습니다<img src="../resources/icon/fullheart.png" /></p></div>
 					
-					<form name="frm" action="${pageContext.request.contextPath}/bikeRent/bikeRentReviewAction.do" method="post" enctype="multipart/form-data">					
-					<div>
-					  <textarea style="width: 100%" cols="100" rows="15" name="reviewContent" oninput="validateAndCountCharacters(this)" maxlength="100"></textarea>
+					<form name="frm">					
+					<div style="position: relative;">
+					  <textarea id="myTextarea" style="width: 100%" cols="100" rows="15" name="reviewContent" oninput="validateAndCountCharacters(this)" maxlength="700"></textarea>
 					  <span id="characterCount"></span>
 					</div>
 
