@@ -28,53 +28,7 @@
 			.gBtn2 {margin-bottom:20px;}		
 		</style>
 	</head>
-	<script type="text/javascript">
 
-function characterCheck(obj){
-	var regExp = /[\{\}\[\]\/|\)*`^\_┼<>@\#$%&\'\"\\(\=]/gi;
-    if(regExp.test(obj.value)){
-        alert("특수문자는 입력할 수 없습니다.");
-        obj.value = obj.value.substring( 0 , obj.value.length - 1 );
-    }
-}
-function fnWrite() {
-    var fm = document.frm;
-    
-    // 특수문자 검사 정규식
-   
-    
-    if (fm.gBoardTitle.value == "") {
-        alert("제목을 입력하세요");
-        fm.gBoardTitle.focus();
-        return;
-    
-    } else if (fm.gBoardContents.value == "") {
-        alert("내용을 입력하세요");
-        fm.content.focus();
-        return;
-    } 
-    fm.action = "${pageContext.request.contextPath}/gathering/gBoardModifyAction.do";
-    fm.enctype = "multipart/form-data";
-    fm.method = "post";
-    fm.submit();
-    }
-
-function updateCharacterCount(inputName) {
-	  var input = document.getElementsByName(inputName)[0];
-	  var maxLength = parseInt(input.getAttribute('maxlength'));
-	  var currentLength = input.value.length;
-	  var countElement = document.getElementById(inputName + 'Count');
-	  
-	  countElement.textContent = currentLength + '/' + maxLength;
-	}
-
-	// 초기 로딩 시 글자 수 업데이트
-	window.addEventListener('DOMContentLoaded', function() {
-	  updateCharacterCount('gBoardTitle');
-	  updateCharacterCount('gBoardContents');
-	});
-
-</script>
 	
 	<body>
 		<%@include file="../header2.jsp" %>
@@ -103,23 +57,70 @@ function updateCharacterCount(inputName) {
 							<div>
 								<h3>게시글 제목</h3>
 							</div>
-							<input class="gInput" type="text" name="gBoardTitle" placeholder="내용을 입력해주세요" value="${gbv.gBoardTitle}" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)" maxlength="20" oninput="updateCharacterCount('subject')">											
+							<input id="gBoardTitle" class="gInput" type="text" name="gBoardTitle" placeholder="내용을 입력해주세요" value="${gbv.gBoardTitle}" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)" maxlength="20" oninput="updateCharacterCount('gBoardTitle')">											
        					 <span id="gBoardTitleCount"></span>
 						</div>
 						<div>
 							<h3>게시글 내용</h3>
-							<textarea rows="5" cols="5" name="gBoardContents" placeholder="글자제한:500자이내"onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"  maxlength="500" oninput="updateCharacterCount('content')" >${gbv.gBoardContents}</textarea>		
-							 <span id="contentCount"></span>
+							<textarea rows="5" cols="5" name="gBoardContents" placeholder="글자제한:500자이내" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)"  maxlength="500" oninput="updateCharacterCount('gBoardContents')" >${gbv.gBoardContents}</textarea>		
+							 <span id="gBoardContentsCount"></span>
 							
 						</div>
 					</div><!-- 끝-->
 					<div>
-						<button class="gBtn2">글쓰기</button>				 
+						<button class="gBtn2" type="button" onclick="fnWrite();">글쓰기</button>				 
 					</div>
 					
 				</section>
 			</form>
 		</main>
 		<%@include file="../footer.jsp" %>
+		<script type="text/javascript">
+		
+			function characterCheck(obj){
+				var regExp = /[\{\}\[\]\/|\)*`^\_┼<>@\#$%&\'\"\\(\=]/gi;
+			    if(regExp.test(obj.value)){
+			        alert("특수문자는 입력할 수 없습니다.");
+			        obj.value = obj.value.substring( 0 , obj.value.length - 1 );
+			    }
+			}
+			function fnWrite() {
+			    var fm = document.frm;
+			    
+			    // 특수문자 검사 정규식
+			   
+			    
+			    if (fm.gBoardTitle.value == "") {
+			        alert("제목을 입력하세요");
+			        fm.gBoardTitle.focus();
+			        return;
+			    
+			    } else if (fm.gBoardContents.value == "") {
+			        alert("내용을 입력하세요");
+			        fm.content.focus();
+			        return;
+			    } 
+			    fm.action = "${pageContext.request.contextPath}/gathering/gBoardModifyAction.do";
+			    fm.enctype = "multipart/form-data";
+			    fm.method = "post";
+			    fm.submit();
+			    }
+			
+			function updateCharacterCount(inputName) {
+				  var input = document.getElementsByName(inputName)[0];
+				  var maxLength = parseInt(input.getAttribute('maxlength'));
+				  var currentLength = input.value.length;
+				  var countElement = document.getElementById(inputName + 'Count');
+				  
+				  countElement.textContent = currentLength + '/' + maxLength;
+				}
+			
+				// 초기 로딩 시 글자 수 업데이트
+				window.addEventListener('DOMContentLoaded', function() {
+				  updateCharacterCount('gBoardTitle');
+				  updateCharacterCount('gBoardContents');
+				});
+		
+		</script>
 	</body>
 </html>

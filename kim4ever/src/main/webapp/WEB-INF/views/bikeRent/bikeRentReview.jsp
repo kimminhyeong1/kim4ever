@@ -69,7 +69,6 @@
 	function validateAndCountCharacters(textarea) {
 	  var text = textarea.value;
 	  var characterCount = text.length;
-	  textarea.focus();
 	
 	  // 특수 문자 도배 검사
 	  var specialCharacters = /[\^\$\\.*+?()[\]{}|]/g;
