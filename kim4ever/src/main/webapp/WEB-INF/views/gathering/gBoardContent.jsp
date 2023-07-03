@@ -88,29 +88,29 @@
 			#main #content{width:auto; height:auto; ;}
 		
 			/*게시글 틀*/ 
-			.gBoardList { width: 100%; position: relative;}
+			.gBoardList { width: 99%; position: relative; margin-top:20px;}
 			/*게시글 멤버 부분*/
-			.gBoardMember{text-align: left; font-size: 20px; margin: 40px 60px; position: relative;} 
+			.gBoardMember{text-align: left; font-size: 20px; margin: 45px 30px; position: relative;} 
 			.gBoardMember .gBoardMember_box{display: inline-block;} 
 			.gBoardMember>div>div:nth-child(1){width: 50px; height: 50px; float: left;}/*프로필*/ 
-			.gProfileimage img{width: 50px; height: 50px;  object-fit: cover; border-radius: 50%;}/*프로필이미지*/
+			.gProfileimage img{width: 45px; height: 45px;  object-fit: cover; border-radius: 50%;}/*프로필이미지*/
 			.gBoardMember>div>div:nth-child(2){height: 25px; margin-left: 70px;}/*모임장,이름*/ 
 			.gBoardMember>div>div:nth-child(2)>div{display: inline-block; margin-top: 5px;} 
 			.gBoardMember>div>div:nth-child(3)>div{height: 25px; margin-left: 70px; font-size: 15px; margin-top: 5px;}/*날짜*/
-			.gBoardMember>div>div:nth-child(4){font-size: 18px; margin-top: 20px;  padding-bottom: 20px;width: 950px;word-wrap: break-word;}/*게시글 내용*/
+			.gBoardMember>div>div:nth-child(4){font-size: 18px; margin-top: 20px;  padding-bottom: 20px;width: 100%;word-wrap: break-word;}/*게시글 내용*/
 			/*게시글 글 부분*/
-			.gBoardView{text-align: left; font-size: 20px; margin: 40px 60px;} 
-			.gBoardView>div:nth-child(1){font-size: 30px; clear: both;margin-top: 10px; }/*게시글제목*/
+			.gBoardView{text-align: left; font-size: 20px; margin: 20px 30px;} 
+			.gBoardView>div:nth-child(1){font-size: 20px; clear: both;margin-top: 10px; }/*게시글제목*/
 			.gBoardView>div:nth-child(1)>span{font-size: 18px;margin-left: 10px;}/*게시글 카테고리*/
-			.gBoardView>div:nth-child(2){font-size: 18px; margin-top: 100px; border-bottom: 2px solid #bbb; padding-bottom: 100px;}/*게시글 내용*/
+			.gBoardView>div:nth-child(2){font-size: 18px; margin-top: 20px; border-bottom: 2px solid #bbb; padding-bottom: 100px;}/*게시글 내용*/
 			/*버튼 부분*/
-			.writeBtn{width: 10%; height: 50px;margin-top: 14px;text-align: center;font-family: 'omyu_pretty';font-size: 21px; vertical-align: top;}
+			.writeBtn{width: 100px; height: 30px;margin-top: 14px;text-align: center;font-family: 'omyu_pretty';font-size: 21px; vertical-align: top;}
 			.writeBtn:active {background: #339933;box-shadow: 0 2px 2px rgba(0,0,0,0.1);transform: translateY(2px);}
-			.modifyBtn{width: 10%; height: 50px;margin-top: 14px;text-align: center;font-family: 'omyu_pretty';font-size: 21px; vertical-align: top;}
+			.modifyBtn{width: 80px; height: 30px;margin-top: 14px;text-align: center;font-family: 'omyu_pretty';font-size: 21px; vertical-align: top; float:right; margin-right: 25px; margin-bottom:20px;}
 			.modifyBtn:active {background: #339933;box-shadow: 0 2px 2px rgba(0,0,0,0.1);transform: translateY(2px);}
-			.replyBtn{width: 8%; height: 35px; position: absolute;right: 35px;top: 50px;margin-top: 14px;text-align: center;font-family: 'omyu_pretty';font-size: 21px; vertical-align: top;}
+			.replyBtn{width: 80px; height: 30px; position: absolute;right: 5px;top: 110px;margin-top: 14px;text-align: center;font-family: 'omyu_pretty';font-size: 21px; vertical-align: top;}
 			.replyBtn:active {background: #339933;box-shadow: 0 2px 2px rgba(0,0,0,0.1);transform: translateY(2px);}
-			.replyCommentBtn{width: 10%; height: 50px;margin-top: 14px;text-align: center;font-family: 'omyu_pretty';font-size: 21px; vertical-align: top;}
+			.replyCommentBtn{width: 100px; height: 30px;margin: 15px 30px 30px 0px;text-align: center;font-family: 'omyu_pretty';font-size: 21px; vertical-align: top; float:right;}
 			.replyCommentBtn:active {box-shadow: 0 2px 2px rgba(0,0,0,0.1);transform: translateY(2px);}
 			.hidden {display: none; }
 		    .fade-in {
@@ -128,29 +128,30 @@
 			/*페이징 부분*/
 			.gPaging{font-size: 25px;}
 			/*댓글타이틀*/		
-			.gBoardCommentTitle{text-align: left;margin-left: 60px;margin-top: 30px;font-size: 25px;font-weight: bold;}
+			.gBoardCommentTitle{text-align: left;margin-left: 30px;margin-top: 30px;font-size: 18px;}
 			/*좋아요 부분*/
 			.gBoardLike div{margin-bottom: 20px;margin-top: 10px;}
 			/*설정 부분*/
-			.gBoardSettingBtn{position: absolute; right: 0px;top: 0px; width: 100px; z-index: 5;}	
+			.gBoardSettingBtn{position: absolute; right: 15px;top: 0px; width: 0px; z-index: 5;}	
 			.gBoardSettingBtn img{width: 35px;}
-			.gBoardSettingBtn ul{background: #d5d5d5;border-radius: 5px;width: 110px;padding: 20px;}
-			.gBoardSettingBtn li{margin: 5px; border-bottom: 1px solid #bbb; cursor: pointer;}
+			.gBoardSettingBtn ul{width: 80px;padding: 5px; position: absolute; margin-right:0px; right:-10px; font-size:18px;}
+			.gBoardSettingBtn li{margin: 5px;  cursor: pointer;}			
+				.gBoardSettingBtn li:nth-child(1){margin-bottom:10px;}
 			/*댓글 쓰는 부분*/
 			.gBoardCommentWrite{position: relative;}
-			.gBoardCommentWrite textarea{resize: none;padding: 20px;font-size: 18px; width: 580px; height: 40px;}
-			.modifycommentForm{position: relative; text-align: center;width: 1120px;}
-			.modifycommentForm textarea{resize: none;padding: 20px;font-size: 18px; width: 580px; height: 40px;margin-right: 5px;}
-			.ReplyCommentForm{position: relative; text-align: center;width: 1120px;}
-			.ReplyCommentForm textarea{resize: none;padding: 20px;font-size: 18px; width: 580px; height: 40px;margin-right: 5px;}
-			#characterCount{position: absolute;top: 60px;right: 390px;} /*댓글카운터*/
-			#replyCharacterCount{position: absolute;top: 60px;right: 320px;}
-			.modifycommentForm span{position: absolute;top: 60px;right: 320px;}
+			.gBoardCommentWrite textarea{resize: none;padding: 20px;font-size: 18px; width: 80%; height: 40px;}
+			.modifycommentForm{position: relative; text-align: center;width: 100%;}
+			.modifycommentForm textarea{resize: none;padding: 20px;font-size: 18px; width: 80%; height: 40px;margin-right: 5px;}
+			.ReplyCommentForm{position: relative; text-align: center;width: 100%;}
+			.ReplyCommentForm textarea{resize: none;padding: 20px;font-size: 18px; width: 80%; height: 40px;margin-right: 5px; margin-top:40px;}
+			#characterCount{position: absolute;  top: 85px; right: 0px;  margin: 0 auto; margin-right: 35px;} /*댓글카운터*/
+			#replyCharacterCount{position: absolute;  top: 125px;  right: 30px;  font-size: 15px; margin: 0 auto;}
+			.modifycommentForm span{position: absolute;top: 85px;right: 30px; margin:0 auto; font-size:15px;}
 			/*답장부분*/
 			.reply_ba{display: inline-block;vertical-align: top;}
 			.reply_ba img{width: 40px;}
 			.under_ba{border-bottom: 2px solid #bbb;}
-			
+			.gBoardLike{width:100px; margin:0 auto;}
 			
 			
 			}
@@ -173,25 +174,14 @@
 			    var specialChars =/[\{\}\[\]\/|\)*`^\_┼<>@\#$%&\'\"\\(\=]/gi; 
 			    
 			    if (fm.subject.value == "") {
-			        alert("제목을 입력하세요");
+			        alert("내용을 입력하세요");
 			        fm.subject.focus();
 			        return;
 			    } else if (specialChars.test(fm.subject.value)) {
 			        alert("제목에 특수문자를 포함할 수 없습니다.");
 			        fm.subject.focus();
 			        return;
-			    } else if (fm.content.value == "") {
-			        alert("내용을 입력하세요");
-			        fm.content.focus();
-			        return;
-			    } else if (specialChars.test(fm.content.value)) {
-			        alert("내용에 특수문자를 포함할 수 없습니다.");
-			        fm.content.focus();
-			        return;
-			    } else if (fm.writer.value == "") {
-			        alert("작성자를 입력하세요");
-			        fm.writer.focus();
-			        return;
+			    
 			    }
 
 			  
