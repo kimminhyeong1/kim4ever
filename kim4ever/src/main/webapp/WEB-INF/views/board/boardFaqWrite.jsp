@@ -143,7 +143,7 @@ function updateCharacterCount(inputName) {
 
 					<tr>
 						<th>제목</th>
-						<td><input type="text" name="subject" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)" maxlength="20" oninput="updateCharacterCount('subject')">
+						<td><input type="text" name="subject" onkeyup="characterCheck(this)" onkeydown="characterCheck(this)" maxlength="40" oninput="updateCharacterCount('subject')">
 						  <span id="subjectCount"></span>
 						</td>
 					</tr>

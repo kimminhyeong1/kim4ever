@@ -60,7 +60,7 @@
 	<%@include file="../header.jsp" %>
 	<div id="main">
 		<div id="content">
-			<h1>타:바 공영자전거 대여소</h1>
+			<h1>타 : 바 공영자전거 대여소</h1>
 			<div id="map" ></div>
 			<h2>대여소 위치 안내</h2>
 			<table>
