@@ -575,10 +575,12 @@ WHERE row_num BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPag
 		INSERT INTO BIKE1234 (bikeCode, bikeType, bikeLocation,bikeState)
 		VALUES (CONCAT(#{0},#{1}), #{2}, #{3},'Y' )
 	</insert>
-	<!-- 자전거 삭제 -->
-	<delete id="deleteBikeDelete" parameterType="int"> 	
-		delete from bike1234 WHERE bkidx=#{bkidx}
-	</delete>
+	<!-- 자전거 삭제기능 (bikeState D로 변경) -->
+	<update id="updateBikeStateD" parameterType="int"> 	
+		update bike1234 set bikeState = 'D' WHERE bkidx=#{bkidx}
+	</update>
+	
+	
 	
 		<!-- 자전거 등록 페이지 이름 중복체크-->
 	<select id="bikeCodeCheck" parameterType="String" resultType="int">

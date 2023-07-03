@@ -179,10 +179,10 @@ public class AdminController {
 				
 			return "redirect:/admin/adminbikeList.do";	
 			}
-	//자전거 삭제
+	//자전거 삭제 (bikeState 값을 D로 변경)
 		@RequestMapping(value="/adminBikeDelete.do")
-		public String adminBikeDelete(@RequestParam("bkidx") int bkidx) {
-			as.deleteBikeDelete(bkidx);
+		public String updateBikeStateD(@RequestParam("bkidx") int bkidx) {
+			as.updateBikeStateD(bkidx);
 			return "redirect:/admin/adminbikeList.do"; 
 		}
 		

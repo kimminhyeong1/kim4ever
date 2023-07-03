@@ -43,6 +43,7 @@ li{list-style:none;}
 #main #bottom{width:1250px; height:300px; }
 #content table .status-available { color:green; }
 #content table .status-rented { color:orange; }
+#content table .status-disuse { color:red; }
 #content table .status-error { color:red; }
 
 #main #content h2{text-align:left; margin-top:50px; margin-left:200px;font-family: 'GangwonEdu_OTFBoldA'; font-size:30px;}
@@ -121,9 +122,22 @@ li{list-style:none;}
 								<c:when test="${kv.bikeState eq 'E'}">  
 									 <a href="${pageContext.request.contextPath }/admin/adminbikeError.do" class="status-error">고장</a>
 								</c:when>
+								<c:when test="${kv.bikeState eq 'D'}">  
+									 <span class="status-disuse">폐기</span>
+								</c:when>
 				</c:choose>				
 				</td>
-				<td><button type="button" id="Delbtn"onclick="Delete('${kv.bkidx}');">삭제</button></td>
+				<td>
+				<c:choose>
+					<c:when test="${kv.bikeState eq 'D'}">  
+						
+					</c:when>
+					<c:otherwise> 
+						<button type="button" id="Delbtn"onclick="Delete('${kv.bkidx}');">삭제</button>
+					</c:otherwise>
+				</c:choose>
+				</td>
+							
 			</tr>
 		</c:forEach>		
 		</table>
@@ -133,7 +147,7 @@ li{list-style:none;}
 			</div>
 			
 			<div id="bikeAddBtn">
-				<button onclick="location.href='${pageContext.request.contextPath}/admin/adminbikeRegister.do'">자전거 추가 등록/삭제</button>
+				<button onclick="location.href='${pageContext.request.contextPath}/admin/adminbikeRegister.do'">자전거 추가 등록</button>
 			</div>
 		
 			<table>
