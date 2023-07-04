@@ -18,7 +18,7 @@
 		<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> 
 <style>
 #content{display:block;}
-
+#content2{display:none;}
 /*************************모바일****************************************/
 				/*****모바일 넓이***/
 				@media (min-width: 300px) and (max-width: 940px)  {
