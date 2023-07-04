@@ -44,7 +44,7 @@
 			.slider-1 > .page-btns > div.active {background-color:#05d100; border: none;}
 			/* 1 - 슬라이드 */
 			.slider-1 > .slides > div {position:absolute; top:0; left:0; right:0; bottom:0; opacity:0; transition:opacity 1.5s;
-			background-position:center; background-size:cover; background-repeat:no-repeat; border-radius:20px;  }
+			background-position:center;  background-repeat:no-repeat; border-radius:20px;  }
 			.slider-1 > .slides > div.active {opacity:1;}
 			/*  좌우 버튼 */
 			.slider-1 > .side-btns > div {position:absolute; top:0; left:0; width:25%;
@@ -248,6 +248,8 @@
 						    	<c:set var="GImages" value="${gjvlist}" />
 								<c:forEach var="gjv" items="${GImages}" varStatus="status">
 								    <div class="${status.index == 0 ? 'active' : ''}" style="background-image:url(../resources/GImages/${gjv.imageName});"></div>
+		
+							
 								</c:forEach>            
 						    	</div>
 							    <div class="page-btns">

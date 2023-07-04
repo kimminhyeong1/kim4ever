@@ -91,7 +91,7 @@ ArrayList<BikeJoinVo> bikeList = (ArrayList<BikeJoinVo>)request.getAttribute("bi
 			<c:if test="${sessionScope.memberType eq '관리자'}">
 				<button class="createBtn" onclick="location.href='${pageContext.request.contextPath}/bikeRent/bikeRentWrite.do'">등록</button>
 			</c:if>
-			<p>- 자전거의 종류는 추가적으로 추후에 추가예정입니다 -</p>
+			<p>- 자전거의 종류는 추후에 추가예정입니다 -</p>
 			</div>
 			
 			<div id="bottom">
