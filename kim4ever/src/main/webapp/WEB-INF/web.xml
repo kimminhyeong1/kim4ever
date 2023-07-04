@@ -54,8 +54,36 @@
     <session-timeout>60</session-timeout> <!-- 10분(분 단위) -->
   </session-config>
   
-  <error-page><!--404에러처리-->
+
+    <error-page><!--400에러처리-->
+    <error-code>400</error-code>
+    <location>/WEB-INF/views/error/400errorPage.jsp</location>
+  </error-page>
+  
+    <error-page><!--401에러처리-->
+    <error-code>401</error-code>
+    <location>/WEB-INF/views/error/401errorPage.jsp</location>
+  </error-page>
+  
+    <error-page><!--403에러처리-->
+    <error-code>403</error-code>
+    <location>/WEB-INF/views/error/403errorPage.jsp</location>
+  </error-page>
+  
+    <error-page><!--404에러처리-->
     <error-code>404</error-code>
     <location>/WEB-INF/views/error/404errorPage.jsp</location>
   </error-page>
+  
+        <error-page><!--408에러처리-->
+    <error-code>408</error-code>
+    <location>/WEB-INF/views/error/408errorPage.jsp</location>
+  </error-page>
+  
+      <error-page><!--500에러처리-->
+    <error-code>500</error-code>
+    <location>/WEB-INF/views/error/500errorPage.jsp</location>
+  </error-page>
+  
+
 </web-app>

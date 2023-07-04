@@ -15,12 +15,40 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent.css">  
 		<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo6.png">
+		<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> 
 <style>
 #content{display:block;}
 
 /*************************모바일****************************************/
 				/*****모바일 넓이***/
-				@media (min-width: 300px) and (max-width: 940px)  {#content{display:none;}}
+				@media (min-width: 300px) and (max-width: 940px)  {
+				#main { width: auto;  margin: 0 auto;   text-align: center;}
+				#content{display:none;} 
+				#content2{display:block; width: auto;margin: 0 auto;
+    margin-top: 20px;
+    width: 320px;
+    background-color: #fdfcfa;
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 30px;
+    border: 1px solid #bbb;} 
+.intro_title{
+text-align: center;
+    font-size: 25px;
+    color: #333;
+    margin-bottom: 20px;}
+.intro_main{
+
+font-family: 'omyu_pretty';
+    text-align: left;
+    margin-left: 10px;
+    font-size: 12px;
+    padding: 5px 5px;
+    letter-spacing: 3px;
+    word-break: keep-all;}
+    #QRcheck{display: inline-block;}
+    #bikeOn{display: inline-block;}
+}
 </style>
 
 	</head>
@@ -57,6 +85,25 @@
                       </div>
 				</div>				
 			</section>	
+			
+			<section id="content2">
+			<div class="intro">
+			<p class="intro_title">대여 안내사항</p>
+ 			<p class="intro_main">	대여하고자하는 자전거의 후면에 있는 QR을 찍어주세요<br>
+ 												 QR을 찍은후 결제을 하고 이용이 가능합니다.</p>
+ 			<p class="intro_main" style="color: red; font-weight: bold;">대여주의사항</p>
+ 		<p class="intro_main">	
+
+			-안전 운전에 최선을 다해 주시기 바랍니다. <br>
+			-다른 이용자들을 배려하고 자전거를 깨끗하게 사용해 주세요.<br>
+			-대여 중에는 자전거를 소중히 다뤄주세요.<br>
+			-음주 후 자전거를 이용하는 경우 발생하는 사고에 대한 책임은 타:바에서 일절 지지 않습니다.<br>
+			-13세 미만의 어린이는 보호자동반 시 대여 가능합니다.
+			</p>
+    		<lottie-player  id="QRcheck"  src="https://lottie.host/9cbdd921-4a00-43d0-b171-a1bf3be1d5fe/QfTawsiddx.json" background="transparent" speed="1" style="width: 100px; height: 100px;" loop autoplay></lottie-player>
+			<lottie-player id="bikeOn" src="https://lottie.host/237d85d8-6638-4d11-89e0-324be53a8c72/IJ88ONv0Og.json" background="transparent" speed="1" style="width: 100px; height: 100px;" loop autoplay></lottie-player>
+			</div>
+			</section>
 			
 		</main>
 		<%@include file="../footer.jsp" %>		
