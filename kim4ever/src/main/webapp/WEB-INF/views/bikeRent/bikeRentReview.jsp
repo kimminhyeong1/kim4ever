@@ -58,7 +58,7 @@
 			/*이용내역 내용 버튼*/
 			#useListBtn{text-align:center;}
 			.stateimg {display: flex; justify-content: center; align-items: center;}			
-			.stateimg img{width:40px; height:40px; background:white;  border-radius: 10px; padding:5px;   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);}
+			.stateimg img{width:40px; height:40px; background:white;  border-radius: 20px; padding:5px;   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);}
 			.using img{border:3px solid #90EE90;}
 			
 			.dot img{width:20px; height:20px; background:none;  box-shadow: none;}
