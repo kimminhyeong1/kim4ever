@@ -99,7 +99,7 @@
 		FROM GATHERING_INFO1234 a
 		JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
 		JOIN GATHERING1234 c ON c.GIIDX = a.GIIDX
-		LEFT JOIN gathering_wish1234 d ON d.GIIDX = a.GIIDX
+		LEFT JOIN gathering_wish1234 d ON d.GIIDX = a.GIIDX and d.midx = #{1}
 		WHERE b.IMGTYPE = 'GT' AND c.midx = #{0} AND a.GINFODELYN = 'N'
 		LIMIT 5
 	</select>
@@ -109,7 +109,7 @@
 		FROM GATHERING_INFO1234 a
 		JOIN IMAGE1234 b ON b.GIIDX = a.GIIDX
 		JOIN GATHERING1234 c ON c.GIIDX = a.GIIDX
-		LEFT JOIN gathering_wish1234 d ON d.GIIDX = a.GIIDX
+		LEFT JOIN gathering_wish1234 d ON d.GIIDX = a.GIIDX and d.midx = #{1}
 		WHERE b.IMGTYPE = 'GT' AND c.midx = #{1} AND a.GINFODELYN = 'N'
 	    LIMIT #{0}, 5
     </select>
