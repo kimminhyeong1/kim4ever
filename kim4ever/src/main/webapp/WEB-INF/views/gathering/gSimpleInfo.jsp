@@ -38,20 +38,20 @@
 			/* 슬라이더 1 - 페이지 버튼 */
 			.slider-1 > .page-btns {text-align:center; position:absolute; bottom:20px; left:0; width:100%;}
 			
-			.slider-1 > .page-btns > div {width:50px; height:6px; background-color:rgb(255,255,255); border-radius:4px;   
+			.slider-1 > .page-btns > div {width:25px; height:6px; background-color:rgb(255,255,255); border-radius:4px;   
 			 display:inline-block; cursor:pointer; border: none;}
 			.slider-1 > .page-btns > div.active {background-color:#05d100 ; border: none;}
 			/* 1 - 슬라이드 */
 			.slider-1 > .slides > div {position:absolute; top:0; left:0; right:0; bottom:0; opacity:0; transition:opacity 1.5s;
-			background-position:center; background-size:cover; background-repeat:no-repeat; border-radius:20px;  }
+			background-position:center; background-size:contain; background-repeat:no-repeat; border-radius:20px;  }
 			.slider-1 > .slides > div.active {opacity:1;}
 			/*  좌우 버튼 */
-			.slider-1 > .side-btns > div {position:absolute; top:0; left:0; width:25%;
+			.slider-1 > .side-btns > div {display: none; position:absolute; top:0; left:0; width:25%;
 			height:100%; cursor:pointer; color:white;}
-			.slider-1 > .side-btns > div:last-child {left:auto; right:0;}
+			.slider-1 > .side-btns > div:last-child {left:auto; right:0; display: none; }
 			.slider-1 >.side-btns > div > span {position:absolute;top:50%;left:20px;transform:translatey(-10%);
-			opacity:1;padding:5px; border-radius:50px;font-size:50px;}
-			.slider-1 >.side-btns > div:last-child > span {left:auto;right:20px; }
+			opacity:1;padding:5px; border-radius:50px;font-size:50px;display: none; }
+			.slider-1 >.side-btns > div:last-child > span {left:auto;right:20px; display: none; }
 			
 			
 			
