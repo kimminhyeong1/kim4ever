@@ -123,7 +123,7 @@
 
 					<div id="useListBtn">					
 						<button onclick="fnWrite()" type="button">작성 완료</button>
-						<button type="button" onclick="location.href='<%=request.getContextPath()%>/'">나가기</button>						
+						<button type="button" onclick="location.href='${pageContext.request.contextPath}/bikeRent/bikeRentHistory.do'">나가기</button>						
 					</div>
 					
 					
