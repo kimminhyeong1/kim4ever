@@ -585,7 +585,13 @@
 		                        $(".successEmailChk").css("color", "green");
 		                        $("#auth").attr("style","display:none;");
 		                        $("#emailCheck").attr("style","display:none;");
-		                        $(".successEmailChk").css("padding","15px 30px");
+		                        $(".successEmailChk").css( 
+	                        		{  	
+	                        			"padding":"15px 30px",
+	                        			"display":"block",
+	                        			"text-align":"left"
+		                        	}
+		                        		);
 	        	                emailChkFlag=true;
 	        	            } else {
 	        	                alert("인증번호가 일치하지 않습니다. 다시 확인해주세요.");
