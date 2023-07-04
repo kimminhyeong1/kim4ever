@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>대여하기</title>
+<title>타:바-대여하기</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_rent.css">  
+<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo6.png">
 <style>
 #bike{display:flex; flex-wrap:wrap; justify-content:space-between; width:100%; align-items:center;}
 .bike-box {position:relative; display:inline-block; margin:20px; width:250px; text-align:center; top:80px; border:1px solid #ddd; border-radius:10px;}

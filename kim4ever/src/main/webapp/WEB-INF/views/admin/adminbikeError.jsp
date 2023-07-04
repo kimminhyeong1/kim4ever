@@ -10,7 +10,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>타:바-고장신고리스트</title>
+<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo6.png">
 <style>
 /*리셋코드*/
 

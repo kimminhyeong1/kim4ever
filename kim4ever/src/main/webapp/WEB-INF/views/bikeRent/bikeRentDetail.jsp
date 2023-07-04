@@ -5,12 +5,13 @@
 <html>
 <head>
 		<meta charset="UTF-8">
-		<title>타다-자전거 소개</title>
+		<title>타:바-자전거 소개</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">				
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent.css">	
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent_mo.css?수정중">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent_mo.css">
+		<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo6.png">
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 		<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>

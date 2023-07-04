@@ -4,8 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>1번째 코스</title>
+<title>타:바-4번째 코스</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo6.png">
 
 <style>
 /*리셋코드*/
@@ -274,7 +275,7 @@ var sw = new kakao.maps.LatLng(35.81222242569394, 127.11979821722417), // 사각
 var rectangleBounds = new kakao.maps.LatLngBounds(sw, ne);
 }
 </script>
-	<h2>타바  추천 맛집 pick !</h2>
+	<h2>타:바  추천 맛집 pick !</h2>
 	<div id="restaurant">
 		<table>
 		  <tr>

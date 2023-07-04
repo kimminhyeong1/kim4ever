@@ -8,10 +8,11 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>모임-게시판-글쓰기</title>
+		<title>타:바-모임-게시글수정</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">
+		<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo7.png">
 		<meta name="viewport" content="width=device-width, initial-scale=1">		
 		<style type="text/css">
 		 	/*모임 게시판 글쓰기 부분*/

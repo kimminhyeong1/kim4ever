@@ -9,10 +9,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>타:바-모임상세정보</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">
+<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo6.png">
 
 
 

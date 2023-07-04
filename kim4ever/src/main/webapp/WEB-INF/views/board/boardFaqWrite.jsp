@@ -7,7 +7,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>자주묻는질문</title>
+<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo6.png">
+<title>타:바-자주묻는질문</title>
 <style>
 /*리셋코드*/
 *{margin:0;padding:0;}

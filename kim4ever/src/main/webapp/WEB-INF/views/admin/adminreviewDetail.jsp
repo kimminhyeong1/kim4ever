@@ -9,10 +9,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>리뷰 상세 페이지</title>
+<title>타:바-리뷰상세</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">
+<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo6.png">
 
 
 

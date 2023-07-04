@@ -9,10 +9,11 @@ msg = (String)request.getAttribute("msg");
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>로그인</title>
+		<title>타:바-로그인</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
-		<meta name="viewport" content="width=device-width, initial-scale=1">		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo6.png">		
 		<style>
 			#main{width:1250px; margin:35px auto 70px; text-align:center;}
 			#main #content{width:1250px; height:200px;}

@@ -4,10 +4,11 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>타다-자전거 고장/신고</title>
+		<title>타:바-자전거 고장/신고</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_rent.css"> 
+		<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo6.png">
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20f538f14cf29a1eb30d2f9dbaa4e1fb&libraries=services,clusterer,drawing"></script> <!-- 카카오지도APIkey -->
 		<style>

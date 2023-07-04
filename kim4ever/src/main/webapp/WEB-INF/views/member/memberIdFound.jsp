@@ -4,10 +4,11 @@
 <html lang="ko">
 	<head>
 		<meta charset="UTF-8">
-		<title>아이디찾음</title>
+		<title>타:바-아이디찾기</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+		<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo6.png">
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 		<style>
 			main{width:1250px; margin:35px auto 70px; text-align:center;}

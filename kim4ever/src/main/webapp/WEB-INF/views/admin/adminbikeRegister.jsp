@@ -5,7 +5,8 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>자전거-등록</title>
+		<title>타:바-자전거등록</title>
+		<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo6.png">
 		<style>
 		/*리셋코드*/
 		

@@ -8,7 +8,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>QnA</title>
+<title>타:바-QnA</title>
+<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo6.png">
 <style>
 /*리셋코드*/
 *{margin:0;padding:0;}

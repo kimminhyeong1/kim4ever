@@ -11,7 +11,8 @@ ArrayList<BikeJoinVo> alist = (ArrayList<BikeJoinVo>)request.getAttribute("alist
 <html>
 <head>
 <meta charset="UTF-8">
-<title>모임 신고 내역 리스트</title>
+<title>타:바-모임신고내역리스트</title>
+<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo6.png">
 <style>
 /*리셋코드*/
 

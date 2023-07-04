@@ -5,11 +5,12 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>모임-일정보기</title>
+		<title>타:바-모임-일정보기</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">
 		<link rel="stylesheet" media="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_gathering_mo.css">
+		<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo7.png">
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20f538f14cf29a1eb30d2f9dbaa4e1fb&libraries=services,clusterer,drawing"></script> <!-- 카카오지도APIkey -->    
 		<meta name="viewport" content="width=device-width, initial-scale=1">		

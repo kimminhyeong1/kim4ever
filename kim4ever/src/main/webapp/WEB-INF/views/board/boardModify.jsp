@@ -10,8 +10,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시글수정</title>
+<title>타:바-게시글수정</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo6.png">
 
 <style>
 

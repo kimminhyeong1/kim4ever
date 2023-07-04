@@ -9,11 +9,12 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>QR코드</title>
+		<title>타:바-QR코드</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">		
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent.css">  
+		<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo6.png">
 <style>
 #content{display:block;}
 

@@ -9,7 +9,8 @@ if (session.getAttribute("midx") == null){
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항</title>
+<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo6.png">
+<title>타:바-공지사항</title>
 <style>
 /*리셋코드*/
 *{margin:0;padding:0;}

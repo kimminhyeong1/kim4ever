@@ -6,11 +6,12 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>리뷰 작성하기</title>
+		<title>타:바-리뷰 작성</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent.css">
-		<link rel="stylesheet" media="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_bikeRent_mo.css">		
+		<link rel="stylesheet" media="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_bikeRent_mo.css">
+		<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo6.png">		
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<style type="text/css">
@@ -111,7 +112,7 @@
 			<section id="content">
 				<div class="container">
 					<div><h1>이용 후기</h1></div>
-					<div><p>후기 작성은 선택이지만, 타바의 발전에 큰 도움이 됩니다 !</p></div>
+					<div><p>후기 작성은 선택이지만, 타:바의 발전에 큰 도움이 됩니다 !</p></div>
 					<div><p>이용하시면서 불편한 사항이나, 개선 사항 등을 말씀해주세요 !</p></div>
 					<div><p>당신의 소중한 후기를 기다리고 있겠습니다<img src="../resources/icon/fullheart.png" /></p></div>
 					

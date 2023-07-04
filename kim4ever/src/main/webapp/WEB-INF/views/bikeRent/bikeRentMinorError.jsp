@@ -6,11 +6,12 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>잔고장 작성하기</title>
+		<title>타:바-잔고장 작성하기</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent.css">
-		<link rel="stylesheet" media="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_bikeRent_mo.css">		
+		<link rel="stylesheet" media="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_bikeRent_mo.css">
+		<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo6.png">		
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<style type="text/css">

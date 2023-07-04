@@ -17,11 +17,12 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>타다-반납하기</title>
+		<title>타:바-반납하기</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent.css">
-		<link rel="stylesheet" media="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_bikeRent_mo.css">		
+		<link rel="stylesheet" media="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_bikeRent_mo.css">
+		<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo6.png">		
 		
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script> 
 		<meta name="viewport" content="width=device-width, initial-scale=1">

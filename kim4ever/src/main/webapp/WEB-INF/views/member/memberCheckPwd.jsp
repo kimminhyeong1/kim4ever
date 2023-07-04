@@ -8,7 +8,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>타바-회원정보수정-비밀번호확인</title>
+<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo6.png">
+<title>타:바-회원정보수정-비밀번호확인</title>
 
 <style>
 /*리셋코드*/ 

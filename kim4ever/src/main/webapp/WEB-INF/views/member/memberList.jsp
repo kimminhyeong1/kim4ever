@@ -11,7 +11,8 @@ ArrayList<MemberVo> alist = (ArrayList<MemberVo>)request.getAttribute("alist");
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo6.png">
+<title>타:바-회원리스트</title>
 <style>
 /*리셋코드*/
 

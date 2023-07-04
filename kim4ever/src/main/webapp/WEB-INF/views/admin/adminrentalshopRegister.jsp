@@ -4,7 +4,8 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>대여소-등록</title>
+		<title>타바-대여소등록</title>
+		<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo6.png">
 		<style>
 		/*리셋코드*/
 		

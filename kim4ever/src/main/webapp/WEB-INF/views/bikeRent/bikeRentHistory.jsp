@@ -7,10 +7,11 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>타바-대여 이력 보기</title>
+		<title>타:바-대여 이력 보기</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_bikeRent.css">
+		<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo6.png">
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script> 
 		<style>
 		#main{width:1250px; margin:35px auto 70px; text-align:center;}

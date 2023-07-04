@@ -8,7 +8,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>타:바-모임신고상세내역</title>
+<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo6.png">
 <style>
 /*리셋코드*/
 

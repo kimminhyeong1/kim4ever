@@ -3,11 +3,12 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>타다-모임-사진첩</title>
+		<title>타:바-모임-사진첩수정</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">  
 		<link rel="stylesheet" media="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_gathering_mo.css">
+		<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo7.png">
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<style type="text/css">
 			.gContainer{border: 1px solid #0000;}

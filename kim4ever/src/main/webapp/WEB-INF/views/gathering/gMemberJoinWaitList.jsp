@@ -4,11 +4,12 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>모임 멤버 리스트</title>
+		<title>타:바-모임-회원목록</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_gathering.css">
 		<link rel="stylesheet" media="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_gathering_mo.css">
+		<link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo7.png">
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<style type="text/css">
