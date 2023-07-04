@@ -83,7 +83,7 @@ li{list-style:none;}
 <script type="text/javascript">
 
 function characterCheck(obj){
-	var regExp = /[\{\}\[\]\/|\)*`^\_┼<>@\#$%&\'\"\\(\=]/gi;
+	var regExp =/[\{\}\[\]\/|\*`^\_┼<>@\#$%&\\\\=]/gi;
     if(regExp.test(obj.value)){
         alert("특수문자는 입력할 수 없습니다.");
         obj.value = obj.value.substring( 0 , obj.value.length - 1 );
@@ -91,14 +91,22 @@ function characterCheck(obj){
 }
 function fnWrite() {
     var fm = document.frm;
-    
+    var specialChars =/[\{\}\[\]\/|\*`^\_┼<>@\#$%&\\\\=]/gi;
 
     if (fm.subject.value == "") {
         alert("제목을 입력하세요");
         fm.subject.focus();
         return;
+    } else if (specialChars.test(fm.subject.value)) {
+        alert("제목에 특수문자를 포함할 수 없습니다.");
+        fm.subject.focus();
+        return;
     }  else if (fm.content.value == "") {
         alert("내용을 입력하세요");
+        fm.content.focus();
+        return;
+    } else if (specialChars.test(fm.content.value)) {
+        alert("내용에 특수문자를 포함할 수 없습니다.");
         fm.content.focus();
         return;
     } else if (fm.writer.value == "") {

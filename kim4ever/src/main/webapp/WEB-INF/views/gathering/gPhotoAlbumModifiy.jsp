@@ -40,7 +40,8 @@
 		<script type="text/javascript">
 
 function characterCheck(obj){
-	var regExp = /[\{\}\[\]\/|\)*`^\_┼<>@\#$%&\'\"\\(\=]/gi;
+	var regExp = /[\{\}\[\]\/|\*`^\_┼<>@\#$%&\\\\=]/gi;
+
     if(regExp.test(obj.value)){
         alert("특수문자는 입력할 수 없습니다.");
         obj.value = obj.value.substring( 0 , obj.value.length - 1 );
@@ -48,23 +49,36 @@ function characterCheck(obj){
 }
 function fnWrite() {
     var fm = document.frm;
-    
-    // 특수문자 검사 정규식
 
-    if (fm.gPhotoAlbumTitle.value.trim() === "") {
+    if (fm.gPhotoAlbumTitle.value == "") {
         alert("제목을 입력하세요");
         fm.gPhotoAlbumTitle.focus();
         return;
     }
-
-    var contentsInputs = document.getElementsByClassName("content");
-    for (var j = 0; j < contentsInputs.length; j++) {
-        if (contentsInputs[j].value.trim() === "") {
-            alert("내용을 입력하세요");
-            contentsInputs[j].focus();
+        else if (fm.image.value == "") {
+            alert("대표이미지를 입력하세요");
+            fm.image.focus();
+            return;   
+        }
+    var additionalImages = document.getElementsByClassName("imagePreview");
+    for (var i = 0; i < additionalImages.length; i++) {
+        var fileInput = additionalImages[i].nextElementSibling; // 다음 sibling인 file input 요소 선택
+        if (!fileInput.files || fileInput.files.length === 0) {
+            alert("이미지를 선택하세요");
+            fileInput.focus();
             return;
         }
     }
+
+	    var contentsInputs = document.getElementsByClassName("content");
+	    for (var j = 0; j < contentsInputs.length; j++) {
+	        if (contentsInputs[j].value.trim() === "") {
+	            alert("내용을 입력하세요");
+	            contentsInputs[j].focus();
+	            return;
+	        }
+	    }
+
 
     fm.action = "<%=request.getContextPath()%>/gathering/gPhotoAlbumModifyAction.do?gpaidx=${gpaidx}";
     fm.enctype = "multipart/form-data";
@@ -181,20 +195,6 @@ function updateCharacterCount(inputName) {
 	        imagePreview.src = '';
 	    }
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

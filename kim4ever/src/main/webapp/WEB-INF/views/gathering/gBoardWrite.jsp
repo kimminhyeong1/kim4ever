@@ -39,7 +39,7 @@
 	<script type="text/javascript">
 
 function characterCheck(obj){
-	var regExp = /[\{\}\[\]\/|\)*`^\_┼<>@\#$%&\'\"\\(\=]/gi;
+	var regExp = /[\{\}\[\]\/|\*`^\_┼<>@\#$%&\\\\=]/gi;
     if(regExp.test(obj.value)){
         alert("특수문자는 입력할 수 없습니다.");
         obj.value = obj.value.substring( 0 , obj.value.length - 1 );
@@ -49,10 +49,14 @@ function fnWrite() {
     var fm = document.frm;
     
     // 특수문자 검사 정규식
-   
+    var specialChars =/[\{\}\[\]\/|\*`^\_┼<>@\#$%&\\\\=]/gi;
     
     if (fm.gBoardTitle.value == "") {
         alert("제목을 입력하세요");
+        fm.gBoardTitle.focus();
+        return;
+    } else if (specialChars.test(fm.gBoardTitle.value)) {
+        alert("제목에 특수문자를 포함할 수 없습니다.");
         fm.gBoardTitle.focus();
         return;
     
@@ -60,7 +64,11 @@ function fnWrite() {
         alert("내용을 입력하세요");
         fm.content.focus();
         return;
-    } 
+    
+	} else if (fm.gBoardContents.value == "") {
+	    alert("내용을 입력하세요");
+	    fm.gBoardContents.focus();
+	    return;
     fm.action = "<%=request.getContextPath()%>/gathering/gBoardWriteAction.do";
     fm.enctype = "multipart/form-data";
     fm.method = "post";
