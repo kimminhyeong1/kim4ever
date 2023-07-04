@@ -4,7 +4,7 @@
 <%  response.setStatus(HttpServletResponse.SC_OK); %>
 <html>
 <head>
-<title>타바401</title>
+<title>타:바-401</title>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_error.css?after"  type="text/css">
 <meta name="viewport" content="width=device-width, initial-scale=1">		
