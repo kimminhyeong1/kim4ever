@@ -15,7 +15,7 @@
 		<style type="text/css">
 		
 			/*사진첩 틀*/ 
-			.gContent{width:97%; background-color:#fbfdfa;border-radius:20px; padding: 20px; border: 1px solid #bbb; margin-bottom: 20px;}
+			.gContent{ background-color:#fbfdfa;border-radius:20px; padding: 20px; border: 1px solid #bbb; margin-bottom: 20px;}
 			/*버튼 부분*/
 			#createBtn{text-align: right; margin-top:20px; }	
 			/*페이징 부분*/

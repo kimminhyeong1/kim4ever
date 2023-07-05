@@ -115,9 +115,9 @@
 			#gMembers{margin-top:10px; width: 99%; height: 110px;  text-align: left;}
 			#gMembers>div:nth-child(1){font-size: 20px;margin-top: 5px;margin-left: 20px;}
 			#gMembers>div:nth-child(1)>span{color: #f00;} 
-			#gMembers>div:nth-child(2){width: 80%; display: inline-block;margin: 10px 20px;}
+			#gMembers>div:nth-child(2){width: 65%; display: inline-block;margin: 10px 20px; overflow: hidden; text-overflow: ellipsis;  white-space: nowrap;}
 			#gMembers>div:nth-child(2)>div{width: 45px; height: 45px;display: inline-block; margin-left: 0px; vertical-align: bottom;}
-			#gMembers>div:nth-child(2)>div>img{width: 100%; height: 100%; border-radius: 30px; }
+			#gMembers>div:nth-child(2)>div>img{width: 95%; height: 95%; border-radius: 30px; }
 			#gMembers>div:nth-child(2)>div>span{width: 100%; height: 100%;color:#bbb;text-align: center;line-height: 50px;font-size: 50px;}
 			#gMembers>div:nth-child(3){width: 30%;  display: inline-block;vertical-align: top;margin-top: 20px;}
 			#gMembers>div:nth-child(4){width: 7%; display: inline-block;vertical-align: top; margin-top: 20px; margin-left: 10px;}
