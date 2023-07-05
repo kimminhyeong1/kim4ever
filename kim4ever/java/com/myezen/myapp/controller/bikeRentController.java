@@ -185,6 +185,9 @@ public class bikeRentController {
 		 HttpSession session = request.getSession();
 	     Object Omidx = session.getAttribute("midx");
 		    if (Omidx == null) {//midx가 없으면 진입불가
+		    	String root = request.getContextPath();
+				String uri = request.getRequestURI().substring(root.length());
+				request.getSession().setAttribute("dest", uri);
 		    	return "redirect:/member/memberLogin.do";
 			}
 		    int midx = (int)Omidx;
