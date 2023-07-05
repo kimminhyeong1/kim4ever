@@ -78,12 +78,12 @@
 		/* 슬라이더 1 - 페이지 버튼 */
 		.slider-1 > .page-btns {text-align:center; position:absolute; bottom:10px; left:0; width:100%;}
 		
-		.slider-1 > .page-btns > div {width:10px; height:3px; background-color:rgb(255,255,255); border-radius:4px;   
+		.slider-1 > .page-btns > div {width:10px; height:3px; background-color:#2bd7274d; border-radius:4px;   
 		 display:inline-block; cursor:pointer; border: none; top:1}
 		.slider-1 > .page-btns > div.active {background-color:#05d100 ; border: none;}
 		/* 1 - 슬라이드 */
 		.slider-1 > .slides > div {position:absolute; top:0; left:0; right:0; bottom:0; opacity:0; transition:opacity 1.5s;
-		background-position:center; background-size:cover; background-repeat:no-repeat; border-radius:20px;  }
+		background-position:center; background-size:contain; background-repeat:no-repeat; border-radius:20px;  }
 		.slider-1 > .slides > div.active {opacity:1;}
 		/*  좌우 버튼 */
 		.slider-1 > .side-btns > div {position:absolute; top:0; left:0; width:25%;

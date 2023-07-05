@@ -130,8 +130,9 @@
 			/*모임공지사항부분*/
 			#gNotice{margin-top:0px;width: 99%;}
 			/* 슬라이더*/
-			.slider-1 > .page-btns > div {width: 20px; height: 6px;  background-color: #ffffff; border-radius: 4px; display: inline-block; cursor: pointer; border: none;}
+			.slider-1 > .page-btns > div {width: 7px; height: 6px;  background-color: #2bd7274d;; border-radius: 4px; display: inline-block; cursor: pointer; border: none;}
 			.slider-1 >.side-btns > div > span {position: absolute; top: 40%; left: 20px; transform: translatey(-10%); opacity: 1; padding: 5px;    border-radius: 50px; font-size: 50px;}
+			.slider-1 > .page-btns {bottom:5px}
 			/*공지사항부분*/
 			.gNotice{text-align: left; font-size: 20px; margin: 15px 30px;}
 			.gNotice>div>div{display: inline-block; font-size: 20px;}

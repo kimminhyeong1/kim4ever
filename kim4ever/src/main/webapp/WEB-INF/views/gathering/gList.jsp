@@ -34,7 +34,7 @@
 			#gatheringIntro p{text-align:center; padding:5px;  font-size:12px; margin-top:1px;  overflow: hidden;}
 			#gatheringList{width:99%; display:flex; flex-wrap:wrap;justify-content:center; align-items:center;}
  			#gatheringList h2 {text-align:center;  font-size: 14px;  padding:10px;}
- 			 footer{margin-top: 0px !important;}
+ 			 footer{}
  			 }
 		 </style>
 	

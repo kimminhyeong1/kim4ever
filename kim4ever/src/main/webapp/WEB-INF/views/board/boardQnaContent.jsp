@@ -43,7 +43,7 @@ li{list-style:none;}
 #main #bottom{width:1440px; height:100px;}
 #content table {width:80%; border-collapse:collapse; margin:60px auto 0; font-size:24px; font-family: 'omyu_pretty'; border: 1px solid #ddd;}
 #content table tr{border:none;}
-#content table th {width:100px; padding:10px; text-align:left;  border: 1px solid #ddd;}
+#content table th {width:100px; padding:10px; text-align:left;  border: 1px solid #ddd; background: #ff9933;}
 #content table td {padding:10px; text-align:left; line-height:40px;  border: 1px solid #ddd;}
 #content table tr th {width:120px; text-align:center;  }
 #content table td { white-space: pre-line;}
