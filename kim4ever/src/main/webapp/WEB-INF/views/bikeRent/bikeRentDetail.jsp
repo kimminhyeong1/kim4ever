@@ -77,8 +77,8 @@
 		    }
 		});
 	});
-}
-	    
+
+	}
     
 
   $(document).ready(function() {
@@ -143,6 +143,7 @@
            });
         });            
   })
+	
    
 </script>
         
@@ -216,7 +217,7 @@
 				  
 				<tr>
 				  <td colspan="3">
-					<button id="rentButton" class="rentButton" type="button" onclick="requestPay()" >대여하기</button>
+					<button id="rentButton" class="rentButton" type="button" onclick="requestPay()" disabled >대여하기</button>
 				  </td>
 				</tr>
 				<tr>
