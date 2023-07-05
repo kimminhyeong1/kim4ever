@@ -10,10 +10,12 @@
       <link rel="stylesheet" media="(min-width: 300px) and (max-width: 940px)" href="${pageContext.request.contextPath}/css/style_gathering_mo.css">
       <link rel="icon" href="${pageContext.request.contextPath}/resources/logo/logo7.png">
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1">		
+      
       <style type="text/css">
          .gContainer{border: 1px solid #0000;}
          /*사진첩 틀*/ 
-         .gContent{width:97%; border:1px solid #bbb;background-color:#fbfdfa;border-radius:20px; padding: 20px;box-sizing border-box;display:flex;flex-direction:column;align-items:flex-start;}
+         .gContent{; border:1px solid #bbb;background-color:#fbfdfa;border-radius:20px; padding: 20px;box-sizing border-box;display:flex;flex-direction:column;align-items:flex-start;}
          /*사진첩 부분*/
          .card{height: 320px; background-color: #d2dfcc;}
          .cardImg{height: 80%;}
@@ -32,7 +34,39 @@
          .gContent table td{padding:10px; text-align:left; border-left:1px solid #ddd;}
          .gContent table tr{border:1px solid #ddd;}
          .gContent table input[type="text"],textarea{box-sizing:border-box;width:100%;padding:10px;margin:2px 0;border:1px solid #ccc;border-radius:20px; font-size:21px;}
-		 .imagePreview { max-width: 300px; max-height: 300px; width: auto; height: auto;}	 
+		 .imagePreview { max-width: 300px; max-height: 300px; width: auto; height: auto;}
+		 			/*************************모바일****************************************/
+				/*****모바일 넓이***/
+				@media (min-width: 300px) and (max-width: 940px)  {
+				       .gContainer{border: 1px solid #0000;}
+         /*사진첩 틀*/ 
+         .gContent{width:auto; border:1px solid #bbb;background-color:#fbfdfa;border-radius:20px; padding: 20px;box-sizing border-box;display:flex;flex-direction:column;align-items:flex-start; margin-top: 40px;}
+         /*사진첩 부분*/
+         .card{height: 320px; background-color: #d2dfcc;}
+         .cardImg{height: 80%;}
+         /*버튼 부분*/
+         #createBtn{text-align: right;}   
+         /*페이징 부분*/
+         .gPaging{font-size: 25px;}   
+         /* 사진첩 날짜와 제목 */
+         .albumHeader {margin-bottom:20px;text-align:left;    }
+         /* 사진첩 내용 */
+         .albumContent {width:auto;height:auto;font-size:20px;line-height:2;border:1px solid #000;}
+         .albumContent img {max-width:100%;height:auto;margin-bottom:10px;border-radius:20px;}
+         /* 글 작성 테이블 */
+         .gContent table {width:100%; border-collapse:collapse; margin: 0 auto; line-height:30px; font-size:24px; font-family: 'omyu_pretty';}
+         .gContent table th{width:140px;padding: 10px;text-align: center;}
+         .gContent table td{padding:10px; text-align:left; border-left:1px solid #ddd;}
+         .gContent table tr{border:1px solid #ddd;}
+         .gContent table input[type="text"],textarea{box-sizing:border-box;width:100%;padding:10px;margin:2px 0;border:1px solid #ccc;border-radius:20px; font-size:18px;}
+		 .imagePreview { max-width: 200px; max-height: 200px; width: auto; height: auto;}
+			#gPhotoAlbumTitleCount{font-size:15px;}
+			#gPhotoAlbumContents0Count{font-size:15px;}
+			#gPhotoAlbumContents1Count{font-size:15px;}
+			#gPhotoAlbumContents2Count{font-size:15px;}
+			#gPhotoAlbumContents3Count{font-size:15px;}
+			
+				}	 
       </style>
    </head>
    
@@ -98,6 +132,10 @@ function updateCharacterCount(inputName) {
 	  updateCharacterCount('gPhotoAlbumContents0');
 	});
 
+	function Back() {
+	  history.back();
+	}
+
 </script>
    <body>
       <%@include file="../header2.jsp" %>
@@ -141,9 +179,9 @@ function updateCharacterCount(inputName) {
 	        </div>
 	        
 	        <div id="createBtn">
-		        <button type="button" class="gBtn2" onclick="addRow()">이미지 추가 업로드+</button>
+		        <button type="button" class="gBtn2" style="min-width: 130px"onclick="addRow()">이미지 추가 업로드+</button>
 		        <button type="button" class="gBtn2" onclick="fnWrite();">작성하기</button>  
-		        <button class="gBtn2">취소하기</button>
+		        <button type="button" class="gBtn2" onclick="Back()">취소하기</button>
 	        </div>
 	    </section>
 	</form>
