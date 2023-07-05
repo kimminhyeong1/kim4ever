@@ -218,12 +218,11 @@
 				<tr>
 				  <td colspan="3">
 					<button id="rentButton" class="rentButton" type="button" onclick="requestPay()" disabled >대여하기</button>
+						<button style="margin-top:20px;">테스트</button>
 				  </td>
 				</tr>
 				<tr>
-				<td>
-				<button>테스트</button>
-				</td>
+				
 				
 				</tr>
 			</table>
