@@ -39,7 +39,7 @@
 			/* 슬라이더 1 - 페이지 버튼 */
 			.slider-1 > .page-btns {text-align:center; position:absolute; bottom:20px; left:0; width:100%;}
 			
-			.slider-1 > .page-btns > div {width:25px; height:6px; background-color:#ffff; border-radius:4px;   
+			.slider-1 > .page-btns > div {width:25px; height:6px; background-color:#2bd7274d; border-radius:4px;   
 			 display:inline-block; cursor:pointer; border: none;}
 			.slider-1 > .page-btns > div.active {background-color:#05d100; border: none;}
 			/* 1 - 슬라이드 */
