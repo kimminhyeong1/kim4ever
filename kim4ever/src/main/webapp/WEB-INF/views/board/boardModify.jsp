@@ -67,7 +67,7 @@ li{list-style:none;}
 #main #content h2{text-align:left; margin-top:30px; margin-left:10%; font-size:18px; margin-bottom:10px;}
 #main #bottom{width:auto; height:10px;}
 #content table {width:90%; height:auto; border-collapse:collapse; margin: auto; font-size:14px; line-height: 45px;}
-#content table th {width:30px; padding:2px; text-align:left; }
+#content table th {width:30px; padding:2px; text-align:left; background: #ff9933;}
 #content table td {padding:4px;  text-align:left; line-height:12px; }
 #content table tr th {width:50px; text-align:center;  }
 #content table td { white-space: pre-line;}
