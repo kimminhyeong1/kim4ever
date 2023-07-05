@@ -69,6 +69,7 @@ function fnWrite() {
 	    alert("내용을 입력하세요");
 	    fm.gBoardContents.focus();
 	    return;
+	}
     fm.action = "<%=request.getContextPath()%>/gathering/gBoardWriteAction.do";
     fm.enctype = "multipart/form-data";
     fm.method = "post";
