@@ -8,14 +8,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-public class AuthInterceptor extends HandlerInterceptorAdapter {
+public class AdminAuthInterceptor extends HandlerInterceptorAdapter {
 
 		@Override
 		public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 			//컨트롤러가 실행 이전에 처리해야 할 작업이 있는 경우 or 요청정보를 가공하거나 추가하는경우 사용
 			
 			HttpSession session = request.getSession();
-		
+			
 			if(session.getAttribute("midx")==null) {
 				//로그인 후 이동할 주소를 담는다
 				saveDest(request);
@@ -33,61 +33,15 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 		        }
 		        return false; // 처리 중단
 				
-			}
-			
-			System.out.println(request.getRequestURI().equals(request.getContextPath() + "/bikeRent/bikeRentQR.do"));
-			
-			//!/bikeRent/bikeRentQR or bikeRentDetail.do대여한 고객이 대여하기를 들어오면 못 들어가게 돌려보내기
-			String bikeRentQR = request.getContextPath() + "/bikeRent/bikeRentQR.do";
-			String bikeRentDetail = request.getContextPath() + "/bikeRent/bikeRentDetail.do";
-			
-			if (request.getRequestURI().equals(bikeRentQR) || request.getRequestURI().equals(bikeRentDetail)) {
-				if (session.getAttribute("ridx")!=null) {
-					response.sendRedirect(request.getContextPath()+"/index.jsp");
-					return  true;
-				}else {
-					return  true;
-				}
-				
-			}
-			String bikeRentUseList = request.getContextPath() + "/bikeRent/bikeRentUseList.do";
-			String bikeReturnQR = request.getContextPath() + "/bikeRent/bikeReturnQR.do";
-			String bikeRentReturn = request.getContextPath() + "/bikeRent/bikeRentReturn.do";
-			
-			//ridx값이 null이면 메인페이지로 보내기
-			if (request.getRequestURI().equals(bikeRentUseList) || 
-				request.getRequestURI().equals(bikeReturnQR) ||
-				request.getRequestURI().equals(bikeRentReturn)
-				) {
-				if (session.getAttribute("ridx")==null) {
-					response.sendRedirect(request.getContextPath()+"/index.jsp");
-					return  true;
-				}else {
-					return  true;
-				}
-				
-			}
-			
-			//관리자
-			String adminpage = request.getContextPath() + "/admin/*";
-			
-			//memberType이 관리자가아니면 메인페이지로 보내기
-			if (request.getRequestURI().equals(adminpage)
-
-				) {
+			}else {
 				if (session.getAttribute("memberType").equals("M")) {
-					response.sendRedirect(request.getContextPath()+"/index.jsp");
-					return  true;
-				}else {
-					return  true;
+					
+					if (request.getRequestURI().indexOf("/admin") != -1) {
+						response.sendRedirect(request.getContextPath()+"/index.jsp");
+					}
 				}
-				
 			}
-			
-			
-			
-			
-			
+	
 			return  true; //boolean타입이어서 true로 설정해줌
 	} 
 		
