@@ -405,7 +405,6 @@
 		    
 		    function modifyComment(Pgbidx, Pgcidx) {
 		        var scrollPosition = window.scrollY; // 현재 스크롤 위치를 저장합니다.
-
 		        $.ajax({
 		            type: "POST",
 		            url: "${pageContext.request.contextPath}/gathering/gBoardModifyComment.do",
@@ -442,6 +441,8 @@
 		                    gCommentContentsTextarea.addEventListener('input', function(){
 		                        characterCheck(this);
 		                    });
+		                    $('.replyBtn').css('display','none');
+		                    
 
 		                    function characterCheck(obj){
 		                        var regExp = /[\{\}\[\]\/|\)*`^\_┼<>@\#$%&\'\"\\(\=]/gi;
