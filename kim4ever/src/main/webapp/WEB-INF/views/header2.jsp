@@ -8,6 +8,8 @@
 *{margin:0;padding:0; word-break:keep-all; font-family: 'omyu_pretty';}
 *{caret-color: transparent;}
 a{color:inherit; text-decoration:none;} 
+input, textarea {caret-color: black;}
+
 li{list-style:none;}
 
 button{cursor:pointer;}

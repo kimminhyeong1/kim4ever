@@ -10,6 +10,7 @@ li{list-style:none;}
 
 *{margin:0;padding:0; font-family: 'omyu_pretty';}
 *{caret-color: transparent;}
+input, textarea {caret-color: black;}
 a{color:inherit; text-decoration:none;} 
 button{cursor:pointer;}
 /*헤더부분 영역*/
