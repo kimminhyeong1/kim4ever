@@ -44,7 +44,7 @@
 
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://i.imgur.com/cwCccsC.gif"></a>  |<img src = "https://i.imgur.com/kLtzwlh.gif"></a>  | 
+| <img src = "https://i.imgur.com/dCplOaw.gif"></a>  |<img src = "https://i.imgur.com/kLtzwlh.gif"></a>  | 
 | 메인 | 모바일 메인 |
 
 | 웹 | 모바일 |
