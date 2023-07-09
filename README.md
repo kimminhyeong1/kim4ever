@@ -49,7 +49,7 @@
 
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://i.imgur.com/0I9vK2p.gif](https://i.imgur.com/0I9vK2p.gif"></a>  | <img src = "https://i.imgur.com/YEiYAP9.gif"></a>  | 
+| <img src = "https://i.imgur.com/0I9vK2p.gif"></a>  | <img src = "https://i.imgur.com/YEiYAP9.gif"></a>  | 
 | 로그인 | 8 | 
 
 | 웹 | 모바일 |
