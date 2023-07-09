@@ -40,11 +40,12 @@
 </br>
 
 
+
 </br>
 
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://i.imgur.com/dCplOaw.gif"></a>  |<img src = "https://i.imgur.com/kLtzwlh.gif"></a>  | 
+| <img src = "https://i.imgur.com/9mdS9Bw.gif"></a>  |<img src = "https://i.imgur.com/QpK5A3L.gif"></a>  | 
 | 메인 | 모바일 메인 |
 
 | 웹 | 모바일 |
@@ -64,7 +65,7 @@
 
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://i.imgur.com/P5FldoP.gif"></a>  | <img src = "https://i.imgur.com/CgC8Qsd.gif"></a>  | 
+| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/adc1494b-7a60-4e0d-94e0-6cb67a2cebed"></a>  | <img src = "https://i.imgur.com/CgC8Qsd.gif"></a>  | 
 | 게시판 | 8 | 
 
 | 웹 | 모바일 |
