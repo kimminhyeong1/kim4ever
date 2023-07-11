@@ -47,7 +47,7 @@
 
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://i.imgur.com/9mdS9Bw.gif"></a>  |![KakaoTalk_20230709_224759590_07](https://github.com/kimminhyeong1/kim4ever/assets/131415789/6e095f26-0df9-4a92-8b64-ae1b6c7388a3)| 
+| ![메인](https://github.com/kimminhyeong1/kim4ever/assets/131415789/552daa22-fe1a-4236-9323-1f5524ea46ea)|![KakaoTalk_20230709_224759590_07](https://github.com/kimminhyeong1/kim4ever/assets/131415789/6e095f26-0df9-4a92-8b64-ae1b6c7388a3)| 
 | 메인 | 모바일 메인 |
 
 | 웹 | 모바일 |
@@ -57,13 +57,13 @@
 
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://i.imgur.com/HK54fdm.gif"></a>  | ![KakaoTalk_20230709_224759590_02](https://github.com/kimminhyeong1/kim4ever/assets/131415789/a27a3154-d1b4-405e-acca-ca43bdae63c0)  | 
+| ![메인](https://github.com/kimminhyeong1/kim4ever/assets/131415789/432b43c5-a5fa-490a-9025-320f708db148)  | ![KakaoTalk_20230709_224759590_02](https://github.com/kimminhyeong1/kim4ever/assets/131415789/a27a3154-d1b4-405e-acca-ca43bdae63c0)  | 
 | 대여| 8 | 
 
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://i.imgur.com/0DoBg7J.gif"></a>  | ![KakaoTalk_20230709_224759590_17](https://github.com/kimminhyeong1/kim4ever/assets/131415789/4aabf695-d3df-4f53-b143-d2de8b255948)| 
-| 자전거소개 | 8 | 
+| ![메인](https://github.com/kimminhyeong1/kim4ever/assets/131415789/8528c048-f2fe-48f4-875f-2b70f2fe498f) | ![KakaoTalk_20230709_224759590_17](https://github.com/kimminhyeong1/kim4ever/assets/131415789/4aabf695-d3df-4f53-b143-d2de8b255948)| 
+| 코소개 | 8 | 
 
 | 웹 | 모바일 |
 | --- | --- | 
