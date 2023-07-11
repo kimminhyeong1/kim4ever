@@ -47,7 +47,7 @@
 
 | 웹 | 모바일 |
 | --- | --- | 
-| ![메인](https://github.com/kimminhyeong1/kim4ever/assets/131415789/552daa22-fe1a-4236-9323-1f5524ea46ea)|![KakaoTalk_20230709_224759590_07](https://github.com/kimminhyeong1/kim4ever/assets/131415789/6e095f26-0df9-4a92-8b64-ae1b6c7388a3)| 
+| <img src = https://github.com/kimminhyeong1/kim4ever/assets/131415789/552daa22-fe1a-4236-9323-1f5524ea46ea>|<img src = https://github.com/kimminhyeong1/kim4ever/assets/131415789/6e095f26-0df9-4a92-8b64-ae1b6c7388a3>| 
 | 메인 | 모바일 메인 |
 
 | 웹 | 모바일 |
@@ -57,27 +57,28 @@
 
 | 웹 | 모바일 |
 | --- | --- | 
-| ![메인](https://github.com/kimminhyeong1/kim4ever/assets/131415789/432b43c5-a5fa-490a-9025-320f708db148)  | ![KakaoTalk_20230709_224759590_02](https://github.com/kimminhyeong1/kim4ever/assets/131415789/a27a3154-d1b4-405e-acca-ca43bdae63c0)  | 
+| <img src = https://github.com/kimminhyeong1/kim4ever/assets/131415789/432b43c5-a5fa-490a-9025-320f708db148>  | <img src = https://github.com/kimminhyeong1/kim4ever/assets/131415789/a27a3154-d1b4-405e-acca-ca43bdae63c0>  | 
 | 대여| 8 | 
 
 | 웹 | 모바일 |
 | --- | --- | 
-| ![메인](https://github.com/kimminhyeong1/kim4ever/assets/131415789/8528c048-f2fe-48f4-875f-2b70f2fe498f) | ![KakaoTalk_20230709_224759590_17](https://github.com/kimminhyeong1/kim4ever/assets/131415789/4aabf695-d3df-4f53-b143-d2de8b255948)| 
+| <img src = https://github.com/kimminhyeong1/kim4ever/assets/131415789/8528c048-f2fe-48f4-875f-2b70f2fe498f> |<img src = https://github.com/kimminhyeong1/kim4ever/assets/131415789/4aabf695-d3df-4f53-b143-d2de8b255948>| 
 | 코소개 | 8 | 
 
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/adc1494b-7a60-4e0d-94e0-6cb67a2cebed"></a>  | <img src = "https://i.imgur.com/CgC8Qsd.gif"></a>  | 
+| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/adc1494b-7a60-4e0d-94e0-6cb67a2cebed"  width="400" height="400"></a>  | <img src = "https://i.imgur.com/CgC8Qsd.gif"  width="200" height="400"></a>  | 
 | 게시판 | 8 | 
 
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://i.imgur.com/dCplOaw.gif"></a>  | <img src = "https://i.imgur.com/O3wCNiX.gif"></a>  | 
+|  <img src = https://github.com/kimminhyeong1/kim4ever/assets/131415789/68b48400-3b75-4387-b022-4ab0af682719  width="200" height="400" >| <img src = ""></a>  | 
 | 모임메인 | 8 | 
+
 
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://i.imgur.com/BF21Imu.gif"></a>  | <img src = "https://i.imgur.com/7JN42Eg.gif"></a>  | 
+| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/787f731f-5e4f-4e26-8bad-9c82bbb928e2"></a>  | <img src = "https://i.imgur.com/7JN42Eg.gif"></a>  | 
 | 모임 내부 | 8 | 
 
 | 웹 | 모바일 |
@@ -98,12 +99,17 @@
 | 웹 | 모바일 |
 | --- | --- | 
 | <img src = "https://i.imgur.com/yu2NWus.gif"></a>  | <img src = "https://i.imgur.com/YEiYAP9.gif"></a>  | 
-| 신 | 8 | 
+| 마이페이지 | 8 | 
 
 | 웹 | 모바일 |
 | --- | --- | 
 | <img src = "https://i.imgur.com/0I9vK2p.gif"></a>  | <img src = "https://i.imgur.com/YEiYAP9.gif"></a>  | 
-| 7 | 8 | 
+| 관리자 | 8 | 
+
+| 웹 | 모바일 |
+| --- | --- | 
+| <img src = "https://i.imgur.com/0I9vK2p.gif"></a>  | <img src = "https://i.imgur.com/YEiYAP9.gif"></a>  | 
+| 관리자 | 8 | 
 ## 🖥️ Demo
 
 <br />
