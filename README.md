@@ -12,6 +12,8 @@
 배포링크: http://jjezen.cafe24.com/kim4ever/
 
 
+
+
 </br>
 
 ## 🧑‍🤝‍🧑 팀 김가네
@@ -45,7 +47,7 @@
 
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://i.imgur.com/9mdS9Bw.gif"></a>  |<img src = "https://i.imgur.com/QpK5A3L.gif"></a>  | 
+| <img src = "https://i.imgur.com/9mdS9Bw.gif"></a>  |![KakaoTalk_20230709_224759590_07](https://github.com/kimminhyeong1/kim4ever/assets/131415789/6e095f26-0df9-4a92-8b64-ae1b6c7388a3)| 
 | 메인 | 모바일 메인 |
 
 | 웹 | 모바일 |
@@ -55,12 +57,12 @@
 
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://i.imgur.com/HK54fdm.gif"></a>  | <img src = "https://i.imgur.com/PjYsHEL.gif"></a>  | 
+| <img src = "https://i.imgur.com/HK54fdm.gif"></a>  | ![KakaoTalk_20230709_224759590_02](https://github.com/kimminhyeong1/kim4ever/assets/131415789/a27a3154-d1b4-405e-acca-ca43bdae63c0)  | 
 | 대여| 8 | 
 
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://i.imgur.com/0DoBg7J.gif"></a>  | <img src = "https://i.imgur.com/g4qsUkO.gif"></a>  | 
+| <img src = "https://i.imgur.com/0DoBg7J.gif"></a>  | ![KakaoTalk_20230709_224759590_17](https://github.com/kimminhyeong1/kim4ever/assets/131415789/4aabf695-d3df-4f53-b143-d2de8b255948)| 
 | 자전거소개 | 8 | 
 
 | 웹 | 모바일 |
@@ -90,7 +92,7 @@
 
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://i.imgur.com/gJESXtQ.gif"></a>  | <img src = "https://i.imgur.com/aw7YNlw.gif"></a>  | 
+| <img src = "https://i.imgur.com/gJESXtQ.gif"></a>  |![KakaoTalk_20230709_224759590_09](https://github.com/kimminhyeong1/kim4ever/assets/131415789/b9cc438e-efa7-4479-bc12-91606591b30f)| 
 | 검색 | 8 | 
 
 | 웹 | 모바일 |
