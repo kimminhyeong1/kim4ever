@@ -94,12 +94,25 @@
 | 웹 | 모바일 |
 | --- | --- | 
 | <img src = "https://i.imgur.com/gJESXtQ.gif"></a>  |![KakaoTalk_20230709_224759590_09](https://github.com/kimminhyeong1/kim4ever/assets/131415789/b9cc438e-efa7-4479-bc12-91606591b30f)| 
-| 검색 | 8 | 
+| 검색,추천모임 | 8 | 
+
+| 웹 | 모바일 |
+| --- | --- | 
+| <img src = "https://i.imgur.com/gJESXtQ.gif"></a>  |![KakaoTalk_20230709_224759590_09](https://github.com/kimminhyeong1/kim4ever/assets/131415789/b9cc438e-efa7-4479-bc12-91606591b30f)| 
+| 모임게시판, 사진첩| 8 | 
+
 
 | 웹 | 모바일 |
 | --- | --- | 
 | <img src = "https://i.imgur.com/yu2NWus.gif"></a>  | <img src = "https://i.imgur.com/YEiYAP9.gif"></a>  | 
 | 마이페이지 | 8 | 
+
+
+| 웹 | 모바일 |
+| --- | --- | 
+| <img src = "https://i.imgur.com/0I9vK2p.gif"></a>  | <img src = "https://i.imgur.com/YEiYAP9.gif"></a>  | 
+| 에러| 8 | 
+
 
 | 웹 | 모바일 |
 | --- | --- | 
