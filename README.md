@@ -81,25 +81,27 @@
 | <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/787f731f-5e4f-4e26-8bad-9c82bbb928e2"></a>  | <img src = "https://i.imgur.com/7JN42Eg.gif"></a>  | 
 | 모임 내부 | 8 | 
 
+
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://i.imgur.com/k4ZCSy3.gif"></a>  | <img src = "https://i.imgur.com/hWdhkek.gif"></a>  | 
+| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/12953002-4f23-4508-9ac8-d329b98192c6"></a>  | <img src = "https://i.imgur.com/hWdhkek.gif"></a>  | 
 | 찜 | 8 | 
 
-| 웹 | 모바일 |
-| --- | --- | 
-| <img src = "https://i.imgur.com/g9ZkgrL.gif"></a>  | <img src = "https://i.imgur.com/P95mX6P.gif"></a>  | 
-| 일정 | 8 | 
 
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://i.imgur.com/gJESXtQ.gif"></a>  |![KakaoTalk_20230709_224759590_09](https://github.com/kimminhyeong1/kim4ever/assets/131415789/b9cc438e-efa7-4479-bc12-91606591b30f)| 
+| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/ee1f6613-b47b-4f0a-bbd3-6011bd7820c8"></a>  | <img src = "https://i.imgur.com/P95mX6P.gif"></a>  | 
+| 일정, 사진첩 | 8 | 
+
+| 웹 | 모바일 |
+| --- | --- | 
+| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/3e756366-0748-4107-b3d4-562a5fc027ee"></a>  |![KakaoTalk_20230709_224759590_09](https://github.com/kimminhyeong1/kim4ever/assets/131415789/b9cc438e-efa7-4479-bc12-91606591b30f)| 
 | 검색,추천모임 | 8 | 
 
 | 웹 | 모바일 |
 | --- | --- | 
 | <img src = "https://i.imgur.com/gJESXtQ.gif"></a>  |![KakaoTalk_20230709_224759590_09](https://github.com/kimminhyeong1/kim4ever/assets/131415789/b9cc438e-efa7-4479-bc12-91606591b30f)| 
-| 모임게시판, 사진첩| 8 | 
+| 모임게시판| 8 | 
 
 
 | 웹 | 모바일 |
