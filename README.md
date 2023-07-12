@@ -98,33 +98,38 @@
 | <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/3e756366-0748-4107-b3d4-562a5fc027ee"></a>  |![KakaoTalk_20230709_224759590_09](https://github.com/kimminhyeong1/kim4ever/assets/131415789/b9cc438e-efa7-4479-bc12-91606591b30f)| 
 | 검색,추천모임 | 8 | 
 
+
+
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://i.imgur.com/gJESXtQ.gif"></a>  |![KakaoTalk_20230709_224759590_09](https://github.com/kimminhyeong1/kim4ever/assets/131415789/b9cc438e-efa7-4479-bc12-91606591b30f)| 
+| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/87b1c908-fb24-460c-a00d-e4d118e91938"></a>  |![KakaoTalk_20230709_224759590_09](https://github.com/kimminhyeong1/kim4ever/assets/131415789/b9cc438e-efa7-4479-bc12-91606591b30f)| 
 | 모임게시판| 8 | 
 
 
+
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://i.imgur.com/yu2NWus.gif"></a>  | <img src = "https://i.imgur.com/YEiYAP9.gif"></a>  | 
+| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/b07c2556-9e16-44f7-bd3b-ad52acc3bdb0"></a>  | <img src = "https://i.imgur.com/YEiYAP9.gif"></a>  | 
 | 마이페이지 | 8 | 
 
 
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://i.imgur.com/0I9vK2p.gif"></a>  | <img src = "https://i.imgur.com/YEiYAP9.gif"></a>  | 
+| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/f3bc1be7-d229-48d2-9a85-8757d5120beb"></a>  | <img src = "https://i.imgur.com/YEiYAP9.gif"></a> | 
 | 에러| 8 | 
 
 
-| 웹 | 모바일 |
-| --- | --- | 
-| <img src = "https://i.imgur.com/0I9vK2p.gif"></a>  | <img src = "https://i.imgur.com/YEiYAP9.gif"></a>  | 
-| 관리자 | 8 | 
+
 
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://i.imgur.com/0I9vK2p.gif"></a>  | <img src = "https://i.imgur.com/YEiYAP9.gif"></a>  | 
-| 관리자 | 8 | 
+| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/f8fb780c-68c9-435a-b1e0-5878296d6396"></a>  | <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/328d42ba-7936-4392-b6e3-2803254e10da"></a>  | 
+| 관리자(회원,게시판) | 관리자(대여소,자전거) | 
+
+| 웹 | 모바일 |
+| --- | --- | 
+| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/f0b31a0c-33b8-4832-9d71-f6d7f172172d"></a>  | <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/65a434b5-ef71-470b-8db1-303273ce0ab3"></a>  | 
+| 관리자(자전거신고)| 관리자(모임) | 
 ## 🖥️ Demo
 
 <br />
