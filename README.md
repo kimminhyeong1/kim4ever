@@ -70,52 +70,58 @@
 | <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/adc1494b-7a60-4e0d-94e0-6cb67a2cebed"  width="400" height="400"></a>  | <img src = "https://i.imgur.com/CgC8Qsd.gif"  width="200" height="400"></a>  | 
 | 게시판 | 8 | 
 
+
 | 웹 | 모바일 |
 | --- | --- | 
-|  <img src = https://github.com/kimminhyeong1/kim4ever/assets/131415789/68b48400-3b75-4387-b022-4ab0af682719  width="200" height="400" >| <img src = ""></a>  | 
+|  <img src = https://github.com/kimminhyeong1/kim4ever/assets/131415789/68b48400-3b75-4387-b022-4ab0af682719  width="200" height="400" >| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/5eb937c9-53ad-4099-be19-bbe3231d18ad"></a>  | 
 | 모임메인 | 8 | 
 
 
+
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/787f731f-5e4f-4e26-8bad-9c82bbb928e2"></a>  | <img src = "https://i.imgur.com/7JN42Eg.gif"></a>  | 
+| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/787f731f-5e4f-4e26-8bad-9c82bbb928e2"></a>  | <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/c8fff6b0-7964-4e2d-a80f-6e03042484ed"></a>  | 
 | 모임 내부 | 8 | 
 
 
+
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/12953002-4f23-4508-9ac8-d329b98192c6"></a>  | <img src = "https://i.imgur.com/hWdhkek.gif"></a>  | 
+| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/12953002-4f23-4508-9ac8-d329b98192c6"></a>  | <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/0d07df43-3291-403f-9b2e-4cadd2eb9bd1"></a>  | 
 | 찜 | 8 | 
 
 
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/ee1f6613-b47b-4f0a-bbd3-6011bd7820c8"></a>  | <img src = "https://i.imgur.com/P95mX6P.gif"></a>  | 
+| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/ee1f6613-b47b-4f0a-bbd3-6011bd7820c8"></a>  | <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/664cda75-350a-4aee-95bb-0fc0a14b1411"></a>  | 
 | 일정, 사진첩 | 8 | 
 
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/3e756366-0748-4107-b3d4-562a5fc027ee"></a>  |![KakaoTalk_20230709_224759590_09](https://github.com/kimminhyeong1/kim4ever/assets/131415789/b9cc438e-efa7-4479-bc12-91606591b30f)| 
+| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/3e756366-0748-4107-b3d4-562a5fc027ee"></a>  |<img src = https://github.com/kimminhyeong1/kim4ever/assets/131415789/b9cc438e-efa7-4479-bc12-91606591b30f>| 
 | 검색,추천모임 | 8 | 
+
 
 
 
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/87b1c908-fb24-460c-a00d-e4d118e91938"></a>  |![KakaoTalk_20230709_224759590_09](https://github.com/kimminhyeong1/kim4ever/assets/131415789/b9cc438e-efa7-4479-bc12-91606591b30f)| 
+| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/87b1c908-fb24-460c-a00d-e4d118e91938"></a>  |<img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/6ef4161f-7583-4889-aeaf-d55825783865"> | 
 | 모임게시판| 8 | 
 
 
 
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/b07c2556-9e16-44f7-bd3b-ad52acc3bdb0"></a>  | <img src = "https://i.imgur.com/YEiYAP9.gif"></a>  | 
+| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/b07c2556-9e16-44f7-bd3b-ad52acc3bdb0"></a>  | <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/b94c00ca-dcf7-49bb-b5cb-674e72432016"></a>  | 
 | 마이페이지 | 8 | 
+
+
 
 
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/f3bc1be7-d229-48d2-9a85-8757d5120beb"></a>  | <img src = "https://i.imgur.com/YEiYAP9.gif"></a> | 
+| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/f3bc1be7-d229-48d2-9a85-8757d5120beb"></a>  | <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/d766d622-a0d7-467e-8996-2d8416c61073"></a> | 
 | 에러| 8 | 
 
 
