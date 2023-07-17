@@ -52,7 +52,7 @@
 
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://i.imgur.com/0I9vK2p.gif"  width="500px" height="500"></a>  | <img src = "https://i.imgur.com/YEiYAP9.gif" width="250px" height="500"></a>  | 
+| <img src = "https://i.imgur.com/0I9vK2p.gif"  width="500px" height="500"></a>  | <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/f26e5444-72a6-4f68-b9a9-a5fa619cdb12" width="250px" height="500"></a>  | 
 | 로그인 | 모바일 로그인 | 
 
 | 웹 | 모바일 |
@@ -65,9 +65,10 @@
 | <img src = https://github.com/kimminhyeong1/kim4ever/assets/131415789/8528c048-f2fe-48f4-875f-2b70f2fe498f  width="500px" height="500"> |<img src = https://github.com/kimminhyeong1/kim4ever/assets/131415789/4aabf695-d3df-4f53-b143-d2de8b255948 width="250px" height="500"> | 
 | 코스소개 | 모바일 코스소개 | 
 
+
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/adc1494b-7a60-4e0d-94e0-6cb67a2cebed"  width="500px" height="500"></a>  | <img src = "https://i.imgur.com/CgC8Qsd.gif"  width="250px" height="500"></a>  | 
+| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/adc1494b-7a60-4e0d-94e0-6cb67a2cebed"  width="500px" height="500"></a>  | <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/b1487731-1e5e-4697-9cb9-a69217c89b73"  width="250px" height="500"></a>  | 
 | 게시판 | 모바일 게시판 | 
 
 
