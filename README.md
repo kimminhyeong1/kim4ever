@@ -9,8 +9,8 @@
 프로젝트명 : 타:바</br>
 프로젝트 소개 : 전주시에서 운영되는 공영자전거대여 플랫폼과 자전거 모임 활동을 통합한 프로젝트입니다.</br>
 프로젝트 기간 : 2023.04.25 - 2023.07.06</br>
-배포링크: http://jjezen.cafe24.com/kim4ever/
-
+배포링크: http://jjezen.cafe24.com/kim4ever/   </br>
+타:바_설명서: https://drive.google.com/file/d/1PG_C7dvwR8va53wXmU3VwndH5r3zvDjS/view?usp=drive_link
 
 
 
@@ -37,8 +37,7 @@
 
 </br>
 
-## 🖥️ Demo
-</br>
+
 
 | 웹 | 모바일 |
 | --- | --- | 
