@@ -25,8 +25,8 @@
 
 </br>
 
-## 💻 Tech Stack
-### 🌅 사용기술
+
+## 🌅 사용기술
 <img src="https://img.shields.io/badge/html-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/CSS-00A7E2?style=for-the-badge&logo=css3&logoColor=white"/> <img src = "https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img src = "https://img.shields.io/badge/jquery-0769AD?style=for-the-badge&logo=jquery&logoColor=white">
 <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=Spring&logoColor=white"> <img src="https://img.shields.io/badge/Spring Security-6DB33F?style=for-the-badge&logo=Spring Security&logoColor=white"> <img src="https://img.shields.io/badge/Spring MVC-6DB33F?style=for-the-badge&logo=Spring MVC&logoColor=white"> 
 <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
@@ -35,14 +35,9 @@
 <img src = "https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"></a> 
 <img src = "https://img.shields.io/badge/apachetomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=black"></a> 
 
-
-
-
-
 </br>
 
-
-
+## 🖥️ Demo
 </br>
 
 | 웹 | 모바일 |
@@ -137,7 +132,6 @@
 | --- | --- | 
 | <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/f0b31a0c-33b8-4832-9d71-f6d7f172172d" width="500px" height="500"></a>  | <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/65a434b5-ef71-470b-8db1-303273ce0ab3"  width="500px" height="500"></a>  | 
 | 관리자(자전거신고)| 관리자(모임) | 
-## 🖥️ Demo
 
 <br />
 
