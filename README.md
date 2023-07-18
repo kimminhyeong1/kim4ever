@@ -39,6 +39,7 @@
 
 
 
+
 | 웹 | 모바일 |
 | --- | --- | 
 | <img src = https://github.com/kimminhyeong1/kim4ever/assets/131415789/552daa22-fe1a-4236-9323-1f5524ea46ea  width="500px" height="500">|<img src = https://github.com/kimminhyeong1/kim4ever/assets/131415789/6e095f26-0df9-4a92-8b64-ae1b6c7388a3 width="250px" height="500">| 
@@ -46,7 +47,7 @@
 
 | 웹 | 모바일 |
 | --- | --- | 
-| <img src = "https://i.imgur.com/0I9vK2p.gif"  width="500px" height="500"></a>  | <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/f26e5444-72a6-4f68-b9a9-a5fa619cdb12" width="250px" height="500"></a>  | 
+| <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/0affbdea-f3ca-436e-a6bf-4adb2f523d3a"  width="500px" height="500"></a>  | <img src = "https://github.com/kimminhyeong1/kim4ever/assets/131415789/f26e5444-72a6-4f68-b9a9-a5fa619cdb12" width="250px" height="500"></a>  | 
 | 로그인 | 모바일 로그인 | 
 
 | 웹 | 모바일 |
